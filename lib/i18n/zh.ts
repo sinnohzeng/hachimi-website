@@ -12,12 +12,13 @@ export const zh: Translations = {
   },
 
   hero: {
-    badge: "v2.24.0 — 已上架 Google Play",
+    badge: "v2.29.1 — 已上架 Google Play",
     headline1: "养猫。",
     headline2: "养习惯。",
     description:
       "每个习惯都附带一只虚拟猫咪。保持专注，赚取 XP 和金币，看着你的猫咪进化成长。可选的云端 AI 陪伴功能。",
     ctaDownload: "下载 APK",
+    ctaGooglePlay: "Google Play",
     ctaSource: "查看源码",
     securityBadge: "隐私优先，AI 功能可选且需主动启用",
   },
@@ -52,7 +53,7 @@ export const zh: Translations = {
     features: [
       "AI 猫咪聊天 — 用猫咪独特的性格和你对话",
       "自动生成每日日记，融合心情和专注数据",
-      "100+ 配饰，商店中 5 档定价",
+      "108+ 配饰，商店中 5 档定价",
     ],
     cta: "探索功能",
     phonePlaceholder: "猫咪伙伴详情页",

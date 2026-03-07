@@ -12,12 +12,13 @@ export const en: Translations = {
   },
 
   hero: {
-    badge: "v2.24.0 — Now on Google Play",
+    badge: "v2.29.1 — Now on Google Play",
     headline1: "Raise cats.",
     headline2: "Build habits.",
     description:
       "Every habit comes with a virtual kitten. Stay focused, earn XP and coins, and watch your cat evolve. Optional AI companion powered by cloud providers.",
     ctaDownload: "Download APK",
+    ctaGooglePlay: "Google Play",
     ctaSource: "View Source",
     securityBadge: "Privacy-first. AI features are optional and opt-in.",
   },
@@ -52,7 +53,7 @@ export const en: Translations = {
     features: [
       "AI cat chat — talk to your cats in their unique personality",
       "Auto-generated daily diary blending mood and focus data",
-      "100+ accessories across 5 price tiers in the shop",
+      "108+ accessories across 5 price tiers in the shop",
     ],
     cta: "Explore features",
     phonePlaceholder: "Cat companion detail page",

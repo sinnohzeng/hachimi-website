@@ -67,7 +67,7 @@ export function Footer({ t }: { t: Translations }): ReactNode {
         <div className="relative w-full max-w-270">
           <div className="pt-8 px-8 sm:px-12">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-              <span className="text-sm text-foreground/40">v2.24.0</span>
+              <span className="text-sm text-foreground/40">v2.29.1</span>
               <div className="flex flex-wrap gap-6">
                 {t.footer.legal.map((link) => (
                   <a

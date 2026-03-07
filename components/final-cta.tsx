@@ -5,6 +5,7 @@ import { useTheme } from "next-themes";
 import { motion } from "motion/react";
 import * as THREE from "three";
 import type { Translations } from "@/lib/i18n";
+import { siteConfig } from "@/lib/config";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -227,7 +228,7 @@ export function FinalCTA({ t }: { t: Translations }): ReactNode {
           className="mt-10"
         >
           <a
-            href="https://github.com/sinnohzeng/hachimi-app/releases/latest"
+            href={siteConfig.googlePlay}
             className="inline-flex items-center px-8 py-4 bg-foreground text-background rounded-full text-sm font-medium hover:bg-foreground/90 active:scale-[0.97] transition-all duration-150"
           >
             {t.finalCta.cta}

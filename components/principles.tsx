@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { motion } from "motion/react";
 import type { Translations } from "@/lib/i18n";
+import { siteConfig } from "@/lib/config";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -60,7 +61,7 @@ export function Principles({ t }: { t: Translations }): ReactNode {
             </motion.p>
 
             <motion.a
-              href="https://github.com/sinnohzeng/hachimi-app/releases/latest"
+              href={siteConfig.googlePlay}
               id="download"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

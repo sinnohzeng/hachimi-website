@@ -5,6 +5,7 @@ import { ChevronRight, Shield } from "lucide-react";
 import { motion } from "motion/react";
 import * as THREE from "three";
 import type { Translations } from "@/lib/i18n";
+import { siteConfig } from "@/lib/config";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -281,13 +282,19 @@ export function Hero({ t }: { t: Translations }): ReactNode {
               className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mt-10 w-full sm:w-auto"
             >
               <a
-                href="https://github.com/sinnohzeng/hachimi-app/releases/latest"
+                href={siteConfig.googlePlay}
                 className="h-12 px-6 text-sm font-medium bg-white text-black rounded-full hover:bg-white/90 active:scale-[0.97] transition-all duration-150 flex items-center justify-center gap-2 whitespace-nowrap"
+              >
+                {t.hero.ctaGooglePlay}
+              </a>
+              <a
+                href={siteConfig.apkDownload}
+                className="h-12 px-6 text-sm font-medium text-white border border-white/30 rounded-full hover:bg-white/10 active:scale-[0.97] transition-all duration-150 flex items-center justify-center gap-2 whitespace-nowrap"
               >
                 {t.hero.ctaDownload}
               </a>
               <a
-                href="https://github.com/sinnohzeng/hachimi-app"
+                href={siteConfig.github}
                 className="h-12 px-6 text-sm font-medium text-white border border-white/30 rounded-full hover:bg-white/10 active:scale-[0.97] transition-all duration-150 flex items-center justify-center gap-2 whitespace-nowrap"
               >
                 {t.hero.ctaSource}

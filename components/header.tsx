@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useState, type ReactNode } from "react";
 import { LangSwitch } from "./lang-switch";
 import type { Translations } from "@/lib/i18n";
+import { siteConfig } from "@/lib/config";
 
 const ease = [0.23, 1, 0.32, 1] as const;
 
@@ -113,10 +114,10 @@ export function Header({
           >
             <LangSwitch locale={locale} />
             <a
-              href="https://github.com/sinnohzeng/hachimi-app/releases/latest"
+              href={siteConfig.googlePlay}
               className="px-5 py-2.5 text-sm font-semibold tracking-tighter text-black bg-white rounded-full hover:bg-white/90 transition-colors"
             >
-              {t.hero.ctaDownload}
+              {t.hero.ctaGooglePlay}
             </a>
           </motion.div>
         </div>
@@ -198,11 +199,11 @@ export function Header({
 
               <div className="flex flex-col gap-3 pt-6">
                 <a
-                  href="https://github.com/sinnohzeng/hachimi-app/releases/latest"
+                  href={siteConfig.googlePlay}
                   className="w-full py-3 text-center text-sm font-medium tracking-tight text-background bg-foreground rounded-full hover:bg-foreground/90 transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  {t.hero.ctaDownload}
+                  {t.hero.ctaGooglePlay}
                 </a>
                 <div className="flex justify-center pt-2">
                   <LangSwitch locale={locale} variant="dark" />

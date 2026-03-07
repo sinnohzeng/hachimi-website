@@ -13,6 +13,8 @@ export const siteConfig = {
   github: "https://github.com/sinnohzeng/hachimi-app",
   apkDownload:
     "https://github.com/sinnohzeng/hachimi-app/releases/latest",
+  googlePlay:
+    "https://play.google.com/store/apps/details?id=com.hachimi.hachimi_app",
 
   nav: {
     cta: {

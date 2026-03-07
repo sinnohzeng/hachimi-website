@@ -17,6 +17,7 @@ export type Translations = {
     headline2: string;
     description: string;
     ctaDownload: string;
+    ctaGooglePlay: string;
     ctaSource: string;
     securityBadge: string;
   };
