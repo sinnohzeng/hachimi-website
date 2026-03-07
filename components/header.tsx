@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "motion/react";
+import { usePathname } from "next/navigation";
 import { useState, type ReactNode } from "react";
 import { LangSwitch } from "./lang-switch";
 import type { Translations } from "@/lib/i18n";
@@ -53,6 +54,8 @@ export function Header({
   t: Translations;
 }): ReactNode {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isHomePage = pathname === `/${locale}` || pathname === `/${locale}/`;
 
   const getLabel = (key: string) => {
     return t.nav[key as keyof typeof t.nav] ?? key;
@@ -88,23 +91,25 @@ export function Header({
             </span>
           </motion.a>
 
-          <motion.nav
-            className="flex items-center gap-1 absolute left-1/2 -translate-x-1/2"
-            aria-label="Main navigation"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2, ease }}
-          >
-            {navAnchors.map((link) => (
-              <a
-                key={link.key}
-                href={link.href}
-                className="px-4 py-2 text-sm font-semibold tracking-tight text-white/80 hover:text-white transition-colors"
-              >
-                {getLabel(link.key)}
-              </a>
-            ))}
-          </motion.nav>
+          {isHomePage && (
+            <motion.nav
+              className="flex items-center gap-1 absolute left-1/2 -translate-x-1/2"
+              aria-label="Main navigation"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2, ease }}
+            >
+              {navAnchors.map((link) => (
+                <a
+                  key={link.key}
+                  href={link.href}
+                  className="px-4 py-2 text-sm font-semibold tracking-tight text-white/80 hover:text-white transition-colors"
+                >
+                  {getLabel(link.key)}
+                </a>
+              ))}
+            </motion.nav>
+          )}
 
           <motion.div
             className="flex items-center gap-4"
@@ -186,7 +191,7 @@ export function Header({
               className="px-6 py-4 overflow-y-auto max-h-[calc(100vh-4rem)]"
               aria-label="Mobile navigation"
             >
-              {navAnchors.map((link) => (
+              {isHomePage && navAnchors.map((link) => (
                 <a
                   key={link.key}
                   href={link.href}
