@@ -6,9 +6,9 @@
 
 export const siteConfig = {
   name: "Hachimi",
-  tagline: "Raise cats. Build habits.",
+  tagline: "Your awareness companion.",
   description:
-    "A cat-parenting habit app where every habit comes with a virtual kitten. Focus, earn XP, and watch your cat evolve. Free, no ads.",
+    "A gentle awareness companion with a cat by your side. Record a Daily Light, stay focused, offload worries, and watch your cat react to your mood. Free, no ads.",
   url: "https://hachimi.ai",
   github: "https://github.com/sinnohzeng/hachimi-app",
   apkDownload:

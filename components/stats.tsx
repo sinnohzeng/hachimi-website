@@ -9,8 +9,8 @@ const ease = [0.16, 1, 0.3, 1] as const;
 const statsData = [
   { value: 15, suffix: "+" },
   { value: 108, suffix: "+" },
-  { value: 5, suffix: "" },
-  { value: 163, suffix: "" },
+  { value: 15, suffix: "" },
+  { value: 171, suffix: "" },
 ];
 
 function AnimatedCounter({

@@ -12,11 +12,11 @@ export const en: Translations = {
   },
 
   hero: {
-    badge: "v2.29.1 — Now on Google Play",
-    headline1: "Raise cats.",
-    headline2: "Build habits.",
+    badge: "v2.37.0 — Now on Google Play",
+    headline1: "Notice more.",
+    headline2: "Live better.",
     description:
-      "Every habit comes with a virtual kitten. Stay focused, earn XP and coins, and watch your cat evolve. Optional AI companion powered by cloud providers.",
+      "5 minutes a day — the quietest moment that's entirely yours. Record a Daily Light, offload your worries, stay focused, and watch your cat react to your mood. No willpower required.",
     ctaDownload: "Download APK",
     ctaGooglePlay: "Google Play",
     ctaSource: "View Source",
@@ -25,22 +25,22 @@ export const en: Translations = {
 
   featureCards: {
     title: "Everything you need",
-    subtitle: "to build better habits",
+    subtitle: "to live more mindfully",
     cards: [
       {
-        title: "Every habit, a unique companion",
+        title: "Daily awareness in 30 seconds",
         description:
-          "Adopt a kitten from 3 randomly generated candidates. 15 pelt patterns, 19 colors, 21 eye colors, and 6 distinct personalities.",
+          "Record a Daily Light each evening — pick your mood, write one line, tag what mattered. Writing it down offloads your brain. Weekly reviews and worry tracker keep you grounded.",
       },
       {
-        title: "Stay focused, earn rewards",
+        title: "Focus that flows into reflection",
         description:
-          "Countdown and stopwatch modes with persistent Android foreground service. Earn XP and 10 coins per minute of focus.",
+          "Countdown and stopwatch modes with a persistent foreground service. When a session ends, a Daily Light prompt appears — closing the focus-to-awareness loop.",
       },
       {
-        title: "Track your growth",
+        title: "A cat that feels what you feel",
         description:
-          "Weekly trend charts, 91-day activity heatmap, and paginated session history. See your progress at a glance.",
+          "Your companion reacts to your mood with 5 unique animations. 15 pelt patterns, 19 colors, 6 personalities — each cat grows alongside your awareness journey.",
       },
     ],
   },
@@ -49,10 +49,10 @@ export const en: Translations = {
     title1: "Meet your companion,",
     title2: "watch them grow",
     description:
-      "Each cat has its own personality, mood, and growth stage. As you stay consistent with your habits, your companion levels up and evolves — a living reflection of your progress.",
+      "Each cat has its own personality, mood, and growth stage. As you notice more about your day, your companion evolves — a living reflection of your inner journey.",
     features: [
+      "Awareness flywheel — focus, record a Daily Light, see your cat react",
       "AI cat chat — talk to your cats in their unique personality",
-      "Auto-generated daily diary blending mood and focus data",
       "108+ accessories across 5 price tiers in the shop",
     ],
     cta: "Explore features",
@@ -61,13 +61,13 @@ export const en: Translations = {
 
   principles: {
     badge: "Why Hachimi?",
-    title1: "Habits that stick,",
-    title2: "powered by attachment",
+    title1: "Awareness that grows,",
+    title2: "one day at a time",
     description:
-      "Hachimi turns discipline into care. When your habits keep a virtual kitten alive and growing, skipping a day feels different.",
+      "Habits grow by design, not willpower. The bar is so low you don't even need the word \"persist\" — just 5 minutes before bed. When a cat responds to your mood and reflections add up, awareness happens naturally.",
     cta: "Download for Android",
     cards: [
-      "Attachment Motivation",
+      "Awareness-Driven",
       "Privacy-First Design",
       "Offline Capable",
       "Beautiful Design",
@@ -88,6 +88,11 @@ export const en: Translations = {
     subtitle: "Everything you need to know about Hachimi.",
     items: [
       {
+        question: "What is the awareness feature?",
+        answer:
+          "Every evening, spend 30 seconds recording a Daily Light — pick your mood, write one line, tag what mattered. Weekly reviews capture three happy moments and learnings. The worry tracker lets you write down worries and offload them from your brain. Monthly rituals set your focus habit. Your cat reacts to your mood with unique animations, making self-awareness feel alive.",
+      },
+      {
         question: "Is my data safe?",
         answer:
           "All your data is stored in Firebase with strict security rules. AI features are optional and opt-in — when enabled, chat messages are sent to cloud AI providers (MiniMax or Google Gemini) for processing. A privacy disclosure is shown before first use. You can delete your account and all associated data at any time.",
@@ -95,7 +100,7 @@ export const en: Translations = {
       {
         question: "Is Hachimi available on iOS?",
         answer:
-          "Currently Hachimi is Android-only, available as a direct APK download from GitHub. iOS support is planned for a future release. The codebase is built with Flutter, so cross-platform deployment is technically ready.",
+          "Currently Hachimi is Android-only, available as a direct APK download from GitHub and on Google Play. iOS support is planned for a future release. The codebase is built with Flutter, so cross-platform deployment is technically ready.",
       },
       {
         question: "Is Hachimi open source?",
@@ -110,7 +115,7 @@ export const en: Translations = {
       {
         question: "Does it cost anything?",
         answer:
-          "Hachimi is completely free. There are no in-app purchases, no ads, and no subscription fees. The in-app coin economy is earned through focus sessions and daily check-ins.",
+          "Hachimi is completely free. There are no in-app purchases, no ads, and no subscription fees. All features — including awareness tools, focus timer, cat companions, and AI chat — are free. The in-app coin economy is earned through focus sessions and daily check-ins.",
       },
     ],
     stillHaveQuestions: "Still have questions?",

@@ -12,11 +12,11 @@ export const zh: Translations = {
   },
 
   hero: {
-    badge: "v2.29.1 — 已上架 Google Play",
-    headline1: "养猫。",
-    headline2: "养习惯。",
+    badge: "v2.37.0 — 已上架 Google Play",
+    headline1: "多一点觉察。",
+    headline2: "好一点生活。",
     description:
-      "每个习惯都附带一只虚拟猫咪。保持专注，赚取 XP 和金币，看着你的猫咪进化成长。可选的云端 AI 陪伴功能。",
+      "每天 5 分钟——这是一天中最安静、最属于你的时刻。记录一点光、卸载烦恼、保持专注，看猫咪回应你的心情。门槛低到不需要「坚持」二字。",
     ctaDownload: "下载 APK",
     ctaGooglePlay: "Google Play",
     ctaSource: "查看源码",
@@ -25,22 +25,22 @@ export const zh: Translations = {
 
   featureCards: {
     title: "你需要的一切",
-    subtitle: "帮你养成更好的习惯",
+    subtitle: "让觉知成为日常",
     cards: [
       {
-        title: "每个习惯，一只独特伙伴",
+        title: "30 秒，记录今天的觉察",
         description:
-          "从 3 只随机生成的候选猫咪中领养一只。15 种花纹、19 种颜色、21 种眼色、6 种独特性格。",
+          "每晚记录一点光——选择心情、写一句话、标记今天重要的事。写下来，本身就是在给大脑减负。周回顾和烦恼追踪，帮你保持觉知。",
       },
       {
-        title: "保持专注，赢取奖励",
+        title: "专注完成，觉知开始",
         description:
-          "倒计时和正计时模式，Android 前台服务持久运行。每分钟专注赚取 XP 和 10 金币。",
+          "倒计时和正计时模式，前台服务持久运行。专注结束后自动弹出一点光录入——闭合专注到觉知的飞轮。",
       },
       {
-        title: "追踪你的成长",
+        title: "猫咪感应你的心情",
         description:
-          "周趋势柱状图、91 天活动热力图、分页专注历史记录。一目了然地查看进度。",
+          "你的伙伴会根据心情做出 5 种独特反应。15 种花纹、19 种颜色、6 种性格——每只猫都陪你一起成长。",
       },
     ],
   },
@@ -49,10 +49,10 @@ export const zh: Translations = {
     title1: "认识你的伙伴，",
     title2: "陪伴它成长",
     description:
-      "每只猫咪都有独特的性格、心情和成长阶段。坚持习惯，你的伙伴就会升级进化——它是你进步的生动映射。",
+      "每只猫咪都有独特的性格、心情和成长阶段。当你每天多觉察一点，你的伙伴也在进化——它是你内在旅程的生动映射。",
     features: [
+      "觉知飞轮 — 专注完成 → 记录一点光 → 猫咪心情感应",
       "AI 猫咪聊天 — 用猫咪独特的性格和你对话",
-      "自动生成每日日记，融合心情和专注数据",
       "108+ 配饰，商店中 5 档定价",
     ],
     cta: "探索功能",
@@ -61,13 +61,13 @@ export const zh: Translations = {
 
   principles: {
     badge: "为什么选择 Hachimi？",
-    title1: "坚持下来的习惯，",
-    title2: "由陪伴驱动",
+    title1: "觉知在生长，",
+    title2: "一天一点光",
     description:
-      "Hachimi 把自律变成关爱。当你的习惯在养育一只虚拟猫咪时，跳过一天的感觉完全不同。",
+      "习惯不是靠意志力硬扛出来的，而是靠设计「养」出来的。门槛低到不需要「坚持」二字——睡前 5 分钟就好。当猫咪回应你的心情、当反思在周与月间积累，觉知就自然发生了。",
     cta: "下载 Android 版",
     cards: [
-      "陪伴式激励",
+      "觉知驱动",
       "隐私优先设计",
       "离线可用",
       "精美设计",
@@ -88,6 +88,11 @@ export const zh: Translations = {
     subtitle: "关于 Hachimi 你需要知道的一切。",
     items: [
       {
+        question: "觉知功能是什么？",
+        answer:
+          "每晚花 30 秒记录一点光——选择心情、写一句话、标记今天重要的事。周回顾记录三个幸福时刻和学习心得，烦恼处理器把烦恼从脑袋里卸载出来，月初仪式设定重点习惯。你的猫咪会根据心情做出独特的动画反应，让自我觉察变得生动有趣。",
+      },
+      {
         question: "我的数据安全吗？",
         answer:
           "所有数据存储在 Firebase 中，并设有严格的安全规则。AI 功能是可选的——启用后，聊天消息会发送到云端 AI 供应商（MiniMax 或 Google Gemini）进行处理。首次使用前会显示隐私声明。你可以随时删除账号和所有关联数据。",
@@ -95,7 +100,7 @@ export const zh: Translations = {
       {
         question: "Hachimi 有 iOS 版吗？",
         answer:
-          "目前 Hachimi 仅支持 Android，可从 GitHub 直接下载 APK 安装。iOS 版本已列入未来计划。代码使用 Flutter 构建，跨平台部署在技术上已准备就绪。",
+          "目前 Hachimi 仅支持 Android，可从 GitHub 直接下载 APK 安装，也已上架 Google Play。iOS 版本已列入未来计划。代码使用 Flutter 构建，跨平台部署在技术上已准备就绪。",
       },
       {
         question: "Hachimi 是开源的吗？",
@@ -110,7 +115,7 @@ export const zh: Translations = {
       {
         question: "需要付费吗？",
         answer:
-          "Hachimi 完全免费。没有应用内购买、没有广告、没有订阅费用。应用内的金币经济通过专注和每日签到赚取。",
+          "Hachimi 完全免费。没有应用内购买、没有广告、没有订阅费用。所有功能——包括觉知工具、专注计时、猫咪伙伴和 AI 聊天——全部免费。应用内的金币经济通过专注和每日签到赚取。",
       },
     ],
     stillHaveQuestions: "还有其他问题？",
