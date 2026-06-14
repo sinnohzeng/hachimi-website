@@ -258,7 +258,7 @@ export function Hero({ t }: { t: Translations }): ReactNode {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5, ease }}
-              className="text-4xl sm:text-5xl md:text-6xl font-medium font-serif text-white text-left lg:text-center leading-tighter tracking-tight max-w-3xl"
+              className="text-4xl sm:text-5xl md:text-6xl font-medium font-serif text-white text-left lg:text-center tracking-tight max-w-3xl"
             >
               {t.hero.headline1}
               <br />

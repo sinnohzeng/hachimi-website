@@ -25,19 +25,31 @@ export function LangSwitch({
 
   return (
     <div className="flex items-center gap-1 text-sm">
-      <a
-        href={locale === "en" ? pathname : otherPath}
-        className={`px-2 py-1 rounded transition-colors ${locale === "en" ? activeClass : inactiveClass}`}
-      >
-        EN
-      </a>
+      {locale === "en" ? (
+        <span aria-current="page" className={`px-2 py-1 rounded ${activeClass}`}>
+          EN
+        </span>
+      ) : (
+        <a
+          href={otherPath}
+          className={`px-2 py-1 rounded transition-colors ${inactiveClass}`}
+        >
+          EN
+        </a>
+      )}
       <span className={separatorClass}>|</span>
-      <a
-        href={locale === "zh" ? pathname : otherPath}
-        className={`px-2 py-1 rounded transition-colors ${locale === "zh" ? activeClass : inactiveClass}`}
-      >
-        中文
-      </a>
+      {locale === "zh" ? (
+        <span aria-current="page" className={`px-2 py-1 rounded ${activeClass}`}>
+          中文
+        </span>
+      ) : (
+        <a
+          href={otherPath}
+          className={`px-2 py-1 rounded transition-colors ${inactiveClass}`}
+        >
+          中文
+        </a>
+      )}
     </div>
   );
 }
