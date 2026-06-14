@@ -1,6 +1,6 @@
 # Master Hachimi (哈基米道长)
 
-> Master Hachimi (哈基米道长 / Master Hachimi) is a cat-themed Mei Hua Yi Shu (Plum Blossom Numerology) divination companion. You share two numbers and the question on your mind; a unified backend deterministically casts an I Ching hexagram, and a third-party AI (Google Gemini, paid tier) writes the reading in the warm voice of "Master Hachimi", a cat-master. It sells emotional value — the feeling of being heard — and is for entertainment and emotional comfort only, never prediction, fate-changing, or luck. No account, reading history stays on your device, no ads. Brand Hachimi.ai, operated by 元竹投資有限公司 (Yuan Zhu Investment Limited, Hong Kong). Launching on iOS first, for overseas markets (excluding mainland China).
+> Master Hachimi (哈基米道长 / Master Hachimi) is a cat-themed Mei Hua Yi Shu (Plum Blossom Numerology) divination companion. You share two numbers and the question on your mind; a unified backend deterministically casts an I Ching hexagram, and a third-party AI (Google Gemini, paid tier) writes the reading in the warm voice of "Master Hachimi", a cat-master. It sells emotional value — the feeling of being heard — and is for entertainment and emotional comfort only, never prediction, fate-changing, or luck. No account, reading history stays on your device, no ads. Brand Hachimi.ai, operated by 元竹投資有限公司 (Yuenchuk Investment Limited, Hong Kong). Launching on iOS first, for overseas markets (excluding mainland China).
 
 Official website: hachimi.ai.
 
@@ -92,4 +92,4 @@ Everything lives on your device, so you delete your history in the app's Setting
 ## Contact
 
 - Email: support@hachimi.ai
-- 元竹投資有限公司 (Yuan Zhu Investment Limited), Hong Kong
+- 元竹投資有限公司 (Yuenchuk Investment Limited), Hong Kong

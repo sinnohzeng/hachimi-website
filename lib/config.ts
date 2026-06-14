@@ -3,7 +3,7 @@
  * SITE CONFIGURATION
  * ============================================================================
  * Master Hachimi (哈基米道长) — cat-themed Mei Hua Yi Shu divination companion.
- * Brand Hachimi.ai · operated by 元竹投資有限公司 (Yuan Zhu Investment Limited, HK).
+ * Brand Hachimi.ai · operated by 元竹投資有限公司 (Yuenchuk Investment Limited, HK).
  */
 
 export const siteConfig = {

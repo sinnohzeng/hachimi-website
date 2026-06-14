@@ -128,7 +128,7 @@ export const en: Translations = {
 
   footer: {
     copyright:
-      "© 2026 元竹投資有限公司 (Yuan Zhu Investment Limited). All rights reserved.",
+      "© 2026 元竹投資有限公司 (Yuenchuk Investment Limited). All rights reserved.",
     links: [
       {
         title: "Product",
@@ -167,7 +167,7 @@ export const en: Translations = {
       {
         heading: "Master Hachimi (哈基米道长)",
         content:
-          "Master Hachimi (“the App”, “we”, “us”), brand Hachimi.ai, is operated by 元竹投資有限公司 (Yuan Zhu Investment Limited), a company registered in Hong Kong (“the Company”). This Privacy Policy explains what data the App processes, why, and your rights.\n\nPlease understand how the App works first. Master Hachimi is an emotional-companionship product: you provide two numbers and write the question on your mind; the Company's unified backend performs a deterministic Mei Hua Yi Shu (Plum Blossom Numerology) cast, and a third-party AI model then generates the reading in the voice of “Master Hachimi”. Unlike many purely on-device divination utilities, generating a reading necessarily sends your question and the cast to the Company's backend, which forwards them to a third-party AI (Google Gemini). This policy discloses that accordingly.",
+          "Master Hachimi (“the App”, “we”, “us”), brand Hachimi.ai, is operated by 元竹投資有限公司 (Yuenchuk Investment Limited), a company registered in Hong Kong (“the Company”). This Privacy Policy explains what data the App processes, why, and your rights.\n\nPlease understand how the App works first. Master Hachimi is an emotional-companionship product: you provide two numbers and write the question on your mind; the Company's unified backend performs a deterministic Mei Hua Yi Shu (Plum Blossom Numerology) cast, and a third-party AI model then generates the reading in the voice of “Master Hachimi”. Unlike many purely on-device divination utilities, generating a reading necessarily sends your question and the cast to the Company's backend, which forwards them to a third-party AI (Google Gemini). This policy discloses that accordingly.",
       },
       {
         heading: "1. Summary",
@@ -212,7 +212,7 @@ export const en: Translations = {
       {
         heading: "9. Contact",
         content:
-          "元竹投資有限公司 (Yuan Zhu Investment Limited), Hong Kong\nEmail: support@hachimi.ai",
+          "元竹投資有限公司 (Yuenchuk Investment Limited), Hong Kong\nEmail: support@hachimi.ai",
       },
     ],
   },
@@ -224,7 +224,7 @@ export const en: Translations = {
       {
         heading: "Master Hachimi (哈基米道长)",
         content:
-          "By using Master Hachimi (“the App”, brand Hachimi.ai), operated by 元竹投資有限公司 (Yuan Zhu Investment Limited, Hong Kong), you agree to these Terms.",
+          "By using Master Hachimi (“the App”, brand Hachimi.ai), operated by 元竹投資有限公司 (Yuenchuk Investment Limited, Hong Kong), you agree to these Terms.",
       },
       {
         heading: "1. Entertainment purpose only",
@@ -319,7 +319,7 @@ export const en: Translations = {
       {
         heading: "Contact",
         content:
-          "Questions? Email support@hachimi.ai — 元竹投資有限公司 (Yuan Zhu Investment Limited), Hong Kong.",
+          "Questions? Email support@hachimi.ai — 元竹投資有限公司 (Yuenchuk Investment Limited), Hong Kong.",
       },
     ],
   },
@@ -379,7 +379,7 @@ export const en: Translations = {
       {
         heading: "Contact",
         content:
-          "Email support@hachimi.ai — 元竹投資有限公司 (Yuan Zhu Investment Limited), Hong Kong.",
+          "Email support@hachimi.ai — 元竹投資有限公司 (Yuenchuk Investment Limited), Hong Kong.",
       },
     ],
   },

@@ -9,7 +9,7 @@ export const siteConfig = {
   creator: "@sinnohzeng",
   authors: [
     {
-      name: "元竹投資有限公司 (Yuan Zhu Investment Limited)",
+      name: "元竹投資有限公司 (Yuenchuk Investment Limited)",
       url: "https://hachimi.ai",
     },
   ],
