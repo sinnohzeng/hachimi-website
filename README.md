@@ -146,7 +146,7 @@ Edit `app/globals.css` to modify:
 - `--border` / `--ring` - Borders and focus rings
 
 ### Typography
-- Sans / mono: Geist Sans & Geist Mono (`next/font`, loaded in `app/[locale]/layout.tsx`)
+- Sans / mono: Geist Sans & Geist Mono (self-hosted `geist` package, loaded in `app/[locale]/layout.tsx` — woff2 bundled locally, zero build-time network fetch)
 - Serif headings (`font-serif`): system serif stack defined in `app/globals.css`
   — Georgia/Cambria for Latin plus explicit CJK serif fallbacks ("Songti SC",
   "Source Han Serif SC", "Noto Serif CJK SC"). No web font is loaded.
