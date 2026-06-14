@@ -105,9 +105,10 @@ export type Translations = {
     }[];
   };
 
-  // Legal pages (Account & data / Data deletion)
+  // Legal pages (Account & data / Data deletion) + Support
   accountDeletion: LegalPage;
   dataDeletion: LegalPage;
+  support: LegalPage;
 };
 
 export type LegalPage = {

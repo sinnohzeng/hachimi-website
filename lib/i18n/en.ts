@@ -149,6 +149,7 @@ export const en: Translations = {
       {
         title: "Contact",
         items: [
+          { label: "Support", href: "/en/support" },
           { label: "support@hachimi.ai", href: "mailto:support@hachimi.ai" },
         ],
       },
@@ -162,7 +163,7 @@ export const en: Translations = {
 
   privacy: {
     title: "Privacy Policy",
-    effectiveDate: "Last updated: June 13, 2026",
+    effectiveDate: "Last updated: June 14, 2026",
     sections: [
       {
         heading: "Master Hachimi (哈基米道长)",
@@ -182,7 +183,7 @@ export const en: Translations = {
       {
         heading: "3. Third-party AI reading (core feature · App Store Guideline 5.1.2(i))",
         content:
-          "To generate the “Master Hachimi” reading, on each cast the App sends [your question + the cast + time-of-day] to the Company's own backend (a thin proxy, with the client verified via device-integrity attestation). The backend performs the deterministic cast and then forwards the hexagram and your question to the third-party AI service Google Gemini API to generate the reading text.\n\n• Explicit permission: Before your first cast, the App shows a consent screen that clearly states what will be sent and the recipients (the Company's backend + Google Gemini). Nothing is sent without your consent.\n• Revocable: You can withdraw consent at any time in Settings. After withdrawal the App sends no further data and therefore cannot generate new readings (the product has no offline reading mode); your existing local history is unaffected.\n• Google acts as a service provider: Google processes the content as a service provider / data processor, contractually limited to providing the reading service to the Company. Under the Gemini API paid-tier terms and its Data Processing Addendum (DPA), Google provides protection of your data equal to or no less than that stated in this policy.\n• Data use on the paid tier: the App uses the paid tier of the Google Gemini API. Per Google's current Gemini API Additional Terms of Service, on the paid tier Google does not use your prompts or responses to improve its products; Google logs prompts and responses only for a limited period, solely to detect abuse, maintain safety, and meet legal requirements. See the Google Gemini API Terms (https://ai.google.dev/gemini-api/terms) and Google Privacy Policy (https://policies.google.com/privacy).\n• Minimization: we send Google Gemini only what is necessary to generate the reading (your question + cast + time-of-day). We do not send your identity, device identifiers, or location to Google. The device-attestation token used for anti-abuse is sent only to the Company's backend, never to Google, and is not used for tracking.",
+          "To generate the “Master Hachimi” reading, on each cast the App sends [your question + the cast + time-of-day] to the Company's own backend (a thin proxy; client device-integrity attestation is planned — see section 7). The backend performs the deterministic cast and then forwards the hexagram and your question to the third-party AI service Google Gemini API to generate the reading text.\n\n• Explicit permission: Before your first cast, the App shows a consent screen that clearly states what will be sent and the recipients (the Company's backend + Google Gemini). Nothing is sent without your consent.\n• Revocable: You can withdraw consent at any time in Settings. After withdrawal the App sends no further data and therefore cannot generate new readings (the product has no offline reading mode); your existing local history is unaffected.\n• Google acts as a service provider: Google processes the content as a service provider / data processor, contractually limited to providing the reading service to the Company. Under the Gemini API paid-tier terms and its Data Processing Addendum (DPA), Google provides protection of your data equal to or no less than that stated in this policy.\n• Data use on the paid tier: the App uses the paid tier of the Google Gemini API. Per Google's current Gemini API Additional Terms of Service, on the paid tier Google does not use your prompts or responses to improve its products; Google logs prompts and responses only for a limited period, solely to detect abuse, maintain safety, and meet legal requirements. See the Google Gemini API Terms (https://ai.google.dev/gemini-api/terms) and Google Privacy Policy (https://policies.google.com/privacy).\n• Minimization: we send Google Gemini only what is necessary to generate the reading (your question + cast + time-of-day). We do not send your identity, device identifiers, or location to Google. Once enabled, the device-attestation token used for anti-abuse will be sent only to the Company's backend, never to Google, and will not be used for tracking.",
       },
       {
         heading: "4. Backend and data retention",
@@ -192,7 +193,7 @@ export const en: Translations = {
       {
         heading: "5. Your rights",
         content:
-          "Depending on where you live (EU/EEA under GDPR, California under CCPA/CPRA, Hong Kong under PDPO, and others), you have rights to access, correct, and delete your personal data, to object to or restrict processing, and to withdraw consent at any time.\n\n• Withdraw consent: turn off the third-party AI reading consent toggle in Settings (see section 3).\n• Access / portability / deletion: because the Company's backend does not store your personal data and the App has no account, the reading history on your device is fully under your control — you can view and delete it in-app; we hold no server-side copy to export.\n• GDPR: the lawful basis for sending your question and cast to the third-party AI is your consent, which you may withdraw at any time.\n• CCPA/CPRA: we disclose your question only for a business purpose to Google acting as a service provider — this is not a “sale” or a “share” for cross-context behavioral advertising.\n• PDPO (Hong Kong): we collect only data necessary for the App's function, use it only for that purpose, and apply transport encryption (TLS) and device attestation to all network calls.\n\nFor any request or question, contact us using the details below; we will respond within the time limits required by applicable law.",
+          "Depending on where you live (EU/EEA under GDPR, California under CCPA/CPRA, Hong Kong under PDPO, and others), you have rights to access, correct, and delete your personal data, to object to or restrict processing, and to withdraw consent at any time.\n\n• Withdraw consent: turn off the third-party AI reading consent toggle in Settings (see section 3).\n• Access / portability / deletion: because the Company's backend does not store your personal data and the App has no account, the reading history on your device is fully under your control — you can view and delete it in-app; we hold no server-side copy to export.\n• GDPR: the lawful basis for sending your question and cast to the third-party AI is your consent, which you may withdraw at any time.\n• CCPA/CPRA: we disclose your question only for a business purpose to Google acting as a service provider — this is not a “sale” or a “share” for cross-context behavioral advertising.\n• PDPO (Hong Kong): we collect only data necessary for the App's function, use it only for that purpose, and apply transport encryption (TLS) to all network calls (device attestation is planned).\n\nFor any request or question, contact us using the details below; we will respond within the time limits required by applicable law.",
       },
       {
         heading: "6. Children",
@@ -202,7 +203,7 @@ export const en: Translations = {
       {
         heading: "7. Security",
         content:
-          "All network calls use standard HTTPS/TLS; the client is verified via device-integrity attestation (App Check / App Attest) to deter abuse. Upstream AI service keys are held only on the Company's server and are never shipped to or embedded in the client.",
+          "All network calls use standard HTTPS/TLS; client device-integrity attestation (App Check / App Attest) to deter abuse is planned (not yet enforced at launch). Upstream AI service keys are held only on the Company's server and are never shipped to or embedded in the client.",
       },
       {
         heading: "8. Changes",
@@ -219,7 +220,7 @@ export const en: Translations = {
 
   terms: {
     title: "Terms of Use & Disclaimer",
-    effectiveDate: "Last updated: June 13, 2026",
+    effectiveDate: "Last updated: June 14, 2026",
     sections: [
       {
         heading: "Master Hachimi (哈基米道长)",
@@ -234,7 +235,7 @@ export const en: Translations = {
       {
         heading: "2. No guarantee of outcome",
         content:
-          "For lost-item and similar questions, the App offers associative, entertainment-only hints derived from the hexagram (such as a direction or an evocative scene). It does not guarantee that an item exists or can be recovered on that basis. You are solely responsible for your own search and any decisions you make.",
+          "For any question, the App offers associative, entertainment-only hints derived from the hexagram (such as a mood, an image, or an evocative scene). It does not guarantee any real-world outcome. You are solely responsible for your own decisions and actions.",
       },
       {
         heading: "3. AI-generated content",
@@ -380,6 +381,49 @@ export const en: Translations = {
         heading: "Contact",
         content:
           "Email support@hachimi.ai — 元竹投資有限公司 (Yuenchuk Investment Limited), Hong Kong.",
+      },
+    ],
+  },
+
+  support: {
+    title: "Support",
+    effectiveDate: "Last updated: June 14, 2026",
+    intro:
+      "Master Hachimi (哈基米道长) is a cat-themed Mei Hua Yi Shu (Plum Blossom numerology) app: give two numbers, cast a quick hexagram, and get a gentle, for-entertainment reading. Need help, have a question, or want to report a bug? We're glad to hear from you.",
+    steps: {
+      heading: "Before you reach out — quick fixes",
+      items: [
+        "Reading won't generate? Check your internet connection, then make sure you've agreed to the third-party AI consent in Settings.",
+        "Want to start over? On the question screen, enter two new numbers and cast again.",
+        "Switch language? Settings → Language (Simplified Chinese / English). Reopen the app to apply.",
+        "Delete your data? Settings → Privacy → Delete all history. Your history lives only on your device.",
+      ],
+    },
+    dataTable: {
+      heading: "How to reach us",
+      columns: ["Channel", "Address", "Typical response"],
+      rows: [{ cells: ["Email", "support@hachimi.ai", "Within 3 business days"] }],
+    },
+    sections: [
+      {
+        heading: "Is this real fortune-telling?",
+        content:
+          "No. Master Hachimi is for entertainment and emotional companionship only. Readings are not predictions and are not a basis for real decisions. See our Terms & Disclaimer.",
+      },
+      {
+        heading: "Where does my data go?",
+        content:
+          "Your question and the cast are sent to our backend and forwarded to Google Gemini to generate the reading; nothing is sent without your consent. Your reading history is stored only on your device. See our Privacy Policy.",
+      },
+      {
+        heading: "How do I delete my data?",
+        content:
+          "Open Settings → Privacy → Delete all history, or delete the app. There is no account and no server-side copy. See Account & data.",
+      },
+      {
+        heading: "Which devices and languages?",
+        content:
+          "Master Hachimi runs on iPhone and iPad, in Simplified Chinese and English.",
       },
     ],
   },
