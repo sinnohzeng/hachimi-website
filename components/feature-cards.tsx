@@ -1,18 +1,14 @@
 "use client";
 
 import { type ReactNode } from "react";
-import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 import type { Translations } from "@/lib/i18n";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
-const screenshots = [
-  "/screenshots/cat-house.webp",
-  "/screenshots/today-home.webp",
-  "/screenshots/stats-dashboard.webp",
-];
+// Decorative marks for each step: 問 (ask) · 卦 (cast) · 讀 (read).
+const cardGlyphs = ["問", "卦", "讀"];
 
 export function FeatureCards({ t }: { t: Translations }): ReactNode {
   return (
@@ -45,14 +41,13 @@ export function FeatureCards({ t }: { t: Translations }): ReactNode {
               transition={{ duration: 0.6, delay: index * 0.1, ease }}
               className="group flex flex-col bg-muted/50 border border-border rounded-sm overflow-hidden hover:border-foreground/20 hover:shadow-lg transition-[border-color,box-shadow]"
             >
-              <div className="relative h-56 sm:h-64 bg-background">
-                <Image
-                  src={screenshots[index]!}
-                  alt={card.title}
-                  width={640}
-                  height={1422}
-                  className="w-full h-full object-cover object-top"
-                />
+              <div className="relative h-56 sm:h-64 bg-linear-to-br from-muted to-background flex items-center justify-center border-b border-border">
+                <span
+                  aria-hidden="true"
+                  className="font-serif text-7xl text-foreground/10 select-none"
+                >
+                  {cardGlyphs[index]}
+                </span>
               </div>
               <div className="flex flex-col p-6">
                 <h3 className="text-lg font-medium font-serif text-foreground">

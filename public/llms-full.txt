@@ -1,119 +1,95 @@
-# Hachimi
+# Master Hachimi (哈基米道长)
 
-> Hachimi (哈基米) is a gamified mobile habit-tracking app where every habit spawns a unique virtual kitten. Built with Flutter and Firebase. Users build habits through focus sessions while raising cats that evolve based on cumulative hours. Optional cloud AI companion (MiniMax M2.5 or Gemini 3 Flash). Free, no ads, source available. Available on Android and Google Play.
+> Master Hachimi (哈基米道长 / Master Hachimi) is a cat-themed Mei Hua Yi Shu (Plum Blossom Numerology) divination companion. You share two numbers and the question on your mind; a unified backend deterministically casts an I Ching hexagram, and a third-party AI (Google Gemini, paid tier) writes the reading in the warm voice of "Master Hachimi", a cat-master. It sells emotional value — the feeling of being heard — and is for entertainment and emotional comfort only, never prediction, fate-changing, or luck. No account, reading history stays on your device, no ads. Brand Hachimi.ai, operated by 元竹投資有限公司 (Yuan Zhu Investment Limited, Hong Kong). Launching on iOS first, for overseas markets (excluding mainland China).
 
-Official website: hachimi.ai. Source code: github.com/sinnohzeng/hachimi-app.
+Official website: hachimi.ai.
 
 ## About
 
-Every habit comes with a virtual kitten. Stay focused, earn XP and coins, and watch your cat evolve through a fixed 4-stage growth ladder based on cumulative focus hours. Hachimi turns discipline into care — when your habits keep a virtual kitten alive and growing, skipping a day feels different. Optional AI features let your cats chat with personality-flavored messages and auto-generate daily diaries.
+Master Hachimi reframes "fortune telling" into "a cat-master takes your question seriously and answers with warmth." It is an emotional-value product: the functional value (a deterministic, trustworthy cast) is the floor; the emotional value (feeling reassured, delighted, and heard) is the main draw. The cat persona lowers the barrier and removes the "superstition" stigma. The red line is firm: it delivers the feeling of being heard and responded to — and never delivers prediction, fate-changing, luck-altering, or any other efficacy. Everything is "for entertainment only."
 
-## Core Features
+## How it works
 
-### Cat Parenting System — Every habit, a unique companion
+### Ask — tell the cat what's on your mind
 
-Adopt a kitten from 3 randomly generated candidates. 15 pelt patterns, 19 colors, 21 eye colors, and 6 distinct personalities. Each cat has its own personality, mood, and growth stage. Cats evolve through a fixed 4-stage ladder (0/20/100/200 cumulative hours) independent of quest target — a living reflection of your progress. Two quest modes: unlimited (open-ended) and milestone (target hours with optional deadline).
+Type the question you're sitting with, then give two numbers off the top of your head. About thirty seconds — no sign-up, no account.
 
-### Focus Timer — Stay focused, earn rewards
+### Cast — a hexagram, the same way every time
 
-Countdown and stopwatch modes with persistent Android foreground service. Earn XP and 10 coins per minute of focus. Smart pause and dual timer modes keep you in the zone. Multi-reminder system with up to 5 reminders per quest and 9 scheduling modes.
+Your two numbers and the current hour set a Mei Hua Yi Shu hexagram (upper trigram, lower trigram, and the moving line) by a fixed, deterministic method. Same inputs, same cast — honest math, no randomness, no smoke and mirrors. The cast runs on a unified backend, not on the device.
 
-### Progress Tracking — Track your growth
+### Read — Master Hachimi reads it back
 
-Weekly trend charts, 91-day activity heatmap, and paginated session history. See your progress at a glance. Achievement system with 163 achievements across 4 categories, 8 titles, and coin rewards. Full-screen celebration overlay with confetti and haptic feedback.
-
-### AI Companion — Optional cloud AI
-
-AI cat chat and auto-generated diary powered by your choice of MiniMax M2.5 or Google Gemini 3 Flash. Your cats respond with personality-flavored messages via cloud AI providers. AI features are optional and opt-in — a privacy disclosure is shown on first enable, and you choose which provider to use. Conversation history stored locally on device via SQLite.
-
-## Cat Companion Details
-
-- AI cat chat — talk to your cats in their unique personality (optional, cloud-based)
-- Auto-generated daily diary blending mood and focus data
-- 100+ accessories across 5 price tiers in the shop
-- XP-driven 4-stage evolution system (0/20/100/200 cumulative hours)
+The cat-master responds in his own warm voice: a presentation of the hexagram, the body/use (体用) relationship, an overall tone, a gentle reading, a small piece of advice, and a blessing. Each reading is saved to your local reading history (卦历) so you can revisit it.
 
 ## Design Principles
 
-### Attachment Motivation
+### Deterministic casting
 
-Hachimi turns discipline into care. When your habits keep a virtual kitten alive and growing, skipping a day feels different.
+The cast (numbers → hexagram) is honest, reproducible computation. Only the reading text is AI-generated; the hexagram itself is never left to a language model.
 
-### Privacy-First Design
+### For entertainment only
 
-All habit and focus data is stored in Firebase with strict security rules. AI features are optional and require explicit opt-in with privacy disclosure. When AI is enabled, conversation content is sent to the selected cloud provider (MiniMax or Google Gemini) for processing. Chat history is stored locally on device. Account deletion is supported with a 4-step flow.
+No prediction, no fate-changing, no luck claims, no health/financial/legal efficacy. The persona and red lines are hardened at the system level. For any real decision, consult a qualified professional.
 
-### Offline Capable
+### No account, privacy-first
 
-Connectivity monitoring with graceful degradation and real-time sync. Core features (focus timer, habit tracking) work fully offline and sync when connection is restored. AI features require internet.
+There is no account and no login. Reading history is stored only on your device; the backend keeps nothing (no user database, no question persistence). Only your question + hexagram + time-of-day are forwarded to Google Gemini to write the reading — the two cast numbers are never sent to Google.
 
-### Beautiful Design
+### A warm cat companion
 
-Material Design 3 with dynamic theming, smooth animations, mesh gradient backgrounds, atmospheric particle effects, and attention to detail across every screen.
+A cat-master ("基米道长") who actually listens — turning "asking a question" into "having a cat sit with you for a moment."
 
-## Product Stats
+## Product Facts
 
-- 15+ cat breeds
-- 100+ accessories
-- 163 achievements
-- 5 languages
-- 19 services
+- 64 hexagrams
+- 6 reading facets (hexagram presentation, body/use, overall tone, reading, advice, blessing)
+- 0 accounts needed
+- 3 languages (Simplified Chinese, Traditional Chinese, English)
 
 ## FAQ
 
-### Is my data safe?
+### Is this real fortune telling?
 
-Your habit and focus data is stored in Firebase with strict security rules. AI features are optional — when enabled, conversation content is processed by your chosen cloud provider (MiniMax or Google Gemini). A privacy disclosure is shown before first use. You can delete your account and all data through the 4-step account deletion flow in Settings.
+No. Master Hachimi is for entertainment and emotional comfort only. The readings are not predictions and make no claim of accuracy, luck-changing, fate-changing, or any other efficacy. For any real decision, talk to a qualified professional.
 
-### Is Hachimi available on iOS?
+### How is a reading made?
 
-Currently Hachimi is Android-only, available on Google Play and as a direct APK download. iOS support is planned for a future release. The codebase is built with Flutter, so cross-platform deployment is technically ready.
+You give two numbers and a question. The backend casts a Mei Hua Yi Shu hexagram from the numbers and the current hour using a fixed, deterministic method — then sends the hexagram, the hour, and your question to the Google Gemini API, which writes the reading in Master Hachimi's voice. The two cast numbers are never sent to Google.
 
-### Is Hachimi open source?
+### What about my privacy?
 
-The source code is publicly available on GitHub for portfolio and reference purposes. However, it is not licensed for redistribution or commercial use. See the LICENSE file for full terms.
+There is no account and no login. Your reading history is stored only on your device, and the backend keeps nothing — no question text, no user database. To write a reading, your question is sent to the Google Gemini paid tier (where Google does not train on your content, and retains it only briefly for abuse prevention). You consent before your first reading and can withdraw any time.
 
-### How does the AI chat work?
+### Which platforms is it on?
 
-Hachimi offers optional AI features powered by cloud providers. You can choose between MiniMax M2.5 or Google Gemini 3 Flash as your AI provider. Your cats respond with personality-flavored messages based on their unique traits. A privacy disclosure is required before first use. Conversation history is stored locally on your device via SQLite.
+Master Hachimi is launching on iOS first, with Android to follow. The website goes live ahead of the App Store release.
 
 ### Does it cost anything?
 
-Hachimi is completely free. There are no in-app purchases, no ads, and no subscription fees. The in-app coin economy is earned through focus sessions and daily check-ins.
+The app is free to use, and there are no ads.
 
-## Technical Stack
+### How do I delete my data?
 
-- Flutter + Dart (cross-platform mobile framework)
-- Riverpod 3.x (state management)
-- Material Design 3 (UI framework)
-- Firebase Auth (authentication)
-- Cloud Firestore (database)
-- Firebase Analytics / GA4 (analytics)
-- Firebase Crashlytics (crash reporting)
-- Firebase Performance (performance monitoring)
-- Firebase Remote Config (feature flags)
-- Firebase Cloud Messaging / FCM (push notifications)
-- MiniMax M2.5 + Google Gemini 3 Flash (cloud AI, provider-agnostic architecture)
-- SQLite via sqflite (local AI chat/diary storage)
+Everything lives on your device, so you delete your history in the app's Settings, or simply uninstall the app. There is no server-side copy to delete.
 
-## Download
+## Technical Notes
 
-- [Google Play](https://play.google.com/store/apps/details?id=com.hachimi.hachimi_app): Install from Google Play Store
-- [Latest APK](https://github.com/sinnohzeng/hachimi-app/releases/latest): Direct download for Android
+- Native iOS client (thin client): no third-party LLM key on device; casts and readings come from the unified backend.
+- Unified backend: Hono on Cloudflare Workers (api.hachimi.ai), stateless thin proxy, deterministic Mei Hua Yi Shu cast engine.
+- Reading model: Google Gemini API (paid tier) via the Vercel AI SDK.
+- Anti-abuse: device-integrity attestation (Firebase App Check, wrapping Apple App Attest on iOS and Play Integrity on Android) verified by the backend; per-IP rate limiting; request body limits.
+- Local persistence: reading history stored on device only.
 
 ## Links
 
 - [Official Website (English)](https://hachimi.ai/en): Product landing page
 - [Official Website (Chinese)](https://hachimi.ai/zh): 中文产品页
 - [Privacy Policy](https://hachimi.ai/en/privacy): How we handle your data
-- [GitHub Repository](https://github.com/sinnohzeng/hachimi-app): Source code
-- [Architecture Docs](https://github.com/sinnohzeng/hachimi-app/tree/main/docs): 20+ bilingual specs
-- [Changelog](https://github.com/sinnohzeng/hachimi-app/blob/main/CHANGELOG.md): Release history
-- [Developer Portfolio](https://zixuan.net): Zixuan Zeng, creator of Hachimi
+- [Terms & Disclaimer](https://hachimi.ai/en/terms): Entertainment-only terms
+- [Delete Data](https://hachimi.ai/en/data-deletion): How to delete your data
 
-## Optional
+## Contact
 
-- [Data Model](https://github.com/sinnohzeng/hachimi-app/blob/main/docs/architecture/data-model.md): Firestore schema
-- [Cat System](https://github.com/sinnohzeng/hachimi-app/blob/main/docs/architecture/cat-system.md): Cat game mechanics and evolution rules
-- [State Management](https://github.com/sinnohzeng/hachimi-app/blob/main/docs/architecture/state-management.md): Riverpod provider graph
-- [License](https://github.com/sinnohzeng/hachimi-app/blob/main/LICENSE): Source available, not open for redistribution
+- Email: support@hachimi.ai
+- 元竹投資有限公司 (Yuan Zhu Investment Limited), Hong Kong

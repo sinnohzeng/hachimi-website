@@ -3,7 +3,7 @@ export type Translations = {
   nav: {
     features: string;
     tech: string;
-    download: string;
+    faq: string;
   };
   langSwitch: {
     en: string;
@@ -16,9 +16,7 @@ export type Translations = {
     headline1: string;
     headline2: string;
     description: string;
-    ctaDownload: string;
-    ctaGooglePlay: string;
-    ctaSource: string;
+    cta: string;
     securityBadge: string;
   };
 
@@ -87,7 +85,7 @@ export type Translations = {
     legal: { label: string; href: string }[];
   };
 
-  // Privacy Policy
+  // Privacy Policy (sections renderer)
   privacy: {
     title: string;
     effectiveDate: string;
@@ -97,7 +95,17 @@ export type Translations = {
     }[];
   };
 
-  // Legal pages (Account Deletion / Data Deletion)
+  // Terms of Use & Disclaimer (sections renderer)
+  terms: {
+    title: string;
+    effectiveDate: string;
+    sections: {
+      heading: string;
+      content: string;
+    }[];
+  };
+
+  // Legal pages (Account & data / Data deletion)
   accountDeletion: LegalPage;
   dataDeletion: LegalPage;
 };

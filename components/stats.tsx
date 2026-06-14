@@ -6,11 +6,13 @@ import type { Translations } from "@/lib/i18n";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
+// Honest product facts only (no fabricated user metrics):
+// 64 hexagrams · 6 reading facets · 0 accounts needed · 3 languages.
 const statsData = [
-  { value: 15, suffix: "+" },
-  { value: 108, suffix: "+" },
-  { value: 15, suffix: "" },
-  { value: 171, suffix: "" },
+  { value: 64, suffix: "" },
+  { value: 6, suffix: "" },
+  { value: 0, suffix: "" },
+  { value: 3, suffix: "" },
 ];
 
 function AnimatedCounter({

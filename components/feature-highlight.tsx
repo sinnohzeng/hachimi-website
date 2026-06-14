@@ -1,17 +1,16 @@
 "use client";
 
 import { type ReactNode } from "react";
-import Image from "next/image";
-import { ArrowRight, MessageSquare, BookOpen, ShoppingBag } from "lucide-react";
+import { ArrowRight, Shapes, Sparkles, Smartphone } from "lucide-react";
 import { motion } from "motion/react";
 import type { Translations } from "@/lib/i18n";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
 const featureIcons = [
-  <MessageSquare key="chat" className="w-4 h-4" />,
-  <BookOpen key="diary" className="w-4 h-4" />,
-  <ShoppingBag key="shop" className="w-4 h-4" />,
+  <Shapes key="cast" className="w-4 h-4" />,
+  <Sparkles key="reading" className="w-4 h-4" />,
+  <Smartphone key="local" className="w-4 h-4" />,
 ];
 
 export function FeatureHighlight({ t }: { t: Translations }): ReactNode {
@@ -82,14 +81,16 @@ export function FeatureHighlight({ t }: { t: Translations }): ReactNode {
             <div className="relative bg-accent/5 rounded-md border border-accent/10 pt-10 px-16 overflow-hidden h-full flex flex-col">
               <div className="relative w-full max-w-70 mx-auto flex-1 flex flex-col">
                 <div className="relative bg-neutral-900 rounded-t-4xl pt-1 px-1 flex-1 flex flex-col">
-                  <div className="bg-background rounded-t-[1.75rem] flex-1 overflow-hidden">
-                    <Image
-                      src="/screenshots/cat-detail-hero.webp"
-                      alt="Cat companion detail page"
-                      width={480}
-                      height={1067}
-                      className="w-full h-full object-cover object-top"
-                    />
+                  <div className="bg-background rounded-t-[1.75rem] flex-1 overflow-hidden min-h-100 flex flex-col items-center justify-center gap-4 p-8 text-center">
+                    <span
+                      aria-hidden="true"
+                      className="font-serif text-7xl text-foreground/10 select-none"
+                    >
+                      卦
+                    </span>
+                    <span className="text-sm text-foreground/40">
+                      {t.featureHighlight.phonePlaceholder}
+                    </span>
                   </div>
                 </div>
               </div>

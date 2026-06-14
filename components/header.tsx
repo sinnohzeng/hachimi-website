@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { useState, type ReactNode } from "react";
 import { LangSwitch } from "./lang-switch";
 import type { Translations } from "@/lib/i18n";
-import { siteConfig } from "@/lib/config";
 
 const ease = [0.23, 1, 0.32, 1] as const;
 
@@ -43,7 +42,7 @@ function HamburgerIcon({
 const navAnchors = [
   { key: "features", href: "#features" },
   { key: "tech", href: "#tech" },
-  { key: "download", href: "#download" },
+  { key: "faq", href: "#faq" },
 ] as const;
 
 export function Header({
@@ -119,10 +118,10 @@ export function Header({
           >
             <LangSwitch locale={locale} />
             <a
-              href={siteConfig.googlePlay}
+              href="#features"
               className="px-5 py-2.5 text-sm font-semibold tracking-tighter text-black bg-white rounded-full hover:bg-white/90 transition-colors"
             >
-              {t.hero.ctaGooglePlay}
+              {t.hero.cta}
             </a>
           </motion.div>
         </div>
@@ -204,11 +203,11 @@ export function Header({
 
               <div className="flex flex-col gap-3 pt-6">
                 <a
-                  href={siteConfig.googlePlay}
+                  href="#features"
                   className="w-full py-3 text-center text-sm font-medium tracking-tight text-background bg-foreground rounded-full hover:bg-foreground/90 transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  {t.hero.ctaGooglePlay}
+                  {t.hero.cta}
                 </a>
                 <div className="flex justify-center pt-2">
                   <LangSwitch locale={locale} variant="dark" />

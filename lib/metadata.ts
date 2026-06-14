@@ -1,29 +1,29 @@
 import type { Metadata } from "next";
 
 export const siteConfig = {
-  name: "Hachimi — Raise Cats, Build Habits",
+  name: "Master Hachimi — 哈基米道长 · Cat Divination",
   description:
-    "A cat-parenting habit app where every habit comes with a virtual kitten. Focus, earn XP, and watch your cat evolve. Free, no ads.",
+    "Cat-themed Mei Hua Yi Shu divination. Share two numbers and a question; Master Hachimi casts a hexagram and reads it back in a warm cat voice — for entertainment and emotional comfort, never prediction. No account, local history, no ads.",
   url: "https://hachimi.ai",
   ogImage: "/og-image.png",
   creator: "@sinnohzeng",
   authors: [
     {
-      name: "Zixuan Zeng",
-      url: "https://zixuan.net",
+      name: "元竹投資有限公司 (Yuan Zhu Investment Limited)",
+      url: "https://hachimi.ai",
     },
   ],
   keywords: [
-    "habit tracker",
-    "cat game",
-    "focus timer",
-    "virtual pet",
-    "productivity app",
-    "flutter app",
-    "AI companion",
+    "divination",
+    "Mei Hua Yi Shu",
+    "plum blossom numerology",
+    "I Ching",
+    "hexagram",
+    "cat",
+    "emotional companion",
+    "oracle app",
+    "iOS app",
     "privacy first",
-    "gamification",
-    "android app",
   ],
 } as const;
 

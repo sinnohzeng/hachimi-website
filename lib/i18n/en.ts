@@ -2,9 +2,9 @@ import type { Translations } from "./types";
 
 export const en: Translations = {
   nav: {
-    features: "Features",
-    tech: "Tech",
-    download: "Download",
+    features: "How it works",
+    tech: "By the numbers",
+    faq: "FAQ",
   },
   langSwitch: {
     en: "EN",
@@ -12,308 +12,374 @@ export const en: Translations = {
   },
 
   hero: {
-    badge: "v2.37.0 — Now on Google Play",
-    headline1: "Notice more.",
-    headline2: "Live better.",
+    badge: "Coming soon to the App Store",
+    headline1: "Ask the cat.",
+    headline2: "Feel heard.",
     description:
-      "5 minutes a day — the quietest moment that's entirely yours. Record a Daily Light, offload your worries, stay focused, and watch your cat react to your mood. No willpower required.",
-    ctaDownload: "Download APK",
-    ctaGooglePlay: "Google Play",
-    ctaSource: "View Source",
-    securityBadge: "Privacy-first. AI features are optional and opt-in.",
+      "Two numbers and the question on your mind. Master Hachimi casts a Mei Hua Yi Shu hexagram and reads it back in a warm, cat-master voice — to help you feel heard, not to predict your future. For entertainment and emotional comfort only.",
+    cta: "See how it works",
+    securityBadge:
+      "No account. History stays on your device. Your question is sent to Google Gemini to write the reading — see the Privacy Policy.",
   },
 
   featureCards: {
-    title: "Everything you need",
-    subtitle: "to live more mindfully",
+    title: "How Master Hachimi works",
+    subtitle: "two numbers, one question",
     cards: [
       {
-        title: "Daily awareness in 30 seconds",
+        title: "Tell the cat what's on your mind",
         description:
-          "Record a Daily Light each evening — pick your mood, write one line, tag what mattered. Writing it down offloads your brain. Weekly reviews and worry tracker keep you grounded.",
+          "Type the question you're sitting with, then give two numbers off the top of your head. About thirty seconds — no sign-up, no account.",
       },
       {
-        title: "Focus that flows into reflection",
+        title: "A hexagram is cast — the same way every time",
         description:
-          "Countdown and stopwatch modes with a persistent foreground service. When a session ends, a Daily Light prompt appears — closing the focus-to-awareness loop.",
+          "Your two numbers and the hour set a Mei Hua Yi Shu hexagram by a fixed, deterministic method. Same inputs, same cast — honest math, no randomness, no smoke and mirrors.",
       },
       {
-        title: "A cat that feels what you feel",
+        title: "Master Hachimi reads it back",
         description:
-          "Your companion reacts to your mood with 5 unique animations. 15 pelt patterns, 19 colors, 6 personalities — each cat grows alongside your awareness journey.",
+          "The cat-master answers in his own warm voice: what the hexagram shows, a gentle take, and a small blessing. Each reading is saved to your local history to revisit.",
       },
     ],
   },
 
   featureHighlight: {
-    title1: "Meet your companion,",
-    title2: "watch them grow",
+    title1: "A cat-master who",
+    title2: "actually listens",
     description:
-      "Each cat has its own personality, mood, and growth stage. As you notice more about your day, your companion evolves — a living reflection of your inner journey.",
+      "Master Hachimi isn't a fortune teller. He's a cat who takes your question seriously and answers with warmth — so the moment you ask, you already feel a little less alone.",
     features: [
-      "Awareness flywheel — focus, record a Daily Light, see your cat react",
-      "AI cat chat — talk to your cats in their unique personality",
-      "108+ accessories across 5 price tiers in the shop",
+      "Deterministic cast — your hexagram comes from a fixed method, not a dice roll",
+      "Readings written by Google Gemini — shaped by the hexagram, the hour, and your question",
+      "History on your device — every reading saved locally, nothing kept on our servers",
     ],
-    cta: "Explore features",
-    phonePlaceholder: "Cat companion detail page",
+    cta: "See how it works",
+    phonePlaceholder: "Master Hachimi reading",
   },
 
   principles: {
-    badge: "Why Hachimi?",
-    title1: "Awareness that grows,",
-    title2: "one day at a time",
+    badge: "Why Master Hachimi?",
+    title1: "Comfort you can return to,",
+    title2: "without the hard sell",
     description:
-      "Habits grow by design, not willpower. The bar is so low you don't even need the word \"persist\" — just 5 minutes before bed. When a cat responds to your mood and reflections add up, awareness happens naturally.",
-    cta: "Download for Android",
+      "We deliver the feeling of being heard — never prediction, fate-changing, or luck. The cast is honest math; the reading is a kind voice. That's the whole promise.",
+    cta: "Read the privacy policy",
     cards: [
-      "Awareness-Driven",
-      "Privacy-First Design",
-      "Offline Capable",
-      "Beautiful Design",
+      "Deterministic casting",
+      "For entertainment only",
+      "No account, privacy-first",
+      "A warm cat companion",
     ],
   },
 
   stats: {
     items: [
-      { label: "Cat breeds" },
-      { label: "Accessories" },
+      { label: "Hexagrams" },
+      { label: "Reading facets" },
+      { label: "Accounts needed" },
       { label: "Languages" },
-      { label: "Achievements" },
     ],
   },
 
   faq: {
     title: "Frequently asked questions",
-    subtitle: "Everything you need to know about Hachimi.",
+    subtitle: "Everything you need to know about Master Hachimi.",
     items: [
       {
-        question: "What is the awareness feature?",
+        question: "Is this real fortune telling?",
         answer:
-          "Every evening, spend 30 seconds recording a Daily Light — pick your mood, write one line, tag what mattered. Weekly reviews capture three happy moments and learnings. The worry tracker lets you write down worries and offload them from your brain. Monthly rituals set your focus habit. Your cat reacts to your mood with unique animations, making self-awareness feel alive.",
+          "No. Master Hachimi is for entertainment and emotional comfort only. The readings are not predictions and make no claim of accuracy, luck-changing, fate-changing, or any other efficacy. For any real decision, please talk to a qualified professional.",
       },
       {
-        question: "Is my data safe?",
+        question: "How is a reading made?",
         answer:
-          "All your data is stored in Firebase with strict security rules. AI features are optional and opt-in — when enabled, chat messages are sent to cloud AI providers (MiniMax or Google Gemini) for processing. A privacy disclosure is shown before first use. You can delete your account and all associated data at any time.",
+          "You give two numbers and a question. Our backend casts a Mei Hua Yi Shu hexagram from the numbers and the current hour using a fixed, deterministic method — then sends the hexagram, the hour, and your question to the Google Gemini API, which writes the reading in Master Hachimi's voice. The two cast numbers themselves are never sent to Google.",
       },
       {
-        question: "Is Hachimi available on iOS?",
+        question: "What about my privacy?",
         answer:
-          "Currently Hachimi is Android-only, available as a direct APK download from GitHub and on Google Play. iOS support is planned for a future release. The codebase is built with Flutter, so cross-platform deployment is technically ready.",
+          "There is no account and no login. Your reading history is stored only on your device, and the backend keeps nothing — no question text, no user database. To write a reading, your question is sent to the Google Gemini paid tier (where Google does not train on your content). You consent before your first reading and can withdraw any time. See the Privacy Policy.",
       },
       {
-        question: "Is Hachimi open source?",
+        question: "Which platforms is it on?",
         answer:
-          "The source code is publicly available on GitHub for portfolio and reference purposes. However, it is not licensed for redistribution or commercial use. See the LICENSE file for full terms.",
-      },
-      {
-        question: "How does the AI chat work?",
-        answer:
-          "Hachimi connects to cloud AI providers — you can choose between MiniMax and Google Gemini in Settings. Your cats respond with personality-flavored messages generated in real-time. AI features are entirely optional and disabled by default.",
+          "Master Hachimi is launching on iOS first, with Android to follow. This page goes live ahead of the App Store release.",
       },
       {
         question: "Does it cost anything?",
         answer:
-          "Hachimi is completely free. There are no in-app purchases, no ads, and no subscription fees. All features — including awareness tools, focus timer, cat companions, and AI chat — are free. The in-app coin economy is earned through focus sessions and daily check-ins.",
+          "The app is free to use, and there are no ads.",
+      },
+      {
+        question: "How do I delete my data?",
+        answer:
+          "Because everything lives on your device, you delete your history in the app's Settings, or simply uninstall the app. There is no server-side copy to delete. See the Delete Data page for details.",
       },
     ],
     stillHaveQuestions: "Still have questions?",
-    contact: "Check the docs on GitHub",
+    contact: "Email support@hachimi.ai",
   },
 
   finalCta: {
-    headline: "Ready to meet your first cat?",
-    cta: "Download for Android",
+    headline: "Got something on your mind?",
+    cta: "See how it works",
   },
 
   footer: {
-    copyright: `\u00A9 2025\u20132026 Zixuan Zeng. All Rights Reserved.`,
+    copyright:
+      "© 2026 元竹投資有限公司 (Yuan Zhu Investment Limited). All rights reserved.",
     links: [
       {
         title: "Product",
         items: [
-          { label: "Features", href: "#features" },
-          { label: "Tech Stack", href: "#tech" },
+          { label: "How it works", href: "#features" },
+          { label: "By the numbers", href: "#tech" },
           { label: "FAQ", href: "#faq" },
         ],
       },
       {
-        title: "Developer",
+        title: "Legal",
         items: [
-          { label: "GitHub", href: "https://github.com/sinnohzeng/hachimi-app" },
-          { label: "Docs", href: "https://github.com/sinnohzeng/hachimi-app/tree/main/docs" },
-          { label: "Changelog", href: "https://github.com/sinnohzeng/hachimi-app/blob/main/CHANGELOG.md" },
+          { label: "Privacy Policy", href: "/en/privacy" },
+          { label: "Terms & Disclaimer", href: "/en/terms" },
+          { label: "Delete Data", href: "/en/data-deletion" },
         ],
       },
       {
-        title: "Links",
+        title: "Contact",
         items: [
-          { label: "Portfolio", href: "https://zixuan.net" },
-          { label: "Website Source", href: "https://github.com/sinnohzeng/hachimi-app-website" },
+          { label: "support@hachimi.ai", href: "mailto:support@hachimi.ai" },
         ],
       },
     ],
     legal: [
-      { label: "Privacy Policy", href: "/en/privacy" },
-      { label: "Delete Account", href: "/en/account-deletion" },
+      { label: "Privacy", href: "/en/privacy" },
+      { label: "Terms", href: "/en/terms" },
       { label: "Delete Data", href: "/en/data-deletion" },
-      { label: "License", href: "https://github.com/sinnohzeng/hachimi-app/blob/main/LICENSE" },
     ],
   },
 
   privacy: {
     title: "Privacy Policy",
-    effectiveDate: "Effective date: February 23, 2026",
+    effectiveDate: "Last updated: June 13, 2026",
     sections: [
       {
-        heading: "Introduction",
+        heading: "Master Hachimi (哈基米道长)",
         content:
-          "Hachimi (\u201Cwe\u201D, \u201Cour\u201D, or \u201Cthe app\u201D) is a habit-tracking app with virtual cat companions, built by Zixuan Zeng. This Privacy Policy explains how we collect, use, and protect your information when you use Hachimi. By using the app, you agree to the practices described in this policy.",
+          "Master Hachimi (“the App”, “we”, “us”), brand Hachimi.ai, is operated by 元竹投資有限公司 (Yuan Zhu Investment Limited), a company registered in Hong Kong (“the Company”). This Privacy Policy explains what data the App processes, why, and your rights.\n\nPlease understand how the App works first. Master Hachimi is an emotional-companionship product: you provide two numbers and write the question on your mind; the Company's unified backend performs a deterministic Mei Hua Yi Shu (Plum Blossom Numerology) cast, and a third-party AI model then generates the reading in the voice of “Master Hachimi”. Unlike many purely on-device divination utilities, generating a reading necessarily sends your question and the cast to the Company's backend, which forwards them to a third-party AI (Google Gemini). This policy discloses that accordingly.",
       },
       {
-        heading: "Information we collect",
+        heading: "1. Summary",
         content:
-          "Account information: When you create an account, we collect your email address and display name via Firebase Authentication.\n\nHabit and focus data: Your habits, focus sessions, quest progress, cat companions, coins, and inventory are stored in Cloud Firestore to power the core app experience.\n\nAI chat content (optional): If you enable AI features, your chat messages with cat companions and diary generation requests are sent to cloud AI providers (MiniMax or Google Gemini, depending on your choice) for processing. AI features are disabled by default and require explicit opt-in with a privacy disclosure.\n\nDevice and usage data: We automatically collect crash reports (Firebase Crashlytics), app usage events (Firebase Analytics), performance data (Firebase Performance), and push notification tokens (Firebase Cloud Messaging) to improve the app experience.",
+          "• The cast (numbers → hexagram) is a deterministic computation performed off-device; the reading is generated by a third-party AI (Google Gemini). Your question, the two cast numbers, and time-of-day are sent to the Company's backend for casting; thereafter only your question, the resulting hexagram, and time-of-day are forwarded to Google Gemini to generate the reading — the two cast numbers are not sent to Google.\n• We do not sell your data, do not use it for advertising, and do not track you across other apps or websites (no advertising identifier / IDFA, no App Tracking Transparency).\n• No account is required to use the App.",
       },
       {
-        heading: "How we use your information",
+        heading: "2. Data we process",
         content:
-          "We use the information we collect to:\n\n\u2022 Provide and maintain the core habit-tracking and cat-raising experience\n\u2022 Generate AI-powered cat chat responses and diary entries (when enabled)\n\u2022 Send push notifications for habit reminders (when enabled)\n\u2022 Analyze app usage patterns and fix crashes\n\u2022 Monitor app performance and improve reliability",
+          "• Your question (free text you type) — the subject of the divination. Sent to the Company's backend on each cast and forwarded to Google Gemini to generate the reading. The backend is designed not to persist it (transient forwarding); your reading history, which includes the question, is stored on your device.\n• Two cast numbers + local time-of-day — used for the deterministic cast (upper/lower trigram, moving line). Sent with the question to the backend; not persisted by the backend by design; history is stored on your device.\n• Reading history (chart, reading, time, question) — stored on your device only, so you can review past readings.\n• Selected language / settings — app preferences, stored locally on your device.\n\nWe do not collect: your name, email, contacts, photos, precise location (GPS), health data, financial data, or any advertising identifier (IDFA). The App does not use App Tracking Transparency because it performs no cross-app tracking. “Time-of-day” means your device's current clock hour (used to determine the moving line) — it is not GPS positioning.",
       },
       {
-        heading: "Third-party services",
+        heading: "3. Third-party AI reading (core feature · App Store Guideline 5.1.2(i))",
         content:
-          "We share data with the following third-party services:\n\nGoogle Firebase: Authentication, Cloud Firestore (data storage), Analytics, Crashlytics (crash reports), Performance Monitoring, Cloud Messaging (push notifications), and Remote Config. Google\u2019s privacy policy applies to data processed by Firebase services.\n\nMiniMax (optional): If you select MiniMax as your AI provider, chat messages are sent to MiniMax\u2019s API for generating responses. MiniMax\u2019s privacy policy applies to this data.\n\nGoogle Gemini (optional): If you select Gemini as your AI provider, chat messages are sent to Google\u2019s Gemini API for generating responses. Google\u2019s AI privacy terms apply.\n\nWe do not sell your personal data. We do not use third-party advertising services.",
+          "To generate the “Master Hachimi” reading, on each cast the App sends [your question + the cast + time-of-day] to the Company's own backend (a thin proxy, with the client verified via device-integrity attestation). The backend performs the deterministic cast and then forwards the hexagram and your question to the third-party AI service Google Gemini API to generate the reading text.\n\n• Explicit permission: Before your first cast, the App shows a consent screen that clearly states what will be sent and the recipients (the Company's backend + Google Gemini). Nothing is sent without your consent.\n• Revocable: You can withdraw consent at any time in Settings. After withdrawal the App sends no further data and therefore cannot generate new readings (the product has no offline reading mode); your existing local history is unaffected.\n• Google acts as a service provider: Google processes the content as a service provider / data processor, contractually limited to providing the reading service to the Company. Under the Gemini API paid-tier terms and its Data Processing Addendum (DPA), Google provides protection of your data equal to or no less than that stated in this policy.\n• Data use on the paid tier: the App uses the paid tier of the Google Gemini API. Per Google's current Gemini API Additional Terms of Service, on the paid tier Google does not use your prompts or responses to improve its products; Google logs prompts and responses only for a limited period, solely to detect abuse, maintain safety, and meet legal requirements. See the Google Gemini API Terms (https://ai.google.dev/gemini-api/terms) and Google Privacy Policy (https://policies.google.com/privacy).\n• Minimization: we send Google Gemini only what is necessary to generate the reading (your question + cast + time-of-day). We do not send your identity, device identifiers, or location to Google. The device-attestation token used for anti-abuse is sent only to the Company's backend, never to Google, and is not used for tracking.",
       },
       {
-        heading: "Data security",
+        heading: "4. Backend and data retention",
         content:
-          "All data is encrypted in transit using TLS/HTTPS. Cloud Firestore encrypts data at rest. Firebase security rules restrict data access to authenticated users for their own documents. API keys for AI providers are injected at build time and never stored on-device in plain text.",
+          "• The Company operates a unified backend (thin proxy) to receive cast requests, run the deterministic cast, and forward to Google Gemini. By design this backend does not persist your question or history (transient forwarding, no user database).\n• Reading history is stored only on your device. Deleting a record or deleting the App removes it; we provide a “Delete all history” action in Settings.\n• Retention and deletion on the third party (Google): Google retains paid-tier prompts/responses for a limited period for abuse prevention (see section 3). To request deletion of content already sent to Google, contact us at support@hachimi.ai — we can initiate a request via Google's channels on your behalf — or see the data-request avenues in the Google Privacy Policy.",
       },
       {
-        heading: "Your rights",
+        heading: "5. Your rights",
         content:
-          "Access and export: You can view all your data within the app (habits, sessions, cats, coins, chat history).\n\nDeletion: You can delete your account and all associated data through the app\u2019s account deletion flow (Settings \u2192 Account \u2192 Delete Account). This permanently removes your authentication record and all Firestore data.\n\nOpt-out: AI features can be disabled at any time in Settings. Push notifications can be managed through your device\u2019s system settings.",
+          "Depending on where you live (EU/EEA under GDPR, California under CCPA/CPRA, Hong Kong under PDPO, and others), you have rights to access, correct, and delete your personal data, to object to or restrict processing, and to withdraw consent at any time.\n\n• Withdraw consent: turn off the third-party AI reading consent toggle in Settings (see section 3).\n• Access / portability / deletion: because the Company's backend does not store your personal data and the App has no account, the reading history on your device is fully under your control — you can view and delete it in-app; we hold no server-side copy to export.\n• GDPR: the lawful basis for sending your question and cast to the third-party AI is your consent, which you may withdraw at any time.\n• CCPA/CPRA: we disclose your question only for a business purpose to Google acting as a service provider — this is not a “sale” or a “share” for cross-context behavioral advertising.\n• PDPO (Hong Kong): we collect only data necessary for the App's function, use it only for that purpose, and apply transport encryption (TLS) and device attestation to all network calls.\n\nFor any request or question, contact us using the details below; we will respond within the time limits required by applicable law.",
       },
       {
-        heading: "Children\u2019s privacy",
+        heading: "6. Children",
         content:
-          "Hachimi is not designed for or directed at children under 13. We do not knowingly collect personal information from children under 13. If you believe a child under 13 has provided us with personal information, please contact us so we can take appropriate action.",
+          "The App is not directed to children under 13 and does not knowingly collect personal data from them.",
       },
       {
-        heading: "Changes to this policy",
+        heading: "7. Security",
         content:
-          "We may update this Privacy Policy from time to time. Changes will be reflected on this page with an updated effective date. We encourage you to review this policy periodically.",
+          "All network calls use standard HTTPS/TLS; the client is verified via device-integrity attestation (App Check / App Attest) to deter abuse. Upstream AI service keys are held only on the Company's server and are never shipped to or embedded in the client.",
       },
       {
-        heading: "Contact",
+        heading: "8. Changes",
         content:
-          "If you have questions about this Privacy Policy or your data, please contact us at:\n\nWebsite: https://hachimi.ai\nGitHub: https://github.com/sinnohzeng/hachimi-app",
+          "We may update this policy; the “Last updated” date will change. Material changes will be surfaced in the App.",
+      },
+      {
+        heading: "9. Contact",
+        content:
+          "元竹投資有限公司 (Yuan Zhu Investment Limited), Hong Kong\nEmail: support@hachimi.ai",
+      },
+    ],
+  },
+
+  terms: {
+    title: "Terms of Use & Disclaimer",
+    effectiveDate: "Last updated: June 13, 2026",
+    sections: [
+      {
+        heading: "Master Hachimi (哈基米道长)",
+        content:
+          "By using Master Hachimi (“the App”, brand Hachimi.ai), operated by 元竹投資有限公司 (Yuan Zhu Investment Limited, Hong Kong), you agree to these Terms.",
+      },
+      {
+        heading: "1. Entertainment purpose only",
+        content:
+          "Master Hachimi is an emotional-companionship product: “Master Hachimi” offers hexagrams and readings for your questions, based on the traditional Chinese method of Mei Hua Yi Shu (Plum Blossom Numerology), for entertainment and emotional comfort only. Readings are not factual predictions and must not be relied upon as such; the App makes no claim of predictive accuracy and offers no fortune-changing, luck-altering, or other efficacy.\n\nThe App does not provide, and its readings do not constitute, medical, psychological, legal, financial, investment, or any other professional advice. For any real decision, consult a qualified professional. Do not use the App as a substitute for professional judgment, emergency services, or any safety-critical decision.",
+      },
+      {
+        heading: "2. No guarantee of outcome",
+        content:
+          "For lost-item and similar questions, the App offers associative, entertainment-only hints derived from the hexagram (such as a direction or an evocative scene). It does not guarantee that an item exists or can be recovered on that basis. You are solely responsible for your own search and any decisions you make.",
+      },
+      {
+        heading: "3. AI-generated content",
+        content:
+          "The reading text is generated by a third-party AI model (Google Gemini) — the cast itself is a deterministic computation; only the reading is AI-generated. AI-generated content may be inaccurate or incomplete. We are not responsible for decisions you make based on a reading. We harden the persona and red lines at the system level to avoid prohibited efficacy claims (health, financial, etc.), but you should treat all output as entertainment. Generating a reading sends your question and the cast to a third-party AI — see the Privacy Policy and the in-app consent screen.",
+      },
+      {
+        heading: "4. Your responsibilities",
+        content:
+          "You agree not to use the App to: make medical, legal, or financial decisions; harm yourself or others; or violate any law in your location. You also agree not to submit content that is unlawful, infringing, or intended to manipulate the model's output. The App is intended for users 13 and older.",
+      },
+      {
+        heading: "5. Limitation of liability",
+        content:
+          "To the maximum extent permitted by law, the Company is not liable for any direct, indirect, incidental, or consequential damages arising from your use of, or inability to use, the App or its readings. The App is provided “as is” without warranties of any kind.",
+      },
+      {
+        heading: "6. License",
+        content:
+          "The App is licensed, not sold, to you for personal, non-commercial use, under Apple's Standard End User License Agreement (or a custom EULA where provided), in addition to these Terms.",
+      },
+      {
+        heading: "7. Changes & contact",
+        content:
+          "We may update these Terms; continued use means acceptance. Contact: support@hachimi.ai, 元竹投資有限公司, Hong Kong.",
       },
     ],
   },
 
   accountDeletion: {
-    title: "Delete your account",
-    effectiveDate: "Effective date: February 23, 2026",
+    title: "Account & your data",
+    effectiveDate: "Last updated: June 13, 2026",
     intro:
-      "Hachimi, developed by Zixuan Zeng, allows you to permanently delete your account and all associated data directly within the app. This page explains the steps to request account deletion and what data is affected.",
+      "Master Hachimi has no accounts — you use it without signing in, so there is no account to delete. Your reading history is stored only on your device. This page explains exactly what is stored, where, and how to clear it.",
     steps: {
-      heading: "How to delete your account",
+      heading: "How to clear your data",
       items: [
-        "Open Hachimi and tap the profile icon, then tap Settings.",
-        "Tap Account, then tap Delete Account.",
-        "Review the data summary showing your quests, cats, and total focus hours.",
-        'Type "DELETE" to confirm, then re-authenticate with your Google account.',
+        "Open Master Hachimi and go to Settings.",
+        "Tap Privacy, then Delete all history.",
+        "Confirm — your local reading history is erased from the device.",
+        "Or simply uninstall the App to remove everything at once.",
       ],
     },
     dataTable: {
-      heading: "Data deleted and retained",
-      columns: ["Data type", "Deleted?", "Retention period"],
+      heading: "What's stored, and where",
+      columns: ["Data", "Where it lives", "Removed when"],
       rows: [
-        { cells: ["Account (email, display name)", "Yes", "Deleted immediately"] },
-        { cells: ["Quests and focus sessions", "Yes", "Deleted immediately"] },
-        { cells: ["Cat companions and inventory", "Yes", "Deleted immediately"] },
-        { cells: ["Achievements", "Yes", "Deleted immediately"] },
-        { cells: ["Check-in history", "Yes", "Deleted immediately"] },
-        { cells: ["User profile (coins, settings)", "Yes", "Deleted immediately"] },
-        { cells: ["AI chat messages and diary (local)", "Yes", "Deleted immediately"] },
-        { cells: ["App preferences (local)", "Yes", "Deleted immediately"] },
-        { cells: ["Crash reports (Firebase Crashlytics)", "No", "Up to 90 days (managed by Google)"] },
-        { cells: ["Analytics events (Firebase Analytics)", "No", "Per Google\u2019s data retention policy"] },
+        {
+          cells: [
+            "Reading history (hexagram, reading, question, time)",
+            "On your device only",
+            "You delete history, or uninstall",
+          ],
+        },
+        {
+          cells: [
+            "Language / settings",
+            "On your device (local preferences)",
+            "You uninstall the App",
+          ],
+        },
+        {
+          cells: [
+            "Your question (during a reading)",
+            "Sent to our backend, forwarded to Google Gemini",
+            "Backend keeps nothing; Google retains briefly for abuse-prevention (paid tier)",
+          ],
+        },
       ],
     },
     sections: [
       {
-        heading: "What happens after deletion",
+        heading: "No server-side account",
         content:
-          "Account deletion is permanent and irreversible. Once confirmed, the following actions occur automatically:\n\n\u2022 Your Firebase Authentication record is deleted\n\u2022 All your data in Cloud Firestore is permanently removed, including quests, focus sessions, cat companions, achievements, check-in history, coins, and inventory\n\u2022 Local data on your device is cleared, including AI chat history, diary entries, app preferences, and scheduled notifications\n\u2022 You will be signed out and returned to the login screen\n\nYou will not be able to recover your account or any associated data after deletion.",
+          "We don't create an account for you and run no user database. The backend is a stateless proxy: it casts the hexagram and forwards your question to Google Gemini to write the reading, then keeps nothing.",
       },
       {
-        heading: "Third-party data retention",
+        heading: "Data sent to Google Gemini",
         content:
-          "Some anonymized or aggregated data collected by Google Firebase services (Crashlytics, Analytics, Performance Monitoring) may be retained by Google according to their own data retention policies. This data is managed by Google and cannot be deleted by Hachimi directly. For more information, refer to Google\u2019s privacy policy.",
-      },
-      {
-        heading: "Alternative options",
-        content:
-          "Before deleting your account, you may consider these alternatives:\n\n\u2022 Disable AI features: Go to Settings and turn off AI chat to stop sending data to cloud AI providers\n\u2022 Manage notifications: Disable push notifications through your device\u2019s system settings\n\nThese options let you continue using Hachimi with reduced data sharing.",
+          "To write a reading, your question + the hexagram + the hour are sent to the Google Gemini API (paid tier). On the paid tier Google does not use your content to improve its products and retains it only briefly for abuse prevention. To request deletion of content already sent, email support@hachimi.ai and we can initiate a request on your behalf.",
       },
       {
         heading: "Contact",
         content:
-          "If you have questions about account deletion or need assistance, please contact us at:\n\nWebsite: https://hachimi.ai\nGitHub: https://github.com/sinnohzeng/hachimi-app",
+          "Questions? Email support@hachimi.ai — 元竹投資有限公司 (Yuan Zhu Investment Limited), Hong Kong.",
       },
     ],
   },
 
   dataDeletion: {
     title: "Delete your data",
-    effectiveDate: "Effective date: February 23, 2026",
+    effectiveDate: "Last updated: June 13, 2026",
     intro:
-      "Hachimi, developed by Zixuan Zeng, allows you to delete all your personal data by deleting your account. When you delete your account, all associated data is permanently removed. Hachimi does not currently support selective data deletion \u2014 deleting your account removes everything.",
+      "Master Hachimi stores your reading history only on your device, and our backend keeps nothing. Deleting your data is entirely in your hands.",
     steps: {
       heading: "How to delete your data",
       items: [
-        "Open Hachimi and tap the profile icon, then tap Settings.",
-        "Tap Account, then tap Delete Account.",
-        "Review the data summary showing your quests, cats, and total focus hours.",
-        'Type "DELETE" to confirm, then re-authenticate with your Google account.',
+        "Open Master Hachimi and go to Settings.",
+        "Tap Privacy, then Delete all history.",
+        "Confirm — your local reading history is erased from the device.",
+        "Or uninstall the App to remove everything at once.",
       ],
     },
     dataTable: {
-      heading: "Types of data deleted and retained",
-      columns: ["Data type", "What it includes", "Deleted?"],
+      heading: "Types of data and how they're removed",
+      columns: ["Data type", "What it includes", "Removed when"],
       rows: [
-        { cells: ["Account information", "Email address and display name from Google sign-in", "Yes, immediately"] },
-        { cells: ["Quests", "Quest names, goals, target hours, deadlines, reminders, and notes", "Yes, immediately"] },
-        { cells: ["Focus sessions", "Start/end times, duration, XP and coins earned, timer mode", "Yes, immediately"] },
-        { cells: ["Cat companions", "Names, appearance, personality, growth stage, equipped accessories", "Yes, immediately"] },
-        { cells: ["Achievements", "Unlocked achievements and unlock timestamps", "Yes, immediately"] },
-        { cells: ["Check-in history", "Monthly check-in records and milestone data", "Yes, immediately"] },
-        { cells: ["User profile", "Coin balance, inventory items, avatar, push notification token", "Yes, immediately"] },
-        { cells: ["AI chat and diary", "Chat conversations with cats and auto-generated diary entries (stored locally)", "Yes, immediately"] },
-        { cells: ["App preferences", "Settings, AI toggle state, selected AI provider (stored locally)", "Yes, immediately"] },
-        { cells: ["Crash reports", "Stack traces and device info collected by Firebase Crashlytics", "No, up to 90 days"] },
-        { cells: ["Analytics events", "Usage patterns and screen views collected by Firebase Analytics", "No, per Google policy"] },
+        {
+          cells: [
+            "Reading history",
+            "Hexagram, reading text, your question, and time, stored locally",
+            "You delete history, or uninstall",
+          ],
+        },
+        {
+          cells: [
+            "App preferences",
+            "Language and settings, stored locally",
+            "You uninstall the App",
+          ],
+        },
+        {
+          cells: [
+            "Question sent for a reading",
+            "Forwarded to Google Gemini to generate the reading",
+            "Not stored by our backend; briefly retained by Google for abuse prevention",
+          ],
+        },
       ],
     },
     sections: [
       {
-        heading: "Cloud data vs. local data",
+        heading: "Local data only",
         content:
-          "Your data is stored in two locations:\n\n\u2022 Cloud (Firebase): Account information, quests, focus sessions, cats, achievements, check-in history, and user profile are stored in Google Cloud Firestore. These are permanently deleted from the server when you delete your account.\n\n\u2022 Local (device): AI chat messages, diary entries, app preferences, and scheduled notifications are stored on your device. These are cleared during the deletion process.\n\nBoth cloud and local data are removed as part of the account deletion flow.",
+          "Reading history and settings live on your device. Delete history in Settings, or uninstall the App to remove it all. There is no cloud account or server-side copy of your data.",
       },
       {
-        heading: "Third-party data retention",
+        heading: "Third-party (Google) retention",
         content:
-          "Crash reports (Firebase Crashlytics), analytics events (Firebase Analytics), and performance data (Firebase Performance Monitoring) are collected and managed by Google. This data may be retained by Google for up to 90 days or according to Google\u2019s own data retention policies. Hachimi cannot delete this data directly. For more information, refer to Google\u2019s privacy policy.",
+          "Your question is sent to Google Gemini (paid tier) to generate each reading. Google does not train on paid-tier content and retains it only briefly for abuse prevention. Email support@hachimi.ai to request deletion of content already sent.",
       },
       {
         heading: "Contact",
         content:
-          "If you have questions about data deletion or need assistance, please contact us at:\n\nWebsite: https://hachimi.ai\nGitHub: https://github.com/sinnohzeng/hachimi-app",
+          "Email support@hachimi.ai — 元竹投資有限公司 (Yuan Zhu Investment Limited), Hong Kong.",
       },
     ],
   },

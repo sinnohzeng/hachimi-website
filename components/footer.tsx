@@ -33,9 +33,6 @@ export function Footer({ t }: { t: Translations }): ReactNode {
                 <p className="mt-4 text-sm text-foreground/50 max-w-xs">
                   {t.footer.copyright}
                 </p>
-                <p className="mt-1 text-sm text-foreground/40">
-                  Source Available
-                </p>
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 lg:gap-16">
                 {t.footer.links.map((section) => (
@@ -67,7 +64,7 @@ export function Footer({ t }: { t: Translations }): ReactNode {
         <div className="relative w-full max-w-270">
           <div className="pt-8 px-8 sm:px-12">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-              <span className="text-sm text-foreground/40">v2.29.1</span>
+              <span className="text-sm text-foreground/40">Hachimi.ai</span>
               <div className="flex flex-wrap gap-6">
                 {t.footer.legal.map((link) => (
                   <a
