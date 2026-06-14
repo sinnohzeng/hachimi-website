@@ -1,7 +1,7 @@
 {
-  "name": "Hachimi — Raise Cats, Build Habits",
-  "short_name": "Hachimi",
-  "description": "A cat-parenting habit app where every habit comes with a virtual kitten.",
+  "name": "Master Hachimi — 哈基米道长",
+  "short_name": "Master Hachimi",
+  "description": "Master Hachimi (哈基米道长) is a cat-themed Mei Hua Yi Shu divination companion. Share two numbers and your question; the cat-master casts a hexagram and reads it back in a warm voice — for entertainment and emotional comfort, never prediction. No account, history stays on your device, no ads.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

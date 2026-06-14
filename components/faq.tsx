@@ -131,7 +131,7 @@ export function FAQ({ t }: { t: Translations }): ReactNode {
           >
             <p className="text-foreground/60">{t.faq.stillHaveQuestions}</p>
             <a
-              href="https://github.com/sinnohzeng/hachimi-app/tree/main/docs"
+              href="mailto:support@hachimi.ai"
               className="group inline-flex items-center gap-2 text-foreground font-medium hover:opacity-70 transition-opacity"
             >
               {t.faq.contact}

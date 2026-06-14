@@ -15,8 +15,8 @@ export async function generateMetadata({
     title: `${t.accountDeletion.title} — Hachimi`,
     description:
       locale === "zh"
-        ? "了解如何删除你的 Hachimi 账号和所有关联数据。"
-        : "Learn how to delete your Hachimi account and all associated data.",
+        ? "哈基米道长没有账号——无需登录即可使用，没有账号可删。卦历只存在你的设备上：了解具体存了什么，以及如何清除。"
+        : "Master Hachimi has no accounts — you use it without signing in, so there's nothing to delete. Your reading history stays on your device: see what's stored and how to clear it.",
     alternates: {
       canonical: `/${locale}/account-deletion`,
       languages: {
