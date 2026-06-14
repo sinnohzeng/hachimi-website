@@ -1,0 +1,35 @@
+name: CI
+
+# 营销站唯一持久质量兜底（对齐 hachimi-ios / hachimi-backend 单 job 取向）。
+# 只把关「能否干净构建」——lint + typecheck + 静态导出 build；不做部署（GitHub Pages 部署另行，不在此触发）。
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# 同分支新 push 取消旧跑。
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: lint + typecheck + build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      # 锁 Node 24 LTS（非本机 Current 26）：CI 重在可复现。npm 缓存走 lockfile。
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+
+      - run: npm ci
+
+      # lint + tsc --noEmit + next build（静态导出）。任一失败 → 非零退出 → CI 红。
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm run build
