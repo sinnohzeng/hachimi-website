@@ -12,6 +12,12 @@
   --accent: #d97706;
   --font-sans: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  /* Deliberate serif stack: Latin (Georgia/Cambria) + explicit CJK serif
+     fallbacks so font-serif headlines render consistently for 中文 too.
+     No web font (CN-CDN survival rule) — system serifs only. */
+  --font-serif:
+    Georgia, Cambria, "Times New Roman", "Songti SC", "Source Han Serif SC",
+    "Noto Serif CJK SC", serif;
 }
 
 .dark {
@@ -34,6 +40,7 @@
   --color-accent: var(--accent);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
 }
 
 html {

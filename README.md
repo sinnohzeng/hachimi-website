@@ -1,10 +1,10 @@
-# Finance Template
+# Master Hachimi · 哈基米道长 — marketing site
 
-A premium Next.js 15+ landing page template designed for fintech, banking, and financial services. Features a modern, professional design with comprehensive SEO, accessibility, and performance optimizations.
+The bilingual (zh / en) marketing site for **Master Hachimi (哈基米道长)**, a cat-themed Mei Hua Yi Shu divination companion app. Built with Next.js App Router, statically exported (`output: "export"`) and deployed to GitHub Pages. Comprehensive SEO, accessibility, and performance optimizations.
 
 ## Features
 
-- ✅ **Next.js 15+** with App Router
+- ✅ **Next.js 16** with App Router (static export to GitHub Pages)
 - ✅ **TypeScript** (strict mode)
 - ✅ **Tailwind CSS v4** with design tokens
 - ✅ **Dark Mode** via next-themes
@@ -17,15 +17,11 @@ A premium Next.js 15+ landing page template designed for fintech, banking, and f
 ## Sections Included
 
 - **Hero** - 3D animated background with CTA
-- **Trusted By** - Logo carousel/marquee
 - **Feature Cards** - Interactive feature showcase
 - **Feature Highlight** - Phone mockup with details
-- **Principles** - Company values section
-- **Stats** - Animated statistics counters
-- **Testimonials** - Auto-scrolling slider with LinkedIn links
-- **Pricing** - 3-tier pricing cards
+- **Principles** - Product values section
+- **Stats** - Animated honest-fact counters
 - **FAQ** - Accessible accordion
-- **Blog Showcase** - Latest articles grid
 - **Final CTA** - Call-to-action with 3D background
 - **Footer** - Links, legal, and contact info
 
@@ -62,13 +58,18 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ```
 ├── app/
+│   ├── [locale]/          # zh / en localized routes (html lang + shell here)
+│   │   ├── layout.tsx     # Locale layout: <html lang>, fonts, providers
+│   │   ├── page.tsx       # Home page
+│   │   └── ...            # privacy, terms, support, *-deletion pages
 │   ├── globals.css        # Design tokens & base styles
-│   ├── layout.tsx         # Root layout with providers
-│   ├── page.tsx           # Home page
+│   ├── layout.tsx         # Pass-through root layout (returns children)
+│   ├── page.tsx           # Root "/" client redirect to /en
+│   ├── opengraph-image.tsx # Build-time generated OG card (next/og)
+│   ├── twitter-image.tsx  # Twitter card (reuses OG design)
 │   ├── robots.ts          # Dynamic robots.txt
 │   └── sitemap.ts         # Dynamic sitemap
 ├── components/
-│   ├── blog-showcase.tsx  # Blog articles section
 │   ├── faq.tsx            # FAQ accordion
 │   ├── feature-cards.tsx  # Feature cards
 │   ├── feature-highlight.tsx # Phone mockup section
@@ -76,18 +77,17 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 │   ├── footer.tsx         # Footer
 │   ├── header.tsx         # Navigation header
 │   ├── hero.tsx           # Hero section
-│   ├── pricing.tsx        # Pricing cards
+│   ├── lang-switch.tsx    # zh / en language switcher
 │   ├── principles.tsx     # Principles section
 │   ├── providers.tsx      # Theme & scroll providers
 │   ├── smooth-scroll.tsx  # Lenis smooth scroll
 │   ├── stats.tsx          # Stats section
-│   ├── testimonials-slider.tsx # Testimonials
-│   ├── theme-switch.tsx   # Theme toggle button
-│   └── trusted-by.tsx     # Logo carousel
+│   └── theme-switch.tsx   # Theme toggle button
 ├── lib/
-│   ├── config.ts          # Site config & feature flags
-│   ├── metadata.ts        # SEO metadata utilities
-│   └── motion.tsx         # Motion components & hooks
+│   ├── config.ts          # Site config (single source of truth) & feature flags
+│   ├── i18n/              # zh / en translations
+│   ├── metadata.ts        # SEO metadata (built from config.ts)
+│   └── motion.tsx         # Reduced-motion provider & hook
 └── public/
     └── site.webmanifest   # PWA manifest
 ```
@@ -102,10 +102,11 @@ Edit `lib/config.ts` to update:
 - Section content and CTAs
 - Feature flags
 
-Edit `lib/metadata.ts` to update:
-- SEO metadata and keywords
-- Open Graph images
-- Social media handles
+Site name, description, keywords, authors and social handles all live in
+`lib/config.ts` (single source of truth). `lib/metadata.ts` only shapes them
+into the Next.js `Metadata` object; the Open Graph / Twitter card images are
+generated at build time by `app/opengraph-image.tsx` (no static file to
+maintain).
 
 ### 2. Feature Flags
 
@@ -116,17 +117,18 @@ export const features = {
   smoothScroll: true,    // Lenis smooth scrolling
   darkMode: true,        // Theme toggle
   statsSection: true,    // Stats section
-  blogSection: true,     // Blog showcase
-  testimonialsSection: true, // Testimonials slider
+  blogSection: false,    // Blog showcase (not used)
+  testimonialsSection: false, // Testimonials slider (not used)
 };
 ```
 
 ### 3. Replace Icons
 
 Replace the following files with your brand assets:
-- `app/icon.svg` - Favicon (32x32)
-- `app/apple-icon.svg` - Apple touch icon (180x180)
-- `public/og-image.png` - Open Graph image (1200x630)
+- `app/favicon.ico` / `app/icon.png` - Favicon (48x48 / 32x32)
+- `app/apple-icon.png` - Apple touch icon
+- The Open Graph / Twitter card (1200x630) is generated by
+  `app/opengraph-image.tsx` — edit that route, no static image needed
 
 ### 4. Customize Design Tokens
 
@@ -140,12 +142,14 @@ Edit `app/globals.css` to modify:
 ### Colors
 - `--background` / `--foreground` - Page background and text
 - `--muted` / `--muted-foreground` - Subtle backgrounds and text
-- `--accent` - Primary brand color (blue by default)
+- `--accent` - Primary brand color (amber `#d97706`)
 - `--border` / `--ring` - Borders and focus rings
 
 ### Typography
-- Font: Geist Sans & Geist Mono
-- Serif headings use font-serif class
+- Sans / mono: Geist Sans & Geist Mono (`next/font`, loaded in `app/[locale]/layout.tsx`)
+- Serif headings (`font-serif`): system serif stack defined in `app/globals.css`
+  — Georgia/Cambria for Latin plus explicit CJK serif fallbacks ("Songti SC",
+  "Source Han Serif SC", "Noto Serif CJK SC"). No web font is loaded.
 
 ## Accessibility
 
