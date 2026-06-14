@@ -82,7 +82,7 @@ export function FAQ({ t }: { t: Translations }): ReactNode {
   return (
     <section
       id="faq"
-      className="relative w-full bg-background py-24 sm:py-32 overflow-hidden"
+      className="relative w-full scroll-mt-28 bg-background py-24 sm:py-32 overflow-hidden"
     >
       <div className="relative mx-auto max-w-7xl px-0 xl:px-12">
         <div className="px-8 sm:px-12">

@@ -11,7 +11,6 @@ import {
 } from "lucide-react";
 import { motion } from "motion/react";
 import type { Translations } from "@/lib/i18n";
-import { siteConfig } from "@/lib/config";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -22,7 +21,13 @@ const principleIcons = [
   <Palette key="palette" className="w-12 h-12" strokeWidth={1} />,
 ];
 
-export function Principles({ t }: { t: Translations }): ReactNode {
+export function Principles({
+  t,
+  locale,
+}: {
+  t: Translations;
+  locale: string;
+}): ReactNode {
   return (
     <section className="relative w-full bg-muted text-foreground py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-6 sm:px-8">
@@ -61,8 +66,7 @@ export function Principles({ t }: { t: Translations }): ReactNode {
             </motion.p>
 
             <motion.a
-              href={siteConfig.googlePlay}
-              id="download"
+              href={`/${locale}/privacy`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

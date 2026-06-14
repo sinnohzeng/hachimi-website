@@ -6,6 +6,7 @@ import { motion } from "motion/react";
 import * as THREE from "three";
 import type { Translations } from "@/lib/i18n";
 import { siteConfig } from "@/lib/config";
+import { useReducedMotion } from "@/lib/motion";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -141,6 +142,7 @@ export function FinalCTA({ t }: { t: Translations }): ReactNode {
   const frameIdRef = useRef<number>(0);
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === "dark";
+  const reducedMotion = useReducedMotion();
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -180,13 +182,20 @@ export function FinalCTA({ t }: { t: Translations }): ReactNode {
       renderer.render(scene, camera);
       frameIdRef.current = requestAnimationFrame(animate);
     }
-    animate();
+
+    if (reducedMotion) {
+      // Honor prefers-reduced-motion: render a single static frame, no rAF loop.
+      renderer.render(scene, camera);
+    } else {
+      animate();
+    }
 
     function handleResize() {
       const w = container.clientWidth;
       const h = container.clientHeight;
       renderer.setSize(w, h);
       uniforms.iResolution.value.set(w, h);
+      if (reducedMotion) renderer.render(scene, camera);
     }
     window.addEventListener("resize", handleResize);
 
@@ -200,7 +209,7 @@ export function FinalCTA({ t }: { t: Translations }): ReactNode {
         container.removeChild(renderer.domElement);
       }
     };
-  }, [isDark]);
+  }, [isDark, reducedMotion]);
 
   return (
     <section className="relative w-full min-h-[20vh] flex items-center justify-center overflow-hidden">

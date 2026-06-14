@@ -14,7 +14,7 @@ export function FeatureCards({ t }: { t: Translations }): ReactNode {
   return (
     <section
       id="features"
-      className="relative w-full bg-background py-24 sm:py-32"
+      className="relative w-full scroll-mt-28 bg-background py-24 sm:py-32"
     >
       <div className="mx-auto max-w-6xl px-6 sm:px-8">
         <div className="flex flex-col items-center text-center mb-16">

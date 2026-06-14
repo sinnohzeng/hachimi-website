@@ -77,7 +77,7 @@ export function Stats({ t }: { t: Translations }): ReactNode {
   return (
     <section
       id="tech"
-      className="relative w-full bg-muted pb-16 sm:pb-20 overflow-hidden"
+      className="relative w-full scroll-mt-28 bg-muted pb-16 sm:pb-20 overflow-hidden"
     >
       <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">

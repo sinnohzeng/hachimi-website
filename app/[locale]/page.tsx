@@ -44,7 +44,7 @@ export default async function HomePage({
         <Hero t={t} />
         <FeatureCards t={t} />
         <FeatureHighlight t={t} />
-        <Principles t={t} />
+        <Principles t={t} locale={locale} />
         <Stats t={t} />
         <FAQ t={t} />
         <FinalCTA t={t} />

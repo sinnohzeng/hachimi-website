@@ -5,6 +5,7 @@ import { ChevronRight, Shield } from "lucide-react";
 import { motion } from "motion/react";
 import * as THREE from "three";
 import type { Translations } from "@/lib/i18n";
+import { useReducedMotion } from "@/lib/motion";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -133,6 +134,7 @@ export function Hero({ t }: { t: Translations }): ReactNode {
   const containerRef = useRef<HTMLDivElement>(null);
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
   const frameIdRef = useRef<number>(0);
+  const reducedMotion = useReducedMotion();
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -174,7 +176,6 @@ export function Hero({ t }: { t: Translations }): ReactNode {
       targetMouse.x = (e.clientX - rect.left) / rect.width;
       targetMouse.y = 1.0 - (e.clientY - rect.top) / rect.height;
     }
-    container.addEventListener("mousemove", handleMouseMove);
 
     const startTime = Date.now();
     function animate() {
@@ -186,13 +187,22 @@ export function Hero({ t }: { t: Translations }): ReactNode {
       renderer.render(scene, camera);
       frameIdRef.current = requestAnimationFrame(animate);
     }
-    animate();
+
+    if (reducedMotion) {
+      // Honor prefers-reduced-motion: render a single static frame, no rAF / no
+      // mouse-driven displacement.
+      renderer.render(scene, camera);
+    } else {
+      container.addEventListener("mousemove", handleMouseMove);
+      animate();
+    }
 
     function handleResize() {
       const newWidth = container.clientWidth;
       const newHeight = container.clientHeight;
       renderer.setSize(newWidth, newHeight);
       uniforms.iResolution.value.set(newWidth, newHeight);
+      if (reducedMotion) renderer.render(scene, camera);
     }
     window.addEventListener("resize", handleResize);
 
@@ -205,7 +215,7 @@ export function Hero({ t }: { t: Translations }): ReactNode {
       material.dispose();
       container.removeChild(renderer.domElement);
     };
-  }, []);
+  }, [reducedMotion]);
 
   return (
     <section className="relative min-h-dvh w-full overflow-hidden">
