@@ -1,10 +1,10 @@
 # Master Hachimi · 哈基米道长 — marketing site
 
-The bilingual (zh / en) marketing site for **Master Hachimi (哈基米道长)**, a cat-themed Mei Hua Yi Shu divination companion app. Built with Next.js App Router, statically exported (`output: "export"`) and deployed to GitHub Pages. Comprehensive SEO, accessibility, and performance optimizations.
+The bilingual (zh / en) marketing site for **Master Hachimi (哈基米道长)**, a cat-themed Mei Hua Yi Shu divination companion app. Built with Next.js App Router, statically exported (`output: "export"`) and deployed to **Cloudflare Pages** (project `hachimi-app-website`, custom domain `hachimi.ai`; deploy runbook: [`deploy/cloudflare-pages.md`](deploy/cloudflare-pages.md)). Comprehensive SEO, accessibility, and performance optimizations.
 
 ## Features
 
-- ✅ **Next.js 16** with App Router (static export to GitHub Pages)
+- ✅ **Next.js 16** with App Router (static export to Cloudflare Pages)
 - ✅ **TypeScript** (strict mode)
 - ✅ **Tailwind CSS v4** with design tokens
 - ✅ **Dark Mode** via next-themes
