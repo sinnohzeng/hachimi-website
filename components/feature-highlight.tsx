@@ -13,7 +13,13 @@ const featureIcons = [
   <Smartphone key="local" className="w-4 h-4" />,
 ];
 
-export function FeatureHighlight({ t }: { t: Translations }): ReactNode {
+export function FeatureHighlight({
+  t,
+  locale,
+}: {
+  t: Translations;
+  locale: string;
+}): ReactNode {
   return (
     <section className="relative w-full bg-background pb-24 sm:pb-32 overflow-hidden">
       <div className="mx-auto max-w-6xl px-6 sm:px-8">
@@ -81,16 +87,16 @@ export function FeatureHighlight({ t }: { t: Translations }): ReactNode {
             <div className="relative bg-accent/5 rounded-md border border-accent/10 pt-10 px-16 overflow-hidden h-full flex flex-col">
               <div className="relative w-full max-w-70 mx-auto flex-1 flex flex-col">
                 <div className="relative bg-neutral-900 rounded-t-4xl pt-1 px-1 flex-1 flex flex-col">
-                  <div className="bg-background rounded-t-[1.75rem] flex-1 overflow-hidden min-h-100 flex flex-col items-center justify-center gap-4 p-8 text-center">
-                    <span
-                      aria-hidden="true"
-                      className="font-serif text-7xl text-foreground/10 select-none"
-                    >
-                      卦
-                    </span>
-                    <span className="text-sm text-foreground/40">
-                      {t.featureHighlight.phonePlaceholder}
-                    </span>
+                  <div className="bg-neutral-950 rounded-t-[1.75rem] flex-1 overflow-hidden min-h-100">
+                    <img
+                      src={`/screenshots/${locale}/result.webp`}
+                      alt={t.featureHighlight.phonePlaceholder}
+                      width={720}
+                      height={1565}
+                      loading="lazy"
+                      decoding="async"
+                      className="block w-full h-auto object-top select-none"
+                    />
                   </div>
                 </div>
               </div>

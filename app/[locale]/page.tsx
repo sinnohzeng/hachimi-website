@@ -43,7 +43,7 @@ export default async function HomePage({
       <main id="main-content" className="flex-1">
         <Hero t={t} />
         <FeatureCards t={t} />
-        <FeatureHighlight t={t} />
+        <FeatureHighlight t={t} locale={locale} />
         <Principles t={t} locale={locale} />
         <Stats t={t} />
         <FAQ t={t} />
