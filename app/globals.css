@@ -10,8 +10,27 @@
   --border: #e5e5e5;
   --ring: #d97706;
   --accent: #d97706;
-  --font-sans: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  /* Name the Geist @font-face families DIRECTLY — do NOT go through
+     var(--font-geist-sans). next/font scopes --font-geist-sans to the class it
+     puts on <body>, but --font-sans lives here on :root (body's ancestor), so
+     var(--font-geist-sans) is undefined in this scope → the whole declaration
+     is invalid-at-computed-value-time → --font-sans silently becomes empty and
+     the page falls through to html's `ui-sans-serif, system-ui, sans-serif`
+     default chain. On iOS that `system-ui` resolves to San Francisco (no CJK
+     glyphs, and it blocks per-glyph fallback), so every 中文 rendered as
+     .notdef tofu while Latin quietly rendered in SF, not Geist. (Verified on
+     iOS 26 simulator + computed-style probe: body font-family came back as the
+     system-ui chain, --font-sans empty.) The @font-face family names
+     ("GeistSans"/"GeistMono") are global and resolve everywhere, so we name
+     them directly and append explicit CJK system fonts before the `sans-serif`
+     generic. No `system-ui`/`-apple-system` keyword. Mirrors --font-serif.
+     No web font for CJK (CN-CDN survival rule) — system CJK fonts only. */
+  --font-sans:
+    "GeistSans", "GeistSans Fallback", "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "Source Han Sans SC", "Noto Sans CJK SC",
+    "Noto Sans SC", sans-serif;
+  --font-mono:
+    "GeistMono", "PingFang SC", "Microsoft YaHei", ui-monospace, monospace;
   /* Deliberate serif stack: Latin (Georgia/Cambria) + explicit CJK serif
      fallbacks so font-serif headlines render consistently for 中文 too.
      No web font (CN-CDN survival rule) — system serifs only. */
