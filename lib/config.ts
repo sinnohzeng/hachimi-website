@@ -2,22 +2,22 @@
  * ============================================================================
  * SITE CONFIGURATION
  * ============================================================================
- * Master Hachimi (哈基米道长) — cat-themed Mei Hua Yi Shu divination companion.
+ * Master Hachimi (哈基米道长): cat-themed Mei Hua Yi Shu divination companion.
  * Brand Hachimi.ai · operated by 元竹投資有限公司 (Yuenchuk Investment Limited, HK).
  */
 
 /**
  * Single source of truth for site identity. lib/metadata.ts builds the Next.js
- * Metadata object from this — do NOT redeclare name/description elsewhere or
+ * Metadata object from this. Do NOT redeclare name/description elsewhere or
  * they will drift.
  */
 export const siteConfig = {
   name: "Master Hachimi",
   // Longer descriptive form used as the SEO <title> / OpenGraph title.
-  seoTitle: "Master Hachimi — 哈基米道长 · Cat Divination",
-  tagline: "Ask the cat. Feel heard.",
+  seoTitle: "Master Hachimi · 哈基米道长",
+  tagline: "When it's a lot, cast a hexagram.",
   description:
-    "Master Hachimi (哈基米道长) is a cat-themed Mei Hua Yi Shu divination companion. Share two numbers and your question; the cat-master casts a hexagram and reads it back in a warm voice — for entertainment and emotional comfort, never prediction. No account, history stays on your device, no ads.",
+    "Master Hachimi (哈基米道长) is a cat-themed Mei Hua Yi Shu divination companion. Share two numbers and the question on your mind; the cat-master casts a hexagram and reads it back in a warm voice, helping you untangle the knot and find one small step. For entertainment and emotional comfort only, never prediction. No account, history stays on your device, no ads.",
   url: "https://hachimi.ai",
   email: "support@hachimi.ai",
   creator: "@sinnohzeng",

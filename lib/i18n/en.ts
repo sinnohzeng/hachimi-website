@@ -13,13 +13,37 @@ export const en: Translations = {
 
   hero: {
     badge: "Coming soon to the App Store",
-    headline1: "Ask the cat.",
-    headline2: "He hears you out.",
+    headline1: "When it's a lot,",
+    headline2: "cast a hexagram.",
     description:
-      "Two numbers and the question on your mind. Master Hachimi casts a Mei Hua Yi Shu hexagram and reads it back in his warm, cat-master voice. It won't predict your future. It just gives what's on your mind an honest answer. For entertainment and emotional comfort only.",
+      "Two numbers and the question you're sitting with. Master Hachimi casts a Mei Hua Yi Shu hexagram and reads it back to you, helping you untangle the knot and find one small thing you can do right now. For entertainment and emotional comfort only.",
     cta: "See how it works",
     securityBadge:
-      "No account. History stays on your device. Your question is sent to Google Gemini to write the reading. See the Privacy Policy.",
+      "No account. Your reading history stays on your device. To write a reading, your question is sent to Google Gemini. See the Privacy Policy.",
+  },
+
+  scenarioCards: {
+    title: "Which one is it today?",
+    subtitle: "Three matters people bring most, or ask anything",
+    cards: [
+      {
+        name: "Find an Item",
+        blurb: "Get back what you lost",
+        line: "Something that matters has gone missing, and you've turned the place over.",
+      },
+      {
+        name: "Relationship",
+        blurb: "Sort out a knot with someone",
+        line: "Things went prickly with someone, and it won't leave your mind.",
+      },
+      {
+        name: "Decision",
+        blurb: "Make a call between two hard options",
+        line: "Two roads in front of you, and you can't quite choose.",
+      },
+    ],
+    openName: "Free Question",
+    openBlurb: "Anything else on your mind? Just ask Master Hachimi.",
   },
 
   featureCards: {
@@ -32,27 +56,27 @@ export const en: Translations = {
           "Type the question you're sitting with, then give two numbers off the top of your head. About thirty seconds. No sign-up, no account.",
       },
       {
-        title: "A hexagram is cast, the same way every time",
+        title: "One cast, the same every time",
         description:
-          "Your two numbers and the hour set a Mei Hua Yi Shu hexagram by a fixed, deterministic method. Same inputs, same cast. Honest math, no randomness, no tricks.",
+          "Your two numbers and the hour set a Mei Hua Yi Shu hexagram by a fixed method. The same numbers and hour always give the same hexagram. Steady and sure.",
       },
       {
         title: "Master Hachimi reads it back",
         description:
-          "The cat-master answers in his own warm voice: what the hexagram shows, a gentle take, and a small blessing. Each reading is saved to your local history to revisit.",
+          "Ears up, the cat-master reads it to you line by line: what the hexagram shows, a gentle take, and a small blessing to close. Each reading is saved to your local history to revisit.",
       },
     ],
   },
 
   featureHighlight: {
-    title1: "A cat-master who",
-    title2: "actually listens",
+    title1: "A cat-master who'll",
+    title2: "sit and think it through with you",
     description:
-      "Master Hachimi isn't a fortune teller. He's a cat who takes your question seriously and answers with warmth. The moment you ask, you already feel a little less alone.",
+      "Master Hachimi takes your question seriously. You talk, he listens; once the hexagram is cast, he reads it to you line by line, helping you settle the noise and land on one small thing you can do right now.",
     features: [
-      "Deterministic cast, from a fixed method rather than a dice roll",
-      "Readings written by Google Gemini, shaped by the hexagram, the hour, and your question",
-      "History on your device: every reading saved locally, nothing kept on our servers",
+      "The cast follows a fixed method: the same numbers and hour always give the same hexagram, not a dice roll",
+      "Readings written by Google Gemini, shaped by your hexagram, the hour, and your question",
+      "Your history stays on your device; our backend keeps none of your questions or readings",
     ],
     cta: "See how it works",
     phonePlaceholder: "Master Hachimi reading",
@@ -60,13 +84,13 @@ export const en: Translations = {
 
   principles: {
     badge: "Why Master Hachimi?",
-    title1: "Comfort you can return to,",
-    title2: "without the hard sell",
+    title1: "Always here when you need him,",
+    title2: "and knows where to stop",
     description:
-      "What you get is a genuine answer, never prediction, fate-changing, or luck. The cast is honest math; the reading is a kind voice. That's the whole promise.",
+      "Master Hachimi sits with you, and never predicts, changes fate, or turns luck. The reading is a few kind words. That's all of it, nothing more.",
     cta: "Read the privacy policy",
     cards: [
-      "Deterministic casting",
+      "Same inputs, same hexagram",
       "For entertainment only",
       "No account, privacy-first",
       "A warm cat companion",
@@ -78,7 +102,7 @@ export const en: Translations = {
       { label: "Hexagrams" },
       { label: "Reading facets" },
       { label: "Accounts needed" },
-      { label: "Languages" },
+      { label: "Interface languages" },
     ],
   },
 

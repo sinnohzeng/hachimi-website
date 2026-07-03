@@ -5,6 +5,7 @@ import { FinalCTA } from "@/components/final-cta";
 import { Footer } from "@/components/footer";
 import { Hero } from "@/components/hero";
 import { Principles } from "@/components/principles";
+import { ScenarioCards } from "@/components/scenario-cards";
 import { Stats } from "@/components/stats";
 import { getTranslations } from "@/lib/i18n";
 import type { Metadata } from "next";
@@ -42,6 +43,7 @@ export default async function HomePage({
     <>
       <main id="main-content" className="flex-1">
         <Hero t={t} />
+        <ScenarioCards t={t} />
         <FeatureCards t={t} />
         <FeatureHighlight t={t} locale={locale} />
         <Principles t={t} locale={locale} />

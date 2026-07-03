@@ -20,6 +20,19 @@ export type Translations = {
     securityBadge: string;
   };
 
+  // Scenario Cards (three heart-matters + open question)
+  scenarioCards: {
+    title: string;
+    subtitle: string;
+    cards: {
+      name: string;
+      blurb: string;
+      line: string;
+    }[];
+    openName: string;
+    openBlurb: string;
+  };
+
   // Feature Cards
   featureCards: {
     title: string;
