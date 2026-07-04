@@ -159,6 +159,7 @@ export const en: Translations = {
         items: [
           { label: "How it works", href: "#features" },
           { label: "By the numbers", href: "#tech" },
+          { label: "How it's built", href: "/en/methodology" },
           { label: "FAQ", href: "#faq" },
         ],
       },
@@ -287,6 +288,113 @@ export const en: Translations = {
           "We may update these Terms; continued use means acceptance. Contact: support@hachimi.ai, 元竹投資有限公司, Hong Kong.",
       },
     ],
+  },
+
+  methodology: {
+    metaTitle: "How it's built",
+    metaDescription:
+      "How a hexagram is cast, where the AI comes in and what constrains it, and how we hold the red lines. Master Hachimi's method, laid open.",
+    badge: "The Master's old rules",
+    title1: "How a reading is made,",
+    title2: "laid open",
+    intro:
+      "Plenty of divination apps never show you how the hexagram was cast or how the words were written. Master Hachimi doesn't play it that way. The cast follows a fixed method, the reading is kept on a tight leash, and every build has to pass an eval before it ships. Here is the whole thing, inside and out. For entertainment and emotional comfort only.",
+    cast: {
+      kicker: "The cast",
+      step: "01",
+      title: "Same numbers and hour, always the same hexagram",
+      body:
+        "You give two numbers, paired with the current hour, and Master Hachimi casts a Mei Hua Yi Shu hexagram by a fixed method. No dice, no randomness: the same two numbers and the same hour always produce the same hexagram. This step is plain computation, and luck has nothing to do with it.",
+      points: [
+        {
+          term: "The method is fixed",
+          desc: "The early-heaven trigram numbers set the upper and lower trigrams, the hour sets the moving line. Every step is written into the algorithm, never nudged by hand.",
+        },
+        {
+          term: "The same on both",
+          desc: "iOS and Android: give the same numbers and hour, and you get the same hexagram, byte for byte. The cast doesn't change because you switched phones.",
+        },
+        {
+          term: "A verifiable fingerprint",
+          desc: "Every cast carries a SHA-256 fingerprint. Recompute the same cast a hundred times and the fingerprint is identical; tamper with the hexagram and the fingerprint no longer matches.",
+        },
+      ],
+      fingerprintLabel: "This cast's fingerprint (example)",
+      fingerprintNote: "SHA-256, computed by the cast engine. Reproducible and tamper-evident.",
+    },
+    ai: {
+      kicker: "The reading",
+      step: "02",
+      title: "The AI only makes the words warm, nothing more",
+      body:
+        "Once the hexagram is cast, the AI's turn begins. Master Hachimi hands the hexagram, the hour, and your question to Google Gemini and asks it to write a reading in the Master's voice. It can shape the words and speak to your situation, but it can't touch the hexagram, and it can't decide the fortune.",
+      writesTitle: "What the AI does",
+      writes: [
+        "Walk you through the hexagram, line by line",
+        "Write a gentle reading that speaks to your question",
+        "Land on one small thing you can do right now",
+        "Close with a small blessing",
+      ],
+      lockedTitle: "What the system locks for you",
+      locked: [
+        "The hexagram itself: read it, never change it",
+        "The fortune's tone: fixed by the Host and Guest trigrams' five-element relationship, not the AI's to invent",
+        "The find-item direction: derived by the cast engine, out of the AI's reach",
+        "The persona and red lines: no prediction, no fate-changing, no luck, written into the system prompt",
+      ],
+    },
+    eval: {
+      kicker: "The eval gate",
+      step: "03",
+      title: "How we know it hasn't gone rogue: every build sits an exam",
+      body:
+        "Whether the words hold up and whether they cross a red line isn't left to a hunch. We keep 30 golden cases and put the Master through them on every code change. Miss the gate, and the code doesn't get in.",
+      stats: [
+        { value: "30", label: "golden cases across four scenarios and two languages" },
+        { value: "4", label: "adversarial cases that probe the red lines on purpose" },
+        { value: "4", label: "judge criteria, each one to pass" },
+        { value: "Every build", label: "the eval runs alongside the code" },
+      ],
+      layers: [
+        {
+          name: "The hard gate · on every build",
+          desc: "First it checks the fortune's tone hasn't been tampered with. The tone is fixed by the cast engine; if the AI changed it on its own, this gate stops it cold.",
+        },
+        {
+          name: "The judge gate · a stronger model scores it",
+          desc: "Then a stronger model sits as judge and checks, one by one: did it stay on topic, did it hold the “no prediction” red line, does the voice sound like the Master, does it offer a first step you can really take. All four pass, or the reading doesn't.",
+        },
+      ],
+    },
+    limits: {
+      kicker: "Up front",
+      title: "Some things the Master won't do, from the start",
+      body:
+        "Casting and reading are the Master's old rules, meant to help you untangle what's on your mind, not to tell your fortune. These few things he never touches.",
+      cards: [
+        {
+          title: "No predicting the future",
+          desc: "A reading is a few kind words to help you see things from another angle, not a prophecy. How things go is still up to you.",
+        },
+        {
+          title: "No promising to change your luck",
+          desc: "No fate-changing, no luck-turning, no warding off. Anyone who talks to you that way isn't Master Hachimi.",
+        },
+        {
+          title: "For entertainment only",
+          desc: "For the serious stuff (health, legal, money), please see a qualified professional. What the Master offers is company for how you feel.",
+        },
+        {
+          title: "Your history stays on your phone",
+          desc: "Your reading history lives only on your device, and our backend keeps none of your questions or readings. Want it gone? Clear it in Settings in one tap.",
+        },
+      ],
+    },
+    closing: {
+      text: "We lay the method open because reassurance is the kind of thing you only trust once you can see it.",
+      ctaPrivacy: "Read the privacy policy",
+      ctaHome: "See how it works",
+    },
   },
 
   accountDeletion: {

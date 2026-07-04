@@ -73,6 +73,14 @@ The app is free to use, and there are no ads.
 
 Everything lives on your device, so you delete your history in the app's Settings, or simply uninstall the app. There is no server-side copy to delete.
 
+## How we keep it honest (Methodology)
+
+The website has a dedicated transparency page ([/en/methodology](https://hachimi.ai/en/methodology), [/zh/methodology](https://hachimi.ai/zh/methodology)) that lays the method open:
+
+- The cast: two numbers plus the current hour set a Mei Hua Yi Shu hexagram by a fixed method. Same numbers and same hour always give the same hexagram, byte for byte across iOS and Android. Each cast carries a SHA-256 fingerprint, so it is reproducible and tamper-evident.
+- The reading: only after the cast does the AI (Google Gemini) write the reading, in Master Hachimi's voice. The AI can shape the words but cannot touch the hexagram or decide the fortune. The fortune's tone is fixed by the Host and Guest trigrams' five-element relationship, the find-item direction is derived by the cast engine, and the persona and red lines (no prediction / fate-changing / luck) are held in the system prompt.
+- The eval gate: 30 golden cases across four scenarios and two languages, plus 4 adversarial cases that probe the red lines, run on every code change. A hard gate first checks the fortune's tone was not tampered with; then a stronger model sits as judge on four criteria (on topic, no "prediction" red line, voice holds, offers a real first step). Model selection is data-driven against this golden set, not by feel.
+
 ## Technical Notes
 
 - Native iOS client (thin client): no third-party LLM key on device; casts and readings come from the unified backend.

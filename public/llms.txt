@@ -25,6 +25,7 @@ Official website: hachimi.ai.
 
 - [Official Website (English)](https://hachimi.ai/en): Product landing page
 - [Official Website (Chinese)](https://hachimi.ai/zh): 中文产品页
+- [Methodology](https://hachimi.ai/en/methodology): How a hexagram is cast (deterministic, SHA-256 fingerprint), where the AI is constrained, and the dual-layer eval gate
 - [Privacy Policy](https://hachimi.ai/en/privacy): How we handle your data
 - [Terms & Disclaimer](https://hachimi.ai/en/terms): Entertainment-only terms
 - [Delete Data](https://hachimi.ai/en/data-deletion): How to delete your data

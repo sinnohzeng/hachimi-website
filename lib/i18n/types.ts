@@ -118,6 +118,54 @@ export type Translations = {
     }[];
   };
 
+  // Methodology / transparency page (/{locale}/methodology)
+  methodology: {
+    metaTitle: string;
+    metaDescription: string;
+    badge: string;
+    title1: string;
+    title2: string;
+    intro: string;
+    cast: {
+      kicker: string;
+      step: string;
+      title: string;
+      body: string;
+      points: { term: string; desc: string }[];
+      fingerprintLabel: string;
+      fingerprintNote: string;
+    };
+    ai: {
+      kicker: string;
+      step: string;
+      title: string;
+      body: string;
+      writesTitle: string;
+      writes: string[];
+      lockedTitle: string;
+      locked: string[];
+    };
+    eval: {
+      kicker: string;
+      step: string;
+      title: string;
+      body: string;
+      stats: { value: string; label: string }[];
+      layers: { name: string; desc: string }[];
+    };
+    limits: {
+      kicker: string;
+      title: string;
+      body: string;
+      cards: { title: string; desc: string }[];
+    };
+    closing: {
+      text: string;
+      ctaPrivacy: string;
+      ctaHome: string;
+    };
+  };
+
   // Legal pages (Account & data / Data deletion) + Support
   accountDeletion: LegalPage;
   dataDeletion: LegalPage;
