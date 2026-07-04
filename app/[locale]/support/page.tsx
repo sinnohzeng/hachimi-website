@@ -16,7 +16,7 @@ export async function generateMetadata({
   return localizedPageMetadata({
     locale,
     path: "/support",
-    title: `${t.support.title} — Hachimi`,
+    title: t.support.title,
     description:
       locale === "zh"
         ? "需要帮助？联系哈基米道长支持团队，或查看常见问题。"

@@ -48,6 +48,15 @@
 - 场景（以 App `ScenarioStyle.swift` 为权威）：寻物 Find an Item｜关系 Relationship｜决策 Decision｜自由问事 Free Question。
 - 吉凶：大吉 / 吉 / 平 / 凶 / 大凶 → Great Fortune / Fortune / Neutral / Adverse / Very Adverse。
 
+## 五之补、英文可读性与标题（2026-07-04 新增）
+
+- **目标阅读水平**：美国初中 6 至 8 年级（Flesch-Kincaid ≤ 8）。营销文案避复杂词与难词，短句、常用词、主动语态。**简化不得增长文案**，每条改写词数不超过原句（hero 副标题尤其紧凑）。
+- **只留一个特殊词**：全站英文只保留 `hexagram`（卦象）一个品牌术语，首现用最省的白话同位语点明（如 `a six-line sign`）；`Mei Hua Yi Shu` 首现括注 `Plum Blossom divination`；`Host / Guest / Changing line / trigram` 只在深层的 `How it's built` 页出现，出现即配一句白话小注。
+- **SEO keywords 例外**：`config.keywords`（divination / I Ching / oracle / numerology 等）是给搜索引擎的检索词，不是正文，保留不降级；用户可见的 `config.description` 照常压简。
+- **法律页轻改保义**：隐私 / 条款 / 删除数据只拆长句、换非法律难词（deterministic → fixed、solely → only 等），合规术语与法律含义一律不动。
+- **称谓演出**：猫与温柔用动作画面演（竖耳朵、翻卦书），不用 gentle / warm 形容词自我标注，不用已废弃的 `the cat` / `cat-master`。
+- **页面标题分隔符**：`<title>` 统一用管道符 `|`（对标 Stripe / Notion 实测，头部产品无一用 em-dash `—`）。品牌只在根 `title.template` 出现一次，各页只给页名，禁各页手写品牌后缀（会与模板叠成双重品牌）。
+
 ## 六、能说 / 不能说清单
 
 **能说**：起一卦、陪你、理出个头绪、能做的第一步、一点踏实的底气、心里有个着落、卦象给的方向参考、慢慢找、别急、仅供娱乐与情绪陪伴。

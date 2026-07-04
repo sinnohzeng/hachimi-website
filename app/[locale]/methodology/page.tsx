@@ -16,7 +16,7 @@ export async function generateMetadata({
   return localizedPageMetadata({
     locale,
     path: "/methodology",
-    title: `${t.methodology.metaTitle} — Master Hachimi`,
+    title: t.methodology.metaTitle,
     description: t.methodology.metaDescription,
   });
 }

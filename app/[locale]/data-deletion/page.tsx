@@ -16,11 +16,11 @@ export async function generateMetadata({
   return localizedPageMetadata({
     locale,
     path: "/data-deletion",
-    title: `${t.dataDeletion.title} — Hachimi`,
+    title: t.dataDeletion.title,
     description:
       locale === "zh"
         ? "了解如何删除你在 Hachimi 中的个人数据。"
-        : "Learn how to delete your personal data from Hachimi.",
+        : "Learn how to delete your data from Master Hachimi.",
   });
 }
 

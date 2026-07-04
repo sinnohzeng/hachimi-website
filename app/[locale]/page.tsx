@@ -22,7 +22,7 @@ export async function generateMetadata({
   const t = getTranslations(locale);
   return localizedPageMetadata({
     locale,
-    title: `Hachimi — ${t.hero.headline1} ${t.hero.headline2}`,
+    title: `${t.hero.headline1} ${t.hero.headline2}`,
     description: t.hero.description,
   });
 }

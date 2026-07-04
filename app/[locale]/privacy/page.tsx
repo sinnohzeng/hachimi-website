@@ -16,11 +16,11 @@ export async function generateMetadata({
   return localizedPageMetadata({
     locale,
     path: "/privacy",
-    title: `${t.privacy.title} — Hachimi`,
+    title: t.privacy.title,
     description:
       locale === "zh"
-        ? "Hachimi 隐私政策 — 了解我们如何收集、使用和保护你的数据。"
-        : "Hachimi Privacy Policy — Learn how we collect, use, and protect your data.",
+        ? "Hachimi 隐私政策。了解我们如何收集、使用和保护你的数据。"
+        : "Master Hachimi Privacy Policy. Learn what data we use and how we keep it safe.",
   });
 }
 
