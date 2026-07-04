@@ -93,3 +93,9 @@
 - 官网：`hachimi-website/lib/i18n/zh.ts` + `en.ts`（结构 `types.ts`）；站点身份 `lib/config.ts` + `lib/metadata.ts`；心事卡组件 `components/scenario-cards.tsx`。
 - iOS：`hachimi-ios/App/Localizable.xcstrings`（key = 简中原文，改 key 必须同步引用它的 Swift 字面量）+ `App/Support/ScenarioStyle.swift`、`FortuneStyle.swift`、`DirectionCardState.swift`、`ReadingExport.swift`（导出模板豁免 xcstrings）等。
 - Android：`hachimi-android`（原生重建中），字符串资源按本篇对齐。
+
+## 九、语种覆盖（有意差异，勿当漂移）
+
+- **两 App（iOS / Android）**：界面三语一等（简体 / 繁体 / English），UI 字符串全覆盖。
+- **官网 / 后端**：只简体 + English。官网限定能生成内容的语种（后端解读只产简 / 英）；繁体是 App 侧 UI 便利层，繁体界面下 AI 正文回落简体（界面仍繁体）。
+- 故官网 / 后端无繁体为自洽设计、非跨端漂移，审计勿据此报缺失；未来若后端产繁体解读，再同步官网。
