@@ -283,7 +283,7 @@ export const en: Translations = {
       {
         heading: "6. License",
         content:
-          "The App is licensed, not sold, to you for personal, non-commercial use, under Apple's Standard End User License Agreement (or a custom EULA where provided), in addition to these Terms.",
+          "The App is licensed, not sold, to you for personal, non-commercial use, under the applicable app store's standard end-user license agreement (Apple's Standard EULA on iOS; the Google Play Terms of Service on Android) or a custom EULA where provided, in addition to these Terms.",
       },
       {
         heading: "7. Changes & contact",
@@ -310,7 +310,7 @@ export const en: Translations = {
       points: [
         {
           term: "The method is fixed",
-          desc: "The two numbers set the top and bottom trigrams, the three-line halves of the hexagram, and the hour sets the changing line. Every step is written into the code, never nudged by hand.",
+          desc: "The two numbers set the top and bottom trigrams, the three-line halves of the hexagram, and the two numbers together with the hour set the changing line. Every step is written into the code, never nudged by hand.",
         },
         {
           term: "The same on both",
@@ -349,7 +349,7 @@ export const en: Translations = {
       kicker: "The test gate",
       step: "03",
       title: "How we make sure it still follows the rules: every update takes a test",
-      body: "Whether the words hold up, and whether they cross a red line, isn't left to a hunch. We keep 30 set test cases and run the Master through them on every code change. Miss the gate, and the code doesn't get in.",
+      body: "Whether the words hold up, and whether they cross a red line, isn't left to a hunch. Every build first has to clear a hard gate, and the code doesn't get in if it fails. On top of that, a stronger model judges the readings against 30 set test cases on a regular pass, so quality gets real scrutiny, not just a hunch.",
       stats: [
         {
           value: "30",
@@ -360,7 +360,7 @@ export const en: Translations = {
           label: "hard cases built to test the red lines on purpose",
         },
         { value: "4", label: "checks by the judge, each one to pass" },
-        { value: "Every build", label: "the test runs alongside the code" },
+        { value: "Every build", label: "the hard gate runs with the code" },
       ],
       layers: [
         {
