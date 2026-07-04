@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, type ReactNode } from "react";
-import { ChevronRight, Shield } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { motion } from "motion/react";
 import * as THREE from "three";
 import type { Translations } from "@/lib/i18n";
@@ -298,16 +298,6 @@ export function Hero({ t }: { t: Translations }): ReactNode {
                 <ChevronRight className="w-4 h-4" />
               </a>
             </motion.div>
-
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 1.1, ease }}
-              className="flex items-center gap-2 mt-6 text-sm text-white/60"
-            >
-              <Shield className="w-4 h-4" />
-              {t.hero.securityBadge}
-            </motion.p>
           </div>
         </motion.div>
       </div>

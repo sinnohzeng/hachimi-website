@@ -16,10 +16,8 @@ export const en: Translations = {
     headline1: "When it's a lot,",
     headline2: "cast a hexagram.",
     description:
-      "Two numbers and the question you're sitting with. Master Hachimi casts a Mei Hua Yi Shu hexagram and reads it back to you, helping you untangle the knot and find one small thing you can do right now. For entertainment and emotional comfort only.",
+      "Two numbers, one question. Master Hachimi reads the hexagram with you and finds one small step to take now.",
     cta: "See how it works",
-    securityBadge:
-      "No account. Your reading history stays on your device. To write a reading, your question is sent to a third-party AI service (currently Google Gemini). See the Privacy Policy.",
   },
 
   scenarioCards: {
@@ -75,7 +73,7 @@ export const en: Translations = {
       "Master Hachimi takes your question seriously. You talk, he listens; once the hexagram is cast, he reads it to you line by line, helping you settle the noise and land on one small thing you can do right now.",
     features: [
       "The cast follows a fixed method: the same numbers and hour always give the same hexagram, not a dice roll",
-      "Readings written by a third-party AI service (currently Google Gemini), shaped by your hexagram, the hour, and your question",
+      "Readings written by a third-party AI service, shaped by your hexagram, the hour, and your question",
       "Your history stays on your device; our backend keeps none of your questions or readings",
     ],
     cta: "See how it works",
@@ -118,12 +116,12 @@ export const en: Translations = {
       {
         question: "How is a reading made?",
         answer:
-          "You give two numbers and a question. Our backend casts a Mei Hua Yi Shu hexagram from the numbers and the current hour using a fixed, deterministic method. It then sends the hexagram, the hour, your question, and your chosen scenario to a third-party AI service (currently Google Gemini), which writes the reading in Master Hachimi's voice. The two cast numbers themselves are never sent to that third-party service.",
+          "You give two numbers and a question. Our backend casts a Mei Hua Yi Shu hexagram from the numbers and the current hour using a fixed, deterministic method. It then sends the hexagram, the hour, your question, and your chosen scenario to a third-party AI service, which writes the reading in Master Hachimi's voice. The two cast numbers themselves are never sent to that third-party service.",
       },
       {
         question: "What about my privacy?",
         answer:
-          "There is no account and no login. Your reading history is stored only on your device, and the backend keeps nothing: no question text, no user database. To write a reading, your question is sent to a third-party AI service (currently Google Gemini). The current provider commits not to train on your content on its paid tier; see the Privacy Policy. You consent before your first reading and can withdraw any time.",
+          "There is no account and no login. Your reading history is stored only on your device, and the backend keeps nothing: no question text, no user database. To write a reading, your question is sent to a third-party AI service; the provider's identity and commitments are set out in the Privacy Policy. You consent before your first reading and can withdraw any time.",
       },
       {
         question: "Which platforms is it on?",
@@ -327,7 +325,7 @@ export const en: Translations = {
       step: "02",
       title: "The AI only makes the words warm, nothing more",
       body:
-        "Once the hexagram is cast, the AI's turn begins. Master Hachimi hands the hexagram, the hour, and your question to a third-party AI service (currently Google Gemini) and asks it to write a reading in the Master's voice. As for which model exactly, we pick whatever proves steadier in testing, and it's all written down in the Privacy Policy. It can shape the words and speak to your situation, but it can't touch the hexagram, and it can't decide the fortune.",
+        "Once the hexagram is cast, the AI's turn begins. Master Hachimi hands the hexagram, the hour, and your question to a third-party AI service and asks it to write a reading in the Master's voice. As for which model exactly, we pick whatever proves steadier in testing, and it's all written down in the Privacy Policy. It can shape the words and speak to your situation, but it can't touch the hexagram, and it can't decide the fortune.",
       writesTitle: "What the AI does",
       writes: [
         "Walk you through the hexagram, line by line",
@@ -447,7 +445,7 @@ export const en: Translations = {
       {
         heading: "Data sent to the third-party AI service",
         content:
-          "To write a reading, your question + the hexagram + the hour are sent to a third-party AI service (currently Google Gemini), on its paid tier. The current provider commits not to use your content to improve its products on the paid tier and to retain it only briefly for abuse prevention; see the Privacy Policy. To request deletion of content already sent, email support@hachimi.ai and we can initiate a request on your behalf.",
+          "To write a reading, your question + the hexagram + the hour are sent to a third-party AI service. The current provider's identity, and its commitments such as not training on paid-tier content and retaining it only briefly for abuse prevention, are set out in the Privacy Policy. To request deletion of content already sent, email support@hachimi.ai and we can initiate a request on your behalf.",
       },
       {
         heading: "Contact",
@@ -507,7 +505,7 @@ export const en: Translations = {
       {
         heading: "Third-party AI service retention",
         content:
-          "Your question is sent to a third-party AI service (currently Google Gemini) to generate each reading. The current provider does not train on paid-tier content and retains it only briefly for abuse prevention; see the Privacy Policy. Email support@hachimi.ai to request deletion of content already sent.",
+          "Your question is sent to a third-party AI service to generate each reading. The current provider's identity, and its commitments such as not training on paid-tier content and retaining it only briefly for abuse prevention, are set out in the Privacy Policy. Email support@hachimi.ai to request deletion of content already sent.",
       },
       {
         heading: "Contact",
@@ -545,7 +543,7 @@ export const en: Translations = {
       {
         heading: "Where does my data go?",
         content:
-          "Your question and the cast are sent to our backend and forwarded to a third-party AI service (currently Google Gemini) to generate the reading; nothing is sent without your consent. Your reading history is stored only on your device. See our Privacy Policy.",
+          "Your question and the cast are sent to our backend and forwarded to a third-party AI service to generate the reading; nothing is sent without your consent. Your reading history is stored only on your device. See our Privacy Policy.",
       },
       {
         heading: "How do I delete my data?",

@@ -17,7 +17,6 @@ export type Translations = {
     headline2: string;
     description: string;
     cta: string;
-    securityBadge: string;
   };
 
   // Scenario Cards (three heart-matters + open question)
