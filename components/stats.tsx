@@ -12,7 +12,7 @@ const statsData = [
   { value: 64, suffix: "" },
   { value: 6, suffix: "" },
   { value: 0, suffix: "" },
-  { value: 2, suffix: "" },
+  { value: 3, suffix: "" },
 ];
 
 function AnimatedCounter({
@@ -77,10 +77,10 @@ export function Stats({ t }: { t: Translations }): ReactNode {
   return (
     <section
       id="tech"
-      className="relative w-full scroll-mt-28 bg-muted pb-16 sm:pb-20 overflow-hidden"
+      className="bg-muted relative w-full scroll-mt-28 overflow-hidden pb-16 sm:pb-20"
     >
       <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        <div className="grid grid-cols-2 gap-8 lg:grid-cols-4 lg:gap-12">
           {statsData.map((stat, index) => (
             <motion.div
               key={t.stats.items[index]?.label ?? index}
@@ -90,13 +90,10 @@ export function Stats({ t }: { t: Translations }): ReactNode {
               transition={{ duration: 0.5, delay: 0.1 * index, ease }}
               className="flex flex-col items-center text-center"
             >
-              <div className="text-4xl sm:text-5xl lg:text-6xl font-medium font-serif tracking-tight text-foreground mb-2">
-                <AnimatedCounter
-                  value={stat.value}
-                  suffix={stat.suffix}
-                />
+              <div className="text-foreground mb-2 font-serif text-4xl font-medium tracking-tight sm:text-5xl lg:text-6xl">
+                <AnimatedCounter value={stat.value} suffix={stat.suffix} />
               </div>
-              <p className="text-sm sm:text-base text-foreground/70">
+              <p className="text-foreground/70 text-sm sm:text-base">
                 {t.stats.items[index]?.label}
               </p>
             </motion.div>

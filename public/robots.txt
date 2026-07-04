@@ -1,0 +1,9 @@
+# Content Signals policy (https://contentsignals.org/): search, ai-input, and ai-train are all set to yes.
+User-Agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Allow: /
+Disallow: /api/
+Disallow: /private/
+
+Host: https://hachimi.ai
+Sitemap: https://hachimi.ai/sitemap.xml

@@ -28,15 +28,19 @@ export const baseMetadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "/",
+    canonical: "/en",
     languages: {
       en: "/en",
       zh: "/zh",
+      // en is the routing default: "/" redirects to /en and getTranslations()
+      // falls back to en, so x-default mirrors that.
+      "x-default": "/en",
     },
   },
   openGraph: {
     type: "website",
     locale: "en_US",
+    alternateLocale: "zh_CN",
     url: siteConfig.url,
     title: siteConfig.seoTitle,
     description: siteConfig.description,
@@ -57,3 +61,74 @@ export const baseMetadata: Metadata = {
   },
   manifest: "/site.webmanifest",
 };
+
+const ogLocales: Record<string, string> = {
+  en: "en_US",
+  zh: "zh_CN",
+};
+
+/**
+ * Per-locale page metadata shared by every app/[locale] page:
+ * - canonical + hreflang pairs, including x-default → the /en variant
+ *   (en is the routing fallback, see baseMetadata.alternates);
+ * - og:locale mapped to en_US / zh_CN per language;
+ * - page-accurate OG / Twitter title, description and og:url, so the shared
+ *   1200x630 card (app/opengraph-image.tsx) is paired with per-page text
+ *   instead of inheriting the site-wide defaults from baseMetadata.
+ *
+ * `path` is the locale-relative path ("" for the home page, "/privacy", …).
+ */
+export function localizedPageMetadata({
+  locale,
+  path = "",
+  title,
+  description,
+}: {
+  locale: string;
+  path?: string;
+  title: string;
+  description: string;
+}): Metadata {
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `/${locale}${path}`,
+      languages: {
+        en: `/en${path}`,
+        zh: `/zh${path}`,
+        "x-default": `/en${path}`,
+      },
+    },
+    openGraph: {
+      type: "website",
+      locale: ogLocales[locale] ?? "en_US",
+      url: `${siteConfig.url}/${locale}${path}`,
+      title,
+      description,
+      siteName: siteConfig.seoTitle,
+      // Declaring openGraph here replaces the parent's resolved object, which
+      // would drop the root file-convention image (app/opengraph-image.tsx),
+      // so it is re-declared explicitly. Dimensions/MIME mirror that route's
+      // exported size/contentType (1200x630 PNG).
+      images: [
+        {
+          url: "/opengraph-image",
+          width: 1200,
+          height: 630,
+          type: "image/png",
+          alt: siteConfig.name,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      creator: siteConfig.creator,
+      // Same reasoning as openGraph.images: app/twitter-image.tsx re-exports
+      // the 1200x630 PNG card.
+      images: ["/twitter-image"],
+    },
+  };
+}

@@ -1,6 +1,8 @@
 import { Footer } from "@/components/footer";
 import { LegalPageContent } from "@/components/legal-page";
+import { BreadcrumbStructuredData } from "@/components/structured-data";
 import { getTranslations } from "@/lib/i18n";
+import { localizedPageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
@@ -11,20 +13,15 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = getTranslations(locale);
-  return {
+  return localizedPageMetadata({
+    locale,
+    path: "/data-deletion",
     title: `${t.dataDeletion.title} — Hachimi`,
     description:
       locale === "zh"
         ? "了解如何删除你在 Hachimi 中的个人数据。"
         : "Learn how to delete your personal data from Hachimi.",
-    alternates: {
-      canonical: `/${locale}/data-deletion`,
-      languages: {
-        en: "/en/data-deletion",
-        zh: "/zh/data-deletion",
-      },
-    },
-  };
+  });
 }
 
 export default async function DataDeletionPage({
@@ -37,6 +34,11 @@ export default async function DataDeletionPage({
 
   return (
     <>
+      <BreadcrumbStructuredData
+        locale={locale}
+        path="/data-deletion"
+        pageTitle={t.dataDeletion.title}
+      />
       <main id="main-content" className="flex-1">
         <LegalPageContent data={t.dataDeletion} />
       </main>

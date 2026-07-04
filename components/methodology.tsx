@@ -61,16 +61,18 @@ function StepHeader({
   return (
     <div className="flex flex-col">
       <motion.div {...fade()} className="flex items-center gap-3">
-        <span className="font-mono text-sm font-medium text-accent">{step}</span>
-        <span className="h-px w-8 bg-accent/40" />
-        <span className="inline-flex items-center gap-1.5 text-sm font-medium tracking-wide text-foreground/60">
+        <span className="text-accent font-mono text-sm font-medium">
+          {step}
+        </span>
+        <span className="bg-accent/40 h-px w-8" />
+        <span className="text-foreground/60 inline-flex items-center gap-1.5 text-sm font-medium tracking-wide">
           <span className="text-accent">{icon}</span>
           {kicker}
         </span>
       </motion.div>
       <motion.h2
         {...fade(0.05)}
-        className="mt-5 font-serif text-2xl leading-snug font-medium text-foreground sm:text-3xl"
+        className="text-foreground mt-5 font-serif text-2xl leading-snug font-medium sm:text-3xl"
       >
         {title}
       </motion.h2>
@@ -90,28 +92,27 @@ export function Methodology({
   return (
     <div className="relative w-full">
       {/* ---- Hero ---- */}
-      <section className="relative w-full overflow-hidden bg-background pt-32 pb-16 sm:pt-40 sm:pb-24">
+      <section className="bg-background relative w-full overflow-hidden pt-32 pb-16 sm:pt-40 sm:pb-24">
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-accent/[0.07] to-transparent"
+          className="from-accent/[0.07] pointer-events-none absolute inset-x-0 top-0 h-64 bg-gradient-to-b to-transparent"
         />
         <div className="relative mx-auto max-w-3xl px-6 sm:px-8">
           <motion.div {...fade()} className="flex items-center gap-2">
-            <Sparkles className="h-4 w-4 text-accent" strokeWidth={1.5} />
-            <span className="text-sm font-medium text-foreground/60">
+            <Sparkles className="text-accent h-4 w-4" strokeWidth={1.5} />
+            <span className="text-foreground/60 text-sm font-medium">
               {m.badge}
             </span>
           </motion.div>
           <motion.h1
             {...fade(0.05)}
-            className="mt-6 font-serif text-4xl leading-tight font-medium text-foreground sm:text-5xl"
+            className="text-foreground mt-6 font-serif text-4xl leading-tight font-medium sm:text-5xl"
           >
-            {m.title1}
-            <span className="italic">{m.title2}</span>
+            {m.title1} <span className="italic">{m.title2}</span>
           </motion.h1>
           <motion.p
             {...fade(0.1)}
-            className="mt-6 text-base leading-relaxed text-foreground/70 sm:text-lg"
+            className="text-foreground/70 mt-6 text-base leading-relaxed sm:text-lg"
           >
             {m.intro}
           </motion.p>
@@ -119,7 +120,7 @@ export function Methodology({
       </section>
 
       {/* ---- Step 01 · The cast ---- */}
-      <section className="relative w-full border-t border-border bg-muted/40 py-20 sm:py-28">
+      <section className="border-border bg-muted/40 relative w-full border-t py-20 sm:py-28">
         <div className="mx-auto max-w-3xl px-6 sm:px-8">
           <StepHeader
             step={m.cast.step}
@@ -129,7 +130,7 @@ export function Methodology({
           />
           <motion.p
             {...fade(0.1)}
-            className="mt-6 leading-relaxed text-foreground/70"
+            className="text-foreground/70 mt-6 leading-relaxed"
           >
             {m.cast.body}
           </motion.p>
@@ -143,11 +144,11 @@ export function Methodology({
               >
                 <span
                   aria-hidden="true"
-                  className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
+                  className="bg-accent mt-2 h-1.5 w-1.5 shrink-0 rounded-full"
                 />
                 <div>
-                  <h3 className="font-medium text-foreground">{p.term}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-foreground/60">
+                  <h3 className="text-foreground font-medium">{p.term}</h3>
+                  <p className="text-foreground/60 mt-1 text-sm leading-relaxed">
                     {p.desc}
                   </p>
                 </div>
@@ -158,18 +159,18 @@ export function Methodology({
           {/* Fingerprint chip */}
           <motion.div
             {...fade(0.2)}
-            className="mt-10 rounded-lg border border-accent/20 bg-accent/[0.04] p-5"
+            className="border-accent/20 bg-accent/[0.04] mt-10 rounded-lg border p-5"
           >
             <div className="flex items-center gap-2">
-              <Fingerprint className="h-4 w-4 text-accent" strokeWidth={1.5} />
-              <span className="text-xs font-medium tracking-wide text-foreground/70">
+              <Fingerprint className="text-accent h-4 w-4" strokeWidth={1.5} />
+              <span className="text-foreground/70 text-xs font-medium tracking-wide">
                 {m.cast.fingerprintLabel}
               </span>
             </div>
-            <p className="mt-3 overflow-x-auto font-mono text-xs leading-relaxed break-all text-foreground/80">
+            <p className="text-foreground/80 mt-3 overflow-x-auto font-mono text-xs leading-relaxed break-all">
               {SAMPLE_FINGERPRINT}
             </p>
-            <p className="mt-3 text-xs text-foreground/50">
+            <p className="text-foreground/50 mt-3 text-xs">
               {m.cast.fingerprintNote}
             </p>
           </motion.div>
@@ -177,7 +178,7 @@ export function Methodology({
       </section>
 
       {/* ---- Step 02 · The reading ---- */}
-      <section className="relative w-full border-t border-border bg-background py-20 sm:py-28">
+      <section className="border-border bg-background relative w-full border-t py-20 sm:py-28">
         <div className="mx-auto max-w-3xl px-6 sm:px-8">
           <StepHeader
             step={m.ai.step}
@@ -187,7 +188,7 @@ export function Methodology({
           />
           <motion.p
             {...fade(0.1)}
-            className="mt-6 leading-relaxed text-foreground/70"
+            className="text-foreground/70 mt-6 leading-relaxed"
           >
             {m.ai.body}
           </motion.p>
@@ -196,11 +197,14 @@ export function Methodology({
             {/* What the AI writes */}
             <motion.div
               {...fade(0.12)}
-              className="rounded-lg border border-border bg-muted/30 p-6"
+              className="border-border bg-muted/30 rounded-lg border p-6"
             >
               <div className="mb-4 flex items-center gap-2">
-                <PenLine className="h-4 w-4 text-foreground/60" strokeWidth={1.5} />
-                <h3 className="text-sm font-semibold text-foreground">
+                <PenLine
+                  className="text-foreground/60 h-4 w-4"
+                  strokeWidth={1.5}
+                />
+                <h3 className="text-foreground text-sm font-semibold">
                   {m.ai.writesTitle}
                 </h3>
               </div>
@@ -208,7 +212,7 @@ export function Methodology({
                 {m.ai.writes.map((item) => (
                   <li
                     key={item}
-                    className="text-sm leading-relaxed text-foreground/70"
+                    className="text-foreground/70 text-sm leading-relaxed"
                   >
                     {item}
                   </li>
@@ -219,11 +223,11 @@ export function Methodology({
             {/* What the system locks */}
             <motion.div
               {...fade(0.18)}
-              className="rounded-lg border border-accent/30 bg-accent/[0.05] p-6"
+              className="border-accent/30 bg-accent/[0.05] rounded-lg border p-6"
             >
               <div className="mb-4 flex items-center gap-2">
-                <Lock className="h-4 w-4 text-accent" strokeWidth={1.5} />
-                <h3 className="text-sm font-semibold text-foreground">
+                <Lock className="text-accent h-4 w-4" strokeWidth={1.5} />
+                <h3 className="text-foreground text-sm font-semibold">
                   {m.ai.lockedTitle}
                 </h3>
               </div>
@@ -231,7 +235,7 @@ export function Methodology({
                 {m.ai.locked.map((item) => (
                   <li
                     key={item}
-                    className="text-sm leading-relaxed text-foreground/80"
+                    className="text-foreground/80 text-sm leading-relaxed"
                   >
                     {item}
                   </li>
@@ -243,7 +247,7 @@ export function Methodology({
       </section>
 
       {/* ---- Step 03 · The eval gate ---- */}
-      <section className="relative w-full border-t border-border bg-muted/40 py-20 sm:py-28">
+      <section className="border-border bg-muted/40 relative w-full border-t py-20 sm:py-28">
         <div className="mx-auto max-w-3xl px-6 sm:px-8">
           <StepHeader
             step={m.eval.step}
@@ -253,7 +257,7 @@ export function Methodology({
           />
           <motion.p
             {...fade(0.1)}
-            className="mt-6 leading-relaxed text-foreground/70"
+            className="text-foreground/70 mt-6 leading-relaxed"
           >
             {m.eval.body}
           </motion.p>
@@ -264,12 +268,12 @@ export function Methodology({
               <motion.div
                 key={s.label}
                 {...fade(0.1 + i * 0.06)}
-                className="flex flex-col rounded-lg border border-border bg-background p-5"
+                className="border-border bg-background flex flex-col rounded-lg border p-5"
               >
-                <span className="font-serif text-2xl font-medium text-foreground sm:text-3xl">
+                <span className="text-foreground font-serif text-2xl font-medium sm:text-3xl">
                   {s.value}
                 </span>
-                <span className="mt-2 text-xs leading-relaxed text-foreground/55">
+                <span className="text-foreground/55 mt-2 text-xs leading-relaxed">
                   {s.label}
                 </span>
               </motion.div>
@@ -282,9 +286,9 @@ export function Methodology({
               <motion.div
                 {...fade(0.14 + i * 0.08)}
                 key={layer.name}
-                className="flex gap-4 rounded-lg border border-border bg-background p-6"
+                className="border-border bg-background flex gap-4 rounded-lg border p-6"
               >
-                <span className="mt-0.5 shrink-0 text-accent">
+                <span className="text-accent mt-0.5 shrink-0">
                   {i === 0 ? (
                     <ShieldCheck className="h-5 w-5" strokeWidth={1.5} />
                   ) : (
@@ -292,8 +296,8 @@ export function Methodology({
                   )}
                 </span>
                 <div>
-                  <h3 className="font-medium text-foreground">{layer.name}</h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-foreground/60">
+                  <h3 className="text-foreground font-medium">{layer.name}</h3>
+                  <p className="text-foreground/60 mt-1.5 text-sm leading-relaxed">
                     {layer.desc}
                   </p>
                 </div>
@@ -304,24 +308,24 @@ export function Methodology({
       </section>
 
       {/* ---- What the Master won't do ---- */}
-      <section className="relative w-full border-t border-border bg-background py-20 sm:py-28">
+      <section className="border-border bg-background relative w-full border-t py-20 sm:py-28">
         <div className="mx-auto max-w-4xl px-6 sm:px-8">
           <div className="mx-auto max-w-3xl">
             <motion.span
               {...fade()}
-              className="text-sm font-medium tracking-wide text-accent"
+              className="text-accent text-sm font-medium tracking-wide"
             >
               {m.limits.kicker}
             </motion.span>
             <motion.h2
               {...fade(0.05)}
-              className="mt-4 font-serif text-2xl leading-snug font-medium text-foreground sm:text-3xl"
+              className="text-foreground mt-4 font-serif text-2xl leading-snug font-medium sm:text-3xl"
             >
               {m.limits.title}
             </motion.h2>
             <motion.p
               {...fade(0.1)}
-              className="mt-5 leading-relaxed text-foreground/70"
+              className="text-foreground/70 mt-5 leading-relaxed"
             >
               {m.limits.body}
             </motion.p>
@@ -332,13 +336,13 @@ export function Methodology({
               <motion.div
                 key={card.title}
                 {...fade(0.1 + i * 0.08)}
-                className="rounded-lg border border-border bg-muted/30 p-6"
+                className="border-border bg-muted/30 rounded-lg border p-6"
               >
                 <span className="text-accent">{limitIcons[i]}</span>
-                <h3 className="mt-4 font-serif text-lg font-medium text-foreground">
+                <h3 className="text-foreground mt-4 font-serif text-lg font-medium">
                   {card.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-foreground/60">
+                <p className="text-foreground/60 mt-2 text-sm leading-relaxed">
                   {card.desc}
                 </p>
               </motion.div>
@@ -348,11 +352,11 @@ export function Methodology({
       </section>
 
       {/* ---- Closing ---- */}
-      <section className="relative w-full border-t border-border bg-muted/40 py-20 sm:py-28">
+      <section className="border-border bg-muted/40 relative w-full border-t py-20 sm:py-28">
         <div className="mx-auto max-w-2xl px-6 text-center sm:px-8">
           <motion.p
             {...fade()}
-            className="font-serif text-xl leading-relaxed font-medium text-foreground sm:text-2xl"
+            className="text-foreground font-serif text-xl leading-relaxed font-medium sm:text-2xl"
           >
             {m.closing.text}
           </motion.p>
@@ -362,14 +366,14 @@ export function Methodology({
           >
             <a
               href={`/${locale}#features`}
-              className="group inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition-colors hover:bg-foreground/90"
+              className="group bg-foreground text-background hover:bg-foreground/90 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-colors"
             >
               {m.closing.ctaHome}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </a>
             <a
               href={`/${locale}/privacy`}
-              className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-medium text-foreground/80 transition-colors hover:border-foreground/30 hover:text-foreground"
+              className="border-border text-foreground/80 hover:border-foreground/30 hover:text-foreground inline-flex items-center gap-2 rounded-full border px-6 py-3 text-sm font-medium transition-colors"
             >
               {m.closing.ctaPrivacy}
             </a>

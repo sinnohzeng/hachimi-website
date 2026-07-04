@@ -1,6 +1,7 @@
 import { Header } from "@/components/header";
 import { Providers } from "@/components/providers";
 import { SkipToContent } from "@/components/skip-to-content";
+import { SiteStructuredData } from "@/components/structured-data";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { generateStaticParams as genParams, getTranslations } from "@/lib/i18n";
 import { GeistSans } from "geist/font/sans";
@@ -23,8 +24,9 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body
-        className={`${GeistSans.variable} ${GeistMono.variable} flex min-h-screen flex-col bg-background font-sans text-foreground antialiased`}
+        className={`${GeistSans.variable} ${GeistMono.variable} bg-background text-foreground flex min-h-screen flex-col font-sans antialiased`}
       >
+        <SiteStructuredData locale={locale} />
         <Providers>
           <SkipToContent />
           <Header locale={locale} t={t} />

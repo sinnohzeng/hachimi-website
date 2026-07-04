@@ -44,8 +44,8 @@ export function SmoothScroll({ children }: { children: ReactNode }): ReactNode {
       const anchor = target.closest('a[href^="#"]');
       if (!anchor) return;
 
-      const href = anchor.getAttribute('href');
-      if (!href || href === '#') return;
+      const href = anchor.getAttribute("href");
+      if (!href || href === "#") return;
 
       const element = document.querySelector(href);
       if (!element) return;
@@ -54,10 +54,10 @@ export function SmoothScroll({ children }: { children: ReactNode }): ReactNode {
       lenis.scrollTo(element as HTMLElement, { offset: -100 });
     }
 
-    document.addEventListener('click', handleAnchorClick);
+    document.addEventListener("click", handleAnchorClick);
 
     return () => {
-      document.removeEventListener('click', handleAnchorClick);
+      document.removeEventListener("click", handleAnchorClick);
       lenis.destroy();
     };
   }, []);

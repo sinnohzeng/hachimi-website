@@ -3,7 +3,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #FAFAF8;
+  --background: #fafaf8;
   --foreground: #0a0a0a;
   --muted: #f3f3ee;
   --muted-foreground: #737373;
@@ -27,8 +27,8 @@
      No web font for CJK (CN-CDN survival rule) — system CJK fonts only. */
   --font-sans:
     "GeistSans", "GeistSans Fallback", "PingFang SC", "Hiragino Sans GB",
-    "Microsoft YaHei", "Source Han Sans SC", "Noto Sans CJK SC",
-    "Noto Sans SC", sans-serif;
+    "Microsoft YaHei", "Source Han Sans SC", "Noto Sans CJK SC", "Noto Sans SC",
+    sans-serif;
   --font-mono:
     "GeistMono", "PingFang SC", "Microsoft YaHei", ui-monospace, monospace;
   /* Deliberate serif stack: Latin (Georgia/Cambria) + explicit CJK serif

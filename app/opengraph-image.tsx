@@ -20,68 +20,66 @@ const logoSrc = `data:image/png;base64,${readFileSync(
 
 export default function OpengraphImage(): ImageResponse {
   return new ImageResponse(
-    (
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        background:
+          "linear-gradient(135deg, #f5d78e 0%, #d97706 55%, #b45309 100%)",
+        color: "#ffffff",
+        fontFamily: "Georgia, serif",
+      }}
+    >
+      <img
+        src={logoSrc}
+        alt=""
+        width={200}
+        height={200}
+        style={{
+          width: 200,
+          height: 200,
+          borderRadius: 44,
+          marginBottom: 28,
+          boxShadow: "0 10px 40px rgba(120,53,15,0.35)",
+        }}
+      />
       <div
         style={{
-          width: "100%",
-          height: "100%",
           display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          background: "linear-gradient(135deg, #f5d78e 0%, #d97706 55%, #b45309 100%)",
-          color: "#ffffff",
-          fontFamily: "Georgia, serif",
+          fontSize: 78,
+          fontWeight: 700,
+          letterSpacing: "-0.02em",
+          textShadow: "0 2px 12px rgba(120,53,15,0.35)",
         }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={logoSrc}
-          alt=""
-          width={200}
-          height={200}
-          style={{
-            width: 200,
-            height: 200,
-            borderRadius: 44,
-            marginBottom: 28,
-            boxShadow: "0 10px 40px rgba(120,53,15,0.35)",
-          }}
-        />
-        <div
-          style={{
-            display: "flex",
-            fontSize: 78,
-            fontWeight: 700,
-            letterSpacing: "-0.02em",
-            textShadow: "0 2px 12px rgba(120,53,15,0.35)",
-          }}
-        >
-          Master Hachimi
-        </div>
-        <div
-          style={{
-            display: "flex",
-            fontSize: 58,
-            fontWeight: 700,
-            marginTop: 6,
-            textShadow: "0 2px 12px rgba(120,53,15,0.35)",
-          }}
-        >
-          哈基米道长
-        </div>
-        <div
-          style={{
-            display: "flex",
-            fontSize: 32,
-            marginTop: 26,
-            color: "rgba(255,255,255,0.92)",
-          }}
-        >
-          {siteConfig.tagline}
-        </div>
+        Master Hachimi
       </div>
-    ),
+      <div
+        style={{
+          display: "flex",
+          fontSize: 58,
+          fontWeight: 700,
+          marginTop: 6,
+          textShadow: "0 2px 12px rgba(120,53,15,0.35)",
+        }}
+      >
+        哈基米道长
+      </div>
+      <div
+        style={{
+          display: "flex",
+          fontSize: 32,
+          marginTop: 26,
+          color: "rgba(255,255,255,0.92)",
+        }}
+      >
+        {siteConfig.tagline}
+      </div>
+    </div>,
     { ...size }
   );
 }

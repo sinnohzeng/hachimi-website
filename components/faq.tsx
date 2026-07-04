@@ -29,7 +29,7 @@ function FAQAccordionItem({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1, ease }}
-      className="border-b border-foreground/10"
+      className="border-foreground/10 border-b"
     >
       <button
         type="button"
@@ -37,18 +37,18 @@ function FAQAccordionItem({
         onClick={onToggle}
         aria-expanded={isOpen}
         aria-controls={answerId}
-        className="w-full flex items-center justify-between py-6 text-left cursor-pointer group"
+        className="group flex w-full cursor-pointer items-center justify-between py-6 text-left"
       >
-        <span className="text-base sm:text-lg font-medium text-foreground pr-8">
+        <span className="text-foreground pr-8 text-base font-medium sm:text-lg">
           {question}
         </span>
-        <div className="shrink-0 w-6 h-6 flex items-center justify-center">
+        <div className="flex h-6 w-6 shrink-0 items-center justify-center">
           <motion.div
             animate={{ rotate: isOpen ? 45 : 0 }}
             transition={{ duration: 0.2, ease }}
           >
             <Plus
-              className="w-5 h-5 text-foreground/60 group-hover:text-foreground transition-colors"
+              className="text-foreground/60 group-hover:text-foreground h-5 w-5 transition-colors"
               aria-hidden="true"
             />
           </motion.div>
@@ -66,7 +66,7 @@ function FAQAccordionItem({
             transition={{ duration: 0.3, ease }}
             className="overflow-hidden"
           >
-            <p className="pb-6 text-foreground/60 leading-relaxed max-w-2xl">
+            <p className="text-foreground/60 max-w-2xl pb-6 leading-relaxed">
               {answer}
             </p>
           </motion.div>
@@ -82,17 +82,17 @@ export function FAQ({ t }: { t: Translations }): ReactNode {
   return (
     <section
       id="faq"
-      className="relative w-full scroll-mt-28 bg-background py-24 sm:py-32 overflow-hidden"
+      className="bg-background relative w-full scroll-mt-28 overflow-hidden py-24 sm:py-32"
     >
       <div className="relative mx-auto max-w-7xl px-0 xl:px-12">
         <div className="px-8 sm:px-12">
-          <div className="max-w-2xl mb-12">
+          <div className="mb-12 max-w-2xl">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease }}
-              className="text-3xl sm:text-4xl lg:text-5xl font-medium font-serif leading-tight text-foreground"
+              className="text-foreground font-serif text-3xl leading-tight font-medium sm:text-4xl lg:text-5xl"
             >
               {t.faq.title}
             </motion.h2>
@@ -101,13 +101,13 @@ export function FAQ({ t }: { t: Translations }): ReactNode {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1, ease }}
-              className="mt-4 text-foreground/60"
+              className="text-foreground/60 mt-4"
             >
               {t.faq.subtitle}
             </motion.p>
           </div>
 
-          <div className="border-t border-foreground/10">
+          <div className="border-foreground/10 border-t">
             {t.faq.items.map((faq, index) => (
               <FAQAccordionItem
                 key={faq.question}
@@ -127,15 +127,15 @@ export function FAQ({ t }: { t: Translations }): ReactNode {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2, ease }}
-            className="mt-12 flex flex-col sm:flex-row sm:items-center gap-4"
+            className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center"
           >
             <p className="text-foreground/60">{t.faq.stillHaveQuestions}</p>
             <a
               href="mailto:support@hachimi.ai"
-              className="group inline-flex items-center gap-2 text-foreground font-medium hover:opacity-70 transition-opacity"
+              className="group text-foreground inline-flex items-center gap-2 font-medium transition-opacity hover:opacity-70"
             >
               {t.faq.contact}
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </a>
           </motion.div>
         </div>

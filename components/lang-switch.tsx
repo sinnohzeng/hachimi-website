@@ -23,29 +23,36 @@ export function LangSwitch({
     : "text-foreground/50 hover:text-foreground/80";
   const separatorClass = isLight ? "text-white/30" : "text-foreground/30";
 
+  // 触控目标 44px：py-3 撑高命中区（20px 行高 + 24px padding），px-3 -mx-1 加宽且不改变视觉间距
   return (
     <div className="flex items-center gap-1 text-sm">
       {locale === "en" ? (
-        <span aria-current="page" className={`px-2 py-1 rounded ${activeClass}`}>
+        <span
+          aria-current="page"
+          className={`-mx-1 rounded px-3 py-3 ${activeClass}`}
+        >
           EN
         </span>
       ) : (
         <a
           href={otherPath}
-          className={`px-2 py-1 rounded transition-colors ${inactiveClass}`}
+          className={`-mx-1 rounded px-3 py-3 transition-colors ${inactiveClass}`}
         >
           EN
         </a>
       )}
       <span className={separatorClass}>|</span>
       {locale === "zh" ? (
-        <span aria-current="page" className={`px-2 py-1 rounded ${activeClass}`}>
+        <span
+          aria-current="page"
+          className={`-mx-1 rounded px-3 py-3 ${activeClass}`}
+        >
           中文
         </span>
       ) : (
         <a
           href={otherPath}
-          className={`px-2 py-1 rounded transition-colors ${inactiveClass}`}
+          className={`-mx-1 rounded px-3 py-3 transition-colors ${inactiveClass}`}
         >
           中文
         </a>

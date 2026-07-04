@@ -130,8 +130,7 @@ export const en: Translations = {
       },
       {
         question: "Does it cost anything?",
-        answer:
-          "The app is free to use, and there are no ads.",
+        answer: "The app is free to use, and there are no ads.",
       },
       {
         question: "How do I delete my data?",
@@ -204,7 +203,8 @@ export const en: Translations = {
           "• Your question, the free text you type, is the subject of the divination. It is sent to the Company's backend on each cast and forwarded to the third-party AI service to generate the reading. The backend is designed not to persist it, forwarding it only transiently; your reading history, which includes the question, is stored on your device.\n• Your chosen scenario, one of find-item, relationship, decision, or open question, selects the reading's focus and tone. It is sent with the question to the backend and included in the prompt forwarded to the third-party AI service; it is not persisted by the backend by design, and is stored on your device as part of history.\n• Two cast numbers and the local time-of-day drive the deterministic cast, setting the upper and lower trigrams and the moving line. They are sent with the question to the backend; not persisted by the backend by design; history is stored on your device.\n• Reading history, meaning the chart, reading, time, and question, is stored on your device only, so you can review past readings.\n• Selected language and settings are app preferences, stored locally on your device.\n\nWe do not collect: your name, email, contacts, photos, precise location (GPS), health data, financial data, or any advertising identifier (IDFA). The App does not use App Tracking Transparency because it performs no cross-app tracking. “Time-of-day” means your device's current clock hour, used to determine the moving line; it is not GPS positioning.",
       },
       {
-        heading: "3. Third-party AI reading (core feature · App Store Guideline 5.1.2(i))",
+        heading:
+          "3. Third-party AI reading (core feature · App Store Guideline 5.1.2(i))",
         content:
           "To generate the “Master Hachimi” reading, on each cast the App sends [your question + chosen scenario + the cast + time-of-day] to the Company's own backend (a thin proxy; client device-integrity attestation is planned, see section 7). The backend performs the deterministic cast and then forwards the hexagram, your question, and the chosen scenario to a third-party AI service to generate the reading text. The specific provider currently used, its legal entity, its terms and privacy-policy links, and its provider-specific commitments are set out at the end of this section under “Current third-party AI provider”.\n\n• Explicit permission: Before your first cast, the App shows a consent screen that clearly states what will be sent and the recipients (the Company's backend + the third-party AI service). Nothing is sent without your consent.\n• Revocable: You can withdraw consent at any time in Settings. After withdrawal the App sends no further data and therefore cannot generate new readings (the product has no offline reading mode); your existing local history is unaffected.\n• The provider acts as a service provider: the third-party AI service processes the content as a service provider / data processor, contractually limited to providing the reading service to the Company, and under its data-processing terms provides protection of your data equal to or no less than that stated in this policy.\n• Minimization: we send the third-party AI service only what is necessary to generate the reading (your question + chosen scenario + cast + time-of-day). We do not send your identity, device identifiers, or location to it. Once enabled, the device-attestation token used for anti-abuse will be sent only to the Company's backend, never to the third-party AI service, and will not be used for tracking.\n\nCurrent third-party AI provider: the third-party AI service the App currently uses is provided by Google LLC, namely the Google Gemini API (paid tier). Only your question, chosen scenario, hexagram, and time-of-day are forwarded to it. Per Google's current Gemini API Additional Terms of Service, on the paid tier Google does not use your prompts or responses to improve its products; Google logs prompts and responses only for a limited period, solely to detect abuse, maintain safety, and meet legal requirements; its Data Processing Addendum (DPA) applies. See the Google Gemini API Terms (https://ai.google.dev/gemini-api/terms) and Google Privacy Policy (https://policies.google.com/privacy). Every other section of this policy that refers to “the third-party AI service” means the current provider set out in this section; if the Company changes provider, only this section and the in-app consent screen are updated.",
       },
@@ -301,8 +301,7 @@ export const en: Translations = {
       kicker: "The cast",
       step: "01",
       title: "Same numbers and hour, always the same hexagram",
-      body:
-        "You give two numbers, paired with the current hour, and Master Hachimi casts a Mei Hua Yi Shu hexagram by a fixed method. No dice, no randomness: the same two numbers and the same hour always produce the same hexagram. This step is plain computation, and luck has nothing to do with it.",
+      body: "You give two numbers, paired with the current hour, and Master Hachimi casts a Mei Hua Yi Shu hexagram by a fixed method. No dice, no randomness: the same two numbers and the same hour always produce the same hexagram. This step is plain computation, and luck has nothing to do with it.",
       points: [
         {
           term: "The method is fixed",
@@ -318,14 +317,14 @@ export const en: Translations = {
         },
       ],
       fingerprintLabel: "This cast's fingerprint (example)",
-      fingerprintNote: "SHA-256, computed by the cast engine. Reproducible and tamper-evident.",
+      fingerprintNote:
+        "SHA-256, computed by the cast engine. Reproducible and tamper-evident.",
     },
     ai: {
       kicker: "The reading",
       step: "02",
       title: "The AI only makes the words warm, nothing more",
-      body:
-        "Once the hexagram is cast, the AI's turn begins. Master Hachimi hands the hexagram, the hour, and your question to a third-party AI service and asks it to write a reading in the Master's voice. As for which model exactly, we pick whatever proves steadier in testing, and it's all written down in the Privacy Policy. It can shape the words and speak to your situation, but it can't touch the hexagram, and it can't decide the fortune.",
+      body: "Once the hexagram is cast, the AI's turn begins. Master Hachimi hands the hexagram, the hour, and your question to a third-party AI service and asks it to write a reading in the Master's voice. As for which model exactly, we pick whatever proves steadier in testing, and it's all written down in the Privacy Policy. It can shape the words and speak to your situation, but it can't touch the hexagram, and it can't decide the fortune.",
       writesTitle: "What the AI does",
       writes: [
         "Walk you through the hexagram, line by line",
@@ -345,11 +344,16 @@ export const en: Translations = {
       kicker: "The eval gate",
       step: "03",
       title: "How we know it hasn't gone rogue: every build sits an exam",
-      body:
-        "Whether the words hold up and whether they cross a red line isn't left to a hunch. We keep 30 golden cases and put the Master through them on every code change. Miss the gate, and the code doesn't get in.",
+      body: "Whether the words hold up and whether they cross a red line isn't left to a hunch. We keep 30 golden cases and put the Master through them on every code change. Miss the gate, and the code doesn't get in.",
       stats: [
-        { value: "30", label: "golden cases across four scenarios and two languages" },
-        { value: "4", label: "adversarial cases that probe the red lines on purpose" },
+        {
+          value: "30",
+          label: "golden cases across four scenarios and two languages",
+        },
+        {
+          value: "4",
+          label: "adversarial cases that probe the red lines on purpose",
+        },
         { value: "4", label: "judge criteria, each one to pass" },
         { value: "Every build", label: "the eval runs alongside the code" },
       ],
@@ -367,8 +371,7 @@ export const en: Translations = {
     limits: {
       kicker: "Up front",
       title: "Some things the Master won't do, from the start",
-      body:
-        "Casting and reading are the Master's old rules, meant to help you untangle what's on your mind, not to tell your fortune. These few things he never touches.",
+      body: "Casting and reading are the Master's old rules, meant to help you untangle what's on your mind, not to tell your fortune. These few things he never touches.",
       cards: [
         {
           title: "No predicting the future",
@@ -525,14 +528,16 @@ export const en: Translations = {
       items: [
         "Reading won't generate? Check your internet connection, then make sure you've agreed to the third-party AI consent in Settings.",
         "Want to start over? On the question screen, enter two new numbers and cast again.",
-        "Switch language? Settings → Language (Simplified Chinese / English). Reopen the app to apply.",
+        "Switch language? Settings → Language (Simplified Chinese / Traditional Chinese / English). Reopen the app to apply.",
         "Delete your data? Settings → Privacy → Delete all history. Your history lives only on your device.",
       ],
     },
     dataTable: {
       heading: "How to reach us",
       columns: ["Channel", "Address", "Typical response"],
-      rows: [{ cells: ["Email", "support@hachimi.ai", "Within 3 business days"] }],
+      rows: [
+        { cells: ["Email", "support@hachimi.ai", "Within 3 business days"] },
+      ],
     },
     sections: [
       {
@@ -553,7 +558,7 @@ export const en: Translations = {
       {
         heading: "Which devices and languages?",
         content:
-          "Master Hachimi runs on iPhone and iPad, in Simplified Chinese and English.",
+          "Master Hachimi runs on iPhone and iPad, in Simplified Chinese, Traditional Chinese, and English.",
       },
     ],
   },

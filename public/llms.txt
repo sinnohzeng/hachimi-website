@@ -1,6 +1,6 @@
 # Master Hachimi (哈基米道长)
 
-> Master Hachimi (哈基米道长 / Master Hachimi) is a cat-themed Mei Hua Yi Shu (Plum Blossom Numerology) divination companion. You share two numbers and the question on your mind; a unified backend deterministically casts an I Ching hexagram, and a third-party AI service (currently Google Gemini, paid tier) writes the reading in the warm voice of "Master Hachimi", a cat-master. It sells emotional value — the feeling of being heard — and is for entertainment and emotional comfort only, never prediction, fate-changing, or luck. No account, reading history stays on your device, no ads. Brand Hachimi.ai, operated by 元竹投資有限公司 (Yuenchuk Investment Limited, Hong Kong). Launching on iOS first, for overseas markets (excluding mainland China).
+> Master Hachimi (哈基米道长 / Master Hachimi) is a cat-themed Mei Hua Yi Shu (Plum Blossom Numerology) divination companion. You share two numbers and the question on your mind; a unified backend deterministically casts an I Ching hexagram, and a third-party AI service (the current provider is disclosed in the Privacy Policy) writes the reading in the warm voice of "Master Hachimi", a cat-master. It sells emotional value — the feeling of being heard — and is for entertainment and emotional comfort only, never prediction, fate-changing, or luck. No account, reading history stays on your device, no ads. Brand Hachimi.ai, operated by 元竹投資有限公司 (Yuenchuk Investment Limited, Hong Kong). Launching on iOS first, for overseas markets (excluding mainland China).
 
 Official website: hachimi.ai.
 
@@ -17,18 +17,26 @@ Official website: hachimi.ai.
 ## Privacy
 
 - The backend is a stateless thin proxy with no user database; it keeps neither your question nor your history.
-- To write a reading, only your question + hexagram + time-of-day are sent to a third-party AI service (currently Google Gemini, paid tier, where the current provider does not train on your content). The two cast numbers are never sent to that third-party service.
+- To write a reading, only your question + chosen scenario + hexagram + time-of-day are sent to a third-party AI service. The current provider's identity, and its commitments such as not training on paid-tier content and retaining it only briefly for abuse prevention, are set out in the Privacy Policy. The two cast numbers are never sent to that third-party service.
 - Reading history lives only on your device; delete it in Settings or uninstall the app.
-- Client calls are verified with device-integrity attestation (Firebase App Check / Apple App Attest).
+- All network calls use standard HTTPS/TLS; client device-integrity attestation (Firebase App Check / Apple App Attest) to deter abuse is planned (not yet enforced at launch).
 
 ## Links
 
 - [Official Website (English)](https://hachimi.ai/en): Product landing page
 - [Official Website (Chinese)](https://hachimi.ai/zh): 中文产品页
 - [Methodology](https://hachimi.ai/en/methodology): How a hexagram is cast (deterministic, SHA-256 fingerprint), where the AI is constrained, and the dual-layer eval gate
+- [Methodology (Chinese)](https://hachimi.ai/zh/methodology): 中文方法论页
+- [Support](https://hachimi.ai/en/support): Quick fixes, FAQ, and how to reach us
+- [Support (Chinese)](https://hachimi.ai/zh/support): 中文支持页
 - [Privacy Policy](https://hachimi.ai/en/privacy): How we handle your data
+- [Privacy Policy (Chinese)](https://hachimi.ai/zh/privacy): 中文隐私政策
 - [Terms & Disclaimer](https://hachimi.ai/en/terms): Entertainment-only terms
+- [Terms & Disclaimer (Chinese)](https://hachimi.ai/zh/terms): 中文条款与免责声明
+- [Account & Your Data](https://hachimi.ai/en/account-deletion): No account to delete; what's stored on your device and how to clear it
+- [Account & Your Data (Chinese)](https://hachimi.ai/zh/account-deletion): 中文账号与数据页
 - [Delete Data](https://hachimi.ai/en/data-deletion): How to delete your data
+- [Delete Data (Chinese)](https://hachimi.ai/zh/data-deletion): 中文数据删除页
 
 ## Contact
 

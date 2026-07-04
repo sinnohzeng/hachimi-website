@@ -60,8 +60,4 @@ export const siteConfig = {
  */
 export const features = {
   smoothScroll: true,
-  darkMode: true,
-  statsSection: true,
-  blogSection: false,
-  testimonialsSection: false,
 } as const;
