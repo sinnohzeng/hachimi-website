@@ -1,6 +1,6 @@
 # Master Hachimi (哈基米道长)
 
-> Master Hachimi (哈基米道长 / Master Hachimi) is a cat-themed Mei Hua Yi Shu (Plum Blossom Numerology) divination companion. You share two numbers and the question on your mind; a unified backend deterministically casts an I Ching hexagram, and a third-party AI (Google Gemini, paid tier) writes the reading in the warm voice of "Master Hachimi", a cat-master. It sells emotional value — the feeling of being heard — and is for entertainment and emotional comfort only, never prediction, fate-changing, or luck. No account, reading history stays on your device, no ads. Brand Hachimi.ai, operated by 元竹投資有限公司 (Yuenchuk Investment Limited, Hong Kong). Launching on iOS first, for overseas markets (excluding mainland China).
+> Master Hachimi (哈基米道长 / Master Hachimi) is a cat-themed Mei Hua Yi Shu (Plum Blossom Numerology) divination companion. You share two numbers and the question on your mind; a unified backend deterministically casts an I Ching hexagram, and a third-party AI service (currently Google Gemini, paid tier) writes the reading in the warm voice of "Master Hachimi", a cat-master. It sells emotional value — the feeling of being heard — and is for entertainment and emotional comfort only, never prediction, fate-changing, or luck. No account, reading history stays on your device, no ads. Brand Hachimi.ai, operated by 元竹投資有限公司 (Yuenchuk Investment Limited, Hong Kong). Launching on iOS first, for overseas markets (excluding mainland China).
 
 Official website: hachimi.ai.
 
@@ -17,7 +17,7 @@ Official website: hachimi.ai.
 ## Privacy
 
 - The backend is a stateless thin proxy with no user database; it keeps neither your question nor your history.
-- To write a reading, only your question + hexagram + time-of-day are sent to Google Gemini (paid tier — Google does not train on your content). The two cast numbers are never sent to Google.
+- To write a reading, only your question + hexagram + time-of-day are sent to a third-party AI service (currently Google Gemini, paid tier, where the current provider does not train on your content). The two cast numbers are never sent to that third-party service.
 - Reading history lives only on your device; delete it in Settings or uninstall the app.
 - Client calls are verified with device-integrity attestation (Firebase App Check / Apple App Attest).
 

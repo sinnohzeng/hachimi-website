@@ -1,6 +1,6 @@
 # Master Hachimi (哈基米道长)
 
-> Master Hachimi (哈基米道长 / Master Hachimi) is a cat-themed Mei Hua Yi Shu (Plum Blossom Numerology) divination companion. You share two numbers and the question on your mind; a unified backend deterministically casts an I Ching hexagram, and a third-party AI (Google Gemini, paid tier) writes the reading in the warm voice of "Master Hachimi", a cat-master. It sells emotional value — the feeling of being heard — and is for entertainment and emotional comfort only, never prediction, fate-changing, or luck. No account, reading history stays on your device, no ads. Brand Hachimi.ai, operated by 元竹投資有限公司 (Yuenchuk Investment Limited, Hong Kong). Launching on iOS first, for overseas markets (excluding mainland China).
+> Master Hachimi (哈基米道长 / Master Hachimi) is a cat-themed Mei Hua Yi Shu (Plum Blossom Numerology) divination companion. You share two numbers and the question on your mind; a unified backend deterministically casts an I Ching hexagram, and a third-party AI service (currently Google Gemini, paid tier) writes the reading in the warm voice of "Master Hachimi", a cat-master. It sells emotional value — the feeling of being heard — and is for entertainment and emotional comfort only, never prediction, fate-changing, or luck. No account, reading history stays on your device, no ads. Brand Hachimi.ai, operated by 元竹投資有限公司 (Yuenchuk Investment Limited, Hong Kong). Launching on iOS first, for overseas markets (excluding mainland China).
 
 Official website: hachimi.ai.
 
@@ -34,7 +34,7 @@ No prediction, no fate-changing, no luck claims, no health/financial/legal effic
 
 ### No account, privacy-first
 
-There is no account and no login. Reading history is stored only on your device; the backend keeps nothing (no user database, no question persistence). Only your question + hexagram + time-of-day are forwarded to Google Gemini to write the reading — the two cast numbers are never sent to Google.
+There is no account and no login. Reading history is stored only on your device; the backend keeps nothing (no user database, no question persistence). Only your question + hexagram + time-of-day are forwarded to the third-party AI service (currently Google Gemini) to write the reading; the two cast numbers are never sent to that third-party service.
 
 ### A warm cat companion
 
@@ -55,11 +55,11 @@ No. Master Hachimi is for entertainment and emotional comfort only. The readings
 
 ### How is a reading made?
 
-You give two numbers and a question. The backend casts a Mei Hua Yi Shu hexagram from the numbers and the current hour using a fixed, deterministic method — then sends the hexagram, the hour, and your question to the Google Gemini API, which writes the reading in Master Hachimi's voice. The two cast numbers are never sent to Google.
+You give two numbers and a question. The backend casts a Mei Hua Yi Shu hexagram from the numbers and the current hour using a fixed, deterministic method — then sends the hexagram, the hour, and your question to a third-party AI service (currently Google Gemini), which writes the reading in Master Hachimi's voice. The two cast numbers are never sent to that third-party service.
 
 ### What about my privacy?
 
-There is no account and no login. Your reading history is stored only on your device, and the backend keeps nothing — no question text, no user database. To write a reading, your question is sent to the Google Gemini paid tier (where Google does not train on your content, and retains it only briefly for abuse prevention). You consent before your first reading and can withdraw any time.
+There is no account and no login. Your reading history is stored only on your device, and the backend keeps nothing — no question text, no user database. To write a reading, your question is sent to a third-party AI service (currently Google Gemini) on its paid tier (where the current provider does not train on your content, and retains it only briefly for abuse prevention). You consent before your first reading and can withdraw any time.
 
 ### Which platforms is it on?
 
@@ -78,14 +78,14 @@ Everything lives on your device, so you delete your history in the app's Setting
 The website has a dedicated transparency page ([/en/methodology](https://hachimi.ai/en/methodology), [/zh/methodology](https://hachimi.ai/zh/methodology)) that lays the method open:
 
 - The cast: two numbers plus the current hour set a Mei Hua Yi Shu hexagram by a fixed method. Same numbers and same hour always give the same hexagram, byte for byte across iOS and Android. Each cast carries a SHA-256 fingerprint, so it is reproducible and tamper-evident.
-- The reading: only after the cast does the AI (Google Gemini) write the reading, in Master Hachimi's voice. The AI can shape the words but cannot touch the hexagram or decide the fortune. The fortune's tone is fixed by the Host and Guest trigrams' five-element relationship, the find-item direction is derived by the cast engine, and the persona and red lines (no prediction / fate-changing / luck) are held in the system prompt.
+- The reading: only after the cast does the AI (currently Google Gemini) write the reading, in Master Hachimi's voice. The AI can shape the words but cannot touch the hexagram or decide the fortune. The fortune's tone is fixed by the Host and Guest trigrams' five-element relationship, the find-item direction is derived by the cast engine, and the persona and red lines (no prediction / fate-changing / luck) are held in the system prompt.
 - The eval gate: 30 golden cases across four scenarios and two languages, plus 4 adversarial cases that probe the red lines, run on every code change. A hard gate first checks the fortune's tone was not tampered with; then a stronger model sits as judge on four criteria (on topic, no "prediction" red line, voice holds, offers a real first step). Model selection is data-driven against this golden set, not by feel.
 
 ## Technical Notes
 
 - Native iOS client (thin client): no third-party LLM key on device; casts and readings come from the unified backend.
 - Unified backend: Hono on Cloudflare Workers (api.hachimi.ai), stateless thin proxy, deterministic Mei Hua Yi Shu cast engine.
-- Reading model: Google Gemini API (paid tier) via the Vercel AI SDK.
+- Reading model: a third-party AI service, currently the Google Gemini API (paid tier), via the Vercel AI SDK; the model choice evolves with the eval matrix and the Privacy Policy disclosure is authoritative.
 - Anti-abuse: device-integrity attestation (Firebase App Check, wrapping Apple App Attest on iOS and Play Integrity on Android) verified by the backend; per-IP rate limiting; request body limits.
 - Local persistence: reading history stored on device only.
 
