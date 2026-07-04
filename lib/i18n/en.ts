@@ -51,12 +51,12 @@ export const en: Translations = {
       {
         title: "Tell the cat what's on your mind",
         description:
-          "Type the question you're sitting with, then give two numbers off the top of your head. About thirty seconds. No sign-up, no account.",
+          "Type the question you're sitting with, then give two numbers off the top of your head. About thirty seconds. No account needed.",
       },
       {
         title: "One cast, the same every time",
         description:
-          "Your two numbers and the hour set a Mei Hua Yi Shu hexagram by a fixed method. The same numbers and hour always give the same hexagram. Steady and sure.",
+          "Your two numbers and the hour set a Mei Hua Yi Shu hexagram by a fixed method. Steady and sure.",
       },
       {
         title: "Master Hachimi reads it back",
@@ -70,11 +70,11 @@ export const en: Translations = {
     title1: "A cat-master who'll",
     title2: "sit and think it through with you",
     description:
-      "Master Hachimi takes your question seriously. You talk, he listens; once the hexagram is cast, he reads it to you line by line, helping you settle the noise and land on one small thing you can do right now.",
+      "Master Hachimi takes your question seriously. You talk, he listens; once the hexagram is cast, he reads it to you line by line, settling the noise. And every reading ends the same way: with one small thing you can do right now. Send that message, tidy that drawer, or write three lines before bed.",
     features: [
       "The cast follows a fixed method: the same numbers and hour always give the same hexagram, not a dice roll",
-      "Readings written by a third-party AI service, shaped by your hexagram, the hour, and your question",
-      "Your history stays on your device; our backend keeps none of your questions or readings",
+      "Readings are written by a third-party AI service, shaped by your hexagram, the hour, and your question",
+      "Your history stays on your device; no account, no ads, no tracking",
     ],
     cta: "See how it works",
     phonePlaceholder: "Master Hachimi reading",
@@ -111,22 +111,27 @@ export const en: Translations = {
       {
         question: "Is this real fortune telling?",
         answer:
-          "No. Master Hachimi is for entertainment and emotional comfort only. The readings are not predictions and make no claim of accuracy, luck-changing, fate-changing, or any other efficacy. For any real decision, please talk to a qualified professional.",
+          "No. Master Hachimi is for entertainment and emotional comfort only; it never predicts, never changes fate, and promises no efficacy. The full boundaries are laid out on the How it's built page and in the Terms.",
       },
       {
         question: "How is a reading made?",
         answer:
-          "You give two numbers and a question. Our backend casts a Mei Hua Yi Shu hexagram from the numbers and the current hour using a fixed, deterministic method. It then sends the hexagram, the hour, your question, and your chosen scenario to a third-party AI service, which writes the reading in Master Hachimi's voice. The two cast numbers themselves are never sent to that third-party service.",
+          "You give two numbers and a question; our backend casts a hexagram with a fixed method, then hands it to a third-party AI service to write the reading in Master Hachimi's voice. The two cast numbers themselves are not sent to that third party; the full pipeline is laid out step by step on the How it's built page.",
       },
       {
         question: "What about my privacy?",
         answer:
-          "There is no account and no login. Your reading history is stored only on your device, and the backend keeps nothing: no question text, no user database. To write a reading, your question is sent to a third-party AI service; the provider's identity and commitments are set out in the Privacy Policy. You consent before your first reading and can withdraw any time.",
+          "There is no account and no login, and your reading history is stored only on your device. To write a reading, your question is sent to a third-party AI service; you consent before your first reading and can withdraw any time. The provider's identity and all details are set out in the Privacy Policy.",
+      },
+      {
+        question: "Do you collect my questions?",
+        answer:
+          "Only while “Help improve readings” is on: the question, scenario, hexagram, and reading are stored under an anonymous install identifier, free text is automatically deleted after 90 days, and they are used solely to make readings better. Never sold, never used for ads, no third-party analytics. Turn it off in Settings any time and everything keeps working. See section 4 of the Privacy Policy.",
       },
       {
         question: "Which platforms is it on?",
         answer:
-          "Master Hachimi is launching on iOS first, with Android to follow. This page goes live ahead of the App Store release.",
+          "Master Hachimi is launching on iOS first, with Android to follow.",
       },
       {
         question: "Does it cost anything?",
@@ -135,7 +140,7 @@ export const en: Translations = {
       {
         question: "How do I delete my data?",
         answer:
-          "Because everything lives on your device, you delete your history in the app's Settings, or simply uninstall the app. There is no server-side copy to delete. See the Delete Data page for details.",
+          "Your history lives on your device: delete it in the app's Settings, or simply uninstall. If you ever enabled “Help improve readings”, uploaded anonymous records are kept for at most 90 days and then automatically deleted, and resetting the install identifier unlinks them immediately. See the Delete Data page for details.",
       },
     ],
     stillHaveQuestions: "Still have questions?",
@@ -185,7 +190,7 @@ export const en: Translations = {
 
   privacy: {
     title: "Privacy Policy",
-    effectiveDate: "Last updated: June 14, 2026",
+    effectiveDate: "Last updated: July 4, 2026",
     sections: [
       {
         heading: "Master Hachimi (哈基米道长)",
@@ -195,28 +200,28 @@ export const en: Translations = {
       {
         heading: "1. Summary",
         content:
-          "• The cast turns your numbers into a hexagram, a deterministic computation performed off-device; the reading is generated by a third-party AI service. Your question, chosen scenario, the two cast numbers, and time-of-day are sent to the Company's backend for casting; thereafter only your question, chosen scenario, the resulting hexagram, and time-of-day are forwarded to the third-party AI service to generate the reading. The two cast numbers are not sent to that third-party service.\n• We do not sell your data, do not use it for advertising, and do not track you across other apps or websites; we use no advertising identifier or IDFA, and no App Tracking Transparency.\n• No account is required to use the App.",
+          "• The cast turns your numbers into a hexagram, a deterministic computation performed off-device; the reading is generated by a third-party AI service. Your question, chosen scenario, the two cast numbers, and time-of-day are sent to the Company's backend for casting; thereafter only your question, chosen scenario, the resulting hexagram, and time-of-day are forwarded to the third-party AI service to generate the reading. The two cast numbers are not sent to that third-party service.\n• If you keep “Help improve readings” on (enabled by default with your first consent, can be turned off separately in Settings at any time), what you asked and the reading are stored on the Company's backend under an anonymous install identifier, with free-text content kept for at most 90 days, solely to improve reading quality; turning it off does not affect any feature.\n• We do not sell your data, do not use it for advertising, and do not track you across other apps or websites; we use no advertising identifier or IDFA, and no App Tracking Transparency.\n• No account is required to use the App.",
       },
       {
         heading: "2. Data we process",
         content:
-          "• Your question, the free text you type, is the subject of the divination. It is sent to the Company's backend on each cast and forwarded to the third-party AI service to generate the reading. The backend is designed not to persist it, forwarding it only transiently; your reading history, which includes the question, is stored on your device.\n• Your chosen scenario, one of find-item, relationship, decision, or open question, selects the reading's focus and tone. It is sent with the question to the backend and included in the prompt forwarded to the third-party AI service; it is not persisted by the backend by design, and is stored on your device as part of history.\n• Two cast numbers and the local time-of-day drive the deterministic cast, setting the upper and lower trigrams and the moving line. They are sent with the question to the backend; not persisted by the backend by design; history is stored on your device.\n• Reading history, meaning the chart, reading, time, and question, is stored on your device only, so you can review past readings.\n• Selected language and settings are app preferences, stored locally on your device.\n\nWe do not collect: your name, email, contacts, photos, precise location (GPS), health data, financial data, or any advertising identifier (IDFA). The App does not use App Tracking Transparency because it performs no cross-app tracking. “Time-of-day” means your device's current clock hour, used to determine the moving line; it is not GPS positioning.",
+          "• Your question, the free text you type, is the subject of the divination. It is sent to the Company's backend on each cast and forwarded to the third-party AI service to generate the reading; when “Help improve readings” is on, it is also used to improve reading quality. In that case the backend stores it under an anonymous install identifier, with the text kept for at most 90 days before automatic deletion (see section 4); when off, the backend stores nothing. Your reading history, which includes the question, always stays on your device.\n• Your chosen scenario, one of find-item, relationship, decision, or open question, selects the reading's focus and tone. It is sent with the question to the backend and included in the prompt forwarded to the third-party AI service; it is stored (or not) with the event per section 4, and is stored on your device as part of history.\n• Two cast numbers and the local time-of-day drive the deterministic cast, setting the upper and lower trigrams and the moving line. They are sent with the question to the backend; stored (or not) with the event per section 4; history is stored on your device.\n• Your feedback on a reading (thumbs up / down) flags reading quality so real unsatisfying samples can help improve the readings. It is sent alongside the corresponding cast event only when “Help improve readings” is on; it stays in your local history, and the server-side vote contains no text and is kept as anonymous statistics.\n• The anonymous install identifier, a random UUID generated on first launch, groups events from the same installation to observe overall quality trends and is never linked to your identity. It is sent only while “Help improve readings” is on; its link to stored events is automatically severed after 90 days, and you can reset it in Settings at any time.\n• Reading history, meaning the chart, reading, time, and question, is stored on your device only, so you can review past readings.\n• Selected language and settings are app preferences, stored locally on your device.\n\nWe do not collect: your name, email, contacts, photos, precise location (GPS), health data, financial data, or any advertising identifier (IDFA). The App does not use App Tracking Transparency because it performs no cross-app tracking. “Time-of-day” means your device's current clock hour, used to determine the moving line; it is not GPS positioning.",
       },
       {
         heading:
           "3. Third-party AI reading (core feature · App Store Guideline 5.1.2(i))",
         content:
-          "To generate the “Master Hachimi” reading, on each cast the App sends [your question + chosen scenario + the cast + time-of-day] to the Company's own backend (a thin proxy; client device-integrity attestation is planned, see section 7). The backend performs the deterministic cast and then forwards the hexagram, your question, and the chosen scenario to a third-party AI service to generate the reading text. The specific provider currently used, its legal entity, its terms and privacy-policy links, and its provider-specific commitments are set out at the end of this section under “Current third-party AI provider”.\n\n• Explicit permission: Before your first cast, the App shows a consent screen that clearly states what will be sent and the recipients (the Company's backend + the third-party AI service). Nothing is sent without your consent.\n• Revocable: You can withdraw consent at any time in Settings. After withdrawal the App sends no further data and therefore cannot generate new readings (the product has no offline reading mode); your existing local history is unaffected.\n• The provider acts as a service provider: the third-party AI service processes the content as a service provider / data processor, contractually limited to providing the reading service to the Company, and under its data-processing terms provides protection of your data equal to or no less than that stated in this policy.\n• Minimization: we send the third-party AI service only what is necessary to generate the reading (your question + chosen scenario + cast + time-of-day). We do not send your identity, device identifiers, or location to it. Once enabled, the device-attestation token used for anti-abuse will be sent only to the Company's backend, never to the third-party AI service, and will not be used for tracking.\n\nCurrent third-party AI provider: the third-party AI service the App currently uses is provided by Google LLC, namely the Google Gemini API (paid tier). Only your question, chosen scenario, hexagram, and time-of-day are forwarded to it. Per Google's current Gemini API Additional Terms of Service, on the paid tier Google does not use your prompts or responses to improve its products; Google logs prompts and responses only for a limited period, solely to detect abuse, maintain safety, and meet legal requirements; its Data Processing Addendum (DPA) applies. See the Google Gemini API Terms (https://ai.google.dev/gemini-api/terms) and Google Privacy Policy (https://policies.google.com/privacy). Every other section of this policy that refers to “the third-party AI service” means the current provider set out in this section; if the Company changes provider, only this section and the in-app consent screen are updated.",
+          "To generate the “Master Hachimi” reading, on each cast the App sends your question, chosen scenario, the cast, and the time-of-day to the Company's own backend (a thin proxy; client device-integrity attestation is planned, see section 7). The backend performs the deterministic cast and then forwards the hexagram, your question, and the chosen scenario to a third-party AI service to generate the reading text. The specific provider currently used, its legal entity, its terms and privacy-policy links, and its provider-specific commitments are set out at the end of this section under “Current third-party AI provider”.\n\n• Explicit permission: Before your first cast, the App shows a consent screen that clearly states what will be sent and the recipients (the Company's backend + the third-party AI service), and also discloses that what you ask will be used to improve reading quality (the event storage described in section 4). Nothing is sent without your consent.\n• Revocable: You can withdraw consent at any time in Settings. After withdrawal the App sends no further data and therefore cannot generate new readings (the product has no offline reading mode); your existing local history is unaffected. Withdrawing consent also stops all “Help improve readings” uploads.\n• “Help improve readings” can be turned off on its own: unlike the full withdrawal above, you can just turn off this one switch in Settings; events stop uploading, and casting and readings keep working exactly as before (see section 4).\n• The provider acts as a service provider: the third-party AI service processes the content as a service provider / data processor, contractually limited to providing the reading service to the Company, and under its data-processing terms provides protection of your data no less than that stated in this policy.\n• Minimization: we send the third-party AI service only what is necessary to generate the reading (your question + chosen scenario + cast + time-of-day). We do not send your identity, device identifiers, or location to it. Once enabled, the device-attestation token used for anti-abuse will be sent only to the Company's backend, never to the third-party AI service, and will not be used for tracking.\n\nCurrent third-party AI provider: the third-party AI service the App currently uses is provided by Google LLC, namely the Google Gemini API (paid tier). Only your question, chosen scenario, hexagram, and time-of-day are forwarded to it. Per Google's current Gemini API Additional Terms of Service, on the paid tier Google does not use your prompts or responses to improve its products; Google logs prompts and responses only for a limited period, solely to detect abuse, maintain safety, and meet legal requirements; its Data Processing Addendum (DPA) applies. See the Google Gemini API Terms (https://ai.google.dev/gemini-api/terms) and Google Privacy Policy (https://policies.google.com/privacy). Every other section of this policy that refers to “the third-party AI service” means the current provider set out in this section; if the Company changes provider, only this section and the in-app consent screen are updated.",
       },
       {
         heading: "4. Backend and data retention",
         content:
-          "• The Company operates a unified backend (thin proxy) to receive cast requests, run the deterministic cast, and forward to the third-party AI service. By design this backend does not persist your question or history (transient forwarding, no user database).\n• Reading history is stored only on your device. Deleting a record or deleting the App removes it; we provide a “Delete all history” action in Settings.\n• Retention and deletion on the third party: the third-party AI service retains paid-tier prompts/responses for a limited period for abuse prevention (see section 3). To request deletion of content already sent to it, contact us at support@hachimi.ai and we can initiate a request via its channels on your behalf, or see the data-request avenues in that provider's privacy policy referenced in section 3.",
+          "• The Company operates a unified backend to receive cast requests, run the deterministic cast, and forward to the third-party AI service. To improve reading quality, this backend stores cast events as a pseudonymous minimal set: only while “Help improve readings” is on, each cast's question, chosen scenario, hexagram, and reading are stored in the Company's own database together with the anonymous install identifier; once you turn the switch off, no new events are stored.\n• 90-day rolling deletion: the question text, any clarification, the full reading text, and the link to the install identifier are automatically deleted or severed by a daily task once a record is 90 days old; after that, only anonymous statistical rows containing no free text remain (scenario distribution, response latency, feedback rates) for long-term quality trends.\n• Quality-evaluation samples: a small number of thumbs-down readings may be selected as internal evaluation material; before use they must be manually rewritten and de-identified (turned into semantically equivalent synthetic cases, never keeping your original wording verbatim), and only the rewritten version enters the evaluation set.\n• No third-party analytics: all of the above runs on the Company's own infrastructure, with no third-party analytics, advertising, or crash-reporting SDKs. Purposes are explicit and limited: improving reading quality with real failure samples, making follow-up questions and question understanding more accurate, and refining how different scenarios are handled; never for advertising, profiling, or sale.\n• Reading history is stored only on your device. Deleting a record or deleting the App removes it; we provide a “Delete all history” action in Settings.\n• Retention and deletion on the third party: the third-party AI service retains paid-tier prompts/responses for a limited period for abuse prevention (see section 3). To request deletion of content already sent to it, contact us at support@hachimi.ai and we can initiate a request via its channels on your behalf, or see the data-request avenues in that provider's privacy policy referenced in section 3.",
       },
       {
         heading: "5. Your rights",
         content:
-          "Depending on where you live (EU/EEA under GDPR, California under CCPA/CPRA, Hong Kong under PDPO, and others), you have rights to access, correct, and delete your personal data, to object to or restrict processing, and to withdraw consent at any time.\n\n• Withdraw consent: turn off the third-party AI reading consent toggle in Settings (see section 3).\n• Access / portability / deletion: because the Company's backend does not store your personal data and the App has no account, the reading history on your device is fully under your control; you can view and delete it in-app, and we hold no server-side copy to export.\n• GDPR: the lawful basis for sending your question and cast to the third-party AI is your consent, which you may withdraw at any time.\n• CCPA/CPRA: we disclose your question only for a business purpose to the third-party AI service acting as a service provider, which is not a “sale” or a “share” for cross-context behavioral advertising.\n• PDPO (Hong Kong): we collect only data necessary for the App's function, use it only for that purpose, and apply transport encryption (TLS) to all network calls (device attestation is planned).\n\nFor any request or question, contact us using the details below; we will respond within the time limits required by applicable law.",
+          "Depending on where you live (EU/EEA under GDPR, California under CCPA/CPRA, Hong Kong under PDPO, and others), you have rights to access, correct, and delete your personal data, to object to or restrict processing, and to withdraw consent at any time.\n\n• Withdraw consent: turn off the third-party AI reading consent toggle in Settings (see section 3); to stop only the “improve” storage, turn off the “Help improve readings” switch instead.\n• Access / portability / deletion: the App has no account; server-side events are keyed only to a resettable anonymous install identifier that we cannot link back to you, so we cannot provide per-person access to or export of server-side copies. The reading history on your device is fully under your control; you can view and delete it in-app. Uploaded event text is kept for at most 90 days and then automatically deleted per section 4, and resetting the identifier in Settings immediately unlinks past events from your installation.\n• GDPR: the lawful basis for sending your question and cast to the third-party AI is your consent, which you may withdraw at any time.\n• CCPA/CPRA: we disclose your question only for a business purpose to the third-party AI service acting as a service provider, which is not a “sale” or a “share” for cross-context behavioral advertising.\n• PDPO (Hong Kong): we collect only data necessary for the App's function, use it only for that purpose, and apply transport encryption (TLS) to all network calls (device attestation is planned).\n\nFor any request or question, contact us using the details below; we will respond within the time limits required by applicable law.",
       },
       {
         heading: "6. Children",
@@ -386,8 +391,8 @@ export const en: Translations = {
           desc: "For the serious stuff (health, legal, money), please see a qualified professional. What the Master offers is company for how you feel.",
         },
         {
-          title: "Your history stays on your phone",
-          desc: "Your reading history lives only on your device, and our backend keeps none of your questions or readings. Want it gone? Clear it in Settings in one tap.",
+          title: "Your history stays on your device",
+          desc: "Your reading history lives only on your device. Want it gone? Clear it in Settings in one tap. How anonymous records are stored and deleted is spelled out in the Privacy Policy.",
         },
       ],
     },
@@ -400,7 +405,7 @@ export const en: Translations = {
 
   accountDeletion: {
     title: "Account & your data",
-    effectiveDate: "Last updated: June 13, 2026",
+    effectiveDate: "Last updated: July 4, 2026",
     intro:
       "Master Hachimi has no accounts, so you use it without signing in and there is no account to delete. Your reading history is stored only on your device. This page explains exactly what is stored, where, and how to clear it.",
     steps: {
@@ -434,7 +439,7 @@ export const en: Translations = {
           cells: [
             "Your question (during a reading)",
             "Sent to our backend, forwarded to the third-party AI service",
-            "Backend keeps nothing; the third-party AI service retains briefly for abuse-prevention (paid tier)",
+            "Stored anonymously only while “Help improve readings” is on, free text auto-deleted after 90 days; the third-party AI service (we use its paid tier) retains it briefly for abuse prevention",
           ],
         },
       ],
@@ -443,7 +448,7 @@ export const en: Translations = {
       {
         heading: "No server-side account",
         content:
-          "Our backend just passes things along: it casts the hexagram, hands your question to the third-party AI service to write the reading, then keeps nothing. No account, no database.",
+          "Our backend casts the hexagram and hands your question to the third-party AI service to write the reading. There is no account. If you enable “Help improve readings”, records are stored under an anonymous install identifier with free text auto-deleted after 90 days; if you keep it off, nothing is stored.",
       },
       {
         heading: "Data sent to the third-party AI service",
@@ -460,9 +465,9 @@ export const en: Translations = {
 
   dataDeletion: {
     title: "Delete your data",
-    effectiveDate: "Last updated: June 13, 2026",
+    effectiveDate: "Last updated: July 4, 2026",
     intro:
-      "Master Hachimi stores your reading history only on your device, and our backend keeps nothing. Deleting your data is entirely in your hands.",
+      "Master Hachimi stores your reading history only on your device; anonymous records exist only while “Help improve readings” is on, with free text auto-deleted after 90 days. Deleting your data is entirely in your hands.",
     steps: {
       heading: "How to delete your data",
       items: [
@@ -494,7 +499,7 @@ export const en: Translations = {
           cells: [
             "Question sent for a reading",
             "Forwarded to the third-party AI service to generate the reading",
-            "Not stored by our backend; briefly retained by the third-party AI service for abuse prevention",
+            "Stored anonymously only while “Help improve readings” is on, with free text auto-deleted after 90 days; briefly retained by the third-party AI service for abuse prevention",
           ],
         },
       ],
@@ -503,7 +508,7 @@ export const en: Translations = {
       {
         heading: "Local data only",
         content:
-          "Reading history and settings live on your device. Delete history in Settings, or uninstall the App to remove it all. There is no cloud account or server-side copy of your data.",
+          "Reading history and settings live on your device. Delete history in Settings, or uninstall the App to remove it all. There is no cloud account; anonymous records exist only while “Help improve readings” is on, kept for at most 90 days (see the Privacy Policy).",
       },
       {
         heading: "Third-party AI service retention",
@@ -520,9 +525,9 @@ export const en: Translations = {
 
   support: {
     title: "Support",
-    effectiveDate: "Last updated: June 14, 2026",
+    effectiveDate: "Last updated: July 4, 2026",
     intro:
-      "Master Hachimi (哈基米道长) is a cat-themed Mei Hua Yi Shu (Plum Blossom numerology) app: give two numbers, cast a quick hexagram, and get a gentle, for-entertainment reading. Need help, have a question, or want to report a bug? We're glad to hear from you.",
+      "Master Hachimi (哈基米道长) is a Mei Hua Yi Shu (Plum Blossom numerology) app: give two numbers, cast a hexagram, and Master Hachimi reads it to you, for entertainment only. Hit a problem, or just want to say something? Drop us an email.",
     steps: {
       heading: "Before you reach out: quick fixes",
       items: [
@@ -553,7 +558,7 @@ export const en: Translations = {
       {
         heading: "How do I delete my data?",
         content:
-          "Open Settings → Privacy → Delete all history, or delete the app. There is no account and no server-side copy. See Account & data.",
+          "Open Settings → Privacy → Delete all history, or delete the app. There is no account; uploaded anonymous records, if any, are kept for at most 90 days and then auto-deleted. See Account & data.",
       },
       {
         heading: "Which devices and languages?",
