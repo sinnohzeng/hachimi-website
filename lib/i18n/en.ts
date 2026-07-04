@@ -327,7 +327,7 @@ export const en: Translations = {
       step: "02",
       title: "The AI only makes the words warm, nothing more",
       body:
-        "Once the hexagram is cast, the AI's turn begins. Master Hachimi hands the hexagram, the hour, and your question to a third-party AI service (currently Google Gemini) and asks it to write a reading in the Master's voice. The model choice evolves with our eval matrix; the Privacy Policy's disclosure is authoritative. It can shape the words and speak to your situation, but it can't touch the hexagram, and it can't decide the fortune.",
+        "Once the hexagram is cast, the AI's turn begins. Master Hachimi hands the hexagram, the hour, and your question to a third-party AI service (currently Google Gemini) and asks it to write a reading in the Master's voice. As for which model exactly, we pick whatever proves steadier in testing, and it's all written down in the Privacy Policy. It can shape the words and speak to your situation, but it can't touch the hexagram, and it can't decide the fortune.",
       writesTitle: "What the AI does",
       writes: [
         "Walk you through the hexagram, line by line",
@@ -442,7 +442,7 @@ export const en: Translations = {
       {
         heading: "No server-side account",
         content:
-          "We don't create an account for you and run no user database. The backend is a stateless proxy: it casts the hexagram and forwards your question to the third-party AI service to write the reading, then keeps nothing.",
+          "Our backend just passes things along: it casts the hexagram, hands your question to the third-party AI service to write the reading, then keeps nothing. No account, no database.",
       },
       {
         heading: "Data sent to the third-party AI service",
