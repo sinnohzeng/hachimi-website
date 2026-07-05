@@ -130,8 +130,7 @@ export const en: Translations = {
       },
       {
         question: "Which platforms is it on?",
-        answer:
-          "Master Hachimi comes to iPhone first, with Android next.",
+        answer: "Master Hachimi comes to iPhone first, with Android next.",
       },
       {
         question: "Does it cost anything?",
@@ -348,7 +347,8 @@ export const en: Translations = {
     eval: {
       kicker: "The test gate",
       step: "03",
-      title: "How we make sure it still follows the rules: every update takes a test",
+      title:
+        "How we make sure it still follows the rules: every update takes a test",
       body: "Whether the words hold up, and whether they cross a red line, isn't left to a hunch. Every build first has to clear a hard gate, and the code doesn't get in if it fails. On top of that, a stronger model judges the readings against 30 set test cases on a regular pass, so quality gets real scrutiny, not just a hunch.",
       stats: [
         {

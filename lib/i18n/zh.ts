@@ -125,8 +125,7 @@ export const zh: Translations = {
       },
       {
         question: "支持哪些平台？",
-        answer:
-          "哈基米道长先上 iOS，安卓随后跟进。",
+        answer: "哈基米道长先上 iOS，安卓随后跟进。",
       },
       {
         question: "需要花钱吗？",
@@ -438,8 +437,7 @@ export const zh: Translations = {
       },
       {
         heading: "联系方式",
-        content:
-          "有疑问？邮件 voice@hachimi.ai，联系元竹投資有限公司，香港。",
+        content: "有疑问？邮件 voice@hachimi.ai，联系元竹投資有限公司，香港。",
       },
     ],
   },
