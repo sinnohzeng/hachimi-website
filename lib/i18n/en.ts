@@ -144,7 +144,7 @@ export const en: Translations = {
       },
     ],
     stillHaveQuestions: "Still have questions?",
-    contact: "Email support@hachimi.ai",
+    contact: "Email voice@hachimi.ai",
   },
 
   finalCta: {
@@ -177,7 +177,7 @@ export const en: Translations = {
         title: "Contact",
         items: [
           { label: "Support", href: "/en/support" },
-          { label: "support@hachimi.ai", href: "mailto:support@hachimi.ai" },
+          { label: "voice@hachimi.ai", href: "mailto:voice@hachimi.ai" },
         ],
       },
     ],
@@ -216,7 +216,7 @@ export const en: Translations = {
       {
         heading: "4. Backend and data retention",
         content:
-          "• The Company operates a unified server to receive cast requests, run the fixed cast, and forward to the third-party AI service. To improve reading quality, this server stores cast events as a pseudonymous minimal set: only while “Help improve readings” is on, each cast's question, chosen scenario, hexagram, and reading are stored in the Company's own database together with the anonymous install identifier; once you turn the switch off, no new events are stored.\n• 90-day rolling deletion: the question text, any clarification, the full reading text, and the link to the install identifier are automatically deleted or severed by a daily task once a record is 90 days old; after that, only anonymous statistical rows containing no free text remain (scenario distribution, response latency, feedback rates) for long-term quality trends.\n• Quality-evaluation samples: a small number of thumbs-down readings may be selected as internal evaluation material; before use they must be manually rewritten and de-identified (turned into semantically equivalent synthetic cases, never keeping your original wording verbatim), and only the rewritten version enters the evaluation set.\n• No third-party analytics: all of the above runs on the Company's own infrastructure, with no third-party analytics, advertising, or crash-reporting SDKs. Purposes are explicit and limited: improving reading quality with real failure samples, making follow-up questions and question understanding more accurate, and refining how different scenarios are handled; never for advertising, profiling, or sale.\n• Reading history is stored only on your device. Deleting a record or deleting the App removes it; we provide a “Delete all history” action in Settings.\n• Retention and deletion on the third party: the third-party AI service retains paid-tier prompts/responses for a limited period for abuse prevention (see section 3). To request deletion of content already sent to it, contact us at support@hachimi.ai and we can initiate a request via its channels on your behalf, or see the data-request avenues in that provider's privacy policy referenced in section 3.",
+          "• The Company operates a unified server to receive cast requests, run the fixed cast, and forward to the third-party AI service. To improve reading quality, this server stores cast events as a pseudonymous minimal set: only while “Help improve readings” is on, each cast's question, chosen scenario, hexagram, and reading are stored in the Company's own database together with the anonymous install identifier; once you turn the switch off, no new events are stored.\n• 90-day rolling deletion: the question text, any clarification, the full reading text, and the link to the install identifier are automatically deleted or severed by a daily task once a record is 90 days old; after that, only anonymous statistical rows containing no free text remain (scenario distribution, response latency, feedback rates) for long-term quality trends.\n• Quality-evaluation samples: a small number of thumbs-down readings may be selected as internal evaluation material; before use they must be manually rewritten and de-identified (turned into semantically equivalent synthetic cases, never keeping your original wording verbatim), and only the rewritten version enters the evaluation set.\n• No third-party analytics: all of the above runs on the Company's own infrastructure, with no third-party analytics, advertising, or crash-reporting SDKs. Purposes are explicit and limited: improving reading quality with real failure samples, making follow-up questions and question understanding more accurate, and refining how different scenarios are handled; never for advertising, profiling, or sale.\n• Reading history is stored only on your device. Deleting a record or deleting the App removes it; we provide a “Delete all history” action in Settings.\n• Retention and deletion on the third party: the third-party AI service retains paid-tier prompts/responses for a limited period for abuse prevention (see section 3). To request deletion of content already sent to it, contact us at voice@hachimi.ai and we can initiate a request via its channels on your behalf, or see the data-request avenues in that provider's privacy policy referenced in section 3.",
       },
       {
         heading: "5. Your rights",
@@ -241,7 +241,7 @@ export const en: Translations = {
       {
         heading: "9. Contact",
         content:
-          "元竹投資有限公司 (Yuenchuk Investment Limited), Hong Kong\nEmail: support@hachimi.ai",
+          "元竹投資有限公司 (Yuenchuk Investment Limited), Hong Kong\nEmail: voice@hachimi.ai",
       },
     ],
   },
@@ -288,7 +288,7 @@ export const en: Translations = {
       {
         heading: "7. Changes & contact",
         content:
-          "We may update these Terms; continued use means acceptance. Contact: support@hachimi.ai, 元竹投資有限公司, Hong Kong.",
+          "We may update these Terms; continued use means acceptance. Contact: voice@hachimi.ai, 元竹投資有限公司, Hong Kong.",
       },
     ],
   },
@@ -453,12 +453,12 @@ export const en: Translations = {
       {
         heading: "Data sent to the third-party AI service",
         content:
-          "To write a reading, your question + the hexagram + the hour are sent to a third-party AI service. The current provider's identity, and its commitments such as not training on paid-tier content and retaining it only briefly for abuse prevention, are set out in the Privacy Policy. To request deletion of content already sent, email support@hachimi.ai and we can initiate a request on your behalf.",
+          "To write a reading, your question + the hexagram + the hour are sent to a third-party AI service. The current provider's identity, and its commitments such as not training on paid-tier content and retaining it only briefly for abuse prevention, are set out in the Privacy Policy. To request deletion of content already sent, email voice@hachimi.ai and we can initiate a request on your behalf.",
       },
       {
         heading: "Contact",
         content:
-          "Questions? Email support@hachimi.ai. 元竹投資有限公司 (Yuenchuk Investment Limited), Hong Kong.",
+          "Questions? Email voice@hachimi.ai. 元竹投資有限公司 (Yuenchuk Investment Limited), Hong Kong.",
       },
     ],
   },
@@ -513,12 +513,12 @@ export const en: Translations = {
       {
         heading: "Third-party AI service retention",
         content:
-          "Your question is sent to a third-party AI service to generate each reading. The current provider's identity, and its commitments such as not training on paid-tier content and retaining it only briefly for abuse prevention, are set out in the Privacy Policy. Email support@hachimi.ai to request deletion of content already sent.",
+          "Your question is sent to a third-party AI service to generate each reading. The current provider's identity, and its commitments such as not training on paid-tier content and retaining it only briefly for abuse prevention, are set out in the Privacy Policy. Email voice@hachimi.ai to request deletion of content already sent.",
       },
       {
         heading: "Contact",
         content:
-          "Email support@hachimi.ai. 元竹投資有限公司 (Yuenchuk Investment Limited), Hong Kong.",
+          "Email voice@hachimi.ai. 元竹投資有限公司 (Yuenchuk Investment Limited), Hong Kong.",
       },
     ],
   },
@@ -541,7 +541,7 @@ export const en: Translations = {
       heading: "How to reach us",
       columns: ["Channel", "Address", "Typical response"],
       rows: [
-        { cells: ["Email", "support@hachimi.ai", "Within 3 business days"] },
+        { cells: ["Email", "voice@hachimi.ai", "Within 3 business days"] },
       ],
     },
     sections: [

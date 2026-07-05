@@ -19,7 +19,7 @@ export const siteConfig = {
   description:
     "Master Hachimi (哈基米道长) is a cat-themed Mei Hua Yi Shu (Plum Blossom divination) app. Give two numbers and your question, and Master Hachimi casts a hexagram, a six-line sign, and reads it with you to find one small step. For entertainment and comfort only, never prediction. No account, your history stays on your phone, no ads.",
   url: "https://hachimi.ai",
-  email: "support@hachimi.ai",
+  email: "voice@hachimi.ai",
   creator: "@sinnohzeng",
   authors: [
     {

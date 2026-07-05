@@ -40,4 +40,4 @@ Official website: hachimi.ai.
 
 ## Contact
 
-- Email: support@hachimi.ai
+- Email: voice@hachimi.ai
