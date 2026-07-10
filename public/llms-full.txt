@@ -1,24 +1,29 @@
 # Master Hachimi (哈基米道长)
 
-> Master Hachimi (哈基米道长 / Master Hachimi) is a cat-themed Mei Hua Yi Shu (Plum Blossom divination) companion. You share two numbers and the question on your mind; a unified backend deterministically casts an I Ching hexagram, and a third-party AI service (the current provider is disclosed in the Privacy Policy) writes the reading in the warm voice of "Master Hachimi", a cat-master. It sells emotional value — the feeling of being heard — and is for entertainment and emotional comfort only, never prediction, fate-changing, or luck. No account, reading history stays on your device, no ads. Brand Hachimi.ai, operated by 元竹投資有限公司 (Yuenchuk Investment Limited, Hong Kong). Launching on iOS first, for overseas markets (excluding mainland China).
+> Master Hachimi (哈基米道长 / Master Hachimi) is a cat-themed Mei Hua Yi Shu (Plum Blossom divination) companion app. You share two numbers and the question on your mind; a unified backend casts an I Ching hexagram by a fixed method, and a third-party AI service (the current provider is disclosed in the Privacy Policy) writes the reading in the warm voice of "Master Hachimi". It offers comfort and one small next step, for entertainment and emotional companionship only, never prediction, fate-changing, or luck. No account, reading history stays on your device, no ads. Brand Hachimi.ai. Available on the App Store (iOS) and Google Play (Android), distributed outside mainland China.
 
-Official website: hachimi.ai.
+Official website: hachimi.ai. Last updated: 2026-07-09.
+
+## Download
+
+- [App Store](https://apps.apple.com/app/id6787621766): Download for iPhone
+- [Google Play](https://play.google.com/store/apps/details?id=com.hachimi.hachimi_app): Download for Android
 
 ## About
 
-Master Hachimi reframes "fortune telling" into "a cat-master takes your question seriously and answers with warmth." It is an emotional-value product: the functional value (a deterministic, trustworthy cast) is the floor; the emotional value (feeling reassured, delighted, and heard) is the main draw. The cat persona lowers the barrier and removes the "superstition" stigma. The red line is firm: it delivers the feeling of being heard and responded to — and never delivers prediction, fate-changing, luck-altering, or any other efficacy. Everything is "for entertainment only."
+Master Hachimi reframes "fortune telling" into "a cat-master takes your question seriously and answers with warmth." It is an emotional-value product: the functional value (a deterministic, trustworthy cast) is the floor; the emotional value (reassurance and company) is the main draw. The cat persona lowers the barrier and removes the "superstition" stigma. The red line is firm: it delivers a moment of company and one small next step, and never delivers prediction, fate-changing, luck-altering, or any other efficacy. Everything is "for entertainment only."
 
 ## How it works
 
-### Ask — tell the cat what's on your mind
+### Ask: tell the cat what's on your mind
 
-Type the question you're sitting with, then give two numbers off the top of your head. About thirty seconds — no sign-up, no account.
+Type the question you're sitting with, then give two numbers off the top of your head. About thirty seconds, no sign-up, no account.
 
-### Cast — a hexagram, the same way every time
+### Cast: a hexagram, the same way every time
 
-Your two numbers and the current hour set a Mei Hua Yi Shu hexagram (upper trigram, lower trigram, and the moving line) by a fixed, deterministic method. Same inputs, same cast — honest math, no randomness, no smoke and mirrors. The cast runs on a unified backend, not on the device.
+Your two numbers and the current hour set a Mei Hua Yi Shu hexagram (upper trigram, lower trigram, and the moving line) by a fixed, deterministic method. Same inputs, same cast: honest math, no randomness, no smoke and mirrors. The cast runs on a unified backend, not on the device.
 
-### Read — Master Hachimi reads it back
+### Read: Master Hachimi reads it back
 
 The cat-master responds in his own warm voice: a presentation of the hexagram, the body/use (体用) relationship, an overall tone, a gentle reading, a small piece of advice, and a blessing. Each reading is saved to your local reading history (卦历) so you can revisit it.
 
@@ -38,7 +43,7 @@ There is no account and no login, and no third-party analytics SDKs. Reading his
 
 ### A warm cat companion
 
-A cat-master ("哈基米道长") who actually listens — turning "asking a question" into "having a cat sit with you for a moment."
+A cat-master ("哈基米道长") who actually listens, turning "asking a question" into "having a cat sit with you for a moment."
 
 ## Product Facts
 
@@ -55,7 +60,7 @@ No. Master Hachimi is for entertainment and emotional comfort only. The readings
 
 ### How is a reading made?
 
-You give two numbers and a question. The backend casts a Mei Hua Yi Shu hexagram from the numbers and the current hour using a fixed, deterministic method — then sends the hexagram, the hour, your question, and your chosen scenario to a third-party AI service, which writes the reading in Master Hachimi's voice. The two cast numbers are never sent to that third-party service.
+You give two numbers and a question. The backend casts a Mei Hua Yi Shu hexagram from the numbers and the current hour using a fixed, deterministic method, then sends the hexagram, the hour, your question, and your chosen scenario to a third-party AI service, which writes the reading in Master Hachimi's voice. The two cast numbers are never sent to that third-party service.
 
 ### What about my privacy?
 
@@ -63,7 +68,7 @@ There is no account and no login. Your reading history is stored only on your de
 
 ### Which platforms is it on?
 
-Master Hachimi is launching on iOS first, with Android to follow. The website goes live ahead of the App Store release.
+It's on both. Get it on the [App Store](https://apps.apple.com/app/id6787621766) for iPhone, or on [Google Play](https://play.google.com/store/apps/details?id=com.hachimi.hachimi_app) for Android.
 
 ### Does it cost anything?
 
@@ -71,7 +76,7 @@ The app is free to use, and there are no ads.
 
 ### How do I delete my data?
 
-Everything lives on your device, so you delete your history in the app's Settings, or simply uninstall the app. There is no server-side copy to delete.
+Your history lives on your device: delete it in the app's Settings, or simply uninstall. If you ever turned on "Help improve readings", the anonymous records you sent are kept for at most 90 days, then deleted; resetting your anonymous ID in Settings unlinks them right away.
 
 ## How we keep it honest (Methodology)
 
@@ -91,6 +96,8 @@ The website has a dedicated transparency page ([/en/methodology](https://hachimi
 
 ## Links
 
+- [App Store listing](https://apps.apple.com/app/id6787621766): iOS app
+- [Google Play listing](https://play.google.com/store/apps/details?id=com.hachimi.hachimi_app): Android app
 - [Official Website (English)](https://hachimi.ai/en): Product landing page
 - [Official Website (Chinese)](https://hachimi.ai/zh): 中文产品页
 - [Methodology](https://hachimi.ai/en/methodology): How a hexagram is cast (deterministic, SHA-256 fingerprint), where the AI is constrained, and the dual-layer eval gate
@@ -109,4 +116,4 @@ The website has a dedicated transparency page ([/en/methodology](https://hachimi
 ## Contact
 
 - Email: voice@hachimi.ai
-- 元竹投資有限公司 (Yuenchuk Investment Limited), Hong Kong
+- Brand: Hachimi.ai (the operating company is named in the Privacy Policy and Terms)

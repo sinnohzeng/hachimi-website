@@ -1,94 +1,69 @@
 import type { MetadataRoute } from "next";
+import { pageDates, siteConfig } from "@/lib/config";
 
 export const dynamic = "force-static";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://hachimi.ai";
+// lastModified reads the hand-maintained pageDates (lib/config.ts), never the
+// build time: Cloudflare Pages rebuilds the whole site on every push, so
+// new Date() would stamp every deploy as a sitewide content change and drown
+// the freshness signal crawlers rely on.
+const pages: {
+  path: string;
+  date: string;
+  changeFrequency: "weekly" | "monthly";
+  priority: (locale: string) => number;
+}[] = [
+  {
+    path: "",
+    date: pageDates.home,
+    changeFrequency: "weekly",
+    priority: (locale) => (locale === "en" ? 1 : 0.9),
+  },
+  {
+    path: "/methodology",
+    date: pageDates.methodology,
+    changeFrequency: "monthly",
+    priority: () => 0.6,
+  },
+  {
+    path: "/support",
+    date: pageDates.support,
+    changeFrequency: "monthly",
+    priority: () => 0.4,
+  },
+  {
+    path: "/privacy",
+    date: pageDates.privacy,
+    changeFrequency: "monthly",
+    priority: () => 0.3,
+  },
+  {
+    path: "/terms",
+    date: pageDates.terms,
+    changeFrequency: "monthly",
+    priority: () => 0.3,
+  },
+  {
+    path: "/account-deletion",
+    date: pageDates.accountDeletion,
+    changeFrequency: "monthly",
+    priority: () => 0.3,
+  },
+  {
+    path: "/data-deletion",
+    date: pageDates.dataDeletion,
+    changeFrequency: "monthly",
+    priority: () => 0.3,
+  },
+];
 
-  return [
-    {
-      url: `${baseUrl}/en`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/zh`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/en/methodology`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/zh/methodology`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/en/support`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.4,
-    },
-    {
-      url: `${baseUrl}/zh/support`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.4,
-    },
-    {
-      url: `${baseUrl}/en/privacy`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/zh/privacy`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/en/terms`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/zh/terms`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/en/account-deletion`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/zh/account-deletion`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/en/data-deletion`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/zh/data-deletion`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.3,
-    },
-  ];
+export default function sitemap(): MetadataRoute.Sitemap {
+  return pages.flatMap((page) =>
+    ["en", "zh"].map((locale) => ({
+      url: `${siteConfig.url}/${locale}${page.path}`,
+      lastModified: page.date,
+      changeFrequency: page.changeFrequency,
+      priority: page.priority(locale),
+    }))
+  );
 }

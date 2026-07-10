@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { siteConfig } from "@/lib/config";
+import { pageDates, siteConfig } from "@/lib/config";
 import type { Translations } from "@/lib/i18n";
 
 // JSON-LD structured data (schema.org). Server components only: they render
@@ -60,17 +60,25 @@ export function SiteStructuredData({ locale }: { locale: string }): ReactNode {
             publisher: { "@id": organizationId },
           },
           {
-            "@type": "SoftwareApplication",
+            // Single node with both types: one entity for one product; a
+            // second node would split the app into two competing entities.
+            "@type": ["SoftwareApplication", "MobileApplication"],
             "@id": appId,
             name: siteConfig.seoTitle,
             description: siteConfig.description,
             applicationCategory: "LifestyleApplication",
-            operatingSystem: "iOS",
+            operatingSystem: "iOS, Android",
             offers: {
               "@type": "Offer",
-              price: "0",
+              price: 0,
               priceCurrency: "USD",
             },
+            // Store listings: downloadUrl for LLM parsers, sameAs for entity
+            // consolidation (website + both store pages = one app). No
+            // aggregateRating until real store ratings exist.
+            downloadUrl: [siteConfig.appStore, siteConfig.googlePlay],
+            sameAs: [siteConfig.appStore, siteConfig.googlePlay],
+            dateModified: pageDates.home,
             author: { "@id": organizationId },
             url: `${siteConfig.url}/${locale}`,
             inLanguage,

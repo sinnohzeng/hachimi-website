@@ -1,14 +1,19 @@
 # Master Hachimi (哈基米道长)
 
-> Master Hachimi (哈基米道长 / Master Hachimi) is a cat-themed Mei Hua Yi Shu (Plum Blossom divination) companion. You share two numbers and the question on your mind; a unified backend deterministically casts an I Ching hexagram, and a third-party AI service (the current provider is disclosed in the Privacy Policy) writes the reading in the warm voice of "Master Hachimi", a cat-master. It sells emotional value — the feeling of being heard — and is for entertainment and emotional comfort only, never prediction, fate-changing, or luck. No account, reading history stays on your device, no ads. Brand Hachimi.ai, operated by 元竹投資有限公司 (Yuenchuk Investment Limited, Hong Kong). Launching on iOS first, for overseas markets (excluding mainland China).
+> Master Hachimi (哈基米道长 / Master Hachimi) is a cat-themed Mei Hua Yi Shu (Plum Blossom divination) companion app. You share two numbers and the question on your mind; a unified backend casts an I Ching hexagram by a fixed method, and a third-party AI service (the current provider is disclosed in the Privacy Policy) writes the reading in the warm voice of "Master Hachimi". It offers comfort and one small next step, for entertainment and emotional companionship only, never prediction, fate-changing, or luck. No account, reading history stays on your device, no ads. Brand Hachimi.ai. Available on the App Store (iOS) and Google Play (Android), distributed outside mainland China.
 
-Official website: hachimi.ai.
+Official website: hachimi.ai. Last updated: 2026-07-09.
+
+## Download
+
+- [App Store](https://apps.apple.com/app/id6787621766): Download for iPhone
+- [Google Play](https://play.google.com/store/apps/details?id=com.hachimi.hachimi_app): Download for Android
 
 ## How it works
 
 - [Ask](https://hachimi.ai/en#features): Type the question on your mind and give two numbers off the top of your head. No sign-up, no account.
-- [Cast](https://hachimi.ai/en#features): The two numbers and the current hour set a Mei Hua Yi Shu hexagram by a fixed, deterministic method — same inputs, same cast, honest math.
-- [Read](https://hachimi.ai/en#features): Master Hachimi answers in a warm cat voice — what the hexagram shows, a gentle take, and a small blessing — saved to your local history.
+- [Cast](https://hachimi.ai/en#features): The two numbers and the current hour set a Mei Hua Yi Shu hexagram by a fixed, deterministic method. Same inputs, same cast, honest math.
+- [Read](https://hachimi.ai/en#features): Master Hachimi answers in a warm cat voice, walking through what the hexagram shows, a gentle take, and a small blessing, saved to your local history.
 
 ## Principles
 
@@ -23,6 +28,8 @@ Official website: hachimi.ai.
 
 ## Links
 
+- [App Store listing](https://apps.apple.com/app/id6787621766): iOS app
+- [Google Play listing](https://play.google.com/store/apps/details?id=com.hachimi.hachimi_app): Android app
 - [Official Website (English)](https://hachimi.ai/en): Product landing page
 - [Official Website (Chinese)](https://hachimi.ai/zh): 中文产品页
 - [Methodology](https://hachimi.ai/en/methodology): How a hexagram is cast (deterministic, SHA-256 fingerprint), where the AI is constrained, and the dual-layer eval gate
