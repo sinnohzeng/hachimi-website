@@ -39,7 +39,7 @@ export default async function MethodologyPage({
       <main id="main-content" className="flex-1">
         <Methodology t={t} locale={locale} />
       </main>
-      <Footer t={t} />
+      <Footer t={t} locale={locale} />
     </>
   );
 }

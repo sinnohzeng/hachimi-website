@@ -42,7 +42,7 @@ export default async function PrivacyPage({
       <main id="main-content" className="flex-1">
         <PrivacyPolicy t={t} />
       </main>
-      <Footer t={t} />
+      <Footer t={t} locale={locale} />
     </>
   );
 }

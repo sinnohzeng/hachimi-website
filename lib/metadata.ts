@@ -59,6 +59,11 @@ export const baseMetadata: Metadata = {
     ],
     apple: "/apple-icon.png",
   },
+  // Smart App Banner (iOS Safari): renders <meta name="apple-itunes-app">.
+  itunes: {
+    appId: siteConfig.appStoreId,
+    appArgument: siteConfig.url,
+  },
   manifest: "/site.webmanifest",
 };
 

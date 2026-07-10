@@ -1,9 +1,16 @@
 "use client";
 
 import { type ReactNode } from "react";
+import { StoreBadges } from "@/components/store-badges";
 import type { Translations } from "@/lib/i18n";
 
-export function Footer({ t }: { t: Translations }): ReactNode {
+export function Footer({
+  locale,
+  t,
+}: {
+  locale: string;
+  t: Translations;
+}): ReactNode {
   return (
     <footer className="bg-background text-foreground relative w-full overflow-hidden">
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center px-6 sm:px-8">
@@ -25,7 +32,7 @@ export function Footer({ t }: { t: Translations }): ReactNode {
           <div className="relative w-full px-8 py-12 sm:px-12">
             <div className="flex flex-col justify-between gap-12 lg:flex-row lg:gap-8">
               <div className="lg:max-w-xs">
-                <a href="#" className="flex items-center gap-2">
+                <a href={`/${locale}`} className="flex items-center gap-2">
                   <span className="text-foreground text-lg font-semibold tracking-tight">
                     HACHIMI AI
                   </span>
@@ -33,6 +40,7 @@ export function Footer({ t }: { t: Translations }): ReactNode {
                 <p className="text-foreground/50 mt-4 max-w-xs text-sm">
                   {t.footer.copyright}
                 </p>
+                <StoreBadges locale={locale} t={t} size="sm" className="mt-6" />
               </div>
               <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:gap-16">
                 {t.footer.links.map((section) => (

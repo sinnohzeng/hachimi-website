@@ -3,16 +3,22 @@ import type { Translations } from "./types";
 export const en: Translations = {
   nav: {
     features: "How it works",
-    tech: "By the numbers",
+    methodology: "How it's built",
     faq: "FAQ",
+    download: "Get the app",
   },
   langSwitch: {
     en: "EN",
     zh: "中文",
   },
 
+  store: {
+    appStoreAlt: "Download on the App Store",
+    googlePlayAlt: "Get it on Google Play",
+  },
+
   hero: {
-    badge: "Coming soon to the App Store",
+    badge: "See how it's built",
     headline1: "When it's a lot,",
     headline2: "cast a hexagram.",
     description:
@@ -47,6 +53,7 @@ export const en: Translations = {
   featureCards: {
     title: "How Master Hachimi works",
     subtitle: "two numbers, one question",
+    readMore: "How it's built",
     cards: [
       {
         title: "Tell Master Hachimi what's on your mind",
@@ -76,7 +83,7 @@ export const en: Translations = {
       "Readings are written by a third-party AI service, shaped by your hexagram, the hour, and your question",
       "Your history stays on your device; no account, no ads, no tracking",
     ],
-    cta: "See how it works",
+    cta: "See how it's built",
     phonePlaceholder: "Master Hachimi reading",
   },
 
@@ -130,7 +137,8 @@ export const en: Translations = {
       },
       {
         question: "Which platforms is it on?",
-        answer: "Master Hachimi comes to iPhone first, with Android next.",
+        answer:
+          "It's on both. Get it on the App Store for iPhone, or on Google Play for Android.",
       },
       {
         question: "Does it cost anything?",
@@ -148,20 +156,19 @@ export const en: Translations = {
 
   finalCta: {
     headline: "Got something on your mind?",
-    cta: "See how it works",
+    note: "A cast takes about thirty seconds.",
   },
 
   footer: {
-    copyright:
-      "© 2026 元竹投資有限公司 (Yuenchuk Investment Limited). All rights reserved.",
+    copyright: "© 2026 Hachimi.ai. All rights reserved.",
     links: [
       {
         title: "Product",
         items: [
-          { label: "How it works", href: "#features" },
-          { label: "By the numbers", href: "#tech" },
+          { label: "How it works", href: "/en#features" },
           { label: "How it's built", href: "/en/methodology" },
-          { label: "FAQ", href: "#faq" },
+          { label: "By the numbers", href: "/en#tech" },
+          { label: "FAQ", href: "/en#faq" },
         ],
       },
       {
@@ -169,6 +176,7 @@ export const en: Translations = {
         items: [
           { label: "Privacy Policy", href: "/en/privacy" },
           { label: "Terms & Disclaimer", href: "/en/terms" },
+          { label: "Account & your data", href: "/en/account-deletion" },
           { label: "Delete Data", href: "/en/data-deletion" },
         ],
       },
@@ -194,7 +202,7 @@ export const en: Translations = {
       {
         heading: "Master Hachimi (哈基米道长)",
         content:
-          "Master Hachimi (“the App”, “we”, “us”), brand Hachimi.ai, is operated by 元竹投資有限公司 (Yuenchuk Investment Limited), a company registered in Hong Kong (“the Company”). This Privacy Policy explains what data the App processes, why, and your rights.\n\nPlease understand how the App works first. Master Hachimi is an emotional-companionship product: you provide two numbers and write the question on your mind; the Company's unified server performs a fixed Mei Hua Yi Shu (Plum Blossom divination) cast, and a third-party AI model then generates the reading in the voice of “Master Hachimi”. Unlike many purely on-device divination utilities, generating a reading necessarily sends your question and the cast to the Company's server, which forwards them to a third-party AI service. The specific provider currently used is set out in section 3, “Current third-party AI provider”. This policy discloses that accordingly.",
+          "Master Hachimi (“the App”, “we”, “us”), brand Hachimi.ai, is operated by Yuenchuk Investment Limited, a company registered in Hong Kong (“the Company”). This Privacy Policy explains what data the App processes, why, and your rights.\n\nPlease understand how the App works first. Master Hachimi is an emotional-companionship product: you provide two numbers and write the question on your mind; the Company's unified server performs a fixed Mei Hua Yi Shu (Plum Blossom divination) cast, and a third-party AI model then generates the reading in the voice of “Master Hachimi”. Unlike many purely on-device divination utilities, generating a reading necessarily sends your question and the cast to the Company's server, which forwards them to a third-party AI service. The specific provider currently used is set out in section 3, “Current third-party AI provider”. This policy discloses that accordingly.",
       },
       {
         heading: "1. Summary",
@@ -240,7 +248,7 @@ export const en: Translations = {
       {
         heading: "9. Contact",
         content:
-          "元竹投資有限公司 (Yuenchuk Investment Limited), Hong Kong\nEmail: voice@hachimi.ai",
+          "Yuenchuk Investment Limited, Hong Kong\nEmail: voice@hachimi.ai",
       },
     ],
   },
@@ -252,7 +260,7 @@ export const en: Translations = {
       {
         heading: "Master Hachimi (哈基米道长)",
         content:
-          "By using Master Hachimi (“the App”, brand Hachimi.ai), operated by 元竹投資有限公司 (Yuenchuk Investment Limited, Hong Kong), you agree to these Terms.",
+          "By using Master Hachimi (“the App”, brand Hachimi.ai), operated by Yuenchuk Investment Limited (Hong Kong), you agree to these Terms.",
       },
       {
         heading: "1. Entertainment purpose only",
@@ -287,7 +295,7 @@ export const en: Translations = {
       {
         heading: "7. Changes & contact",
         content:
-          "We may update these Terms; continued use means acceptance. Contact: voice@hachimi.ai, 元竹投資有限公司, Hong Kong.",
+          "We may update these Terms; continued use means acceptance. Contact: voice@hachimi.ai, Yuenchuk Investment Limited, Hong Kong.",
       },
     ],
   },
@@ -299,6 +307,7 @@ export const en: Translations = {
     badge: "The Master's old rules",
     title1: "How a reading is made,",
     title2: "out in the open",
+    lastUpdated: "Last updated: July 9, 2026",
     intro:
       "Plenty of fortune apps never show you how the hexagram was cast or how the words were written. Master Hachimi doesn't play it that way. The cast follows a fixed method, the reading is kept on a short leash, and every update has to pass a test before it ships. Here is the whole thing, inside and out. For entertainment and comfort only.",
     cast: {
@@ -399,7 +408,7 @@ export const en: Translations = {
     closing: {
       text: "We lay the method open because peace of mind is the kind of thing you only trust once you can see how it works.",
       ctaPrivacy: "Read the privacy policy",
-      ctaHome: "See how it works",
+      ctaHome: "Back to the home page",
     },
   },
 
@@ -458,7 +467,7 @@ export const en: Translations = {
       {
         heading: "Contact",
         content:
-          "Questions? Email voice@hachimi.ai. 元竹投資有限公司 (Yuenchuk Investment Limited), Hong Kong.",
+          "Questions? Email voice@hachimi.ai. Yuenchuk Investment Limited, Hong Kong.",
       },
     ],
   },
@@ -518,7 +527,7 @@ export const en: Translations = {
       {
         heading: "Contact",
         content:
-          "Email voice@hachimi.ai. 元竹投資有限公司 (Yuenchuk Investment Limited), Hong Kong.",
+          "Email voice@hachimi.ai. Yuenchuk Investment Limited, Hong Kong.",
       },
     ],
   },

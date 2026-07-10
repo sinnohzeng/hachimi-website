@@ -3,16 +3,22 @@ import type { Translations } from "./types";
 export const zh: Translations = {
   nav: {
     features: "怎么玩",
-    tech: "数说道长",
+    methodology: "起卦的门道",
     faq: "常见问题",
+    download: "下载 App",
   },
   langSwitch: {
     en: "EN",
     zh: "中文",
   },
 
+  store: {
+    appStoreAlt: "在 App Store 下载",
+    googlePlayAlt: "下载应用，请到 Google Play",
+  },
+
   hero: {
-    badge: "即将登陆 App Store",
+    badge: "起卦的门道，都写在这里",
     headline1: "慌的时候，",
     headline2: "先起一卦。",
     description:
@@ -47,6 +53,7 @@ export const zh: Translations = {
   featureCards: {
     title: "哈基米道长怎么陪你问事",
     subtitle: "两个数字，一个问题",
+    readMore: "看门道",
     cards: [
       {
         title: "把心里的事告诉道长",
@@ -76,7 +83,7 @@ export const zh: Translations = {
       "解读由第三方 AI 服务生成，贴着你的卦象、时辰与问题来写",
       "卦历只存在你的设备上，无账号、无广告、不追踪",
     ],
-    cta: "看看怎么玩",
+    cta: "看看起卦的门道",
     phonePlaceholder: "哈基米道长的解读",
   },
 
@@ -125,7 +132,8 @@ export const zh: Translations = {
       },
       {
         question: "支持哪些平台？",
-        answer: "哈基米道长先上 iOS，安卓随后跟进。",
+        answer:
+          "都上架了。iPhone 去 App Store，安卓去 Google Play，搜“哈基米道长”就能找到。",
       },
       {
         question: "需要花钱吗？",
@@ -143,19 +151,19 @@ export const zh: Translations = {
 
   finalCta: {
     headline: "心里有事想问问？",
-    cta: "看看怎么玩",
+    note: "起一卦，前后约半分钟。",
   },
 
   footer: {
-    copyright: "© 2026 元竹投資有限公司　保留所有权利",
+    copyright: "© 2026 Hachimi.ai　保留所有权利",
     links: [
       {
         title: "产品",
         items: [
-          { label: "怎么玩", href: "#features" },
-          { label: "数说道长", href: "#tech" },
+          { label: "怎么玩", href: "/zh#features" },
           { label: "起卦的门道", href: "/zh/methodology" },
-          { label: "常见问题", href: "#faq" },
+          { label: "数说道长", href: "/zh#tech" },
+          { label: "常见问题", href: "/zh#faq" },
         ],
       },
       {
@@ -163,6 +171,7 @@ export const zh: Translations = {
         items: [
           { label: "隐私政策", href: "/zh/privacy" },
           { label: "使用条款与免责声明", href: "/zh/terms" },
+          { label: "账号与你的数据", href: "/zh/account-deletion" },
           { label: "删除数据", href: "/zh/data-deletion" },
         ],
       },
@@ -287,12 +296,13 @@ export const zh: Translations = {
   methodology: {
     metaTitle: "起卦的门道",
     metaDescription:
-      "一卦怎么起出来、AI 在哪一步被什么约束、我们怎么守住红线。把哈基米道长的门道摊开讲给你听。",
+      "一卦怎么起出来、AI 在哪一步被什么约束、我们怎么守住红线。哈基米道长的门道，讲给你听。",
     badge: "道长的老规矩",
     title1: "一卦怎么来的，",
-    title2: "摊开给你看",
+    title2: "都讲给你听",
+    lastUpdated: "最后更新：2026 年 7 月 9 日",
     intro:
-      "很多占卜小工具，卦怎么来的、话怎么写的，你看不见。哈基米道长不来这套。起卦的方法是固定的，解读被牢牢约束着，好不好还要每次过评测。这页就把里里外外讲给你听。仅供娱乐与情绪陪伴。",
+      "很多占卜小工具，卦怎么来的、话怎么写的，你看不见。哈基米道长不来这套。起卦的方法是固定的，解读被牢牢约束着，好不好还要每次过评测。里里外外，这一页都说明白。仅供娱乐与情绪陪伴。",
     cast: {
       kicker: "起卦",
       step: "01",
@@ -383,7 +393,7 @@ export const zh: Translations = {
     closing: {
       text: "把门道摊开，是因为踏实这东西，看得见，才信得过。",
       ctaPrivacy: "查看隐私政策",
-      ctaHome: "看看怎么玩",
+      ctaHome: "回首页看看怎么玩",
     },
   },
 

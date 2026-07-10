@@ -39,10 +39,12 @@ function HamburgerIcon({
   );
 }
 
-const navAnchors = [
-  { key: "features", href: "#features" },
-  { key: "tech", href: "#tech" },
-  { key: "faq", href: "#faq" },
+// 三项制：怎么玩（首页锚）· 起卦的门道（真页，作品集观众的确定入口）·
+// 常见问题（首页锚）。数说道长移出一级导航，页脚保留锚点。
+const navItems = [
+  { key: "features", hash: "#features" },
+  { key: "methodology", hash: null },
+  { key: "faq", hash: "#faq" },
 ] as const;
 
 export function Header({
@@ -55,6 +57,13 @@ export function Header({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const isHomePage = pathname === `/${locale}` || pathname === `/${locale}/`;
+  const isMethodologyPage = pathname.startsWith(`/${locale}/methodology`);
+
+  // 首页用裸 hash（走 Lenis 平滑滚动），子页回跳首页对应锚点。
+  const anchorHref = (hash: string) =>
+    isHomePage ? hash : `/${locale}${hash}`;
+  const navHref = (item: (typeof navItems)[number]) =>
+    item.hash === null ? `/${locale}/methodology` : anchorHref(item.hash);
 
   const getLabel = (key: string) => {
     return t.nav[key as keyof typeof t.nav] ?? key;
@@ -90,25 +99,32 @@ export function Header({
             </span>
           </motion.a>
 
-          {isHomePage && (
-            <motion.nav
-              className="absolute left-1/2 flex -translate-x-1/2 items-center gap-1"
-              aria-label="Main navigation"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2, ease }}
-            >
-              {navAnchors.map((link) => (
-                <a
-                  key={link.key}
-                  href={link.href}
-                  className="px-4 py-2 text-sm font-semibold tracking-tight text-white/80 transition-colors hover:text-white"
-                >
-                  {getLabel(link.key)}
-                </a>
-              ))}
-            </motion.nav>
-          )}
+          <motion.nav
+            className="absolute left-1/2 flex -translate-x-1/2 items-center gap-1"
+            aria-label="Main navigation"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2, ease }}
+          >
+            {navItems.map((item) => (
+              <a
+                key={item.key}
+                href={navHref(item)}
+                aria-current={
+                  item.key === "methodology" && isMethodologyPage
+                    ? "page"
+                    : undefined
+                }
+                className={`px-4 py-2 text-sm font-semibold tracking-tight transition-colors hover:text-white ${
+                  item.key === "methodology" && isMethodologyPage
+                    ? "text-white"
+                    : "text-white/80"
+                }`}
+              >
+                {getLabel(item.key)}
+              </a>
+            ))}
+          </motion.nav>
 
           <motion.div
             className="flex items-center gap-4"
@@ -118,10 +134,10 @@ export function Header({
           >
             <LangSwitch locale={locale} />
             <a
-              href="#features"
+              href={anchorHref("#download")}
               className="rounded-full bg-white px-5 py-2.5 text-sm font-semibold tracking-tighter text-black transition-colors hover:bg-white/90"
             >
-              {t.hero.cta}
+              {t.nav.download}
             </a>
           </motion.div>
         </div>
@@ -191,25 +207,24 @@ export function Header({
               className="max-h-[calc(100vh-4rem)] overflow-y-auto px-6 py-4"
               aria-label="Mobile navigation"
             >
-              {isHomePage &&
-                navAnchors.map((link) => (
-                  <a
-                    key={link.key}
-                    href={link.href}
-                    className="text-foreground border-border block border-b py-4 text-base font-medium"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {getLabel(link.key)}
-                  </a>
-                ))}
+              {navItems.map((item) => (
+                <a
+                  key={item.key}
+                  href={navHref(item)}
+                  className="text-foreground border-border block border-b py-4 text-base font-medium"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {getLabel(item.key)}
+                </a>
+              ))}
 
               <div className="flex flex-col gap-3 pt-6">
                 <a
-                  href="#features"
+                  href={anchorHref("#download")}
                   className="text-background bg-foreground hover:bg-foreground/90 w-full rounded-full py-3 text-center text-sm font-medium tracking-tight transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  {t.hero.cta}
+                  {t.nav.download}
                 </a>
                 <div className="flex justify-center pt-2">
                   <LangSwitch locale={locale} variant="dark" />

@@ -2,12 +2,19 @@ export type Translations = {
   // Header
   nav: {
     features: string;
-    tech: string;
+    methodology: string;
     faq: string;
+    download: string;
   };
   langSwitch: {
     en: string;
     zh: string;
+  };
+
+  // Store badges (official badge wording, used as alt text)
+  store: {
+    appStoreAlt: string;
+    googlePlayAlt: string;
   };
 
   // Hero
@@ -36,6 +43,9 @@ export type Translations = {
   featureCards: {
     title: string;
     subtitle: string;
+    // Visible label on each card's arrow row; the whole card links to
+    // /methodology and this makes the destination explicit.
+    readMore: string;
     cards: {
       title: string;
       description: string;
@@ -81,10 +91,12 @@ export type Translations = {
     contact: string;
   };
 
-  // Final CTA
+  // Final CTA (the #download landing section: store badges + one small line).
+  // note 只写长期成立的产品事实（如起卦耗时），不写会随商业化变化的口径
+  // （免费/无广告/无账号这类现状不当卖点，见 2026-07-09 owner 反馈）。
   finalCta: {
     headline: string;
-    cta: string;
+    note: string;
   };
 
   // Footer
@@ -124,6 +136,9 @@ export type Translations = {
     badge: string;
     title1: string;
     title2: string;
+    // Visible "last updated" line; keep in lockstep with pageDates.methodology
+    // in lib/config.ts.
+    lastUpdated: string;
     intro: string;
     cast: {
       kicker: string;

@@ -42,7 +42,7 @@ export default async function AccountDeletionPage({
       <main id="main-content" className="flex-1">
         <LegalPageContent data={t.accountDeletion} />
       </main>
-      <Footer t={t} />
+      <Footer t={t} locale={locale} />
     </>
   );
 }

@@ -39,16 +39,16 @@ export default async function HomePage({
     <>
       <FaqStructuredData t={t} />
       <main id="main-content" className="flex-1">
-        <Hero t={t} />
+        <Hero t={t} locale={locale} />
         <ScenarioCards t={t} />
         <FeatureCards t={t} locale={locale} />
         <FeatureHighlight t={t} locale={locale} />
         <Principles t={t} locale={locale} />
         <Stats t={t} />
         <FAQ t={t} />
-        <FinalCTA t={t} />
+        <FinalCTA t={t} locale={locale} />
       </main>
-      <Footer t={t} />
+      <Footer t={t} locale={locale} />
     </>
   );
 }

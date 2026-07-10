@@ -125,11 +125,13 @@ export function FeatureCards({
                 <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
                   {card.description}
                 </p>
-                <div
-                  aria-hidden="true"
-                  className="text-foreground/60 group-hover:text-accent mt-4 flex items-center gap-1 text-sm font-medium transition-colors"
-                >
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                {/* 可见文字标签让"整卡跳转方法论页"这件事显式化（可发现性 + a11y） */}
+                <div className="text-foreground/60 group-hover:text-accent mt-4 flex items-center gap-1 text-sm font-medium transition-colors">
+                  {t.featureCards.readMore}
+                  <ArrowRight
+                    aria-hidden="true"
+                    className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                  />
                 </div>
               </div>
             </motion.a>

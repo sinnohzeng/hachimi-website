@@ -154,3 +154,9 @@ textarea:focus-visible {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* 中文排版没有斜体传统（GB/T 习惯用字体/字号/引号做强调），zh 语境下
+   衬线标题等处的 italic 一律回正；en 页不受影响。 */
+:lang(zh) .italic {
+  font-style: normal;
+}

@@ -38,16 +38,21 @@ export function SmoothScroll({ children }: { children: ReactNode }): ReactNode {
 
     requestAnimationFrame(raf);
 
-    // Handle anchor link clicks
+    // Handle anchor link clicks. Nav/footer links may carry a full path
+    // ("/en#features") so they work from subpages; only same-page hashes are
+    // intercepted for Lenis, cross-page and external links fall through to
+    // normal navigation.
     function handleAnchorClick(e: MouseEvent) {
       const target = e.target as HTMLElement;
-      const anchor = target.closest('a[href^="#"]');
+      const anchor = target.closest<HTMLAnchorElement>('a[href*="#"]');
       if (!anchor) return;
 
-      const href = anchor.getAttribute("href");
-      if (!href || href === "#") return;
+      const hash = anchor.hash;
+      if (!hash || hash === "#") return;
+      if (anchor.origin !== window.location.origin) return;
+      if (anchor.pathname !== window.location.pathname) return;
 
-      const element = document.querySelector(href);
+      const element = document.querySelector(hash);
       if (!element) return;
 
       e.preventDefault();

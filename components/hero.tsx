@@ -2,8 +2,9 @@
 
 import { type ReactNode } from "react";
 import dynamic from "next/dynamic";
-import { ChevronRight } from "lucide-react";
+import { ChevronDown, ChevronRight } from "lucide-react";
 import { motion } from "motion/react";
+import { StoreBadges } from "@/components/store-badges";
 import type { Translations } from "@/lib/i18n";
 import { useReducedMotion } from "@/lib/motion";
 
@@ -30,7 +31,13 @@ const HeroShader = dynamic(
   { ssr: false, loading: () => <ShaderFallback /> }
 );
 
-export function Hero({ t }: { t: Translations }): ReactNode {
+export function Hero({
+  locale,
+  t,
+}: {
+  locale: string;
+  t: Translations;
+}): ReactNode {
   const reducedMotion = useReducedMotion();
 
   return (
@@ -70,17 +77,20 @@ export function Hero({ t }: { t: Translations }): ReactNode {
           </motion.div>
 
           <div className="pointer-events-auto relative flex h-full w-full flex-col items-start justify-center px-4 lg:items-center lg:px-6">
-            <motion.div
+            {/* 方法论引流条：首屏最顶端的视觉位留给"起卦的门道"入口，
+                已上架的信度交给下方双徽章承担，不重复宣告。 */}
+            <motion.a
+              href={`/${locale}/methodology`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3, ease }}
-              className="mb-6 flex cursor-pointer items-center gap-2 rounded-full bg-white py-1.5 pr-3 pl-4"
+              className="mb-6 flex items-center gap-2 rounded-full bg-white py-1.5 pr-3 pl-4 transition-opacity duration-150 hover:opacity-90"
             >
               <span className="text-xs font-medium text-black">
                 {t.hero.badge}
               </span>
               <ChevronRight className="h-3 w-3 text-black/50" />
-            </motion.div>
+            </motion.a>
 
             {/* H1 是 LCP 元素：不做挂载后淡入，服务端首帧（含禁 JS）即可见，
                 避免入场动画把 LCP 推迟到 JS 挂载之后。 */}
@@ -99,18 +109,21 @@ export function Hero({ t }: { t: Translations }): ReactNode {
               {t.hero.description}
             </motion.p>
 
+            {/* 主 CTA：官方双徽章（与副标题同档入场，主 CTA 不排到最后）。
+                "看看怎么玩"降级为次级文字链，留一条先了解再下载的出路。 */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.9, ease }}
-              className="mt-10 flex w-full flex-col items-stretch gap-3 sm:w-auto sm:flex-row sm:items-center"
+              transition={{ duration: 0.6, delay: 0.7, ease }}
+              className="mt-10 flex w-full flex-col items-start gap-5 lg:items-center"
             >
+              <StoreBadges locale={locale} t={t} className="min-h-12" />
               <a
                 href="#features"
-                className="flex h-12 items-center justify-center gap-2 rounded-full bg-white px-6 text-sm font-medium whitespace-nowrap text-black transition-all duration-150 hover:bg-white/90 active:scale-[0.97]"
+                className="flex items-center gap-1 text-sm text-white/60 transition-colors duration-150 hover:text-white"
               >
                 {t.hero.cta}
-                <ChevronRight className="h-4 w-4" />
+                <ChevronDown className="h-4 w-4" />
               </a>
             </motion.div>
           </div>

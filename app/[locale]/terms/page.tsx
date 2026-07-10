@@ -42,7 +42,7 @@ export default async function TermsPage({
       <main id="main-content" className="flex-1">
         <LegalSections data={t.terms} />
       </main>
-      <Footer t={t} />
+      <Footer t={t} locale={locale} />
     </>
   );
 }

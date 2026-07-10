@@ -42,7 +42,7 @@ export default async function DataDeletionPage({
       <main id="main-content" className="flex-1">
         <LegalPageContent data={t.dataDeletion} />
       </main>
-      <Footer t={t} />
+      <Footer t={t} locale={locale} />
     </>
   );
 }

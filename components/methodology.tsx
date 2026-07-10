@@ -16,6 +16,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { motion } from "motion/react";
+import { StoreBadges } from "@/components/store-badges";
 import type { Translations } from "@/lib/i18n";
 
 const ease = [0.16, 1, 0.3, 1] as const;
@@ -115,6 +116,11 @@ export function Methodology({
             className="text-foreground/70 mt-6 text-base leading-relaxed sm:text-lg"
           >
             {m.intro}
+          </motion.p>
+          {/* 可见"最后更新"：与 lib/config.ts 的 pageDates.methodology 保持一致
+              （AI 引擎信息保鲜的日期信号，页面可见文本与机器可读日期须相同）。 */}
+          <motion.p {...fade(0.15)} className="text-foreground/40 mt-6 text-sm">
+            {m.lastUpdated}
           </motion.p>
         </div>
       </section>
@@ -360,22 +366,26 @@ export function Methodology({
           >
             {m.closing.text}
           </motion.p>
+          {/* 下载闭环：被技术叙事说服的读者就地下载，不必回首页再找入口。 */}
+          <motion.div {...fade(0.1)} className="mt-8">
+            <StoreBadges locale={locale} t={t} className="justify-center" />
+          </motion.div>
           <motion.div
-            {...fade(0.1)}
+            {...fade(0.15)}
             className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
           >
-            <a
-              href={`/${locale}#features`}
-              className="group bg-foreground text-background hover:bg-foreground/90 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-colors"
-            >
-              {m.closing.ctaHome}
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </a>
             <a
               href={`/${locale}/privacy`}
               className="border-border text-foreground/80 hover:border-foreground/30 hover:text-foreground inline-flex items-center gap-2 rounded-full border px-6 py-3 text-sm font-medium transition-colors"
             >
               {m.closing.ctaPrivacy}
+            </a>
+            <a
+              href={`/${locale}#features`}
+              className="group text-foreground/60 hover:text-foreground inline-flex items-center gap-1 px-2 py-3 text-sm transition-colors"
+            >
+              {m.closing.ctaHome}
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </a>
           </motion.div>
         </div>
