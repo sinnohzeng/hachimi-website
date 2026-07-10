@@ -67,8 +67,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 │   ├── page.tsx           # Root "/" client redirect to /en
 │   ├── opengraph-image.tsx # Build-time generated OG card (next/og)
 │   ├── twitter-image.tsx  # Twitter card (reuses OG design)
-│   ├── robots.ts          # Dynamic robots.txt
-│   └── sitemap.ts         # Dynamic sitemap
+│   └── sitemap.ts         # Sitemap, statically generated at build time
 ├── components/
 │   ├── faq.tsx            # FAQ accordion
 │   ├── feature-cards.tsx  # Feature cards
@@ -80,8 +79,11 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 │   ├── lang-switch.tsx    # zh / en language switcher
 │   ├── principles.tsx     # Principles section
 │   ├── providers.tsx      # Theme & scroll providers
+│   ├── methodology.tsx    # /methodology page body (how the casting works)
 │   ├── smooth-scroll.tsx  # Lenis smooth scroll
 │   ├── stats.tsx          # Stats section
+│   ├── store-badges.tsx   # App Store / Google Play badge pair
+│   ├── structured-data.tsx # JSON-LD (Organization / WebSite / app / FAQ)
 │   └── theme-switch.tsx   # Theme toggle button
 ├── lib/
 │   ├── config.ts          # Site config (single source of truth) & feature flags
@@ -89,6 +91,9 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 │   ├── metadata.ts        # SEO metadata (built from config.ts)
 │   └── motion.tsx         # Reduced-motion provider & hook
 └── public/
+    ├── badges/            # Official store badges (self-hosted, per locale)
+    ├── robots.txt         # Static robots.txt (Content-Signal, sitemap)
+    ├── llms.txt           # AI-crawler site summary (+ llms-full.txt)
     └── site.webmanifest   # PWA manifest
 ```
 
@@ -99,9 +104,10 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 Edit `lib/config.ts` to update:
 
 - Site name, tagline, and description
-- Navigation links
-- Section content and CTAs
+- Store listing URLs (`appStore` / `googlePlay`) and per-page content dates
 - Feature flags
+
+Navigation labels and section copy live in `lib/i18n/`.
 
 Site name, description, keywords, authors and social handles all live in
 `lib/config.ts` (single source of truth). `lib/metadata.ts` only shapes them

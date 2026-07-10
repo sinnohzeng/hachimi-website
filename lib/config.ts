@@ -3,7 +3,7 @@
  * SITE CONFIGURATION
  * ============================================================================
  * Master Hachimi (哈基米道长): cat-themed Mei Hua Yi Shu divination companion.
- * Brand Hachimi.ai · operated by 元竹投資有限公司 (Yuenchuk Investment Limited, HK).
+ * Brand Hachimi.ai · the operating company is named in the legal pages only.
  */
 
 /**
@@ -21,9 +21,11 @@ export const siteConfig = {
   url: "https://hachimi.ai",
   email: "voice@hachimi.ai",
   creator: "@sinnohzeng",
+  // Public byline everywhere (meta author + JSON-LD Organization). The legal
+  // entity appears only in the legal pages' own copy.
   authors: [
     {
-      name: "元竹投資有限公司 (Yuenchuk Investment Limited)",
+      name: "Hachimi.ai",
       url: "https://hachimi.ai",
     },
   ],
@@ -40,17 +42,30 @@ export const siteConfig = {
     "privacy first",
   ],
 
-  // The app is not yet published to the stores. Until then, store CTAs scroll to
-  // the in-page explainer so nothing links to a dead or wrong listing.
-  appStore: "#features",
-  googlePlay: "#features",
+  // Live store listings. The bare apps.apple.com form (no storefront segment)
+  // lets Apple route visitors to their local storefront.
+  appStore: "https://apps.apple.com/app/id6787621766",
+  appStoreId: "6787621766",
+  googlePlay:
+    "https://play.google.com/store/apps/details?id=com.hachimi.hachimi_app",
+} as const;
 
-  nav: {
-    cta: {
-      text: "How it works",
-      href: "#features",
-    },
-  },
+/**
+ * Per-page "content last changed" dates (SSOT). app/sitemap.ts reads these for
+ * lastModified and structured-data.tsx for dateModified — never use build
+ * time, which would stamp every deploy as a content change.
+ *
+ * Bump a date only when that page's visible content changes. Legal pages must
+ * stay in lockstep with the visible `effectiveDate` strings in lib/i18n.
+ */
+export const pageDates = {
+  home: "2026-07-09",
+  methodology: "2026-07-09",
+  privacy: "2026-07-04",
+  terms: "2026-06-14",
+  support: "2026-07-04",
+  accountDeletion: "2026-07-04",
+  dataDeletion: "2026-07-04",
 } as const;
 
 /**
