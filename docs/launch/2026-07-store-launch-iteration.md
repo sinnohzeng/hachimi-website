@@ -56,4 +56,4 @@
 
 - 门：`npm run format:check && npm run lint && npm run typecheck && npm run build` 全绿。
 - 产物断言：`out/en.html` 含 `apple-itunes-app`、`"operatingSystem":"iOS, Android"`、`downloadUrl` 双链接；首页可见内容零实名（RSC 水合载荷中的法律页文案除外）；`out/sitemap.xml` 日期为真实内容日期；en/zh 首页各用本语言徽章。
-- 法律页：en 仅 `Yuenchuk Investment Limited`（3 处），zh 仅“元竹投資有限公司”（3 处）。
+- 法律页：实名再收窄（2026-07-12）——仅隐私政策与条款两页的文末联系块保留实名，en `Yuenchuk Investment Limited` 2 处、zh“元竹投資有限公司”2 处；正文自称与账号/数据删除页一律“哈基米 AI 制作组 / the Hachimi.ai team”。
