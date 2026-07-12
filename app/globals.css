@@ -39,6 +39,25 @@
     "Noto Serif CJK SC", serif;
 }
 
+/* 系统深色用户的首帧回退：next-themes 的脚本在 <body> 内运行、html 首发
+   无主题类，慢载/流式场景可能先绘一帧浅色。这里在"还没有显式主题类"时用
+   纯 CSS 镜像系统偏好。:where() 把特异性压回 (0,1,0) 且置于 .dark 块之前，
+   JS 后 next-themes 必置显式 light/dark 解析类——.light 让本块失配、.dark
+   靠源序压过本块，两块 token 无需逐字节锁同步。（系统浅色但手选深色的
+   用户仍依赖脚本，CSS 读不到 localStorage，属可接受残余。） */
+@media (prefers-color-scheme: dark) {
+  :root:where(:not(.light)) {
+    --background: #070712;
+    --foreground: #fafafa;
+    --muted: #0f0f18;
+    --muted-foreground: #a3a3a3;
+    --border: #262626;
+    --ring: #f59e0b;
+    --accent: #f59e0b;
+    color-scheme: dark;
+  }
+}
+
 .dark {
   --background: #070712;
   --foreground: #fafafa;
@@ -90,6 +109,37 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* 下载徽章的首帧平台收敛：html[data-platform] 由 [locale]/layout.tsx 里
+   <body> 首位的内联脚本在绘制前写入。脚本失效（无 JS）时属性缺失，双徽章
+   照常显示——与静态 HTML 一致，零位移。 */
+html[data-platform="ios"] [data-badge="play"] {
+  display: none;
+}
+html[data-platform="android"] [data-badge="apple"] {
+  display: none;
+}
+
+/* 无 JS 救援：motion 的入场元素在 SSR 里带内联 opacity:0（含 transform），
+   JS 失效时 hero 以下内容将永久不可见。author !important 压过非 important
+   内联样式；no-js 类由同一内联脚本在首帧前移除，正常路径下本规则恒为死
+   选择器。data-animate 由 lib/motion-tokens.ts 各帮手统一携带。 */
+html.no-js [data-animate] {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* 跨文档 View Transitions（MPA 页面切换，纯渐进增强；Chromium + Safari
+   18.2+，Firefox 在途，不支持即瞬时跳转）。UA 默认 0.25s 交叉淡入即目标
+   值，不覆写。必须包在 reduced-motion 查询里：上方全局 kill-switch 只命中
+   *,::before,::after，够不到 ::view-transition-* 伪元素。固定 header 刻意
+   不设 view-transition-name——mix-blend-exclusion 在独立快照中会丢背景混合
+   （白字压浅底不可读），留在根快照里新旧两帧均已正确混合。 */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
   }
 }
 
