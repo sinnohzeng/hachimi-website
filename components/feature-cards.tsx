@@ -4,8 +4,14 @@ import { type ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 import type { Translations } from "@/lib/i18n";
-
-const ease = [0.16, 1, 0.3, 1] as const;
+import {
+  DIST,
+  MARGIN,
+  STAGGER,
+  hoverLift,
+  reveal,
+  tapPress,
+} from "@/lib/motion-tokens";
 
 // Decorative marks for each step: 問 (ask) · 卦 (cast) · 讀 (read).
 const cardGlyphs = ["問", "卦", "讀"];
@@ -85,10 +91,7 @@ export function FeatureCards({
       <div className="mx-auto max-w-6xl px-6 sm:px-8">
         <div className="mb-16 flex flex-col items-center text-center">
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1, ease }}
+            {...reveal(0.1)}
             className="text-foreground font-serif text-3xl font-medium sm:text-4xl md:text-5xl"
           >
             {t.featureCards.title}
@@ -101,12 +104,12 @@ export function FeatureCards({
             <motion.a
               key={card.title}
               href={`/${locale}/methodology`}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ y: -4, transition: { duration: 0.25, ease } }}
-              whileTap={{ y: -1, transition: { duration: 0.15, ease } }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: index * 0.1, ease }}
+              {...reveal(index * STAGGER.grid, {
+                dist: DIST.lg,
+                margin: MARGIN.card,
+              })}
+              whileHover={hoverLift}
+              whileTap={tapPress}
               className="group bg-muted/50 border-border hover:border-accent/50 flex flex-col overflow-hidden rounded-sm border transition-[border-color,box-shadow] hover:shadow-lg"
             >
               <div className="from-muted to-background border-border relative flex h-56 items-center justify-center overflow-hidden border-b bg-linear-to-br sm:h-64">

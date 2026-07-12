@@ -4,8 +4,7 @@ import { useState, type ReactNode } from "react";
 import { Plus, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import type { Translations } from "@/lib/i18n";
-
-const ease = [0.16, 1, 0.3, 1] as const;
+import { DUR, EASE, STAGGER, reveal } from "@/lib/motion-tokens";
 
 function FAQAccordionItem({
   question,
@@ -25,10 +24,7 @@ function FAQAccordionItem({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1, ease }}
+      {...reveal(index * STAGGER.grid, { duration: DUR.base })}
       className="border-foreground/10 border-b"
     >
       <button
@@ -45,7 +41,7 @@ function FAQAccordionItem({
         <div className="flex h-6 w-6 shrink-0 items-center justify-center">
           <motion.div
             animate={{ rotate: isOpen ? 45 : 0 }}
-            transition={{ duration: 0.2, ease }}
+            transition={{ duration: DUR.fast, ease: EASE }}
           >
             <Plus
               className="text-foreground/60 group-hover:text-foreground h-5 w-5 transition-colors"
@@ -63,7 +59,7 @@ function FAQAccordionItem({
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease }}
+            transition={{ duration: DUR.fast, ease: EASE }}
             className="overflow-hidden"
           >
             <p className="text-foreground/60 max-w-2xl pb-6 leading-relaxed">
@@ -88,19 +84,13 @@ export function FAQ({ t }: { t: Translations }): ReactNode {
         <div className="px-8 sm:px-12">
           <div className="mb-12 max-w-2xl">
             <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, ease }}
+              {...reveal()}
               className="text-foreground font-serif text-3xl leading-tight font-medium sm:text-4xl lg:text-5xl"
             >
               {t.faq.title}
             </motion.h2>
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1, ease }}
+              {...reveal(0.1, { duration: DUR.base })}
               className="text-foreground/60 mt-4"
             >
               {t.faq.subtitle}
@@ -123,10 +113,7 @@ export function FAQ({ t }: { t: Translations }): ReactNode {
           </div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2, ease }}
+            {...reveal(0.2, { duration: DUR.base })}
             className="mt-12 flex flex-col gap-4 sm:flex-row sm:items-center"
           >
             <p className="text-foreground/60">{t.faq.stillHaveQuestions}</p>

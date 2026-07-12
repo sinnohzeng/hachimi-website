@@ -3,8 +3,13 @@
 import { type ReactNode } from "react";
 import { motion } from "motion/react";
 import type { Translations } from "@/lib/i18n";
-
-const ease = [0.16, 1, 0.3, 1] as const;
+import {
+  DIST,
+  MARGIN,
+  STAGGER,
+  hoverLift,
+  reveal,
+} from "@/lib/motion-tokens";
 
 // Decorative marks for each heart-matter: 尋 (seek) · 緣 (bond) · 擇 (choose).
 const cardGlyphs = ["尋", "緣", "擇"];
@@ -18,19 +23,13 @@ export function ScenarioCards({ t }: { t: Translations }): ReactNode {
       <div className="mx-auto max-w-6xl px-6 sm:px-8">
         <div className="mb-16 flex flex-col items-center text-center">
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1, ease }}
+            {...reveal(0.1)}
             className="text-foreground font-serif text-3xl font-medium sm:text-4xl md:text-5xl"
           >
             {t.scenarioCards.title}
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2, ease }}
+            {...reveal(0.2)}
             className="text-muted-foreground mt-4 text-base sm:text-lg"
           >
             {t.scenarioCards.subtitle}
@@ -41,11 +40,11 @@ export function ScenarioCards({ t }: { t: Translations }): ReactNode {
           {t.scenarioCards.cards.map((card, index) => (
             <motion.div
               key={card.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ y: -4 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: index * 0.1, ease }}
+              {...reveal(index * STAGGER.grid, {
+                dist: DIST.lg,
+                margin: MARGIN.card,
+              })}
+              whileHover={hoverLift}
               className="group bg-background border-border hover:border-foreground/20 relative flex flex-col overflow-hidden rounded-sm border p-6 transition-[border-color,box-shadow] hover:shadow-lg sm:p-8"
             >
               <span
@@ -68,10 +67,7 @@ export function ScenarioCards({ t }: { t: Translations }): ReactNode {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, delay: 0.3, ease }}
+          {...reveal(0.3, { margin: MARGIN.card })}
           className="border-border bg-background/50 mt-6 flex flex-col gap-2 rounded-sm border border-dashed px-6 py-5 text-center sm:flex-row sm:items-center sm:gap-4 sm:text-left"
         >
           <span className="text-foreground font-serif text-lg font-medium">

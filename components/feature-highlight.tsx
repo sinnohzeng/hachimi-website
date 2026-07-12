@@ -4,8 +4,7 @@ import { type ReactNode } from "react";
 import { ArrowRight, Shapes, Sparkles, Smartphone } from "lucide-react";
 import { motion } from "motion/react";
 import type { Translations } from "@/lib/i18n";
-
-const ease = [0.16, 1, 0.3, 1] as const;
+import { DIST, DUR, reveal } from "@/lib/motion-tokens";
 
 const featureIcons = [
   <Shapes key="cast" className="h-4 w-4" />,
@@ -26,10 +25,7 @@ export function FeatureHighlight({
         <div className="grid grid-cols-1 items-stretch gap-16 lg:grid-cols-2 lg:gap-24">
           <div className="flex flex-col justify-center">
             <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, ease }}
+              {...reveal()}
               className="text-foreground font-serif text-3xl leading-tight font-medium sm:text-4xl lg:text-5xl"
             >
               {t.featureHighlight.title1}{" "}
@@ -37,20 +33,14 @@ export function FeatureHighlight({
             </motion.h2>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1, ease }}
+              {...reveal(0.1, { duration: DUR.base })}
               className="text-foreground/70 mt-6 max-w-lg leading-relaxed"
             >
               {t.featureHighlight.description}
             </motion.p>
 
             <motion.ul
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2, ease }}
+              {...reveal(0.2, { duration: DUR.base })}
               className="mt-8 space-y-4"
             >
               {t.featureHighlight.features.map((feature, index) => (
@@ -65,10 +55,7 @@ export function FeatureHighlight({
 
             <motion.a
               href={`/${locale}/methodology`}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3, ease }}
+              {...reveal(0.3, { duration: DUR.base })}
               className="group text-foreground mt-10 inline-flex items-center gap-2 font-medium transition-opacity hover:opacity-70"
             >
               {t.featureHighlight.cta}
@@ -77,10 +64,7 @@ export function FeatureHighlight({
           </div>
 
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2, ease }}
+            {...reveal(0.2, { dist: DIST.xl, duration: DUR.slower })}
             className="flex h-full justify-center lg:justify-end"
           >
             <div className="bg-accent/5 border-accent/10 relative flex h-full flex-col overflow-hidden rounded-md border px-16 pt-10">

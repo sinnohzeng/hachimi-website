@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { motion, useInView } from "motion/react";
 import type { Translations } from "@/lib/i18n";
-
-const ease = [0.16, 1, 0.3, 1] as const;
+import { useReducedMotion } from "@/lib/motion";
+import { DUR, STAGGER, reveal } from "@/lib/motion-tokens";
 
 // Honest product facts only (no fabricated user metrics):
 // 64 hexagrams · 6 reading facets · 0 accounts needed · 2 languages.
@@ -30,9 +30,11 @@ function AnimatedCounter({
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const hasAnimated = useRef(false);
+  const reducedMotion = useReducedMotion();
 
   useEffect(() => {
-    if (!isInView || hasAnimated.current) return;
+    // 减动效用户不跑计数动画（渲染端直接显示终值，见下方 display）。
+    if (reducedMotion || !isInView || hasAnimated.current) return;
     hasAnimated.current = true;
 
     const startTime = performance.now();
@@ -59,12 +61,14 @@ function AnimatedCounter({
     };
 
     requestAnimationFrame(animate);
-  }, [isInView, value, duration]);
+  }, [isInView, value, duration, reducedMotion]);
+
+  const display = reducedMotion ? value : count;
 
   return (
     <span ref={ref} className="tabular-nums">
       {prefix}
-      {count.toLocaleString("en-US", {
+      {display.toLocaleString("en-US", {
         minimumFractionDigits: value % 1 !== 0 ? 1 : 0,
         maximumFractionDigits: 1,
       })}
@@ -84,10 +88,7 @@ export function Stats({ t }: { t: Translations }): ReactNode {
           {statsData.map((stat, index) => (
             <motion.div
               key={t.stats.items[index]?.label ?? index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 * index, ease }}
+              {...reveal(index * STAGGER.grid, { duration: DUR.base })}
               className="flex flex-col items-center text-center"
             >
               <div className="text-foreground mb-2 font-serif text-4xl font-medium tracking-tight sm:text-5xl lg:text-6xl">

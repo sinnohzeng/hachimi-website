@@ -11,8 +11,7 @@ import {
 } from "lucide-react";
 import { motion } from "motion/react";
 import type { Translations } from "@/lib/i18n";
-
-const ease = [0.16, 1, 0.3, 1] as const;
+import { DUR, STAGGER, reveal } from "@/lib/motion-tokens";
 
 const principleIcons = [
   <Heart key="heart" className="h-12 w-12" strokeWidth={1} />,
@@ -34,10 +33,7 @@ export function Principles({
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div className="flex flex-col">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, ease }}
+              {...reveal(0, { duration: DUR.base })}
               className="mb-6 flex items-center gap-2"
             >
               <Sparkles className="h-4 w-4" />
@@ -45,10 +41,7 @@ export function Principles({
             </motion.div>
 
             <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1, ease }}
+              {...reveal(0.1)}
               className="font-serif text-3xl leading-tight font-medium sm:text-4xl lg:text-5xl"
             >
               {t.principles.title1}{" "}
@@ -56,10 +49,7 @@ export function Principles({
             </motion.h2>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2, ease }}
+              {...reveal(0.2, { duration: DUR.base })}
               className="text-foreground/70 mt-6 max-w-lg leading-relaxed"
             >
               {t.principles.description}
@@ -67,10 +57,7 @@ export function Principles({
 
             <motion.a
               href={`/${locale}/privacy`}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3, ease }}
+              {...reveal(0.3, { duration: DUR.base })}
               className="group bg-foreground text-background hover:bg-foreground/90 mt-8 inline-flex w-fit items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-colors"
             >
               {t.principles.cta}
@@ -82,10 +69,7 @@ export function Principles({
             {t.principles.cards.map((label, index) => (
               <motion.div
                 key={label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 * index, ease }}
+                {...reveal(index * STAGGER.grid, { duration: DUR.base })}
                 className="bg-foreground/5 flex aspect-square flex-col items-center justify-center rounded-sm"
               >
                 <div className="text-foreground/80 mb-4">

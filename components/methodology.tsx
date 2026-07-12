@@ -18,8 +18,7 @@ import {
 import { motion } from "motion/react";
 import { StoreBadges } from "@/components/store-badges";
 import type { Translations } from "@/lib/i18n";
-
-const ease = [0.16, 1, 0.3, 1] as const;
+import { MARGIN, reveal } from "@/lib/motion-tokens";
 
 // Illustrative SHA-256 digest shown in the fingerprint chip. Decorative only —
 // the copy labels it as an example; it is not a real user's cast.
@@ -39,13 +38,10 @@ const limitIcons = [
   <Smartphone key="device" className="h-6 w-6" strokeWidth={1.25} />,
 ];
 
+// 本页统一走共享 reveal()，长文页用更早的 -80px 视口提前量；
+// 列表内的 0.06 / 0.08 递增即 STAGGER.tight / STAGGER.list。
 function fade(delay = 0) {
-  return {
-    initial: { opacity: 0, y: 20 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: "-80px" },
-    transition: { duration: 0.6, delay, ease },
-  };
+  return reveal(delay, { margin: MARGIN.early });
 }
 
 function StepHeader({

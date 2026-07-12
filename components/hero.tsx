@@ -7,8 +7,7 @@ import { motion } from "motion/react";
 import { StoreBadges } from "@/components/store-badges";
 import type { Translations } from "@/lib/i18n";
 import { useReducedMotion } from "@/lib/motion";
-
-const ease = [0.16, 1, 0.3, 1] as const;
+import { mountFade, mountRise } from "@/lib/motion-tokens";
 
 // 与 shader 首帧观感接近的静态深墨渐变：shader 分包加载期间与 reduced motion
 // 场景共用，避免首屏闪白。
@@ -49,9 +48,7 @@ export function Hero({
         <div className="relative w-full max-w-270 py-8 lg:h-112 lg:py-0">
           {/* 装饰框线单独淡入，H1 等内容不被这层初始 opacity: 0 压住首帧。 */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1.2, delay: 0.3, ease }}
+            {...mountFade(0.3)}
             className="absolute inset-0"
             aria-hidden="true"
           >
@@ -81,9 +78,7 @@ export function Hero({
                 已上架的信度交给下方双徽章承担，不重复宣告。 */}
             <motion.a
               href={`/${locale}/methodology`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3, ease }}
+              {...mountRise(0.3)}
               className="mb-6 flex items-center gap-2 rounded-full bg-white py-1.5 pr-3 pl-4 transition-opacity duration-150 hover:opacity-90"
             >
               <span className="text-xs font-medium text-black">
@@ -101,9 +96,7 @@ export function Hero({
             </h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.7, ease }}
+              {...mountRise(0.7)}
               className="mt-5 max-w-xl text-left text-lg text-white/70 lg:text-center"
             >
               {t.hero.description}
@@ -112,9 +105,7 @@ export function Hero({
             {/* 主 CTA：官方双徽章（与副标题同档入场，主 CTA 不排到最后）。
                 "看看怎么玩"降级为次级文字链，留一条先了解再下载的出路。 */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.7, ease }}
+              {...mountRise(0.7)}
               className="mt-10 flex w-full flex-col items-start gap-5 lg:items-center"
             >
               <StoreBadges locale={locale} t={t} className="min-h-12" />

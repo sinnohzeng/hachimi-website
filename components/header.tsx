@@ -5,8 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState, type ReactNode } from "react";
 import { LangSwitch } from "./lang-switch";
 import type { Translations } from "@/lib/i18n";
-
-const ease = [0.23, 1, 0.32, 1] as const;
+import { DUR, EASE, mountDrop } from "@/lib/motion-tokens";
 
 function HamburgerIcon({
   isOpen,
@@ -21,19 +20,19 @@ function HamburgerIcon({
         className="block h-0.5 w-full origin-center rounded-full"
         style={{ backgroundColor: color }}
         animate={isOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
-        transition={{ duration: 0.25, ease }}
+        transition={{ duration: DUR.fast, ease: EASE }}
       />
       <motion.span
         className="block h-0.5 w-full origin-center rounded-full"
         style={{ backgroundColor: color }}
         animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
-        transition={{ duration: 0.15 }}
+        transition={{ duration: DUR.tap }}
       />
       <motion.span
         className="block h-0.5 w-full origin-center rounded-full"
         style={{ backgroundColor: color }}
         animate={isOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
-        transition={{ duration: 0.25, ease }}
+        transition={{ duration: DUR.fast, ease: EASE }}
       />
     </div>
   );
@@ -90,9 +89,7 @@ export function Header({
             href={`/${locale}`}
             className="flex items-center gap-2"
             aria-label="Home"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1, ease }}
+            {...mountDrop(0.1)}
           >
             <span className="text-lg font-semibold tracking-tight text-white">
               HACHIMI AI
@@ -102,9 +99,7 @@ export function Header({
           <motion.nav
             className="absolute left-1/2 flex -translate-x-1/2 items-center gap-1"
             aria-label="Main navigation"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2, ease }}
+            {...mountDrop(0.2)}
           >
             {navItems.map((item) => (
               <a
@@ -126,12 +121,7 @@ export function Header({
             ))}
           </motion.nav>
 
-          <motion.div
-            className="flex items-center gap-4"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3, ease }}
-          >
+          <motion.div className="flex items-center gap-4" {...mountDrop(0.3)}>
             <LangSwitch locale={locale} />
             <a
               href={anchorHref("#download")}
@@ -150,9 +140,7 @@ export function Header({
             href={`/${locale}`}
             className="flex items-center gap-2"
             aria-label="Home"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1, ease }}
+            {...mountDrop(0.1)}
           >
             <span className="text-lg font-semibold tracking-tight text-white">
               HACHIMI AI
@@ -164,9 +152,7 @@ export function Header({
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-expanded={mobileMenuOpen}
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2, ease }}
+            {...mountDrop(0.2)}
           >
             <HamburgerIcon isOpen={false} color="white" />
           </motion.button>
@@ -180,7 +166,7 @@ export function Header({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: DUR.fast }}
             className="bg-background fixed top-0 right-0 left-0 z-1004 lg:hidden"
           >
             <div className="flex h-16 w-full items-center justify-between px-6 sm:px-8">
