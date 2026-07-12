@@ -1,7 +1,6 @@
 "use client";
 
 import { type ReactNode } from "react";
-import { StoreBadges } from "@/components/store-badges";
 import type { Translations } from "@/lib/i18n";
 
 export function Footer({
@@ -37,10 +36,10 @@ export function Footer({
                     HACHIMI AI
                   </span>
                 </a>
+                {/* 下载徽章不再重复出现：紧邻的 #download（FinalCTA）已是主下载位。 */}
                 <p className="text-foreground/50 mt-4 max-w-xs text-sm">
                   {t.footer.copyright}
                 </p>
-                <StoreBadges locale={locale} t={t} size="sm" className="mt-6" />
               </div>
               <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:gap-16">
                 {t.footer.links.map((section) => (
