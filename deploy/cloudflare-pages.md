@@ -35,7 +35,7 @@ npm run build                                         # → out/
 npx wrangler pages deploy out --project-name hachimi-app-website --branch main
 ```
 
-> 路径 B 是「Direct Upload」部署，与 Git 集成并存；下一次 push `main` 会再触发 Git 构建覆盖回 Git 驱动态。二者不冲突。
+> 路径 B 是“Direct Upload”部署，与 Git 集成并存；下一次 push `main` 会再触发 Git 构建覆盖回 Git 驱动态。二者不冲突。
 
 ## 验证（部署后必跑）
 
@@ -44,7 +44,7 @@ for u in https://hachimi.ai https://hachimi.ai/zh/privacy https://hachimi.ai/en/
          https://hachimi.ai/zh/terms https://hachimi.ai/en/terms https://hachimi.ai/zh/support; do
   echo "[$(curl -s -o /dev/null -w '%{http_code}' --max-time 15 "$u")] $u"
 done
-# 期望：全 200。法律页文案核对：隐私页仍含「设备认证校验为计划中」诚实表述
+# 期望：全 200。法律页文案核对：隐私页仍含“设备认证校验为计划中”诚实表述
 # （设备证明 App Attest 上线时尚未强制，不得过度声称——见 lib/i18n/{zh,en}.ts）。
 ```
 
@@ -59,5 +59,5 @@ npx wrangler pages deployment list --project-name hachimi-app-website   # 取上
 
 ## 关键红线
 
-- **法律文案与现实一致**（App Store 5.1.1）：隐私政策 / 条款描述的后端存储口径（“帮助改进解读”开启时按假名化最小集存储、原文 90 天自动删除，关闭则不存）、设备证明“计划中”、第三方 AI 服务商（当前 DeepSeek）的数据用途（据其现行条款，可能将内容用于训练自身模型，并提供退出途径）——均须与真实实现口径一致，改文案前先核对现状。设备证明真接入前，措辞保持“计划中 / 尚未强制”。供应商点名真源集中在隐私政策“当前第三方 AI 服务商”一节，换供应商只改该节与同意页。
+- **法律文案与现实一致**（App Store 5.1.1）：隐私政策 / 条款描述的后端存储口径（“帮助改进解读”开启时按假名化最小集存储、原文 90 天自动删除，关闭则不存）、设备证明“计划中”、第三方 AI 服务的数据用途口径（用户可见文档只写“正规商业付费的第三方 AI 服务、已要求其不将你的内容用于训练”，不点名具体供应商）——均须与真实实现口径一致，改文案前先核对现状。设备证明真接入前，措辞保持“计划中 / 尚未强制”。当前供应商身份由代码 / 配置 / 各店 Review Notes 承载，换供应商时用户可见文档无需改，仅更新 Review Notes 与内部运营档、并确保新供应商同样正规商业付费且已就训练 opt-out。
 - **凭据**：CF token 与后端 Workers 同一把，放 `hachimi-ios/.env`，绝不入库 / 不回显。
