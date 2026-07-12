@@ -1,7 +1,7 @@
 name: CI
 
 # 营销站唯一持久质量兜底（对齐 hachimi-ios / hachimi-backend 单 job 取向）。
-# 只把关“能否干净构建”：format + lint + typecheck + 静态导出 build；不做部署（GitHub Pages 部署另行，不在此触发）。
+# 只把关“能否干净构建”：format + lint + typecheck + 静态导出 build；不做部署（Cloudflare Pages 由 push main Git 集成自动构建，见 deploy/cloudflare-pages.md）。
 on:
   push:
     branches: [main]

@@ -10,6 +10,7 @@
 - **Pages 项目**：`hachimi-app-website`，account `6e53…388a`，域 `hachimi-app-website.pages.dev` / `hachimi.ai` / `www.hachimi.ai`。
 - **Git 集成**：连 `github.com/sinnohzeng/hachimi-website`，**push `main` 自动构建 + 部署**（CF 侧跑 `npm run build`，输出目录 `out`）。
 - **构建产物**：`out/`（`.gitignore` 忽略，CF 侧或本地现构）。App 硬编码依赖的法律 URL：`/{zh,en}/privacy`、`/{zh,en}/terms`、`/{zh,en}/support`（iOS `AppConfig.privacyPolicyURL` / `termsURL`）。
+- **边缘重定向**：`public/_redirects`（随构建拷入 `out/`）承载 `/ → /en 302`——CF redirects 恒先于静态资产生效，apex 白屏跳转页自此不再被渲染；`out/index.html` 仅剩本地 dev / 非 CF 环境兜底。Node 版本由仓内 `.node-version`（24）对 CF 构建镜像与 CI 双向锁定。
 
 ## 部署 / 更新（两条路径）
 

@@ -1,0 +1,3 @@
+# Cloudflare Pages 边缘重定向：apex 直接 302 到默认 locale，浏览器不再渲染
+# 任何中间跳转页（out/index.html 仅作本地 dev / 非 CF 环境兜底）。
+/ /en 302
