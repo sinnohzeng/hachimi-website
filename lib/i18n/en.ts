@@ -526,8 +526,7 @@ export const en: Translations = {
       },
       {
         heading: "Contact",
-        content:
-          "Email voice@hachimi.ai to reach the Hachimi.ai team.",
+        content: "Email voice@hachimi.ai to reach the Hachimi.ai team.",
       },
     ],
   },

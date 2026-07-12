@@ -3,13 +3,7 @@
 import { type ReactNode } from "react";
 import { motion } from "motion/react";
 import type { Translations } from "@/lib/i18n";
-import {
-  DIST,
-  MARGIN,
-  STAGGER,
-  hoverLift,
-  reveal,
-} from "@/lib/motion-tokens";
+import { DIST, MARGIN, STAGGER, hoverLift, reveal } from "@/lib/motion-tokens";
 
 // Decorative marks for each heart-matter: 尋 (seek) · 緣 (bond) · 擇 (choose).
 const cardGlyphs = ["尋", "緣", "擇"];
