@@ -1,3 +1,7 @@
 # Cloudflare Pages 边缘重定向：apex 直接 302 到默认 locale，浏览器不再渲染
 # 任何中间跳转页（out/index.html 仅作本地 dev / 非 CF 环境兜底）。
 / /en 302
+# /get：iOS 分享卡二维码落地（spec 013 v2）。自有域名中转 App Store，
+# 指向可更新、可加统计；CF Pages 静态规则精确匹配路径，带尾斜杠单列一条。
+/get https://apps.apple.com/app/id6787621766 302
+/get/ https://apps.apple.com/app/id6787621766 302
