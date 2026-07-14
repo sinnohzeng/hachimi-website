@@ -46,7 +46,7 @@
 - 梅花易数 → Mei Hua Yi Shu（首现括注 "Plum Blossom divination"）。不用 Meihua Yishu / Plum Blossom Numerology 并存。
 - 本卦 Original｜变卦 Resulting｜互卦 Nuclear｜体卦 Host｜用卦 Guest｜体用 Host & Guest｜动爻 Changing line。
 - 卦象 = Hexagram；排盘详情 = Chart。二者不混指。
-- 场景（以 App `ScenarioStyle.swift` 为权威）：寻物 Find an Item｜关系 Relationship｜决策 Decision｜自由问事 Free Question。
+- 场景（以 App `ScenarioStyle.swift` 为权威）：寻物 Find an Item｜关系 Relationship｜决策 Decision｜自由问事 Open Question。**禁用 "Free Question"**：Free 会被 App Store 审核按 2.3.7 读成价格词（1.1.0 build 167 于 2026-07-14 因 en 截图含该词被拒实证）；“自由”义取 open-ended，与代码场景 id `open` 对齐。
 - 吉凶：大吉 / 吉 / 平 / 凶 / 大凶 → Great Fortune / Fortune / Neutral / Adverse / Very Adverse。
 
 ## 五之补、英文可读性与标题（2026-07-04 新增）

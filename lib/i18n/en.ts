@@ -46,7 +46,7 @@ export const en: Translations = {
         line: "Two roads in front of you, and you can't decide.",
       },
     ],
-    openName: "Free Question",
+    openName: "Open Question",
     openBlurb: "Anything else on your mind? Just ask Master Hachimi.",
   },
 
