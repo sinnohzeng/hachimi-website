@@ -61,11 +61,11 @@ export const siteConfig = {
 export const pageDates = {
   home: "2026-07-09",
   methodology: "2026-07-09",
-  privacy: "2026-07-04",
+  privacy: "2026-07-11",
   terms: "2026-06-14",
   support: "2026-07-04",
-  accountDeletion: "2026-07-04",
-  dataDeletion: "2026-07-04",
+  accountDeletion: "2026-07-11",
+  dataDeletion: "2026-07-11",
 } as const;
 
 /**

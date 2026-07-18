@@ -128,7 +128,7 @@ export const en: Translations = {
       {
         question: "What about my privacy?",
         answer:
-          "There's no account and no login, and your reading history stays only on your phone. To write a reading, your question is sent to a third-party AI service. You agree to this before your first reading, and you can take it back any time. The Privacy Policy names the provider and lays out the details.",
+          "There's no account and no login, and your reading history stays only on your phone. To write a reading, your question is sent to a third-party AI service. You agree to this before your first reading, and you can take it back any time. The Privacy Policy sets out what kind of service it is, what we require of it, and all the details.",
       },
       {
         question: "Do you collect my questions?",
@@ -207,7 +207,7 @@ export const en: Translations = {
       {
         heading: "Master Hachimi (哈基米道长)",
         content:
-          "Master Hachimi (“the App”), brand Hachimi.ai, is operated by the Hachimi.ai team (“we”, “us”; the operating entity is named in the contact section at the end of this policy). This Privacy Policy explains what data the App processes, why, and your rights.\n\nPlease understand how the App works first. Master Hachimi is an emotional-companionship product: you provide two numbers and write the question on your mind; our unified server performs a fixed Mei Hua Yi Shu (Plum Blossom divination) cast, and a third-party AI model then generates the reading in the voice of “Master Hachimi”. Unlike many purely on-device divination utilities, generating a reading necessarily sends your question and the cast to our server, which forwards them to a third-party AI service. The specific provider currently used is set out in section 3, “Current third-party AI provider”. This policy discloses that accordingly.",
+          "Master Hachimi (“the App”), brand Hachimi.ai, is operated by the Hachimi.ai team (“we”, “us”; the operating entity is named in the contact section at the end of this policy). This Privacy Policy explains what data the App processes, why, and your rights.\n\nPlease understand how the App works first. Master Hachimi is an emotional-companionship product: you provide two numbers and write the question on your mind; our unified server performs a fixed Mei Hua Yi Shu (Plum Blossom divination) cast, and a third-party AI model then generates the reading in the voice of “Master Hachimi”. Unlike many purely on-device divination utilities, generating a reading necessarily sends your question and the cast to our server, which forwards them to a third-party AI service. The nature of that service, and what we require of it, are set out in section 3. This policy discloses that accordingly.",
       },
       {
         heading: "1. Summary",
@@ -342,7 +342,7 @@ export const en: Translations = {
       kicker: "The reading",
       step: "02",
       title: "The AI only makes the words warm, nothing more",
-      body: "Once the hexagram is cast, the AI's turn begins. Master Hachimi hands the hexagram, the hour, and your question to a third-party AI service and asks it to write a reading in the Master's voice. Which model exactly? We pick whichever holds up better in testing, and it's all written down in the Privacy Policy. It can shape the words and speak to your situation, but it can't touch the hexagram, and it can't decide the fortune.",
+      body: "Once the hexagram is cast, the AI's turn begins. Master Hachimi hands the hexagram, the hour, and your question to a third-party AI service and asks it to write a reading in the Master's voice. Which model exactly? We pick whichever holds up better in testing. What we require of any such service is written down in the Privacy Policy, and it holds no matter who writes the words. It can shape the words and speak to your situation, but it can't touch the hexagram, and it can't decide the fortune.",
       writesTitle: "What the AI does",
       writes: [
         "Walk you through the hexagram, line by line",

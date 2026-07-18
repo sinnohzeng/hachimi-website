@@ -21,7 +21,7 @@ Official website: hachimi.ai. Last updated: 2026-07-09.
 
 ## Privacy
 
-- No account, and no third-party analytics SDKs. On the backend, cast events (your question, scenario, hexagram, and reading) are stored only while "Help improve readings" is on, keyed to a resettable anonymous install ID, with free text auto-deleted after 90 days; with it off, the backend stores nothing.
+- No account, and no third-party analytics SDKs. On the backend, cast events (your question, scenario, hexagram, and reading) are stored under the single explicit consent you give on first launch, keyed to a resettable anonymous install ID, with free text auto-deleted after 90 days. There is no separate toggle: withdraw consent and nothing further is sent or stored.
 - To write a reading, only your question + chosen scenario + hexagram + time-of-day are sent to a third-party AI service. The nature of that service, and our commitments regarding it — a reputable commercial paid-tier service that we have required not to train on your content — are set out in the Privacy Policy. The two cast numbers are never sent to that third-party service.
 - Reading history lives only on your device; delete it in Settings or uninstall the app.
 - All network calls use standard HTTPS/TLS; client device-integrity attestation (Firebase App Check / Apple App Attest) to deter abuse is planned (not yet enforced at launch).

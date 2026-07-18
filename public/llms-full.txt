@@ -39,7 +39,7 @@ No prediction, no fate-changing, no luck claims, no health/financial/legal effic
 
 ### No account, privacy-first
 
-There is no account and no login, and no third-party analytics SDKs. Reading history is stored only on your device. On the backend, cast events (your question, scenario, hexagram, and reading) are stored only while "Help improve readings" is on, keyed to a resettable anonymous install ID, with free text auto-deleted after 90 days; with it off, the backend stores nothing. Only your question + chosen scenario + hexagram + time-of-day are forwarded to the third-party AI service to write the reading; the two cast numbers are never sent to that third-party service.
+There is no account and no login, and no third-party analytics SDKs. Reading history is stored only on your device. On the backend, cast events (your question, scenario, hexagram, and reading) are stored under the single explicit consent you give on first launch, keyed to a resettable anonymous install ID, with free text auto-deleted after 90 days; there is no separate toggle, and withdrawing consent stops all further sending and storage. Only your question + chosen scenario + hexagram + time-of-day are forwarded to the third-party AI service to write the reading; the two cast numbers are never sent to that third-party service.
 
 ### A warm cat companion
 
@@ -64,7 +64,7 @@ You give two numbers and a question. The backend casts a Mei Hua Yi Shu hexagram
 
 ### What about my privacy?
 
-There is no account and no login. Your reading history is stored only on your device. On the backend, cast events are stored only while "Help improve readings" is on (keyed to a resettable anonymous install ID, free text auto-deleted after 90 days); with it off, the backend stores nothing, and there are no third-party analytics SDKs. To write a reading, your question is sent to a third-party AI service; the provider's identity and commitments (such as not training on paid-tier content, and retaining it only briefly for abuse prevention) are set out in the Privacy Policy. You consent before your first reading and can withdraw any time.
+There is no account and no login. Your reading history is stored only on your device. On the backend, cast events are stored under the single explicit consent you give on first launch (keyed to a resettable anonymous install ID, free text auto-deleted after 90 days); there is no separate toggle, and there are no third-party analytics SDKs. To write a reading, your question is sent to a third-party AI service. The nature of that service, and our commitments regarding it — a reputable commercial paid-tier service that we have required not to train on your content — are set out in the Privacy Policy. You consent before your first reading and can withdraw any time.
 
 ### Which platforms is it on?
 
@@ -76,21 +76,21 @@ The app is free to use, and there are no ads.
 
 ### How do I delete my data?
 
-Your history lives on your device: delete it in the app's Settings, or simply uninstall. If you ever turned on "Help improve readings", the anonymous records you sent are kept for at most 90 days, then deleted; resetting your anonymous ID in Settings unlinks them right away.
+Your history lives on your device: delete it in the app's Settings, or simply uninstall. The records you sent are kept for at most 90 days, then deleted; resetting your anonymous ID in Settings unlinks them right away.
 
 ## How we keep it honest (Methodology)
 
 The website has a dedicated transparency page ([/en/methodology](https://hachimi.ai/en/methodology), [/zh/methodology](https://hachimi.ai/zh/methodology)) that lays the method open:
 
 - The cast: two numbers plus the current hour set a Mei Hua Yi Shu hexagram by a fixed method. Same numbers and same hour always give the same hexagram, byte for byte across iOS and Android. Each cast carries a SHA-256 fingerprint, so it is reproducible and tamper-evident.
-- The reading: only after the cast does the AI write the reading, in Master Hachimi's voice (which model exactly is set out in the Privacy Policy). The AI can shape the words but cannot touch the hexagram or decide the fortune. The fortune's tone is fixed by the Host and Guest trigrams' five-element relationship, the find-item direction is derived by the cast engine, and the persona and red lines (no prediction / fate-changing / luck) are held in the system prompt.
-- The eval gate: 30 golden cases across four scenarios and two languages, plus 4 adversarial cases that probe the red lines, run on every code change. A hard gate first checks the fortune's tone was not tampered with; then a stronger model sits as judge on four criteria (on topic, no "prediction" red line, voice holds, offers a real first step). Model selection is data-driven against this golden set, not by feel.
+- The reading: only after the cast does the AI write the reading, in Master Hachimi's voice (the nature of that service, and what we require of it, are set out in the Privacy Policy). The AI can shape the words but cannot touch the hexagram or decide the fortune. The fortune's tone is fixed by the Host and Guest trigrams' five-element relationship, the find-item direction is derived by the cast engine, and the persona and red lines (no prediction / fate-changing / luck) are held in the system prompt.
+- The eval gate: 45 golden cases across four scenarios and two languages, plus 8 adversarial cases that probe the red lines, run on every code change. A hard gate first checks the fortune's tone was not tampered with; then a stronger model sits as judge on four criteria (on topic, no "prediction" red line, voice holds, offers a real first step). Model selection is data-driven against this golden set, not by feel.
 
 ## Technical Notes
 
 - Native iOS client (thin client): no third-party LLM key on device; casts and readings come from the unified backend.
 - Unified backend: Hono on Cloudflare Workers (api.hachimi.ai), stateless thin proxy, deterministic Mei Hua Yi Shu cast engine.
-- Reading model: a third-party AI service via the Vercel AI SDK; the model choice evolves with the eval matrix and the Privacy Policy disclosure is authoritative.
+- Reading model: a third-party AI service via the Vercel AI SDK; the model choice evolves with the eval matrix, and the Privacy Policy is authoritative on what kind of service we may use and what we require of it.
 - Anti-abuse: per-IP rate limiting and request body limits; client device-integrity attestation (Firebase App Check, wrapping Apple App Attest on iOS and Play Integrity on Android) is planned (not yet enforced at launch).
 - Local persistence: reading history stored on device only.
 
