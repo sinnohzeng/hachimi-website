@@ -28,26 +28,29 @@ export const zh: Translations = {
 
   scenarioCards: {
     title: "心里是哪件事，挑一张卡",
-    subtitle: "三类常来的心事，也能自由问事",
+    subtitle: "三类常来的心事，别的也可以直接问",
+    primary: {
+      name: "寻物",
+      blurb: "找回丢失的东西",
+      line: "要紧的东西不见了，翻来覆去找不着。",
+      directionLead: "先说清楚：卦象给的是方向参考，不是定位。",
+      directionBody:
+        "四张卡里只有寻物会给方位。道长按卦象说个大致的方向，帮你把要翻的地方缩小一点；东西究竟在哪，还得你自己慢慢找。",
+    },
     cards: [
       {
-        name: "寻物",
-        blurb: "找回丢失的东西",
-        line: "要紧的东西不见了，翻来覆去找不着。",
-      },
-      {
-        name: "关系",
-        blurb: "理一理和某个人的心结",
+        name: "感情",
+        blurb: "恋爱、分手、暧昧不清",
         line: "和一个人闹了别扭，心里搁着放不下。",
       },
       {
-        name: "决策",
-        blurb: "在两难之间拿个主意",
-        line: "两条路摆在眼前，一时拿不定主意。",
+        name: "事业",
+        blurb: "工作与学业上的事",
+        line: "换不换工作、要不要接着读，一时拿不定主意。",
       },
     ],
     openName: "自由问事",
-    openBlurb: "别的心事，也可以直接问哈基米道长。",
+    openBlurb: "家人、朋友，或是别的搁在心里的事，都可以直接问哈基米道长。",
   },
 
   featureCards: {

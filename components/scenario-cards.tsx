@@ -5,8 +5,9 @@ import { motion } from "motion/react";
 import type { Translations } from "@/lib/i18n";
 import { DIST, MARGIN, STAGGER, hoverLift, reveal } from "@/lib/motion-tokens";
 
-// Decorative marks for each heart-matter: 尋 (seek) · 緣 (bond) · 擇 (choose).
-const cardGlyphs = ["尋", "緣", "擇"];
+// Decorative marks: 尋 (seek) leads; 情 (feeling) · 業 (work) sit side by side.
+const primaryGlyph = "尋";
+const cardGlyphs = ["情", "業"];
 
 export function ScenarioCards({ t }: { t: Translations }): ReactNode {
   return (
@@ -30,7 +31,46 @@ export function ScenarioCards({ t }: { t: Translations }): ReactNode {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+        {/*
+          Find an Item leads the lineup (ADR-0029). Reading order inside the
+          card is deliberate: name → blurb → line → the limit → the capability.
+          `directionLead` says "a direction, not a location" BEFORE
+          `directionBody` says a direction is given at all, so the expectation
+          never forms unqualified. Do not reorder these two.
+        */}
+        <motion.div
+          {...reveal(0, { dist: DIST.lg, margin: MARGIN.card })}
+          whileHover={hoverLift}
+          className="group bg-background border-border hover:border-foreground/20 relative mb-6 flex flex-col overflow-hidden rounded-sm border p-6 transition-[border-color,box-shadow] hover:shadow-lg sm:p-8"
+        >
+          <span
+            aria-hidden="true"
+            className="text-foreground/[0.06] pointer-events-none absolute -top-6 -right-3 font-serif text-[10rem] leading-none select-none"
+          >
+            {primaryGlyph}
+          </span>
+          <div className="relative sm:max-w-2xl">
+            <h3 className="text-foreground font-serif text-2xl font-medium sm:text-3xl">
+              {t.scenarioCards.primary.name}
+            </h3>
+            <p className="text-foreground/70 mt-1 text-sm font-medium">
+              {t.scenarioCards.primary.blurb}
+            </p>
+            <p className="text-muted-foreground mt-5 text-base leading-relaxed italic">
+              {t.scenarioCards.primary.line}
+            </p>
+            <div className="border-border/70 mt-6 border-t pt-5">
+              <p className="text-foreground text-sm font-medium">
+                {t.scenarioCards.primary.directionLead}
+              </p>
+              <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
+                {t.scenarioCards.primary.directionBody}
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {t.scenarioCards.cards.map((card, index) => (
             <motion.div
               key={card.name}

@@ -29,25 +29,30 @@ export const en: Translations = {
   scenarioCards: {
     title: "Which one is it today?",
     subtitle: "The three things people ask about most, or ask anything",
+    primary: {
+      name: "Find an Item",
+      blurb: "Get back what you lost",
+      line: "You lost something that matters, and you've looked everywhere.",
+      directionLead:
+        "First, to be clear: the hexagram gives a direction to try, not a location.",
+      directionBody:
+        "Find an Item is the one card that points a way. The Master reads a rough direction from the hexagram, so you have fewer places to check. Where it actually is, you still have to find.",
+    },
     cards: [
       {
-        name: "Find an Item",
-        blurb: "Get back what you lost",
-        line: "You lost something that matters, and you've looked everywhere.",
-      },
-      {
-        name: "Relationship",
-        blurb: "Work things out with someone",
+        name: "Love & Relationships",
+        blurb: "Dating, breakups, the unclear ones",
         line: "Things got tense with someone, and you can't stop thinking about it.",
       },
       {
-        name: "Decision",
-        blurb: "Choose between two hard options",
-        line: "Two roads in front of you, and you can't decide.",
+        name: "Career & Study",
+        blurb: "Work and school",
+        line: "Change jobs, or keep studying? You can't make up your mind.",
       },
     ],
     openName: "Open Question",
-    openBlurb: "Anything else on your mind? Just ask Master Hachimi.",
+    openBlurb:
+      "Family, friends, or anything else on your mind. Just ask Master Hachimi.",
   },
 
   featureCards: {

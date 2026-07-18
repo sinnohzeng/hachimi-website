@@ -26,10 +26,24 @@ export type Translations = {
     cta: string;
   };
 
-  // Scenario Cards (three heart-matters + open question)
+  // Scenario Cards — v3 lineup (ADR-0029): find-item as the lead card, love and
+  // career side by side, open question adjacent. Mirrors the App's four public
+  // scenario values find-item | love | career | open.
   scenarioCards: {
     title: string;
     subtitle: string;
+    // Find an Item leads: it is the one scenario that yields a compass
+    // direction, and therefore the one that can be mistaken for a locator.
+    // `directionLead` states the limit and MUST render before `directionBody`
+    // states the capability — never the other way round.
+    primary: {
+      name: string;
+      blurb: string;
+      line: string;
+      directionLead: string;
+      directionBody: string;
+    };
+    // Love & Relationships, Career & Study.
     cards: {
       name: string;
       blurb: string;
