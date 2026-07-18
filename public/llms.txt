@@ -2,7 +2,7 @@
 
 > Master Hachimi (哈基米道长 / Master Hachimi) is a cat-themed Mei Hua Yi Shu (Plum Blossom divination) companion app. You share two numbers and the question on your mind; a unified backend casts an I Ching hexagram by a fixed method, and a third-party AI service (its nature and our commitments are set out in the Privacy Policy) writes the reading in the warm voice of "Master Hachimi". It offers comfort and one small next step, for entertainment and emotional companionship only, never prediction, fate-changing, or luck. No account, reading history stays on your device, no ads. Brand Hachimi.ai. Available on the App Store (iOS) and Google Play (Android), distributed outside mainland China.
 
-Official website: hachimi.ai. Last updated: 2026-07-09.
+Official website: hachimi.ai. Last updated: 2026-07-18.
 
 ## Download
 
@@ -11,8 +11,8 @@ Official website: hachimi.ai. Last updated: 2026-07-09.
 
 ## How it works
 
-- [Ask](https://hachimi.ai/en#features): Type the question on your mind and give two numbers off the top of your head. No sign-up, no account.
-- [Cast](https://hachimi.ai/en#features): The two numbers and the current hour set a Mei Hua Yi Shu hexagram by a fixed, deterministic method. Same inputs, same cast, honest math.
+- [Ask](https://hachimi.ai/en#features): Pick one of four scenarios — Find an Item (the lead card), Love & Relationships, Career & Study, or Open Question — type the question on your mind, and give two numbers off the top of your head. No sign-up, no account.
+- [Cast](https://hachimi.ai/en#features): The two numbers and the current hour set a Mei Hua Yi Shu hexagram by a fixed, deterministic method. Same inputs, same cast, honest math. Find an Item additionally yields a compass direction: it is a direction to try, not a location, and finding the item is still up to you.
 - [Read](https://hachimi.ai/en#features): Master Hachimi answers in a warm cat voice, walking through what the hexagram shows, a gentle take, and a small blessing, saved to your local history.
 
 ## Principles
@@ -23,6 +23,9 @@ Official website: hachimi.ai. Last updated: 2026-07-09.
 
 - No account, and no third-party analytics SDKs. On the backend, cast events (your question, scenario, hexagram, and reading) are stored under the single explicit consent you give on first launch, keyed to a resettable anonymous install ID, with free text auto-deleted after 90 days. There is no separate toggle: withdraw consent and nothing further is sent or stored.
 - To write a reading, only your question + chosen scenario + hexagram + time-of-day are sent to a third-party AI service. The nature of that service, and our commitments regarding it — a reputable commercial paid-tier service that we have required not to train on your content — are set out in the Privacy Policy. The two cast numbers are never sent to that third-party service.
+- Questions involving health, a mental-health crisis, or high-risk financial decisions are stopped on our own server before any cast: no hexagram, no reading, no cast used, nothing forwarded to the third-party AI service, and no question text stored. A static message with places to get help is shown instead.
+- Reporting a reading stores that reading's text, your chosen reason, and your optional note in a manual content-safety review queue, deleted in full after 30 days. The queue holds no original question, chart, or memories, and no install identifier or IP address.
+- Retention deadlines (90 days for cast events, 30 days for reports) are deadlines for deletion from our database; the infrastructure provider keeps a point-in-time recovery window of up to 30 days on top of that.
 - Reading history lives only on your device; delete it in Settings or uninstall the app.
 - All network calls use standard HTTPS/TLS; client device-integrity attestation (Firebase App Check / Apple App Attest) to deter abuse is planned (not yet enforced at launch).
 

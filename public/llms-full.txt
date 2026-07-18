@@ -2,7 +2,7 @@
 
 > Master Hachimi (哈基米道长 / Master Hachimi) is a cat-themed Mei Hua Yi Shu (Plum Blossom divination) companion app. You share two numbers and the question on your mind; a unified backend casts an I Ching hexagram by a fixed method, and a third-party AI service (its nature and our commitments are set out in the Privacy Policy) writes the reading in the warm voice of "Master Hachimi". It offers comfort and one small next step, for entertainment and emotional companionship only, never prediction, fate-changing, or luck. No account, reading history stays on your device, no ads. Brand Hachimi.ai. Available on the App Store (iOS) and Google Play (Android), distributed outside mainland China.
 
-Official website: hachimi.ai. Last updated: 2026-07-09.
+Official website: hachimi.ai. Last updated: 2026-07-18.
 
 ## Download
 
@@ -17,11 +17,15 @@ Master Hachimi reframes "fortune telling" into "a cat-master takes your question
 
 ### Ask: tell the cat what's on your mind
 
-Type the question you're sitting with, then give two numbers off the top of your head. About thirty seconds, no sign-up, no account.
+Pick one of four scenarios — Find an Item (the lead card), Love & Relationships (dating, breakups, the unclear ones), Career & Study (work and school), or Open Question (family, friends, money, anything else) — type the question you're sitting with, then give two numbers off the top of your head. About thirty seconds, no sign-up, no account. The scenario only changes the reading's focus; it never changes the hexagram.
+
+Questions involving health, a mental-health crisis, or high-risk financial decisions are stopped by the backend before any cast happens, and answered with a static message and places to get help instead. There is no health card on the home screen, and health questions never receive a hexagram or a fortune tone.
 
 ### Cast: a hexagram, the same way every time
 
-Your two numbers and the current hour set a Mei Hua Yi Shu hexagram (upper trigram, lower trigram, and the moving line) by a fixed, deterministic method. Same inputs, same cast: honest math, no randomness, no smoke and mirrors. The cast runs on a unified backend, not on the device.
+Your two numbers and the current hour set a Mei Hua Yi Shu hexagram (upper trigram, lower trigram, and the moving line) by a fixed, deterministic method. Same inputs, same cast: honest math, no randomness, no smoke and mirrors. The cast runs on a unified backend, not on the device. Casting and reading are two separate requests: the hexagram is established first, and only then is the reading requested.
+
+Find an Item is the one scenario that also yields a compass direction, derived by the cast engine. It is a direction to try, not a location: it narrows where to look, and finding the item is still up to you.
 
 ### Read: Master Hachimi reads it back
 
@@ -35,11 +39,11 @@ The cast (numbers → hexagram) is honest, reproducible computation. Only the re
 
 ### For entertainment only
 
-No prediction, no fate-changing, no luck claims, no health/financial/legal efficacy. The persona and red lines are hardened at the system level. For any real decision, consult a qualified professional.
+No prediction, no fate-changing, no luck claims, no health/financial/legal efficacy. The persona and red lines are hardened at the system level, and health, crisis, and high-risk financial questions are stopped deterministically by the backend before any hexagram or AI call, rather than being left to the prompt. For any real decision, consult a qualified professional.
 
 ### No account, privacy-first
 
-There is no account and no login, and no third-party analytics SDKs. Reading history is stored only on your device. On the backend, cast events (your question, scenario, hexagram, and reading) are stored under the single explicit consent you give on first launch, keyed to a resettable anonymous install ID, with free text auto-deleted after 90 days; there is no separate toggle, and withdrawing consent stops all further sending and storage. Only your question + chosen scenario + hexagram + time-of-day are forwarded to the third-party AI service to write the reading; the two cast numbers are never sent to that third-party service.
+There is no account and no login, and no third-party analytics SDKs. Reading history is stored only on your device. On the backend, cast events (your question, scenario, hexagram, and reading) are stored under the single explicit consent you give on first launch, keyed to a resettable anonymous install ID, with free text auto-deleted after 90 days; there is no separate toggle, and withdrawing consent stops all further sending and storage. Storage is best-effort, not a complete ledger: a failed write never blocks your reading, and safety-stopped questions store no text at all. Only your question + chosen scenario + hexagram + time-of-day are forwarded to the third-party AI service to write the reading; the two cast numbers are never sent to that third-party service. Reporting a reading stores that reading's text, your reason, and your optional note in a manual review queue for 30 days, with no original question, chart, memories, install identifier, or IP address.
 
 ### A warm cat companion
 
@@ -60,7 +64,7 @@ No. Master Hachimi is for entertainment and emotional comfort only. The readings
 
 ### How is a reading made?
 
-You give two numbers and a question. The backend casts a Mei Hua Yi Shu hexagram from the numbers and the current hour using a fixed, deterministic method, then sends the hexagram, the hour, your question, and your chosen scenario to a third-party AI service, which writes the reading in Master Hachimi's voice. The two cast numbers are never sent to that third-party service.
+You pick a scenario, give two numbers, and write a question. In a first request, the backend casts a Mei Hua Yi Shu hexagram from the numbers and the current hour using a fixed, deterministic method. Only then does a second request send the hexagram, the hour, your question, and your chosen scenario to a third-party AI service, which writes the reading in Master Hachimi's voice. The two cast numbers are never sent to that third-party service.
 
 ### What about my privacy?
 
@@ -76,7 +80,7 @@ The app is free to use, and there are no ads.
 
 ### How do I delete my data?
 
-Your history lives on your device: delete it in the app's Settings, or simply uninstall. The records you sent are kept for at most 90 days, then deleted; resetting your anonymous ID in Settings unlinks them right away.
+Your history lives on your device: delete it in the app's Settings, or simply uninstall. The records you sent are kept for at most 90 days, then deleted; resetting your anonymous ID in Settings unlinks them right away, affects only the future, and does not delete existing rows. Those deadlines are for deletion from our database; the infrastructure provider keeps a point-in-time recovery window of up to 30 days on top of that, and an on-device deletion cannot remove device backups your system already made.
 
 ## How we keep it honest (Methodology)
 
@@ -91,6 +95,7 @@ The website has a dedicated transparency page ([/en/methodology](https://hachimi
 - Native iOS client (thin client): no third-party LLM key on device; casts and readings come from the unified backend.
 - Unified backend: Hono on Cloudflare Workers (api.hachimi.ai), stateless thin proxy, deterministic Mei Hua Yi Shu cast engine.
 - Reading model: a third-party AI service via the Vercel AI SDK; the model choice evolves with the eval matrix, and the Privacy Policy is authoritative on what kind of service we may use and what we require of it.
+- Two-phase casting contract: an admission-and-cast endpoint runs safety triage, consent-version check, one optional scenario clarification, quota admission, and the deterministic cast; a second endpoint generates the reading and accepts only an already-admitted, hash-matching cast.
 - Anti-abuse: per-IP rate limiting and request body limits; client device-integrity attestation (Firebase App Check, wrapping Apple App Attest on iOS and Play Integrity on Android) is planned (not yet enforced at launch).
 - Local persistence: reading history stored on device only.
 
