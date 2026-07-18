@@ -368,14 +368,14 @@ export const en: Translations = {
       step: "03",
       title:
         "How we make sure it still follows the rules: every update takes a test",
-      body: "Whether the words hold up, and whether they cross a red line, isn't left to a hunch. Every build first has to clear a hard gate, and the code doesn't get in if it fails. On top of that, a stronger model judges the readings against 45 set test cases on a regular pass, so quality gets real scrutiny, not just a hunch.",
+      body: "Whether the words hold up, and whether they cross a red line, isn't left to a hunch. Every build first has to clear a hard gate, and the code doesn't get in if it fails. On top of that, a stronger model judges the readings against 50 set test cases on a regular pass, so quality gets real scrutiny, not just a hunch.",
       stats: [
         {
-          value: "45",
-          label: "set test cases across four scenarios and two languages",
+          value: "50",
+          label: "set test cases across four scenarios and three languages",
         },
         {
-          value: "8",
+          value: "9",
           label: "hard cases built to test the red lines on purpose",
         },
         { value: "4", label: "checks by the judge, each one to pass" },
