@@ -1,6 +1,6 @@
 # Master Hachimi (哈基米道长)
 
-> Master Hachimi (哈基米道长 / Master Hachimi) is a cat-themed Mei Hua Yi Shu (Plum Blossom divination) companion app. You share two numbers and the question on your mind; a unified backend casts an I Ching hexagram by a fixed method, and a third-party AI service (the current provider is disclosed in the Privacy Policy) writes the reading in the warm voice of "Master Hachimi". It offers comfort and one small next step, for entertainment and emotional companionship only, never prediction, fate-changing, or luck. No account, reading history stays on your device, no ads. Brand Hachimi.ai. Available on the App Store (iOS) and Google Play (Android), distributed outside mainland China.
+> Master Hachimi (哈基米道长 / Master Hachimi) is a cat-themed Mei Hua Yi Shu (Plum Blossom divination) companion app. You share two numbers and the question on your mind; a unified backend casts an I Ching hexagram by a fixed method, and a third-party AI service (its nature and our commitments are set out in the Privacy Policy) writes the reading in the warm voice of "Master Hachimi". It offers comfort and one small next step, for entertainment and emotional companionship only, never prediction, fate-changing, or luck. No account, reading history stays on your device, no ads. Brand Hachimi.ai. Available on the App Store (iOS) and Google Play (Android), distributed outside mainland China.
 
 Official website: hachimi.ai. Last updated: 2026-07-09.
 
