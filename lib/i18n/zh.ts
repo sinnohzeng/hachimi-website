@@ -138,7 +138,7 @@ export const zh: Translations = {
       {
         question: "支持哪些平台？",
         answer:
-          "目前只有 iPhone 版，去 App Store 搜“哈基米道长”就能找到。安卓版还在做，尚未发布。",
+          "都上架了。iPhone 去 App Store，安卓去 Google Play，搜“哈基米道长”就能找到。",
       },
       {
         question: "需要花钱吗？",
@@ -320,7 +320,7 @@ export const zh: Translations = {
         },
         {
           term: "两端一个样",
-          desc: "起卦核在服务端，任何设备上报一样的数字与时辰，起出来的都是字节一致的同一卦。卦不会因为你换了手机就变。",
+          desc: "iOS 和安卓，报一样的数字与时辰，起出来的是字节一致的同一卦。卦不会因为你换了手机就变。",
         },
         {
           term: "指纹可验",

@@ -7,6 +7,7 @@ Official website: hachimi.ai. Last updated: 2026-07-09.
 ## Download
 
 - [App Store](https://apps.apple.com/app/id6787621766): Download for iPhone
+- [Google Play](https://play.google.com/store/apps/details?id=com.hachimi.hachimi_app): Download for Android
 
 ## About
 
@@ -67,7 +68,7 @@ There is no account and no login. Your reading history is stored only on your de
 
 ### Which platforms is it on?
 
-iPhone only for now. Get it on the [App Store](https://apps.apple.com/app/id6787621766). An Android version is in the works and is not released yet.
+It's on both. Get it on the [App Store](https://apps.apple.com/app/id6787621766) for iPhone, or on [Google Play](https://play.google.com/store/apps/details?id=com.hachimi.hachimi_app) for Android.
 
 ### Does it cost anything?
 
@@ -96,6 +97,7 @@ The website has a dedicated transparency page ([/en/methodology](https://hachimi
 ## Links
 
 - [App Store listing](https://apps.apple.com/app/id6787621766): iOS app
+- [Google Play listing](https://play.google.com/store/apps/details?id=com.hachimi.hachimi_app): Android app
 - [Official Website (English)](https://hachimi.ai/en): Product landing page
 - [Official Website (Chinese)](https://hachimi.ai/zh): 中文产品页
 - [Methodology](https://hachimi.ai/en/methodology): How a hexagram is cast (deterministic, SHA-256 fingerprint), where the AI is constrained, and the dual-layer eval gate

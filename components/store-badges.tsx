@@ -20,11 +20,7 @@ const playBadges: { en: Badge; zh: Badge } = {
 };
 
 /**
- * App Store + Google Play 官方下载徽章。
- *
- * **Play 徽章只在安卓端真的上架后才存在**（`siteConfig.googlePlay` 非 null）。在那之前
- * 渲染它等于把访客送去一个不是本产品的商店页，见 lib/config.ts 那段注释。故此处不是
- * 「隐藏」而是**不渲染**——隐藏起来的链接仍在 HTML 里，仍会被爬虫与读屏软件拿到。
+ * App Store + Google Play 官方下载徽章对。
  *
  * 双徽章恒渲染进静态 HTML（SEO 与无 JS 场景可见），平台收敛交给 CSS：
  * app/[locale]/layout.tsx 里 <body> 首位的内联脚本在首帧绘制前把
@@ -44,16 +40,9 @@ export function StoreBadges({
 }): ReactNode {
   const apple = locale === "zh" ? appleBadges.zh : appleBadges.en;
   const play = locale === "zh" ? playBadges.zh : playBadges.en;
-  const playHref = siteConfig.googlePlay;
 
-  // data-badges 让 CSS 的平台收敛规则知道「这里到底有几枚徽章」。只有一枚时那两条
-  // display:none 必须失效——否则安卓访客会看到一个空荡荡的下载区（apple 被隐藏、
-  // play 根本没渲染），而这种失效不会让任何构建或测试变红。
   return (
-    <div
-      data-badges={playHref ? "both" : "apple-only"}
-      className={`flex flex-wrap items-center gap-3 ${className}`}
-    >
+    <div className={`flex flex-wrap items-center gap-3 ${className}`}>
       <a
         href={siteConfig.appStore}
         data-badge="apple"
@@ -67,21 +56,19 @@ export function StoreBadges({
           className="h-12 w-auto"
         />
       </a>
-      {playHref && (
-        <a
-          href={playHref}
-          data-badge="play"
-          className="transition-opacity duration-150 hover:opacity-80"
-        >
-          <img
-            src={play.src}
-            alt={t.store.googlePlayAlt}
-            width={play.width}
-            height={play.height}
-            className="h-12 w-auto"
-          />
-        </a>
-      )}
+      <a
+        href={siteConfig.googlePlay}
+        data-badge="play"
+        className="transition-opacity duration-150 hover:opacity-80"
+      >
+        <img
+          src={play.src}
+          alt={t.store.googlePlayAlt}
+          width={play.width}
+          height={play.height}
+          className="h-12 w-auto"
+        />
+      </a>
     </div>
   );
 }

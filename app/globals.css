@@ -115,12 +115,10 @@ body {
 /* 下载徽章的首帧平台收敛：html[data-platform] 由 [locale]/layout.tsx 里
    <body> 首位的内联脚本在绘制前写入。脚本失效（无 JS）时属性缺失，双徽章
    照常显示——与静态 HTML 一致，零位移。 */
-/* 只在【两枚都在场】时收敛（data-badges="both"）。安卓未上架期只有 App Store 一枚，
-   此时若仍按平台隐藏，安卓访客会看到一个空的下载区——而空白不会让构建或测试变红。 */
-html[data-platform="ios"] [data-badges="both"] [data-badge="play"] {
+html[data-platform="ios"] [data-badge="play"] {
   display: none;
 }
-html[data-platform="android"] [data-badges="both"] [data-badge="apple"] {
+html[data-platform="android"] [data-badge="apple"] {
   display: none;
 }
 

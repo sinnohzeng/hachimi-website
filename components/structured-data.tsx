@@ -76,15 +76,8 @@ export function SiteStructuredData({ locale }: { locale: string }): ReactNode {
             // Store listings: downloadUrl for LLM parsers, sameAs for entity
             // consolidation (website + both store pages = one app). No
             // aggregateRating until real store ratings exist.
-            // 只列真实存在的商店页。安卓未上架时 googlePlay 为 null，filter 后整项消失——
-            // 绝不能把一个指向别的产品的链接写进 downloadUrl / sameAs：结构化数据是给搜索
-            // 引擎的断言，一旦被收录，撤回比改一张徽章难得多。
-            downloadUrl: [siteConfig.appStore, siteConfig.googlePlay].filter(
-              Boolean
-            ),
-            sameAs: [siteConfig.appStore, siteConfig.googlePlay].filter(
-              Boolean
-            ),
+            downloadUrl: [siteConfig.appStore, siteConfig.googlePlay],
+            sameAs: [siteConfig.appStore, siteConfig.googlePlay],
             dateModified: pageDates.home,
             author: { "@id": organizationId },
             url: `${siteConfig.url}/${locale}`,
