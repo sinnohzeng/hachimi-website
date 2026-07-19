@@ -143,7 +143,7 @@ export const en: Translations = {
       {
         question: "Which platforms is it on?",
         answer:
-          "It's on both. Get it on the App Store for iPhone, or on Google Play for Android.",
+          "iPhone only for now. Get it on the App Store. An Android version is in the works and is not released yet.",
       },
       {
         question: "Does it cost anything?",
@@ -327,7 +327,7 @@ export const en: Translations = {
         },
         {
           term: "The same on both",
-          desc: "iOS and Android: give the same numbers and hour, and you get the exact same hexagram. The cast doesn't change just because you switched phones.",
+          desc: "The casting core lives on the server, so the same numbers and the same hour give the exact same hexagram on any device. The cast doesn't change just because you switched phones.",
         },
         {
           term: "A fingerprint you can check",

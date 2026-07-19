@@ -46,8 +46,17 @@ export const siteConfig = {
   // lets Apple route visitors to their local storefront.
   appStore: "https://apps.apple.com/app/id6787621766",
   appStoreId: "6787621766",
-  googlePlay:
-    "https://play.google.com/store/apps/details?id=com.hachimi.hachimi_app",
+  // 安卓端尚未发布，故【没有】Play 商店链接。
+  //
+  // 这里曾经写着 `https://play.google.com/store/apps/details?id=com.hachimi.hachimi_app`，
+  // 而那个包名是**旧 LUMI 习惯养成 App** 的上架标识（安卓原生端沿用它顶替旧应用，见
+  // hachimi-ios/docs/repo-strategy.md）。于是官网访客点 Play 徽章会落到一个不是本产品的
+  // 商店页，JSON-LD 还把它作为 downloadUrl 告诉了搜索引擎——比徽章本身更难撤回。
+  //
+  // 故此处恒为 null，直到安卓端真的上架。null 不是占位符，是**事实**：消费方
+  //（StoreBadges / structured-data）必须显式面对"没有安卓链接"这件事，而不是拿到一个
+  // 看起来能点的字符串。上架当天把真链接填回来，两处消费方自然恢复。
+  googlePlay: null as string | null,
 } as const;
 
 /**
