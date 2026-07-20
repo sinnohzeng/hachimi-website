@@ -39,7 +39,7 @@ No prediction, no fate-changing, no luck claims, no health/financial/legal effic
 
 ### No account, privacy-first
 
-There is no account and no login, and no third-party analytics SDKs. Reading history is stored only on your device. On the backend, cast events (your question, scenario, hexagram, and reading) are stored under the single explicit consent you give on first launch, keyed to a resettable anonymous install ID, with free text auto-deleted after 90 days; there is no separate toggle, and withdrawing consent stops all further sending and storage. Only your question + chosen scenario + hexagram + time-of-day are forwarded to the third-party AI service to write the reading; the two cast numbers are never sent to that third-party service.
+There is no account and no login, and no third-party analytics SDKs. Reading history is stored only on your device. On the backend, cast events (your question, scenario, hexagram, and reading) are stored under the single explicit consent you give on first launch, keyed to a resettable anonymous install ID, with free text auto-deleted after 90 days; there is no separate toggle, and withdrawing consent stops all further sending and storage. Beyond that: an admission record (anonymous install ID, timestamp, status only) is kept at most 8 days, daily cast counts 2 days, and a reading you choose to report for review 30 days — none of which carries your question. A cast stopped by a safety topic stores neither the question nor any generated text. Only your question + chosen scenario + hexagram + time-of-day are forwarded to the third-party AI service to write the reading; the two cast numbers are never sent to that third-party service.
 
 ### A warm cat companion
 
@@ -47,6 +47,7 @@ A cat-master ("哈基米道长") who actually listens, turning "asking a questio
 
 ## Product Facts
 
+- 4 scenarios (Find an Item, Love, Career, Open Question); only Find an Item also returns a direction, derived by the cast engine, which points a way to look rather than a location
 - 64 hexagrams
 - 6 reading facets (hexagram presentation, body/use, overall tone, reading, advice, blessing)
 - 0 accounts needed

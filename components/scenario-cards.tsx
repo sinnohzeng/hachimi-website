@@ -5,8 +5,8 @@ import { motion } from "motion/react";
 import type { Translations } from "@/lib/i18n";
 import { DIST, MARGIN, STAGGER, hoverLift, reveal } from "@/lib/motion-tokens";
 
-// Decorative marks for each heart-matter: 尋 (seek) · 緣 (bond) · 擇 (choose).
-const cardGlyphs = ["尋", "緣", "擇"];
+// Decorative marks for each heart-matter: 尋 (seek) · 緣 (bond) · 業 (work).
+const cardGlyphs = ["尋", "緣", "業"];
 
 export function ScenarioCards({ t }: { t: Translations }): ReactNode {
   return (
@@ -56,6 +56,13 @@ export function ScenarioCards({ t }: { t: Translations }): ReactNode {
               <p className="text-muted-foreground relative mt-5 text-base leading-relaxed italic">
                 {card.line}
               </p>
+              {card.note ? (
+                // Sits at the card's foot so the extra thing this one scenario
+                // gives you reads as a caveat, not as a bigger promise.
+                <p className="border-border/60 text-muted-foreground/80 relative mt-auto border-t pt-4 text-sm leading-relaxed">
+                  {card.note}
+                </p>
+              ) : null}
             </motion.div>
           ))}
         </div>

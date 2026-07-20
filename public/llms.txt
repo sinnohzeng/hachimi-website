@@ -2,7 +2,7 @@
 
 > Master Hachimi (哈基米道长 / Master Hachimi) is a cat-themed Mei Hua Yi Shu (Plum Blossom divination) companion app. You share two numbers and the question on your mind; a unified backend casts an I Ching hexagram by a fixed method, and a third-party AI service (its nature and our commitments are set out in the Privacy Policy) writes the reading in the warm voice of "Master Hachimi". It offers comfort and one small next step, for entertainment and emotional companionship only, never prediction, fate-changing, or luck. No account, reading history stays on your device, no ads. Brand Hachimi.ai. Available on the App Store (iOS) and Google Play (Android), distributed outside mainland China.
 
-Official website: hachimi.ai. Last updated: 2026-07-09.
+Official website: hachimi.ai. Last updated: 2026-07-20.
 
 ## Download
 
@@ -11,7 +11,7 @@ Official website: hachimi.ai. Last updated: 2026-07-09.
 
 ## How it works
 
-- [Ask](https://hachimi.ai/en#features): Type the question on your mind and give two numbers off the top of your head. No sign-up, no account.
+- [Ask](https://hachimi.ai/en#features): Pick what it is about — Find an Item, Love, Career, or an Open Question — type the question on your mind, and give two numbers off the top of your head. No sign-up, no account.
 - [Cast](https://hachimi.ai/en#features): The two numbers and the current hour set a Mei Hua Yi Shu hexagram by a fixed, deterministic method. Same inputs, same cast, honest math.
 - [Read](https://hachimi.ai/en#features): Master Hachimi answers in a warm cat voice, walking through what the hexagram shows, a gentle take, and a small blessing, saved to your local history.
 
@@ -23,7 +23,8 @@ Official website: hachimi.ai. Last updated: 2026-07-09.
 
 - No account, and no third-party analytics SDKs. On the backend, cast events (your question, scenario, hexagram, and reading) are stored under the single explicit consent you give on first launch, keyed to a resettable anonymous install ID, with free text auto-deleted after 90 days. There is no separate toggle: withdraw consent and nothing further is sent or stored.
 - To write a reading, only your question + chosen scenario + hexagram + time-of-day are sent to a third-party AI service. The nature of that service, and our commitments regarding it — a reputable commercial paid-tier service that we have required not to train on your content — are set out in the Privacy Policy. The two cast numbers are never sent to that third-party service.
-- Reading history lives only on your device; delete it in Settings or uninstall the app.
+- Reading history lives only on your device; delete it in Settings or uninstall the app. History and memory episodes are included in the encrypted, system-managed device backup so they survive a new phone; drafts and an in-flight cast are excluded from backup and expire on their own (30 days and 7 days).
+- Retention beyond the 90-day event text: an admission record holding only the anonymous install ID, a timestamp, and a status is kept at most 8 days; daily cast counts are kept 2 days; a reading you report for review is kept 30 days and never includes your question. A cast stopped by a safety topic stores neither the question nor any generated text.
 - All network calls use standard HTTPS/TLS; client device-integrity attestation (Firebase App Check / Apple App Attest) to deter abuse is planned (not yet enforced at launch).
 
 ## Links

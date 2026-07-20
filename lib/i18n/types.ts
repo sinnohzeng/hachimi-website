@@ -34,6 +34,10 @@ export type Translations = {
       name: string;
       blurb: string;
       line: string;
+      // Only the find-item card carries this: it is the one scenario whose
+      // reading includes a direction computed by the cast core, so the card
+      // has to say what that direction is (and is not) before anyone taps it.
+      note?: string;
     }[];
     openName: string;
     openBlurb: string;
