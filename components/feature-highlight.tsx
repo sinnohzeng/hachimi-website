@@ -71,8 +71,9 @@ export function FeatureHighlight({
               <div className="relative mx-auto flex w-full max-w-70 flex-1 flex-col">
                 <div className="relative flex flex-1 flex-col rounded-t-4xl bg-neutral-900 px-1 pt-1">
                   <div className="min-h-100 flex-1 overflow-hidden rounded-t-[1.75rem] bg-neutral-950">
-                    {/* 与 hero 同一张截图，但下移到卦盘段：hero 已露判词区，
-                        这里换一段构图，同一素材不撞脸。 */}
+                    {/* 整图顶对齐：容器高度随左栏拉伸、可高过图片，图片下缘之外由
+                        bg-neutral-950 顺色补齐。别用 translate 下移裁切——那会同时
+                        砍掉顶部状态栏、在底部露出黑洞（2026-07-21 实证回退）。 */}
                     <img
                       src={`/screenshots/${locale}/result.webp`}
                       alt={t.featureHighlight.phonePlaceholder}
@@ -80,7 +81,7 @@ export function FeatureHighlight({
                       height={1565}
                       loading="lazy"
                       decoding="async"
-                      className="block h-auto w-full -translate-y-52 select-none"
+                      className="block h-auto w-full object-top select-none"
                     />
                   </div>
                 </div>
