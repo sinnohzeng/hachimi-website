@@ -2,7 +2,7 @@
 
 > Master Hachimi (哈基米道长 / Master Hachimi) is a cat-themed Mei Hua Yi Shu (Plum Blossom divination) companion app. You share two numbers and the question on your mind; a unified backend casts an I Ching hexagram by a fixed method, and a third-party AI service (its nature and our commitments are set out in the Privacy Policy) writes the reading in the warm voice of "Master Hachimi". It offers comfort and one small next step, for entertainment and emotional companionship only, never prediction, fate-changing, or luck. No account, reading history stays on your device, no ads. Brand Hachimi.ai. Available on the App Store (iOS) and Google Play (Android), distributed outside mainland China.
 
-Official website: hachimi.ai. Last updated: 2026-07-09.
+Official website: hachimi.ai. Last updated: 2026-07-21.
 
 ## Download
 
@@ -39,11 +39,15 @@ No prediction, no fate-changing, no luck claims, no health/financial/legal effic
 
 ### No account, privacy-first
 
-There is no account and no login, and no third-party analytics SDKs. Reading history is stored only on your device. On the backend, cast events (your question, scenario, hexagram, and reading) are stored under the single explicit consent you give on first launch, keyed to a resettable anonymous install ID, with free text auto-deleted after 90 days; there is no separate toggle, and withdrawing consent stops all further sending and storage. Beyond that: an admission record (anonymous install ID, timestamp, status only) is kept at most 8 days, daily cast counts 2 days, and a reading you choose to report for review 30 days — none of which carries your question. A cast stopped by a safety topic stores neither the question nor any generated text. Only your question + chosen scenario + hexagram + time-of-day are forwarded to the third-party AI service to write the reading; the two cast numbers are never sent to that third-party service.
+There is no account and no login, and no third-party analytics SDKs. Reading history is stored only on your device. On the backend, cast events (your question, scenario, hexagram, and reading) are stored under the single explicit consent you give on first launch, keyed to a resettable anonymous install ID, with free text auto-deleted after 90 days; there is no separate toggle, and withdrawing consent stops all further sending and storage. Beyond that: an admission record (anonymous install ID, timestamp, status only) is kept at most 8 days, daily cast counts 2 days, and a reading you choose to report for review 30 days; none of these carries your question. A cast stopped by a safety topic stores neither the question nor any generated text. Only your question + chosen scenario + hexagram + time-of-day are forwarded to the third-party AI service to write the reading; the two cast numbers are never sent to that third-party service.
 
 ### A warm cat companion
 
 A cat-master ("哈基米道长") who actually listens, turning "asking a question" into "having a cat sit with you for a moment."
+
+### A master who remembers
+
+Master Hachimi remembers what you asked before, so a reading can pick up where the last one left off. The memory notes live only on your device; up to three travel with a request just to shape that one reading, and the server keeps no memory store. Memory can be turned off in Settings, and casting with "Asking for someone else" is never remembered.
 
 ## Product Facts
 
@@ -65,7 +69,11 @@ You give two numbers and a question. The backend casts a Mei Hua Yi Shu hexagram
 
 ### What about my privacy?
 
-There is no account and no login. Your reading history is stored only on your device. On the backend, cast events are stored under the single explicit consent you give on first launch (keyed to a resettable anonymous install ID, free text auto-deleted after 90 days); there is no separate toggle, and there are no third-party analytics SDKs. To write a reading, your question is sent to a third-party AI service. The nature of that service, and our commitments regarding it — a reputable commercial paid-tier service that we have required not to train on your content — are set out in the Privacy Policy. You consent before your first reading and can withdraw any time.
+There is no account and no login. Your reading history is stored only on your device. On the backend, cast events are stored under the single explicit consent you give on first launch (keyed to a resettable anonymous install ID, free text auto-deleted after 90 days); there is no separate toggle, and there are no third-party analytics SDKs. To write a reading, your question is sent to a third-party AI service. The nature of that service, and our commitments regarding it, are set out in the Privacy Policy: a reputable commercial paid-tier service that we have required not to train on your content. You consent before your first reading and can withdraw any time.
+
+### How does the Master remember what I asked?
+
+Through "memories" kept on your device: after each reading, the app condenses it into a short note on your phone. When you ask about something related, up to three of those notes travel with the request just to shape that one reading. The server uses them and forgets them, and keeps no memory store. You can turn off "Master Hachimi's Memory" in Settings any time; deleting a history entry deletes its memory too; casting for someone else with "Asking for someone else" is never remembered.
 
 ### Which platforms is it on?
 

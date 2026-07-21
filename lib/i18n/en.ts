@@ -18,11 +18,14 @@ export const en: Translations = {
   },
 
   hero: {
-    badge: "See how it's built",
+    eyebrow: "A divination app with an AI cat inside",
     headline1: "When it's a lot,",
     headline2: "cast a hexagram.",
     description:
-      "Two numbers, one question. Master Hachimi reads the hexagram, a six-line sign, with you and finds one small step to take now.",
+      "Two numbers, one question. Master Hachimi casts a hexagram, a six-line sign, and reads it with you. The knot loosens, and you come away with one small step to take now.",
+    memory:
+      "A chatbot forgets what you asked last time. The Master remembers, cast after cast.",
+    screenshotAlt: "A reading in the Master Hachimi app",
     cta: "See how it works",
   },
 
@@ -34,17 +37,20 @@ export const en: Translations = {
         name: "Find an Item",
         blurb: "Get back what you lost",
         line: "You lost something that matters, and you've looked everywhere.",
+        glyph: "Seek",
         note: "This one also gives you a direction, read off the hexagram. It points a way to look, not a location. Start with the places you spend your days.",
       },
       {
         name: "Love",
         blurb: "Untangle a knot with someone",
         line: "Things got tense with someone, and you can't stop thinking about it.",
+        glyph: "Bond",
       },
       {
         name: "Career",
         blurb: "Look at where you stand at work or school",
         line: "Something at work is stuck, and neither staying nor moving feels right.",
+        glyph: "Work",
       },
     ],
     openName: "Open Question",
@@ -134,12 +140,12 @@ export const en: Translations = {
       {
         question: "Do you collect my questions?",
         answer:
-          "Yes — it is part of what you agree to before your first reading. Your question, scenario, hexagram, and reading are saved under an anonymous ID, your typed text is deleted after 90 days, and it is used only to make readings better. Never sold, never used for ads, no outside analytics. Withdrawing consent stops the collection, and resetting your anonymous ID in Settings unlinks past records right away. See section 4 of the Privacy Policy.",
+          "Yes. It is part of what you agree to before your first reading. Your question, scenario, hexagram, and reading are saved under an anonymous ID, your typed text is deleted after 90 days, and it is used only to make readings better. Never sold, never used for ads, no outside analytics. Withdrawing consent stops the collection, and resetting your anonymous ID in Settings unlinks past records right away. See section 4 of the Privacy Policy.",
       },
       {
         question: "How does the Master remember what I asked?",
         answer:
-          "Through “memories” kept on your device: after each reading, the app condenses it into a short note on your phone. When you ask about something related, up to three of those notes travel with the request just to shape that one reading — the server uses them and forgets them, and keeps no memory store. You can turn off “Master Hachimi’s Memory” in Settings any time; deleting a history entry deletes its memory too. Casting for someone else? Turn on “Asking for someone else” and the Master won’t remember it.",
+          "Through “memories” kept on your device: after each reading, the app condenses it into a short note on your phone. When you ask about something related, up to three of those notes travel with the request just to shape that one reading. The server uses them and forgets them, and keeps no memory store. You can turn off “Master Hachimi’s Memory” in Settings any time; deleting a history entry deletes its memory too. Casting for someone else? Turn on “Asking for someone else” and the Master won’t remember it.",
       },
       {
         question: "Which platforms is it on?",

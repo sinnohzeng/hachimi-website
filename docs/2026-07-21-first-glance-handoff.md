@@ -215,7 +215,35 @@ CF Pages 自动部署。
 
 （这段话本身就过了 Grunt Test 三问与口碑转述测试，可直接当北极星话术迭代。）
 
-## 七、入口文件与真源
+## 七、执行落档（2026-07-21 当日收口）
+
+**owner 拍板（开工第一问，两雷点）**：
+
+- 安卓口径维持现状不动。owner 原话大意：安卓马上迭代上去，别改，太折腾。FAQ 与 Play 徽章原样保留，本轮不碰。
+- en 场景卡装饰汉字换英文装饰词，选定 Seek／Bond／Work；zh 侧繁体装饰字 尋／緣／業 保留不动。
+
+**第 0 步 内容-位置矩阵（六问 × 权威位置，每条论述唯一权威位）**：
+
+| 六问 | 权威位置 | 其余位置只许点一笔 |
+| --- | --- | --- |
+| 是什么 | hero 品类锚眉线（本轮新增） | metadata description、llms.txt |
+| 给谁用 | hero 主标题的情绪时刻 + 场景卡三类心事 | 无 |
+| 解决什么 | hero 副标题（理出头绪 + 一件小事） | featureHighlight 叙述深化 |
+| 怎么做到 | featureCards 三步 | hero 副标只点报两个数字；methodology 深讲 |
+| 凭什么是你 | hero 差异句（记忆情感版，本轮新增） | FAQ 承载记忆机制；确定性只留信任区两处，featureHighlight 首条与 principles 每次同一卦 |
+| 现在做什么 | hero 主 CTA，按平台收敛的商店徽章 | finalCta 收尾 |
+
+**第 1 步 Hero 落地**：品类锚眉线、副标重写、差异句、真实截图全部进首屏，zh／en 同步；两句首屏定句已录入两仓 copy-principles §二，与北极星同级。桌面端截图贴框线底边裁半台，移动端整台向下渐隐；截图不包入场动画，禁 JS 与慢网首帧即见产品长相。旧 badge 的 methodology 引流位撤销，导航与各卡入口足够。featureHighlight 同素材构图下移到卦盘段，与首屏不撞脸。
+
+**第 2 步 复位与顺手修债**：en 场景卡装饰词迁入词条层 glyph 字段；en FAQ 两处英文 em-dash 清除；llms.txt 与 llms-full.txt 补记忆差异化表述、去 em-dash、日期对齐；pageDates.privacy 与隐私页可见日期失锁修正；两仓 copy-principles 术语表场景行更新（感情 Love／事业 Career），iOS 侧顺带修正已拆除的别名归一化过期陈述。
+
+**验证**：scan-ai-taste 红线归零；clean-context 双评审收敛（立意结构判要改，两缺口已闭环：en 副标补回理出头绪的情绪结果拍、主 CTA 徽章主导已在组件层确认；材料事实与标点判够好了，差异句判定为允许的双主体对比）；npm lint 零错误、typecheck 与 build 全绿；桌面与移动、zh 与 en 四路实拍核对通过。
+
+**遗留观察（app 侧，非本轮范围）**：营销截图内解读页的卦名开场白用了直角引号加双线破折号，与 copy-principles 标点红线有出入，源头在端上或后端产文，待端上另行裁决。
+
+**第 3 步 五秒测试（owner 侧待办）**：按 Lyssna 规程找 5 至 10 名目标人群（会为情绪价值买单、对玄学半信半疑的朋友），看首屏 5 秒后遮住追问三题；通过线为八成能答出陪你问事理心事的 AI 道长 App 方向。另做口碑一句话转述测试，材料用六节话术。
+
+## 八、入口文件与真源
 
 - 文案铁律真源：[copy-principles.md](copy-principles.md)（全文有效，本文档不复制）
 - 上一轮交接（历史镜鉴）：[copy-redesign-handoff.md](copy-redesign-handoff.md)

@@ -22,6 +22,15 @@
 
 `config.tagline` / `seoTitle` / `metadata` 全部对齐此北极星。禁 "Feel heard"、"Cat Divination" 这类旧措辞回潮。
 
+2026-07-21“第一眼看不懂”迭代补两句首屏定句（官网 hero 现行文，与北极星同级对待）：
+
+| 载体   | 简体中文                                     | English                                                                            |
+| ------ | -------------------------------------------- | ---------------------------------------------------------------------------------- |
+| 品类锚 | 一款占卜 App，里面住着一只会起卦的 AI 猫     | A divination app with an AI cat inside                                             |
+| 差异句 | 通用 AI 不记得你上回问过什么，道长记得，一卦接一卦陪你。 | A chatbot forgets what you asked last time. The Master remembers, cast after cast. |
+
+品类锚是首屏对“这是什么”的唯一权威回答，措辞与商店口径同宗（占卜类目 + 猫皮人设），不许写成裸“算命”。差异句是“凭什么是你”的权威位置，讲记忆的情感承诺；记忆的机制细节归 FAQ，别在首屏展开。“A 不记得，B 记得”属允许的双主体对比，不算被禁的“不是 X 而是 Y”否定平行。
+
 ## 三、人设声音（温柔带一点猫的慧黠）
 
 - 底色：温柔、不评判、去焦虑、不打包票。留台阶（别急、慢慢找、先走这一步）。
@@ -46,13 +55,13 @@
 - 梅花易数 → Mei Hua Yi Shu（首现括注 "Plum Blossom divination"）。不用 Meihua Yishu / Plum Blossom Numerology 并存。
 - 本卦 Original｜变卦 Resulting｜互卦 Nuclear｜体卦 Host｜用卦 Guest｜体用 Host & Guest｜动爻 Changing line。
 - 卦象 = Hexagram；排盘详情 = Chart。二者不混指。
-- 场景（以 App `ScenarioStyle.swift` 为权威）：寻物 Find an Item｜关系 Relationship｜决策 Decision｜自由问事 Open Question。**禁用 "Free Question"**：Free 会被 App Store 审核按 2.3.7 读成价格词（1.1.0 build 167 于 2026-07-14 因 en 截图含该词被拒实证）；“自由”义取 open-ended，与代码场景 id `open` 对齐。
+- 场景（以 App `ScenarioStyle.swift` 为权威，1.3.0 起）：寻物 Find an Item｜感情 Love｜事业 Career｜自由问事 Open Question。旧名 关系 Relationship／决策 Decision 已废，勿回潮。**禁用 "Free Question"**：Free 会被 App Store 审核按 2.3.7 读成价格词（1.1.0 build 167 于 2026-07-14 因 en 截图含该词被拒实证）；“自由”义取 open-ended，与代码场景 id `open` 对齐。
 - 吉凶：大吉 / 吉 / 平 / 凶 / 大凶 → Great Fortune / Fortune / Neutral / Adverse / Very Adverse。
 
 ## 五之补、英文可读性与标题（2026-07-04 新增）
 
 - **目标阅读水平**：美国初中 6 至 8 年级（Flesch-Kincaid ≤ 8）。营销文案避复杂词与难词，短句、常用词、主动语态。**简化不得增长文案**，每条改写词数不超过原句（hero 副标题尤其紧凑）。
-- **只留一个特殊词**：全站英文只保留 `hexagram`（卦象）一个品牌术语，首现用最省的白话同位语点明（如 `a six-line sign`）；`Mei Hua Yi Shu` 首现括注 `Plum Blossom divination`；`Host / Guest / Changing line / trigram` 只在深层的 `How it's built` 页出现，出现即配一句白话小注。
+- **只留一个特殊词**：全站英文只保留 `hexagram`（卦象）一个品牌术语，首现用最省的白话同位语点明（如 `a six-line sign`）；唯一例外是品类锚里的 `divination`，它是标准类目词、承担首屏“这是什么”，2026-07-21 定案保留；`Mei Hua Yi Shu` 首现括注 `Plum Blossom divination`；`Host / Guest / Changing line / trigram` 只在深层的 `How it's built` 页出现，出现即配一句白话小注。
 - **SEO keywords 例外**：`config.keywords`（divination / I Ching / oracle / numerology 等）是给搜索引擎的检索词，不是正文，保留不降级；用户可见的 `config.description` 照常压简。
 - **法律页轻改保义**：隐私 / 条款 / 删除数据只拆长句、换非法律难词（deterministic → fixed、solely → only 等），合规术语与法律含义一律不动。
 - **称谓演出**：猫与温柔用动作画面演（竖耳朵、翻卦书），不用 gentle / warm 形容词自我标注，不用已废弃的 `the cat` / `cat-master`。

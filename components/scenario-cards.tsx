@@ -5,9 +5,6 @@ import { motion } from "motion/react";
 import type { Translations } from "@/lib/i18n";
 import { DIST, MARGIN, STAGGER, hoverLift, reveal } from "@/lib/motion-tokens";
 
-// Decorative marks for each heart-matter: 尋 (seek) · 緣 (bond) · 業 (work).
-const cardGlyphs = ["尋", "緣", "業"];
-
 export function ScenarioCards({ t }: { t: Translations }): ReactNode {
   return (
     <section
@@ -41,11 +38,16 @@ export function ScenarioCards({ t }: { t: Translations }): ReactNode {
               whileHover={hoverLift}
               className="group bg-background border-border hover:border-foreground/20 relative flex flex-col overflow-hidden rounded-sm border p-6 transition-[border-color,box-shadow] hover:shadow-lg sm:p-8"
             >
+              {/* 汉字单字沿用出血裁切；西文词整词收在卡内，裁半截会读成缺字。 */}
               <span
                 aria-hidden="true"
-                className="text-foreground/[0.06] pointer-events-none absolute -top-3 -right-2 font-serif text-8xl select-none"
+                className={`text-foreground/[0.06] pointer-events-none absolute font-serif select-none ${
+                  card.glyph.length > 1
+                    ? "top-3 right-4 text-5xl italic"
+                    : "-top-3 -right-2 text-8xl"
+                }`}
               >
-                {cardGlyphs[index]}
+                {card.glyph}
               </span>
               <h3 className="text-foreground relative font-serif text-xl font-medium">
                 {card.name}

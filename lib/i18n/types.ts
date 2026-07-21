@@ -19,10 +19,16 @@ export type Translations = {
 
   // Hero
   hero: {
-    badge: string;
+    // Category anchor pill above the headline: the one plain-words line that
+    // tells a stranger what kind of thing this is (app + AI + divination).
+    eyebrow: string;
     headline1: string;
     headline2: string;
     description: string;
+    // The "why this and not a general chatbot" line: the memory promise,
+    // phrased as feeling, not as a feature spec (specs live in the FAQ).
+    memory: string;
+    screenshotAlt: string;
     cta: string;
   };
 
@@ -34,6 +40,10 @@ export type Translations = {
       name: string;
       blurb: string;
       line: string;
+      // Oversized decorative mark behind the card corner. zh keeps single
+      // traditional glyphs; en uses a short English word so the mark stays
+      // readable instead of being opaque decoration.
+      glyph: string;
       // Only the find-item card carries this: it is the one scenario whose
       // reading includes a direction computed by the cast core, so the card
       // has to say what that direction is (and is not) before anyone taps it.

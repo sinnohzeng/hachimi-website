@@ -59,9 +59,9 @@ export const siteConfig = {
  * stay in lockstep with the visible `effectiveDate` strings in lib/i18n.
  */
 export const pageDates = {
-  home: "2026-07-09",
+  home: "2026-07-21",
   methodology: "2026-07-09",
-  privacy: "2026-07-11",
+  privacy: "2026-07-21",
   terms: "2026-06-14",
   support: "2026-07-04",
   accountDeletion: "2026-07-11",
