@@ -43,16 +43,25 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Scripts
 
-| Command                | Description                  |
-| ---------------------- | ---------------------------- |
-| `npm run dev`          | Start development server     |
-| `npm run build`        | Build for production         |
-| `npm run start`        | Start production server      |
-| `npm run lint`         | Run ESLint                   |
-| `npm run lint:fix`     | Fix ESLint errors            |
-| `npm run format`       | Format code with Prettier    |
-| `npm run format:check` | Check code formatting        |
-| `npm run typecheck`    | Run TypeScript type checking |
+| Command                | Description                                                      |
+| ---------------------- | ---------------------------------------------------------------- |
+| `npm run dev`          | Start development server                                         |
+| `npm run build`        | Build for production                                             |
+| `npm run start`        | Start production server                                          |
+| `npm run lint`         | Run ESLint                                                       |
+| `npm run lint:fix`     | Fix ESLint errors                                                |
+| `npm run format`       | Format code with Prettier                                        |
+| `npm run format:check` | Check code formatting                                            |
+| `npm run typecheck`    | Run TypeScript type checking                                     |
+| `npm run check`        | The single quality gate: format:check + lint + typecheck + build |
+
+## Quality gate
+
+`npm run check` is the one gate for this repo — run it before pushing instead of picking individual sub-checks. There is no GitHub Actions CI (removed workspace-wide on 2026-07-05; this repo's leftover `ci.yml` was removed on 2026-07-21). The gate runs locally via a pre-push hook on `main`; enable it once per machine:
+
+```bash
+git config core.hooksPath .githooks
+```
 
 ## Project Structure
 

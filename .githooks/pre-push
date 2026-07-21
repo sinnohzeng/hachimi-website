@@ -1,0 +1,26 @@
+#!/bin/sh
+# 本地质量门 —— 替代已下线的 GitHub Actions CI（对齐 hachimi-ios 同名钩子范式）。
+#
+# 为何不用 CI：2026-07-05 全 workspace 停用 GitHub Actions（元凶是 iOS 的
+# macOS runner 按 10× 计费，41 次 push ≈ 1989 分钟吞满免费额度），门统一迁到
+# push 前的本地钩子。本仓虽是 public 仓（分钟免费），但门在本地跑得更早——
+# push 之前就拦下越线代码，且全 workspace 一套范式，不为一个仓开特例。
+# 部署与门无关：Cloudflare Pages 由 push main 的 Git 集成自动构建。
+#
+# 触发：推送 main 时跑 `npm run check`（format:check + lint + typecheck + build，
+# 与旧 ci.yml 四步完全同构）。失败即阻断 push。
+# 逃生（明知故推）：git push --no-verify
+#
+# 安装：git config core.hooksPath .githooks
+
+while read -r _local_ref _local_sha remote_ref _remote_sha; do
+	[ "$remote_ref" = "refs/heads/main" ] || continue
+	echo "▶ pre-push 质量门：npm run check（推 main 前，替代已下线的 CI）…"
+	if ! npm run check; then
+		echo ""
+		echo "❌ npm run check 未过 —— 已阻断 push。修复后重推。"
+		echo "   确需跳过（明知故推）：git push --no-verify"
+		exit 1
+	fi
+done
+exit 0

@@ -224,14 +224,14 @@ CF Pages 自动部署。
 
 **第 0 步 内容-位置矩阵（六问 × 权威位置，每条论述唯一权威位）**：
 
-| 六问 | 权威位置 | 其余位置只许点一笔 |
-| --- | --- | --- |
-| 是什么 | hero 品类锚眉线（本轮新增） | metadata description、llms.txt |
-| 给谁用 | hero 主标题的情绪时刻 + 场景卡三类心事 | 无 |
-| 解决什么 | hero 副标题（理出头绪 + 一件小事） | featureHighlight 叙述深化 |
-| 怎么做到 | featureCards 三步 | hero 副标只点报两个数字；methodology 深讲 |
-| 凭什么是你 | hero 差异句（记忆情感版，本轮新增） | FAQ 承载记忆机制；确定性只留信任区两处，featureHighlight 首条与 principles 每次同一卦 |
-| 现在做什么 | hero 主 CTA，按平台收敛的商店徽章 | finalCta 收尾 |
+| 六问       | 权威位置                               | 其余位置只许点一笔                                                                    |
+| ---------- | -------------------------------------- | ------------------------------------------------------------------------------------- |
+| 是什么     | hero 品类锚眉线（本轮新增）            | metadata description、llms.txt                                                        |
+| 给谁用     | hero 主标题的情绪时刻 + 场景卡三类心事 | 无                                                                                    |
+| 解决什么   | hero 副标题（理出头绪 + 一件小事）     | featureHighlight 叙述深化                                                             |
+| 怎么做到   | featureCards 三步                      | hero 副标只点报两个数字；methodology 深讲                                             |
+| 凭什么是你 | hero 差异句（记忆情感版，本轮新增）    | FAQ 承载记忆机制；确定性只留信任区两处，featureHighlight 首条与 principles 每次同一卦 |
+| 现在做什么 | hero 主 CTA，按平台收敛的商店徽章      | finalCta 收尾                                                                         |
 
 **第 1 步 Hero 落地**：品类锚眉线、副标重写、差异句、真实截图全部进首屏，zh／en 同步；两句首屏定句已录入两仓 copy-principles §二，与北极星同级。桌面端截图贴框线底边裁半台，移动端整台向下渐隐；截图不包入场动画，禁 JS 与慢网首帧即见产品长相。旧 badge 的 methodology 引流位撤销，导航与各卡入口足够。featureHighlight 同素材构图下移到卦盘段，与首屏不撞脸。
 
