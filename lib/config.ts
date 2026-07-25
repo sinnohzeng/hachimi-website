@@ -15,9 +15,9 @@ export const siteConfig = {
   name: "Master Hachimi",
   // Longer descriptive form used as the SEO <title> / OpenGraph title.
   seoTitle: "Master Hachimi · 哈基米道长",
-  tagline: "When it's a lot, cast a hexagram.",
+  tagline: "When your mind is racing, cast a hexagram.",
   description:
-    "Master Hachimi (哈基米道长) is a cat-themed Mei Hua Yi Shu (Plum Blossom divination) app. Give two numbers and your question, and Master Hachimi casts a hexagram, a six-line sign, and reads it with you to find one small step. For entertainment and comfort only, never prediction. No account, your history stays on your phone, no ads.",
+    "Master Hachimi (哈基米道长) is a cat-themed Mei Hua Yi Shu (Plum Blossom divination) app. Give two numbers and your question, and Master Hachimi casts a hexagram and reads it with you to find one small step. For entertainment and comfort only, never prediction. No account, your history stays on your phone, no ads.",
   url: "https://hachimi.ai",
   email: "voice@hachimi.ai",
   creator: "@sinnohzeng",
@@ -36,7 +36,7 @@ export const siteConfig = {
     "I Ching",
     "hexagram",
     "cat",
-    "emotional companion",
+    "divination companion",
     "oracle app",
     "iOS app",
     "privacy first",

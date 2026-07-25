@@ -1,6 +1,6 @@
 # Master Hachimi (哈基米道长)
 
-> Master Hachimi (哈基米道长 / Master Hachimi) is a cat-themed Mei Hua Yi Shu (Plum Blossom divination) companion app. You share two numbers and the question on your mind; a unified backend casts an I Ching hexagram by a fixed method, and a third-party AI service (its nature and our commitments are set out in the Privacy Policy) writes the reading in the warm voice of "Master Hachimi". It offers comfort and one small next step, for entertainment and emotional companionship only, never prediction, fate-changing, or luck. No account, reading history stays on your device, no ads. Brand Hachimi.ai. Available on the App Store (iOS) and Google Play (Android), distributed outside mainland China.
+> Master Hachimi (哈基米道长 / Master Hachimi) is a cat-themed Mei Hua Yi Shu (Plum Blossom divination) companion app. You share two numbers and the question on your mind; a unified backend casts an I Ching hexagram by a fixed method, and a third-party AI service (its nature and our commitments are set out in the Privacy Policy) writes the reading in the warm voice of "Master Hachimi". It offers comfort and one small next step, for entertainment and comfort only, never prediction, fate-changing, or luck-changing. No account, reading history stays on your device, no ads. Brand Hachimi.ai. Available on the App Store (iOS) and Google Play (Android), distributed outside mainland China.
 
 Official website: hachimi.ai. Last updated: 2026-07-21.
 
@@ -11,7 +11,7 @@ Official website: hachimi.ai. Last updated: 2026-07-21.
 
 ## About
 
-Master Hachimi reframes "fortune telling" into "a cat-master takes your question seriously and answers with warmth." It is an emotional-value product: the functional value (a deterministic, trustworthy cast) is the floor; the emotional value (reassurance and company) is the main draw. The cat persona lowers the barrier and removes the "superstition" stigma. The red line is firm: it delivers a moment of company and one small next step, and never delivers prediction, fate-changing, luck-altering, or any other efficacy. Everything is "for entertainment only."
+Master Hachimi is a divination companion that takes your question seriously and answers with warmth. You give two numbers and write what is on your mind; the app casts a hexagram by a fixed, deterministic method, and a cat named Master Hachimi reads it back to you. The reading is a few kind words that help you untangle what is in your head, and it always lands on one small thing you can do right now. The cast is honest math, the words are warm, and the red line is firm: Master Hachimi never predicts the future, never changes your fate, and never changes your luck. Everything is for entertainment only.
 
 ## How it works
 
@@ -25,7 +25,7 @@ Your two numbers and the current hour set a Mei Hua Yi Shu hexagram (upper trigr
 
 ### Read: Master Hachimi reads it back
 
-The cat-master responds in his own warm voice: a presentation of the hexagram, the body/use (体用) relationship, an overall tone, a gentle reading, a small piece of advice, and a blessing. Each reading is saved to your local reading history (卦历) so you can revisit it.
+Master Hachimi responds in his own warm voice: a presentation of the hexagram, the body/use (体用) relationship, an overall tone, a gentle reading, a small piece of advice, and a blessing. Each reading is saved to your local reading history (卦历) so you can revisit it.
 
 ## Design Principles
 
@@ -35,7 +35,7 @@ The cast (numbers → hexagram) is honest, reproducible computation. Only the re
 
 ### For entertainment only
 
-No prediction, no fate-changing, no luck claims, no health/financial/legal efficacy. The persona and red lines are hardened at the system level. For any real decision, consult a qualified professional.
+No prediction, no changing your fate, no changing your luck, no health/financial/legal efficacy. The persona and red lines are hardened at the system level. For any real decision, consult a qualified professional.
 
 ### No account, privacy-first
 
@@ -43,7 +43,7 @@ There is no account and no login, and no third-party analytics SDKs. Reading his
 
 ### A warm cat companion
 
-A cat-master ("哈基米道长") who actually listens, turning "asking a question" into "having a cat sit with you for a moment."
+Master Hachimi is a cat who plays the master ("哈基米道长"). He actually listens, turning "asking a question" into "having a cat sit with you for a moment."
 
 ### A master who remembers
 
@@ -61,7 +61,7 @@ Master Hachimi remembers what you asked before, so a reading can pick up where t
 
 ### Is this real fortune telling?
 
-No. Master Hachimi is for entertainment and emotional comfort only. The readings are not predictions and make no claim of accuracy, luck-changing, fate-changing, or any other efficacy. For any real decision, talk to a qualified professional.
+No. Master Hachimi is for entertainment and comfort only. The readings are not predictions and make no claim of accuracy, luck-changing, fate-changing, or any other efficacy. For any real decision, talk to a qualified professional.
 
 ### How is a reading made?
 
@@ -73,7 +73,7 @@ There is no account and no login. Your reading history is stored only on your de
 
 ### How does the Master remember what I asked?
 
-Through "memories" kept on your device: after each reading, the app condenses it into a short note on your phone. When you ask about something related, up to three of those notes travel with the request just to shape that one reading. The server uses them and forgets them, and keeps no memory store. You can turn off "Master Hachimi's Memory" in Settings any time; deleting a history entry deletes its memory too; casting for someone else with "Asking for someone else" is never remembered.
+Through "memories" kept on your device: after each reading, the app turns it into a short note on your phone. When you ask about something related, up to three of those notes travel with the request just to shape that one reading. The server uses them and forgets them, and keeps no memory store. You can turn off "Master Hachimi's Memory" in Settings any time; deleting a history entry deletes its memory too; casting for someone else with "Asking for someone else" is never remembered.
 
 ### Which platforms is it on?
 
