@@ -5,3 +5,10 @@
 # 指向可更新、可加统计；CF Pages 静态规则精确匹配路径，带尾斜杠单列一条。
 /get https://apps.apple.com/app/id6787621766 302
 /get/ https://apps.apple.com/app/id6787621766 302
+# 法务页去掉 locale 前缀也能到：商店后台登记的是 /en/... ，但有人会手敲裸路径。
+/privacy /en/privacy 302
+/data-deletion /en/data-deletion 302
+/account-deletion /en/account-deletion 302
+/terms /en/terms 302
+/support /en/support 302
+/methodology /en/methodology 302
