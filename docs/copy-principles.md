@@ -31,6 +31,16 @@
 
 品类锚是首屏对“这是什么”的唯一权威回答，措辞与商店口径同宗（占卜类目 + 猫皮人设），不许写成裸“算命”。差异句是“凭什么是你”的权威位置，讲记忆的情感承诺；记忆的机制细节归 FAQ，别在首屏展开。“A 不记得，B 记得”属允许的双主体对比，不算被禁的“不是 X 而是 Y”否定平行。
 
+2026-09-14 官网 v2 把排盘并入首屏，品类锚与主标题随之扩一格（现行文，与北极星同级对待）：
+
+| 载体    | 简体中文                                                 | English                                                                             |
+| ------- | -------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| 品类锚  | 一款占卜与排盘 App，里面住着一只会起卦、也会排盘的 AI 猫 | A divination and charting app with an AI cat that casts hexagrams and reads charts. |
+| 主标题  | 慌的时候先起一卦，想看清楚，就排一张盘。                 | When you're anxious, cast a hexagram first. To see it clearly, lay out a chart.     |
+| tagline | 慌时先起一卦，想看清就排张盘。                           | Anxious? Cast a hexagram. Want clarity? Draw a chart.                               |
+
+起卦仍是第一句，排盘是第二句：慌的时候先起卦，想看清楚再排盘，顺序不许倒。差异句不动，记忆仍是“凭什么是你”的答案。排盘讲确定性只讲可复算与本机算，“同一份生辰、同一套安星设置，排出来的盘每个字都一样”；这是算法自洽，不是准不准，别借它滑进功效宣称。
+
 ## 三、人设声音（温柔带一点猫的慧黠）
 
 - 底色：温柔、不评判、去焦虑、不打包票。留台阶（别急、慢慢找、先走这一步）。
@@ -57,6 +67,8 @@
 - 卦象 = Hexagram；排盘详情 = Chart。二者不混指。
 - 场景（以 App `ScenarioStyle.swift` 为权威，1.3.0 起）：寻物 Find an Item｜感情 Love｜事业 Career｜自由问事 Open Question。旧名 关系 Relationship／决策 Decision 已废，勿回潮。**禁用 "Free Question"**：Free 会被 App Store 审核按 2.3.7 读成价格词（1.1.0 build 167 于 2026-07-14 因 en 截图含该词被拒实证）；“自由”义取 open-ended，与代码场景 id `open` 对齐。
 - 吉凶：大吉 / 吉 / 平 / 凶 / 大凶 → Great Fortune / Fortune / Neutral / Adverse / Very Adverse。
+- 排盘（2026-09-14 官网 v2 起，英文以 App `Localizable.xcstrings` 为权威）：紫微斗数 Zi Wei Dou Shu（首现括注 "Purple Star astrology"）｜八字 Ba Zi（首现括注 "Four Pillars"）｜命盘 Chart｜三合盘 San He｜四化盘 Four Transformations｜飞星盘 Flying Star｜格局分析 Chart Patterns｜安星设置 Star Settings｜命宫 Life Palace｜身宫 Body Palace｜胎元 Conception Pillar｜神煞 Symbolic Stars｜纳音 Nayin｜藏干 Hidden Stems。底部四格 问事 Ask｜命盘 Chart｜学堂 Academy｜我的 Me，官网导航照抄不改写。
+- **限流不译 rate limit / throttle**：那是大限流年流月这一层时间盘，英文按层名写（Major cycle / Annual / Minor cycle / Monthly / daily / hourly），"fortune layer" 作统称。
 
 ## 五之补、英文可读性与标题（2026-07-04 新增）
 
