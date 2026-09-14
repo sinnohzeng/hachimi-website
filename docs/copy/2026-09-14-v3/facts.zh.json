@@ -1,0 +1,196 @@
+{
+  "_": {
+    "说明": "第三版事实稿。人只写事实，措辞由 scripts/polish-copy.mjs 交 deepseek-flash 定。",
+    "limit": "简体可见正文字数上限，标点不计。英文另按 0.6 倍单词数收，脚本自己换算。",
+    "verbatim": "北极星与已定案的品类锚、差异句原样透传，不送润色，改它们要先改 docs/copy-principles.md。",
+    "口径": "键与 specs/001-site-v3-concise 的七节一一对应。alt 是图片替代文本，不算可见正文。",
+    "enLimit": "英文上限缺省是 limit 的 0.6 倍词数。少数几条装不下出货术语表里的专名（Zi Wei Dou Shu、San He、Four Transformations、Flying Star 四个名字就 11 词），只有这几条写 enLimit 单独放宽，并在本条注明理由。专名不许为了凑字数删掉。"
+  },
+  "hero.headline": {
+    "verbatim": true,
+    "text": "慌的时候先起一卦。",
+    "en": "When it's a lot, cast a hexagram.",
+    "limit": 9
+  },
+  "hero.shotAlt": {
+    "text": "哈基米道长的起卦结果页截图，卦象在上，解读在下。",
+    "limit": 30,
+    "alt": true
+  },
+  "whatItIs.title": {
+    "verbatim": true,
+    "text": "一款占卜与排盘 App，里面住着一只会起卦、也会排盘的 AI 猫",
+    "en": "A divination and charting app with an AI cat that casts hexagrams and reads charts.",
+    "limit": 30
+  },
+  "whatItIs.steps.0": {
+    "text": "凭直觉报两个数字。",
+    "limit": 12
+  },
+  "whatItIs.steps.1": {
+    "text": "写下你想问的那件事。",
+    "limit": 12
+  },
+  "whatItIs.steps.2": {
+    "text": "道长起一卦读给你听，末尾给一个此刻就能做的第一步。",
+    "limit": 12
+  },
+  "remembers.text": {
+    "verbatim": true,
+    "text": "通用 AI 不记得你上回问过什么，道长记得，一卦接一卦陪你。",
+    "en": "A chatbot forgets what you asked last time. The Master remembers, cast after cast.",
+    "limit": 30
+  },
+  "chart.title": {
+    "verbatim": true,
+    "text": "想看清楚，就排一张盘。",
+    "en": "To see it clearly, lay out a chart.",
+    "limit": 10
+  },
+  "chart.ziwei": {
+    "text": "紫微斗数：一份生辰排出三合盘、四化盘、飞星盘三种盘式。",
+    "limit": 20,
+    "enLimit": 16,
+    "enLimitWhy": "三种盘式的英文名 San He、Four Transformations、Flying Star 加 Zi Wei Dou Shu 共 11 词"
+  },
+  "chart.bazi": {
+    "text": "八字：四柱表与六柱表，大运翻到哪一步，表就跟着换到哪一步。",
+    "limit": 20,
+    "enLimit": 15,
+    "enLimitWhy": "Ba Zi 与 Four Pillars 两个名字各占两词"
+  },
+  "chart.cta": {
+    "text": "链接文字，点开是方法页里讲排盘怎么算的那一节",
+    "limit": 6
+  },
+  "chart.shotAlt.ziwei": {
+    "text": "紫微斗数三合盘的截图，十二宫与三方四正都画在盘上。",
+    "limit": 30,
+    "alt": true
+  },
+  "chart.shotAlt.bazi": {
+    "text": "八字四柱表的截图，年月日时四柱逐行排到纳音与神煞。",
+    "limit": 30,
+    "alt": true
+  },
+  "academy.text": {
+    "text": "山医命相卜五科的 154 本古籍 2408 章正文随 App 装进来，不用下载。",
+    "limit": 22,
+    "enLimit": 17,
+    "enLimitWhy": "五科要逐个写出 Mountain, Medicine, Fate, Physiognomy and Divination，只写 five arts 英文读者不知道是哪五科"
+  },
+  "principles.text": {
+    "text": "紫微与八字两张盘都在这台手机上算出来。",
+    "limit": 14
+  },
+  "principles.tags.0": {
+    "text": "本机排盘",
+    "limit": 5
+  },
+  "principles.tags.1": {
+    "text": "没网也排得出",
+    "limit": 5
+  },
+  "principles.tags.2": {
+    "text": "不用注册",
+    "limit": 5
+  },
+  "faq.title": {
+    "text": "常见问题",
+    "limit": 8
+  },
+  "faq.subtitle": {
+    "text": "下面五条是问得最多的。",
+    "limit": 16
+  },
+  "faq.items.0.question": {
+    "text": "这是真的算命吗？",
+    "limit": 14
+  },
+  "faq.items.0.answer": {
+    "text": "不是。哈基米道长仅供娱乐与情绪陪伴，不预测未来、不改命、不转运，也不声称准。真要拿主意的事，找有资质的人谈。",
+    "limit": 60
+  },
+  "faq.items.1.question": {
+    "text": "同样的数字，每次起出来的卦一样吗？",
+    "limit": 14
+  },
+  "faq.items.1.answer": {
+    "text": "一样。相同的数字加相同的时辰，按固定方法起出来的必是同一卦，不掷骰子。卦定下来之后，第三方 AI 服务才写解读，它改不动卦象。",
+    "limit": 60
+  },
+  "faq.items.2.question": {
+    "text": "排盘要联网吗？",
+    "limit": 14
+  },
+  "faq.items.2.answer": {
+    "text": "不要。紫微与八字两张盘都由随 App 装进来的排盘内核在本机算，飞机上照样出盘。你的生辰不出这台设备。",
+    "limit": 60
+  },
+  "faq.items.3.question": {
+    "text": "道长怎么记得我上回问过什么？",
+    "limit": 14
+  },
+  "faq.items.3.answer": {
+    "text": "每卦读完，道长在你手机上存一小段要点。下次问相关的事，至多带上三段，只用来写这一次，服务器不建记忆库。可以随时关掉。",
+    "limit": 60
+  },
+  "faq.items.4.question": {
+    "text": "要注册账号吗？记录存在哪？",
+    "limit": 14
+  },
+  "faq.items.4.answer": {
+    "text": "不用注册，没有登录。卦历与命例都存在你自己的设备上，随时删得掉。后端存了什么、留多久，隐私政策里逐条写着。",
+    "limit": 60
+  },
+  "faq.stillHaveQuestions": {
+    "text": "还有别的想问？",
+    "limit": 12
+  },
+  "faq.contact": {
+    "text": "写信给我们",
+    "limit": 8
+  },
+  "finalCta.headline": {
+    "text": "把道长装进手机，下次慌的时候有处可去。",
+    "limit": 12
+  },
+  "footer.stats": {
+    "text": "随包 154 本古籍 2408 章正文、287 条词条、84 条格局规则，0 个账号。",
+    "limit": 26
+  },
+  "methodology.paipan.add.0.term": {
+    "text": "盘式",
+    "limit": 10
+  },
+  "methodology.paipan.add.0.desc": {
+    "text": "同一份生辰画成三种盘：三合盘看十二宫与三方四正，四化盘画四化字母与飞化连线，飞星盘画宫与宫之间的飞星。盘页底部一枚胶囊随时切，太极点与限流层跟着走。",
+    "limit": 110
+  },
+  "methodology.paipan.add.1.term": {
+    "text": "格局分析",
+    "limit": 10
+  },
+  "methodology.paipan.add.1.desc": {
+    "text": "格局分析按 84 条规则逐条判定，点开层名、格局名与吉凶，正文就地展开。非三合盘的盘式不给判，会直接拦住并说明原因。",
+    "limit": 110
+  },
+  "methodology.paipan.add.2.term": {
+    "text": "八字这一面",
+    "limit": 10
+  },
+  "methodology.paipan.add.2.desc": {
+    "text": "八字与紫微吃同一份生辰。四柱表每柱十行，从主星、天干、地支排到纳音与神煞；专业细盘是一张七列六柱表，一枚开关再续出胎元、命宫、身宫三列。大运十二步、流年与流月各十二格横着滑，点哪一格全表跟着换。",
+    "limit": 110,
+    "enLimit": 80,
+    "enLimitWhy": "八字术语密集，纳音、神煞、胎元、命宫、身宫、大运、流年、流月每个都要两三个英文词"
+  },
+  "methodology.paipan.add.3.term": {
+    "text": "更多排法",
+    "limit": 10
+  },
+  "methodology.paipan.add.3.desc": {
+    "text": "更多菜单里还有不按生辰起的紫占排盘、拿四柱反查生辰的四柱反查，以及截图保存与文本命盘。",
+    "limit": 110
+  }
+}

@@ -14,6 +14,17 @@
  *
  * 可选：--only a.b,c.d 只重跑这几条并并回已有的输出（事实漂了就改事实稿重跑那一条）。
  *       --concurrency N 并发数，缺省 4。
+ *       --facts <facts.zh.json> 英文那一遍用它取每条的 limit 与 verbatim；
+ *         英文的输入是中文成稿（一张扁平的字符串表），限额只有事实稿里有。
+ *
+ * 事实稿两种形态都吃：
+ *   "key": "事实句"                      老形态，字数上限走本文件的 LIMITS 表，按字符数收
+ *   "key": { text, limit, verbatim, en } 第三版形态，limit 是简体字数（标点不计），
+ *                                        英文上限由 limit × 0.6 换算成词数
+ * verbatim 为真的条目原样透传，不送模型：北极星与已定案的品类锚、差异句改起来要先
+ * 改 docs/copy-principles.md，不能让模型每跑一次就换个说法。
+ *
+ * 超限只重试一次，再超就报错退出，绝不静默截断。
  *
  * 密钥只从环境变量读，不落盘、不回显、不进任何输出。
  */
@@ -21,6 +32,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
+import { countFor, enCapFor } from "./lib/count-units.mjs";
 
 const ENDPOINT = "https://api.deepseek.com/chat/completions";
 const MODEL = "deepseek-flash";
@@ -272,7 +284,18 @@ Output only the finished English line. No quotes around it, no explanation, no p
 // 收稿判据
 // ---------------------------------------------------------------------------
 
-function violations(key, text, mode, max) {
+/** 按口径量长度：char 是字符数（老事实稿），zhUnit 是简体字数，enWord 是英文词数。 */
+function measure(text, unit) {
+  if (unit === "char") return [...text].length;
+  return countFor(unit === "enWord" ? "en" : "zh", text);
+}
+
+/** 这一条是不是长度问题。长度只准重试一次，别的问题照常改到上限。 */
+function isLengthProblem(problem) {
+  return problem.startsWith("超出") || problem.startsWith("Over the");
+}
+
+function violations(key, text, mode, max, unit) {
   const out = [];
   const lower = text.toLowerCase();
 
@@ -285,9 +308,14 @@ function violations(key, text, mode, max) {
   if (/[*_`]{1,2}\w/.test(text)) out.push("出现 Markdown 标记");
   if (/\n/.test(text)) out.push("出现换行");
 
-  const length = [...text].length;
-  if (length > max)
-    out.push(`超出 ${max} 字上限，现在 ${length} 字，必须压到 ${max} 字以内`);
+  const length = measure(text, unit);
+  if (length > max) {
+    out.push(
+      unit === "enWord"
+        ? `Over the ${max}-word cap: this is ${length} words. Cut it to ${max} words or fewer.`
+        : `超出 ${max} 字上限，现在 ${length} 字，必须压到 ${max} 字以内`
+    );
+  }
 
   if (mode === "zh") {
     if (/["']/.test(text)) out.push("出现 ASCII 直引号，中文改弯引号 “ ”");
@@ -407,27 +435,40 @@ function tidy(raw) {
   return text;
 }
 
-async function polishOne({ apiKey, key, draft, mode, max }) {
+async function polishOne({ apiKey, key, draft, mode, cap, unit }) {
   const system = mode === "zh" ? SYSTEM_ZH : SYSTEM_EN;
   const kind = key.split(".").slice(-1)[0];
   const hint = hintFor(key);
   const hintLine = hint ? `\n字段形态：${hint}` : "";
+  const capLine =
+    mode === "zh"
+      ? `字数上限：${cap} 字（标点不计，连着的拉丁字母或数字算一个字）`
+      : unit === "enWord"
+        ? `Length cap: ${cap} words`
+        : `Length cap: ${cap} characters`;
   const opening =
     mode === "zh"
-      ? `字串 key：${key}（字段类型：${kind}）\n字数上限：${max} 字${hintLine}\n\n事实稿：\n${draft}`
-      : `String key: ${key} (field type: ${kind})\nLength cap: ${Math.round(max * EN_RATIO)} characters${hint ? `\nField shape (same constraint applies in English): ${hint}` : ""}\n\nFinished Chinese line:\n${draft}`;
+      ? `字串 key：${key}（字段类型：${kind}）\n${capLine}${hintLine}\n\n事实稿：\n${draft}`
+      : `String key: ${key} (field type: ${kind})\n${capLine}${hint ? `\nField shape (same constraint applies in English): ${hint}` : ""}\n\nFinished Chinese line:\n${draft}`;
 
   const messages = [{ role: "user", content: opening }];
-  const cap = mode === "zh" ? max : Math.round(max * EN_RATIO);
+  let lengthRetries = 0;
 
   for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt += 1) {
     const text = tidy(await callModel(apiKey, system, messages));
-    const problems = violations(key, text, mode, cap);
-    const lost =
-      mode === "zh" ? droppedNumbers(draft, text) : droppedNumbers(draft, text);
+    const problems = violations(key, text, mode, cap, unit);
+    const lost = droppedNumbers(draft, text);
     if (lost.length > 0) problems.push(`丢了草稿里的数字：${lost.join("、")}`);
 
     if (problems.length === 0) return { text, attempts: attempt };
+
+    // 超限只给一次改的机会。第二次还超就交回去报错，不截断、不放行。
+    const tooLong = problems.some(isLengthProblem);
+    if (tooLong && lengthRetries >= 1) {
+      return { text, attempts: attempt, problems };
+    }
+    if (tooLong) lengthRetries += 1;
+
     if (attempt === MAX_ATTEMPTS) {
       return { text, attempts: attempt, problems };
     }
@@ -443,6 +484,48 @@ async function polishOne({ apiKey, key, draft, mode, max }) {
     });
   }
   throw new Error("unreachable");
+}
+
+/**
+ * 把一条事实稿读成统一形状。
+ *
+ * 老形态（第二版）是裸字符串，上限走 LIMITS 表按字符数收。第三版是对象，自带
+ * limit 与 verbatim。英文那一遍的输入是中文成稿（扁平字符串表），limit 与
+ * verbatim 只能从 --facts 指的事实稿里取，所以两个来源都要认。
+ */
+function normalizeEntry(key, raw, facts, mode) {
+  const meta = facts?.[key] ?? null;
+  const entry = raw && typeof raw === "object" ? raw : null;
+  const draft = entry ? entry.text : raw;
+  const limit = entry?.limit ?? meta?.limit ?? null;
+
+  if (limit === null) {
+    const max = limitFor(key);
+    return {
+      draft,
+      cap: mode === "zh" ? max : Math.round(max * EN_RATIO),
+      unit: "char",
+      verbatim: false,
+    };
+  }
+
+  const verbatim = Boolean(entry?.verbatim ?? meta?.verbatim);
+  const fixed =
+    mode === "zh" ? (entry?.text ?? meta?.text) : (entry?.en ?? meta?.en);
+  if (verbatim && !fixed) {
+    throw new Error(`${key} 标了 verbatim，但 ${mode} 那一版的原文没给`);
+  }
+  return {
+    draft,
+    // enLimit 是英文单独放宽的例外，只给装不下出货术语专名的那几条，理由写在事实稿里。
+    cap:
+      mode === "zh"
+        ? limit
+        : (entry?.enLimit ?? meta?.enLimit ?? enCapFor(limit)),
+    unit: mode === "zh" ? "zhUnit" : "enWord",
+    verbatim,
+    fixed,
+  };
 }
 
 // ---------------------------------------------------------------------------
@@ -481,6 +564,10 @@ async function main() {
   const inPath = path.resolve(args.in);
   const outPath = path.resolve(args.out);
   const drafts = JSON.parse(await readFile(inPath, "utf8"));
+  // 英文那一遍吃的是中文成稿，limit 与 verbatim 只有事实稿里有。
+  const facts = args.facts
+    ? JSON.parse(await readFile(path.resolve(args.facts), "utf8"))
+    : null;
   const only = args.only
     ? new Set(args.only.split(",").map((s) => s.trim()))
     : null;
@@ -490,7 +577,10 @@ async function main() {
       ? JSON.parse(await readFile(outPath, "utf8"))
       : {};
 
-  const keys = Object.keys(drafts).filter((k) => !only || only.has(k));
+  // 下划线开头的是事实稿里的注释块，不是文案。
+  const keys = Object.keys(drafts).filter(
+    (k) => !k.startsWith("_") && (!only || only.has(k))
+  );
   const concurrency = Number(args.concurrency ?? 4);
   const result = { ...existing };
   const flagged = [];
@@ -500,13 +590,25 @@ async function main() {
     for (;;) {
       const key = keys.shift();
       if (key === undefined) return;
-      const max = limitFor(key);
+      const spec = normalizeEntry(key, drafts[key], facts, mode);
+
+      if (spec.verbatim) {
+        // 北极星与已定案的品类锚、差异句原样透传，一个字都不送模型。
+        result[key] = spec.fixed;
+        done += 1;
+        process.stderr.write(
+          `= [${done}/${done + keys.length}] ${key}（原样透传）\n`
+        );
+        continue;
+      }
+
       const outcome = await polishOne({
         apiKey,
         key,
-        draft: drafts[key],
+        draft: spec.draft,
         mode,
-        max,
+        cap: spec.cap,
+        unit: spec.unit,
       });
       result[key] = outcome.text;
       done += 1;
@@ -523,7 +625,7 @@ async function main() {
   // key 顺序跟着草稿走，diff 才看得懂。
   const ordered = {};
   for (const key of Object.keys(drafts)) {
-    if (key in result) ordered[key] = result[key];
+    if (!key.startsWith("_") && key in result) ordered[key] = result[key];
   }
   await writeFile(outPath, `${JSON.stringify(ordered, null, 2)}\n`, "utf8");
 
