@@ -12,7 +12,8 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mjs,json,css,md}\"",
     "typecheck": "tsc --noEmit",
     "check:mentions": "node scripts/check-copy-mentions.mjs",
-    "check": "npm run format:check && npm run lint && npm run typecheck && npm run check:mentions && npm run build"
+    "check:copy": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/count-copy.mjs",
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm run check:mentions && npm run check:copy && npm run build"
   },
   "dependencies": {
     "geist": "^1.7.2",
