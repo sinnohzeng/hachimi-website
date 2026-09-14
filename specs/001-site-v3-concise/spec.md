@@ -47,7 +47,9 @@ owner 三条口径：首屏只留一句；整站字太多要大刀阔斧重写�
 
 1. GIVEN 桌面 1440×900 与手机 390×844 打开 `/zh`，THEN 首屏只见主标题、App Store 徽章、一张手机图，无第二句文字；英文版同。
 2. GIVEN `/zh` 全页，THEN 依次七节，节序如上表；`Stats` 节不存在，统计只在页脚上方一行。
-3. GIVEN 统计脚本 `scripts/count-copy.mjs`（新增，见 plan），THEN 首屏简体 ≤ 9 字，全页除 FAQ 简体可见正文 ≤ 250 字，FAQ 五条各 ≤ 60 字；英文对应 ≤ 0.6 倍单词数。脚本进 `npm run check`。
+3. GIVEN 统计脚本 `scripts/count-copy.mjs`（新增，见 plan），THEN 首屏简体 ≤ 9 字，全页除 FAQ 简体可见正文 ≤ 250 字，FAQ 五条各 ≤ 60 字；英文对应 ≤ 0.6 倍单词数。脚本进 `npm run check`。两条例外，owner 2026-09-14 已定：
+   - 北极星原文不受英文换算约束。`When it's a lot, cast a hexagram.` 是 7 词，9 字乘 0.6 只有 6 词；句子不动，脚本对首屏英文只报数不设门。改这一句要先改 `docs/copy-principles.md` 第二节。
+   - 单条英文上限可以在事实稿里写 `enLimit` 覆盖，但必须同时写 `enLimitWhy` 讲清为什么。放宽只为装下出货术语表里的专名（Zi Wei Dou Shu、San He、Four Transformations、Flying Star 四个名字就 11 词），专名不许为了凑字数删掉；收紧只为让出全页总预算。无论怎么覆盖，全页除 FAQ 的英文总数仍要 ≤ 150 词，这个总门不放。
 4. GIVEN 首页图片，THEN 恰三张 App 截图（浅深各一套算一张），第四节两张的图内可见“李小龙”，图内无任何空白姓名位。
 5. GIVEN 方法页排盘一节，THEN 从首页撤下的七项机制每项至少一句。
 6. GIVEN `npm run check`，THEN lint、typecheck、`check:mentions`、`count-copy`、构建全绿；`out/` 里 `zh` 与 `en` 都有 `index.html`。
