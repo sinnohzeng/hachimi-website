@@ -50,4 +50,61 @@
 
 ## 落地记录
 
-待填。
+2026-09-14 落地，提交在 `main` 上未推送。
+
+### 字数门
+
+`npm run check:copy`（`scripts/count-copy.mjs`，已挂进 `npm run check`）：
+
+```
+简体（字，标点不计）
+   首屏              8 / 9
+   全页除 FAQ      209 / 250
+   FAQ 1 答         44 / 60
+   FAQ 2 答         44 / 60
+   FAQ 3 答         31 / 60
+   FAQ 4 答         40 / 60
+   FAQ 5 答         45 / 60
+
+英文（词，上限为简体的 0.6 倍）
+   首屏              7 / 北极星原文，不设门
+   全页除 FAQ      148 / 150
+   FAQ 1 答         36 / 36
+   FAQ 2 答         36 / 36
+   FAQ 3 答         28 / 36
+   FAQ 4 答         35 / 36
+   FAQ 5 答         33 / 36
+```
+
+`npm run check:mentions`：对客文案门通过，5 份文案真源里没有参考来源的名字，也没有表情符号。
+
+### 实拍
+
+`npm run build` 后 `npx serve out -l 4173`，Playwright 整页实拍八张，落在
+`ziweidoushu/.playwright-mcp/`：
+
+| 档位               | 浅色                      | 深色                     |
+| ------------------ | ------------------------- | ------------------------ |
+| 桌面 1440×900 中文 | `v3-zh-desktop-light.png` | `v3-zh-desktop-dark.png` |
+| 桌面 1440×900 英文 | `v3-en-desktop-light.png` | `v3-en-desktop-dark.png` |
+| 手机 390×844 中文  | `v3-zh-phone-light.png`   | `v3-zh-phone-dark.png`   |
+| 手机 390×844 英文  | `v3-en-phone-light.png`   | `v3-en-phone-dark.png`   |
+
+逐张看过：首屏只有主标题、商店徽章、一张手机图，没有第二句文字；七节齐全，节序
+与本篇一致；四档 `scrollWidth - clientWidth` 均为 0，无横向溢出。手机档首屏实测
+高 844，图底在 796，留 48 内边距，不挤出屏。深色档三张截图按 `html.dark` 换成了
+深色版。
+
+### 两处与 spec 不一致，待 owner 过目
+
+1. **验收 3 的英文 0.6 倍，首屏那一句超一个词。** 英文主标题 `When it's a lot, cast
+a hexagram.` 是 7 词，9 字乘 0.6 向上取整是 6 词。spec 同时写着「北极星原文不送
+   润色」与「0.6 倍」，这一句上两条撞车。按更具体的那条办：句子不动，`count-copy`
+   对它只报数不设门，其余全部照门走。另有三条正文按同样的理由在事实稿里写了
+   `enLimit` 覆盖并注明原因（`chart.ziwei` 16 词、`chart.bazi` 15 词、`academy.text`
+   17 词）：术语表要求的专名本身就占掉十一个词，压到 0.6 倍只能砍专名。
+2. **验收 4 的署名图还没到。** 第四节两张与首屏一张目前都是现有匿名图占位，首屏那张
+   是旧的 720 宽起卦结果图，只有一档宽度、没有深色版，源移到了 `assets/shots/`
+   不随构建出门。署名「李小龙」的三张由 iOS 仓 spec 059 另产，到位后改
+   `scripts/build-shots.mjs` 的 source 并把 `components/app-shot.tsx` 的 `widths`
+   与 `dark` 补齐即可，调用点不动。**换图前不推、不部署。**
