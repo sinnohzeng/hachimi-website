@@ -38,11 +38,10 @@ function HamburgerIcon({
   );
 }
 
-// 五项制：怎么玩（四格一览）· 命盘 · 学堂（三个首页锚，对着 App 底部那四格）·
-// 起卦与排盘的门道（真页，作品集观众的确定入口）· 常见问题。数说道长不进一级
-// 导航，页脚保留锚点。
+// 四项制：命盘 · 学堂（两个首页锚）· 起卦与排盘的门道（真页，作品集观众的确定
+// 入口）· 常见问题。第三版撤掉了“怎么玩”那一节，导航跟着少一项；“这是什么”
+// 与“道长记得”两节紧接首屏，滚一下就到，不另设锚点。
 const navItems = [
-  { key: "features", hash: "#features" },
   { key: "chart", hash: "#chart" },
   { key: "academy", hash: "#academy" },
   { key: "methodology", hash: null },

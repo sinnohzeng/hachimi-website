@@ -21,7 +21,15 @@ export function Footer({
         </div>
       </div>
 
+      {/* 第三版撤掉了独占一屏的 Stats 节，八个数字压成页脚顶上这一行小字。
+          它是全站唯一一处摆数字的地方，别再往别的节里搬。 */}
       <div className="relative flex items-center justify-center px-6 pt-16 sm:px-8">
+        <p className="text-foreground/50 w-full max-w-270 px-8 text-center text-sm sm:px-12">
+          {t.footer.stats}
+        </p>
+      </div>
+
+      <div className="relative flex items-center justify-center px-6 pt-12 sm:px-8">
         <div className="relative w-full max-w-270">
           <div className="bg-foreground/10 absolute right-0 bottom-0 left-0 h-px" />
           <div className="bg-foreground/10 absolute right-full bottom-0 h-px w-screen" />

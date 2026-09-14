@@ -2,13 +2,12 @@
 
 import { type ReactNode } from "react";
 import dynamic from "next/dynamic";
-import { ChevronDown } from "lucide-react";
 import { motion } from "motion/react";
-import { AppShot } from "@/components/showcase";
+import { AppShot } from "@/components/app-shot";
 import { StoreBadges } from "@/components/store-badges";
 import type { Translations } from "@/lib/i18n";
 import { useReducedMotion } from "@/lib/motion";
-import { mountFade, mountRise } from "@/lib/motion-tokens";
+import { mountRise } from "@/lib/motion-tokens";
 
 // 与 shader 首帧观感接近的静态深墨渐变：shader 分包加载期间与 reduced motion
 // 场景共用，避免首屏闪白。
@@ -31,29 +30,13 @@ const HeroShader = dynamic(
   { ssr: false, loading: () => <ShaderFallback /> }
 );
 
-// 紫微三合盘：陌生人首屏唯一的具象锚点，也是这一版产品的门面。不包 motion,
-// 初始 opacity: 0 会把图片可见性押在 JS 挂载上，禁 JS 与慢网场景下首屏就没了
-// 产品长相。sizes 按实际渲染宽给，浏览器才挑得到 603 那一档。
-function HeroBoard({
-  name,
-  alt,
-  className = "",
-}: {
-  name: Parameters<typeof AppShot>[0]["name"];
-  alt: string;
-  className?: string;
-}): ReactNode {
-  return (
-    <AppShot
-      name={name}
-      alt={alt}
-      eager={name === "ziwei-sanhe"}
-      sizes="(min-width: 1280px) 240px, (min-width: 1024px) 208px, 240px"
-      className={className}
-    />
-  );
-}
-
+/**
+ * 首屏。第三版只剩三样东西：一句主标题、商店徽章、一张起卦结果图。
+ *
+ * 撤掉的品类锚、产品说明、差异句与「往下看看」文字链各有新落点：品类锚做了第二节
+ * 的标题，差异句独占第三节，产品说明散进第二节三步，往下走由导航接住。加第二句话
+ * 之前先看 specs/001-site-v3-concise/spec.md 的七节表，首屏一句是 owner 定的。
+ */
 export function Hero({
   locale,
   t,
@@ -68,117 +51,31 @@ export function Hero({
       <div className="absolute inset-0" aria-hidden="true">
         {reducedMotion ? <ShaderFallback /> : <HeroShader />}
       </div>
-      {/* 移动端内容高过视口、不再靠居中让位，pt 给固定导航让位；lg 回到纯居中。 */}
-      <div className="relative flex min-h-dvh items-center justify-center px-6 pt-20 pb-8 sm:px-8 lg:py-0">
-        <div className="relative w-full max-w-270 py-10 lg:h-140 lg:py-0">
-          {/* 装饰框线单独淡入，H1 等内容不被这层初始 opacity: 0 压住首帧。 */}
-          <motion.div
-            {...mountFade(0.3)}
-            className="pointer-events-none absolute inset-0"
-            aria-hidden="true"
-          >
-            <div className="absolute top-0 right-0 left-0 h-px bg-white/10" />
-            <div className="absolute right-0 bottom-0 left-0 h-px bg-white/10" />
-            <div className="absolute top-0 bottom-0 left-0 w-px bg-white/10" />
-            <div className="absolute top-0 right-0 bottom-0 w-px bg-white/10" />
 
-            <div className="absolute -top-0.75 -left-0.75 h-1.5 w-1.5 bg-white" />
-            <div className="absolute -top-0.75 -right-0.75 h-1.5 w-1.5 bg-white" />
-            <div className="absolute -bottom-0.75 -left-0.75 h-1.5 w-1.5 bg-white" />
-            <div className="absolute -right-0.75 -bottom-0.75 h-1.5 w-1.5 bg-white" />
+      <div className="relative flex min-h-dvh items-center justify-center px-6 pt-24 pb-12 sm:px-8 lg:py-0">
+        <div className="flex w-full max-w-5xl flex-col items-center gap-12 text-center lg:flex-row lg:justify-between lg:gap-16 lg:text-left">
+          <div className="flex flex-col items-center lg:items-start">
+            {/* H1 是 LCP 元素：不做挂载后淡入，服务端首帧（含禁 JS）即可见。 */}
+            <h1 className="max-w-xl font-serif text-4xl leading-tight font-medium tracking-tight text-balance text-white sm:text-5xl md:text-6xl lg:text-7xl">
+              {t.hero.headline}
+            </h1>
 
-            <div className="absolute top-0 right-full h-px w-screen bg-white/10" />
-            <div className="absolute top-0 left-full h-px w-screen bg-white/10" />
-            <div className="absolute right-full bottom-0 h-px w-screen bg-white/10" />
-            <div className="absolute bottom-0 left-full h-px w-screen bg-white/10" />
-
-            <div className="absolute bottom-full left-0 h-screen w-px bg-white/10" />
-            <div className="absolute top-full left-0 h-screen w-px bg-white/10" />
-            <div className="absolute right-0 bottom-full h-screen w-px bg-white/10" />
-            <div className="absolute top-full right-0 h-screen w-px bg-white/10" />
-          </motion.div>
-
-          <div className="relative flex h-full w-full flex-col justify-center px-4 lg:grid lg:grid-cols-[minmax(0,1fr)_auto] lg:items-stretch lg:gap-12 lg:px-10">
-            <div className="flex flex-col items-start justify-center lg:py-16">
-              {/* 品类锚：首屏第一行先说清这是个什么东西。纯陈述不带链接，
-                  "起卦的门道"入口由导航与下方各卡承担。 */}
-              <motion.p
-                {...mountRise(0.3)}
-                className="mb-6 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs font-medium text-white/85 backdrop-blur-sm sm:text-sm"
-              >
-                {t.hero.eyebrow}
-              </motion.p>
-
-              {/* H1 是 LCP 元素：不做挂载后淡入，服务端首帧（含禁 JS）即可见，
-                  避免入场动画把 LCP 推迟到 JS 挂载之后。 */}
-              {/* text-balance：标题两半各自换行时别把最后一两个字甩成孤行。 */}
-              <h1 className="max-w-3xl text-left font-serif text-4xl font-medium tracking-tight text-balance text-white sm:text-5xl md:text-6xl">
-                {t.hero.headline1}
-                <br />
-                {t.hero.headline2}
-              </h1>
-
-              <motion.p
-                {...mountRise(0.6)}
-                className="mt-5 max-w-xl text-left text-lg text-white/70"
-              >
-                {t.hero.description}
-              </motion.p>
-
-              {/* 差异句：为什么不是随手问个通用 AI。情感承诺放首屏，
-                  机制细节归 FAQ。 */}
-              <motion.p
-                {...mountRise(0.75)}
-                className="mt-4 max-w-xl border-l-2 border-amber-200/50 pl-3 text-left text-sm text-amber-200/90 sm:text-base"
-              >
-                {t.hero.memory}
-              </motion.p>
-
-              {/* 主 CTA：官方徽章（按访问平台 CSS 收敛成单徽章，见 store-badges）。
-                  "看看怎么玩"降级为次级文字链，留一条先了解再下载的出路。 */}
-              <motion.div
-                {...mountRise(0.9)}
-                className="mt-9 flex w-full flex-col items-start gap-5"
-              >
-                <StoreBadges locale={locale} t={t} className="min-h-12" />
-                <a
-                  href="#features"
-                  className="flex items-center gap-1 text-sm text-white/60 transition-colors duration-150 hover:text-white"
-                >
-                  {t.hero.cta}
-                  <ChevronDown className="h-4 w-4" />
-                </a>
-              </motion.div>
-
-              {/* 移动端：盘面垫底、向下渐隐，首屏就有产品长相。 */}
-              <HeroBoard
-                name="ziwei-sanhe"
-                alt={t.hero.boardAlt.sanhe}
-                className="mt-12 h-96 w-60 self-center [mask-image:linear-gradient(to_bottom,black_70%,transparent)] lg:hidden"
+            <motion.div {...mountRise(0.3)} className="mt-10">
+              <StoreBadges
+                locale={locale}
+                t={t}
+                className="min-h-12 justify-center lg:justify-start"
               />
-            </div>
-
-            {/* 桌面端三联：三合盘在前，四化与飞星从两侧探出半截，一眼看出这是
-                三种盘式。容器宽度写死，左栏才有稳定的余量排标题；旋转出去的那点
-                由 section 的 overflow-hidden 吃掉，页面不会横滚。 */}
-            <div className="relative hidden w-60 shrink-0 lg:block xl:w-72">
-              <HeroBoard
-                name="ziwei-feixing"
-                alt={t.hero.boardAlt.feixing}
-                className="absolute bottom-0 left-0 h-72 w-32 -rotate-6 opacity-65 xl:h-80 xl:w-40"
-              />
-              <HeroBoard
-                name="ziwei-sihua"
-                alt={t.hero.boardAlt.sihua}
-                className="absolute right-0 bottom-0 h-72 w-32 rotate-6 opacity-65 xl:h-80 xl:w-40"
-              />
-              <HeroBoard
-                name="ziwei-sanhe"
-                alt={t.hero.boardAlt.sanhe}
-                className="absolute bottom-0 left-1/2 h-100 w-48 -translate-x-1/2 shadow-2xl shadow-black/40 xl:h-112 xl:w-56"
-              />
-            </div>
+            </motion.div>
           </div>
+
+          <AppShot
+            name="cast-result"
+            alt={t.hero.shotAlt}
+            eager
+            sizes="(min-width: 1024px) 280px, 62vw"
+            className="w-56 shrink-0 shadow-2xl shadow-black/40 sm:w-64 lg:w-72"
+          />
         </div>
       </div>
     </section>

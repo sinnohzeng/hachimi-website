@@ -312,7 +312,12 @@ export function Methodology({
 
       {/* ---- 排盘的门道 ---- */}
       {/* 不编步骤号：起卦是 01 到 03 那条线，排盘是另一条线，不是起卦的第四步。 */}
-      <section className="border-border bg-background relative w-full border-t py-20 sm:py-28">
+      {/* id="paipan"：首页第四节那条链接的落点，官网第三版把三种盘式、格局规则、
+          安星派别这些机制从首页撤下来，全放进了这一节。改 id 要连着改首页。 */}
+      <section
+        id="paipan"
+        className="border-border bg-background relative w-full scroll-mt-28 border-t py-20 sm:py-28"
+      >
         <div className="mx-auto max-w-3xl px-6 sm:px-8">
           <div className="flex flex-col">
             <motion.div {...fade()} className="flex items-center gap-3">
@@ -430,7 +435,7 @@ export function Methodology({
               {m.closing.ctaPrivacy}
             </a>
             <a
-              href={`/${locale}#features`}
+              href={`/${locale}#what`}
               className="group text-foreground/60 hover:text-foreground inline-flex items-center gap-1 px-2 py-3 text-sm transition-colors"
             >
               {m.closing.ctaHome}

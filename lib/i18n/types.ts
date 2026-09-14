@@ -1,7 +1,6 @@
 export type Translations = {
   // Header
   nav: {
-    features: string;
     chart: string;
     academy: string;
     methodology: string;
@@ -19,109 +18,47 @@ export type Translations = {
     googlePlayAlt: string;
   };
 
-  // Hero
+  // 第一节 首屏：一句主标题 + 商店徽章 + 一张起卦结果图。第三版把 eyebrow、
+  // description、差异句与第二 CTA 全部撤走，各自有了新落点或被砍。
   hero: {
-    // Category anchor pill above the headline: the one plain-words line that
-    // tells a stranger what kind of thing this is (app + AI + divination).
-    eyebrow: string;
-    headline1: string;
-    headline2: string;
-    description: string;
-    // The "why this and not a general chatbot" line: the memory promise,
-    // phrased as feeling, not as a feature spec (specs live in the FAQ).
-    memory: string;
+    headline: string;
+    shotAlt: string;
+  };
+
+  // 第二节 这是什么：品类锚做标题，三步做正文。
+  whatItIs: {
+    title: string;
+    steps: string[];
+  };
+
+  // 第三节 道长记得：差异句一句，整节只有这一句。
+  remembers: {
+    text: string;
+  };
+
+  // 第四节 排一张盘：紫微一句一图、八字一句一图，外加一条进方法页的链接。
+  // 三种盘式、格局规则、安星设置这些机制都搬去了方法页的排盘一节。
+  chart: {
+    title: string;
+    ziwei: string;
+    bazi: string;
+    /** 链接文字，指向 /{locale}/methodology#paipan。 */
     cta: string;
-    // Alt text for the three Zi Wei board shots in the hero. The board is the
-    // product's new anchor image; the reading screenshot moved down to the
-    // 问事 section.
-    boardAlt: {
-      sanhe: string;
-      sihua: string;
-      feixing: string;
+    shotAlts: {
+      ziwei: string;
+      bazi: string;
     };
   };
 
-  // Scenario Cards (three heart-matters + open question)
-  scenarioCards: {
-    // Which bottom tab this section is about. The App's four tabs are the
-    // page's spine, so every product section leads with its tab name.
-    kicker: string;
-    title: string;
-    subtitle: string;
-    cards: {
-      name: string;
-      blurb: string;
-      line: string;
-      // Oversized decorative mark behind the card corner. zh keeps single
-      // traditional glyphs; en uses a short English word so the mark stays
-      // readable instead of being opaque decoration.
-      glyph: string;
-      // Only the find-item card carries this: it is the one scenario whose
-      // reading includes a direction computed by the cast core, so the card
-      // has to say what that direction is (and is not) before anyone taps it.
-      note?: string;
-    }[];
-    openName: string;
-    openBlurb: string;
-  };
-
-  // Feature Cards
-  featureCards: {
-    title: string;
-    subtitle: string;
-    // Visible label on each card's arrow row; the whole card links to
-    // /methodology and this makes the destination explicit.
-    readMore: string;
-    cards: {
-      title: string;
-      description: string;
-    }[];
-  };
-
-  // Chart section (命盘): Zi Wei, Ba Zi, glossary cards. Rendered by
-  // components/chart-showcase.tsx over the shared Showcase layout.
-  chart: {
-    kicker: string;
-    title: string;
-    subtitle: string;
-    blocks: ShowcaseBlock[];
-  };
-
-  // Academy section (学堂): one block, same layout as the chart blocks.
+  // 第五节 学堂：一句，不配图。学堂改版落地后再补一张根屏图。
   academy: {
-    kicker: string;
-    title: string;
-    subtitle: string;
-    body: string;
-    bullets: string[];
-    shotAlts: string[];
+    text: string;
   };
 
-  // Feature Highlight
-  featureHighlight: {
-    title1: string;
-    title2: string;
-    description: string;
-    features: string[];
-    cta: string;
-    phonePlaceholder: string;
-  };
-
-  // Principles
+  // 第六节 本机算：一句加三个标签。
   principles: {
-    badge: string;
-    title1: string;
-    title2: string;
-    description: string;
-    cta: string;
-    cards: string[];
-  };
-
-  // Stats
-  stats: {
-    items: {
-      label: string;
-    }[];
+    text: string;
+    tags: string[];
   };
 
   // FAQ
@@ -136,16 +73,15 @@ export type Translations = {
     contact: string;
   };
 
-  // Final CTA (the #download landing section: store badges + one small line).
-  // note 只写长期成立的产品事实（如起卦耗时），不写会随商业化变化的口径
-  // （免费/无广告/无账号这类现状不当卖点，见 2026-07-09 owner 反馈）。
+  // 第七节的结尾：商店徽章加一句话，不再带补充小字。
   finalCta: {
     headline: string;
-    note: string;
   };
 
   // Footer
   footer: {
+    /** 徽章上方那一行统计小字，接住了原来独占一屏的 Stats 节。 */
+    stats: string;
     copyright: string;
     links: {
       title: string;
@@ -238,19 +174,6 @@ export type Translations = {
   accountDeletion: LegalPage;
   dataDeletion: LegalPage;
   support: LegalPage;
-};
-
-/**
- * One text-plus-screenshots row in a product showcase section. `shotAlts` is
- * alt text only; which screenshot file each index maps to lives in the
- * component, since the files are locale-independent app captures.
- */
-export type ShowcaseBlock = {
-  kicker: string;
-  title: string;
-  body: string;
-  bullets: string[];
-  shotAlts: string[];
 };
 
 export type LegalPage = {
