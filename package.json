@@ -11,7 +11,8 @@
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,mjs,json,css,md}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mjs,json,css,md}\"",
     "typecheck": "tsc --noEmit",
-    "check": "npm run format:check && npm run lint && npm run typecheck && npm run build"
+    "check:mentions": "node scripts/check-copy-mentions.mjs",
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm run check:mentions && npm run build"
   },
   "dependencies": {
     "geist": "^1.7.2",
