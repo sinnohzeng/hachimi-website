@@ -139,7 +139,6 @@ export const en: Translations = {
         bullets: [
           "The same star reads differently in each palace. Hold it in the Marriage Palace and the card opens with that view.",
           "San He, Flying Star and Four Transformations charts, plus Chart Patterns. Every entry name is tappable.",
-          "The Ten Gods, Nayin, growth stage and Symbolic Stars on both Ba Zi pillar tables open with a tap.",
         ],
         shotAlts: [
           "Long press a star name on the Zi Wei chart to raise its glossary card",
