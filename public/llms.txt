@@ -1,19 +1,31 @@
 # Master Hachimi (哈基米道长)
 
-> Master Hachimi (哈基米道长 / Master Hachimi) is a cat-themed Mei Hua Yi Shu (Plum Blossom divination) companion app. You share two numbers and the question on your mind; a unified backend casts an I Ching hexagram by a fixed method, and a third-party AI service (its nature and our commitments are set out in the Privacy Policy) writes the reading in the warm voice of "Master Hachimi". It offers comfort and one small next step, for entertainment and comfort only, never prediction, fate-changing, or luck-changing. No account, reading history stays on your device, no ads. Brand Hachimi.ai. Available on the App Store (iOS) and Google Play (Android), distributed outside mainland China.
+> Master Hachimi is a cat Daoist who casts hexagrams and reads charts. Give two numbers and write your question, and he casts by Mei Hua Yi Shu, Plum Blossom divination, and reads it to you. Enter your birth details, and your Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars) charts are built on your phone, even with no internet. The Academy carries the old texts of the five arts: Mountain, Medicine, Fate, Physiognomy and Divination. For fun and company only, no predictions. No account, records stay on your device, no ads. Brand Hachimi.ai. Available on the App Store (iOS) and Google Play (Android), distributed outside mainland China.
 
-Official website: hachimi.ai. Last updated: 2026-07-21.
+Official website: hachimi.ai. Last updated: 2026-09-14.
 
 ## Download
 
 - [App Store](https://apps.apple.com/app/id6787621766): Download for iPhone
 - [Google Play](https://play.google.com/store/apps/details?id=com.hachimi.hachimi_app): Download for Android
 
-## How it works
+## The four tabs
 
-- [Ask](https://hachimi.ai/en#features): Pick what it is about (Find an Item, Love, Career, or an Open Question), type the question on your mind, and give two numbers off the top of your head. No sign-up, no account.
-- [Cast](https://hachimi.ai/en#features): The two numbers and the current hour set a Mei Hua Yi Shu hexagram by a fixed, deterministic method. Same inputs, same cast, honest math.
-- [Read](https://hachimi.ai/en#features): Master Hachimi answers in a warm cat voice, walking through what the hexagram shows, a gentle take, and a small blessing, saved to your local history.
+- [Ask](https://hachimi.ai/en#ask): Write down what you want to ask, give two numbers on instinct, and the Master casts a hexagram by Mei Hua Yi Shu, then reads that hexagram back to you.
+- [Chart](https://hachimi.ai/en#chart): One birth date gives you both a Zi Wei Dou Shu chart and a Ba Zi chart. Switch between the San He chart, the Four Transformations chart, and the Flying Star chart at any time. Open the major cycle and the Annual step by step, and take your time.
+- [Academy](https://hachimi.ai/en#academy): The old texts of the five arts, Mountain, Medicine, Fate, Physiognomy and Divination, come with the app. Read them page by page. Press and hold a star name on the chart and a glossary card opens.
+- [Me](https://hachimi.ai/en#offline): Pick light, dark, or match your system under Appearance. The Language setting covers Simplified Chinese, Traditional Chinese, and English. Save a case to Files, or keep a copy in iCloud.
+
+## Charting
+
+- [Zi Wei Dou Shu chart](https://hachimi.ai/en#chart): One birth date gives you three charts: San He, Four Transformations, and Flying Star. A capsule at the bottom switches between them. Tap a cell to set the Taiji point, double tap to zoom into that palace, and step the fortune bar from major cycle down to hourly.
+- [Ba Zi Chart](https://hachimi.ai/en#chart): Switch to the Ba Zi side. Four tabs run in order: Profile, Chart, Details, Notes. Each pillar table has ten rows per pillar, from the main star and Heavenly Stem and Earthly Branch all the way down to Nayin and Symbolic Stars. Take your time.
+- [Glossary card](https://hachimi.ai/en#chart): On the chart, star names that have a glossary entry sit above a thin dotted line. Press and hold one and a half screen card rises from the bottom: the name, one line that says what it is, and body text you can open step by step, with a row at the bottom to read the full entry in Academy.
+- [On-device charting](https://hachimi.ai/en#offline): Both the Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars) charts, plus their two text charts, are worked out on your device by the engine that ships with the app. Change the major cycle or Annual, edit Star Settings, or switch Language, and each step is figured out right away.
+
+## Academy
+
+- [All five arts, kept in one tab on your phone](https://hachimi.ai/en#academy): The Academy screen lays out the five arts: Mountain, Medicine, Fate, Physiognomy and Divination. Tap an art to see its categories, tap a category to see its books. All 154 books and 2,408 chapters live on your device, so they open on a plane or deep underground.
 
 ## Principles
 
@@ -27,6 +39,7 @@ Official website: hachimi.ai. Last updated: 2026-07-21.
 - Reading history lives only on your device; delete it in Settings or uninstall the app. History and memory episodes are included in the encrypted, system-managed device backup so they survive a new phone; drafts and an in-flight cast are excluded from backup and expire on their own (30 days and 7 days).
 - Retention beyond the 90-day event text: an admission record holding only the anonymous install ID, a timestamp, and a status is kept at most 8 days; daily cast counts are kept 2 days; a reading you report for review is kept 30 days and never includes your question. A cast stopped by a safety topic stores neither the question nor any generated text.
 - All network calls use standard HTTPS/TLS; client device-integrity attestation (Firebase App Check / Apple App Attest) to deter abuse is planned (not yet enforced at launch).
+- Charts are built on your device, not on a server. Step to the next major cycle, change a Star Settings option, or switch the Language, and it all recalculates on the spot. You can build a chart with no network. Your birth details never leave this device.
 
 ## Links
 

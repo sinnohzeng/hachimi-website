@@ -1,8 +1,8 @@
 # Master Hachimi (哈基米道长)
 
-> Master Hachimi (哈基米道长 / Master Hachimi) is a cat-themed Mei Hua Yi Shu (Plum Blossom divination) companion app. You share two numbers and the question on your mind; a unified backend casts an I Ching hexagram by a fixed method, and a third-party AI service (its nature and our commitments are set out in the Privacy Policy) writes the reading in the warm voice of "Master Hachimi". It offers comfort and one small next step, for entertainment and comfort only, never prediction, fate-changing, or luck-changing. No account, reading history stays on your device, no ads. Brand Hachimi.ai. Available on the App Store (iOS) and Google Play (Android), distributed outside mainland China.
+> Master Hachimi is a cat Daoist who casts hexagrams and reads charts. Give two numbers and write your question, and he casts by Mei Hua Yi Shu, Plum Blossom divination, and reads it to you. Enter your birth details, and your Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars) charts are built on your phone, even with no internet. The Academy carries the old texts of the five arts: Mountain, Medicine, Fate, Physiognomy and Divination. For fun and company only, no predictions. No account, records stay on your device, no ads. Brand Hachimi.ai. Available on the App Store (iOS) and Google Play (Android), distributed outside mainland China.
 
-Official website: hachimi.ai. Last updated: 2026-07-21.
+Official website: hachimi.ai. Last updated: 2026-09-14.
 
 ## Download
 
@@ -11,9 +11,27 @@ Official website: hachimi.ai. Last updated: 2026-07-21.
 
 ## About
 
-Master Hachimi is a divination companion that takes your question seriously and answers with warmth. You give two numbers and write what is on your mind; the app casts a hexagram by a fixed, deterministic method, and a cat named Master Hachimi reads it back to you. The reading is a few kind words that help you untangle what is in your head, and it always lands on one small thing you can do right now. The cast is honest math, the words are warm, and the red line is firm: Master Hachimi never predicts the future, never changes your fate, and never changes your luck. Everything is for entertainment only.
+Master Hachimi is a cat Daoist who casts hexagrams and reads charts. Give two numbers and write your question, and he casts by Mei Hua Yi Shu, Plum Blossom divination, and reads it to you. Enter your birth details, and your Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars) charts are built on your phone, even with no internet. The Academy carries the old texts of the five arts: Mountain, Medicine, Fate, Physiognomy and Divination. For fun and company only, no predictions. No account, records stay on your device, no ads.
 
-## How it works
+## The four tabs
+
+### Ask
+
+Write down what you want to ask, give two numbers on instinct, and the Master casts a hexagram by Mei Hua Yi Shu, then reads that hexagram back to you.
+
+### Chart
+
+One birth date gives you both a Zi Wei Dou Shu chart and a Ba Zi chart. Switch between the San He chart, the Four Transformations chart, and the Flying Star chart at any time. Open the major cycle and the Annual step by step, and take your time.
+
+### Academy
+
+The old texts of the five arts, Mountain, Medicine, Fate, Physiognomy and Divination, come with the app. Read them page by page. Press and hold a star name on the chart and a glossary card opens.
+
+### Me
+
+Pick light, dark, or match your system under Appearance. The Language setting covers Simplified Chinese, Traditional Chinese, and English. Save a case to Files, or keep a copy in iCloud.
+
+## Casting a hexagram
 
 ### Ask: tell the cat what's on your mind
 
@@ -26,6 +44,47 @@ Your two numbers and the current hour set a Mei Hua Yi Shu hexagram (upper trigr
 ### Read: Master Hachimi reads it back
 
 Master Hachimi responds in his own warm voice: a presentation of the hexagram, the body/use (体用) relationship, an overall tone, a gentle reading, a small piece of advice, and a blessing. Each reading is saved to your local reading history (卦历) so you can revisit it.
+
+## Charting
+
+One birth time, two charts. Three chart styles, Chart Patterns and glossary cards all in one place.
+
+### Zi Wei Dou Shu chart: Three chart styles, down to the hourly fortune layer
+
+One birth date gives you three charts: San He, Four Transformations, and Flying Star. A capsule at the bottom switches between them. Tap a cell to set the Taiji point, double tap to zoom into that palace, and step the fortune bar from major cycle down to hourly.
+
+- Major cycle, Annual, minor cycle, Monthly, daily, hourly open in layers. Fortune panel: four specs, seven at start.
+- Chart Patterns checks 84 rules one by one. Tap a layer, pattern or sign to open its text in place.
+- Star Settings: 10 groups, 60+ items, adjustable by school, plus Zhongzhou heaven, earth and human boards and Chart adjust.
+- The More menu also has zizhan chart without birth details, Four Pillars lookup, screenshot save, and text chart.
+
+### Ba Zi Chart: Four Pillars and Six Pillars tables that follow each major cycle step
+
+Switch to the Ba Zi side. Four tabs run in order: Profile, Chart, Details, Notes. Each pillar table has ten rows per pillar, from the main star and Heavenly Stem and Earthly Branch all the way down to Nayin and Symbolic Stars. Take your time.
+
+- The Details chart is a seven column, six pillar table. One switch adds Conception Pillar, Life Palace and Body Palace.
+- Major cycle in 12 steps, plus 12 slots each for Annual and Monthly. Slide across and tap any slot to switch the whole chart.
+- Symbolic Stars sort by Four Pillars and major cycles, with clashes and combos marked where the chart meets the year.
+- Take notes as you read your chart. They save when you stop, and you can export a full Ba Zi text chart.
+
+### Glossary card: Press and hold a name on the chart to read what it means
+
+On the chart, star names that have a glossary entry sit above a thin dotted line. Press and hold one and a half screen card rises from the bottom: the name, one line that says what it is, and body text you can open step by step, with a row at the bottom to read the full entry in Academy.
+
+- The same star reads differently in each palace. Hold it in the Marriage Palace and the card opens with that view.
+- San He, Flying Star and Four Transformations charts, plus Chart Patterns. Every entry name is tappable.
+
+### On-device charting
+
+Both the Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars) charts, plus their two text charts, are worked out on your device by the engine that ships with the app. Change the major cycle or Annual, edit Star Settings, or switch Language, and each step is figured out right away.
+
+## Academy
+
+The Academy screen lays out the five arts: Mountain, Medicine, Fate, Physiognomy and Divination. Tap an art to see its categories, tap a category to see its books. All 154 books and 2,408 chapters live on your device, so they open on a plane or deep underground.
+
+- Open a book and you see its contents first, one chapter per page, the longest over sixty thousand words, and it scrolls.
+- Illustrations sit right where they belong in the text: reach a chart, and it is on the next line.
+- All 287 glossary entries ship in Simplified and Traditional, and search finds them by book or star name.
 
 ## Design Principles
 
@@ -49,6 +108,10 @@ Master Hachimi is a cat who plays the master ("哈基米道长"). He actually li
 
 Master Hachimi remembers what you asked before, so a reading can pick up where the last one left off. The memory notes live only on your device; up to three travel with a request just to shape that one reading, and the server keeps no memory store. Memory can be turned off in Settings, and casting with "Asking for someone else" is never remembered.
 
+### On-device charting
+
+Charts are built on your device, not on a server. Step to the next major cycle, change a Star Settings option, or switch the Language, and it all recalculates on the spot. You can build a chart with no network. Your birth details never leave this device.
+
 ## Product Facts
 
 - 4 scenarios (Find an Item, Love, Career, Open Question); only Find an Item also returns a direction, derived by the cast engine, which points a way to look rather than a location
@@ -56,6 +119,12 @@ Master Hachimi remembers what you asked before, so a reading can pick up where t
 - 6 reading facets (hexagram presentation, body/use, overall tone, reading, advice, blessing)
 - 0 accounts needed
 - 3 interface languages (Simplified Chinese, Traditional Chinese, English)
+- 154 Classic texts
+- 2,408 chapters readable
+- 287 entries with meanings
+- 84 Chart Pattern rules
+- 3 Zi Wei chart types
+- 7 Fortune panel layers
 
 ## FAQ
 
@@ -87,6 +156,34 @@ The app is free to use, and there are no ads.
 
 Your history lives on your device: delete it in the app's Settings, or simply uninstall. The records you sent are kept for at most 90 days, then deleted; resetting your anonymous ID in Settings unlinks them right away.
 
+### Does charting need the internet?
+
+No. Both your Zi Wei Dou Shu and Ba Zi charts are worked out on your device by the chart engine that comes with the app. No signal, weak signal, or on a plane, open a case and the chart still appears. Step through a major cycle or Annual, change Star Settings, switch the language, and every move is calculated right there. Your birth details never leave the device.
+
+### How do the San He, Four Transformations and Flying Star charts differ?
+
+The same birth details give you the same chart, drawn three ways. The San He chart shows the twelve palaces with the three-way and four-corner groups. The Four Transformations chart draws the transformation letters and the flying lines. The Flying Star chart draws the flying stars from palace to palace. A capsule at the bottom of the Chart page switches between them at any time, and the Taiji point and fortune layers follow along.
+
+### Can I change the star school when setting up Zi Wei Dou Shu?
+
+Yes. Star Settings gives you ten groups and more than sixty switches, so you can set them to match the school you follow. You can also type in a star code and set all twenty-three slots at once. There are also the Zhongzhou heaven, earth and human boards and Chart adjustment. These help when you fix a chart for twins or start month-based stars from another school.
+
+### Are Ba Zi and Zi Wei two separate features?
+
+Both charts in the same tab use the same birth details. The pill at the bottom left of the Chart page shows Zi Wei and Ba Zi. Switch to it and you get the Ba Zi chart for this case: four tabs named Profile, Chart, Details and Notes. Whichever one you viewed last is the one that opens next time.
+
+### Will my cases be lost if I reinstall the app?
+
+The Case library page has a Save to Files button. Tap it, pick a folder, and you get a copy with the date in the file name. Open that file from Files, WeChat or AirDrop to import it back. By default it merges into your current cases, and for the same case the one with the newer update time wins. The top of the page shows when your last backup was.
+
+### Is there a dark mode?
+
+Yes. In the Me tab, pick Appearance. You get three settings: Light, Dark, and Follow System. They apply across the whole app, and the chart has its own light color set. Language lives in the same tab. Switch between Simplified Chinese, Traditional Chinese, and English at any time, and the star and palace names on the chart change with it.
+
+### Do I have to download the old texts in Academy first?
+
+No. All 154 books and 2,408 chapters of the five arts: Mountain, Medicine, Fate, Physiognomy and Divination come installed with the app, pictures included. Tap and read, no loading spinner. The book list also shows three titles by name only. The 287 glossary entries are bundled too. Press and hold a star name with a dotted underline on the chart and its glossary card opens.
+
 ## How we keep it honest (Methodology)
 
 The website has a dedicated transparency page ([/en/methodology](https://hachimi.ai/en/methodology), [/zh/methodology](https://hachimi.ai/zh/methodology)) that lays the method open:
@@ -95,6 +192,13 @@ The website has a dedicated transparency page ([/en/methodology](https://hachimi
 - The reading: only after the cast does the AI write the reading, in Master Hachimi's voice (the nature of that service, and what we require of it, are set out in the Privacy Policy). The AI can shape the words but cannot touch the hexagram or decide the fortune. The fortune's tone is fixed by the Host and Guest trigrams' five-element relationship, the find-item direction is derived by the cast engine, and the persona and red lines (no prediction / fate-changing / luck) are held in the system prompt.
 - The eval gate: 45 golden cases across four scenarios and two languages, plus 8 adversarial cases that probe the red lines, run on every code change. A hard gate first checks the fortune's tone was not tampered with; then a stronger model sits as judge on four criteria (on topic, no "prediction" red line, voice holds, offers a real first step). Model selection is data-driven against this golden set, not by feel.
 
+Both charts, Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars), come from the chart engine built into the app, running on your own phone. Same birth details, same Star Settings, same chart every time. A few spots cause the most differences, and the rules are here.
+
+- True solar time: Chart casting first converts birth time by birthplace longitude. Pick a province and city, type a longitude, or take your current location once. Born outside UTC+8? Choose a time zone too, down to half and quarter hour zones. Location uses longitude only and stores nothing.
+- Calendar: Birth details can be Gregorian, lunar, or Four Pillars. For lunar, pick a Gregorian or stem-branch year and tick leap month. Five cases get a chart note: daylight saving, leap month, late zi hour, two Four Pillars across a solar term change, and true solar time crossing an hour slot.
+- Adjustable star schools: Star placement rules differ by school, so nothing here is fixed for you. Ten groups and more than sixty items can be set one by one to match the school you follow, or you can enter a star code to set them all at once. The Zhongzhou heaven, earth and human boards have their own entry.
+- On-device charting: Charts are built on your device, not on a server. Step to the next major cycle, change a Star Settings option, or switch the Language, and it all recalculates on the spot. You can build a chart with no network. Your birth details never leave this device.
+
 ## Technical Notes
 
 - Native iOS client (thin client): no third-party LLM key on device; casts and readings come from the unified backend.
@@ -102,6 +206,7 @@ The website has a dedicated transparency page ([/en/methodology](https://hachimi
 - Reading model: a third-party AI service via the Vercel AI SDK; the model choice evolves with the eval matrix, and the Privacy Policy is authoritative on what kind of service we may use and what we require of it.
 - Anti-abuse: per-IP rate limiting and request body limits; client device-integrity attestation (Firebase App Check, wrapping Apple App Attest on iOS and Play Integrity on Android) is planned (not yet enforced at launch).
 - Local persistence: reading history stored on device only.
+- On-device charting: Both the Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars) charts, plus their two text charts, are worked out on your device by the engine that ships with the app. Change the major cycle or Annual, edit Star Settings, or switch Language, and each step is figured out right away.
 
 ## Links
 
