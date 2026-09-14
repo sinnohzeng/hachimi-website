@@ -52,7 +52,7 @@ export const zh: Translations = {
   },
 
   principles: {
-    text: "两张盘，手机上都能排。",
+    text: "排盘在你手机里算完，飞行模式也能排。",
     tags: ["本机排盘", "离线也能排", "免注册"],
   },
 

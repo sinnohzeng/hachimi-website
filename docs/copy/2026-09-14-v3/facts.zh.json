@@ -4,7 +4,7 @@
     "limit": "简体可见正文字数上限，标点不计。英文另按 0.6 倍单词数收，脚本自己换算。",
     "verbatim": "北极星与已定案的品类锚、差异句原样透传，不送润色，改它们要先改 docs/copy-principles.md。",
     "口径": "键与 specs/001-site-v3-concise 的七节一一对应。alt 是图片替代文本，不算可见正文。",
-    "enLimit": "英文上限缺省是 limit 的 0.6 倍词数。少数几条装不下出货术语表里的专名（Zi Wei Dou Shu、San He、Four Transformations、Flying Star 四个名字就 11 词），只有这几条写 enLimit 单独放宽，并在本条注明理由。专名不许为了凑字数删掉。"
+    "enLimit": "英文这一条的单独上限，写明理由才许写。两种情形：一是放宽，装不下出货术语表里的专名（Zi Wei Dou Shu、San He、Four Transformations、Flying Star 四个名字就 11 词），专名不许为了凑字数删掉；二是收紧，全页英文总预算吃紧时按剩下的词数收。缺省是 limit 的 0.6 倍词数。"
   },
   "hero.headline": {
     "verbatim": true,
@@ -80,8 +80,10 @@
     "enLimitWhy": "五科要逐个写出 Mountain, Medicine, Fate, Physiognomy and Divination，只写 five arts 英文读者不知道是哪五科"
   },
   "principles.text": {
-    "text": "紫微与八字两张盘都在这台手机上算出来。",
-    "limit": 14
+    "text": "排盘这件事在你自己的手机里算完，用的是随 App 装好的排盘内核；飞行模式下照样排得出来。",
+    "limit": 16,
+    "enLimit": 9,
+    "enLimitWhy": "这一句要同时讲清算在哪台机器上、没网时还能不能用。英文压到 8 词（16 字的 0.6 倍）时，模型每次都只能丢掉其中一件，放到 9 词才两件都留得住。实际出稿 8 词，全页合计正好 150。"
   },
   "principles.tags.0": {
     "text": "本机排盘",

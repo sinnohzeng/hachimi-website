@@ -56,7 +56,7 @@ export const en: Translations = {
   },
 
   principles: {
-    text: "Both charts, right on your phone.",
+    text: "Your chart runs on your phone, even offline.",
     tags: ["On-device charting", "Works offline", "No sign-up"],
   },
 
