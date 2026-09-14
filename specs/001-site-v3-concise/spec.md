@@ -14,15 +14,15 @@ owner 三条口径：首屏只留一句；整站字太多要大刀阔斧重写�
 
 按 [思路](../../docs/plan/2026-09-14-site-v3-思路.md) 第四节的表逐节落。组件层面：
 
-| 节 | 组件 | 处置 |
-| --- | --- | --- |
-| 1 首屏 | `Hero` | 重写：只剩 `headline`、App Store 徽章、一张手机图；删 eyebrow、description、memory、第二 CTA |
-| 2 这是什么 | 新 `WhatItIs` | 品类锚做标题，三步做三格短句；取代 `FeatureCards` 与 `ScenarioCards` |
-| 3 道长记得 | 新 `Remembers` | 差异句一句；取代 `FeatureHighlight` |
-| 4 排一张盘 | `ChartShowcase` | 收成两格：紫微一句加一图、八字一句加一图，一个进方法页的链接；删 bullets 与 body |
-| 5 学堂 | `AcademyShowcase` | 收成一句，无图；学堂改版后另起一刀补一张根屏图 |
-| 6 本机算 | `Principles` | 一句加三个标签 |
-| 7 FAQ 与结尾 | `FAQ`、`FinalCTA`、`Footer` | FAQ 五条；`Stats` 整节删，八个数字压成页脚上方一行 |
+| 节           | 组件                        | 处置                                                                                         |
+| ------------ | --------------------------- | -------------------------------------------------------------------------------------------- |
+| 1 首屏       | `Hero`                      | 重写：只剩 `headline`、App Store 徽章、一张手机图；删 eyebrow、description、memory、第二 CTA |
+| 2 这是什么   | 新 `WhatItIs`               | 品类锚做标题，三步做三格短句；取代 `FeatureCards` 与 `ScenarioCards`                         |
+| 3 道长记得   | 新 `Remembers`              | 差异句一句；取代 `FeatureHighlight`                                                          |
+| 4 排一张盘   | `ChartShowcase`             | 收成两格：紫微一句加一图、八字一句加一图，一个进方法页的链接；删 bullets 与 body             |
+| 5 学堂       | `AcademyShowcase`           | 收成一句，无图；学堂改版后另起一刀补一张根屏图                                               |
+| 6 本机算     | `Principles`                | 一句加三个标签                                                                               |
+| 7 FAQ 与结尾 | `FAQ`、`FinalCTA`、`Footer` | FAQ 五条；`Stats` 整节删，八个数字压成页脚上方一行                                           |
 
 ## 文案
 

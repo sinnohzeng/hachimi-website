@@ -16,14 +16,15 @@ The bilingual (zh / en) marketing site for **Master Hachimi (哈基米道长)**,
 
 ## Sections Included
 
-- **Hero** - 3D animated background with CTA
-- **Feature Cards** - Interactive feature showcase
-- **Feature Highlight** - Phone mockup with details
-- **Principles** - Product values section
-- **Stats** - Animated honest-fact counters
-- **FAQ** - Accessible accordion
-- **Final CTA** - Call-to-action with 3D background
-- **Footer** - Links, legal, and contact info
+Seven sections, in this order (spec: [`specs/001-site-v3-concise/spec.md`](specs/001-site-v3-concise/spec.md)):
+
+- **Hero** - 3D animated background, one headline, store badges, one app shot
+- **What it is** - category anchor plus the three steps of a cast
+- **Remembers** - the one line that separates the Master from a chatbot
+- **Chart showcase** - Zi Wei and Ba Zi, one line and one shot each
+- **Academy** - one line, no image
+- **Principles** - one line plus three tags
+- **FAQ / Final CTA / Footer** - accordion, 3D-background CTA, links and the stats line
 
 ## Getting Started
 
@@ -43,17 +44,17 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Scripts
 
-| Command                | Description                                                      |
-| ---------------------- | ---------------------------------------------------------------- |
-| `npm run dev`          | Start development server                                         |
-| `npm run build`        | Build for production                                             |
-| `npm run start`        | Start production server                                          |
-| `npm run lint`         | Run ESLint                                                       |
-| `npm run lint:fix`     | Fix ESLint errors                                                |
-| `npm run format`       | Format code with Prettier                                        |
-| `npm run format:check` | Check code formatting                                            |
-| `npm run typecheck`    | Run TypeScript type checking                                     |
-| `npm run check`        | The single quality gate: format:check + lint + typecheck + build |
+| Command                | Description                                                                                    |
+| ---------------------- | ---------------------------------------------------------------------------------------------- |
+| `npm run dev`          | Start development server                                                                       |
+| `npm run build`        | Build for production                                                                           |
+| `npm run start`        | Start production server                                                                        |
+| `npm run lint`         | Run ESLint                                                                                     |
+| `npm run lint:fix`     | Fix ESLint errors                                                                              |
+| `npm run format`       | Format code with Prettier                                                                      |
+| `npm run format:check` | Check code formatting                                                                          |
+| `npm run typecheck`    | Run TypeScript type checking                                                                   |
+| `npm run check`        | The single quality gate: format:check + lint + typecheck + check:mentions + check:copy + build |
 
 ## Quality gate
 
@@ -78,9 +79,10 @@ git config core.hooksPath .githooks
 │   ├── twitter-image.tsx  # Twitter card (reuses OG design)
 │   └── sitemap.ts         # Sitemap, statically generated at build time
 ├── components/
+│   ├── academy-showcase.tsx # Academy section (one line)
+│   ├── app-shot.tsx       # App screenshot with light / dark variants
+│   ├── chart-showcase.tsx # Zi Wei + Ba Zi section
 │   ├── faq.tsx            # FAQ accordion
-│   ├── feature-cards.tsx  # Feature cards
-│   ├── feature-highlight.tsx # Phone mockup section
 │   ├── final-cta.tsx      # Final CTA section
 │   ├── footer.tsx         # Footer
 │   ├── header.tsx         # Navigation header
@@ -88,10 +90,11 @@ git config core.hooksPath .githooks
 │   ├── lang-switch.tsx    # zh / en language switcher
 │   ├── principles.tsx     # Principles section
 │   ├── providers.tsx      # Theme & scroll providers
+│   ├── remembers.tsx      # The one-line difference section
 │   ├── methodology.tsx    # /methodology page body (how the casting works)
 │   ├── smooth-scroll.tsx  # Lenis smooth scroll
-│   ├── stats.tsx          # Stats section
 │   ├── store-badges.tsx   # App Store / Google Play badge pair
+│   ├── what-it-is.tsx     # Category anchor + the three steps
 │   ├── structured-data.tsx # JSON-LD (Organization / WebSite / app / FAQ)
 │   └── theme-switch.tsx   # Theme toggle button
 ├── lib/
@@ -101,6 +104,7 @@ git config core.hooksPath .githooks
 │   └── motion.tsx         # Reduced-motion provider & hook
 └── public/
     ├── badges/            # Official store badges (self-hosted, per locale)
+    ├── screenshots/zh/    # The three app shots (scripts/build-shots.mjs)
     ├── robots.txt         # Static robots.txt (Content-Signal, sitemap)
     ├── llms.txt           # AI-crawler site summary (+ llms-full.txt)
     └── site.webmanifest   # PWA manifest

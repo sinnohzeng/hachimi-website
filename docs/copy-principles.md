@@ -41,6 +41,17 @@
 
 起卦仍是第一句，排盘是第二句：慌的时候先起卦，想看清楚再排盘，顺序不许倒。差异句不动，记忆仍是“凭什么是你”的答案。排盘讲确定性只讲可复算与本机算，“同一份生辰、同一套安星设置，排出来的盘每个字都一样”；这是算法自洽，不是准不准，别借它滑进功效宣称。
 
+2026-09-14 官网 v3 把首屏收回一句。owner 口径：首屏只留一句，整站字太多要大刀阔斧重写（现行文，与北极星同级对待）：
+
+| 载体    | 简体中文           | English                           |
+| ------- | ------------------ | --------------------------------- |
+| 主标题  | 慌的时候先起一卦。 | When it's a lot, cast a hexagram. |
+| tagline | 慌的时候先起一卦。 | When it's a lot, cast a hexagram. |
+
+排盘那半句退出首屏，落成第四节的节标题“想看清楚，就排一张盘。”，起卦在前排盘在后的顺序照旧。品类锚（v2 那一行，一款占卜与排盘 App）不改一个字，改做第二节的标题；差异句（2026-07-21 那一行）不改一个字，独占第三节。三种盘式、格局规则、安星派别这些机制全部撤出首页，落到方法页的排盘一节。
+
+字数按 `hachimi-website/scripts/count-copy.mjs` 计：首屏简体不超过 9 字，全页除 FAQ 不超过 250 字，FAQ 每条答案不超过 60 字，英文上限取简体的 0.6 倍。这个门挂在 `npm run check` 里。唯一例外是英文主标题 7 词，比 0.6 倍的 6 词多一个：北极星原文不动，脚本对它只报数不设门。
+
 ## 三、人设声音（温柔带一点猫的慧黠）
 
 - 底色：温柔、不评判、去焦虑、不打包票。留台阶（别急、慢慢找、先走这一步）。
@@ -111,7 +122,7 @@
 
 ## 八、文案所在位置
 
-- 官网：`hachimi-website/lib/i18n/zh.ts` + `en.ts`（结构 `types.ts`）；站点身份 `lib/config.ts` + `lib/metadata.ts`；心事卡组件 `components/scenario-cards.tsx`。
+- 官网：`hachimi-website/lib/i18n/zh.ts` + `en.ts`（结构 `types.ts`）；站点身份 `lib/config.ts` + `lib/metadata.ts`；首页七节组件 `components/`（`hero` / `what-it-is` / `remembers` / `chart-showcase` / `academy-showcase` / `principles` / `faq`）；字数门 `scripts/count-copy.mjs`。
 - iOS：`hachimi-ios/App/Localizable.xcstrings`（key = 简中原文，改 key 必须同步引用它的 Swift 字面量）+ `App/Support/ScenarioStyle.swift`、`FortuneStyle.swift`、`DirectionCardState.swift`、`ReadingExport.swift`（导出模板豁免 xcstrings）等。
 - Android：`hachimi-android`（原生重建中），字符串资源按本篇对齐。
 
