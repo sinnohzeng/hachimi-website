@@ -6,28 +6,65 @@ import type { ShowcaseBlock } from "@/lib/i18n/types";
 import { DIST, DUR, MARGIN, STAGGER, reveal } from "@/lib/motion-tokens";
 
 /**
- * App 截图的固有尺寸，用来给 <img> 写死宽高、把版面撑住，避免图到位时跳一下。
- * 源图都是 iPhone 17 Pro 的 1206 宽整屏；两张八字图裁掉了底部还在施工的那几行，
- * 所以高度各不相同。文件在 public/screenshots/zh/ 下有 1206 与 603 两档。
+ * 站上每张 App 截图都是 iPhone 17 Pro 的整屏 1206 × 2622，浅色深色各一份。
+ *
+ * 尺寸统一不是洁癖：`ShotRow` 是 flex 行，行内高度不齐时手机边框的底色会在矮的
+ * 那张下面露出一条黑带。八字两屏底部有施工中的占位行，裁掉之后由
+ * `scripts/build-shots.mjs` 用页面纸色补回同一高度。
  */
-const SHOT_SIZES = {
-  "ziwei-sanhe": [1206, 2622],
-  "ziwei-sihua": [1206, 2622],
-  "ziwei-feixing": [1206, 2622],
-  "ziwei-fortune": [1206, 2622],
-  "ziwei-geju": [1206, 2622],
-  "ziwei-glossary": [1206, 2622],
-  "bazi-pillars": [1206, 1975],
-  "bazi-sixpillars": [1206, 2150],
-  "academy-home": [1206, 2622],
-  "academy-book": [1206, 2622],
-  "academy-reading": [1206, 2622],
-} as const satisfies Record<string, readonly [number, number]>;
+const SHOT_W = 1206;
+const SHOT_H = 2622;
 
-export type ShotName = keyof typeof SHOT_SIZES;
+/** 站上有哪几张截图。名字即 `public/screenshots/zh/` 里的文件名前缀。 */
+export type ShotName =
+  | "ziwei-sanhe"
+  | "ziwei-sihua"
+  | "ziwei-feixing"
+  | "ziwei-fortune"
+  | "ziwei-geju"
+  | "ziwei-glossary"
+  | "bazi-pillars"
+  | "bazi-sixpillars"
+  | "academy-home"
+  | "academy-book"
+  | "academy-reading";
+
+function Screen({
+  base,
+  alt,
+  sizes,
+  eager,
+  className,
+}: {
+  base: string;
+  alt: string;
+  sizes: string;
+  eager: boolean;
+  className: string;
+}): ReactNode {
+  return (
+    <img
+      src={`${base}-1206.webp`}
+      srcSet={`${base}-603.webp 603w, ${base}-1206.webp 1206w`}
+      sizes={sizes}
+      alt={alt}
+      width={SHOT_W}
+      height={SHOT_H}
+      loading={eager ? "eager" : "lazy"}
+      fetchPriority={eager ? "high" : "auto"}
+      decoding="async"
+      className={`block h-auto w-full select-none ${className}`}
+    />
+  );
+}
 
 /**
- * 一张 App 截图，套在手机边框里。
+ * 一张 App 截图，套在手机边框里。浅色深色两份字节，跟着 `html.dark` 换。
+ *
+ * 两张 img 叠着放、各由 `dark:` 决定显隐。被 `display: none` 的那张既不进
+ * 无障碍树，浏览器也不会去取（懒加载的图没有可见框就不触发），所以看着是两张、
+ * 实际只下一张。唯独首屏那张要 eager：eager 绕开懒加载，深色下会白取一次浅色
+ * 版；只有首屏一张，换来 LCP 不被推迟，这笔划得来。
  *
  * 截图拍的是中文界面，en 页暂时共用同一批文件，所以路径不带 locale：一套字节
  * 服务两种语言，别为了对称复制一份。英文界面截图补拍之后再按 locale 分流。
@@ -45,24 +82,25 @@ export function AppShot({
   sizes?: string;
   eager?: boolean;
 }): ReactNode {
-  const [width, height] = SHOT_SIZES[name];
   const base = `/screenshots/zh/${name}`;
   return (
     <div
       className={`overflow-hidden rounded-t-[1.6rem] bg-neutral-900 px-1 pt-1 ${className}`}
     >
       <div className="overflow-hidden rounded-t-[1.35rem] bg-neutral-950">
-        <img
-          src={`${base}-1206.webp`}
-          srcSet={`${base}-603.webp 603w, ${base}-1206.webp 1206w`}
-          sizes={sizes}
+        <Screen
+          base={base}
           alt={alt}
-          width={width}
-          height={height}
-          loading={eager ? "eager" : "lazy"}
-          fetchPriority={eager ? "high" : "auto"}
-          decoding="async"
-          className="block h-auto w-full select-none"
+          sizes={sizes}
+          eager={eager}
+          className="dark:hidden"
+        />
+        <Screen
+          base={`${base}-dark`}
+          alt={alt}
+          sizes={sizes}
+          eager={false}
+          className="hidden dark:block"
         />
       </div>
     </div>
