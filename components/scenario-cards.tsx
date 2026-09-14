@@ -8,14 +8,20 @@ import { DIST, MARGIN, STAGGER, hoverLift, reveal } from "@/lib/motion-tokens";
 export function ScenarioCards({ t }: { t: Translations }): ReactNode {
   return (
     <section
-      id="scenarios"
+      id="ask"
       className="bg-muted/40 relative w-full scroll-mt-28 py-24 sm:py-32"
     >
       <div className="mx-auto max-w-6xl px-6 sm:px-8">
-        <div className="mb-16 flex flex-col items-center text-center">
+        <div className="mb-14 flex flex-col items-center text-center">
+          <motion.span
+            {...reveal(0.05)}
+            className="text-accent text-sm font-medium tracking-wide"
+          >
+            {t.scenarioCards.kicker}
+          </motion.span>
           <motion.h2
             {...reveal(0.1)}
-            className="text-foreground font-serif text-3xl font-medium sm:text-4xl md:text-5xl"
+            className="text-foreground mt-4 font-serif text-3xl font-medium sm:text-4xl md:text-5xl"
           >
             {t.scenarioCards.title}
           </motion.h2>

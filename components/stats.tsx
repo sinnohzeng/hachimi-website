@@ -6,13 +6,19 @@ import type { Translations } from "@/lib/i18n";
 import { useReducedMotion } from "@/lib/motion";
 import { DUR, STAGGER, reveal } from "@/lib/motion-tokens";
 
-// Honest product facts only (no fabricated user metrics):
-// 64 hexagrams · 6 reading facets · 0 accounts needed · 2 languages.
+// 只放核得出处的产品事实，不编用户指标。逐条出处：随包古籍 154 本 2408 章与
+// 词条 287 条（spec 045）、格局规则 84 条（spec 034）、紫微盘式三种（spec 031）、
+// 山医命相卜五科（spec 045）、限流面板出厂七层（spec 032）、无需账号。
+// 顺序与 i18n 的 stats.items 一一对应，改一处必须两处一起改。
 const statsData = [
-  { value: 64, suffix: "" },
-  { value: 6, suffix: "" },
-  { value: 0, suffix: "" },
+  { value: 154, suffix: "" },
+  { value: 2408, suffix: "" },
+  { value: 287, suffix: "" },
+  { value: 84, suffix: "" },
   { value: 3, suffix: "" },
+  { value: 5, suffix: "" },
+  { value: 7, suffix: "" },
+  { value: 0, suffix: "" },
 ];
 
 function AnimatedCounter({
@@ -81,10 +87,10 @@ export function Stats({ t }: { t: Translations }): ReactNode {
   return (
     <section
       id="tech"
-      className="bg-muted relative w-full scroll-mt-28 overflow-hidden pb-16 sm:pb-20"
+      className="bg-muted relative w-full scroll-mt-28 overflow-hidden pt-4 pb-16 sm:pt-6 sm:pb-20"
     >
       <div className="relative mx-auto max-w-7xl px-6 sm:px-8">
-        <div className="grid grid-cols-2 gap-8 lg:grid-cols-4 lg:gap-12">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-10 lg:grid-cols-4 lg:gap-x-12">
           {statsData.map((stat, index) => (
             <motion.div
               key={t.stats.items[index]?.label ?? index}

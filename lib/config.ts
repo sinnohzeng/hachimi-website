@@ -2,7 +2,8 @@
  * ============================================================================
  * SITE CONFIGURATION
  * ============================================================================
- * Master Hachimi (哈基米道长): cat-themed Mei Hua Yi Shu divination companion.
+ * Master Hachimi (哈基米道长): a cat-themed companion that casts Mei Hua Yi Shu
+ * hexagrams and builds Zi Wei Dou Shu / Ba Zi charts on the device.
  * Brand Hachimi.ai · the operating company is named in the legal pages only.
  */
 
@@ -15,9 +16,9 @@ export const siteConfig = {
   name: "Master Hachimi",
   // Longer descriptive form used as the SEO <title> / OpenGraph title.
   seoTitle: "Master Hachimi · 哈基米道长",
-  tagline: "When your mind is racing, cast a hexagram.",
+  tagline: "Anxious? Cast a hexagram. Want clarity? Draw a chart.",
   description:
-    "Master Hachimi (哈基米道长) is a cat-themed Mei Hua Yi Shu (Plum Blossom divination) app. Give two numbers and your question, and Master Hachimi casts a hexagram and reads it with you to find one small step. For entertainment and comfort only, never prediction. No account, your history stays on your phone, no ads.",
+    "Master Hachimi is a cat Daoist who casts hexagrams and reads charts. Give two numbers and write your question, and he casts by Mei Hua Yi Shu, Plum Blossom divination, and reads it to you. Enter your birth details, and your Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars) charts are built on your phone, even with no internet. The Academy carries the old texts of the five arts: Mountain, Medicine, Fate, Physiognomy and Divination. For fun and company only, no predictions. No account, records stay on your device, no ads.",
   url: "https://hachimi.ai",
   email: "voice@hachimi.ai",
   creator: "@sinnohzeng",
@@ -29,12 +30,20 @@ export const siteConfig = {
       url: "https://hachimi.ai",
     },
   ],
+  // 给检索引擎的词，不是正文，不随正文降级（见 docs/copy-principles.md 五之补）。
   keywords: [
     "divination",
     "Mei Hua Yi Shu",
     "plum blossom numerology",
     "I Ching",
     "hexagram",
+    "Zi Wei Dou Shu",
+    "Purple Star astrology",
+    "BaZi",
+    "Four Pillars",
+    "natal chart",
+    "astrology chart app",
+    "offline chart",
     "cat",
     "divination companion",
     "oracle app",
@@ -59,8 +68,8 @@ export const siteConfig = {
  * stay in lockstep with the visible `effectiveDate` strings in lib/i18n.
  */
 export const pageDates = {
-  home: "2026-07-21",
-  methodology: "2026-07-09",
+  home: "2026-09-14",
+  methodology: "2026-09-14",
   privacy: "2026-07-21",
   terms: "2026-06-14",
   support: "2026-07-04",

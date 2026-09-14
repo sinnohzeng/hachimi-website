@@ -4,6 +4,7 @@ import { type ReactNode } from "react";
 import dynamic from "next/dynamic";
 import { ChevronDown } from "lucide-react";
 import { motion } from "motion/react";
+import { AppShot } from "@/components/showcase";
 import { StoreBadges } from "@/components/store-badges";
 import type { Translations } from "@/lib/i18n";
 import { useReducedMotion } from "@/lib/motion";
@@ -30,34 +31,26 @@ const HeroShader = dynamic(
   { ssr: false, loading: () => <ShaderFallback /> }
 );
 
-// 解读页截图：陌生人首屏唯一的具象锚点。不包 motion——初始 opacity: 0 会把
-// 图片可见性押在 JS 挂载上，禁 JS 与慢网场景下首屏就没了产品长相。
-function PhoneShot({
-  locale,
+// 紫微三合盘：陌生人首屏唯一的具象锚点，也是这一版产品的门面。不包 motion,
+// 初始 opacity: 0 会把图片可见性押在 JS 挂载上，禁 JS 与慢网场景下首屏就没了
+// 产品长相。sizes 按实际渲染宽给，浏览器才挑得到 603 那一档。
+function HeroBoard({
+  name,
   alt,
   className = "",
 }: {
-  locale: string;
+  name: Parameters<typeof AppShot>[0]["name"];
   alt: string;
   className?: string;
 }): ReactNode {
   return (
-    <div
-      className={`overflow-hidden rounded-t-4xl bg-neutral-900 px-1 pt-1 ${className}`}
-    >
-      <div className="h-full overflow-hidden rounded-t-[1.75rem] bg-neutral-950">
-        <img
-          src={`/screenshots/${locale}/result.webp`}
-          alt={alt}
-          width={720}
-          height={1565}
-          loading="eager"
-          fetchPriority="high"
-          decoding="async"
-          className="block h-auto w-full select-none"
-        />
-      </div>
-    </div>
+    <AppShot
+      name={name}
+      alt={alt}
+      eager={name === "ziwei-sanhe"}
+      sizes="(min-width: 1280px) 240px, (min-width: 1024px) 208px, 240px"
+      className={className}
+    />
   );
 }
 
@@ -118,7 +111,8 @@ export function Hero({
 
               {/* H1 是 LCP 元素：不做挂载后淡入，服务端首帧（含禁 JS）即可见，
                   避免入场动画把 LCP 推迟到 JS 挂载之后。 */}
-              <h1 className="max-w-3xl text-left font-serif text-4xl font-medium tracking-tight text-white sm:text-5xl md:text-6xl">
+              {/* text-balance：标题两半各自换行时别把最后一两个字甩成孤行。 */}
+              <h1 className="max-w-3xl text-left font-serif text-4xl font-medium tracking-tight text-balance text-white sm:text-5xl md:text-6xl">
                 {t.hero.headline1}
                 <br />
                 {t.hero.headline2}
@@ -156,20 +150,32 @@ export function Hero({
                 </a>
               </motion.div>
 
-              {/* 移动端：手机截图垫底、向下渐隐，首屏就有产品长相。 */}
-              <PhoneShot
-                locale={locale}
-                alt={t.hero.screenshotAlt}
+              {/* 移动端：盘面垫底、向下渐隐，首屏就有产品长相。 */}
+              <HeroBoard
+                name="ziwei-sanhe"
+                alt={t.hero.boardAlt.sanhe}
                 className="mt-12 h-96 w-60 self-center [mask-image:linear-gradient(to_bottom,black_70%,transparent)] lg:hidden"
               />
             </div>
 
-            {/* 桌面端：截图贴住框线底边被裁掉下半截，只露判词与卦盘。 */}
-            <div className="hidden lg:flex lg:h-full lg:items-end">
-              <PhoneShot
-                locale={locale}
-                alt={t.hero.screenshotAlt}
-                className="h-116 w-72"
+            {/* 桌面端三联：三合盘在前，四化与飞星从两侧探出半截，一眼看出这是
+                三种盘式。容器宽度写死，左栏才有稳定的余量排标题；旋转出去的那点
+                由 section 的 overflow-hidden 吃掉，页面不会横滚。 */}
+            <div className="relative hidden w-60 shrink-0 lg:block xl:w-72">
+              <HeroBoard
+                name="ziwei-feixing"
+                alt={t.hero.boardAlt.feixing}
+                className="absolute bottom-0 left-0 h-72 w-32 -rotate-6 opacity-65 xl:h-80 xl:w-40"
+              />
+              <HeroBoard
+                name="ziwei-sihua"
+                alt={t.hero.boardAlt.sihua}
+                className="absolute right-0 bottom-0 h-72 w-32 rotate-6 opacity-65 xl:h-80 xl:w-40"
+              />
+              <HeroBoard
+                name="ziwei-sanhe"
+                alt={t.hero.boardAlt.sanhe}
+                className="absolute bottom-0 left-1/2 h-100 w-48 -translate-x-1/2 shadow-2xl shadow-black/40 xl:h-112 xl:w-56"
               />
             </div>
           </div>

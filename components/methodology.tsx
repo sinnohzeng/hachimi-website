@@ -9,6 +9,7 @@ import {
   Lock,
   ShieldCheck,
   Scale,
+  Compass,
   Ban,
   CircleSlash,
   Popcorn,
@@ -309,8 +310,60 @@ export function Methodology({
         </div>
       </section>
 
-      {/* ---- What the Master won't do ---- */}
+      {/* ---- 排盘的门道 ---- */}
+      {/* 不编步骤号：起卦是 01 到 03 那条线，排盘是另一条线，不是起卦的第四步。 */}
       <section className="border-border bg-background relative w-full border-t py-20 sm:py-28">
+        <div className="mx-auto max-w-3xl px-6 sm:px-8">
+          <div className="flex flex-col">
+            <motion.div {...fade()} className="flex items-center gap-3">
+              <span className="bg-accent/40 h-px w-8" />
+              <span className="text-foreground/60 inline-flex items-center gap-1.5 text-sm font-medium tracking-wide">
+                <span className="text-accent">
+                  <Compass className="h-5 w-5" strokeWidth={1.5} />
+                </span>
+                {m.paipan.kicker}
+              </span>
+            </motion.div>
+            <motion.h2
+              {...fade(0.05)}
+              className="text-foreground mt-5 font-serif text-2xl leading-snug font-medium sm:text-3xl"
+            >
+              {m.paipan.title}
+            </motion.h2>
+          </div>
+
+          <motion.p
+            {...fade(0.1)}
+            className="text-foreground/70 mt-6 leading-relaxed"
+          >
+            {m.paipan.body}
+          </motion.p>
+
+          <div className="mt-10 space-y-5">
+            {m.paipan.points.map((p, i) => (
+              <motion.div
+                key={p.term}
+                {...fade(0.1 + i * 0.08)}
+                className="flex gap-4"
+              >
+                <span
+                  aria-hidden="true"
+                  className="bg-accent mt-2 h-1.5 w-1.5 shrink-0 rounded-full"
+                />
+                <div>
+                  <h3 className="text-foreground font-medium">{p.term}</h3>
+                  <p className="text-foreground/60 mt-1 text-sm leading-relaxed">
+                    {p.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ---- What the Master won't do ---- */}
+      <section className="border-border bg-muted/40 relative w-full border-t py-20 sm:py-28">
         <div className="mx-auto max-w-4xl px-6 sm:px-8">
           <div className="mx-auto max-w-3xl">
             <motion.span
@@ -354,7 +407,7 @@ export function Methodology({
       </section>
 
       {/* ---- Closing ---- */}
-      <section className="border-border bg-muted/40 relative w-full border-t py-20 sm:py-28">
+      <section className="border-border bg-background relative w-full border-t py-20 sm:py-28">
         <div className="mx-auto max-w-2xl px-6 text-center sm:px-8">
           <motion.p
             {...fade()}

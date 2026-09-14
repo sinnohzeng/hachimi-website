@@ -1,3 +1,5 @@
+import { AcademyShowcase } from "@/components/academy-showcase";
+import { ChartShowcase } from "@/components/chart-showcase";
 import { FAQ } from "@/components/faq";
 import { FeatureCards } from "@/components/feature-cards";
 import { FeatureHighlight } from "@/components/feature-highlight";
@@ -39,9 +41,13 @@ export default async function HomePage({
     <>
       <FaqStructuredData t={t} />
       <main id="main-content" className="flex-1">
+        {/* 顺序即产品结构：首屏 → App 底部四格一览 → 命盘深讲 → 学堂 →
+            问事（压到两节）→ 隐私与离线 → 数字 → 常见问题。 */}
         <Hero t={t} locale={locale} />
+        <FeatureCards t={t} />
+        <ChartShowcase t={t} />
+        <AcademyShowcase t={t} />
         <ScenarioCards t={t} />
-        <FeatureCards t={t} locale={locale} />
         <FeatureHighlight t={t} locale={locale} />
         <Principles t={t} locale={locale} />
         <Stats t={t} />

@@ -38,10 +38,13 @@ function HamburgerIcon({
   );
 }
 
-// 三项制：怎么玩（首页锚）· 起卦的门道（真页，作品集观众的确定入口）·
-// 常见问题（首页锚）。数说道长移出一级导航，页脚保留锚点。
+// 五项制：怎么玩（四格一览）· 命盘 · 学堂（三个首页锚，对着 App 底部那四格）·
+// 起卦与排盘的门道（真页，作品集观众的确定入口）· 常见问题。数说道长不进一级
+// 导航，页脚保留锚点。
 const navItems = [
   { key: "features", hash: "#features" },
+  { key: "chart", hash: "#chart" },
+  { key: "academy", hash: "#academy" },
   { key: "methodology", hash: null },
   { key: "faq", hash: "#faq" },
 ] as const;

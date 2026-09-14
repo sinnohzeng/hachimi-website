@@ -3,6 +3,8 @@ import type { Translations } from "./types";
 export const en: Translations = {
   nav: {
     features: "How it works",
+    chart: "Chart",
+    academy: "Academy",
     methodology: "How it's built",
     faq: "FAQ",
     download: "Get the app",
@@ -18,20 +20,28 @@ export const en: Translations = {
   },
 
   hero: {
-    eyebrow: "A divination app with an AI cat inside",
-    headline1: "When your mind is racing,",
-    headline2: "cast a hexagram.",
+    eyebrow:
+      "A divination and charting app with an AI cat that casts hexagrams and reads charts.",
+    headline1: "When you're anxious, cast a hexagram first.",
+    headline2: "To see it clearly, lay out a chart.",
     description:
-      "Two numbers, one question. Master Hachimi casts a hexagram, a six-line sign, and reads it with you. The knot loosens, and you come away with one small step to take now.",
+      "Give two numbers and ask one thing. The Master casts a hexagram and reads it to you. To go deeper, add your birth details and get two charts: Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars). All chart work runs on this phone.",
     memory:
       "A chatbot forgets what you asked last time. The Master remembers, cast after cast.",
-    screenshotAlt: "A reading in the Master Hachimi app",
-    cta: "See how it works",
+    cta: "See what is in the four tabs",
+    boardAlt: {
+      sanhe: "Master Hachimi app screenshot of the Zi Wei Dou Shu San He chart",
+      sihua:
+        "Master Hachimi app screenshot of the Zi Wei Dou Shu Four Transformations chart",
+      feixing:
+        "Master Hachimi app screenshot of the Zi Wei Dou Shu Flying Star chart",
+    },
   },
 
   scenarioCards: {
-    title: "Which one is it today?",
-    subtitle: "The three things people ask about most, or ask anything",
+    kicker: "Ask",
+    title: "Pick the card that matches what is on your mind",
+    subtitle: "A few common worries you can ask about with your own hexagram",
     cards: [
       {
         name: "Find an Item",
@@ -58,63 +68,143 @@ export const en: Translations = {
   },
 
   featureCards: {
-    title: "How Master Hachimi works",
-    subtitle: "two numbers, one question",
-    readMore: "How it's built",
+    title: "Open Master Hachimi, four tabs at the bottom",
+    subtitle: "The four tabs at the bottom are Ask, Chart, Academy, Me.",
+    readMore: "See this card",
     cards: [
       {
-        title: "Tell Master Hachimi what's on your mind",
+        title: "Ask",
         description:
-          "Type the question on your mind, then give two numbers off the top of your head. About thirty seconds. No account needed.",
+          "Write down what you want to ask, give two numbers on instinct, and the Master casts a hexagram by Mei Hua Yi Shu, then reads that hexagram back to you.",
       },
       {
-        title: "One cast, the same every time",
+        title: "Chart",
         description:
-          "Your two numbers and the hour set a Mei Hua Yi Shu (Plum Blossom divination) hexagram by a fixed method. Steady and sure.",
+          "One birth date gives you both a Zi Wei Dou Shu chart and a Ba Zi chart. Switch between the San He chart, the Four Transformations chart, and the Flying Star chart at any time. Open the major cycle and the Annual step by step, and take your time.",
       },
       {
-        title: "Master Hachimi reads it back",
+        title: "Academy",
         description:
-          "Ears up, Master Hachimi reads it to you line by line: what the hexagram shows, a kind word, and a small blessing to close. Each reading is saved to your history on the phone, so you can look back.",
+          "The old texts of the five arts, Mountain, Medicine, Fate, Physiognomy and Divination, come with the app. Read them page by page. Press and hold a star name on the chart and a glossary card opens.",
+      },
+      {
+        title: "Me",
+        description:
+          "Pick light, dark, or match your system under Appearance. The Language setting covers Simplified Chinese, Traditional Chinese, and English. Save a case to Files, or keep a copy in iCloud.",
       },
     ],
   },
 
+  chart: {
+    kicker: "Chart",
+    title: "One birth time, two charts",
+    subtitle:
+      "Three chart styles, Chart Patterns and glossary cards all in one place",
+    blocks: [
+      {
+        kicker: "Zi Wei Dou Shu chart",
+        title: "Three chart styles, down to the hourly fortune layer",
+        body: "One birth date gives you three charts: San He, Four Transformations, and Flying Star. A capsule at the bottom switches between them. Tap a cell to set the Taiji point, double tap to zoom into that palace, and step the fortune bar from major cycle down to hourly.",
+        bullets: [
+          "Major cycle, Annual, minor cycle, Monthly, daily, hourly open in layers. Fortune panel: four specs, seven at start.",
+          "Chart Patterns checks 84 rules one by one. Tap a layer, pattern or sign to open its text in place.",
+          "Star Settings: 10 groups, 60+ items, adjustable by school, plus Zhongzhou heaven, earth and human boards and Chart adjust.",
+          "The More menu also has zizhan chart without birth details, Four Pillars lookup, screenshot save, and text chart.",
+        ],
+        shotAlts: [
+          "Zi Wei Dou Shu fortune chart screenshot with the fortune bar set to Monthly",
+          "Chart Patterns screen with fortune layer names, pattern names, and luck marks listed",
+        ],
+      },
+      {
+        kicker: "Ba Zi Chart",
+        title:
+          "Four Pillars and Six Pillars tables that follow each major cycle step",
+        body: "Switch to the Ba Zi side. Four tabs run in order: Profile, Chart, Details, Notes. Each pillar table has ten rows per pillar, from the main star and Heavenly Stem and Earthly Branch all the way down to Nayin and Symbolic Stars. Take your time.",
+        bullets: [
+          "The Details chart is a seven column, six pillar table. One switch adds Conception Pillar, Life Palace and Body Palace.",
+          "Major cycle in 12 steps, plus 12 slots each for Annual and Monthly. Slide across and tap any slot to switch the whole chart.",
+          "Symbolic Stars sort by Four Pillars and major cycles, with clashes and combos marked where the chart meets the year.",
+          "Take notes as you read your chart. They save when you stop, and you can export a full Ba Zi text chart.",
+        ],
+        shotAlts: [
+          "Ba Zi Chart tab screenshot, four pillars with ten rows each",
+          "Ba Zi Details screenshot, six pillars table adds Conception Pillar, Life Palace, Body Palace",
+        ],
+      },
+      {
+        kicker: "Glossary card",
+        title: "Press and hold a name on the chart to read what it means",
+        body: "On the chart, star names that have a glossary entry sit above a thin dotted line. Press and hold one and a half screen card rises from the bottom: the name, one line that says what it is, and body text you can open step by step, with a row at the bottom to read the full entry in Academy.",
+        bullets: [
+          "The same star reads differently in each palace. Hold it in the Marriage Palace and the card opens with that view.",
+          "San He, Flying Star and Four Transformations charts, plus Chart Patterns. Every entry name is tappable.",
+          "The Ten Gods, Nayin, growth stage and Symbolic Stars on both Ba Zi pillar tables open with a tap.",
+        ],
+        shotAlts: [
+          "Long press a star name on the Zi Wei chart to raise its glossary card",
+        ],
+      },
+    ],
+  },
+
+  academy: {
+    kicker: "Academy",
+    title: "All five arts, kept in one tab on your phone",
+    subtitle:
+      "Five arts: Mountain, Medicine, Fate, Physiognomy, Divination. 154 books included.",
+    body: "The Academy screen lays out the five arts: Mountain, Medicine, Fate, Physiognomy and Divination. Tap an art to see its categories, tap a category to see its books. All 154 books and 2,408 chapters live on your device, so they open on a plane or deep underground.",
+    bullets: [
+      "Open a book and you see its contents first, one chapter per page, the longest over sixty thousand words, and it scrolls.",
+      "Illustrations sit right where they belong in the text: reach a chart, and it is on the next line.",
+      "All 287 glossary entries ship in Simplified and Traditional, and search finds them by book or star name.",
+    ],
+    shotAlts: [
+      "Academy home screen, five arts in a row: Mountain, Medicine, Fate, Physiognomy, Divination",
+      "A screenshot of a table of contents page in a book in Academy",
+      "Academy reading screen: the illustration sits inline in the text where it belongs",
+    ],
+  },
+
   featureHighlight: {
-    title1: "A cat master who'll",
-    title2: "sit and think it through with you",
+    title1: "A Master Hachimi who stays with you,",
+    title2: "Your tangled thoughts, sorted step by step",
     description:
-      "Master Hachimi takes your question seriously. You talk, he listens. Once the hexagram is cast, he reads it to you line by line and calms the noise in your head. And every reading ends the same way: one small thing you can do right now. Send that message, tidy that drawer, or write three lines before bed.",
+      "The hexagram is cast, and the Master walks you through it line by line. Each reading ends with one small thing you can do right now: send that message, clear out that drawer, or write three lines before bed.",
     features: [
-      "The cast follows a fixed method: the same numbers and hour always give the same hexagram, not a dice roll",
-      "Readings are written by a third-party AI service, shaped by your hexagram, the hour, and your question",
-      "Your history stays on your device; no account, no ads, no tracking",
+      "Casting follows a fixed method. The same numbers and hour always give the same hexagram, with no dice and no luck.",
+      "Readings come from a third-party AI service and are written to match your hexagram, the hour, and your question.",
+      "Your reading history stays on your device. No account, no ads, no tracking.",
     ],
     cta: "See how it's built",
     phonePlaceholder: "Master Hachimi reading",
   },
 
   principles: {
-    badge: "Why Master Hachimi?",
-    title1: "Always here when you need him,",
-    title2: "and knows where to stop",
+    badge: "Charting is right here on your phone",
+    title1: "Birth details stay on this device,",
+    title2: "Chart reading works offline too",
     description:
-      "Master Hachimi sits with you. He never predicts the future, changes your fate, or changes your luck. The reading is a few kind words. That's all of it, nothing more.",
-    cta: "Read the privacy policy",
+      "Both the Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars) charts, plus their two text charts, are worked out on your device by the engine that ships with the app. Change the major cycle or Annual, edit Star Settings, or switch Language, and each step is figured out right away.",
+    cta: "View Privacy Policy",
     cards: [
-      "Same inputs, same hexagram",
-      "For entertainment only",
-      "No account, privacy first",
-      "Gentle company, always",
+      "On-device charting",
+      "Chart on a plane too",
+      "No account needed",
+      "Backup in your hands",
     ],
   },
 
   stats: {
     items: [
-      { label: "Hexagrams" },
-      { label: "Points in a reading" },
-      { label: "Accounts needed" },
-      { label: "App languages" },
+      { label: "Classic texts" },
+      { label: "chapters readable" },
+      { label: "entries with meanings" },
+      { label: "Chart Pattern rules" },
+      { label: "Zi Wei chart types" },
+      { label: "Five arts of practice" },
+      { label: "Fortune panel layers" },
+      { label: "accounts to sign up" },
     ],
   },
 
@@ -161,14 +251,51 @@ export const en: Translations = {
         answer:
           "Your history and memories live on your phone. Delete them under Me → Privacy and data in the app, or just uninstall. The anonymous records you sent are kept for at most 90 days, then deleted. Resetting your anonymous ID unlinks them right away. See the Delete Data page for details.",
       },
+      {
+        question: "Does charting need the internet?",
+        answer:
+          "No. Both your Zi Wei Dou Shu and Ba Zi charts are worked out on your device by the chart engine that comes with the app. No signal, weak signal, or on a plane, open a case and the chart still appears. Step through a major cycle or Annual, change Star Settings, switch the language, and every move is calculated right there. Your birth details never leave the device.",
+      },
+      {
+        question:
+          "How do the San He, Four Transformations and Flying Star charts differ?",
+        answer:
+          "The same birth details give you the same chart, drawn three ways. The San He chart shows the twelve palaces with the three-way and four-corner groups. The Four Transformations chart draws the transformation letters and the flying lines. The Flying Star chart draws the flying stars from palace to palace. A capsule at the bottom of the Chart page switches between them at any time, and the Taiji point and fortune layers follow along.",
+      },
+      {
+        question:
+          "Can I change the star school when setting up Zi Wei Dou Shu?",
+        answer:
+          "Yes. Star Settings gives you ten groups and more than sixty switches, so you can set them to match the school you follow. You can also type in a star code and set all twenty-three slots at once. There are also the Zhongzhou heaven, earth and human boards and Chart adjustment. These help when you fix a chart for twins or start month-based stars from another school.",
+      },
+      {
+        question: "Are Ba Zi and Zi Wei two separate features?",
+        answer:
+          "Both charts in the same tab use the same birth details. The pill at the bottom left of the Chart page shows Zi Wei and Ba Zi. Switch to it and you get the Ba Zi chart for this case: four tabs named Profile, Chart, Details and Notes. Whichever one you viewed last is the one that opens next time.",
+      },
+      {
+        question: "Will my cases be lost if I reinstall the app?",
+        answer:
+          "The Case library page has a Save to Files button. Tap it, pick a folder, and you get a copy with the date in the file name. Open that file from Files, WeChat or AirDrop to import it back. By default it merges into your current cases, and for the same case the one with the newer update time wins. The top of the page shows when your last backup was.",
+      },
+      {
+        question: "Is there a dark mode?",
+        answer:
+          "Yes. In the Me tab, pick Appearance. You get three settings: Light, Dark, and Follow System. They apply across the whole app, and the chart has its own light color set. Language lives in the same tab. Switch between Simplified Chinese, Traditional Chinese, and English at any time, and the star and palace names on the chart change with it.",
+      },
+      {
+        question: "Do I have to download the old texts in Academy first?",
+        answer:
+          "No. All 154 books and 2,408 chapters of the five arts: Mountain, Medicine, Fate, Physiognomy and Divination come installed with the app, pictures included. Tap and read, no loading spinner. The book list also shows three titles by name only. The 287 glossary entries are bundled too. Press and hold a star name with a dotted underline on the chart and its glossary card opens.",
+      },
     ],
     stillHaveQuestions: "Still have questions?",
     contact: "Email voice@hachimi.ai",
   },
 
   finalCta: {
-    headline: "Got something on your mind?",
-    note: "A cast takes about thirty seconds.",
+    headline: "Cast a hexagram, or set a chart?",
+    note: "Casting takes about half a minute, and charts are made on this phone.",
   },
 
   footer: {
@@ -178,6 +305,8 @@ export const en: Translations = {
         title: "Product",
         items: [
           { label: "How it works", href: "/en#features" },
+          { label: "Chart", href: "/en#chart" },
+          { label: "Academy", href: "/en#academy" },
           { label: "How it's built", href: "/en/methodology" },
           { label: "By the numbers", href: "/en#tech" },
           { label: "FAQ", href: "/en#faq" },
@@ -312,15 +441,15 @@ export const en: Translations = {
   },
 
   methodology: {
-    metaTitle: "How it's built",
+    metaTitle: "How hexagram casting and chart building work",
     metaDescription:
-      "How a hexagram is cast, where the AI comes in and what limits it, and how we hold the red lines. Master Hachimi's method, out in the open.",
+      "Here is how a hexagram is cast, where a third party AI service is held back and by what, and what rules shape a chart. The Master walks you through it, step by step.",
     badge: "The Master's old rules",
     title1: "How a reading is made,",
     title2: "out in the open",
-    lastUpdated: "Last updated: July 9, 2026",
+    lastUpdated: "Last updated 14 September 2026",
     intro:
-      "Plenty of fortune apps never show you how the hexagram was cast or how the words were written. Master Hachimi doesn't play it that way. The cast follows a fixed method, the reading is kept on a short leash, and every update has to pass a test before it ships. Here is the whole thing, inside and out. For entertainment and comfort only.",
+      "Master Hachimi lays it all out: the casting method is fixed, the reading is tightly bounded, every pass goes through evaluation, and the chart rules are written down line by line, all in plain view. For entertainment and reference only.",
     cast: {
       kicker: "The cast",
       step: "01",
@@ -393,6 +522,30 @@ export const en: Translations = {
         },
       ],
     },
+    paipan: {
+      kicker: "Charting",
+      title: "How the chart is built",
+      body: "Both charts, Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars), come from the chart engine built into the app, running on your own phone. Same birth details, same Star Settings, same chart every time. A few spots cause the most differences, and the rules are here.",
+      points: [
+        {
+          term: "True solar time",
+          desc: "Chart casting first converts birth time by birthplace longitude. Pick a province and city, type a longitude, or take your current location once. Born outside UTC+8? Choose a time zone too, down to half and quarter hour zones. Location uses longitude only and stores nothing.",
+        },
+        {
+          term: "Calendar",
+          desc: "Birth details can be Gregorian, lunar, or Four Pillars. For lunar, pick a Gregorian or stem-branch year and tick leap month. Five cases get a chart note: daylight saving, leap month, late zi hour, two Four Pillars across a solar term change, and true solar time crossing an hour slot.",
+        },
+        {
+          term: "Adjustable star schools",
+          desc: "Star placement rules differ by school, so nothing here is fixed for you. Ten groups and more than sixty items can be set one by one to match the school you follow, or you can enter a star code to set them all at once. The Zhongzhou heaven, earth and human boards have their own entry.",
+        },
+        {
+          term: "On-device charting",
+          desc: "Charts are built on your device, not on a server. Step to the next major cycle, change a Star Settings option, or switch the Language, and it all recalculates on the spot. You can build a chart with no network. Your birth details never leave this device.",
+        },
+      ],
+    },
+
     limits: {
       kicker: "Up front",
       title: "Some things the Master won't do, from the start",

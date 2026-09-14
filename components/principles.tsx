@@ -3,21 +3,22 @@
 import { type ReactNode } from "react";
 import {
   Sparkles,
-  Heart,
-  ShieldCheck,
+  Smartphone,
   WifiOff,
-  Palette,
+  ShieldCheck,
+  FolderDown,
   ArrowRight,
 } from "lucide-react";
 import { motion } from "motion/react";
 import type { Translations } from "@/lib/i18n";
 import { DUR, STAGGER, reveal } from "@/lib/motion-tokens";
 
+// 四格对 principles.cards：本机排盘 · 没网也出盘 · 不用账号 · 备份在你手里。
 const principleIcons = [
-  <Heart key="heart" className="h-12 w-12" strokeWidth={1} />,
-  <ShieldCheck key="shield" className="h-12 w-12" strokeWidth={1} />,
+  <Smartphone key="device" className="h-12 w-12" strokeWidth={1} />,
   <WifiOff key="offline" className="h-12 w-12" strokeWidth={1} />,
-  <Palette key="palette" className="h-12 w-12" strokeWidth={1} />,
+  <ShieldCheck key="shield" className="h-12 w-12" strokeWidth={1} />,
+  <FolderDown key="backup" className="h-12 w-12" strokeWidth={1} />,
 ];
 
 export function Principles({
@@ -28,7 +29,10 @@ export function Principles({
   locale: string;
 }): ReactNode {
   return (
-    <section className="bg-muted text-foreground relative w-full py-24 sm:py-32">
+    <section
+      id="offline"
+      className="bg-muted text-foreground relative w-full scroll-mt-28 py-24 sm:py-32"
+    >
       <div className="mx-auto max-w-6xl px-6 sm:px-8">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <div className="flex flex-col">

@@ -2,6 +2,8 @@ export type Translations = {
   // Header
   nav: {
     features: string;
+    chart: string;
+    academy: string;
     methodology: string;
     faq: string;
     download: string;
@@ -28,12 +30,22 @@ export type Translations = {
     // The "why this and not a general chatbot" line: the memory promise,
     // phrased as feeling, not as a feature spec (specs live in the FAQ).
     memory: string;
-    screenshotAlt: string;
     cta: string;
+    // Alt text for the three Zi Wei board shots in the hero. The board is the
+    // product's new anchor image; the reading screenshot moved down to the
+    // 问事 section.
+    boardAlt: {
+      sanhe: string;
+      sihua: string;
+      feixing: string;
+    };
   };
 
   // Scenario Cards (three heart-matters + open question)
   scenarioCards: {
+    // Which bottom tab this section is about. The App's four tabs are the
+    // page's spine, so every product section leads with its tab name.
+    kicker: string;
     title: string;
     subtitle: string;
     cards: {
@@ -64,6 +76,25 @@ export type Translations = {
       title: string;
       description: string;
     }[];
+  };
+
+  // Chart section (命盘): Zi Wei, Ba Zi, glossary cards. Rendered by
+  // components/chart-showcase.tsx over the shared Showcase layout.
+  chart: {
+    kicker: string;
+    title: string;
+    subtitle: string;
+    blocks: ShowcaseBlock[];
+  };
+
+  // Academy section (学堂): one block, same layout as the chart blocks.
+  academy: {
+    kicker: string;
+    title: string;
+    subtitle: string;
+    body: string;
+    bullets: string[];
+    shotAlts: string[];
   };
 
   // Feature Highlight
@@ -181,6 +212,15 @@ export type Translations = {
       stats: { value: string; label: string }[];
       layers: { name: string; desc: string }[];
     };
+    // 排盘的门道: the rules behind the charts, sitting between the eval gate
+    // and the limits. No step number — casting is 01-03, charting is its own
+    // track, not a fourth step of the cast.
+    paipan: {
+      kicker: string;
+      title: string;
+      body: string;
+      points: { term: string; desc: string }[];
+    };
     limits: {
       kicker: string;
       title: string;
@@ -198,6 +238,19 @@ export type Translations = {
   accountDeletion: LegalPage;
   dataDeletion: LegalPage;
   support: LegalPage;
+};
+
+/**
+ * One text-plus-screenshots row in a product showcase section. `shotAlts` is
+ * alt text only; which screenshot file each index maps to lives in the
+ * component, since the files are locale-independent app captures.
+ */
+export type ShowcaseBlock = {
+  kicker: string;
+  title: string;
+  body: string;
+  bullets: string[];
+  shotAlts: string[];
 };
 
 export type LegalPage = {
