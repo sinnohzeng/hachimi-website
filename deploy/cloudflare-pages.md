@@ -19,7 +19,7 @@
 
 ```bash
 # 改完源码，本地过门后推 main，CF Pages 自动构建 + 部署。
-npm run check          # 唯一门：format:check + lint + typecheck + build（勿跑分项替代）
+npm run check          # 唯一门：format:check + lint + typecheck + Orb 对拍/哈希测试 + 文案门 + build（勿跑分项替代）
 git push origin main   # 推 main 时 .githooks/pre-push 会再跑一遍门；CF 侧自动 npm run build → 上线
 ```
 
@@ -65,3 +65,5 @@ npx wrangler pages deployment list --project-name hachimi-app-website   # 取上
 
 - **法律文案与现实一致**（App Store 5.1.1）：隐私政策 / 条款描述的后端存储口径（“帮助改进解读”开启时按假名化最小集存储、原文 90 天自动删除，关闭则不存）、设备证明“计划中”、第三方 AI 服务的数据用途口径（用户可见文档只写“正规商业付费的第三方 AI 服务、已要求其不将你的内容用于训练”，不点名具体供应商）——均须与真实实现口径一致，改文案前先核对现状。设备证明真接入前，措辞保持“计划中 / 尚未强制”。当前供应商身份由代码 / 配置 / 各店 Review Notes 承载，换供应商时用户可见文档无需改，仅更新 Review Notes 与内部运营档、并确保新供应商同样正规商业付费且已就训练 opt-out。
 - **凭据**：CF token 与后端 Workers 同一把，放 `hachimi-ios/.env`，绝不入库 / 不回显。
+
+本轮 Orb 发布证据与上一部署回滚点：[spec 002 delivery](../specs/002-orb-ip-motion/delivery.md)。

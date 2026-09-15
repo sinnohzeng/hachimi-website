@@ -2,6 +2,7 @@
 
 import { type ReactNode } from "react";
 import type { Translations } from "@/lib/i18n";
+import { CatOrb } from "@/components/cat-orb";
 
 export function Footer({
   locale,
@@ -39,6 +40,10 @@ export function Footer({
           <div className="relative w-full px-8 py-12 sm:px-12">
             <div className="flex flex-col justify-between gap-12 lg:flex-row lg:gap-8">
               <div className="lg:max-w-xs">
+                <CatOrb
+                  program="footer"
+                  className="mb-5 w-32 rounded-3xl bg-[#111113]"
+                />
                 <a href={`/${locale}`} className="flex items-center gap-2">
                   <span className="text-foreground text-lg font-semibold tracking-tight">
                     HACHIMI AI

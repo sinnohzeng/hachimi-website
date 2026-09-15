@@ -18,3 +18,7 @@ yarn.lock
 # Generated files
 *.min.js
 *.min.css
+
+# Swift exports: byte hashes are verified alongside native golden tests.
+public/brand/orb-model.json
+public/brand/orb-golden.json

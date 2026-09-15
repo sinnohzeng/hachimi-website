@@ -3,6 +3,7 @@
 import { type ReactNode } from "react";
 import dynamic from "next/dynamic";
 import { motion } from "motion/react";
+import { CatOrb } from "@/components/cat-orb";
 import { AppShot } from "@/components/app-shot";
 import { StoreBadges } from "@/components/store-badges";
 import type { Translations } from "@/lib/i18n";
@@ -55,6 +56,7 @@ export function Hero({
       <div className="relative flex min-h-dvh items-center justify-center px-6 pt-24 pb-12 sm:px-8 lg:py-0">
         <div className="flex w-full max-w-5xl flex-col items-center gap-12 text-center lg:flex-row lg:justify-between lg:gap-16 lg:text-left">
           <div className="flex flex-col items-center lg:items-start">
+            <CatOrb className="mb-3 w-24 sm:w-28" />
             {/* H1 是 LCP 元素：不做挂载后淡入，服务端首帧（含禁 JS）即可见。 */}
             <h1 className="max-w-xl font-serif text-4xl leading-tight font-medium tracking-tight text-balance text-white sm:text-5xl md:text-6xl lg:text-7xl">
               {t.hero.headline}

@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "source": "hachimi-ios/specs/062-orb-ip-motion",
+  "sources": {
+    "HachimiKit/Sources/OrbEngine/OrbBehavior.swift": "b7a1eef790116f8a00a0f327f1f09ada211948ddefad0fc953fce88e668e3b31",
+    "HachimiKit/Sources/OrbEngine/OrbCatGeometry.swift": "4b3e0114678c2ee65d2fd6a829d7566919b66441393c843f386fd2358b9f2b59",
+    "HachimiKit/Sources/OrbEngine/OrbCatRaster.swift": "37b437f0a5d9f05a3a8c15038131d44e48d6c812fdab57fe5563fd1685e39291",
+    "HachimiKit/Sources/OrbEngine/OrbCatWhiskers.swift": "363d8b030801935d006fbd1973ec96c0e87173bc527ecc9fe7e43f35988faf19",
+    "HachimiKit/Sources/OrbEngine/OrbDecor.swift": "e4d5673d7b6ca85012bfd5f3deb537a9e05681d15f8fb97537369b36bf06e979",
+    "HachimiKit/Sources/OrbEngine/OrbEngine.swift": "c3decefbf431aff3fd26a8efd494084607ea6bf25bead8d57346ed995aabbb9c",
+    "HachimiKit/Sources/OrbEngine/OrbExpressions.swift": "444d9abb097f5c85e5342478cc6c7f971e2a82f57a06a3e2d9cf2aac3f6924bf",
+    "HachimiKit/Sources/OrbEngine/OrbFace.swift": "58d69b5ea59c0856dfa4bbee7dd433bd71df0a5d17c25b5805717ab1d129a4d5",
+    "HachimiKit/Sources/OrbEngine/OrbFrameTypes.swift": "ad73c53296a9b3656f35dddcfe955b37f61c31581939db8083a060c9fc9c267f",
+    "HachimiKit/Sources/OrbEngine/OrbHeadFrame.swift": "f9306e906e42ea4eab6fb28b4753cc3c93f082d3baab53e8a9327ea92f1d20fd",
+    "HachimiKit/Sources/OrbEngine/OrbMath.swift": "81a7e00ab34527654f1c574c93637e65f59993f230d61aabe9430bd82cd57119",
+    "HachimiKit/Sources/OrbEngine/OrbMotionAction.swift": "62db1a9fc177c61979090840760099bc0190e48d148059ed6ced8e7e3cfca066",
+    "HachimiKit/Sources/OrbEngine/OrbMotionEngine.swift": "ea49f008668ae0896de11e6de299b65d7b828975c6adc87794d250d1a07a723a",
+    "HachimiKit/Sources/OrbEngine/OrbMotionProgram.swift": "cc6b781b819050553c70547d0d7153d15e33f32d059bd4195372abf7348a9d56",
+    "HachimiKit/Sources/OrbEngine/OrbMotionTargets.swift": "692e6f19d1ee50ce4b4afb2fbe6e0a99eff6774e1215195ec8c3c3075993eb1c",
+    "HachimiKit/Sources/OrbEngine/OrbPose.swift": "0e99285ff30da047c644d564d0bd76cbfecd202e2e3e4259efa17463bcfd445b",
+    "HachimiKit/Sources/OrbEngine/OrbProfiles.swift": "58bd55b682eff3d64a9e8e546d928fa9383dc72c94c7de80353d820c28ca1dcd",
+    "HachimiKit/Sources/OrbEngine/OrbShape.swift": "9aaaaab9d88670880b2a99701089d159e4444bfb221ad93cfb35116d3e5e6484",
+    "HachimiKit/Sources/OrbEngine/OrbStates.swift": "0170eb8e4de294d6eab5953bef23cd0c71098afdb574fc7954f05472aa0aed9e",
+    "HachimiKit/Sources/OrbEngine/OrbStatesDecor.swift": "a4b746e131be52552428e52d1bfff594cbadbd9b4a4a4a01803a33246451f637",
+    "HachimiKit/Sources/OrbEngine/OrbTypes.swift": "caae29508ed15bcd94cf288de06234d8a120634abf233ba5893866d0c241d7fd"
+  },
+  "artifacts": {
+    "orb-model.json": "0eb7fb057f32bb27016ae0c802a7a9d30e658719ea74ef500b167403c44f4fbf",
+    "orb-golden.json": "2699d4a9a8fd5d86f432f6b176f13044b2301c4df7ce14a690f898578c65b1f4"
+  }
+}

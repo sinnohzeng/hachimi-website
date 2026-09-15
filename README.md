@@ -18,7 +18,7 @@ The bilingual (zh / en) marketing site for **Master Hachimi (哈基米道长)**,
 
 Seven sections, in this order (spec: [`specs/001-site-v3-concise/spec.md`](specs/001-site-v3-concise/spec.md)):
 
-- **Hero** - 3D animated background, one headline, store badges, one app shot
+- **Hero** - small native cat Orb beside the headline, store badges, one app shot
 - **What it is** - category anchor plus the three steps of a cast
 - **Remembers** - the one line that separates the Master from a chatbot
 - **Chart showcase** - Zi Wei and Ba Zi, one line and one shot each
@@ -200,3 +200,7 @@ This template is licensed for use in commercial projects. You may not resell or 
 ---
 
 Built with ❤️ using Next.js, Tailwind CSS, and Motion
+
+## Native Orb brand
+
+The app character, website hero/footer and icons share the native Swift geometry. See [brand generation](design/brand/README.md), [spec 002](specs/002-orb-ip-motion/spec.md) and [delivery record](specs/002-orb-ip-motion/delivery.md). `npm run check` includes 35-state native frame parity and generated-asset hash checks.

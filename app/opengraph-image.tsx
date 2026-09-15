@@ -29,7 +29,7 @@ export default function OpengraphImage(): ImageResponse {
         alignItems: "center",
         justifyContent: "center",
         background:
-          "linear-gradient(135deg, #f5d78e 0%, #d97706 55%, #b45309 100%)",
+          "linear-gradient(135deg, #242426 0%, #111113 55%, #0d1b2a 100%)",
         color: "#ffffff",
         fontFamily: "Georgia, serif",
       }}
