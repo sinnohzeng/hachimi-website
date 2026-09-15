@@ -52,3 +52,33 @@
 Owner 追加要求首屏设备更大、底部允许遮住。最终 1280×900 视口下设备为 432×876px，Hero 下沿裁去约 138px；390×844 下设备宽 256px，裁去约 70px。命盘区不裁切。桌面与移动均无横向溢出，完整质量门通过。
 
 [放大后的 Hero](evidence/hero-large.png)、[移动版](evidence/hero-large-mobile.png)。原 288px 设备截图仅为前一轮过程记录。深色命盘截图已实测选中 dark 文件，两张均加载成功；减少动态经等待 React 更新后实测 transform=none。
+
+## 收尾清单
+
+### 同步文档
+
+官网：README.md、design/brand/README.md、deploy/cloudflare-pages.md、specs/002-orb-ip-motion/spec.md、specs/002-orb-ip-motion/delivery.md，以及 evidence 中的浏览器截图。
+
+iOS 交接提交 e2d67b6：CHANGELOG.md、design/brand/README.md、docs/README.md、docs/architecture.md、docs/engineering-lessons.md、docs/handoff-active.md、docs/launch/app-store-metadata.md、docs/research/2026-09-15-orb-motion/analysis.md 与 hero-motion-spec.json、specs/024-orb-presence/spec.md、specs/040-orb-vigor/spec.md、specs/060-orb-cat-features/spec.md、specs/062-orb-ip-motion/spec.md、specs/062-orb-ip-motion/plan.md。
+
+### 长期记忆
+
+- 原生几何是 IP 真源，网页与静态图通过导出、哈希和黄金帧维持一致。
+- 时钟单位、快速切态、眨眼保持段、旋转偏移和后台恢复的正确范式。
+- 大图耳部栅格上限、RGBA 多尺寸 ICO、无透明 App 母版及可重复资产管线。
+- worktree 独立依赖、构建端口权限、浏览器实际滚动完成后再验证、生产请求受限时的验证链。
+- React Bits 授权 registry 配置、隐式 cn 依赖、固定设备尺寸的响应式改造、减少动态与源码更新规程。
+- 每版主动打开可见预览；预览、生产部署与 App 提审分开记录；跨对话以独立提交及测试边界交接。
+
+以上均在两仓 Git 文档中，本轮没有新增全局记忆。
+
+### 后续文档债务
+
+无未落盘的本轮经验。iOS 新增未冻结 UI 测试、完整质量门、真机验收及版本发布已明确交给统筹对话；结果产生时按 spec 062 plan 回填，不伪写完成。
+
+## 最终生产验收
+
+- 最终功能提交 `3fab2da7f65ad4de630545a4cccd2d2f9ea2a66e` 已推 main；Device 安装提交为 `09683d7`，Orb 基础为 `283c613`。
+- Cloudflare 部署 `23dc4b30-f2d0-4b44-aafc-c0bf4d685291`：deploy success；对应专属域 `https://23dc4b30.hachimi-app-website.pages.dev`。
+- `https://hachimi.ai/zh` 浏览器复核：三台 Device、放大 Hero 下沿裁切、orbReady=true、无横向溢出。favicon SHA256 仍与批准母版一致。
+- 最终官网源代码、SDD、长期经验与交接清单已分别 Git 提交。iOS 独立分支保持 e2d67b6，工作树干净，本轮未发布 App。
