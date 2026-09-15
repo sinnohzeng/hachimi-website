@@ -24,8 +24,25 @@
 ## 发布
 
 发布前生产回滚点：`ba9f06a7-c249-48a2-9e41-81769750dd63`。
-最终提交与线上验证结果在部署完成后追加本节。
+
+- 实现提交：`283c613b11deea6d33ecd8ff23a6e5efe78a5bd0`，已推官网 main，本地主线已快进同步。
+- Cloudflare 生产部署：`1741177a-5234-451c-86db-ef4ce6a27b71`，deploy stage success；专属域 `https://1741177a.hachimi-app-website.pages.dev`。
+- 生产 `https://hachimi.ai/zh` 和 `/en` 正常，浏览器确认 Hero 的 orbReady=true、时钟推进。中英隐私、条款与中文支持页均 HTTP 200。
+- 生产 favicon、icon.png、apple-icon.png、orb-model.json、orb-source.json 的 SHA256 与本地提交逐字节相同。favicon SHA256：`030a55c5f963a499ceca22d1f3adbc8d5bbb610f04e6e4886442d3e009ddb038`。
+- 生产减少动态实测：canvas hidden、原生静态图 visible；服务器 HTML 包含静态回退。页脚实际使用黑底银白猫，完整编排正常。
+- 原生交接提交：iOS `e2d67b6`，分支 `feat/orb-ip-062`；没有改版本、合并 iOS main、上传或提审。
+- Python urllib 的生产请求受到 HTTP 403 限制；改由正常访问官网的受控浏览器 fetch 验证状态和 SHA256，不把命令行受限误判为网站故障。
+- 上线截图：[Hero](evidence/production-hero.png)、[页脚](evidence/production-footer.png)。
 
 ## 文档债务
 
 本轮经验与生成规程均在 Git 文档中；iOS 全量验证及发版属于明确交接事项，不宣称本轮已完成。
+
+## 追加 Device 展示
+
+- 按 Owner 指定配置授权 registry，执行官方 shadcn add 安装成功；Device 接入 AppShot 后三处 iPhone 展示统一。
+- 桌面 1280×900：首屏设备 288×584px，两张命盘设备 240×487px；手机 390×844：224×454px、208×422px，无横向溢出。截图内容维持全幅。
+- Device 接入后的 `npm run check` 全量通过；无新增 lint 错误。默认不自动摆动、不内部滚动，保留触屏页面滚动；减少动态静止。
+- Registry 源码沿用 rem 固定尺寸时，单纯 scale 不改变布局占位；通过容器宽度与 em 比例适配后，外层尺寸和实际机身保持一致。`cn` 是 registry 源码的隐式依赖，需要显式补齐。
+- 配置、许可边界和维护步骤已补进 design/brand/README.md；许可原值未入 Git。
+- 新版预览：[桌面 Device](evidence/device-desktop.png)、[手机 Device](evidence/device-mobile.png)。

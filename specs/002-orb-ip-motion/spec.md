@@ -23,3 +23,11 @@ Owner 补充布局约束：Hero 中道长只在左侧文字区小尺寸出现；
 4. 完整质量门、受控浏览器验收、Git 提交、Cloudflare 发布及生产验证。
 
 组件复用检查：仓库没有 components.json 或已启用付费组件注册表；本功能明确复用项目自有 Orb 资产与现有 three、动态加载和 reduced-motion 设施。
+
+## 追加：React Bits Pro Device
+
+Owner 在官网 Orb 上线后指定所有 iPhone 展示使用 `@reactbits-starter/device-tw`。通过授权 registry 安装，复用现有 AppShot 内容、深浅色图与懒加载策略；Hero 与命盘两处共三台设备统一。
+
+验收：设备框随现有宽度响应，不因原组件固定 35.6rem 尺寸溢出或留空；不裁切 App 内容；轻量 hover，减少动态时无跟随或缩放；手机不自动晃动，不引入页面内截图滚动。现有 35 状态、favicon 与页脚保持上一版已验收行为。
+
+配置只提交环境变量占位，不提交许可证。组件来源及本地改造落入品牌文档，安装后必须完整 check 与真实浏览器预览，再推生产。

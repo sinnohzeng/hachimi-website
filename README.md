@@ -204,3 +204,5 @@ Built with ❤️ using Next.js, Tailwind CSS, and Motion
 ## Native Orb brand
 
 The app character, website hero/footer and icons share the native Swift geometry. See [brand generation](design/brand/README.md), [spec 002](specs/002-orb-ip-motion/spec.md) and [delivery record](specs/002-orb-ip-motion/delivery.md). `npm run check` includes 35-state native frame parity and generated-asset hash checks.
+
+All three iPhone screenshots use the licensed React Bits Pro Device component through AppShot. Registry setup, responsive adaptations and update steps are documented in [brand generation](design/brand/README.md#react-bits-pro-device).

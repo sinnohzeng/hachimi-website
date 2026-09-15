@@ -1,6 +1,7 @@
 "use client";
 
 import { type ReactNode } from "react";
+import Device from "@/components/react-bits/device";
 
 /**
  * 站上的 App 截图。第三版全页只有三张：首屏一张起卦结果，第四节紫微与八字各一张。
@@ -57,7 +58,7 @@ function Screen({
       loading={eager ? "eager" : "lazy"}
       fetchPriority={eager ? "high" : "auto"}
       decoding="async"
-      className={`block h-auto w-full select-none ${className}`}
+      className={`block h-full w-full object-contain select-none ${className}`}
     />
   );
 }
@@ -87,29 +88,30 @@ export function AppShot({
   const { widths, dark } = SHOTS[name];
   const base = `/screenshots/zh/${name}`;
   return (
-    <div
-      className={`overflow-hidden rounded-t-[1.6rem] bg-neutral-900 px-1 pt-1 ${className}`}
+    <Device
+      className={className}
+      parallaxStrength={6}
+      rotateStrength={2}
+      autoAnimate={false}
     >
-      <div className="overflow-hidden rounded-t-[1.35rem] bg-neutral-950">
+      <Screen
+        base={base}
+        alt={alt}
+        sizes={sizes}
+        widths={widths}
+        eager={eager}
+        className={dark ? "dark:hidden" : ""}
+      />
+      {dark ? (
         <Screen
-          base={base}
+          base={`${base}-dark`}
           alt={alt}
           sizes={sizes}
           widths={widths}
-          eager={eager}
-          className={dark ? "dark:hidden" : ""}
+          eager={false}
+          className="hidden dark:block"
         />
-        {dark ? (
-          <Screen
-            base={`${base}-dark`}
-            alt={alt}
-            sizes={sizes}
-            widths={widths}
-            eager={false}
-            className="hidden dark:block"
-          />
-        ) : null}
-      </div>
-    </div>
+      ) : null}
+    </Device>
   );
 }

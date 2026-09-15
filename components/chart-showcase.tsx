@@ -50,7 +50,7 @@ export function ChartShowcase({
                 name={cell.shot}
                 alt={cell.alt}
                 sizes="(min-width: 640px) 240px, 60vw"
-                className="w-52 shadow-xl shadow-black/15 sm:w-60"
+                className="w-52 sm:w-60"
               />
               <p className="text-foreground/80 mt-8 max-w-xs text-center leading-relaxed text-balance">
                 {cell.text}

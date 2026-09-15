@@ -76,7 +76,7 @@ export function Hero({
             alt={t.hero.shotAlt}
             eager
             sizes="(min-width: 1024px) 280px, 62vw"
-            className="w-56 shrink-0 shadow-2xl shadow-black/40 sm:w-64 lg:w-72"
+            className="w-56 shrink-0 sm:w-64 lg:w-72"
           />
         </div>
       </div>
