@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "source": "hachimi-ios/specs/062-orb-ip-motion",
+  "appearance": "native cat Orb / black-silver / look upper right",
+  "inputs": {
+    "orb-icon-master-1024.png": "6012c3b9d778af281308bfdb08e121422a2cc049a557522fe987fc5fe3c54ab2",
+    "orb-icon-foreground-1024.png": "875d9c7c64ea9ac8aad51695bab9afdfe5b5c0792ab2bc6a237ea54ae59254d6",
+    "orb-native-transparent-1600.png": "9c6dd061c867afe7522adf5ae33515f4cb8648242d186a6f405b76471b1281c2"
+  },
+  "outputs": {
+    "app/apple-icon.png": "e36de6cbd142027a6012bcc166b201d335225cc7ed0776ee1a161712a8161a2d",
+    "app/favicon.ico": "030a55c5f963a499ceca22d1f3adbc8d5bbb610f04e6e4886442d3e009ddb038",
+    "app/icon.png": "2168f50b547339a379e2082585725305d3566a90a6a39a280b44cd427cb882c0",
+    "design/brand/orb-icon-foreground-1024.png": "875d9c7c64ea9ac8aad51695bab9afdfe5b5c0792ab2bc6a237ea54ae59254d6",
+    "design/brand/orb-icon-master-1024.png": "6012c3b9d778af281308bfdb08e121422a2cc049a557522fe987fc5fe3c54ab2",
+    "design/brand/orb-maskable-master-1024.png": "5a178bcc88427b5ec18d5c8f3faa6ad70674273a8600fee3e5dc728bb4db33e4",
+    "design/brand/orb-native-transparent-1600.png": "9c6dd061c867afe7522adf5ae33515f4cb8648242d186a6f405b76471b1281c2",
+    "public/brand/icons/icon-1024.png": "6012c3b9d778af281308bfdb08e121422a2cc049a557522fe987fc5fe3c54ab2",
+    "public/brand/icons/icon-128.png": "512ab69d17fc2e26960f6b5534d6113d73aba3ce821b509818499ee87774a9f8",
+    "public/brand/icons/icon-16.png": "cab908aecce0cd8a496978c84c2ac4b2793d33d18ef48c31d400d40b7cd881c9",
+    "public/brand/icons/icon-180.png": "e36de6cbd142027a6012bcc166b201d335225cc7ed0776ee1a161712a8161a2d",
+    "public/brand/icons/icon-192.png": "b4ec633eb8a2dbe6cd0856d621bf0aa3925c48652e993fd88bb1b49cb73b1b01",
+    "public/brand/icons/icon-256.png": "482b13fe34d5ea92481484ea71a038449d08506dba3fc9b66fbcc241742984a7",
+    "public/brand/icons/icon-32.png": "106eb38ad00b5d14e0827542e0f6accd0b6424b92eb6c242e72b7221d73bac31",
+    "public/brand/icons/icon-384.png": "0a90bafa795cd69d7b5dd89460d04d361e843f761a2317c6f4486dd8d06639c5",
+    "public/brand/icons/icon-48.png": "0594386bdcd49913a99411add8828c41edd940ef7d20880fa8d833e4b622878b",
+    "public/brand/icons/icon-512.png": "2168f50b547339a379e2082585725305d3566a90a6a39a280b44cd427cb882c0",
+    "public/brand/icons/icon-96.png": "1511daca3f1bee841df94414ce225c7d3e0fc3ea8c0cbadec5339d2bd47dc8d3",
+    "public/brand/mask-icon.svg": "e24090814e16bd0ccba73aa9f431762aa9cfa46e7575e8e3dc3922fb180a566c",
+    "public/brand/og-logo.png": "2aaa7c3db855f691d32bbbabc68f0f5a33ec1585736dbfbecaeb2899b936908c",
+    "public/icon-192.png": "b4ec633eb8a2dbe6cd0856d621bf0aa3925c48652e993fd88bb1b49cb73b1b01",
+    "public/icon-512.png": "2168f50b547339a379e2082585725305d3566a90a6a39a280b44cd427cb882c0",
+    "public/icon-maskable-192.png": "857c0594ff9e977c4f1d54a6581d15e1b8ac0cc7c24234ecae6c5d41b2efbb95",
+    "public/icon-maskable-512.png": "fe3ad9b1fa72d20285062a5dc5e98ae46bb8b2c3e1ea77f131ea7b94b72a5900",
+    "public/icon-maskable.png": "fe3ad9b1fa72d20285062a5dc5e98ae46bb8b2c3e1ea77f131ea7b94b72a5900"
+  }
+}

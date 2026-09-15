@@ -58,6 +58,9 @@ export const baseMetadata: Metadata = {
       { url: "/icon.png", sizes: "512x512", type: "image/png" },
     ],
     apple: "/apple-icon.png",
+    other: [
+      { rel: "mask-icon", url: "/brand/mask-icon.svg", color: "#111113" },
+    ],
   },
   // Smart App Banner (iOS Safari): renders <meta name="apple-itunes-app">.
   itunes: {

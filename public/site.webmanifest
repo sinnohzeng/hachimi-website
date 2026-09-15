@@ -4,8 +4,8 @@
   "description": "Master Hachimi (哈基米道长) is a cat-themed Mei Hua Yi Shu divination companion. Share two numbers and your question; Master Hachimi casts a hexagram and reads it back in a warm voice, for entertainment and comfort, never prediction. No account, history stays on your device, no ads.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#d97706",
+  "background_color": "#111113",
+  "theme_color": "#111113",
   "icons": [
     {
       "src": "/icon-192.png",
@@ -18,7 +18,13 @@
       "type": "image/png"
     },
     {
-      "src": "/icon-maskable.png",
+      "src": "/icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon-maskable-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"

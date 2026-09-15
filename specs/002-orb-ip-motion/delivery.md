@@ -81,4 +81,25 @@ iOS 交接提交 e2d67b6：CHANGELOG.md、design/brand/README.md、docs/README.m
 - 最终功能提交 `3fab2da7f65ad4de630545a4cccd2d2f9ea2a66e` 已推 main；Device 安装提交为 `09683d7`，Orb 基础为 `283c613`。
 - Cloudflare 部署 `23dc4b30-f2d0-4b44-aafc-c0bf4d685291`：deploy success；对应专属域 `https://23dc4b30.hachimi-app-website.pages.dev`。
 - `https://hachimi.ai/zh` 浏览器复核：三台 Device、放大 Hero 下沿裁切、orbReady=true、无横向溢出。favicon SHA256 仍与批准母版一致。
-- 最终官网源代码、SDD、长期经验与交接清单已分别 Git 提交。iOS 独立分支保持 e2d67b6，工作树干净，本轮未发布 App。
+- 最终官网源代码、SDD、长期经验与交接清单已分别 Git 提交。iOS 原动作提交为 e2d67b6；随后全平台资源补充见下节。本轮未发布 App。
+
+## 全平台资源补充交付（2026-09-15）
+
+Owner 追加 iOS / Android / 官网 / 紫微网页各仓资源与 iOS 26/27 分层适配，客户端测试仍交其他对话。Apple 官方 HIG 已核对，Icon Composer 27 实际导出两代六模式各三尺寸，共 36 张；真实 `.icon`、透明原生源、普通/单色多尺寸包、Android adaptive / monochrome / Splash / Play 三语图均已生成。
+
+原仓资源与最小消费引用已落实到 hachimi-ios、hachimi-android、hachimi-ziwei-web，留给各仓统筹对话提交和核验。本轮 iOS 独立分支保存完整实现与规范；资源同步保留其他对话的新功能和版本。网页新增 11 档图标、192/512 maskable 与单色 mask-icon，生成器与 manifest 同步更新。
+
+### 补充文档清单
+
+- iOS：design/brand/platform-assets.md、README.md、platform-assets.json、exports/apple-renders.json、spec 062 spec/plan、CHANGELOG.md、docs/engineering-lessons.md、docs/handoff-active.md。原仓品牌入口与经验文档同步更新。
+- Android：design/brand/README.md、platform-assets.json、docs/design-system.md、docs/engineering-lessons.md、specs/README.md、CHANGELOG.md。
+- 紫微网页：design/brand/README.md、platform-assets.json、docs/engineering-lessons.md、CHANGELOG.md。
+- 官网：design/brand/README.md、platform-assets.json、本文；现役图标维护脚本与元数据一起更新。
+
+### 补充长期经验
+
+真实 `.icon` 与平面 PNG 的职责分离；六种外观与两代渲染分别记录；XcodeGen 2.46 的 wrapper.icon 类型修正；官方 ictool 的正确可执行路径；Android/PWA 从完整原生图适配安全圆；Chrome 截图后不退出时使用受控浏览器专用会话；跨仓仅同步具名资源，避免覆盖其他对话。全部进入仓内文档，无全局记忆变更。
+
+### 文档债务与验证边界
+
+本轮经验无未落盘项。资源哈希与 Apple 文档输入对应关系已检查，生成文件存在；这不代表客户端完整测试通过。后续 iOS 26/27 桌面六模式、Android OEM 遮罩/Splash、客户端和紫微网页完整门及发版由统筹对话负责，执行后在原规范回填结果。
