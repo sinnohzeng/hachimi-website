@@ -103,3 +103,14 @@ Owner 追加 iOS / Android / 官网 / 紫微网页各仓资源与 iOS 26/27 分�
 ### 文档债务与验证边界
 
 本轮经验无未落盘项。资源哈希与 Apple 文档输入对应关系已检查，生成文件存在；这不代表客户端完整测试通过。后续 iOS 26/27 桌面六模式、Android OEM 遮罩/Splash、客户端和紫微网页完整门及发版由统筹对话负责，执行后在原规范回填结果。
+
+### 补充资源正式部署结果
+
+官网提交 `176731c2f1c9d4c950e644864d4f37badac5c246` 已上线；Cloudflare 部署 `d3fab004-2b24-457f-95db-88ee8bf3d8c0` 于 2026-09-15 13:19 UTC 成功。正式首页已出现 mask-icon 元数据，manifest 含 192/512 maskable，四项图标请求均为 200，响应 SHA 与本地生成物一致。
+
+- favicon：`030a55c5f963a499ceca22d1f3adbc8d5bbb610f04e6e4886442d3e009ddb038`
+- maskable 192：`857c0594ff9e977c4f1d54a6581d15e1b8ac0cc7c24234ecae6c5d41b2efbb95`
+- maskable 512：`fe3ad9b1fa72d20285062a5dc5e98ae46bb8b2c3e1ea77f131ea7b94b72a5900`
+- 单色 SVG：`e24090814e16bd0ccba73aa9f431762aa9cfa46e7575e8e3dc3922fb180a566c`
+
+iOS 全平台资产独立提交 `b53328d`，完整动作提交 `e2d67b6`。iOS、Android、紫微网页原仓资源和最小引用已经落盘，按 Owner 指令留待统筹对话提交与客户端核验。本轮未发布客户端。原生 Apple 六外观评审页在本机 `http://localhost:3084/apple-preview.html`。
