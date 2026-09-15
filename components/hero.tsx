@@ -53,9 +53,9 @@ export function Hero({
         {reducedMotion ? <ShaderFallback /> : <HeroShader />}
       </div>
 
-      <div className="relative flex min-h-dvh items-center justify-center px-6 pt-24 pb-12 sm:px-8 lg:py-0">
-        <div className="flex w-full max-w-5xl flex-col items-center gap-12 text-center lg:flex-row lg:justify-between lg:gap-16 lg:text-left">
-          <div className="flex flex-col items-center lg:items-start">
+      <div className="relative flex min-h-dvh items-center justify-center px-6 pt-24 sm:px-8 lg:py-0">
+        <div className="relative flex w-full max-w-5xl flex-col items-center gap-12 text-center lg:min-h-dvh lg:flex-row lg:justify-between lg:gap-16 lg:text-left">
+          <div className="flex flex-col items-center lg:w-[54%] lg:items-start">
             <CatOrb className="mb-3 w-24 sm:w-28" />
             {/* H1 是 LCP 元素：不做挂载后淡入，服务端首帧（含禁 JS）即可见。 */}
             <h1 className="max-w-xl font-serif text-4xl leading-tight font-medium tracking-tight text-balance text-white sm:text-5xl md:text-6xl lg:text-7xl">
@@ -71,13 +71,17 @@ export function Hero({
             </motion.div>
           </div>
 
-          <AppShot
-            name="cast-result"
-            alt={t.hero.shotAlt}
-            eager
-            sizes="(min-width: 1024px) 280px, 62vw"
-            className="w-56 shrink-0 sm:w-64 lg:w-72"
-          />
+          <div
+            data-hero-device
+            className="-mb-20 w-64 shrink-0 sm:w-80 lg:absolute lg:top-[18%] lg:right-0 lg:mb-0 lg:w-[min(27rem,52svh)]"
+          >
+            <AppShot
+              name="cast-result"
+              alt={t.hero.shotAlt}
+              eager
+              sizes="(min-width: 1024px) 432px, (min-width: 640px) 320px, 256px"
+            />
+          </div>
         </div>
       </div>
     </section>

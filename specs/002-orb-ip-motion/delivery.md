@@ -41,8 +41,14 @@
 ## 追加 Device 展示
 
 - 按 Owner 指定配置授权 registry，执行官方 shadcn add 安装成功；Device 接入 AppShot 后三处 iPhone 展示统一。
-- 桌面 1280×900：首屏设备 288×584px，两张命盘设备 240×487px；手机 390×844：224×454px、208×422px，无横向溢出。截图内容维持全幅。
+- Device 第一版（随后按 Owner 意见放大 Hero）：桌面 1280×900，首屏设备 288×584px，两张命盘设备 240×487px；手机 390×844：224×454px、208×422px，无横向溢出。截图内容维持全幅。
 - Device 接入后的 `npm run check` 全量通过；无新增 lint 错误。默认不自动摆动、不内部滚动，保留触屏页面滚动；减少动态静止。
 - Registry 源码沿用 rem 固定尺寸时，单纯 scale 不改变布局占位；通过容器宽度与 em 比例适配后，外层尺寸和实际机身保持一致。`cn` 是 registry 源码的隐式依赖，需要显式补齐。
 - 配置、许可边界和维护步骤已补进 design/brand/README.md；许可原值未入 Git。
 - 新版预览：[桌面 Device](evidence/device-desktop.png)、[手机 Device](evidence/device-mobile.png)。
+
+### Hero 最终构图
+
+Owner 追加要求首屏设备更大、底部允许遮住。最终 1280×900 视口下设备为 432×876px，Hero 下沿裁去约 138px；390×844 下设备宽 256px，裁去约 70px。命盘区不裁切。桌面与移动均无横向溢出，完整质量门通过。
+
+[放大后的 Hero](evidence/hero-large.png)、[移动版](evidence/hero-large-mobile.png)。原 288px 设备截图仅为前一轮过程记录。深色命盘截图已实测选中 dark 文件，两张均加载成功；减少动态经等待 React 更新后实测 transform=none。
