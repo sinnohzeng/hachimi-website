@@ -32,9 +32,9 @@
 
 ## 5. 截图
 
-- iOS 仓截图枪加名人种子并重切三张（起卦结果、紫微三合盘、八字四柱，浅深各一），产物落 `hachimi-ios/build/device-walk/site-v3/`。这一步归 iOS 仓的 [059](../../../hachimi-ios/specs/059-library-default-group-and-named-seed/spec.md)。
-- 官网仓 `scripts/build-shots.mjs` 从那个目录取三张，其余四十余张从 `public/shots` 删掉。
-- 成图前用现有匿名截图占位把页面搭出来；推 main 之前必须换成署名图，否则不推。
+- iOS 仓截图枪加名人种子并重切三张（起卦结果、紫微三合盘、八字四柱，浅深各一），产物落 `hachimi-ios/build/device-walk/sim-13-light/` 与 `sim-13-dark/`。这一步归 iOS 仓的 [059](../../../hachimi-ios/specs/059-library-default-group-and-named-seed/spec.md)。
+- 官网仓 `scripts/build-shots.mjs` 从那两个目录取三张，其余四十余张从 `public/shots` 删掉。
+- 三张都是署名图之后才推 main。
 
 ## 6. 验证
 
@@ -104,8 +104,7 @@ a hexagram.` 是 7 词，9 字乘 0.6 向上取整是 6 词。北极星原文不
    对它只报数不设门。另有四条正文在事实稿里写了 `enLimit` 覆盖并写明理由
    （`chart.ziwei` 16 词、`chart.bazi` 15 词、`academy.text` 17 词、`principles.text`
    9 词）。两条处置 owner 2026-09-14 已认，规矩落进了 spec 验收 3。
-2. **验收 4 的署名图还没到。** 第四节两张与首屏一张目前都是现有匿名图占位，首屏那张
-   是旧的 720 宽起卦结果图，只有一档宽度、没有深色版，源移到了 `assets/shots/`
-   不随构建出门。署名“李小龙”的三张由 iOS 仓 spec 059 另产，到位后改
-   `scripts/build-shots.mjs` 的 source 并把 `components/app-shot.tsx` 的 `widths`
-   与 `dark` 补齐即可，调用点不动。**换图前不推、不部署。**
+2. **验收 4 的署名图 2026-09-15 到位。** 首屏一张与第四节两张都换成了 iOS 仓 spec 059
+   用署名种子“李小龙”在 iPhone 17 Pro 模拟器上截的图，浅深各一份、两档宽度；
+   对应关系记在 `scripts/build-shots.mjs`，`components/app-shot.tsx` 的 `widths`
+   与 `dark` 三张一致，调用点没动。

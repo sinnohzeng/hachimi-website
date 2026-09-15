@@ -6,16 +6,16 @@
  * 宽高把版面撑住。比例统一是硬要求，`ChartShowcase` 那两格并排，比例不齐时手机
  * 边框的底色会在矮的那张下面露出一条黑带。
  *
- * 八字那屏底部有「等内核第四刀」的占位行，不能当对客素材。裁掉之后高度不足，
+ * 八字那屏底部一枚“紫微 / 八字”胶囊压在原局那张卡上，裁到四柱卡收尾处。裁掉之后高度不足，
  * 按页面纸色补回 2622：纸色不写死，从被裁那一行下方的页边取，浅深两版各取各的。
  *
  * 源在 `../hachimi-ios/build/device-walk/`，文件名取自各自的 manifest.json
  * （suggestedHumanReadableName → exportedFileName）。走查产物会被下一轮覆盖，
  * 所以对应关系写在这里，而不是靠事后翻目录。
  *
- * 第三版全站只用三张图。起卦结果那张目前还是旧的匿名图，署名「李小龙」的三张由
- * iOS 仓另产（spec 059），落到 `build/device-walk/site-v3/` 之后把 `cast-result`
- * 的 source 换过去、widths 补成两档、加上 dark 一份即可。
+ * 第三版全站只用三张图，都是 iOS 仓 `DeviceScreenshotPass/testWalkSiteShots` 用署名种子
+ * “李小龙”在 iPhone 17 Pro 上截的（spec 059），浅深各一份，落在 `sim-13-light` 与
+ * `sim-13-dark` 两个目录。
  *
  * 依赖 sharp。它随 Next 装在 node_modules 里，没有单独进 package.json；
  * 这是本机生成素材的工具，不参与 `npm run check`，也不进构建。
@@ -32,7 +32,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const WALK = path.resolve(ROOT, "../hachimi-ios/build/device-walk");
 const OUT = path.join(ROOT, "public/screenshots/zh");
 
-/** iPhone 17 Pro 整屏。走查图按这个尺寸出，占位图按同一比例出。 */
+/** iPhone 17 Pro 整屏。走查图按这个尺寸出。 */
 const W = 1206;
 const H = 2622;
 
@@ -50,26 +50,25 @@ const walkShot = (dir, id) => path.join(WALK, dir, `${id}.png`);
  * `cut` 是从顶部保留到第几行，缺省不裁。
  */
 const SHOTS = {
-  // 占位图：旧的匿名起卦结果页，720 × 1565，与整屏同比例（2.174）。只出一档宽度、
-  // 没有深色版，换成署名图之后这三项一起补齐。源不放 public，免得跟着构建出门。
   "cast-result": {
-    widths: [603],
-    dark: false,
-    light: path.join(ROOT, "assets/shots/cast-result-placeholder.webp"),
+    widths: [603, 1206],
+    dark: true,
+    light: walkShot("sim-13-light", "A8A3A91D-F558-4A85-9065-4EFFDDB3911E"), // L-S1-起卦结果页
+    darkSrc: walkShot("sim-13-dark", "36F35D14-D905-411E-ADD4-88A84E9761A2"), // S1-起卦结果页
   },
   "ziwei-sanhe": {
     widths: [603, 1206],
     dark: true,
-    light: walkShot("device-12-light", "17C9FC85-8897-4427-B01B-3816E2B08943"), // L-Z3-本命盘
-    darkSrc: walkShot("device-12-dark", "82D2D094-CE89-43BA-909E-A581D1372652"), // Z3-本命盘
+    light: walkShot("sim-13-light", "83922CDE-200D-4BAE-9226-24641F0D27F3"), // L-S2-紫微三合盘
+    darkSrc: walkShot("sim-13-dark", "E7BE5371-429D-44E9-B03A-F1EF943C2B3D"), // S2-紫微三合盘
   },
-  // 神煞那张卡的下沿收在 2034，占位卡从 2064 起。切在 2045，正落在两张卡的空当里。
+  // 神煞那张卡的下沿收在 2241，原局那张卡从 2278 起。切在 2260，正落在两张卡的空当里。
   "bazi-pillars": {
     widths: [603, 1206],
     dark: true,
-    light: walkShot("device-6-light", "39D5A675-BBE8-44A7-943C-3FE1F1B5990B"), // L-B1-基本排盘与底部一枚胶囊
-    darkSrc: walkShot("device-6-dark", "B388D6E6-4680-44DF-BAA3-FDF4833FCE6D"), // B1-基本排盘与底部一枚胶囊
-    cut: 2045,
+    light: walkShot("sim-13-light", "BFD776EF-16D8-4A84-8C7D-5A82C217F7DB"), // L-S3-八字四柱页
+    darkSrc: walkShot("sim-13-dark", "7C9E0E55-74D4-4325-82E1-3C7930659743"), // S3-八字四柱页
+    cut: 2260,
   },
 };
 

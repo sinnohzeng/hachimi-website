@@ -9,12 +9,11 @@ import Device from "@/components/react-bits/device";
  * 每张的固有尺寸都是 iPhone 17 Pro 整屏 1206 × 2622，写死宽高把版面撑住，图到位
  * 时不跳。取图口径与裁切规则在 scripts/build-shots.mjs。
  *
- * `widths` 是这张图实际出了哪几档宽度，`dark` 是有没有深色版。占位期两张真截图
- * 齐全，起卦结果那张还是旧的匿名图，只有一档宽度、没有深色版，所以这两项要按张
- * 记而不是一刀切；换成署名图之后把它们补齐即可，调用方一个字都不用改。
+ * `widths` 是这张图实际出了哪几档宽度，`dark` 是有没有深色版。按张记而不是一刀切，
+ * 哪天多一张只出一档、没有深色版的图，调用方一个字都不用改。
  */
 const SHOTS = {
-  "cast-result": { widths: [603], dark: false },
+  "cast-result": { widths: [603, 1206], dark: true },
   "ziwei-sanhe": { widths: [603, 1206], dark: true },
   "bazi-pillars": { widths: [603, 1206], dark: true },
 } as const satisfies Record<
