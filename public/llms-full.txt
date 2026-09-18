@@ -1,6 +1,6 @@
 # Master Hachimi (哈基米道长)
 
-> Master Hachimi is a cat Daoist who casts hexagrams and reads charts. Give two numbers and write your question, and he casts by Mei Hua Yi Shu, Plum Blossom divination, and reads it to you. Enter your birth details, and your Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars) charts are built on your phone, even with no internet. The Academy carries the old texts of the five arts: Mountain, Medicine, Fate, Physiognomy and Divination. For fun and company only, no predictions. No account, records stay on your device, no ads. Brand Hachimi.ai. Available on the App Store (iOS) and Google Play (Android), distributed outside mainland China.
+> Master Hachimi is a cat Daoist who casts hexagrams and reads charts. Give two numbers and write your question, and he casts by Mei Hua Yi Shu, Plum Blossom divination, and reads it to you. Enter your birth details, and your Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars) charts are built on your phone, even with no internet. The Academy carries the old texts of the five arts: Mountain, Medicine, Fate, Physiognomy and Divination. For fun and company only, no predictions. Brand Hachimi.ai. Available on the App Store (iOS) and Google Play (Android), distributed outside mainland China.
 
 Official website: hachimi.ai. Last updated: 2026-09-14.
 
@@ -11,7 +11,7 @@ Official website: hachimi.ai. Last updated: 2026-09-14.
 
 ## About
 
-Master Hachimi is a cat Daoist who casts hexagrams and reads charts. Give two numbers and write your question, and he casts by Mei Hua Yi Shu, Plum Blossom divination, and reads it to you. Enter your birth details, and your Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars) charts are built on your phone, even with no internet. The Academy carries the old texts of the five arts: Mountain, Medicine, Fate, Physiognomy and Divination. For fun and company only, no predictions. No account, records stay on your device, no ads.
+Master Hachimi is a cat Daoist who casts hexagrams and reads charts. Give two numbers and write your question, and he casts by Mei Hua Yi Shu, Plum Blossom divination, and reads it to you. Enter your birth details, and your Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars) charts are built on your phone, even with no internet. The Academy carries the old texts of the five arts: Mountain, Medicine, Fate, Physiognomy and Divination. For fun and company only, no predictions.
 
 ## The four tabs
 
@@ -35,7 +35,7 @@ Pick light, dark, or match your system under Appearance. The Language setting co
 
 ### Ask: tell the cat what's on your mind
 
-Type the question you're sitting with, then give two numbers off the top of your head. About thirty seconds, no sign-up, no account.
+Type the question you're sitting with, then give two numbers off the top of your head. About thirty seconds.
 
 ### Cast: a hexagram, the same way every time
 
@@ -96,9 +96,9 @@ The cast (numbers → hexagram) is honest, reproducible computation. Only the re
 
 No prediction, no changing your fate, no changing your luck, no health/financial/legal efficacy. The persona and red lines are hardened at the system level. For any real decision, consult a qualified professional.
 
-### No account, privacy-first
+### Privacy-first
 
-There is no account and no login, and no third-party analytics SDKs. Reading history is stored only on your device. On the backend, cast events (your question, scenario, hexagram, and reading) are stored under the single explicit consent you give on first launch, keyed to a resettable anonymous install ID, with free text auto-deleted after 90 days; there is no separate toggle, and withdrawing consent stops all further sending and storage. Beyond that: an admission record (anonymous install ID, timestamp, status only) is kept at most 8 days, daily cast counts 2 days, and a reading you choose to report for review 30 days; none of these carries your question. A cast stopped by a safety topic stores neither the question nor any generated text. Only your question + chosen scenario + hexagram + time-of-day are forwarded to the third-party AI service to write the reading; the two cast numbers are never sent to that third-party service.
+Reading history is stored only on your device, and there are no third-party analytics SDKs. On the backend, cast events (your question, scenario, hexagram, and reading) are stored under the single explicit consent you give on first launch, keyed to a resettable anonymous install ID, with free text auto-deleted after 90 days; there is no separate toggle, and withdrawing consent stops all further sending and storage. Beyond that: an admission record (anonymous install ID, timestamp, status only) is kept at most 8 days, daily cast counts 2 days, and a reading you choose to report for review 30 days; none of these carries your question. A cast stopped by a safety topic stores neither the question nor any generated text. Only your question + chosen scenario + hexagram + time-of-day are forwarded to the third-party AI service to write the reading; the two cast numbers are never sent to that third-party service.
 
 ### A warm cat companion
 
@@ -138,7 +138,7 @@ You give two numbers and a question. The backend casts a Mei Hua Yi Shu hexagram
 
 ### What about my privacy?
 
-There is no account and no login. Your reading history is stored only on your device. On the backend, cast events are stored under the single explicit consent you give on first launch (keyed to a resettable anonymous install ID, free text auto-deleted after 90 days); there is no separate toggle, and there are no third-party analytics SDKs. To write a reading, your question is sent to a third-party AI service. The nature of that service, and our commitments regarding it, are set out in the Privacy Policy: a reputable commercial paid-tier service that we have required not to train on your content. You consent before your first reading and can withdraw any time.
+Your reading history is stored only on your device. On the backend, cast events are stored under the single explicit consent you give on first launch (keyed to a resettable anonymous install ID, free text auto-deleted after 90 days); there is no separate toggle, and there are no third-party analytics SDKs. To write a reading, your question is sent to a third-party AI service. The nature of that service, and our commitments regarding it, are set out in the Privacy Policy: a reputable commercial paid-tier service that we have required not to train on your content. You consent before your first reading and can withdraw any time.
 
 ### How does the Master remember what I asked?
 
@@ -150,7 +150,7 @@ It's on both. Get it on the [App Store](https://apps.apple.com/app/id6787621766)
 
 ### Does it cost anything?
 
-The app is free to use, and there are no ads.
+Casting and both charts are free. A membership opens finer time layers, the professional Ba Zi sheet and more AI readings a day.
 
 ### How do I delete my data?
 

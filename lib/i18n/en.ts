@@ -57,7 +57,7 @@ export const en: Translations = {
 
   principles: {
     text: "Your chart runs on your phone, even offline.",
-    tags: ["On-device charting", "Works offline", "No sign-up"],
+    tags: ["On-device charting", "Works offline", "Two charts"],
   },
 
   faq: {
@@ -85,9 +85,9 @@ export const en: Translations = {
           "After each reading, the Master saves a short note on your phone. Up to three notes may be used for the next related reading, only to write it, and you can turn this off anytime.",
       },
       {
-        question: "Do I need an account? Where are my records?",
+        question: "Where are my records kept?",
         answer:
-          "No sign-up, no login. Your reading history and cases stay on your device, and you can delete them anytime. What the backend stores and for how long is listed in the privacy policy.",
+          "Your reading history and cases stay on your device, and you can delete them anytime. What the backend stores and for how long is listed in the privacy policy.",
       },
     ],
     stillHaveQuestions: "Still have questions?",

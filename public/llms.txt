@@ -1,6 +1,6 @@
 # Master Hachimi (哈基米道长)
 
-> Master Hachimi is a cat Daoist who casts hexagrams and reads charts. Give two numbers and write your question, and he casts by Mei Hua Yi Shu, Plum Blossom divination, and reads it to you. Enter your birth details, and your Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars) charts are built on your phone, even with no internet. The Academy carries the old texts of the five arts: Mountain, Medicine, Fate, Physiognomy and Divination. For fun and company only, no predictions. No account, records stay on your device, no ads. Brand Hachimi.ai. Available on the App Store (iOS) and Google Play (Android), distributed outside mainland China.
+> Master Hachimi is a cat Daoist who casts hexagrams and reads charts. Give two numbers and write your question, and he casts by Mei Hua Yi Shu, Plum Blossom divination, and reads it to you. Enter your birth details, and your Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars) charts are built on your phone, even with no internet. The Academy carries the old texts of the five arts: Mountain, Medicine, Fate, Physiognomy and Divination. For fun and company only, no predictions. Brand Hachimi.ai. Available on the App Store (iOS) and Google Play (Android), distributed outside mainland China.
 
 Official website: hachimi.ai. Last updated: 2026-09-14.
 
@@ -29,12 +29,12 @@ Official website: hachimi.ai. Last updated: 2026-09-14.
 
 ## Principles
 
-- [Why Master Hachimi](https://hachimi.ai/en#offline): Deterministic casting; for entertainment only (no prediction / fate-changing / luck claims); no account and privacy-first; a warm cat companion.
+- [Why Master Hachimi](https://hachimi.ai/en#offline): Deterministic casting; for entertainment only (no prediction / fate-changing / luck claims); privacy-first; a warm cat companion.
 - [Memory](https://hachimi.ai/en#faq): Master Hachimi remembers what you asked before. Memory notes live only on your device and shape later readings; the server keeps no memory store, and you can turn it off in Settings.
 
 ## Privacy
 
-- No account, and no third-party analytics SDKs. On the backend, cast events (your question, scenario, hexagram, and reading) are stored under the single explicit consent you give on first launch, keyed to a resettable anonymous install ID, with free text auto-deleted after 90 days. There is no separate toggle: withdraw consent and nothing further is sent or stored.
+- No third-party analytics SDKs. On the backend, cast events (your question, scenario, hexagram, and reading) are stored under the single explicit consent you give on first launch, keyed to a resettable anonymous install ID, with free text auto-deleted after 90 days. There is no separate toggle: withdraw consent and nothing further is sent or stored.
 - To write a reading, only your question + chosen scenario + hexagram + time-of-day are sent to a third-party AI service. The nature of that service, and our commitments regarding it, are set out in the Privacy Policy: a reputable commercial paid-tier service that we have required not to train on your content. The two cast numbers are never sent to that third-party service.
 - Reading history lives only on your device; delete it in Settings or uninstall the app. History and memory episodes are included in the encrypted, system-managed device backup so they survive a new phone; drafts and an in-flight cast are excluded from backup and expire on their own (30 days and 7 days).
 - Retention beyond the 90-day event text: an admission record holding only the anonymous install ID, a timestamp, and a status is kept at most 8 days; daily cast counts are kept 2 days; a reading you report for review is kept 30 days and never includes your question. A cast stopped by a safety topic stores neither the question nor any generated text.
