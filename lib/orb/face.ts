@@ -27,12 +27,17 @@ export function blend(a: Expression, b: Expression, t: number): Expression {
   };
 }
 
+/**
+ * `offset` 是整颗球的位移，球半径单位：横向那一条是重音推出来的，竖向那一条是浮动与弹跳。
+ * `eyeScale` 只缩眼睛，不缩身体。
+ */
 export function renderFace(
   expression: Expression,
   gaze: Vec3,
-  y: number,
+  offset: { x: number; y: number },
   squash: number,
-  lid: number
+  lid: number,
+  eyeScale: number
 ): Frame {
   const { forward, right, down } = basis(gaze);
   const eyes = [-1, 1].flatMap((side, index) => {
@@ -49,17 +54,17 @@ export function renderFace(
     const k = 0.06 + 0.94 * clamp(Math.min(lid, cfg[3]));
     return [
       [
-        cfg[0] * 100,
-        cfg[1] * 100,
+        cfg[0] * 100 * eyeScale,
+        cfg[1] * 100 * eyeScale,
         tangent[0] * c + down[0] * s,
         (tangent[1] * c + down[1] * s) * k,
         -tangent[0] * s + down[0] * c,
         (-tangent[1] * s + down[1] * c) * k,
-        normal[0] * 100,
-        (normal[1] + y) * 100,
+        (normal[0] + offset.x) * 100,
+        (normal[1] + offset.y) * 100,
         clamp(normal[2] / 0.12),
       ],
     ];
   });
-  return { gaze, center: [0, y], stretch: [1, squash], eyes };
+  return { gaze, center: [offset.x, offset.y], stretch: [1, squash], eyes };
 }

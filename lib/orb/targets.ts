@@ -1,23 +1,29 @@
-// Numeric port of OrbMotionTargets / OrbMotionAction; native golden tests guard drift.
+// Numeric port of OrbMotionTargets / OrbMotionSpring / OrbMotionRandom；黄金帧对拍看着它不漂。
 export type Targets = {
   yaw: number;
   pitch: number;
   roll: number;
   y: number;
+  /** 横向位移，球半径单位。重音那一记走这条。 */
+  x: number;
   squash: number;
   lid: number;
+  /** 眼睛缩放，1 即原尺寸。 */
+  eyeScale: number;
 };
 
 export function targets(style: string, t: number): Targets {
   const s = Math.sin,
     exp = Math.exp;
-  const out = {
+  const out: Targets = {
     yaw: 0,
     pitch: 0,
     roll: 1.5 * s(0.5 * t) + 0.6 * s(0.17 * t),
     y: 0.012 * s(0.85 * t),
+    x: 0,
     squash: 1 + 0.007 * s(1.2 * t),
     lid: 1,
+    eyeScale: 1,
   };
   switch (style) {
     case "sleep":
@@ -80,75 +86,28 @@ export function targets(style: string, t: number): Targets {
   return out;
 }
 
-export const durations: Record<string, number> = {
-  spin: 0.7,
-  bounce: 1.329,
-  spinBounce: 2.029,
-  spinDizzy: 3.5,
-  spinWild: 5.8,
-};
-
-function hop(t: number): number {
-  for (const [duration, height] of [
-    [0.5, 48],
-    [0.382, 28],
-    [0.27, 14],
-    [0.177, 6],
-  ] as [number, number][]) {
-    if (t < duration) {
-      const u = t / duration;
-      return (-height / 114.5) * 4 * u * (1 - u);
-    }
-    t -= duration;
-  }
-  return 0;
-}
-
-export function actionOffset(
-  action: string,
-  t: number
-): { yaw: number; roll: number; y: number } {
-  const out = { yaw: 0, roll: 0, y: 0 };
-  if (t < 0 || t >= (durations[action] ?? 0)) return out;
-  const ease = (u: number): number => u * u * (3 - 2 * u);
-  switch (action) {
-    case "spin":
-      out.yaw = 360 * ease(t / 0.7);
-      break;
-    case "bounce":
-      out.y = hop(t);
-      break;
-    case "spinBounce":
-      out.yaw = t < 0.7 ? 360 * ease(t / 0.7) : 360;
-      out.y = t < 0.7 ? 0 : hop(t - 0.7);
-      break;
-    case "spinDizzy":
-      out.yaw = t < 2 ? 1080 * ease(t / 2) : 1080;
-      out.roll =
-        t < 2 ? 0 : 18 * Math.sin((t - 2) * 15) * Math.exp(-(t - 2) * 3);
-      break;
-    case "spinWild":
-      out.yaw = 3240 * ease(t / 5.8);
-      out.y = -0.12 * Math.sin((t / 5.8) * Math.PI);
-      break;
-  }
-  return out;
-}
-
+/** 固定步长、阻尼比可调。速度也属于状态，目标变化不会重启一段 easing。 */
 export class Spring {
   value: number;
   velocity = 0;
   constructor(value = 0) {
     this.value = value;
   }
-  step(target: number, omega = 13): void {
+  step(target: number, omega = 13, zeta = 1): void {
     const dt = 1 / 120;
     this.velocity +=
-      (-2 * omega * this.velocity - omega * omega * (this.value - target)) * dt;
+      (-2 * zeta * omega * this.velocity -
+        omega * omega * (this.value - target)) *
+      dt;
     this.value += this.velocity * dt;
+  }
+  /** 一记速度冲量。它与改目标值不是一回事：目标值把球拉到新位置，冲量只踢一脚。 */
+  kick(impulse: number): void {
+    this.velocity += impulse;
   }
 }
 
+/** Mulberry32，只在事件边界抽样。 */
 export class Random {
   seed: number;
   constructor(seed: number) {
@@ -161,9 +120,13 @@ export class Random {
     t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
     return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
   }
-  interval(range: number[]): number {
+  interval(range: readonly number[]): number {
     const lo = range[0] ?? 0,
       hi = range[1] ?? lo;
     return lo + this.next() * (hi - lo);
+  }
+  /** ±1 的随机符号。 */
+  sign(): number {
+    return this.next() < 0.5 ? -1 : 1;
   }
 }
