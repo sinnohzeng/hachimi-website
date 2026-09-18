@@ -11,7 +11,7 @@ function loadModel(): Promise<OrbModel> {
     .then(async (response) => {
       if (!response.ok) throw new Error("Orb asset unavailable");
       const model = (await response.json()) as OrbModel;
-      if (model.schema !== 1 || model.behaviors.length !== 35)
+      if (model.schema !== 2 || model.behaviors.length !== 35)
         throw new Error("Orb asset version mismatch");
       return model;
     })

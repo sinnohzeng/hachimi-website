@@ -87,14 +87,15 @@ export class OrbPainter {
   paint(frame: Frame): void {
     const { right: r, down: d, forward: f } = basis(frame.gaze);
     const sy = item(frame.stretch, 1),
+      cx = item(frame.center, 0),
       cy = item(frame.center, 1);
     this.body.scale.set(1, sy, 1);
-    this.body.position.y = -cy;
+    this.body.position.set(cx, -cy, 0);
     this.ears.matrix.set(
       r[0],
       d[0],
       f[0],
-      0,
+      cx,
       -r[1] * sy,
       -d[1] * sy,
       -f[1] * sy,
@@ -144,6 +145,7 @@ export class OrbPainter {
 
   private whiskers(frame: Frame): void {
     const sy = item(frame.stretch, 1),
+      cx = item(frame.center, 0),
       cy = item(frame.center, 1);
     const paths = whiskerPaths(this.model, frame);
     const ctx = this.context;
@@ -151,7 +153,7 @@ export class OrbPainter {
       ctx.save();
       ctx.beginPath();
       if (outside) ctx.rect(-180, -180, 360, 360);
-      ctx.ellipse(0, cy * 100, 100, sy * 100, 0, 0, Math.PI * 2);
+      ctx.ellipse(cx * 100, cy * 100, 100, sy * 100, 0, 0, Math.PI * 2);
       ctx.clip("evenodd");
       ctx.globalCompositeOperation = outside
         ? "source-over"

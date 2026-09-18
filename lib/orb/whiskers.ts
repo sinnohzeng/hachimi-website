@@ -4,6 +4,7 @@ import { basis, item, type Frame, type OrbModel, type Vec3 } from "./types.ts";
 export function whiskerPaths(model: OrbModel, frame: Frame): number[][][] {
   const b = basis(frame.gaze),
     sy = item(frame.stretch, 1),
+    cx = item(frame.center, 0),
     cy = item(frame.center, 1);
   const project = (v: Vec3): Vec3 => {
     const p = [0, 1, 2].map(
@@ -12,10 +13,10 @@ export function whiskerPaths(model: OrbModel, frame: Frame): number[][][] {
         item(b.down, i) * v[1] +
         item(b.forward, i) * v[2]
     );
-    return [item(p, 0) * 100, (item(p, 1) * sy + cy) * 100, item(p, 2)];
+    return [(item(p, 0) + cx) * 100, (item(p, 1) * sy + cy) * 100, item(p, 2)];
   };
   const visible = (p: Vec3): boolean => {
-    const radius = (p[0] / 100) ** 2 + ((p[1] / 100 - cy) / sy) ** 2;
+    const radius = (p[0] / 100 - cx) ** 2 + ((p[1] / 100 - cy) / sy) ** 2;
     return radius > 1 || p[2] >= Math.sqrt(Math.max(0, 1 - radius)) - 0.0005;
   };
   const boundary = (from: Vec3, to: Vec3): Vec3 => {
