@@ -7,15 +7,6 @@ import {
   type Offset,
 } from "./actions.ts";
 import {
-  accents,
-  actionCeilings,
-  eyeScales,
-  glanceSpread,
-  impulses,
-  lidFloors,
-  shivers,
-} from "./behaviors.ts";
-import {
   ConfettiField,
   RibbonField,
   pokeBurstCount,
@@ -179,12 +170,8 @@ export class OrbMotion {
     const weight = this.pointer === null ? 1 : 0.2;
     t.yaw += this.glance.x * weight;
     t.pitch += this.glance.y * weight;
-    t.lid = Math.min(
-      t.lid,
-      this.blinkTarget(),
-      lidFloors[this.behavior.id] ?? 1
-    );
-    t.eyeScale = eyeScales[this.behavior.id] ?? 1;
+    t.lid = Math.min(t.lid, this.blinkTarget(), this.behavior.lidFloor);
+    t.eyeScale = this.behavior.eyeScale;
     this.accentuate(t);
     const c = this.channels;
     c.yaw.step(t.yaw, 5);
@@ -205,7 +192,7 @@ export class OrbMotion {
 
   /** 这一刻那记重音叠给横向位移与侧倾的份额。形状是半正弦。 */
   private accentuate(target: { x: number; roll: number }): void {
-    const accent = accents[this.behavior.id];
+    const accent = this.behavior.accent;
     if (!accent || this.time >= this.accentUntil) return;
     const share = Math.sin(
       Math.PI * (1 - (this.accentUntil - this.time) / accent.duration)
@@ -233,7 +220,7 @@ export class OrbMotion {
     }
     this.scheduleEntry();
     // 速度冲量在入场那一帧踢一脚。
-    const impulse = impulses[id];
+    const impulse = this.behavior.impulse;
     if (impulse) {
       this.channels.roll.kick(impulse.roll);
       this.channels.lift.kick(impulse.lift);
@@ -245,7 +232,7 @@ export class OrbMotion {
     this.nextBlink = this.time + this.random.interval([1.5, 7]);
     this.nextExpression = this.time + this.random.interval(p.expression);
     this.nextGlance = this.time + this.random.interval(p.glance);
-    const accent = accents[p.id];
+    const accent = p.accent;
     this.nextAccent = accent
       ? this.time + this.random.interval(accent.interval)
       : Infinity;
@@ -264,7 +251,7 @@ export class OrbMotion {
     if (this.time >= this.nextExpression) this.changeExpression();
     if (this.time >= this.nextGlance) {
       // 幅度逐状态：闲着的时候是 0，好奇横 ±9 到 ±15。
-      const spread = glanceSpread(p.id);
+      const spread = p.glanceSpread;
       this.glance = {
         x: this.random.sign() * this.random.interval(spread.yaw),
         y: (this.random.next() * 2 - 1) * spread.pitch,
@@ -272,7 +259,7 @@ export class OrbMotion {
       this.nextGlance =
         this.time + this.random.interval(spread.retarget ?? p.glance);
     }
-    const accent = accents[p.id];
+    const accent = p.accent;
     if (accent && this.time >= this.nextAccent) {
       this.accentUntil = this.time + accent.duration;
       this.nextAccent = this.time + this.random.interval(accent.interval);
@@ -302,7 +289,8 @@ export class OrbMotion {
 
   /** 这一幕抽得到哪几记动作。幕的上限把长的挡在外面，抽签的分布照旧。 */
   private eligibleActions(): string[] {
-    const ceiling = actionCeilings[this.program] ?? Infinity;
+    const ceiling =
+      this.model.programs[this.program]?.actionCeiling ?? Infinity;
     return this.behavior.actions.filter((a) => actionDuration(a) <= ceiling);
   }
 
@@ -375,7 +363,7 @@ export class OrbMotion {
     const out = this.action
       ? actionOffset(this.action, this.time - this.actionAt, this.actionTurns)
       : noOffset();
-    const shiver = shivers[this.program];
+    const shiver = this.model.programs[this.program]?.shiver;
     if (shiver) blendShiver(out, shiver, this.time - this.programAt);
     return out;
   }

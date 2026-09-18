@@ -1,6 +1,28 @@
 export type Vec3 = [number, number, number];
 export type Eye = [number, number, number, number];
 export type Expression = { id: string; gaze: Vec3; split: number; eyes: Eye[] };
+/** 一记重音：官网在正弦之上插的那一下。位移以球半径为单位，侧倾以度为单位。 */
+export type Accent = {
+  duration: number;
+  interval: number[];
+  sway: number;
+  roll: number;
+};
+/** 一记速度冲量。它不改目标值，只踢一脚，球自己荡回原处。 */
+export type Impulse = { roll: number; lift: number };
+/** 逐状态的扫视幅度与换目标节奏。`retarget` 缺席即沿用这一档 cadence 自己的。 */
+export type GlanceSpread = {
+  yaw: number[];
+  pitch: number;
+  retarget?: number[];
+};
+/** 一幕从起到撤一直在的颤跳，不进动作池、不占排期、不衰减。 */
+export type Shiver = {
+  hops: number;
+  lift: number;
+  tremor: number;
+  tremors: number;
+};
 export type Behavior = {
   id: string;
   expressions: string[];
@@ -9,10 +31,18 @@ export type Behavior = {
   glance: number[];
   style: string;
   actions: string[];
+  eyeScale: number;
+  lidFloor: number;
+  glanceSpread: GlanceSpread;
+  accent?: Accent;
+  impulse?: Impulse;
 };
 export type Program = {
   loopFrom: number;
   cues: { state: string; duration: number }[];
+  /** 这一幕容得下多长的一记大动作，秒。缺席即不限。 */
+  actionCeiling?: number;
+  shiver?: Shiver;
 };
 export type OrbModel = {
   schema: number;

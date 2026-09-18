@@ -1,5 +1,5 @@
 // Numeric port of OrbMotionAction / OrbMotionAction+Spins / OrbMotionShiver.
-import { clamp } from "./types.ts";
+import { clamp, type Shiver } from "./types.ts";
 
 /** 一记大动作在某一刻叠给弹簧输出的偏差。 */
 export type Offset = {
@@ -198,31 +198,13 @@ function wildOffset(leg: Leg, r: number): Offset {
   return out;
 }
 
-/** 一幕从起到撤一直在的颤跳，不进动作池、不占排期、不衰减。 */
-export type Shiver = {
-  /** 每秒跳几下。 */
-  hops: number;
-  /** 一跳的峰值，球半径为单位。 */
-  lift: number;
-  /** 抖的峰值，度。 */
-  tremor: number;
-  /** 每秒抖几回。 */
-  tremors: number;
-};
-
-/** 等解读那一幕。跳与抖频率不成整数倍，两条合起来才不像一条正弦。 */
-export const awaitingShiver: Shiver = {
-  hops: 2.6,
-  lift: 0.22,
-  tremor: 1.4,
-  tremors: 6.5,
-};
-
-/** 把这一刻的颤跳叠进那一记动作的偏差里，三条通道各自相加。 */
+/**
+ * 把这一刻的颤跳叠进那一记动作的偏差里，三条通道各自相加。
+ * 跳是连着的半正弦，落地那一下导数不连续，正是弹起来的那一记。
+ */
 export function blendShiver(out: Offset, shiver: Shiver, t: number): void {
   if (!Number.isFinite(t) || t <= 0) return;
   const tau = Math.PI * 2;
-  // 连着的半正弦。落地那一下导数不连续，正是弹起来的那一记。
   out.y += -shiver.lift * Math.abs(Math.sin(Math.PI * shiver.hops * t));
   out.yaw += shiver.tremor * Math.sin(tau * shiver.tremors * t);
   // 侧倾比偏航慢一截，两条永不同相。
