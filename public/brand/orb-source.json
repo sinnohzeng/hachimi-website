@@ -31,7 +31,8 @@
     "HachimiKit/Sources/OrbEngine/OrbShape.swift": "9aaaaab9d88670880b2a99701089d159e4444bfb221ad93cfb35116d3e5e6484",
     "HachimiKit/Sources/OrbEngine/OrbStates.swift": "0170eb8e4de294d6eab5953bef23cd0c71098afdb574fc7954f05472aa0aed9e",
     "HachimiKit/Sources/OrbEngine/OrbStatesDecor.swift": "a4b746e131be52552428e52d1bfff594cbadbd9b4a4a4a01803a33246451f637",
-    "HachimiKit/Sources/OrbEngine/OrbTypes.swift": "3497f988dddb43d5967291559a18b48058f67e4c45f6b5d1a9af1e7ad6d1b76e"
+    "HachimiKit/Sources/OrbEngine/OrbTypes.swift": "3497f988dddb43d5967291559a18b48058f67e4c45f6b5d1a9af1e7ad6d1b76e",
+    "design/brand/ExportOrb.swift": "31a05cd6e8ae3c189b448990bd7562c52a84900ee1dc1c3110b2cf123e93484f"
   },
   "artifacts": {
     "orb-model.json": "b4c64eb1a895b12e0aca2820a21a650141172b446b03ed9c2df769359571ad7e",
