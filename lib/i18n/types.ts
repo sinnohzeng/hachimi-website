@@ -22,6 +22,8 @@ export type Translations = {
   // description、差异句与第二 CTA 全部撤走，各自有了新落点或被砍。
   hero: {
     headline: string;
+    /** 首屏主标题按这几行断开排。连起来读与 headline 是同一句。 */
+    headlineLines: string[];
     shotAlt: string;
   };
 

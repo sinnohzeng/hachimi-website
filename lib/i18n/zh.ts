@@ -19,7 +19,8 @@ export const zh: Translations = {
   },
 
   hero: {
-    headline: "慌的时候先起一卦。",
+    headline: "慌的时候，先起一卦。",
+    headlineLines: ["慌的时候，", "先起一卦。"],
     shotAlt: "哈基米道长起卦结果页：卦象在上，解读在下。",
   },
 

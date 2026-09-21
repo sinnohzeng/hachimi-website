@@ -20,6 +20,7 @@ export const en: Translations = {
 
   hero: {
     headline: "When it's a lot, cast a hexagram.",
+    headlineLines: ["When it's a lot,", "cast a hexagram."],
     shotAlt:
       "Master Hachimi reading result page: hexagram on top, reading below.",
   },

@@ -59,7 +59,12 @@ export function Hero({
             <CatOrb className="mb-3 w-24 sm:w-28" />
             {/* H1 是 LCP 元素：不做挂载后淡入，服务端首帧（含禁 JS）即可见。 */}
             <h1 className="max-w-xl font-serif text-4xl leading-tight font-medium tracking-tight text-balance text-white sm:text-5xl md:text-6xl lg:text-7xl">
-              {t.hero.headline}
+              {/* 断行写死在文案里：这一句的停顿就在逗号上，交给浏览器自己折会折在“先起”中间。 */}
+              {t.hero.headlineLines.map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
             </h1>
 
             <motion.div {...mountRise(0.3)} className="mt-10">

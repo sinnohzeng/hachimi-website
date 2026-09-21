@@ -27,7 +27,7 @@ owner 三条口径：首屏只留一句；整站字太多要大刀阔斧重写�
 ## 文案
 
 - 事实稿写在 `docs/copy/2026-09-14-v3/facts.zh.json`，经 `scripts/polish-copy.mjs` 交 deepseek-flash 出 `polished.zh.json` 与 `polished.en.json`，再进 `lib/i18n/{zh,en}.ts`。人不直接写页面文案。
-- 主标题“慌的时候先起一卦。”与英文“When it's a lot, cast a hexagram.”是北极星原文，不送润色。
+- 主标题“慌的时候，先起一卦。”首屏在逗号处断成两行，与英文“When it's a lot, cast a hexagram.”是北极星原文，不送润色。
 - 品类锚沿用 [copy-principles](../../docs/copy-principles.md) 第二节 2026-09-14 那一行；差异句沿用 2026-07-21 那一行。
 - 红线不变：不预测、不改命、不转运、仅供娱乐；排盘只讲可复算与本机算。
 - 事实稿里不出现任何对照来源的名字，`check:mentions` 继续做门。
