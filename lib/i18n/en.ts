@@ -424,7 +424,7 @@ export const en: Translations = {
         },
         {
           term: "On-device charting",
-          desc: "Charts are built on your device, not on a server. Step to the next major cycle, change a Star Settings option, or switch the Language, and it all recalculates on the spot. You can build a chart with no network. Your birth details never leave this device.",
+          desc: "Charts are built on your device, not on a server. Step to the next major cycle, change a Star Settings option, or switch the Language, and it all recalculates on the spot. You can build a chart with no network.",
         },
       ],
     },
