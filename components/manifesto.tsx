@@ -13,16 +13,17 @@ import {
 } from "@/components/reveal-headline";
 import type { Translations } from "@/lib/i18n";
 import { useReducedMotion } from "@/lib/motion";
+import { DUR, STAGGER, reveal } from "@/lib/motion-tokens";
 
 /**
- * 第二节：定位（#what）。整节只有那句品类锚，随滚动逐字点亮。
+ * 第二节：给命理师（#what）。首屏一过就讲三件事：录一次生辰两张盘一起出、客户资料的
+ * 同步与备份、专业现代好用。第一句随滚动逐字点亮，三件事各一张小卡在下面进场。
  *
  * 切分与盘古之白的处理都用 components/reveal-headline.tsx 那两个帮手，逐字动效全
  * 站一套判据。
  *
- * 这一节不按标点归词组、也不加 zh-display：那句话三十来字，最长的一段没有标点也
- * 有十五个字，手机上一整段塞不进一行，按字折才不横向溢出。收尾标点仍并进前一个
- * 字，不会折到行首。
+ * 第一句不按标点归词组：逐字点亮的单位就是字，收尾标点并进前一个字，不会折到行首。
+ * 三张小卡的标题走 zh-display，只在标点处折。
  *
  * 减弱动态直接整句显示；动效开着时正文交给 sr-only，动的那份 aria-hidden，读屏
  * 读到的永远是完整一句。
@@ -88,6 +89,23 @@ export function Manifesto({ t }: { t: Translations }): ReactNode {
             </>
           )}
         </p>
+
+        <ul className="mt-16 grid gap-8 sm:mt-20 sm:grid-cols-3 sm:gap-6">
+          {t.what.items.map((item, index) => (
+            <motion.li
+              key={item.title}
+              {...reveal(index * STAGGER.tight, { duration: DUR.base })}
+              className="border-foreground/15 border-t pt-6"
+            >
+              <h3 className="zh-display font-serif text-xl leading-snug font-medium sm:text-2xl">
+                {keepPanguSpaces(item.title)}
+              </h3>
+              <p className="text-foreground/70 mt-3 text-base leading-relaxed">
+                {keepPanguSpaces(item.body)}
+              </p>
+            </motion.li>
+          ))}
+        </ul>
       </div>
     </section>
   );

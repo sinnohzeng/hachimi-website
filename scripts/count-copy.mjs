@@ -4,7 +4,8 @@
  *
  * 口径出处是 specs/005-site-v4-tools/spec.md 的验收 5，四档：
  *   - 首屏简体不超过 9 字；
- *   - 定位句、四张卡的卡面、道长记得、学堂、本机与收尾合计不超过 320 字；
+ *   - 给命理师那一节（一句加三件事）不超过 180 字；
+ *   - 四张卡的卡面、道长记得、学堂、本机与收尾合计不超过 320 字；
  *   - 命例走查（标题、引言与五步）合计不超过 240 字；
  *   - 每张卡展开不超过 110 字，FAQ 每条答案不超过 70 字；
  *   - 英文上限取简体上限的 0.6 倍，向上取整。
@@ -31,9 +32,18 @@ const { en } = await import("../lib/i18n/en.ts");
 /** 首屏。整节只有这一句。 */
 const HERO_KEYS = ["hero.headline"];
 
-/** 定位与卡面：一句定位、四张卡的卡面、道长记得、学堂、本机与收尾。 */
-const SURFACE_KEYS = [
+/** 给命理师：一句加三件事的标题与正文。 */
+const PRO_KEYS = [
   "what.title",
+  "what.items.0.title",
+  "what.items.0.body",
+  "what.items.1.title",
+  "what.items.1.body",
+  "what.items.2.title",
+  "what.items.2.body",
+];
+/** 卡面：四张卡的卡面、道长记得、学堂、本机与收尾。 */
+const SURFACE_KEYS = [
   "tools.title",
   "tools.hint",
   "tools.cards.0.name",
@@ -72,6 +82,7 @@ const JOURNEY_KEYS = [
 
 const LIMIT = {
   hero: 9,
+  pro: 180,
   surface: 320,
   journey: 240,
   cardDetail: 110,
@@ -121,7 +132,8 @@ const lines = [];
 // ---- 简体 ----
 lines.push("简体（字，标点不计）");
 lines.push(gate("首屏", sum(zh, HERO_KEYS, countZh), LIMIT.hero));
-lines.push(gate("定位与卡面", sum(zh, SURFACE_KEYS, countZh), LIMIT.surface));
+lines.push(gate("给命理师", sum(zh, PRO_KEYS, countZh), LIMIT.pro));
+lines.push(gate("卡面", sum(zh, SURFACE_KEYS, countZh), LIMIT.surface));
 lines.push(gate("命例走查", sum(zh, JOURNEY_KEYS, countZh), LIMIT.journey));
 zh.tools.cards.forEach((card, i) => {
   lines.push(gate(`卡 ${i + 1} 展开`, countZh(card.detail), LIMIT.cardDetail));
@@ -139,8 +151,9 @@ lines.push(
     ? row("首屏", enHero, "北极星原文，不设门")
     : gate("首屏", enHero, enCapFor(LIMIT.hero))
 );
+lines.push(gate("给命理师", sum(en, PRO_KEYS, countEn), enCapFor(LIMIT.pro)));
 lines.push(
-  gate("定位与卡面", sum(en, SURFACE_KEYS, countEn), enCapFor(LIMIT.surface))
+  gate("卡面", sum(en, SURFACE_KEYS, countEn), enCapFor(LIMIT.surface))
 );
 lines.push(
   gate("命例走查", sum(en, JOURNEY_KEYS, countEn), enCapFor(LIMIT.journey))

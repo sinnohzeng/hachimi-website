@@ -27,13 +27,26 @@ export const en: Translations = {
   },
 
   what: {
-    title:
-      "An app for studying Chinese folk fate arts: cast, chart, keep cases. A cat Daoist lives inside.",
+    title: "A tool built for professional fate readers.",
+    items: [
+      {
+        title: "Enter a birth once, get both charts",
+        body: "Zi Wei and Ba Zi chart from one case, no switching tools; the birthplace sets the longitude, true solar time has one definition, both charts share one birth.",
+      },
+      {
+        title: "Client records synced and backed up",
+        body: "Cases live in your own iCloud private database, no account, and follow you to a new phone; export to a file too, with a daily backup on the device.",
+      },
+      {
+        title: "Professional, modern, easy to use",
+        body: "San He, Flying Star and Four Transformations charts, four- and six-pillar tables, cycles and years stacked; hold any name on a chart for its entry.",
+      },
+    ],
   },
 
   case: {
-    title: "One case, four sides.",
-    lead: "The case is the hub: one per person, with Ba Zi, Zi Wei, intimacy and asking under it. Every cast for them hangs there.",
+    title: "One case per person",
+    lead: "One case per client. Zi Wei, Ba Zi and every hexagram cast for them sit under that one case.",
     steps: [
       {
         title: "Create a case",
@@ -97,20 +110,20 @@ export const en: Translations = {
   },
 
   remembers: {
-    text: "A chatbot forgets what you asked last time. The Master remembers, cast after cast.",
+    text: "A chatbot forgets what you asked last time. The Master remembers, kept per case, so the next hexagram is read after the last.",
   },
 
   academy: {
-    text: "The five arts, Mountain, Medicine, Fate, Physiognomy and Divination: 154 old books and 2408 chapters ship with the app and open in airplane mode. Press a name on a chart to read what it means.",
+    text: "154 public-domain classics ship with the app, 2,408 chapters, readable offline. Hold a star name on a chart and its entry comes up.",
   },
 
   offline: {
-    text: "Your chart runs on your phone, even offline.",
+    text: "Zi Wei and Ba Zi are computed on this phone; charts come out offline and the birth data never leaves the device.",
     tags: [
       "On-device charting",
-      "Birth details stay on device",
       "No account needed",
-      "Backups are yours",
+      "iCloud private database",
+      "Backup as a file",
     ],
   },
 
@@ -120,7 +133,7 @@ export const en: Translations = {
       {
         question: "Is this real fortune telling?",
         answer:
-          "No. It is a tool for studying Chinese folk fate arts, for fun and company. It does not predict, change fate or bring luck, and never claims to be right. Big decisions need a qualified person.",
+          "No. Hachimi.ai is a charting and casting tool for fate readers and enthusiasts, also for fun and company. It does not predict, change fate or bring luck, and never claims to be right.",
       },
       {
         question: "Do the same numbers give the same hexagram?",
@@ -158,7 +171,7 @@ export const en: Translations = {
   },
 
   finalCta: {
-    headline: "Put the Master in your pocket: casts, charts, cases.",
+    headline: "Install Hachimi.ai and enter your first case.",
   },
 
   footer: {

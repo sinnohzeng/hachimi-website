@@ -28,9 +28,10 @@ export type Translations = {
     shotAlt: string;
   };
 
-  // 第二节 定位（#what）：一句品类锚，随滚动逐字点亮。
+  // 第二节 给命理师（#what）：一句随滚动逐字点亮，下面三件事各一张小卡。
   what: {
     title: string;
+    items: { title: string; body: string }[];
   };
 
   // 第三节 命例走查（#case）：一句引言加五步，桌面端钉住手机随滚动换屏。
