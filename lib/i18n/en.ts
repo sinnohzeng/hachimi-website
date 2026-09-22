@@ -31,15 +31,15 @@ export const en: Translations = {
     items: [
       {
         title: "Enter a birth once, get both charts",
-        body: "Zi Wei and Ba Zi chart from one case, no switching tools; the birthplace sets the longitude, true solar time has one definition, both charts share one birth.",
+        body: "Zi Wei and Ba Zi chart from one case, no switching tools; the birthplace sets the longitude, true solar time has one definition, the two charts never split the hour.",
       },
       {
-        title: "Client records synced and backed up",
-        body: "Cases live in your own iCloud private database, no account, synced between devices on the same iCloud; export to a file too, with a daily backup on the device.",
+        title: "Your clients' cases, in your own iCloud",
+        body: "No account needed; devices on the same iCloud sync on their own. Backups go to a file, and the device keeps a daily one.",
       },
       {
-        title: "Professional, modern, easy to use",
-        body: "San He, Flying Star and Four Transformations charts, four- and six-pillar tables, stacked cycles; hold any name for its entry.",
+        title: "Three chart styles, six-pillar pro chart",
+        body: "Zi Wei switches between San He, Flying Star and Four Transformations, cycles down to the hour; Ba Zi adds a six-pillar pro chart with its cycles.",
       },
     ],
   },
@@ -54,11 +54,11 @@ export const en: Translations = {
       },
       {
         title: "Chart Zi Wei",
-        body: "San He, Flying Star and Four Transformations on one control; cycles stack; tap a palace to set the Tai Ji point.",
+        body: "One control switches the chart style, cycles stack layer by layer, tap a palace to set the Tai Ji point.",
       },
       {
         title: "Chart Ba Zi",
-        body: "Ten rows per pillar, from main star down to Nayin and symbolic stars; the pro chart is a six-pillar table.",
+        body: "The four-pillar table runs from main star down to Nayin and symbolic stars; for cycles, switch to the six-pillar pro chart.",
       },
       {
         title: "Cast for them",
@@ -86,25 +86,25 @@ export const en: Translations = {
         name: "Mei Hua Yi Shu casting",
         line: "Say two numbers and the hexagram is cast on your phone. AI writes the reading; the hexagram does not move.",
         detail:
-          "Upper and lower trigrams come from the early-heaven numbers, the moving line from the two numbers plus the hour index. Original, nuclear and changed hexagrams and the body-use relation are computed on your phone with a SHA-256 fingerprint. The tone follows the body-use cycle, not the model. History filters by case; memory stays on device.",
+          "Upper and lower trigrams come from the early-heaven numbers, the moving line from the two numbers plus the hour index. Original, nuclear and changed hexagrams and the body-use relation are computed on your phone, each with a checksum so the cast can be verified later. The tone follows the body-use cycle, not the model. History filters by case; memory stays on device.",
       },
       {
         name: "Zi Wei Dou Shu",
         line: "San He, Flying Star and Four Transformations; five cycle layers; patterns judged by rule.",
         detail:
-          "One birth time gives San He, Flying Star and Four Transformations. Major, annual, monthly, daily and hourly cycles stack layer by layer. Pattern analysis runs 84 rules and names the layer each one comes from. Twenty-three star-placement slots are carried by one code: paste someone else's code and the chart matches. Press a star name for its entry.",
+          "Pattern analysis runs 84 rules and names the cycle layer each one comes from. Twenty-three star-placement settings pack into one code: paste someone else's code and the chart matches. Zi Zhan charting and pillar lookup sit in the More menu; press a star name for its entry.",
       },
       {
         name: "Ba Zi charting",
         line: "Ten rows in the four-pillar table, seven columns in the six-pillar table; major, annual and monthly cycles follow.",
         detail:
-          "Four tabs: basics, basic chart, pro chart, notes. The four-pillar table has ten rows, from main star to symbolic stars, colored by the five elements. The six-pillar table names the current major and annual cycle at the top, each with a horizontal scroll. Six hidden-stem rulebooks to choose from; press any field for its entry.",
+          "The four-pillar table has ten rows, from main star to symbolic stars, colored by the five elements. The six-pillar table names the current major and annual cycle at the top, each with a horizontal scroll. Six hidden-stem rulebooks to choose from; write your notes on the same page; press any field for its entry.",
       },
       {
         name: "Case library",
-        line: "One per person: groups, filters, backup, sync; casts travel with the case.",
+        line: "One per client, casts travel with the case; groups, filters, backup and sync are all there.",
         detail:
-          "Eight groups, all renamable. The list sections by initial or group, with four sort orders and six filter sections. Back up to iCloud or a file; the phone keeps a daily backup and the last seven. A single case can be shared and merges straight into the other library; devices on one iCloud sync themselves. Delete a case and its casts go with it.",
+          "Eight groups, all renamable. The list sections by initial or group, with four sort orders and six filter dimensions. Back up to iCloud or a file; the phone keeps a daily backup and the last seven. A single case can be shared and merges straight into the other library; devices on one iCloud sync themselves. Delete a case and its casts go with it.",
       },
     ],
   },
@@ -118,12 +118,12 @@ export const en: Translations = {
   },
 
   offline: {
-    text: "Zi Wei and Ba Zi are computed on this phone; charts come out offline and the birth data never leaves the device.",
+    text: "Zi Wei and Ba Zi are computed on this phone; charts come out offline.",
     tags: [
       "On-device charting",
       "No account needed",
       "iCloud private database",
-      "Backup as a file",
+      "File export and import",
     ],
   },
 
@@ -138,7 +138,7 @@ export const en: Translations = {
       {
         question: "Do the same numbers give the same hexagram?",
         answer:
-          "The same numbers and hour always give the same hexagram by a fixed method, no dice. Only once the hexagram is set does a third-party AI service write the reading, and it cannot change the hexagram.",
+          "The same numbers and hour always give the same hexagram by a fixed method, no dice. Only once the hexagram is set does DeepSeek write the reading, and it cannot change the hexagram.",
       },
       {
         question: "Do I need internet to chart?",
@@ -146,7 +146,7 @@ export const en: Translations = {
           "No. Zi Wei and Ba Zi charts are both computed on your device, so they work in airplane mode and birth details never leave it. Pattern analysis and pillar lookup go over the network.",
       },
       {
-        question: "How do San He, Four Transformations and Flying Star differ?",
+        question: "How do San He, Flying Star and Four Transformations differ?",
         answer:
           "San He reads star brightness, birth-year transformations and stacked cycle palaces. Flying Star reads palace stems and the origin palace. Four Transformations enlarges the four transforming stars and draws the links. One birth time, three charts, all on your phone.",
       },
