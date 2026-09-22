@@ -15,7 +15,7 @@
  *
  * 第四版五张图都在 iPhone 17 Pro Max 上截：两张盘用署名种子“李小龙”（spec 059），
  * 命例列表与问事面用合成命例库，走 iOS 仓 `DeviceScreenshotPass/testWalkSiteShots`，
- * 浅深各一趟落在 `sim-14-light-v2` 与 `sim-14-dark-v2`。起卦结果页的解读由大模型写，
+ * 浅深各一趟落在 `sim-14-light-v2` 与 `sim-14-dark-v2`；命例问事面那一屏在种子问句去掉“合成问题：”前缀后重拍，落在 `sim-14-light-v3` 与 `sim-14-dark-v3`。起卦结果页的解读由大模型写，
  * 浅深两张必须出自同一卦，所以另走 `testWalkSiteCastShots`：起一卦拍浅色，切外观再拍深色，落在 `sim-14-cast`。
  *
  * 依赖 sharp。它随 Next 装在 node_modules 里，没有单独进 package.json；
@@ -78,8 +78,8 @@ const SHOTS = {
   "case-casts": {
     widths: [660, 1320],
     dark: true,
-    light: walkShot("sim-14-light-v2", "A2F9FF16-12F8-4778-BBE7-C087CFF568A0"), // L-S5-命例问事面
-    darkSrc: walkShot("sim-14-dark-v2", "07D5275F-D404-4141-8CEE-941BF9D2D9F0"), // S5-命例问事面
+    light: walkShot("sim-14-light-v3", "0D41C2FC-52B6-4CE0-B58D-3C546D90984F"), // L-S5-命例问事面
+    darkSrc: walkShot("sim-14-dark-v3", "95D3127B-E3D1-446B-AB98-CAA88D8D7989"), // S5-命例问事面
   },
 };
 
