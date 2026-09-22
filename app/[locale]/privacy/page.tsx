@@ -20,7 +20,7 @@ export async function generateMetadata({
     description:
       locale === "zh"
         ? "Hachimi 隐私政策。了解我们如何收集、使用和保护你的数据。"
-        : "Master Hachimi Privacy Policy. Learn what data we use and how we keep it safe.",
+        : "Hachimi.ai Privacy Policy. Learn what data we use and how we keep it safe.",
   });
 }
 

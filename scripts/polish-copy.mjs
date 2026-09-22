@@ -214,7 +214,7 @@ function hintFor(key) {
 // ---------------------------------------------------------------------------
 
 const SHARED_RULES = `产品事实（只许照抄，不许增补）：
-- 哈基米道长（Master Hachimi）是一只猫系道长人设的 App，两件事：一是按梅花易数起卦问事，二是排紫微斗数与八字命盘。品牌 Hachimi.ai。
+- 哈基米道长（英文名 Hachimi.ai，角色名 Hachimi）是一只猫系道长人设的 App，两件事：一是按梅花易数起卦问事，二是排紫微斗数与八字命盘。品牌 Hachimi.ai。
 - 站位：仅供娱乐与情绪陪伴。陪你把心里的事理出个头绪，给一个此刻就能做的第一步。
 - 称谓：中文全名一律写“哈基米道长”，上下文已明确后可写“道长”。“哈基米”是不可拆分的整词。
 
@@ -247,7 +247,7 @@ ${SHARED_RULES}
 
 输出要求：只输出改好的那一句，不加引号、不加解释、不加前后缀、不换行。`;
 
-const SYSTEM_EN = `You are the English copy editor for the Master Hachimi marketing site. The input is a finished Chinese line. Rewrite it as natural English marketing copy that says exactly the same thing.
+const SYSTEM_EN = `You are the English copy editor for the Hachimi.ai marketing site. The input is a finished Chinese line. Rewrite it as natural English marketing copy that says exactly the same thing.
 
 ${SHARED_RULES}
 
@@ -255,7 +255,7 @@ English rules:
 - Reading level: US grade 6 to 8. Short sentences, common words, active voice.
 - Straight quotes (" and '), ordinary English punctuation. No em dashes, no en dashes, no ellipsis characters, no arrows, no Markdown.
 - Keep only these special terms: "hexagram" (first use may add a plain-words apposition such as "a six-line sign"), "Mei Hua Yi Shu" (first use add "Plum Blossom divination"), "Zi Wei Dou Shu" (first use add "Purple Star astrology"), "BaZi" (first use add "Four Pillars").
-- The app name is "Master Hachimi"; in running text "the Master" is fine. Never "the cat", never "cat-master".
+- The app name is "Hachimi.ai"; the cat character is "Hachimi", and in running text "the Master" is fine. Never "the cat", never "cat-master".
 - Chinese scenario names translate as: 寻物 Find an Item, 感情 Love, 事业 Career, 自由问事 Open Question. Never write "Free Question".
 - Do not use: delve, tapestry, testament, seamless, leverage, harness, furthermore, moreover, elevate, unlock, embark, realm.
 - Do not use "not only ... but also" parallels, and do not write "it's not X, it's Y".

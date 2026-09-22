@@ -20,7 +20,7 @@ export async function generateMetadata({
     description:
       locale === "zh"
         ? "哈基米道长没有账号，无需登录即可使用，没有账号可删。卦历只存在你的设备上：了解具体存了什么，以及如何清除。"
-        : "Master Hachimi has no accounts. You use it without signing in, so there's nothing to delete. Your reading history stays on your phone. See what's saved and how to clear it.",
+        : "Hachimi.ai has no accounts. You use it without signing in, so there's nothing to delete. Your reading history stays on your phone. See what's saved and how to clear it.",
   });
 }
 

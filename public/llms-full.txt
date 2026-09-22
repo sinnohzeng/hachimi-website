@@ -1,6 +1,6 @@
-# Master Hachimi (哈基米道长)
+# Hachimi.ai (哈基米道长)
 
-> Master Hachimi is a cat Daoist who casts hexagrams and reads charts. Give two numbers and write your question, and he casts by Mei Hua Yi Shu, Plum Blossom divination, and reads it to you. Enter your birth details, and your Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars) charts are built on your phone, even with no internet. The Academy carries the old texts of the five arts: Mountain, Medicine, Fate, Physiognomy and Divination. For fun and company only, no predictions. Brand Hachimi.ai. Available on the App Store (iOS) and Google Play (Android), distributed outside mainland China.
+> Hachimi.ai is an app with a cat Daoist, Hachimi, who casts hexagrams and reads charts. Give two numbers and write your question, and he casts by Mei Hua Yi Shu, Plum Blossom divination, and reads it to you. Enter your birth details, and your Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars) charts are built on your phone, even with no internet. The Academy carries the old texts of the five arts: Mountain, Medicine, Fate, Physiognomy and Divination. For fun and company only, no predictions. Brand Hachimi.ai. Available on the App Store (iOS) and Google Play (Android), distributed outside mainland China.
 
 Official website: hachimi.ai. Last updated: 2026-09-14.
 
@@ -11,7 +11,7 @@ Official website: hachimi.ai. Last updated: 2026-09-14.
 
 ## About
 
-Master Hachimi is a cat Daoist who casts hexagrams and reads charts. Give two numbers and write your question, and he casts by Mei Hua Yi Shu, Plum Blossom divination, and reads it to you. Enter your birth details, and your Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars) charts are built on your phone, even with no internet. The Academy carries the old texts of the five arts: Mountain, Medicine, Fate, Physiognomy and Divination. For fun and company only, no predictions.
+Hachimi.ai is an app with a cat Daoist, Hachimi, who casts hexagrams and reads charts. Give two numbers and write your question, and he casts by Mei Hua Yi Shu, Plum Blossom divination, and reads it to you. Enter your birth details, and your Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars) charts are built on your phone, even with no internet. The Academy carries the old texts of the five arts: Mountain, Medicine, Fate, Physiognomy and Divination. For fun and company only, no predictions.
 
 ## The four tabs
 
@@ -41,9 +41,9 @@ Type the question you're sitting with, then give two numbers off the top of your
 
 Your two numbers and the current hour set a Mei Hua Yi Shu hexagram (upper trigram, lower trigram, and the moving line) by a fixed, deterministic method. Same inputs, same cast: honest math, no randomness, no smoke and mirrors. The cast runs on a unified backend, not on the device.
 
-### Read: Master Hachimi reads it back
+### Read: Hachimi reads it back
 
-Master Hachimi responds in his own warm voice: a presentation of the hexagram, the body/use (体用) relationship, an overall tone, a gentle reading, a small piece of advice, and a blessing. Each reading is saved to your local reading history (卦历) so you can revisit it.
+Hachimi responds in his own warm voice: a presentation of the hexagram, the body/use (体用) relationship, an overall tone, a gentle reading, a small piece of advice, and a blessing. Each reading is saved to your local reading history (卦历) so you can revisit it.
 
 ## Charting
 
@@ -102,11 +102,11 @@ Reading history is stored only on your device, and there are no third-party anal
 
 ### A warm cat companion
 
-Master Hachimi is a cat who plays the master ("哈基米道长"). He actually listens, turning "asking a question" into "having a cat sit with you for a moment."
+Hachimi is a cat who plays the master ("哈基米道长"). He actually listens, turning "asking a question" into "having a cat sit with you for a moment."
 
 ### A master who remembers
 
-Master Hachimi remembers what you asked before, so a reading can pick up where the last one left off. The memory notes live only on your device; up to three travel with a request just to shape that one reading, and the server keeps no memory store. Memory can be turned off in Settings, and casting with "Asking for someone else" is never remembered.
+Hachimi remembers what you asked before, so a reading can pick up where the last one left off. The memory notes live only on your device; up to three travel with a request just to shape that one reading, and the server keeps no memory store. Memory can be turned off in Settings, and casting with "Asking for someone else" is never remembered.
 
 ### On-device charting
 
@@ -130,11 +130,11 @@ Charts are built on your device, not on a server. Step to the next major cycle, 
 
 ### Is this real fortune telling?
 
-No. Master Hachimi is for entertainment and comfort only. The readings are not predictions and make no claim of accuracy, luck-changing, fate-changing, or any other efficacy. For any real decision, talk to a qualified professional.
+No. Hachimi.ai is for entertainment and comfort only. The readings are not predictions and make no claim of accuracy, luck-changing, fate-changing, or any other efficacy. For any real decision, talk to a qualified professional.
 
 ### How is a reading made?
 
-You give two numbers and a question. The backend casts a Mei Hua Yi Shu hexagram from the numbers and the current hour using a fixed, deterministic method, then sends the hexagram, the hour, your question, and your chosen scenario to a third-party AI service, which writes the reading in Master Hachimi's voice. The two cast numbers are never sent to that third-party service.
+You give two numbers and a question. The backend casts a Mei Hua Yi Shu hexagram from the numbers and the current hour using a fixed, deterministic method, then sends the hexagram, the hour, your question, and your chosen scenario to a third-party AI service, which writes the reading in Hachimi's voice. The two cast numbers are never sent to that third-party service.
 
 ### What about my privacy?
 
@@ -142,7 +142,7 @@ Your reading history is stored only on your device. On the backend, cast events 
 
 ### How does the Master remember what I asked?
 
-Through "memories" kept on your device: after each reading, the app turns it into a short note on your phone. When you ask about something related, up to three of those notes travel with the request just to shape that one reading. The server uses them and forgets them, and keeps no memory store. You can turn off "Master Hachimi's Memory" in Settings any time; deleting a history entry deletes its memory too; casting for someone else with "Asking for someone else" is never remembered.
+Through "memories" kept on your device: after each reading, the app turns it into a short note on your phone. When you ask about something related, up to three of those notes travel with the request just to shape that one reading. The server uses them and forgets them, and keeps no memory store. You can turn off "Hachimi's Memory" in Settings any time; deleting a history entry deletes its memory too; casting for someone else with "Asking for someone else" is never remembered.
 
 ### Which platforms is it on?
 
@@ -189,7 +189,7 @@ No. All 154 books and 2,408 chapters of the five arts: Mountain, Medicine, Fate,
 The website has a dedicated transparency page ([/en/methodology](https://hachimi.ai/en/methodology), [/zh/methodology](https://hachimi.ai/zh/methodology)) that lays the method open:
 
 - The cast: two numbers plus the current hour set a Mei Hua Yi Shu hexagram by a fixed method. Same numbers and same hour always give the same hexagram, byte for byte across iOS and Android. Each cast carries a SHA-256 fingerprint, so it is reproducible and tamper-evident.
-- The reading: only after the cast does the AI write the reading, in Master Hachimi's voice (the nature of that service, and what we require of it, are set out in the Privacy Policy). The AI can shape the words but cannot touch the hexagram or decide the fortune. The fortune's tone is fixed by the Host and Guest trigrams' five-element relationship, the find-item direction is derived by the cast engine, and the persona and red lines (no prediction / fate-changing / luck) are held in the system prompt.
+- The reading: only after the cast does the AI write the reading, in Hachimi's voice (the nature of that service, and what we require of it, are set out in the Privacy Policy). The AI can shape the words but cannot touch the hexagram or decide the fortune. The fortune's tone is fixed by the Host and Guest trigrams' five-element relationship, the find-item direction is derived by the cast engine, and the persona and red lines (no prediction / fate-changing / luck) are held in the system prompt.
 - The eval gate: 45 golden cases across four scenarios and two languages, plus 8 adversarial cases that probe the red lines, run on every code change. A hard gate first checks the fortune's tone was not tampered with; then a stronger model sits as judge on four criteria (on topic, no "prediction" red line, voice holds, offers a real first step). Model selection is data-driven against this golden set, not by feel.
 
 Both charts, Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars), come from the chart engine built into the app, running on your own phone. Same birth details, same Star Settings, same chart every time. A few spots cause the most differences, and the rules are here.

@@ -20,7 +20,7 @@ export async function generateMetadata({
     description:
       locale === "zh"
         ? "需要帮助？联系哈基米道长支持团队，或查看常见问题。"
-        : "Need help with Master Hachimi? Contact support or browse common questions.",
+        : "Need help with Hachimi.ai? Contact support or browse common questions.",
   });
 }
 

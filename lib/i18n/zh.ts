@@ -202,7 +202,7 @@ export const zh: Translations = {
     effectiveDate: "最后更新：2026 年 9 月 17 日",
     sections: [
       {
-        heading: "哈基米道长（Master Hachimi）",
+        heading: "哈基米道长（Hachimi.ai）",
         content:
           '哈基米道长，品牌 Hachimi.ai，由哈基米 AI 制作组运营。本隐私政策说明我们处理哪些数据、为什么处理，以及你拥有哪些权利。\n\n先简单说一下这款应用的工作方式。你报两个数字、写下想问的事，我们的后端按梅花易数的固定方法起出一卦，再由"哈基米道长"人设的第三方 AI 模型生成解读。因为生成解读必须把你的问题和卦盘发送到我们的后端，再由后端转发给第三方 AI 服务商，所以与纯本地的占卜小工具不同。该服务的性质与我们的要求见第 3 节，本政策据此如实披露。',
       },
@@ -258,7 +258,7 @@ export const zh: Translations = {
     effectiveDate: "最后更新：2026 年 6 月 14 日",
     sections: [
       {
-        heading: "哈基米道长（Master Hachimi）",
+        heading: "哈基米道长（Hachimi.ai）",
         content:
           "使用由哈基米 AI 制作组运营的哈基米道长（“本应用”，品牌 Hachimi.ai），即表示你同意本条款（运营主体见文末联系方式）。",
       },
@@ -562,7 +562,7 @@ export const zh: Translations = {
     title: "支持与帮助",
     effectiveDate: "最后更新：2026 年 8 月 25 日",
     intro:
-      "哈基米道长（Master Hachimi）是一款梅花易数问事应用：报两个数字起一卦，由哈基米道长讲一段仅供娱乐的解读。用着遇到问题，或想说点什么，写封邮件来就好。",
+      "哈基米道长（Hachimi.ai）是一款梅花易数问事应用：报两个数字起一卦，由哈基米道长讲一段仅供娱乐的解读。用着遇到问题，或想说点什么，写封邮件来就好。",
     steps: {
       heading: "联系前，先看常见自助",
       items: [

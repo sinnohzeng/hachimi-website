@@ -2,7 +2,7 @@
  * ============================================================================
  * SITE CONFIGURATION
  * ============================================================================
- * Master Hachimi (哈基米道长): a cat-themed companion that casts Mei Hua Yi Shu
+ * Hachimi.ai (哈基米道长): a cat-themed companion that casts Mei Hua Yi Shu
  * hexagrams and builds Zi Wei Dou Shu / Ba Zi charts on the device.
  * Brand Hachimi.ai · the operating company is named in the legal pages only.
  */
@@ -13,13 +13,13 @@
  * they will drift.
  */
 export const siteConfig = {
-  name: "Master Hachimi",
+  name: "Hachimi.ai",
   // Longer descriptive form used as the SEO <title> / OpenGraph title.
-  seoTitle: "Master Hachimi · 哈基米道长",
+  seoTitle: "Hachimi.ai · 哈基米道长",
   // 第三版的北极星原句，与首屏 hero.headline 同一句，owner 定稿，不送润色。
   tagline: "When it's a lot, cast a hexagram.",
   description:
-    "Master Hachimi is an app for studying Chinese folk fate arts, with a cat Daoist inside. Give two numbers and write your question, and he casts by Mei Hua Yi Shu, Plum Blossom divination, and reads it to you. Enter birth details, and Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars) charts are built on your phone, even with no internet. Keep each person as a case, with their charts and every hexagram cast for them in one place. The Academy carries the old texts of the five arts. For fun and company only, no predictions.",
+    "Hachimi.ai is an app for studying Chinese folk fate arts, with a cat Daoist inside. Give two numbers and write your question, and he casts by Mei Hua Yi Shu, Plum Blossom divination, and reads it to you. Enter birth details, and Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars) charts are built on your phone, even with no internet. Keep each person as a case, with their charts and every hexagram cast for them in one place. The Academy carries the old texts of the five arts. For fun and company only, no predictions.",
   url: "https://hachimi.ai",
   email: "voice@hachimi.ai",
   creator: "@sinnohzeng",

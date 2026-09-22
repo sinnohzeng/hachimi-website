@@ -20,7 +20,7 @@ export async function generateMetadata({
     description:
       locale === "zh"
         ? "了解如何删除你在 Hachimi 中的个人数据。"
-        : "Learn how to delete your data from Master Hachimi.",
+        : "Learn how to delete your data from Hachimi.ai.",
   });
 }
 

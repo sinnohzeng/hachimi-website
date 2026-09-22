@@ -63,4 +63,4 @@
 - **C 各节**：已落地在本地（`b8e7223`），**未推**。九节按节表重排，旧四个组件删除，i18n 键表照 C 节所列。两处与本 plan 不同：钉住用 `position: sticky`，为此 body 的 `overflow-x` 从 hidden 改成 clip（hidden 会把 body 变成滚动容器，页内 sticky 失效）；换屏不用 `useTransform` 接 opacity（本站上 MotionValue 驱动的 opacity 停在首帧），改成滚动进度落成步序 state 再用 `animate`。中文短句走 `keepPanguSpaces`，标点归前一个词组，逐字揭示按词组不折行。
 - **文案**：C 用的是 `docs/copy/2026-09-22-v4` 的润色稿，owner 2026-09-22 19:33 判为 AI 味重，只作占位。客户定义定了再由人手写，走 `fencun-writing` 加干净上下文审稿；定之前本地不推。
 - **A 截图**：未做。命例列表与命例问事面两张缺图，走查第一屏、第五屏与收尾扇形暂空；起卦结果页那张要真连后端拍一卦吉的。
-- **待 owner**：站点 `<title>` 与 `lib/config.ts` 里的 “Master Hachimi” 要不要统一到 Hachimi.ai；八字截图用的是李小龙的盘（spec 059 既有素材）要不要换代号命例。
+- **owner 2026-09-23 已定**：站点英文名全站统一为 Hachimi.ai，角色名英文仍是 Hachimi（同 iOS spec 078）；八字截图用的是李小龙的盘（spec 059 既有素材）要不要换代号命例。

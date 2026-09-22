@@ -56,7 +56,7 @@ export default function OpengraphImage(): ImageResponse {
           textShadow: "0 2px 12px rgba(120,53,15,0.35)",
         }}
       >
-        Master Hachimi
+        Hachimi.ai
       </div>
       <div
         style={{

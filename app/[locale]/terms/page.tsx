@@ -20,7 +20,7 @@ export async function generateMetadata({
     description:
       locale === "zh"
         ? "哈基米道长使用条款与免责声明。仅供娱乐与情绪陪伴，绝不预测、不改命。"
-        : "Master Hachimi Terms of Use & Disclaimer. For entertainment and comfort only, never prediction.",
+        : "Hachimi.ai Terms of Use & Disclaimer. For entertainment and comfort only, never prediction.",
   });
 }
 

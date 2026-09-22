@@ -38,12 +38,12 @@ export default function RootPage(): ReactNode {
       <head>
         <meta httpEquiv="refresh" content="0; url=/en" />
         <link rel="canonical" href="/en" />
-        <title>Master Hachimi · 哈基米道长</title>
+        <title>Hachimi.ai · 哈基米道长</title>
       </head>
       <body style={pageStyle}>
         <main style={{ padding: "2rem" }}>
           <p style={{ fontSize: "1.25rem", fontWeight: 600, margin: 0 }}>
-            哈基米道长 · Master Hachimi
+            哈基米道长 · Hachimi.ai
           </p>
           <p style={{ marginTop: "0.75rem", color: "rgba(250,250,250,0.7)" }}>
             正在前往官网… / Taking you to the site…
