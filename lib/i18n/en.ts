@@ -31,14 +31,14 @@ export const en: Translations = {
     items: [
       {
         title: "Enter a birth once, get both charts",
-        body: "Zi Wei and Ba Zi chart from one case, no switching tools; the birthplace sets the longitude, true solar time has one definition, the two charts never split the hour.",
+        body: "Zi Wei and Ba Zi chart from one case, no switching tools; true solar time is worked out once from the birthplace, and both charts use it.",
       },
       {
         title: "Your clients' cases, in your own iCloud",
         body: "No account needed; devices on the same iCloud sync on their own. Backups go to a file, and the device keeps a daily one.",
       },
       {
-        title: "Three chart styles, six-pillar pro chart",
+        title: "Switch Zi Wei styles, read Ba Zi to six pillars",
         body: "Zi Wei switches between San He, Flying Star and Four Transformations, cycles down to the hour; Ba Zi adds a six-pillar pro chart with its cycles.",
       },
     ],
@@ -58,11 +58,11 @@ export const en: Translations = {
       },
       {
         title: "Chart Ba Zi",
-        body: "The four-pillar table runs from main star down to Nayin and symbolic stars; for cycles, switch to the six-pillar pro chart.",
+        body: "The four-pillar table fits one screen; for cycles, switch to the six-pillar pro chart.",
       },
       {
         title: "Cast for them",
-        body: "Pick who it is for, say two numbers, and the hexagram is cast on the spot; the reading is filed under that person with the cast.",
+        body: "Pick who it is for on the asking page, cast, and the reading is filed under that person with the hexagram.",
       },
       {
         title: "Look back at casts",
@@ -92,29 +92,29 @@ export const en: Translations = {
         name: "Zi Wei Dou Shu",
         line: "San He, Flying Star and Four Transformations; five cycle layers; patterns judged by rule.",
         detail:
-          "Pattern analysis runs 84 rules and names the cycle layer each one comes from. Twenty-three star-placement settings pack into one code: paste someone else's code and the chart matches. Zi Zhan charting and pillar lookup sit in the More menu; press a star name for its entry.",
+          "Pattern analysis runs 84 rules and names the cycle layer each one comes from. 23 star-placement settings pack into one code: paste someone else's code and the chart matches. Zi Zhan charting and pillar lookup sit in the More menu; press a star name for its entry.",
       },
       {
         name: "Ba Zi charting",
-        line: "Ten rows in the four-pillar table, seven columns in the six-pillar table; major, annual and monthly cycles follow.",
+        line: "The four-pillar table reads from main star to symbolic stars; the six-pillar table carries major, annual and monthly cycles.",
         detail:
-          "The four-pillar table has ten rows, from main star to symbolic stars, colored by the five elements. The six-pillar table names the current major and annual cycle at the top, each with a horizontal scroll. Six hidden-stem rulebooks to choose from; write your notes on the same page; press any field for its entry.",
+          "The four-pillar table runs from main star to symbolic stars, colored by the five elements. The six-pillar table names the current major and annual cycle at the top, each with a horizontal scroll. Six hidden-stem rulebooks to choose from; write your notes on the same page; press any field for its entry.",
       },
       {
         name: "Case library",
-        line: "One per client, casts travel with the case; groups, filters, backup and sync are all there.",
+        line: "Casts travel with the case; among dozens of clients, filter by group or day master and the person is right there.",
         detail:
-          "Eight groups, all renamable. The list sections by initial or group, with four sort orders and six filter dimensions. Back up to iCloud or a file; the phone keeps a daily backup and the last seven. A single case can be shared and merges straight into the other library; devices on one iCloud sync themselves. Delete a case and its casts go with it.",
+          "Eight groups, all renamable. The list sections by initial or group, sort order can change, with six filter dimensions. Back up to iCloud or a file; the phone keeps a daily backup and the last seven. A single case can be shared and merges straight into the other library. Delete a case and its casts go with it.",
       },
     ],
   },
 
   remembers: {
-    text: "The Master remembers what was asked for this person last time, kept per case; the next reading is written with those notes.",
+    text: "The Master remembers what was asked for this person last time; the next reading is written with those notes.",
   },
 
   academy: {
-    text: "154 public-domain classics ship with the app, readable offline. Hold a star name on a chart and its entry comes up.",
+    text: "154 public-domain classics ship with the app, filed under the five arts, readable offline.",
   },
 
   offline: {
@@ -143,17 +143,17 @@ export const en: Translations = {
       {
         question: "Do I need internet to chart?",
         answer:
-          "No. Zi Wei and Ba Zi charts are both computed on your device, so they work in airplane mode and birth details never leave it. Pattern analysis and pillar lookup go over the network.",
+          "No. Zi Wei and Ba Zi charts are both computed on your device, so they work in airplane mode. Pattern analysis and pillar lookup go over the network.",
       },
       {
         question: "How do San He, Flying Star and Four Transformations differ?",
         answer:
-          "San He reads star brightness, birth-year transformations and stacked cycle palaces. Flying Star reads palace stems and the origin palace. Four Transformations enlarges the four transforming stars and draws the links. One birth time, three charts, all on your phone.",
+          "San He reads star brightness, birth-year transformations and stacked cycle palaces. Flying Star reads palace stems and the origin palace. Four Transformations enlarges the four transforming stars and draws the links. One birth time, three charts.",
       },
       {
         question: "Can I lose my cases?",
         answer:
-          "Cases live on your device and in your own private iCloud database. You can save them to a file, share them, and import them back. The phone backs up once a day and keeps the last seven. Only you delete them.",
+          "Cases live on your device and in your own private iCloud database. You can save them to a file, share them, and import them back. Only you delete them.",
       },
       {
         question: "How does the Master remember what I asked?",
@@ -163,7 +163,7 @@ export const en: Translations = {
       {
         question: "Who writes the reading?",
         answer:
-          "The hexagram is cast on your phone, the backend recomputes it and matches the checksum, and only then does DeepSeek write the reading. Your consent is asked before the first online question. Readings have a daily count.",
+          "The hexagram is cast on your phone, the backend recomputes it and matches the checksum, and only then does DeepSeek write the reading. Your consent is asked before the first online question. Readings have a daily cap that resets the next day.",
       },
     ],
     stillHaveQuestions: "Still have questions?",
