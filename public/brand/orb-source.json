@@ -7,16 +7,17 @@
   "runtime": "@rive-app/webgl2 2.42.2",
   "artifacts": {
     "hachimi-orb.riv": "0fcefe713ef11d34a476107f619a76e0f7e1b2408c08b425c5a3d516351f2ca0",
-    "orb-still.png": "8d88f3236e4c52123f794e89b557a8dbf62e7fff8e2e78714553665c7380e5a6"
+    "orb-still-dark.png": "8d88f3236e4c52123f794e89b557a8dbf62e7fff8e2e78714553665c7380e5a6",
+    "orb-still-light.png": "f6edc24e21cb97fd67110fe5b3b11a90053ed3c84370803cc10f7f94cbbeb692"
   },
   "still": {
     "tool": "tools/still.sh",
     "mood": "calm",
     "state": "idle",
     "facing": "rest",
-    "theme": "dark",
     "palette": "amber",
-    "seed": 0
+    "seed": 0,
+    "themes": ["light", "dark"]
   },
-  "note": "hachimi-orb.riv 与 iOS 包里的同一份，SHA 与 hachimi-orb 仓 docs/project/current-release.json 一致；静帧是标准像，减弱动态与运行时装不上时的回退。"
+  "note": "hachimi-orb.riv 与 iOS 包里的同一份，SHA 与 hachimi-orb 仓 docs/project/current-release.json 一致；两张静帧是标准像，减弱动态与运行时装不上时的回退，页脚按站点明暗二选一。"
 }

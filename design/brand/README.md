@@ -14,11 +14,11 @@ npm run check
 
 ## 道长本人：Rive 同源文件
 
-首屏与页脚播的是 `public/brand/hachimi-orb.riv`，与 iOS 包里的同一份，由 hachimi-orb 仓的编辑器 Publish 签名导出，SHA 记在 `public/brand/orb-source.json`，与 hachimi-orb 的 `docs/project/current-release.json` 一致。回退静帧 `orb-still.png` 是标准像（`mood=calm`、`facing=rest`、深色纸底档），由 hachimi-orb 的 `tools/still.sh` 截出。三份文件保留原字节，不经过 Prettier。
+首屏与页脚播的是 `public/brand/hachimi-orb.riv`，与 iOS 包里的同一份，由 hachimi-orb 仓的编辑器 Publish 签名导出，SHA 记在 `public/brand/orb-source.json`，与 hachimi-orb 的 `docs/project/current-release.json` 一致。回退静帧 `orb-still-dark.png` 与 `orb-still-light.png` 是标准像（`mood=calm`、`facing=rest`），深浅纸底各一张，由 hachimi-orb 的 `tools/still.sh` 截出。这几份文件保留原字节，不经过 Prettier。
 
 换代步骤：从 hachimi-orb 复制新的 `.riv` 与 `reference/frames/still-dark.png`，改 `orb-source.json` 的版本、契约版本与两个 SHA，跑 `npm run test:orb`。运行时 `@rive-app/webgl2` 在 `package.json` 里精确钉死，清单的 `runtime` 一格要同步改；wasm 由 `scripts/sync-rive-wasm.mjs` 从 node_modules 复制到 `public/rive/`，不入库，页面从自己的域名取，不碰 CDN。
 
-宿主能写的属性以 hachimi-orb 的 `contract.md` 为准，官网这边的名字表在 `lib/orb/contract.ts`，在场地图在 `lib/orb/placement.ts`。纸底色与球身色成对使用，卡片色必须等于文件那一档的纸色。
+宿主能写的属性以 hachimi-orb 的 `contract.md` 为准，官网这边的名字表在 `lib/orb/contract.ts`，在场地图在 `lib/orb/placement.ts`。球底下不铺卡片：眼睛按纸底色实描，所以首屏钉 `dark`，页脚跟站点明暗走，球身与页面色差在一档以内。
 
 旧 `app-icon-master-1254.png` 仅作历史档案，已从现行生成管线移除。图标母版仍是 Swift 渲染那一版，owner 2026-09-22 定图标暂不随形象换代。
 

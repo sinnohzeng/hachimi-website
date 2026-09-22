@@ -20,10 +20,10 @@ owner 2026-09-22 定：把 hachimi-orb 仓最新的哈基米道长形象引进 i
 ### 验收标准
 
 1. GIVEN 首屏与页脚，THEN 用 `@rive-app/webgl2` 播 `public/brand/hachimi-orb.riv`，文件 SHA-256 与 iOS 包里的一致（`0fcefe713ef1…`），来源清单记版本 0.16.0、契约 13。
-2. GIVEN 在场地图，THEN 首屏标准档 `lively`、seed 1，页脚标准档 `calm`、seed 2；两处 `theme=dark`、`palette=amber`、`facing=rest`、`background=false`，球放在纸底色 `#0D1B2A` 的圆角卡片上。
+2. GIVEN 在场地图，THEN 首屏标准档 `lively`、seed 1、`theme=dark`；页脚标准档 `calm`、seed 2，明暗跟站点走；两处 `palette=amber`、`facing=rest`、`background=false`，不放纸底卡片（owner 2026-09-22 看过首版后定：外框画蛇添足）。眼睛按纸底色实描，与球底下页面的色差在一档以内。
 3. GIVEN 鼠标或手指在球的版面框里，THEN 眼睛按球心换算跟过去，离场回正；点在球径六成的命中圆里发 `poke`，忙碌与冷却由文件裁决，宿主不计时。
 4. GIVEN 构建产物，THEN Rive 的 wasm 从自己的域名 `/rive/` 取，页面不向 jsdelivr 或 unpkg 发请求；`npm run check` 里有一道门核对 `.riv` 与静帧的 SHA、契约版本、运行时版本三处一致、wasm 与 node_modules 同字节、宿主不指 CDN。
-5. GIVEN `prefers-reduced-motion: reduce` 或运行时加载失败，THEN 显示同源静帧（标准像、侧望、深色纸底档）；静帧与 canvas 同一几何，换上去人不动位。
+5. GIVEN `prefers-reduced-motion: reduce` 或运行时加载失败，THEN 显示同源静帧（标准像、侧望，页脚按站点明暗二选一）；静帧与 canvas 同一几何，换上去人不动位。
 6. GIVEN 球离开视口或页面转后台，THEN 停帧并放掉指针；回来继续。
 7. GIVEN 仓库，THEN 旧引擎 `lib/orb/` 下的八个文件、`scripts/orb-motion.test.mjs`、`public/brand/orb-model.json`、`orb-golden.json`、`orb-idle.png` 不再存在；`lib/orb/` 只剩契约名字表、在场地图与宿主三份。
 8. `npm run check` 全绿，推 main 上线，生产域验过首屏与页脚。
@@ -36,7 +36,7 @@ owner 2026-09-22 定：把 hachimi-orb 仓最新的哈基米道长形象引进 i
 
 - favicon、Apple Touch、PWA 与 OG 图不重出：与 App 图标同一母版，owner 定图标暂不变。
 - 招呼与庆祝不进官网：那是首启欢迎与起卦仪式的事。
-- 站点浅色主题下不换纸底：两处卡片固定深色，首屏本就压在深色 shader 上，页脚那张卡从前就是深的。
+- 不为球铺纸底卡片：owner 定外框多余，明暗跟页面走。
 
 ## 依赖知识
 

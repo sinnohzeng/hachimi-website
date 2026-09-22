@@ -4,6 +4,7 @@ import {
   POKE_RADIUS_RATIO,
   ballGeometry,
   type OrbInputs,
+  type OrbTheme,
 } from "./contract";
 
 /**
@@ -93,6 +94,11 @@ export class OrbHost {
       pointerY: clamp((y - ball.y) / ball.radius),
       pointerActive: true,
     });
+  }
+
+  /** 站点换了明暗。文件自己做 200 毫秒交叉淡入，不重建实例。 */
+  theme(theme: OrbTheme): void {
+    this.write({ theme });
   }
 
   /** 手指或鼠标离场，眼睛自己收回去。 */

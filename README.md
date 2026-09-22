@@ -85,7 +85,7 @@ git config core.hooksPath .githooks
 │   ├── chart-showcase.tsx # Zi Wei + Ba Zi section
 │   ├── faq.tsx            # FAQ accordion
 │   ├── final-cta.tsx      # Final CTA section
-│   ├── cat-orb.tsx        # The Orb: Rive canvas, paper card, still fallback
+│   ├── cat-orb.tsx        # The Orb: Rive canvas, theme-aware still fallback
 │   ├── footer.tsx         # Footer
 │   ├── header.tsx         # Navigation header
 │   ├── hero.tsx           # Hero section

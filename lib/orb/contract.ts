@@ -53,20 +53,6 @@ export interface OrbInputs extends OrbLook {
   seed: number;
 }
 
-/**
- * 纸底色，角色系统第四节的表。眼睛是按纸底色实描的一遍，不是挖穿的洞，
- * 所以放球的那块底必须等于当前这一格，做不到就把球放进一张用它铺底的卡片里。
- */
-export const PAPER: Record<OrbPalette, Record<OrbTheme, string>> = {
-  amber: { light: "#F4EFE6", dark: "#0D1B2A", dim: "#2B231B" },
-  ziwei: { light: "#F1EEF6", dark: "#17122B", dim: "#261F2B" },
-  vermilion: { light: "#F4EFE6", dark: "#24120E", dim: "#2B1E1A" },
-  pine: { light: "#EEF3EE", dark: "#0E1F1A", dim: "#1C2622" },
-  ochre: { light: "#F4EFE6", dark: "#21170A", dim: "#2B2214" },
-  ink: { light: "#EDEFF2", dark: "#12102A", dim: "#1E2030" },
-  rouge: { light: "#F7ECEA", dark: "#260F17", dim: "#2B1C21" },
-};
-
 export interface Box {
   left: number;
   top: number;
