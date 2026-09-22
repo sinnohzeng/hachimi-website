@@ -19,7 +19,7 @@ export const siteConfig = {
   // 第三版的北极星原句，与首屏 hero.headline 同一句，owner 定稿，不送润色。
   tagline: "When it's a lot, cast a hexagram.",
   description:
-    "Master Hachimi is a cat Daoist who casts hexagrams and reads charts. Give two numbers and write your question, and he casts by Mei Hua Yi Shu, Plum Blossom divination, and reads it to you. Enter your birth details, and your Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars) charts are built on your phone, even with no internet. The Academy carries the old texts of the five arts: Mountain, Medicine, Fate, Physiognomy and Divination. For fun and company only, no predictions.",
+    "Master Hachimi is an app for studying Chinese folk fate arts, with a cat Daoist inside. Give two numbers and write your question, and he casts by Mei Hua Yi Shu, Plum Blossom divination, and reads it to you. Enter birth details, and Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars) charts are built on your phone, even with no internet. Keep each person as a case, with their charts and every hexagram cast for them in one place. The Academy carries the old texts of the five arts. For fun and company only, no predictions.",
   url: "https://hachimi.ai",
   email: "voice@hachimi.ai",
   creator: "@sinnohzeng",

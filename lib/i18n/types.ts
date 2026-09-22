@@ -42,6 +42,8 @@ export type Translations = {
   // 三种盘式、格局规则、安星设置这些机制都搬去了方法页的排盘一节。
   chart: {
     title: string;
+    /** 标题下一句：多命例管理与每份命例名下的卦。 */
+    lead: string;
     ziwei: string;
     bazi: string;
     /** 链接文字，指向 /{locale}/methodology#paipan。 */
@@ -82,8 +84,8 @@ export type Translations = {
 
   // Footer
   footer: {
-    /** 徽章上方那一行统计小字，接住了原来独占一屏的 Stats 节。 */
-    stats: string;
+    /** 字标下面那一句定位语。 */
+    tagline: string;
     copyright: string;
     links: {
       title: string;

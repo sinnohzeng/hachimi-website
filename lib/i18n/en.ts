@@ -27,7 +27,7 @@ export const en: Translations = {
 
   whatItIs: {
     title:
-      "A divination and charting app with an AI cat that casts hexagrams and reads charts.",
+      "An app for studying Chinese folk fate arts: cast, chart, keep cases. A cat Daoist lives inside.",
     steps: [
       "Just say two numbers, by instinct.",
       "Write down what you want to ask.",
@@ -41,6 +41,7 @@ export const en: Translations = {
 
   chart: {
     title: "To see it clearly, lay out a chart.",
+    lead: "Each person is a case, charts and casts together.",
     ziwei:
       "Zi Wei Dou Shu: one birth time, three charts: San He, Four Transformations, Flying Star.",
     bazi: "Ba Zi chart with four or six pillars; each major cycle step updates the chart.",
@@ -68,7 +69,7 @@ export const en: Translations = {
       {
         question: "Is this real fortune telling?",
         answer:
-          "No. Master Hachimi is for fun and company only. It does not predict the future, change fate, or bring luck, and it does not claim to be right. For real decisions, talk to a qualified person.",
+          "No. It is a tool for studying Chinese folk fate arts, for fun and company. It does not predict, change fate or bring luck, and never claims to be right. Big decisions need a qualified person.",
       },
       {
         question: "Do the same numbers give the same hexagram?",
@@ -96,12 +97,11 @@ export const en: Translations = {
   },
 
   finalCta: {
-    headline: "Put the Master in your pocket.",
+    headline: "Put the Master in your pocket: casts, charts, cases.",
   },
 
   footer: {
-    stats:
-      "154 old books, 2408 chapters, 287 glossary entries, 84 Chart Patterns rules, 0 accounts.",
+    tagline: "For studying Chinese folk fate arts.",
     copyright: "© 2026 Hachimi.ai. All rights reserved.",
     links: [
       {
@@ -111,15 +111,6 @@ export const en: Translations = {
           { label: "Academy", href: "/en#academy" },
           { label: "How it's built", href: "/en/methodology" },
           { label: "FAQ", href: "/en#faq" },
-        ],
-      },
-      {
-        title: "Legal",
-        items: [
-          { label: "Privacy Policy", href: "/en/privacy" },
-          { label: "Terms & Disclaimer", href: "/en/terms" },
-          { label: "Account & your data", href: "/en/account-deletion" },
-          { label: "Delete Data", href: "/en/data-deletion" },
         ],
       },
       {
@@ -133,7 +124,8 @@ export const en: Translations = {
     legal: [
       { label: "Privacy", href: "/en/privacy" },
       { label: "Terms", href: "/en/terms" },
-      { label: "Delete Data", href: "/en/data-deletion" },
+      { label: "Account & data", href: "/en/account-deletion" },
+      { label: "Delete data", href: "/en/data-deletion" },
     ],
   },
 

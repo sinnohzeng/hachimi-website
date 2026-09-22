@@ -4,6 +4,12 @@ import { type ReactNode } from "react";
 import type { Translations } from "@/lib/i18n";
 import { CatOrb } from "@/components/cat-orb";
 
+/**
+ * 页脚（spec 004）：左边是道长、字标与一句定位语，右边两栏链接，最底下一行版权与法律链接。
+ *
+ * 法律链接只在最底下那一行出现：早先“法律”一栏与底行是同一组入口隔着几十像素出现两次，
+ * owner 定按单一来源只留一处。统计小字整行撤掉，数字不再进页脚。
+ */
 export function Footer({
   locale,
   t,
@@ -22,15 +28,7 @@ export function Footer({
         </div>
       </div>
 
-      {/* 第三版撤掉了独占一屏的 Stats 节，八个数字压成页脚顶上这一行小字。
-          它是全站唯一一处摆数字的地方，别再往别的节里搬。 */}
       <div className="relative flex items-center justify-center px-6 pt-16 sm:px-8">
-        <p className="text-foreground/50 w-full max-w-270 px-8 text-center text-sm sm:px-12">
-          {t.footer.stats}
-        </p>
-      </div>
-
-      <div className="relative flex items-center justify-center px-6 pt-12 sm:px-8">
         <div className="relative w-full max-w-270">
           <div className="bg-foreground/10 absolute right-0 bottom-0 left-0 h-px" />
           <div className="bg-foreground/10 absolute right-full bottom-0 h-px w-screen" />
@@ -40,8 +38,8 @@ export function Footer({
           <div className="relative w-full px-8 py-12 sm:px-12">
             <div className="flex flex-col justify-between gap-12 lg:flex-row lg:gap-8">
               <div className="lg:max-w-xs">
-                {/* 纸底卡片在组件里：眼睛按纸底色实描，卡片色必须等于文件那一档的纸色。 */}
-                <CatOrb surface="footer" className="mb-5 [--orb-d:112px]" />
+                {/* 球径与首屏同一档；球底下不铺卡片，明暗跟站点走（spec 003、004）。 */}
+                <CatOrb surface="footer" className="mb-5 [--orb-d:96px]" />
                 <a href={`/${locale}`} className="flex items-center gap-2">
                   <span className="text-foreground text-lg font-semibold tracking-tight">
                     HACHIMI AI
@@ -49,10 +47,10 @@ export function Footer({
                 </a>
                 {/* 下载徽章不再重复出现：紧邻的 #download（FinalCTA）已是主下载位。 */}
                 <p className="text-foreground/50 mt-4 max-w-xs text-sm">
-                  {t.footer.copyright}
+                  {t.footer.tagline}
                 </p>
               </div>
-              <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:gap-16">
+              <div className="grid grid-cols-2 gap-8 lg:gap-16">
                 {t.footer.links.map((section) => (
                   <div key={section.title}>
                     <h3 className="text-foreground/40 mb-5 text-xs font-medium tracking-wider uppercase">
@@ -83,7 +81,9 @@ export function Footer({
         <div className="relative w-full max-w-270">
           <div className="px-8 pt-8 sm:px-12">
             <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-              <span className="text-foreground/40 text-sm">Hachimi.ai</span>
+              <span className="text-foreground/40 text-sm">
+                {t.footer.copyright}
+              </span>
               <div className="flex flex-wrap gap-6">
                 {/* 触控目标 44px：py-3 撑高命中区，负外边距保持行视觉高度不变（gap-6 恰好容纳上下各 12px 外溢） */}
                 {t.footer.legal.map((link) => (

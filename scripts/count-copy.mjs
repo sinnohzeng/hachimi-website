@@ -9,8 +9,8 @@
  *   - 英文上限取简体上限的 0.6 倍，向上取整。
  *
  * 数的是「可见正文」：读者眼睛能看到的那些句子。alt 文本、导航与页脚链接、版权
- * 行、商店徽章的 alt 都不算，它们不是版面上的字，压它们只会伤无障碍。页脚那行
- * 统计小字算，它接住了被删掉的整节 Stats，是正文。
+ * 行、商店徽章的 alt 都不算，它们不是版面上的字，压它们只会伤无障碍。页脚字标
+ * 下面那句定位语与版权行同类，也不算（spec 004）。
  *
  * 一处例外，且只有一处：英文首屏那句是 owner 定的北极星原文，7 词，比 0.6 倍算
  * 出来的 6 词上限多一个词。spec 同时写着「不送润色」与「0.6 倍」，这一句上两条撞
@@ -27,7 +27,7 @@ const { en } = await import("../lib/i18n/en.ts");
 /** 首屏。整节只有这一句。 */
 const HERO_KEYS = ["hero.headline"];
 
-/** 第二到第六节加结尾加页脚统计的可见正文，首屏那一句也计在这个总数里。 */
+/** 第二到第六节加结尾的可见正文，首屏那一句也计在这个总数里。 */
 const BODY_KEYS = [
   "whatItIs.title",
   "whatItIs.steps.0",
@@ -35,6 +35,7 @@ const BODY_KEYS = [
   "whatItIs.steps.2",
   "remembers.text",
   "chart.title",
+  "chart.lead",
   "chart.ziwei",
   "chart.bazi",
   "chart.cta",
@@ -44,7 +45,6 @@ const BODY_KEYS = [
   "principles.tags.1",
   "principles.tags.2",
   "finalCta.headline",
-  "footer.stats",
 ];
 
 const PAGE_KEYS = [...HERO_KEYS, ...BODY_KEYS];

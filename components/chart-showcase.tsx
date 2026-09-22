@@ -38,6 +38,12 @@ export function ChartShowcase({
         >
           {t.chart.title}
         </motion.h2>
+        <motion.p
+          {...reveal(0.1, { duration: DUR.base })}
+          className="text-foreground/80 mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-balance"
+        >
+          {t.chart.lead}
+        </motion.p>
 
         <div className="mt-16 grid grid-cols-1 gap-14 sm:mt-20 sm:grid-cols-2 sm:gap-10">
           {cells.map((cell, index) => (

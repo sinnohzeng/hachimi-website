@@ -71,7 +71,7 @@ export function Hero({
                 把框往左挪这么多，球身轮廓的左沿才与标题的左沿对齐（owner 2026-09-22）。 */}
             <CatOrb
               surface="hero"
-              className="mb-3 [--orb-d:96px] sm:[--orb-d:112px] lg:ml-[calc(var(--orb-d)*-0.35)]"
+              className="mb-3 [--orb-d:96px] lg:ml-[calc(var(--orb-d)*-0.35)]"
             />
             {/* H1 是 LCP 元素：不做挂载后淡入，服务端首帧（含禁 JS）即可见。 */}
             <h1 className="max-w-xl font-serif text-4xl leading-tight font-medium tracking-tight text-balance text-white sm:text-5xl md:text-6xl lg:text-7xl">

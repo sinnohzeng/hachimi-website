@@ -37,7 +37,7 @@ export function FinalCTA({
           {t.finalCta.headline}
         </motion.h2>
 
-        {/* 第三版撤掉了徽章下面那行补充小字：同样的话页脚统计与 FAQ 已各说一遍。 */}
+        {/* 第三版撤掉了徽章下面那行补充小字：同样的话 FAQ 已说过一遍。 */}
         <motion.div
           {...reveal(0.2, { duration: DUR.base })}
           className="mt-10 flex justify-center"

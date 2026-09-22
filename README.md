@@ -24,7 +24,7 @@ Seven sections, in this order (spec: [`specs/001-site-v3-concise/spec.md`](specs
 - **Chart showcase** - Zi Wei and Ba Zi, one line and one shot each
 - **Academy** - one line, no image
 - **Principles** - one line plus three tags
-- **FAQ / Final CTA / Footer** - accordion, 3D-background CTA, links and the stats line
+- **FAQ / Final CTA / Footer** - accordion, 3D-background CTA, links and the legal row
 
 ## Getting Started
 
@@ -141,7 +141,6 @@ Toggle features in `lib/config.ts`:
 export const features = {
   smoothScroll: true, // Lenis smooth scrolling
   darkMode: true, // Theme toggle
-  statsSection: true, // Stats section
   blogSection: false, // Blog showcase (not used)
   testimonialsSection: false, // Testimonials slider (not used)
 };

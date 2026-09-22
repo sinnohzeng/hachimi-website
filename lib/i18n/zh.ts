@@ -25,7 +25,8 @@ export const zh: Translations = {
   },
 
   whatItIs: {
-    title: "一款占卜与排盘 App，里面住着一只会起卦、也会排盘的 AI 猫",
+    title:
+      "一款学习与研究中国民俗术数的 App：起卦、排盘、管命例，里面住着一只猫道长。",
     steps: [
       "凭直觉说两个数字。",
       "写下你要问的那件事。",
@@ -39,6 +40,7 @@ export const zh: Translations = {
 
   chart: {
     title: "想看清楚，就排一张盘。",
+    lead: "命例一份份分开管，每一位的盘与名下起过的卦都在一处，翻回去对得上。",
     ziwei: "紫微斗数：一份生辰排三合、四化、飞星三盘。",
     bazi: "八字排盘，四柱六柱，大运走一步，表跟着换一步。",
     cta: "看排盘怎么算",
@@ -64,7 +66,7 @@ export const zh: Translations = {
       {
         question: "这是真的算命吗？",
         answer:
-          "不是。哈基米道长只供娱乐与情绪陪伴，不预测未来，不改命，不转运，也不声称准。真要拿主意，找有资质的人谈。",
+          "不是。哈基米道长是学习与研究中国民俗术数的工具，也供娱乐与情绪陪伴。它不预测未来，不改命，不转运，也不声称准。真要拿主意，找有资质的人谈。",
       },
       {
         question: "同样数字起卦每次结果一样吗？",
@@ -92,11 +94,11 @@ export const zh: Translations = {
   },
 
   finalCta: {
-    headline: "把道长装进手机，慌时有处去。",
+    headline: "把道长装进手机，卦、盘、命例都在一处。",
   },
 
   footer: {
-    stats: "随包 154 本古籍 2408 章正文、287 条词条、84 条格局规则，0 个账号。",
+    tagline: "中国民俗术数的学习与研究工具",
     copyright: "© 2026 Hachimi.ai　保留所有权利",
     links: [
       {
@@ -106,15 +108,6 @@ export const zh: Translations = {
           { label: "学堂", href: "/zh#academy" },
           { label: "起卦的门道", href: "/zh/methodology" },
           { label: "常见问题", href: "/zh#faq" },
-        ],
-      },
-      {
-        title: "法律",
-        items: [
-          { label: "隐私政策", href: "/zh/privacy" },
-          { label: "使用条款与免责声明", href: "/zh/terms" },
-          { label: "账号与你的数据", href: "/zh/account-deletion" },
-          { label: "删除数据", href: "/zh/data-deletion" },
         ],
       },
       {
@@ -128,6 +121,7 @@ export const zh: Translations = {
     legal: [
       { label: "隐私政策", href: "/zh/privacy" },
       { label: "使用条款", href: "/zh/terms" },
+      { label: "账号与你的数据", href: "/zh/account-deletion" },
       { label: "删除数据", href: "/zh/data-deletion" },
     ],
   },
