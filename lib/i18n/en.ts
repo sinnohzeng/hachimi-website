@@ -35,11 +35,11 @@ export const en: Translations = {
       },
       {
         title: "Client records synced and backed up",
-        body: "Cases live in your own iCloud private database, no account, and follow you to a new phone; export to a file too, with a daily backup on the device.",
+        body: "Cases live in your own iCloud private database, no account, synced between devices on the same iCloud; export to a file too, with a daily backup on the device.",
       },
       {
         title: "Professional, modern, easy to use",
-        body: "San He, Flying Star and Four Transformations charts, four- and six-pillar tables, cycles and years stacked; hold any name on a chart for its entry.",
+        body: "San He, Flying Star and Four Transformations charts, four- and six-pillar tables, stacked cycles; hold any name for its entry.",
       },
     ],
   },
@@ -62,7 +62,7 @@ export const en: Translations = {
       },
       {
         title: "Cast for them",
-        body: "Pick who it is for, say two numbers, and the hexagram is cast on the spot, read against their day master.",
+        body: "Pick who it is for, say two numbers, and the hexagram is cast on the spot; the reading is filed under that person with the cast.",
       },
       {
         title: "Look back at casts",
@@ -110,11 +110,11 @@ export const en: Translations = {
   },
 
   remembers: {
-    text: "A chatbot forgets what you asked last time. The Master remembers, kept per case, so the next hexagram is read after the last.",
+    text: "The Master remembers what was asked for this person last time, kept per case; the next reading is written with those notes.",
   },
 
   academy: {
-    text: "154 public-domain classics ship with the app, 2,408 chapters, readable offline. Hold a star name on a chart and its entry comes up.",
+    text: "154 public-domain classics ship with the app, readable offline. Hold a star name on a chart and its entry comes up.",
   },
 
   offline: {
@@ -133,7 +133,7 @@ export const en: Translations = {
       {
         question: "Is this real fortune telling?",
         answer:
-          "No. Hachimi.ai is a charting and casting tool for fate readers and enthusiasts, also for fun and company. It does not predict, change fate or bring luck, and never claims to be right.",
+          "No. Hachimi.ai is a charting and casting tool for fate readers and enthusiasts, for entertainment and cultural study only. It does not predict, change fate or bring luck, and never claims to be right.",
       },
       {
         question: "Do the same numbers give the same hexagram?",
@@ -171,7 +171,7 @@ export const en: Translations = {
   },
 
   finalCta: {
-    headline: "Install Hachimi.ai and enter your first case.",
+    headline: "Install Hachimi.ai and enter your first client.",
   },
 
   footer: {
