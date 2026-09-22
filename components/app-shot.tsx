@@ -7,18 +7,18 @@ import Device from "@/components/react-bits/device";
  * 站上的 App 截图。第四版五张：命例列表、紫微三合盘、八字四柱页、起卦结果页、命例
  * 的问事面，命例走查一节按这个顺序换屏，首屏与收尾各自另取。
  *
- * 每张的固有尺寸都是 iPhone 17 Pro 整屏 1206 × 2622，写死宽高把版面撑住，图到位
+ * 每张的固有尺寸都是 iPhone 17 Pro Max 整屏 1320 × 2868，写死宽高把版面撑住，图到位
  * 时不跳。取图口径与裁切规则在 scripts/build-shots.mjs。
  *
  * `widths` 是这张图实际出了哪几档宽度，`dark` 是有没有深色版。按张记而不是一刀切，
  * 哪天多一张只出一档、没有深色版的图，调用方一个字都不用改。
  */
 const SHOTS = {
-  "case-list": { widths: [603, 1206], dark: true },
-  "ziwei-sanhe": { widths: [603, 1206], dark: true },
-  "bazi-pillars": { widths: [603, 1206], dark: true },
-  "cast-result": { widths: [603, 1206], dark: true },
-  "case-casts": { widths: [603, 1206], dark: true },
+  "case-list": { widths: [660, 1320], dark: true },
+  "ziwei-sanhe": { widths: [660, 1320], dark: true },
+  "bazi-pillars": { widths: [660, 1320], dark: true },
+  "cast-result": { widths: [660, 1320], dark: true },
+  "case-casts": { widths: [660, 1320], dark: true },
 } as const satisfies Record<
   string,
   { widths: readonly number[]; dark: boolean }
@@ -26,8 +26,8 @@ const SHOTS = {
 
 export type ShotName = keyof typeof SHOTS;
 
-const SHOT_W = 1206;
-const SHOT_H = 2622;
+const SHOT_W = 1320;
+const SHOT_H = 2868;
 
 function Screen({
   base,
@@ -44,7 +44,7 @@ function Screen({
   eager: boolean;
   className: string;
 }): ReactNode {
-  const widest = widths[widths.length - 1] ?? 603;
+  const widest = widths[widths.length - 1] ?? 660;
   return (
     <img
       src={`${base}-${widest}.webp`}

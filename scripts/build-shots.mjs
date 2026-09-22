@@ -2,20 +2,21 @@
 /**
  * 把 hachimi-ios 的走查截图做成站上用的 WebP。
  *
- * 一句话规矩：**站上每张截图都是 1206 × 2622 的比例**，`AppShot` 按这个比例写死
- * 宽高把版面撑住。比例统一是硬要求，`ChartShowcase` 那两格并排，比例不齐时手机
+ * 一句话规矩：**站上每张截图都是 1320 × 2868 的比例**，`AppShot` 按这个比例写死
+ * 宽高把版面撑住。比例统一是硬要求，命例走查那一节五张图轮流换屏，比例不齐时手机
  * 边框的底色会在矮的那张下面露出一条黑带。
  *
- * 八字那屏底部一枚“紫微 / 八字”胶囊压在原局那张卡上，裁到四柱卡收尾处。裁掉之后高度不足，
- * 按页面纸色补回 2622：纸色不写死，从被裁那一行下方的页边取，浅深两版各取各的。
+ * 五张都取整屏，底部标签栏压在内容上就是 App 里的样子。要裁的那张给 `cut`：裁到那一行，
+ * 再按页面纸色补回 2868，纸色从被裁那一行下方的页边取，浅深两版各取各的。
  *
  * 源在 `../hachimi-ios/build/device-walk/`，文件名取自各自的 manifest.json
  * （suggestedHumanReadableName → exportedFileName）。走查产物会被下一轮覆盖，
  * 所以对应关系写在这里，而不是靠事后翻目录。
  *
- * 第三版全站只用三张图，都是 iOS 仓 `DeviceScreenshotPass/testWalkSiteShots` 用署名种子
- * “李小龙”在 iPhone 17 Pro 上截的（spec 059），浅深各一份，落在 `sim-13-light` 与
- * `sim-13-dark` 两个目录。
+ * 第四版五张图都在 iPhone 17 Pro Max 上截：两张盘用署名种子“李小龙”（spec 059），
+ * 命例列表与问事面用合成命例库，走 iOS 仓 `DeviceScreenshotPass/testWalkSiteShots`，
+ * 浅深各一趟落在 `sim-14-light-v2` 与 `sim-14-dark-v2`。起卦结果页的解读由大模型写，
+ * 浅深两张必须出自同一卦，所以另走 `testWalkSiteCastShots`：起一卦拍浅色，切外观再拍深色，落在 `sim-14-cast`。
  *
  * 依赖 sharp。它随 Next 装在 node_modules 里，没有单独进 package.json；
  * 这是本机生成素材的工具，不参与 `npm run check`，也不进构建。
@@ -32,9 +33,9 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const WALK = path.resolve(ROOT, "../hachimi-ios/build/device-walk");
 const OUT = path.join(ROOT, "public/screenshots/zh");
 
-/** iPhone 17 Pro 整屏。走查图按这个尺寸出。 */
-const W = 1206;
-const H = 2622;
+/** iPhone 17 Pro Max 整屏。走查图按这个尺寸出。 */
+const W = 1320;
+const H = 2868;
 
 const QUALITY = 80;
 
@@ -50,25 +51,35 @@ const walkShot = (dir, id) => path.join(WALK, dir, `${id}.png`);
  * `cut` 是从顶部保留到第几行，缺省不裁。
  */
 const SHOTS = {
-  "cast-result": {
-    widths: [603, 1206],
+  "case-list": {
+    widths: [660, 1320],
     dark: true,
-    light: walkShot("sim-13-light", "A8A3A91D-F558-4A85-9065-4EFFDDB3911E"), // L-S1-起卦结果页
-    darkSrc: walkShot("sim-13-dark", "36F35D14-D905-411E-ADD4-88A84E9761A2"), // S1-起卦结果页
+    light: walkShot("sim-14-light-v2", "AFB24453-B966-4353-B72B-B2EFC967A807"), // L-S4-命例列表
+    darkSrc: walkShot("sim-14-dark-v2", "B029E3FF-5A7B-4310-BB13-4830E5DA576F"), // S4-命例列表
   },
   "ziwei-sanhe": {
-    widths: [603, 1206],
+    widths: [660, 1320],
     dark: true,
-    light: walkShot("sim-13-light", "83922CDE-200D-4BAE-9226-24641F0D27F3"), // L-S2-紫微三合盘
-    darkSrc: walkShot("sim-13-dark", "E7BE5371-429D-44E9-B03A-F1EF943C2B3D"), // S2-紫微三合盘
+    light: walkShot("sim-14-light-v2", "F0283531-1B6F-4233-9ACA-6137EEAD8726"), // L-S2-紫微三合盘
+    darkSrc: walkShot("sim-14-dark-v2", "E23CBE03-E3C8-44C7-A292-4D039B6FB4F7"), // S2-紫微三合盘
   },
-  // 神煞那张卡的下沿收在 2241，原局那张卡从 2278 起。切在 2260，正落在两张卡的空当里。
   "bazi-pillars": {
-    widths: [603, 1206],
+    widths: [660, 1320],
     dark: true,
-    light: walkShot("sim-13-light", "BFD776EF-16D8-4A84-8C7D-5A82C217F7DB"), // L-S3-八字四柱页
-    darkSrc: walkShot("sim-13-dark", "7C9E0E55-74D4-4325-82E1-3C7930659743"), // S3-八字四柱页
-    cut: 2260,
+    light: walkShot("sim-14-light-v2", "66FB2762-A846-42B8-96CC-7FDF3F3D0BB4"), // L-S3-八字四柱页
+    darkSrc: walkShot("sim-14-dark-v2", "4F4B9117-957F-4D9B-A1DE-DFB74831B644"), // S3-八字四柱页
+  },
+  "cast-result": {
+    widths: [660, 1320],
+    dark: true,
+    light: walkShot("sim-14-cast", "C0F68499-EF1D-4E26-8440-B40C0A07E798"), // L-S1-起卦结果页，地天泰，大吉
+    darkSrc: walkShot("sim-14-cast", "0AAFF002-2A03-4215-B3AD-5C2E67F48971"), // L-S1-起卦结果页-深色，同一卦
+  },
+  "case-casts": {
+    widths: [660, 1320],
+    dark: true,
+    light: walkShot("sim-14-light-v2", "A2F9FF16-12F8-4778-BBE7-C087CFF568A0"), // L-S5-命例问事面
+    darkSrc: walkShot("sim-14-dark-v2", "07D5275F-D404-4141-8CEE-941BF9D2D9F0"), // S5-命例问事面
   },
 };
 

@@ -34,7 +34,7 @@
 - `faq.tsx`：七条，数据驱动，现有手风琴留着；`FaqStructuredData` 自动跟着。
 - `final-cta.tsx`：源 `~/reactbitspro-templates/ai-app/components/final-cta.tsx` 的截图扇形加 word-mask 标题，扇形用五张站上截图；徽章不动。
 - `header.tsx`：导航五项加下载，锚点 `#case #tools #academy /methodology #faq`。
-- `app-shot.tsx`：SHOTS 表加 `case-list` 与 `case-casts`（widths 603 / 1206，dark true）；图片文件由主对话生成。
+- `app-shot.tsx`：SHOTS 表加 `case-list` 与 `case-casts`（widths 660 / 1320，dark true；截图改在 iPhone 17 Pro Max 上出，1320 × 2868）；图片文件由主对话生成。
 - `count-copy.mjs`：四档上限按 spec 验收 5 写键表；`footer.tagline` 不计。
 - 所有动效走 `lib/motion-tokens.ts` 与 `useReducedMotion`；不新增依赖。
 

@@ -93,7 +93,7 @@ function ShotFan({ reducedMotion }: { reducedMotion: boolean }): ReactNode {
                   },
                   "data-animate": "",
                 })}
-            className="border-foreground/10 absolute top-0 left-1/2 -ml-[54px] aspect-[1206/2622] w-[108px] overflow-hidden rounded-xl border shadow-[0_16px_40px_-12px_rgba(0,0,0,0.5)]"
+            className="border-foreground/10 absolute top-0 left-1/2 -ml-[54px] aspect-[1320/2868] w-[108px] overflow-hidden rounded-xl border shadow-[0_16px_40px_-12px_rgba(0,0,0,0.5)]"
           >
             <ShotScreens name={name} alt="" sizes="108px" />
           </motion.div>

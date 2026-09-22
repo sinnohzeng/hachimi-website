@@ -45,7 +45,7 @@ export interface DeviceProps {
 const Device = React.forwardRef<HTMLDivElement, DeviceProps>(
   (
     {
-      image = "/screenshots/zh/cast-result-603.webp",
+      image = "/screenshots/zh/cast-result-660.webp",
       scale = 1,
       isScrollable = false,
       enableParallax = true,
