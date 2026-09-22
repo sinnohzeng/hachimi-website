@@ -33,7 +33,7 @@ export const siteConfig = {
   ],
   // 给检索引擎的词，不是正文，不随正文降级（见 docs/copy-principles.md 五之补）。
   keywords: [
-    "divination",
+    "Chinese folk fate arts",
     "Mei Hua Yi Shu",
     "plum blossom numerology",
     "I Ching",
@@ -43,13 +43,14 @@ export const siteConfig = {
     "BaZi",
     "Four Pillars",
     "natal chart",
-    "astrology chart app",
+    "case management",
+    "birth chart app",
     "offline chart",
-    "cat",
-    "divination companion",
-    "oracle app",
-    "iOS app",
-    "privacy first",
+    "紫微斗数排盘",
+    "八字排盘",
+    "梅花易数起卦",
+    "命例管理",
+    "cat Daoist",
   ],
 
   // Live store listings. The bare apps.apple.com form (no storefront segment)

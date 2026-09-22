@@ -2,11 +2,15 @@
 /**
  * 首页文案字数门。挂在 npm run check 里，超限非零退出。
  *
- * 口径出处是 specs/001-site-v3-concise/spec.md 的验收 3：
+ * 口径出处是 specs/005-site-v4-tools/spec.md 的验收 5，四档：
  *   - 首屏简体不超过 9 字；
- *   - 全页除 FAQ 的可见正文简体不超过 250 字（首屏那一句计在内）；
- *   - FAQ 五条答案各不超过 60 字；
+ *   - 定位句、四张卡的卡面、道长记得、学堂、本机与收尾合计不超过 320 字；
+ *   - 命例走查（标题、引言与五步）合计不超过 240 字；
+ *   - 每张卡展开不超过 110 字，FAQ 每条答案不超过 70 字；
  *   - 英文上限取简体上限的 0.6 倍，向上取整。
+ *
+ * 第三版是「全页除 FAQ 一个总数」，第四版拆成四档：命例走查与卡面展开是两块深度
+ * 不同的文字，压在同一个预算里，一块长了另一块就得无谓地砍。
  *
  * 数的是「可见正文」：读者眼睛能看到的那些句子。alt 文本、导航与页脚链接、版权
  * 行、商店徽章的 alt 都不算，它们不是版面上的字，压它们只会伤无障碍。页脚字标
@@ -27,29 +31,52 @@ const { en } = await import("../lib/i18n/en.ts");
 /** 首屏。整节只有这一句。 */
 const HERO_KEYS = ["hero.headline"];
 
-/** 第二到第六节加结尾的可见正文，首屏那一句也计在这个总数里。 */
-const BODY_KEYS = [
-  "whatItIs.title",
-  "whatItIs.steps.0",
-  "whatItIs.steps.1",
-  "whatItIs.steps.2",
+/** 定位与卡面：一句定位、四张卡的卡面、道长记得、学堂、本机与收尾。 */
+const SURFACE_KEYS = [
+  "what.title",
+  "tools.title",
+  "tools.hint",
+  "tools.cards.0.name",
+  "tools.cards.0.line",
+  "tools.cards.1.name",
+  "tools.cards.1.line",
+  "tools.cards.2.name",
+  "tools.cards.2.line",
+  "tools.cards.3.name",
+  "tools.cards.3.line",
   "remembers.text",
-  "chart.title",
-  "chart.lead",
-  "chart.ziwei",
-  "chart.bazi",
-  "chart.cta",
   "academy.text",
-  "principles.text",
-  "principles.tags.0",
-  "principles.tags.1",
-  "principles.tags.2",
+  "offline.text",
+  "offline.tags.0",
+  "offline.tags.1",
+  "offline.tags.2",
+  "offline.tags.3",
   "finalCta.headline",
 ];
 
-const PAGE_KEYS = [...HERO_KEYS, ...BODY_KEYS];
+/** 命例走查：标题、引言与五步的标题加正文。 */
+const JOURNEY_KEYS = [
+  "case.title",
+  "case.lead",
+  "case.steps.0.title",
+  "case.steps.0.body",
+  "case.steps.1.title",
+  "case.steps.1.body",
+  "case.steps.2.title",
+  "case.steps.2.body",
+  "case.steps.3.title",
+  "case.steps.3.body",
+  "case.steps.4.title",
+  "case.steps.4.body",
+];
 
-const LIMIT = { hero: 9, page: 250, faqAnswer: 60 };
+const LIMIT = {
+  hero: 9,
+  surface: 320,
+  journey: 240,
+  cardDetail: 110,
+  faqAnswer: 70,
+};
 
 /** 英文首屏不设门的那一句，见文件头。 */
 const EN_UNGATED = new Set(["hero.headline"]);
@@ -73,7 +100,7 @@ const failures = [];
 /** 终端按显示宽度对齐：汉字占两列，String.padEnd 只会数字符，得自己补。 */
 function pad(label, columns) {
   const width = [...label].reduce(
-    (n, ch) => n + (/[\u3000-\u9fff\uff00-\uffef]/.test(ch) ? 2 : 1),
+    (n, ch) => n + (/[　-鿿＀-￯]/.test(ch) ? 2 : 1),
     0
   );
   return label + " ".repeat(Math.max(1, columns - width));
@@ -94,14 +121,16 @@ const lines = [];
 // ---- 简体 ----
 lines.push("简体（字，标点不计）");
 lines.push(gate("首屏", sum(zh, HERO_KEYS, countZh), LIMIT.hero));
-lines.push(gate("全页除 FAQ", sum(zh, PAGE_KEYS, countZh), LIMIT.page));
+lines.push(gate("定位与卡面", sum(zh, SURFACE_KEYS, countZh), LIMIT.surface));
+lines.push(gate("命例走查", sum(zh, JOURNEY_KEYS, countZh), LIMIT.journey));
+zh.tools.cards.forEach((card, i) => {
+  lines.push(gate(`卡 ${i + 1} 展开`, countZh(card.detail), LIMIT.cardDetail));
+});
 zh.faq.items.forEach((item, i) => {
   lines.push(gate(`FAQ ${i + 1} 答`, countZh(item.answer), LIMIT.faqAnswer));
 });
 
 // ---- 英文 ----
-const enPageCap = enCapFor(LIMIT.page);
-const enFaqCap = enCapFor(LIMIT.faqAnswer);
 lines.push("");
 lines.push(`英文（词，上限为简体的 ${enCapFor(10) / 10} 倍）`);
 const enHero = sum(en, HERO_KEYS, countEn);
@@ -110,9 +139,21 @@ lines.push(
     ? row("首屏", enHero, "北极星原文，不设门")
     : gate("首屏", enHero, enCapFor(LIMIT.hero))
 );
-lines.push(gate("全页除 FAQ", sum(en, PAGE_KEYS, countEn), enPageCap));
+lines.push(
+  gate("定位与卡面", sum(en, SURFACE_KEYS, countEn), enCapFor(LIMIT.surface))
+);
+lines.push(
+  gate("命例走查", sum(en, JOURNEY_KEYS, countEn), enCapFor(LIMIT.journey))
+);
+en.tools.cards.forEach((card, i) => {
+  lines.push(
+    gate(`卡 ${i + 1} 展开`, countEn(card.detail), enCapFor(LIMIT.cardDetail))
+  );
+});
 en.faq.items.forEach((item, i) => {
-  lines.push(gate(`FAQ ${i + 1} 答`, countEn(item.answer), enFaqCap));
+  lines.push(
+    gate(`FAQ ${i + 1} 答`, countEn(item.answer), enCapFor(LIMIT.faqAnswer))
+  );
 });
 
 console.log(lines.join("\n"));

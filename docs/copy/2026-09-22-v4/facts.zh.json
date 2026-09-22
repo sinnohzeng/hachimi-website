@@ -1,0 +1,204 @@
+{
+  "_": {
+    "说明": "第四版事实稿（spec 005）。人只写事实，措辞由 scripts/polish-copy.mjs 交 deepseek-flash 定。事实出处见 docs/research/2026-09-22-site-v4-research.md 第三节，改事实先改出处。",
+    "limit": "简体可见正文字数上限，标点不计。英文按 0.6 倍单词数收，脚本自己换算。",
+    "verbatim": "北极星、004 定的定位句、差异句与收尾句原样透传，不送润色。",
+    "口径": "学习与研究中国民俗术数的工具类 App。不说预测准、改命、转运；不说安卓已上线；不说八字有流日流时；不点名 DeepSeek 以外的模型；英文名 Hachimi.ai。"
+  },
+  "hero.headline": {
+    "verbatim": true,
+    "text": "慌的时候，先起一卦。",
+    "en": "When it's a lot, cast a hexagram.",
+    "limit": 9
+  },
+  "hero.shotAlt": {
+    "text": "哈基米道长的起卦结果页截图，这一卦是吉，卦象在上，解读在下。",
+    "limit": 32,
+    "alt": true
+  },
+
+  "what.title": {
+    "verbatim": true,
+    "text": "一款学习与研究中国民俗术数的 App：起卦、排盘、管命例，里面住着一只猫道长。",
+    "en": "An app for studying Chinese folk fate arts: cast, chart, keep cases. A cat Daoist lives inside.",
+    "limit": 36
+  },
+
+  "case.title": { "text": "一份命例，四面都在", "limit": 10 },
+  "case.lead": {
+    "text": "命例是这只 App 的枢纽：一位一份，八字、紫微、亲密、问事四面都归它管。为这位起过的每一卦都挂在名下，翻回去对得上。",
+    "limit": 56
+  },
+  "case.steps.0.title": { "text": "建一份命例", "limit": 8 },
+  "case.steps.0.body": {
+    "text": "公历、农历、四柱三种录法任选，出生地按省市选或直接填经度，不在东八区可以选时区。",
+    "limit": 40
+  },
+  "case.steps.1.title": { "text": "排紫微斗数", "limit": 8 },
+  "case.steps.1.body": {
+    "text": "三合、飞星、四化三种盘式一条控件切换，大限、流年、流月逐层叠上去，点一宫就立太极点。",
+    "limit": 40
+  },
+  "case.steps.2.title": { "text": "排八字", "limit": 8 },
+  "case.steps.2.body": {
+    "text": "四柱表每柱十行，从主星、天干一路排到纳音与神煞；专业细盘是六柱表，翻到哪一步大运，全表跟着换。",
+    "limit": 44
+  },
+  "case.steps.3.title": { "text": "为 TA 起一卦", "limit": 8 },
+  "case.steps.3.body": {
+    "text": "问事页选好为谁问，报两个数字，卦在本机当场起出，解读贴着这位的日主讲。",
+    "limit": 36
+  },
+  "case.steps.4.title": { "text": "回看名下每一卦", "limit": 8 },
+  "case.steps.4.body": {
+    "text": "命例详情的问事面按起卦时刻倒序列着名下每一卦：日期、所问、本卦变卦与吉凶，点一行就回到那张结果页。",
+    "limit": 48
+  },
+  "case.shotAlts.0": {
+    "text": "命例列表截图，每行右侧直接显示四柱，按五行上色。",
+    "limit": 26,
+    "alt": true
+  },
+  "case.shotAlts.1": {
+    "text": "紫微斗数三合盘截图，十二宫与三方四正。",
+    "limit": 22,
+    "alt": true
+  },
+  "case.shotAlts.2": {
+    "text": "八字四柱表截图，年月日时四柱逐行排到纳音与神煞。",
+    "limit": 26,
+    "alt": true
+  },
+  "case.shotAlts.3": {
+    "text": "起卦结果页截图，这一卦是吉。",
+    "limit": 18,
+    "alt": true
+  },
+  "case.shotAlts.4": {
+    "text": "命例详情问事面截图，名下每一卦按时间倒序列着。",
+    "limit": 26,
+    "alt": true
+  },
+
+  "tools.title": { "text": "四件工具", "limit": 6 },
+  "tools.hint": { "text": "点开一张卡看细节。", "limit": 10 },
+  "tools.cards.0.name": { "text": "梅花易数起卦", "limit": 8 },
+  "tools.cards.0.line": {
+    "text": "报两个数字，卦在本机当场起出；解读由 AI 写，卦不动。",
+    "limit": 26
+  },
+  "tools.cards.0.detail": {
+    "text": "先天八卦数取上下卦，两数加时辰序取动爻；本卦、互卦、变卦与体用在本机排出，附一枚 SHA-256 指纹。解读按卦写，吉凶基调由体用生克定，不由模型发挥。不写问题也能起纯卦。卦历可按命例筛选；道长的记忆按命例隔离，只存本机。",
+    "limit": 110
+  },
+  "tools.cards.1.name": { "text": "紫微斗数", "limit": 8 },
+  "tools.cards.1.line": {
+    "text": "三合、飞星、四化三种盘式，限流五层，格局按规则判。",
+    "limit": 26
+  },
+  "tools.cards.1.detail": {
+    "text": "一份生辰排三合、飞星、四化三种盘式；大限、流年、流月、流日、流时逐层叠盘。格局分析按 84 条规则判，写明出自哪一层。安星设置二十三槽由一个安星码整体表达，贴入别人的码，盘就一样。紫占排盘与四柱反查在更多菜单里；盘上按住星名就出词条卡片。",
+    "limit": 110
+  },
+  "tools.cards.2.name": { "text": "八字排盘", "limit": 8 },
+  "tools.cards.2.line": {
+    "text": "四柱表十行，六柱表七列，大运流年流月跟着换。",
+    "limit": 26
+  },
+  "tools.cards.2.detail": {
+    "text": "四个页签：基本信息、基本排盘、专业细盘、断事笔记。四柱表十行，从主星到神煞按五行上色；专业细盘的六柱表页首写清当前大运与流年，大运、流年、流月各带横滑。神煞按四柱与大运分档，刑冲合害写清原局与岁运；人元司令分日诀六套任选；每个字段长按出词条。",
+    "limit": 110
+  },
+  "tools.cards.3.name": { "text": "命例库", "limit": 8 },
+  "tools.cards.3.line": {
+    "text": "一位一份，分组、筛选、备份、同步，卦随命例走。",
+    "limit": 26
+  },
+  "tools.cards.3.detail": {
+    "text": "八个分组可改名；列表按首字母或分组分节，四种排序，六节筛选：性别、分组、日主五行、日主天干、生肖、出生年代；行上直接显示四柱。备份到 iCloud 或文件，本机每天自动备一份、留最近七份；单条命例可分享，对方打开即合并进自己的库；登录 iCloud 的设备之间自动同步。删一位命例，名下的卦一起走。",
+    "limit": 110
+  },
+
+  "remembers.text": {
+    "verbatim": true,
+    "text": "通用 AI 不记得你上回问过什么，道长记得，一卦接一卦陪你。",
+    "en": "A chatbot forgets what you asked last time. The Master remembers, cast after cast.",
+    "limit": 26
+  },
+
+  "academy.text": {
+    "text": "山医命相卜五科 154 本古籍 2408 章随 App 装好，飞行模式也翻得开；盘上按住一个名字，就读它是什么意思。",
+    "limit": 44
+  },
+
+  "offline.text": {
+    "verbatim": true,
+    "text": "排盘在你手机里算完，飞行模式也能排。",
+    "en": "Your chart runs on your phone, even offline.",
+    "limit": 17
+  },
+  "offline.tags.0": { "text": "本机排盘", "limit": 6 },
+  "offline.tags.1": { "text": "生辰不出设备", "limit": 6 },
+  "offline.tags.2": { "text": "不用注册账号", "limit": 6 },
+  "offline.tags.3": { "text": "备份在你手里", "limit": 6 },
+
+  "faq.items.0.question": { "text": "这是真的算命吗？", "limit": 12 },
+  "faq.items.0.answer": {
+    "verbatim": true,
+    "text": "不是。哈基米道长是学习与研究中国民俗术数的工具，也供娱乐与情绪陪伴。它不预测未来，不改命，不转运，也不声称准。真要拿主意，找有资质的人谈。",
+    "en": "No. It is a tool for studying Chinese folk fate arts, for fun and company. It does not predict, change fate or bring luck, and never claims to be right. Big decisions need a qualified person.",
+    "limit": 70
+  },
+  "faq.items.1.question": {
+    "text": "同样数字起卦每次结果一样吗？",
+    "limit": 14
+  },
+  "faq.items.1.answer": {
+    "text": "相同的数字和时辰，按固定方法起的必是同一卦，不掷骰子。卦定下来后，第三方 AI 服务才写解读，改不动卦象。",
+    "limit": 70
+  },
+  "faq.items.2.question": { "text": "排盘要联网吗？", "limit": 12 },
+  "faq.items.2.answer": {
+    "text": "不用。紫微与八字两张盘都在本机算，飞行模式也能出盘，生辰不出这台设备。格局分析与四柱反查两项走网络。",
+    "limit": 70
+  },
+  "faq.items.3.question": {
+    "text": "三合盘、四化盘、飞星盘有什么不一样？",
+    "limit": 18
+  },
+  "faq.items.3.answer": {
+    "text": "三合看星曜亮度、生年四化与限流叠宫；飞星看宫干飞化与来因宫；四化把四化星放大，画出飞化连线。同一份生辰三盘随时切，都在本机算。",
+    "limit": 70
+  },
+  "faq.items.4.question": { "text": "命例会不会丢？", "limit": 12 },
+  "faq.items.4.answer": {
+    "text": "命例存在你的设备与你自己的 iCloud 私有库。可以存成文件、分享给别人，也能从文件导回；本机每天自动备份一份，留最近七份。删除只由你自己动手。",
+    "limit": 70
+  },
+  "faq.items.5.question": { "text": "道长怎么记得我问过什么？", "limit": 14 },
+  "faq.items.5.answer": {
+    "text": "每卦读完，道长在你手机上存一小段要点，按命例分开放；下次为同一位问相关的事，至多带三段，只用来写这一次，随时可关。",
+    "limit": 70
+  },
+  "faq.items.6.question": { "text": "解读是谁写的？", "limit": 12 },
+  "faq.items.6.answer": {
+    "text": "卦在本机起出，后端重算一遍对上校验和，才由 DeepSeek 写解读。首次在线问事会先征求你的同意；解读每天有次数，用完明天再来。",
+    "limit": 70
+  },
+  "faq.stillHaveQuestions": { "text": "还有别的想问？", "limit": 8 },
+  "faq.contact": { "text": "联系哈基米道长", "limit": 8 },
+
+  "finalCta.headline": {
+    "verbatim": true,
+    "text": "把道长装进手机，卦、盘、命例都在一处。",
+    "en": "Put the Master in your pocket: casts, charts, cases.",
+    "limit": 18
+  },
+
+  "nav.case": { "text": "命例", "limit": 4 },
+  "nav.tools": { "text": "工具", "limit": 4 },
+  "nav.academy": { "text": "学堂", "limit": 4 },
+  "nav.methodology": { "text": "起卦的门道", "limit": 6 },
+  "nav.faq": { "text": "常见问题", "limit": 6 },
+  "nav.download": { "text": "下载 App", "limit": 6 }
+}

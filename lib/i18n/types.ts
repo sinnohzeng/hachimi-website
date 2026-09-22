@@ -1,7 +1,8 @@
 export type Translations = {
-  // Header
+  // Header：五项加一个下载。前三项与常见问题是首页锚，起卦的门道是真页。
   nav: {
-    chart: string;
+    case: string;
+    tools: string;
     academy: string;
     methodology: string;
     faq: string;
@@ -27,48 +28,56 @@ export type Translations = {
     shotAlt: string;
   };
 
-  // 第二节 这是什么：品类锚做标题，三步做正文。
-  whatItIs: {
+  // 第二节 定位（#what）：一句品类锚，随滚动逐字点亮。
+  what: {
     title: string;
-    steps: string[];
   };
 
-  // 第三节 道长记得：差异句一句，整节只有这一句。
+  // 第三节 命例走查（#case）：一句引言加五步，桌面端钉住手机随滚动换屏。
+  // steps 与 shotAlts 一一对应，顺序就是走查顺序，改一边要改另一边。
+  case: {
+    title: string;
+    lead: string;
+    steps: {
+      title: string;
+      body: string;
+    }[];
+    /** 五张截图的 alt，顺序同 steps。 */
+    shotAlts: string[];
+  };
+
+  // 第四节 四件工具（#tools）：四张卡，卡面只有名字与一句，点开才见机制事实。
+  tools: {
+    title: string;
+    /** 卡组上方那句操作提示。 */
+    hint: string;
+    cards: {
+      name: string;
+      line: string;
+      /** 展开后的机制事实，出处见 docs/research 的 App 清单。 */
+      detail: string;
+    }[];
+  };
+
+  // 第五节 道长记得：差异句一句，整节只有这一句，逐字揭示。
   remembers: {
     text: string;
   };
 
-  // 第四节 排一张盘：紫微一句一图、八字一句一图，外加一条进方法页的链接。
-  // 三种盘式、格局规则、安星设置这些机制都搬去了方法页的排盘一节。
-  chart: {
-    title: string;
-    /** 标题下一句：多命例管理与每份命例名下的卦。 */
-    lead: string;
-    ziwei: string;
-    bazi: string;
-    /** 链接文字，指向 /{locale}/methodology#paipan。 */
-    cta: string;
-    shotAlts: {
-      ziwei: string;
-      bazi: string;
-    };
-  };
-
-  // 第五节 学堂：一句，不配图。学堂改版落地后再补一张根屏图。
+  // 第六节 学堂（#academy）：一句加书名跑马灯，书名在 lib/academy-titles.ts。
   academy: {
     text: string;
   };
 
-  // 第六节 本机算：一句加三个标签。
-  principles: {
+  // 第七节 本机（#offline）：一句加四个标签，细线框容器。
+  offline: {
     text: string;
     tags: string[];
   };
 
-  // FAQ
+  // 第八节 常见问题（#faq）：七条，第一条直答“这是真的算命吗”。
   faq: {
     title: string;
-    subtitle: string;
     items: {
       question: string;
       answer: string;
@@ -77,7 +86,7 @@ export type Translations = {
     contact: string;
   };
 
-  // 第七节的结尾：商店徽章加一句话，不再带补充小字。
+  // 第九节 收尾（#download）：一句加商店徽章，底下是五张截图的扇形。
   finalCta: {
     headline: string;
   };

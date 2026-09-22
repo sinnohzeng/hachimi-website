@@ -38,11 +38,12 @@ function HamburgerIcon({
   );
 }
 
-// 四项制：命盘 · 学堂（两个首页锚）· 起卦与排盘的门道（真页，作品集观众的确定
-// 入口）· 常见问题。第三版撤掉了“怎么玩”那一节，导航跟着少一项；“这是什么”
-// 与“道长记得”两节紧接首屏，滚一下就到，不另设锚点。
+// 五项制：命例 · 工具 · 学堂（三个首页锚）· 起卦的门道（真页，作品集观众的确定
+// 入口）· 常见问题，右侧另有下载。定位、道长记得、本机三节各自紧跟着主节，滚一下
+// 就到，不另设导航项。
 const navItems = [
-  { key: "chart", hash: "#chart" },
+  { key: "case", hash: "#case" },
+  { key: "tools", hash: "#tools" },
   { key: "academy", hash: "#academy" },
   { key: "methodology", hash: null },
   { key: "faq", hash: "#faq" },

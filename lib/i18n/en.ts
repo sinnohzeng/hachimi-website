@@ -2,7 +2,8 @@ import type { Translations } from "./types";
 
 export const en: Translations = {
   nav: {
-    chart: "Chart",
+    case: "Cases",
+    tools: "Tools",
     academy: "Academy",
     methodology: "How it's built",
     faq: "FAQ",
@@ -22,16 +23,76 @@ export const en: Translations = {
     headline: "When it's a lot, cast a hexagram.",
     headlineLines: ["When it's a lot,", "cast a hexagram."],
     shotAlt:
-      "Master Hachimi reading result page: hexagram on top, reading below.",
+      "Hachimi.ai cast result page screenshot: this hexagram reads auspicious, the hexagram on top and the reading below.",
   },
 
-  whatItIs: {
+  what: {
     title:
       "An app for studying Chinese folk fate arts: cast, chart, keep cases. A cat Daoist lives inside.",
+  },
+
+  case: {
+    title: "One case, four sides.",
+    lead: "The case is the hub: one per person, with Ba Zi, Zi Wei, intimacy and asking under it. Every cast for them hangs there.",
     steps: [
-      "Just say two numbers, by instinct.",
-      "Write down what you want to ask.",
-      "The Master casts, then gives a first step.",
+      {
+        title: "Create a case",
+        body: "Enter by solar date, lunar date or four pillars, with a birthplace or longitude and any time zone.",
+      },
+      {
+        title: "Chart Zi Wei",
+        body: "San He, Flying Star and Four Transformations on one control; cycles stack; tap a palace to set the Tai Ji point.",
+      },
+      {
+        title: "Chart Ba Zi",
+        body: "Ten rows per pillar, from main star down to Nayin and symbolic stars; the pro chart is a six-pillar table.",
+      },
+      {
+        title: "Cast for them",
+        body: "Pick who it is for, say two numbers, and the hexagram is cast on the spot, read against their day master.",
+      },
+      {
+        title: "Look back at casts",
+        body: "The asking side lists every hexagram cast for them, newest first; tap a row for that result page.",
+      },
+    ],
+    shotAlts: [
+      "Case list screenshot: every row shows the four pillars on the right, colored by the five elements.",
+      "Zi Wei Dou Shu San He chart screenshot with the twelve palaces and the three-way four-point links.",
+      "Ba Zi four-pillar table screenshot, year month day hour rows down to Nayin and the symbolic stars.",
+      "Cast result page screenshot: this hexagram reads auspicious.",
+      "Case detail asking side screenshot: every hexagram under the case, newest first.",
+    ],
+  },
+
+  tools: {
+    title: "Four tools",
+    hint: "Open a card for the detail.",
+    cards: [
+      {
+        name: "Mei Hua Yi Shu casting",
+        line: "Say two numbers and the hexagram is cast on your phone. AI writes the reading; the hexagram does not move.",
+        detail:
+          "Upper and lower trigrams come from the early-heaven numbers, the moving line from the two numbers plus the hour index. Original, nuclear and changed hexagrams and the body-use relation are computed on your phone with a SHA-256 fingerprint. The tone follows the body-use cycle, not the model. History filters by case; memory stays on device.",
+      },
+      {
+        name: "Zi Wei Dou Shu",
+        line: "San He, Flying Star and Four Transformations; five cycle layers; patterns judged by rule.",
+        detail:
+          "One birth time gives San He, Flying Star and Four Transformations. Major, annual, monthly, daily and hourly cycles stack layer by layer. Pattern analysis runs 84 rules and names the layer each one comes from. Twenty-three star-placement slots are carried by one code: paste someone else's code and the chart matches. Press a star name for its entry.",
+      },
+      {
+        name: "Ba Zi charting",
+        line: "Ten rows in the four-pillar table, seven columns in the six-pillar table; major, annual and monthly cycles follow.",
+        detail:
+          "Four tabs: basics, basic chart, pro chart, notes. The four-pillar table has ten rows, from main star to symbolic stars, colored by the five elements. The six-pillar table names the current major and annual cycle at the top, each with a horizontal scroll. Six hidden-stem rulebooks to choose from; press any field for its entry.",
+      },
+      {
+        name: "Case library",
+        line: "One per person: groups, filters, backup, sync; casts travel with the case.",
+        detail:
+          "Eight groups, all renamable. The list sections by initial or group, with four sort orders and six filter sections. Back up to iCloud or a file; the phone keeps a daily backup and the last seven. A single case can be shared and merges straight into the other library; devices on one iCloud sync themselves. Delete a case and its casts go with it.",
+      },
     ],
   },
 
@@ -39,32 +100,22 @@ export const en: Translations = {
     text: "A chatbot forgets what you asked last time. The Master remembers, cast after cast.",
   },
 
-  chart: {
-    title: "To see it clearly, lay out a chart.",
-    lead: "Each person is a case, charts and casts together.",
-    ziwei:
-      "Zi Wei Dou Shu: one birth time, three charts: San He, Four Transformations, Flying Star.",
-    bazi: "Ba Zi chart with four or six pillars; each major cycle step updates the chart.",
-    cta: "See how charts work",
-    shotAlts: {
-      ziwei:
-        "Zi Wei Dou Shu San He chart screenshot with the twelve palaces and the three-way four-point links",
-      bazi: "Ba Zi Four Pillars table screenshot, year month day hour rows down to Nayin and Symbolic Stars",
-    },
-  },
-
   academy: {
-    text: "The five arts: Mountain, Medicine, Fate, Physiognomy, Divination. 154 old books, 2408 chapters, ready in the app.",
+    text: "The five arts, Mountain, Medicine, Fate, Physiognomy and Divination: 154 old books and 2408 chapters ship with the app and open in airplane mode. Press a name on a chart to read what it means.",
   },
 
-  principles: {
+  offline: {
     text: "Your chart runs on your phone, even offline.",
-    tags: ["On-device charting", "Works offline", "Two charts"],
+    tags: [
+      "On-device charting",
+      "Birth details stay on device",
+      "No account needed",
+      "Backups are yours",
+    ],
   },
 
   faq: {
     title: "Frequently asked questions",
-    subtitle: "The five most asked questions, all below.",
     items: [
       {
         question: "Is this real fortune telling?",
@@ -74,26 +125,36 @@ export const en: Translations = {
       {
         question: "Do the same numbers give the same hexagram?",
         answer:
-          "The same numbers and hour always give the same hexagram by a fixed method, no dice. Only after the hexagram is set does a third-party AI service write the reading, and it cannot change the hexagram.",
+          "The same numbers and hour always give the same hexagram by a fixed method, no dice. Only once the hexagram is set does a third-party AI service write the reading, and it cannot change the hexagram.",
       },
       {
-        question: "Do I need internet to cast a chart?",
+        question: "Do I need internet to chart?",
         answer:
-          "No. Zi Wei Dou Shu and Ba Zi charts are both calculated on your device, so they work in airplane mode, and your birth details never leave it.",
+          "No. Zi Wei and Ba Zi charts are both computed on your device, so they work in airplane mode and birth details never leave it. Pattern analysis and pillar lookup go over the network.",
+      },
+      {
+        question: "How do San He, Four Transformations and Flying Star differ?",
+        answer:
+          "San He reads star brightness, birth-year transformations and stacked cycle palaces. Flying Star reads palace stems and the origin palace. Four Transformations enlarges the four transforming stars and draws the links. One birth time, three charts, all on your phone.",
+      },
+      {
+        question: "Can I lose my cases?",
+        answer:
+          "Cases live on your device and in your own private iCloud database. You can save them to a file, share them, and import them back. The phone backs up once a day and keeps the last seven. Only you delete them.",
       },
       {
         question: "How does the Master remember what I asked?",
         answer:
-          "After each reading, the Master saves a short note on your phone. Up to three notes may be used for the next related reading, only to write it, and you can turn this off anytime.",
+          "After each reading the Master saves a short note on your phone, kept per case. The next related question for the same person carries at most three notes, used only to write that reading. You can turn it off anytime.",
       },
       {
-        question: "Where are my records kept?",
+        question: "Who writes the reading?",
         answer:
-          "Your reading history and cases stay on your device, and you can delete them anytime. What the backend stores and for how long is listed in the privacy policy.",
+          "The hexagram is cast on your phone, the backend recomputes it and matches the checksum, and only then does DeepSeek write the reading. Your consent is asked before the first online question. Readings have a daily count.",
       },
     ],
     stillHaveQuestions: "Still have questions?",
-    contact: "Contact Master Hachimi",
+    contact: "Contact Hachimi.ai",
   },
 
   finalCta: {
@@ -107,7 +168,7 @@ export const en: Translations = {
       {
         title: "Product",
         items: [
-          { label: "Chart", href: "/en#chart" },
+          { label: "Cases", href: "/en#case" },
           { label: "Academy", href: "/en#academy" },
           { label: "How it's built", href: "/en/methodology" },
           { label: "FAQ", href: "/en#faq" },

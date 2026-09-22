@@ -3,6 +3,7 @@
 import { useState, type ReactNode } from "react";
 import { Plus, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
+import { keepPanguSpaces } from "@/components/reveal-headline";
 import type { Translations } from "@/lib/i18n";
 import { DUR, EASE, STAGGER, reveal } from "@/lib/motion-tokens";
 
@@ -63,7 +64,7 @@ function FAQAccordionItem({
             className="overflow-hidden"
           >
             <p className="text-foreground/60 max-w-2xl pb-6 leading-relaxed">
-              {answer}
+              {keepPanguSpaces(answer)}
             </p>
           </motion.div>
         )}
@@ -82,6 +83,8 @@ export function FAQ({ t }: { t: Translations }): ReactNode {
     >
       <div className="relative mx-auto max-w-7xl px-0 xl:px-12">
         <div className="px-8 sm:px-12">
+          {/* 第四版撤掉了标题下那句副标题：它只是在数 FAQ 有几条，条数一改就得
+              跟着改，读者自己也看得出有几条。条目仍全部来自 i18n。 */}
           <div className="mb-12 max-w-2xl">
             <motion.h2
               {...reveal()}
@@ -89,12 +92,6 @@ export function FAQ({ t }: { t: Translations }): ReactNode {
             >
               {t.faq.title}
             </motion.h2>
-            <motion.p
-              {...reveal(0.1, { duration: DUR.base })}
-              className="text-foreground/60 mt-4"
-            >
-              {t.faq.subtitle}
-            </motion.p>
           </div>
 
           <div className="border-foreground/10 border-t">

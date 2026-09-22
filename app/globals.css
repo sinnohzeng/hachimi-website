@@ -144,7 +144,9 @@ html.no-js [data-animate] {
 }
 
 body {
-  overflow-x: hidden;
+  /* clip 而不是 hidden：hidden 会把 body 变成滚动容器（overflow-y 被算成 auto），
+     页内 position: sticky 就只认 body、随页面一起滚走；clip 只裁不滚，sticky 照常认视口。 */
+  overflow-x: clip;
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);

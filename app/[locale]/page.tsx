@@ -1,12 +1,13 @@
-import { AcademyShowcase } from "@/components/academy-showcase";
-import { ChartShowcase } from "@/components/chart-showcase";
+import { AcademyMarquee } from "@/components/academy-marquee";
+import { CaseJourney } from "@/components/case-journey";
 import { FAQ } from "@/components/faq";
 import { FinalCTA } from "@/components/final-cta";
 import { Footer } from "@/components/footer";
 import { Hero } from "@/components/hero";
+import { Manifesto } from "@/components/manifesto";
 import { Principles } from "@/components/principles";
-import { Remembers } from "@/components/remembers";
-import { WhatItIs } from "@/components/what-it-is";
+import { RemembersReveal } from "@/components/reveal-headline";
+import { ToolCards } from "@/components/tool-cards";
 import { FaqStructuredData } from "@/components/structured-data";
 import { getTranslations } from "@/lib/i18n";
 import { localizedPageMetadata } from "@/lib/metadata";
@@ -23,8 +24,8 @@ export async function generateMetadata({
   return localizedPageMetadata({
     locale,
     title: t.hero.headline,
-    // 首屏只剩主标题，描述从第二节的品类锚取：搜索结果那一行要说清这是个什么东西。
-    description: t.whatItIs.title,
+    // 首屏只剩主标题，描述从定位那一节取：搜索结果那一行要说清这是个什么东西。
+    description: t.what.title,
   });
 }
 
@@ -40,13 +41,15 @@ export default async function HomePage({
     <>
       <FaqStructuredData t={t} />
       <main id="main-content" className="flex-1">
-        {/* 七节，顺序即 spec 001 的表：一句首屏 → 这是什么 → 道长记得 → 排一张盘
-            → 学堂 → 本机算 → FAQ 与结尾。加节先改 spec，不在这里悄悄插。 */}
+        {/* 九节，顺序即 spec 005 的节表：一句首屏 → 定位 → 一份命例四面都在 →
+            四件工具 → 道长记得 → 学堂 → 本机 → 常见问题 → 收尾。加节先改 spec，
+            不在这里悄悄插。 */}
         <Hero t={t} locale={locale} />
-        <WhatItIs t={t} />
-        <Remembers t={t} />
-        <ChartShowcase t={t} locale={locale} />
-        <AcademyShowcase t={t} />
+        <Manifesto t={t} />
+        <CaseJourney t={t} />
+        <ToolCards t={t} />
+        <RemembersReveal t={t} />
+        <AcademyMarquee t={t} locale={locale} />
         <Principles t={t} />
         <FAQ t={t} />
         <FinalCTA t={t} locale={locale} />
