@@ -20,7 +20,7 @@ owner 2026-09-22 定：把 hachimi-orb 仓最新的哈基米道长形象引进 i
 ### 验收标准
 
 1. GIVEN 首屏与页脚，THEN 用 `@rive-app/webgl2` 播 `public/brand/hachimi-orb.riv`，文件 SHA-256 与 iOS 包里的一致（`0fcefe713ef1…`），来源清单记版本 0.16.0、契约 13。
-2. GIVEN 在场地图，THEN 首屏标准档 `lively`、seed 1、`theme=dark`；页脚标准档 `calm`、seed 2，明暗跟站点走；两处 `palette=amber`、`facing=rest`、`background=false`，不放纸底卡片（owner 2026-09-22 看过首版后定：外框画蛇添足）。眼睛按纸底色实描，与球底下页面的色差在一档以内。
+2. GIVEN 在场地图，THEN 首屏标准档 `lively`、seed 1；页脚标准档 `calm`、seed 2；两处明暗都跟站点走；两处 `palette=amber`、`facing=rest`、`background=false`，不放纸底卡片（owner 2026-09-22 看过首版后定：外框画蛇添足）。眼睛按纸底色实描，与球底下页面的色差在一档以内。
 3. GIVEN 鼠标或手指在球的版面框里，THEN 眼睛按球心换算跟过去，离场回正；点在球径六成的命中圆里发 `poke`，忙碌与冷却由文件裁决，宿主不计时。
 4. GIVEN 构建产物，THEN Rive 的 wasm 从自己的域名 `/rive/` 取，页面不向 jsdelivr 或 unpkg 发请求；`npm run check` 里有一道门核对 `.riv` 与静帧的 SHA、契约版本、运行时版本三处一致、wasm 与 node_modules 同字节、宿主不指 CDN。
 5. GIVEN `prefers-reduced-motion: reduce` 或运行时加载失败，THEN 显示同源静帧（标准像、侧望，页脚按站点明暗二选一）；静帧与 canvas 同一几何，换上去人不动位。

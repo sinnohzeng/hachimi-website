@@ -1,6 +1,6 @@
 "use client";
 
-import { type ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import dynamic from "next/dynamic";
 import { motion } from "motion/react";
 import { CatOrb } from "@/components/cat-orb";
@@ -10,22 +10,27 @@ import type { Translations } from "@/lib/i18n";
 import { useReducedMotion } from "@/lib/motion";
 import { mountRise } from "@/lib/motion-tokens";
 
-// 与 shader 首帧观感接近的静态深墨渐变：shader 分包加载期间与 reduced motion
-// 场景共用，避免首屏闪白。
+// 与光束 shader 首帧观感接近的静态渐变，明暗各一版：shader 分包加载期间与 reduced motion
+// 场景共用。深色是夜蓝往琥珀暖的墨底，浅色是纸色 #F4EFE6 上的一点暖光，与
+// lib/shader-palettes.ts 的 amber 两档同源，这样加载完成那一帧不会明暗跳变。
 function ShaderFallback(): ReactNode {
   return (
     <div
-      className="absolute inset-0"
+      className="absolute inset-0 bg-[image:var(--hero-fallback-light)] dark:bg-[image:var(--hero-fallback-dark)]"
       aria-hidden="true"
-      style={{
-        background:
-          "radial-gradient(85% 60% at 50% 100%, rgba(180, 95, 45, 0.28) 0%, rgba(60, 30, 60, 0.18) 45%, rgba(5, 5, 15, 0) 75%), linear-gradient(to bottom, #050510 0%, #08081a 70%, #120d20 100%)",
-      }}
+      style={
+        {
+          "--hero-fallback-light":
+            "radial-gradient(85% 60% at 50% 100%, rgba(245, 158, 11, 0.16) 0%, rgba(232, 214, 184, 0.35) 45%, rgba(244, 239, 230, 0) 75%), linear-gradient(to bottom, #F4EFE6 0%, #F1EADC 70%, #EBE2D0 100%)",
+          "--hero-fallback-dark":
+            "radial-gradient(85% 60% at 50% 100%, rgba(180, 95, 45, 0.28) 0%, rgba(60, 30, 60, 0.18) 45%, rgba(5, 5, 15, 0) 75%), linear-gradient(to bottom, #050510 0%, #08081a 70%, #120d20 100%)",
+        } as CSSProperties
+      }
     />
   );
 }
 
-// three.js 只随本组件在客户端按需加载，不进首屏 bundle（LCP 修复主因之一）。
+// 光束 shader 只随本组件在客户端按需加载，不进首屏 bundle（LCP 修复主因之一）。
 const HeroShader = dynamic(
   () => import("@/components/hero-shader").then((mod) => mod.HeroShader),
   { ssr: false, loading: () => <ShaderFallback /> }
@@ -74,7 +79,7 @@ export function Hero({
               className="mb-3 [--orb-d:96px] lg:ml-[calc(var(--orb-d)*-0.35)]"
             />
             {/* H1 是 LCP 元素：不做挂载后淡入，服务端首帧（含禁 JS）即可见。 */}
-            <h1 className="max-w-xl font-serif text-4xl leading-tight font-medium tracking-tight text-balance text-white sm:text-5xl md:text-6xl lg:text-7xl">
+            <h1 className="text-foreground max-w-xl font-serif text-4xl leading-tight font-medium tracking-tight text-balance sm:text-5xl md:text-6xl lg:text-7xl">
               {/* 断行写死在文案里：这一句的停顿就在逗号上，交给浏览器自己折会折在“先起”中间。 */}
               {t.hero.headlineLines.map((line) => (
                 <span

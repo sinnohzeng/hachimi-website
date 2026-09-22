@@ -13,16 +13,17 @@ export type OrbPlacement = Omit<OrbInputs, "theme"> & {
  * 首屏 lively、页脚 calm，与 App 首页对空态的分档一致：主舞台热闹些，收尾处安静些。
  *
  * 不放纸底卡片（owner 2026-09-22 定：外框画蛇添足）。眼睛是按纸底色实描的，所以明暗要与
- * 球底下的页面对得上：首屏压在深色 shader 上钉 dark，纸底 0D1B2A 与 shader 的深蓝相差一档
- * 看不出来；页脚跟站点明暗走，light 的纸底 F4EFE6 落在 FAFAF8 上、dark 的 0D1B2A 落在
- * 070712 上，差都在一档以内。
+ * 球底下的页面对得上，两处都跟站点明暗走：light 的纸底 F4EFE6 落在首屏纸色光束与页脚的
+ * FAFAF8 上，dark 的 0D1B2A 落在夜蓝光束与 070712 上，差都在一档以内。首屏曾钉 dark，
+ * 那是旧 shader 没有浅色档时的权宜；光束有了明暗两套之后再钉，浅色下就是灰球压纸色，
+ * owner 2026-09-22 看到的“浅色模式猫看不清”即此。规则只有一条：球的明暗永远跟它底下的纸。
  */
 export const PLACEMENTS: Record<OrbSurface, OrbPlacement> = {
   hero: {
     mood: "lively",
     state: "idle",
     facing: "rest",
-    theme: "dark",
+    theme: "site",
     palette: "amber",
     seed: 1,
   },

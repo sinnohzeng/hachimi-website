@@ -207,6 +207,14 @@ textarea:focus-visible {
 
 /* 中文排版没有斜体传统（GB/T 习惯用字体/字号/引号做强调），zh 语境下
    衬线标题等处的 italic 一律回正；en 页不受影响。 */
+/* 中文展示文字只在标点处换行。keep-all 压掉汉字之间的软换行机会，行只在逗号、
+   句号、顿号后面折；一段没有标点又塞不下时 overflow-wrap: anywhere 兜底，不溢出。
+   正文段落不用它：长段按字折行才齐整，这条只给标题与导语这类一眼看完的短句。 */
+:lang(zh) :is(h1, h2, h3, .zh-display) {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
 :lang(zh) .italic {
   font-style: normal;
 }

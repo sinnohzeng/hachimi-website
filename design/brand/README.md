@@ -18,7 +18,7 @@ npm run check
 
 换代步骤：从 hachimi-orb 复制新的 `.riv` 与 `reference/frames/still-dark.png`，改 `orb-source.json` 的版本、契约版本与两个 SHA，跑 `npm run test:orb`。运行时 `@rive-app/webgl2` 在 `package.json` 里精确钉死，清单的 `runtime` 一格要同步改；wasm 由 `scripts/sync-rive-wasm.mjs` 从 node_modules 复制到 `public/rive/`，不入库，页面从自己的域名取，不碰 CDN。
 
-宿主能写的属性以 hachimi-orb 的 `contract.md` 为准，官网这边的名字表在 `lib/orb/contract.ts`，在场地图在 `lib/orb/placement.ts`。球底下不铺卡片：眼睛按纸底色实描，所以首屏钉 `dark`，页脚跟站点明暗走，球身与页面色差在一档以内。
+宿主能写的属性以 hachimi-orb 的 `contract.md` 为准，官网这边的名字表在 `lib/orb/contract.ts`，在场地图在 `lib/orb/placement.ts`。球底下不铺卡片：眼睛按纸底色实描，所以两处都跟站点明暗走，球身与页面色差在一档以内。浅色下是 `8A5F2C` 赭色球身落在纸色上，深色下是 `E8E8E8` 浅灰球身落在夜蓝上，配对表在 hachimi-orb 的 `docs/specs/character-system.md`。
 
 旧 `app-icon-master-1254.png` 仅作历史档案，已从现行生成管线移除。图标母版仍是 Swift 渲染那一版，owner 2026-09-22 定图标暂不随形象换代。
 
