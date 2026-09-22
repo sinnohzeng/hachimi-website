@@ -41,3 +41,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Rive 运行时的 wasm 由 scripts/sync-rive-wasm.mjs 从 node_modules 复制过来，随 predev / prebuild 出，不入库
+/public/rive/

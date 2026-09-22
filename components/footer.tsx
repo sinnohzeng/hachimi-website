@@ -40,10 +40,8 @@ export function Footer({
           <div className="relative w-full px-8 py-12 sm:px-12">
             <div className="flex flex-col justify-between gap-12 lg:flex-row lg:gap-8">
               <div className="lg:max-w-xs">
-                <CatOrb
-                  program="footer"
-                  className="mb-5 w-32 rounded-3xl bg-[#111113]"
-                />
+                {/* 纸底卡片在组件里：眼睛按纸底色实描，卡片色必须等于文件那一档的纸色。 */}
+                <CatOrb surface="footer" className="mb-5 [--orb-d:112px]" />
                 <a href={`/${locale}`} className="flex items-center gap-2">
                   <span className="text-foreground text-lg font-semibold tracking-tight">
                     HACHIMI AI

@@ -56,7 +56,11 @@ export function Hero({
       <div className="relative flex min-h-dvh items-center justify-center px-6 pt-24 sm:px-8 lg:py-0">
         <div className="relative flex w-full max-w-5xl flex-col items-center gap-12 text-center lg:min-h-dvh lg:flex-row lg:justify-between lg:gap-16 lg:text-left">
           <div className="flex flex-col items-center lg:w-[54%] lg:items-start">
-            <CatOrb className="mb-3 w-24 sm:w-28" />
+            {/* 球径 96/112 px 是标准档（96 到 160 pt）的下沿：首屏的主角是那一句话，道长只是陪着。 */}
+            <CatOrb
+              surface="hero"
+              className="mb-3 [--orb-d:96px] sm:[--orb-d:112px]"
+            />
             {/* H1 是 LCP 元素：不做挂载后淡入，服务端首帧（含禁 JS）即可见。 */}
             <h1 className="max-w-xl font-serif text-4xl leading-tight font-medium tracking-tight text-balance text-white sm:text-5xl md:text-6xl lg:text-7xl">
               {/* 断行写死在文案里：这一句的停顿就在逗号上，交给浏览器自己折会折在“先起”中间。 */}

@@ -12,9 +12,15 @@ npm run check
 
 `gen-web-icons.py` 生成 App Router favicon、Apple Touch、PWA 与 OG 图标。maskable 版本使用 `orb-maskable-master-1024.png`，完整原生 Orb 位于画布 75% 的中心安全圆；favicon 是 16/32/48 的 RGBA ICO，避免 Next 解码失败。
 
-`public/brand/orb-model.json`、`orb-golden.json` 和 `orb-source.json` 由 iOS 的 `scripts/export-orb-web.sh` 导出；哈希和原生黄金帧用于检查跨端偏差。生成文件保留原字节，不经过 Prettier。
+## 道长本人：Rive 同源文件
 
-旧 `app-icon-master-1254.png` 仅作历史档案，已从现行生成管线移除。布局和行为验收见 `specs/002-orb-ip-motion/spec.md`。
+首屏与页脚播的是 `public/brand/hachimi-orb.riv`，与 iOS 包里的同一份，由 hachimi-orb 仓的编辑器 Publish 签名导出，SHA 记在 `public/brand/orb-source.json`，与 hachimi-orb 的 `docs/project/current-release.json` 一致。回退静帧 `orb-still.png` 是标准像（`mood=calm`、`facing=rest`、深色纸底档），由 hachimi-orb 的 `tools/still.sh` 截出。三份文件保留原字节，不经过 Prettier。
+
+换代步骤：从 hachimi-orb 复制新的 `.riv` 与 `reference/frames/still-dark.png`，改 `orb-source.json` 的版本、契约版本与两个 SHA，跑 `npm run test:orb`。运行时 `@rive-app/webgl2` 在 `package.json` 里精确钉死，清单的 `runtime` 一格要同步改；wasm 由 `scripts/sync-rive-wasm.mjs` 从 node_modules 复制到 `public/rive/`，不入库，页面从自己的域名取，不碰 CDN。
+
+宿主能写的属性以 hachimi-orb 的 `contract.md` 为准，官网这边的名字表在 `lib/orb/contract.ts`，在场地图在 `lib/orb/placement.ts`。纸底色与球身色成对使用，卡片色必须等于文件那一档的纸色。
+
+旧 `app-icon-master-1254.png` 仅作历史档案，已从现行生成管线移除。图标母版仍是 Swift 渲染那一版，owner 2026-09-22 定图标暂不随形象换代。
 
 ## React Bits Pro Device
 

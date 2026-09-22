@@ -18,7 +18,7 @@ The bilingual (zh / en) marketing site for **Master Hachimi (哈基米道长)**,
 
 Seven sections, in this order (spec: [`specs/001-site-v3-concise/spec.md`](specs/001-site-v3-concise/spec.md)):
 
-- **Hero** - small native cat Orb beside the headline, store badges, one app shot
+- **Hero** - the Rive Orb beside the headline, store badges, one app shot
 - **What it is** - category anchor plus the three steps of a cast
 - **Remembers** - the one line that separates the Master from a chatbot
 - **Chart showcase** - Zi Wei and Ba Zi, one line and one shot each
@@ -44,17 +44,18 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Scripts
 
-| Command                | Description                                                                                    |
-| ---------------------- | ---------------------------------------------------------------------------------------------- |
-| `npm run dev`          | Start development server                                                                       |
-| `npm run build`        | Build for production                                                                           |
-| `npm run start`        | Start production server                                                                        |
-| `npm run lint`         | Run ESLint                                                                                     |
-| `npm run lint:fix`     | Fix ESLint errors                                                                              |
-| `npm run format`       | Format code with Prettier                                                                      |
-| `npm run format:check` | Check code formatting                                                                          |
-| `npm run typecheck`    | Run TypeScript type checking                                                                   |
-| `npm run check`        | The single quality gate: format:check + lint + typecheck + check:mentions + check:copy + build |
+| Command                | Description                                                                                   |
+| ---------------------- | --------------------------------------------------------------------------------------------- |
+| `npm run dev`          | Start development server                                                                      |
+| `npm run build`        | Build for production                                                                          |
+| `npm run start`        | Start production server                                                                       |
+| `npm run lint`         | Run ESLint                                                                                    |
+| `npm run lint:fix`     | Fix ESLint errors                                                                             |
+| `npm run format`       | Format code with Prettier                                                                     |
+| `npm run format:check` | Check code formatting                                                                         |
+| `npm run typecheck`    | Run TypeScript type checking                                                                  |
+| `npm run test:orb`     | Orb asset gate: signed `.riv` and still hashes, runtime version, self-hosted wasm             |
+| `npm run check`        | The single quality gate: format:check + lint + typecheck + test:orb + mentions + copy + build |
 
 ## Quality gate
 
@@ -84,6 +85,7 @@ git config core.hooksPath .githooks
 │   ├── chart-showcase.tsx # Zi Wei + Ba Zi section
 │   ├── faq.tsx            # FAQ accordion
 │   ├── final-cta.tsx      # Final CTA section
+│   ├── cat-orb.tsx        # The Orb: Rive canvas, paper card, still fallback
 │   ├── footer.tsx         # Footer
 │   ├── header.tsx         # Navigation header
 │   ├── hero.tsx           # Hero section
@@ -101,9 +103,12 @@ git config core.hooksPath .githooks
 │   ├── config.ts          # Site config (single source of truth) & feature flags
 │   ├── i18n/              # zh / en translations
 │   ├── metadata.ts        # SEO metadata (built from config.ts)
-│   └── motion.tsx         # Reduced-motion provider & hook
+│   ├── motion.tsx         # Reduced-motion provider & hook
+│   └── orb/               # Orb contract names, placement table and the Rive host
 └── public/
     ├── badges/            # Official store badges (self-hosted, per locale)
+    ├── brand/             # Signed hachimi-orb.riv, its still, source manifest, icons
+    ├── rive/              # Runtime wasm, copied from node_modules at build time (ignored)
     ├── screenshots/zh/    # The three app shots (scripts/build-shots.mjs)
     ├── robots.txt         # Static robots.txt (Content-Signal, sitemap)
     ├── llms.txt           # AI-crawler site summary (+ llms-full.txt)
@@ -201,8 +206,8 @@ This template is licensed for use in commercial projects. You may not resell or 
 
 Built with ❤️ using Next.js, Tailwind CSS, and Motion
 
-## Native Orb brand
+## Orb on Rive
 
-The app character, website hero/footer and icons share the native Swift geometry. See [brand generation](design/brand/README.md), [spec 002](specs/002-orb-ip-motion/spec.md) and [delivery record](specs/002-orb-ip-motion/delivery.md). `npm run check` includes 35-state native frame parity and generated-asset hash checks.
+The hero and footer play the same signed Rive file as the iOS app (`public/brand/hachimi-orb.riv`, from the `hachimi-orb` repo) through `@rive-app/webgl2`, with the wasm self-hosted under `/rive/`. The host only writes the contract inputs, reads the outputs and plays; every motion lives in the file. See [brand assets](design/brand/README.md) and [spec 003](specs/003-orb-on-rive/spec.md). `npm run check` includes the asset gate (`scripts/orb-asset.test.mjs`): file and still hashes, contract and runtime versions, wasm bytes, no CDN.
 
 All three iPhone screenshots use the licensed React Bits Pro Device component through AppShot. Registry setup, responsive adaptations and update steps are documented in [brand generation](design/brand/README.md#react-bits-pro-device).
