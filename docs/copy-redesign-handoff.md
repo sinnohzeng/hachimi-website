@@ -41,8 +41,8 @@
 
 ## 工具与技能
 
-- **写作技能 v7**：源码 `~/Workspace/xuan-jiang/plugins/writing-polish/`。主 SKILL `skills/writing-polish/SKILL.md`；反 AI 味锚点 SSOT `references/anti-ai-taste-anchors.md`（230+ 条）；reviewer 子代理 `agents/writing-reviewer.md`；硬扫脚本 `scripts/scan-ai-taste.sh <file>`。或直接 `/writing-polish`。注意：对 `.ts` 扫描时，ASCII 引号计数是 TypeScript 字符串定界符 `"` 的假阳性，忽略（文案内容用的是弯引号）。
-- **梁宁《真需求》**：应用其产品分析框架。项目调研与思考在 KB `~/sinnoh-kb/wiki/themes/lost-and-found-divination/`（若目录名有变，在 `~/sinnoh-kb/wiki/themes/` 下找占卜/寻物主题）。
+- **写作技能 v7**：源码在 xuan-jiang 仓 `plugins/writing-polish/`。主 SKILL `skills/writing-polish/SKILL.md`；反 AI 味锚点 SSOT `references/anti-ai-taste-anchors.md`（230+ 条）；reviewer 子代理 `agents/writing-reviewer.md`；硬扫脚本 `scripts/scan-ai-taste.sh <file>`。或直接 `/writing-polish`。注意：对 `.ts` 扫描时，ASCII 引号计数是 TypeScript 字符串定界符 `"` 的假阳性，忽略（文案内容用的是弯引号）。
+- **梁宁《真需求》**：应用其产品分析框架。项目调研与思考在知识库 sinnoh-kb 的 `wiki/themes/lost-and-found-divination/`（若目录名有变，在该仓 `wiki/themes/` 下找占卜/寻物主题）。
 
 ## 本 session 已完成（基线）
 

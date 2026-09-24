@@ -93,5 +93,5 @@
 
 内部参照，非外部来源：
 
-- `/Users/hubby/Workspace/Zixuan/hachimi/hachimi-website/app/[locale]/page.tsx`，当前首页组件装配顺序
-- `/Users/hubby/Workspace/Zixuan/hachimi/hachimi-website/lib/i18n/zh.ts`，当前首页中文文案，用于统计现状字数与节数
+- `app/[locale]/page.tsx`，当前首页组件装配顺序
+- `lib/i18n/zh.ts`，当前首页中文文案，用于统计现状字数与节数

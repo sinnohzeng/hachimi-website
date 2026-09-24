@@ -248,7 +248,7 @@ CF Pages 自动部署。
 - 文案铁律真源：[copy-principles.md](copy-principles.md)（全文有效，本文档不复制）
 - 上一轮交接（历史镜鉴）：[copy-redesign-handoff.md](copy-redesign-handoff.md)
 - 词条真源：`lib/i18n/zh.ts` + `en.ts`（结构 `types.ts`）；首屏组件 `components/hero.tsx`
-- 定位一手思考：`~/Workspace/agent-industry/猪猪老公/01-项目梳理/Hachimi.ai/`
+- 定位一手思考：agent-industry 仓 `猪猪老公/01-项目梳理/Hachimi.ai/`
   （01 真需求框架、06 完整案例、08 文案定位——本地专属，不入仓）
 - 产品事实（写文案前必核）：记忆系统已随 iOS 1.1.0 全量出货（卦忆／手记／帮别人问／
   回访／导出），1.3.0（在审，build 261）加召回重权与使用回执；尚无真实用户，一切

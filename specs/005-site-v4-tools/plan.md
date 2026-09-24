@@ -15,7 +15,7 @@
 
 ## B：光束 shader
 
-- 源：`~/reactbitspro-templates/shader/components/shader-canvas.tsx` 与 `lib/shader-variants.ts`；`~/reactbitspro-templates/wireframe/lib/visibility.ts`。
+- 源：reactbits-pro-templates `shader/components/shader-canvas.tsx` 与 `lib/shader-variants.ts`；reactbits-pro-templates `wireframe/lib/visibility.ts`。
 - 组件 `ShaderCanvas({ palette, className })`：ogl Renderer 加全屏 Triangle；DPR 封顶 1.5；60 fps 节流；IntersectionObserver 离屏停、`visibilitychange` 停；减弱动态只画一帧；卸载调 `WEBGL_lose_context`。光标位置与强度平滑追随，只在指针设备上接。
 - 调色板两套各带明暗：`amber`（首屏，深色以 `#0D1B2A` 一路暖到品牌琥珀，浅色是纸色上淡淡的暖光）与 `ink`（收尾，墨与金）。品牌 token 在 `app/globals.css`，别另起颜色。
 - `hero-shader.tsx` 与 `final-cta-shader.tsx` 保持导出名与 `next/dynamic` 用法不变，内部改成 `ShaderCanvas` 加对应调色板；`ShaderFallback` 静态渐变留着顶住分包加载。
@@ -25,14 +25,14 @@
 
 节的规格见 spec 节表；文案先用 `docs/copy/2026-09-22-v4/facts.zh.json` 的 `text`（英文先按 `en` 或自行直译，主对话之后用润色稿覆盖）。i18n 键名照事实稿的键，一字不差。
 
-- `manifesto.tsx`（#what）：源 `~/reactbitspro-templates/cloudlight/components/manifesto.tsx`；中文按字 `split("")`，`sr-only` 留全文；减弱动态直接整句显示。
-- `case-journey.tsx`（#case）：源 `~/reactbitspro-templates/ai-app/components/app-showcase.tsx`。桌面：`sticky top-0 h-svh` 的手机加 `h-[420svh]` 滚动区，五步按 `scrollYProgress` 确定性切屏，左文右机；手机壳用本仓 `components/react-bits/device.tsx`，屏幕层用 `AppShot`（浅深、srcSet 逻辑在它里）。移动端与减弱动态：一张手机加有序步骤列表。五张图名：`case-list`、`ziwei-sanhe`、`bazi-pillars`、`cast-result`、`case-casts`。
-- `tool-cards.tsx`（#tools）：源 `~/reactbitspro-templates/wireframe/components/showcase.tsx` 的 morph cards；四张卡卡面名字加一句，点开 `layoutId` 放大显示 `detail`；键盘可开合，Esc 关；展开内容对读屏可达。
-- `reveal-headline.tsx`：源 `~/reactbitspro-templates/shader/components/reveal-headline.tsx` 的 word-mask，中文按字；用在道长记得那一句。
-- `academy-marquee.tsx`（#academy）：源 `~/reactbitspro-templates/ai-app/components/gallery.tsx` 的 velocity marquee，跑的是书名与科名文字；书名从 hachimi-ios `App/Resources/academy/` 的书目 JSON 里取真书名，挑 24 本公版书写进 `lib/academy-titles.ts`，简繁英三版（英文版跑科名与拼音书名）。
-- `principles.tsx`（#offline）：一句加四个标签，细线框容器（源 `~/reactbitspro-templates/wireframe/components/section-corners.tsx`）。
+- `manifesto.tsx`（#what）：源 reactbits-pro-templates `cloudlight/components/manifesto.tsx`；中文按字 `split("")`，`sr-only` 留全文；减弱动态直接整句显示。
+- `case-journey.tsx`（#case）：源 reactbits-pro-templates `ai-app/components/app-showcase.tsx`。桌面：`sticky top-0 h-svh` 的手机加 `h-[420svh]` 滚动区，五步按 `scrollYProgress` 确定性切屏，左文右机；手机壳用本仓 `components/react-bits/device.tsx`，屏幕层用 `AppShot`（浅深、srcSet 逻辑在它里）。移动端与减弱动态：一张手机加有序步骤列表。五张图名：`case-list`、`ziwei-sanhe`、`bazi-pillars`、`cast-result`、`case-casts`。
+- `tool-cards.tsx`（#tools）：源 reactbits-pro-templates `wireframe/components/showcase.tsx` 的 morph cards；四张卡卡面名字加一句，点开 `layoutId` 放大显示 `detail`；键盘可开合，Esc 关；展开内容对读屏可达。
+- `reveal-headline.tsx`：源 reactbits-pro-templates `shader/components/reveal-headline.tsx` 的 word-mask，中文按字；用在道长记得那一句。
+- `academy-marquee.tsx`（#academy）：源 reactbits-pro-templates `ai-app/components/gallery.tsx` 的 velocity marquee，跑的是书名与科名文字；书名从 hachimi-ios `App/Resources/academy/` 的书目 JSON 里取真书名，挑 24 本公版书写进 `lib/academy-titles.ts`，简繁英三版（英文版跑科名与拼音书名）。
+- `principles.tsx`（#offline）：一句加四个标签，细线框容器（源 reactbits-pro-templates `wireframe/components/section-corners.tsx`）。
 - `faq.tsx`：七条，数据驱动，现有手风琴留着；`FaqStructuredData` 自动跟着。
-- `final-cta.tsx`：源 `~/reactbitspro-templates/ai-app/components/final-cta.tsx` 的截图扇形加 word-mask 标题，扇形用五张站上截图；徽章不动。
+- `final-cta.tsx`：源 reactbits-pro-templates `ai-app/components/final-cta.tsx` 的截图扇形加 word-mask 标题，扇形用五张站上截图；徽章不动。
 - `header.tsx`：导航五项加下载，锚点 `#case #tools #academy /methodology #faq`。
 - `app-shot.tsx`：SHOTS 表加 `case-list` 与 `case-casts`（widths 660 / 1320，dark true；截图改在 iPhone 17 Pro Max 上出，1320 × 2868）；图片文件由主对话生成。
 - `count-copy.mjs`：四档上限按 spec 验收 5 写键表；`footer.tagline` 不计。

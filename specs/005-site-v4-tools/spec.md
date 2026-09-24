@@ -5,7 +5,7 @@
 
 ## 为什么
 
-owner 2026-09-22 定：App 的功能与定位比第三版（2026-09-14）时变了很多，官网可以大幅重构，无历史包袱；参考本机 `~/reactbitspro-templates` 做得“炫酷优雅”；改版前先看改版前的历史版本有没有值得拿回来的。
+owner 2026-09-22 定：App 的功能与定位比第三版（2026-09-14）时变了很多，官网可以大幅重构，无历史包袱；参考本机模板包 reactbits-pro-templates 做得“炫酷优雅”；改版前先看改版前的历史版本有没有值得拿回来的。
 
 四路调研（`docs/research/2026-09-22-site-v4-research.md`）的结论：
 
@@ -63,5 +63,5 @@ owner 2026-09-22 定：App 的功能与定位比第三版（2026-09-14）时变�
 
 - 调研沉淀：`docs/research/2026-09-22-site-v4-research.md`（四路调研的结构化结果）。
 - 事实真源：hachimi-ios `specs/capabilities/*/spec.md`、`docs/architecture.md`、`CHANGELOG.md` 1.13.0；数字见调研的“数字”表。
-- 模板库：`~/reactbitspro-templates/{ai-app,shader,wireframe}`，商业许可只许自用修改，源码只落私有仓。
+- 模板库：reactbits-pro-templates `{ai-app,shader,wireframe}`，商业许可只许自用修改，源码只落私有仓。
 - 文案流程：`docs/copy-principles.md`；事实稿进 `docs/copy/2026-09-22-v4/facts.zh.json`，经 `scripts/polish-copy.mjs` 润色后人工进 `lib/i18n`。

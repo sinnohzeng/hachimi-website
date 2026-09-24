@@ -154,9 +154,9 @@
 
 第三版的砍法出自 owner 2026-09-14 下午三条原话（docs/plan/2026-09-14-site-v3-思路.md 第一节）：首屏只留“慌的时候先起一卦”这一句，八字与紫微往下放；整站字太多，要大刀阔斧重写不是修修补补；官网不等于每一个功能的截图加介绍，取舍是业务的事。当天先做了十六站调研（docs/research/2026-09-14-landing-page-practice.md，A 组 Notion / Things / Bear / Flighty / Headspace / Arc / Duolingo / Calm，B 组 Co-Star / The Pattern / Sanctuary / Nebula / 灵机妙算 / 测测 / 准了 / iztro），对照现状量出来：第二版首页十节加页脚、首屏约 140 字、命盘节三块各带 body 与 2 到 4 条 bullet、截图 11 张。调研采纳六条：首屏一句口号不带副标；全页六到七节；三到四张截图不逐功能配图；硬术语退二级页首页讲场景；一个主 CTA 反复出现；FAQ 留首页且第一条直接回应“这是真的算命吗”。放弃两条：没有真实评分与下载量不摆社会证明；不写“准确率高达 90%”这类量化承诺。读者模型是三路人：从 App Store 跳回来确认的、朋友甩链接来的、搜“紫微斗数排盘 App”进来的懂行人，首页只服务前两路，第三路交给方法论页接住。结果落成 spec 001：七节、首屏 9 字、全页除 FAQ 不超过 250 字、三张截图、count-copy 进 npm run check，命盘机制整体搬进方法论页排盘一节。要看清的一点：把排盘深度藏起来的那条理由（结论 5，“哈基米道长的品牌调性更接近 The Pattern 和测测这一派，紫微斗数、八字、大限流年、神煞等硬术语不该上首页”）是按陪伴与情绪价值的定位推出来的；owner 2026-09-22 把对外定位改成学习与研究中国民俗术数的工具类 App、读者是命理爱好者与职业命理师（spec 004 站位），同一份调研对 iztro 的判词就反过来适用：受众是懂行的人时，术语可以放在最前面。所以第二版被砍掉的命盘深讲、排盘 FAQ、三盘扇形是这次最该翻回来的素材；而一句话首屏、不编社会证明、单一 CTA、FAQ 第一条、不做 bullet 墙这几条与定位无关的克制，仍然成立。
 
-## 二、模板库 `~/reactbitspro-templates`
+## 二、模板库 `reactbits-pro-templates`
 
-`/Users/hubby/reactbitspro-templates` 是 React Bits Pro 官方商业模板集的本地解包，共 10 个模板目录：agency、agentframe、ai-app、ai-saas、cloudlight、finance、minimal、saas、shader、wireframe；另有 `原始压缩包存档/` 存 10 个 zip，agency / ai-saas / finance / saas 日期 2026-05-29，ai-app / minimal / shader 08-23，agentframe / cloudlight / wireframe 09-09。根目录没有 README 与 LICENSE，说明文件在各模板内；agentframe 与 cloudlight 无 `.git`，其余有。10 个全是 Next.js 16 App Router + React 19 + Tailwind v4（CSS-first `@theme inline` token）+ TypeScript strict + `motion/react` + `next-themes` class 暗色 + `lucide-react`，没有一个是 Vite，也没有一个配 `output: "export"`。WebGL 分三条路线：ogl（shader、wireframe），raw WebGL / WebGL2（cloudlight `gl-surface.tsx`、ai-saas fluid cursor 与 bulge cards、finance 的 raw three），React Three Fiber（ai-app OrbitField、minimal DitherCursor、agency wave 与 water ripple）。滚动驱动分两派：GSAP ScrollTrigger（agency、ai-saas、shader value-prop）与 motion `useScroll / useTransform / useSpring`（ai-app、saas、cloudlight、wireframe）。所有模板的 globals.css 用同一套 token 名 `--background / --foreground / --muted / --muted-foreground / --border / --ring`，暗色底 `#0a0a0a`。官网仓本身就是 finance 模板 fork 的：`b1fc2e7 update site name in metadata to "React Bits Pro - Finance Template"` 之后紧接 `a472bf6 feat: redesign website for Hachimi with i18n support`，当前 HEAD `36a08d1` 落地 004 定位口径。
+`reactbits-pro-templates` 是 React Bits Pro 官方商业模板集的本地解包，共 10 个模板目录：agency、agentframe、ai-app、ai-saas、cloudlight、finance、minimal、saas、shader、wireframe；另有 `原始压缩包存档/` 存 10 个 zip，agency / ai-saas / finance / saas 日期 2026-05-29，ai-app / minimal / shader 08-23，agentframe / cloudlight / wireframe 09-09。根目录没有 README 与 LICENSE，说明文件在各模板内；agentframe 与 cloudlight 无 `.git`，其余有。10 个全是 Next.js 16 App Router + React 19 + Tailwind v4（CSS-first `@theme inline` token）+ TypeScript strict + `motion/react` + `next-themes` class 暗色 + `lucide-react`，没有一个是 Vite，也没有一个配 `output: "export"`。WebGL 分三条路线：ogl（shader、wireframe），raw WebGL / WebGL2（cloudlight `gl-surface.tsx`、ai-saas fluid cursor 与 bulge cards、finance 的 raw three），React Three Fiber（ai-app OrbitField、minimal DitherCursor、agency wave 与 water ripple）。滚动驱动分两派：GSAP ScrollTrigger（agency、ai-saas、shader value-prop）与 motion `useScroll / useTransform / useSpring`（ai-app、saas、cloudlight、wireframe）。所有模板的 globals.css 用同一套 token 名 `--background / --foreground / --muted / --muted-foreground / --border / --ring`，暗色底 `#0a0a0a`。官网仓本身就是 finance 模板 fork 的：`b1fc2e7 update site name in metadata to "React Bits Pro - Finance Template"` 之后紧接 `a472bf6 feat: redesign website for Hachimi with i18n support`，当前 HEAD `36a08d1` 落地 004 定位口径。
 
 许可：React Bits Pro Commercial License，版权 “Copyright (c) 2026 React Bits Pro”。agency / agentframe / ai-app / ai-saas / cloudlight / finance / minimal / saas 八份 LICENSE 的 md5 全同 `c70eaa797e33670ef6b1e1cbb7055ffd`。允许：无限个人项目；为自己或客户做无限商业项目；为自用修改源码。禁止：再分发、转售、再许可；分享给未购买者；制作用于分发或销售的衍生品；删改版权声明。shader 与 wireframe 目录没有 LICENSE 文件，各自 README 只写 “licensed for use in commercial projects, may not resell or redistribute”。把组件抄进 hachimi-website 属 “modify the source code for your own use”，再分发禁令意味着源码只能落在私有仓。
 
@@ -164,7 +164,7 @@
 
 #### ai-app（Cortex，AI 手机 App 落地页）（适配 high）
 
-- 路径：/Users/hubby/reactbitspro-templates/ai-app
+- 路径：reactbits-pro-templates 的 ai-app
 - 栈：next 16.1.1、tailwind 4.1.18、motion 12.23.26、three 0.184.0、@react-three/fiber 9.6.1、lenis 1.3.23、next-themes、lucide-react（package-lock 锁定）；README 第 7 行自述 fully static-prerendered
 - 亮点：
   - `components/hero.tsx`（640 行）：R3F OrbitField，四圈图块环绕，SDF 圆角矩形 shader 在片元里算中心径向淡出与底边淡出，`useVelocity(scrollY)` 让滚动越快转越快、各圈滞后成涟漪；intro loader 按图片加载进度计数，`lib/intro.ts` 用 useSyncExternalStore 把 `markIntroDone` 广播给 nav 与 theme-switch；`HERO_IMAGES` 是远程 unsplash，注释明写 WebGL 纹理需 CORS
@@ -178,7 +178,7 @@
 
 #### shader（Lumen）（适配 high）
 
-- 路径：/Users/hubby/reactbitspro-templates/shader
+- 路径：reactbits-pro-templates 的 shader
 - 栈：next 16.1.1、motion 12.38.0、ogl 1.0.11、gsap 3.15.0、lenis 1.3.23、next-themes、lucide-react；next.config 配 `experimental.optimizePackageImports: ["lucide-react","motion"]` 与 `async headers()`
 - 亮点：
   - `components/shader-canvas.tsx`（327 行）：ogl Renderer / Program / Mesh / Triangle 全屏噪声 shader，uniforms `u_pal_base / warm / mid / cool / cursor / rgScale / u_brightness` 全由 palette 驱动，光标位置 `c` 与强度 `ci` 平滑追随，DPR 上限 1.5，60 fps 节流，IntersectionObserver 离屏停、visibilitychange 停、reduced motion 单帧、卸载调 `WEBGL_lose_context`
@@ -191,7 +191,7 @@
 
 #### wireframe（Frame）（适配 high）
 
-- 路径：/Users/hubby/reactbitspro-templates/wireframe
+- 路径：reactbits-pro-templates 的 wireframe
 - 栈：next 16.1.1、motion 12.38.0、ogl 1.0.11、lenis 1.3.23、next-themes、lucide-react；next.config 配 remotePatterns
 - 亮点：
   - `components/dither-shader.tsx`（405 行）：ogl WebGL2 `#version 300 es` ASCII dither，Bayer 4×4 加 `synthesizeCharacter` 五档字形，uniforms iResolution / iTime / iMouse / iMouseActive / uTheme / uVariant / uTransparent / uGlyphColor，`variant: "hero" | "cta"`，`tone` 触发透明模式；主题值逐帧插值，`observeVisibility`（`lib/visibility.ts`）近视口才建 context，同步双绘两帧加 DOM 遮罩挡白闪，注释记录过 8 个 context 同时建导致白闪的教训
@@ -203,7 +203,7 @@
 
 #### cloudlight（适配 medium）
 
-- 路径：/Users/hubby/reactbitspro-templates/cloudlight
+- 路径：reactbits-pro-templates 的 cloudlight
 - 栈：next 16.3.4、tailwind 4.3.3、motion 12.43.0、next-themes、lucide-react；无 three / ogl / gsap / lenis，raw WebGL2；README 第 183 行注明用默认 image optimizer、未配置静态导出
 - 亮点：
   - `components/gl-surface.tsx`（244 行）：零依赖 WebGL2 全屏 fragment 宿主，props `fragment / stillTime / dprCap / resScale / fps`，`low-power` context，uniforms uRes / uTime / uTheme，主题经 MutationObserver 监听 `html.class` 后逐帧 crossfade，reduced motion 只画 `stillTime` 一帧，离屏与隐藏停帧，卸载删 buffer / program 并 loseContext
@@ -215,7 +215,7 @@
 
 #### agentframe（适配 medium）
 
-- 路径：/Users/hubby/reactbitspro-templates/agentframe
+- 路径：reactbits-pro-templates 的 agentframe
 - 栈：next 16.3.4、tailwind 4.3.3、motion 12.43.0、next-themes、lucide-react；无 three / ogl / gsap / lenis；Lora serif + Geist + Geist Mono 走 next/font；README 第 183 行注明未配置静态导出
 - 亮点：
   - `components/landscape-canvas.tsx`（306 行）：canvas 2D 把一张照片量化到 35 色 palette 加 Bayer 4×4 dither，24 fps 只重绘水面条带的 sin 位移与 15 个 glint，pointer 影响 ripple，IntersectionObserver / visibilitychange 暂停，reduced motion 定帧；无 WebGL
@@ -226,7 +226,7 @@
 
 #### agency（Pulsewave）（适配 medium）
 
-- 路径：/Users/hubby/reactbitspro-templates/agency
+- 路径：reactbits-pro-templates 的 agency
 - 栈：next 16.1.1、tailwind 4.1.18、motion 12.23.26、three 0.182.0、@react-three/fiber 9.5.0、@react-three/drei ^10.7.7、@react-three/postprocessing ^3.0.4、gsap 3.14.2、lenis 1.3.17、next-themes
 - 亮点：
   - `components/hero.tsx`（364 行）：R3F 三色波浪 shader，明暗两套混合公式，CRT 扫描线与 beam 高光，`iScroll` 随滚动旋转波向，标题三行 `rotateX -90 / z -200` 3D 翻入
@@ -237,7 +237,7 @@
 
 #### finance（Finaro）（适配 low）
 
-- 路径：/Users/hubby/reactbitspro-templates/finance
+- 路径：reactbits-pro-templates 的 finance
 - 栈：next 16.1.1、tailwind 4.1.18、motion、three 0.182.0 raw 无 r3f、lenis 1.3.17、next-themes、lucide-react；next.config 配 remotePatterns
 - 亮点：
   - `components/hero.tsx`（322 行）与 `final-cta.tsx`：raw three.js simplex 极光 shader，`iMouse` 推开噪声场；官网 `hero-shader.tsx` / `final-cta-shader.tsx` 与此同源
@@ -248,7 +248,7 @@
 
 #### saas（适配 low）
 
-- 路径：/Users/hubby/reactbitspro-templates/saas
+- 路径：reactbits-pro-templates 的 saas
 - 栈：next 16.1.1、motion、lenis 1.3.17、next-themes、lucide-react；next.config 配 unsplash remotePatterns；README 列 Cloudflare Pages / static hosting
 - 亮点：
   - `components/features-bento.tsx`（324 行）：两档 `PhoneMockup` full / compact 嵌在 bento 卡片里，同心装饰圆环，hover 整卡 scale
@@ -259,7 +259,7 @@
 
 #### minimal（适配 low）
 
-- 路径：/Users/hubby/reactbitspro-templates/minimal
+- 路径：reactbits-pro-templates 的 minimal
 - 栈：next 16.1.1、three 0.182.0、@react-three/fiber 9.5.0、@react-three/drei、lenis 1.3.17、clsx、tailwind-merge、next-themes；README 列 Cloudflare Pages / static hosting
 - 亮点：
   - `components/dither-cursor.tsx`（358 行）：R3F + drei useFBO / shaderMaterial ping-pong 模拟，curl noise 扩散，Bayer 8×8 点阵渲染光标拖尾；hero 只在非移动端且标题入视时挂载并平滑淡入
@@ -269,7 +269,7 @@
 
 #### ai-saas（Kraft）（适配 low）
 
-- 路径：/Users/hubby/reactbitspro-templates/ai-saas
+- 路径：reactbits-pro-templates 的 ai-saas
 - 栈：next 16.1.1、motion、gsap 3.14.2、lenis 1.3.17、next-themes；raw WebGL；next.config 配 remotePatterns
 - 亮点：
   - `components/fluid-cursor.tsx`（510 行）：raw WebGL 多 pass 流体模拟，全窗 fixed canvas，`mix-blend-multiply blur`，无指针时自动巡游
@@ -280,32 +280,32 @@
 
 ### 可借的组件
 
-- **AppShowcase pinned phone walkthrough**（/Users/hubby/reactbitspro-templates/ai-app/components/app-showcase.tsx）：讲“建命例 → 排盘 → 起卦 → 回看”四步；`SCREENS` 换成官网 `components/app-shot.tsx` 的 cast-result / ziwei-sanhe / bazi-pillars 三张本地截图，`PhoneFrame` 换成已装的 React Bits Pro Device 并把 `ScreenLayer` 叠层塞进它的 screen slot；`ASIDES` 放命例卡片与卦象小卡。依赖：motion 已装；`useIsDesktop` 从 `ai-app/lib/motion.tsx` 抄一个 hook，`useReducedMotion` 官网 `lib/motion.tsx` 已有；去掉 `next/image` 与 unsplash 改本地 `<img>`
-- **Nav kit（Menu 药丸）**（/Users/hubby/reactbitspro-templates/ai-app/components/nav/nav.tsx 加 morph-label.tsx、menu-icon.tsx、scroll-progress.tsx）：替换官网 `components/header.tsx` 的 mix-blend-exclusion 双 header，中央药丸展开面板放 chart / academy / methodology / faq 与 LangSwitch。依赖：motion、lucide-react 已装；不做 intro loader 时删掉 `useIntroDone`
-- **MagneticLink**（/Users/hubby/reactbitspro-templates/ai-app/components/magnetic-link.tsx）：下载 CTA 与 StoreBadges 外壳，鼠标靠近轻微吸附，`pointerType !== "mouse"` 自动跳过触屏。依赖：motion 已装
-- **Manifesto 逐词 scrub**（/Users/hubby/reactbitspro-templates/ai-app/components/manifesto.tsx，或 /Users/hubby/reactbitspro-templates/cloudlight/components/manifesto.tsx（带 sr-only 全文））：官网 `components/remembers.tsx` 那句“道长记得”改成随滚动逐字点亮。依赖：motion 已装；中文改 `split("")` 按字
-- **Gallery velocity marquee**（/Users/hubby/reactbitspro-templates/ai-app/components/gallery.tsx）：六十四卦卦名或多张 App 截图横向流动，滚动加速可反向。依赖：motion 已装；图片改本地
-- **Testimonials 三列视差**（/Users/hubby/reactbitspro-templates/ai-app/components/testimonials.tsx）：日后有用户评价时用；或把原则 / FAQ 做成视差卡。依赖：motion 已装
-- **FinalCta 扇形照片加 word-mask 标题**（/Users/hubby/reactbitspro-templates/ai-app/components/final-cta.tsx）：官网 `components/final-cta.tsx` 现在是 shader 底加一句加徽章，可加五张截图扇形与 word-mask 标题。依赖：motion 已装
-- **ShaderCanvas 加 shader-variants palette**（/Users/hubby/reactbitspro-templates/shader/components/shader-canvas.tsx 与 lib/shader-variants.ts）：替换官网 `hero-shader.tsx` 与 `final-cta-shader.tsx`，一份组件加两套 palette（amber、ink）；`useShaderVariant` context 简化成 props。依赖：ogl 1.0.11 新引入；three 与 @types/three 可摘掉
-- **Hero 药丸开场**（/Users/hubby/reactbitspro-templates/shader/components/hero.tsx）：首屏 110×60 药丸 1.8 秒扩到全屏，滚动 80px 内退出并收掉边距圆角；Rive 猫放框内。依赖：motion 已装；底层用 ShaderCanvas 或 GlSurface
-- **RevealHeadline word-mask**（/Users/hubby/reactbitspro-templates/shader/components/reveal-headline.tsx）：各节标题揭示，`mutedFrom` 压淡后半句。依赖：motion 已装；中文按字或按官网 `t.hero.headlineLines` 断行数组切
-- **ArrowChip / RollingArrow**（/Users/hubby/reactbitspro-templates/shader/components/arrow-chip.tsx）：方法页链接与下载按钮尾巴的悬停滚动箭头。依赖：lucide-react 已装
-- **Sticky reveal footer**（/Users/hubby/reactbitspro-templates/shader/components/footer.tsx，或 /Users/hubby/reactbitspro-templates/agency/components/footer.tsx（反色版））：页脚从页底揭出；agency 版 `bg-foreground text-background`，main 加 `lg:relative lg:z-10`。依赖：无，纯 CSS sticky
-- **DitherShader 加 observeVisibility**（/Users/hubby/reactbitspro-templates/wireframe/components/dither-shader.tsx 与 lib/visibility.ts）：`tone` 透明模式垫在 Rive 猫下，`variant="cta"` 做 final-cta 右侧版画；近视口才建 context。依赖：ogl 新引入；next-themes 已装
-- **SectionCorners 加 hairline rails**（/Users/hubby/reactbitspro-templates/wireframe/components/section-corners.tsx 与 app/page.tsx 的 `border-x border-border` 容器）：把官网 `components/footer.tsx` 第 22 到 37 行手写的线框抽成全站节容器。依赖：无
-- **Showcase morph cards**（/Users/hubby/reactbitspro-templates/wireframe/components/showcase.tsx）：梅花易数 / 紫微 / 八字 / 命例四张卡，点开 `layoutId` 放大讲细节，替代现在 `chart-showcase.tsx` 的两图。依赖：motion、lucide-react 已装
-- **Community pinned rows**（/Users/hubby/reactbitspro-templates/wireframe/components/community.tsx）：六十四卦或命例卡片双行反向平移。依赖：motion 已装；背景 DitherShader 需 ogl
-- **GlSurface**（/Users/hubby/reactbitspro-templates/cloudlight/components/gl-surface.tsx）：不引 ogl 的备选：零依赖 WebGL2 宿主承载现有 simplex 片元，GLSL 1.0 改 `#version 300 es`。依赖：无；`useReducedMotion` 官网已有
-- **Docking nav**（/Users/hubby/reactbitspro-templates/cloudlight/components/nav.tsx）：hero 内玻璃 header 离开 hero 后切实底 fixed，比 ai-app nav 更适合含 methodology 真页的多页站。依赖：motion、lucide-react 已装
-- **Rail 加 PillTabs**（/Users/hubby/reactbitspro-templates/cloudlight/components/rail.tsx 与 pill-tabs.tsx）：Rail 做节容器；PillTabs 切“梅花 / 紫微 / 八字”截图。依赖：motion 已装
-- **run-journey 三段连线图**（/Users/hubby/reactbitspro-templates/agentframe/components/run-journey.tsx）：“命例 → 排盘 → 卦”追溯链路可视化，SVG dash travel 动画加键盘 tabs。依赖：motion、lucide-react 已装；keyframes `travel` / `signal` 从 agentframe `app/globals.css` 搬
-- **LandscapeCanvas dither**（/Users/hubby/reactbitspro-templates/agentframe/components/landscape-canvas.tsx）：给猫静帧 `public/brand/orb-still-dark.png` 或截图做 35 色点阵纸感。依赖：无，canvas 2D；palette 按品牌重配
-- **GradualBlur**（/Users/hubby/reactbitspro-templates/finance/components/gradual-blur.tsx）：截图列表底部与 header 底部的渐进模糊边缘。依赖：无
-- **LogoLoop**（/Users/hubby/reactbitspro-templates/finance/components/logo-loop.tsx）：卦名 / 星曜名 marquee，hover 减速。依赖：无
-- **HowItWorks sticky steps**（/Users/hubby/reactbitspro-templates/saas/components/how-it-works.tsx）：方法页三步，左栏 sticky 右栏竖线随滚动填充。依赖：motion、lucide-react 已装
-- **TextReveal 逐字**（/Users/hubby/reactbitspro-templates/ai-saas/components/text-reveal.tsx）：口号“慌的时候先起一卦”逐字从中间放大回落，`split("")` 天然按字。依赖：motion 已装
-- **Flowing menu**（/Users/hubby/reactbitspro-templates/agency/components/services.tsx）：方法页目录或页脚大字导航，按鼠标进入边缘滑入覆盖层。依赖：gsap 新引入；建议只保留 `findClosestEdge` 思路用 motion 重写
+- **AppShowcase pinned phone walkthrough**（reactbits-pro-templates ai-app/components/app-showcase.tsx）：讲“建命例 → 排盘 → 起卦 → 回看”四步；`SCREENS` 换成官网 `components/app-shot.tsx` 的 cast-result / ziwei-sanhe / bazi-pillars 三张本地截图，`PhoneFrame` 换成已装的 React Bits Pro Device 并把 `ScreenLayer` 叠层塞进它的 screen slot；`ASIDES` 放命例卡片与卦象小卡。依赖：motion 已装；`useIsDesktop` 从 `ai-app/lib/motion.tsx` 抄一个 hook，`useReducedMotion` 官网 `lib/motion.tsx` 已有；去掉 `next/image` 与 unsplash 改本地 `<img>`
+- **Nav kit（Menu 药丸）**（reactbits-pro-templates ai-app/components/nav/nav.tsx 加 morph-label.tsx、menu-icon.tsx、scroll-progress.tsx）：替换官网 `components/header.tsx` 的 mix-blend-exclusion 双 header，中央药丸展开面板放 chart / academy / methodology / faq 与 LangSwitch。依赖：motion、lucide-react 已装；不做 intro loader 时删掉 `useIntroDone`
+- **MagneticLink**（reactbits-pro-templates ai-app/components/magnetic-link.tsx）：下载 CTA 与 StoreBadges 外壳，鼠标靠近轻微吸附，`pointerType !== "mouse"` 自动跳过触屏。依赖：motion 已装
+- **Manifesto 逐词 scrub**（reactbits-pro-templates ai-app/components/manifesto.tsx，或 reactbits-pro-templates cloudlight/components/manifesto.tsx（带 sr-only 全文））：官网 `components/remembers.tsx` 那句“道长记得”改成随滚动逐字点亮。依赖：motion 已装；中文改 `split("")` 按字
+- **Gallery velocity marquee**（reactbits-pro-templates ai-app/components/gallery.tsx）：六十四卦卦名或多张 App 截图横向流动，滚动加速可反向。依赖：motion 已装；图片改本地
+- **Testimonials 三列视差**（reactbits-pro-templates ai-app/components/testimonials.tsx）：日后有用户评价时用；或把原则 / FAQ 做成视差卡。依赖：motion 已装
+- **FinalCta 扇形照片加 word-mask 标题**（reactbits-pro-templates ai-app/components/final-cta.tsx）：官网 `components/final-cta.tsx` 现在是 shader 底加一句加徽章，可加五张截图扇形与 word-mask 标题。依赖：motion 已装
+- **ShaderCanvas 加 shader-variants palette**（reactbits-pro-templates shader/components/shader-canvas.tsx 与 lib/shader-variants.ts）：替换官网 `hero-shader.tsx` 与 `final-cta-shader.tsx`，一份组件加两套 palette（amber、ink）；`useShaderVariant` context 简化成 props。依赖：ogl 1.0.11 新引入；three 与 @types/three 可摘掉
+- **Hero 药丸开场**（reactbits-pro-templates shader/components/hero.tsx）：首屏 110×60 药丸 1.8 秒扩到全屏，滚动 80px 内退出并收掉边距圆角；Rive 猫放框内。依赖：motion 已装；底层用 ShaderCanvas 或 GlSurface
+- **RevealHeadline word-mask**（reactbits-pro-templates shader/components/reveal-headline.tsx）：各节标题揭示，`mutedFrom` 压淡后半句。依赖：motion 已装；中文按字或按官网 `t.hero.headlineLines` 断行数组切
+- **ArrowChip / RollingArrow**（reactbits-pro-templates shader/components/arrow-chip.tsx）：方法页链接与下载按钮尾巴的悬停滚动箭头。依赖：lucide-react 已装
+- **Sticky reveal footer**（reactbits-pro-templates shader/components/footer.tsx，或 reactbits-pro-templates agency/components/footer.tsx（反色版））：页脚从页底揭出；agency 版 `bg-foreground text-background`，main 加 `lg:relative lg:z-10`。依赖：无，纯 CSS sticky
+- **DitherShader 加 observeVisibility**（reactbits-pro-templates wireframe/components/dither-shader.tsx 与 lib/visibility.ts）：`tone` 透明模式垫在 Rive 猫下，`variant="cta"` 做 final-cta 右侧版画；近视口才建 context。依赖：ogl 新引入；next-themes 已装
+- **SectionCorners 加 hairline rails**（reactbits-pro-templates wireframe/components/section-corners.tsx 与 app/page.tsx 的 `border-x border-border` 容器）：把官网 `components/footer.tsx` 第 22 到 37 行手写的线框抽成全站节容器。依赖：无
+- **Showcase morph cards**（reactbits-pro-templates wireframe/components/showcase.tsx）：梅花易数 / 紫微 / 八字 / 命例四张卡，点开 `layoutId` 放大讲细节，替代现在 `chart-showcase.tsx` 的两图。依赖：motion、lucide-react 已装
+- **Community pinned rows**（reactbits-pro-templates wireframe/components/community.tsx）：六十四卦或命例卡片双行反向平移。依赖：motion 已装；背景 DitherShader 需 ogl
+- **GlSurface**（reactbits-pro-templates cloudlight/components/gl-surface.tsx）：不引 ogl 的备选：零依赖 WebGL2 宿主承载现有 simplex 片元，GLSL 1.0 改 `#version 300 es`。依赖：无；`useReducedMotion` 官网已有
+- **Docking nav**（reactbits-pro-templates cloudlight/components/nav.tsx）：hero 内玻璃 header 离开 hero 后切实底 fixed，比 ai-app nav 更适合含 methodology 真页的多页站。依赖：motion、lucide-react 已装
+- **Rail 加 PillTabs**（reactbits-pro-templates cloudlight/components/rail.tsx 与 pill-tabs.tsx）：Rail 做节容器；PillTabs 切“梅花 / 紫微 / 八字”截图。依赖：motion 已装
+- **run-journey 三段连线图**（reactbits-pro-templates agentframe/components/run-journey.tsx）：“命例 → 排盘 → 卦”追溯链路可视化，SVG dash travel 动画加键盘 tabs。依赖：motion、lucide-react 已装；keyframes `travel` / `signal` 从 agentframe `app/globals.css` 搬
+- **LandscapeCanvas dither**（reactbits-pro-templates agentframe/components/landscape-canvas.tsx）：给猫静帧 `public/brand/orb-still-dark.png` 或截图做 35 色点阵纸感。依赖：无，canvas 2D；palette 按品牌重配
+- **GradualBlur**（reactbits-pro-templates finance/components/gradual-blur.tsx）：截图列表底部与 header 底部的渐进模糊边缘。依赖：无
+- **LogoLoop**（reactbits-pro-templates finance/components/logo-loop.tsx）：卦名 / 星曜名 marquee，hover 减速。依赖：无
+- **HowItWorks sticky steps**（reactbits-pro-templates saas/components/how-it-works.tsx）：方法页三步，左栏 sticky 右栏竖线随滚动填充。依赖：motion、lucide-react 已装
+- **TextReveal 逐字**（reactbits-pro-templates ai-saas/components/text-reveal.tsx）：口号“慌的时候先起一卦”逐字从中间放大回落，`split("")` 天然按字。依赖：motion 已装
+- **Flowing menu**（reactbits-pro-templates agency/components/services.tsx）：方法页目录或页脚大字导航，按鼠标进入边缘滑入覆盖层。依赖：gsap 新引入；建议只保留 `findClosestEdge` 思路用 motion 重写
 
 ### 本仓已有
 
@@ -346,99 +346,99 @@
 
 ### 起卦（梅花易数、仪式、解读、卦历、道长记忆与手记）
 
-- 唯一对用户暴露的起卦法门是梅花易数报数起卦：报两个数字，缺省取设备本地钟点定动爻；先天八卦数取上下卦、两数加时辰序取动爻、含动爻的经卦为用、另一为体；吉凶基调由体用生克固化，不由模型发挥（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/docs/constitution.md §四 起卦法门；docs/adr/0011）
-- 起卦在端上算：按下起卦即冻结两数、时刻、时区，随包 engine bundle 在本机当场排出本卦、互卦、变卦、动爻、体用、方位与 SHA-256 校验和，先落库再谈网络，飞行模式一样起得了卦（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/docs/architecture.md §五 起卦在端上；specs/capabilities/cast/spec.md 问事页末条（086））
-- 问题可不填：不写问题也能起卦（纯卦），纯卦只交付确定性卦象，不调模型、不弹许可；事后可在结果页“补问”一句再请解读，解读落回同一卦（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/cast/spec.md 结果页第 6 条；CHANGELOG.md 1.9.0 “纯卦与补问（spec 079）”）
-- 问事页从上到下：道长与招呼句、梅花易数两格报数、所问之事（上限 2000 字素簇，右侧玻璃圆钮听写，iOS 端上语音转写、音频不出设备）、为谁问；两个数字都成立才出现滑动起卦条，滑动全程有触感，辅助技术在场时降级为按钮（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/cast/spec.md §问事页（表单）；CHANGELOG.md 1.11.0 “问事页道长回到最上面”）
-- 起卦仪式：道长到场打招呼（由 Rive 角色定长），随后六爻、卦名与锚句一齐显出，停 350 毫秒交给结果页；离线与在线同一条时间线；低特效档跳过招呼（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/cast/spec.md §起卦仪式）
-- 结果页六段固定：问题头与起卦时刻、卦象（本卦互卦变卦、动爻、体用）、解读位、卦象解释（本卦与变卦锚句、体用五行生克，确定性不经模型）、排盘细节（可折叠，含起卦回执、卦象档案、起卦指纹与“复制排盘，去问别的 AI”导出）、免责；解读位是全页唯一随网络变的一格（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/cast/spec.md §结果页）
-- 解读由后端唯一端点 POST /v1/divine 经可插拔 LLM 生成，此刻是 DeepSeek V4.1 Flash；后端重算一遍卦对校验和才解读；六字段结构化契约（guaPresentation、tiYongAnalysis、fortune、reading、advice、blessing）；断网时解读位写“联网后再试”，路回来或回前台自动重发一次，同一 castId 不重复计额（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/docs/architecture.md §二 ②③、§五；specs/capabilities/cast/spec.md §解读那一趟）
-- 道长卡合成一张、署名一次（“哈基米道长”），依次是解读正文、建议、祝福；没有解读时页面不出现道长头像与称呼（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/cast/spec.md §结果页第 5 条（022、086））
-- 安全分流先于一切：问题经端上引擎 safetyScan 规则表，命中危机档不出结果页、直接进静态分流页、不发任何请求；健康或财务档正常出结果页，解读位换成对应说明；热线与边界提示只来自客户端静态清单（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/docs/constitution.md §一 安全分流；specs/capabilities/cast/spec.md §起卦仪式第 2 条）
-- 结果页有“这卦接住你了吗”本地反馈、“分享这一卦”品牌图卡（卡底一行 cast_ 加 26 位角标，同一卦恒定，不带生辰）与“举报内容”五选一理由；分享图卡始终深色（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/cast/spec.md §结果页第 8 到 9 条；specs/capabilities/me/spec.md §外观页脚句）
-- 道长记忆：每卦解读随响应带回蒸馏产物（主题、情绪、要点、证据），只存端上、按命例隔离；起卦时确定性预排序前三条同命例卦忆瞬态上送，只进解读的 prompt 围栏、绝不进起卦核，有无记忆卦象字节一致；云端零记忆（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/docs/architecture.md §五 记忆陪伴；docs/constitution.md §二 记忆只存端上）
-- 道长手记：结果页“更多”打开这一卦蒸馏的卦忆，可编辑要点、改主题、补记结局、删除；卦历有角标与画像条、回访卡，可整本 Markdown 导出；“我的 → 我的记忆”总开关默认开，关掉后不记新的、不翻旧的，已记的保留（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/docs/architecture.md §五 呈现层；specs/capabilities/cast/spec.md §结果页第 10 条；specs/capabilities/me/spec.md §我的记忆）
-- 卦历：全局列表，可按命例筛选，纯卦、未关联命例与已删除命例的记录都可搜索到；卦历不设条数或时间的自动裁剪，删除只由用户逐条侧滑或“删除本机问事数据”触发（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/cast/spec.md §命例与卦历第 2 条；specs/capabilities/persistence/spec.md §数据留存）
-- 解读按本卦 kingWen 序取对应经典语料拼进提示词，不做向量检索；输入消歧只许单步澄清即停，模型无权二次追问（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/docs/architecture.md §五 解读是工作流（006、007、ADR-0018））
-- 第三方 AI 解读需显式许可：全新安装默认拒绝，首次实际在线问事才弹版本化披露（具名 DeepSeek、逐类字段、留存期），同版本不重复；撤回只在隐私政策承载页底部（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/me/spec.md §第三方 AI 在线解读许可；docs/constitution.md §七）
+- 唯一对用户暴露的起卦法门是梅花易数报数起卦：报两个数字，缺省取设备本地钟点定动爻；先天八卦数取上下卦、两数加时辰序取动爻、含动爻的经卦为用、另一为体；吉凶基调由体用生克固化，不由模型发挥（hachimi-ios docs/constitution.md §四 起卦法门；docs/adr/0011）
+- 起卦在端上算：按下起卦即冻结两数、时刻、时区，随包 engine bundle 在本机当场排出本卦、互卦、变卦、动爻、体用、方位与 SHA-256 校验和，先落库再谈网络，飞行模式一样起得了卦（hachimi-ios docs/architecture.md §五 起卦在端上；specs/capabilities/cast/spec.md 问事页末条（086））
+- 问题可不填：不写问题也能起卦（纯卦），纯卦只交付确定性卦象，不调模型、不弹许可；事后可在结果页“补问”一句再请解读，解读落回同一卦（hachimi-ios specs/capabilities/cast/spec.md 结果页第 6 条；CHANGELOG.md 1.9.0 “纯卦与补问（spec 079）”）
+- 问事页从上到下：道长与招呼句、梅花易数两格报数、所问之事（上限 2000 字素簇，右侧玻璃圆钮听写，iOS 端上语音转写、音频不出设备）、为谁问；两个数字都成立才出现滑动起卦条，滑动全程有触感，辅助技术在场时降级为按钮（hachimi-ios specs/capabilities/cast/spec.md §问事页（表单）；CHANGELOG.md 1.11.0 “问事页道长回到最上面”）
+- 起卦仪式：道长到场打招呼（由 Rive 角色定长），随后六爻、卦名与锚句一齐显出，停 350 毫秒交给结果页；离线与在线同一条时间线；低特效档跳过招呼（hachimi-ios specs/capabilities/cast/spec.md §起卦仪式）
+- 结果页六段固定：问题头与起卦时刻、卦象（本卦互卦变卦、动爻、体用）、解读位、卦象解释（本卦与变卦锚句、体用五行生克，确定性不经模型）、排盘细节（可折叠，含起卦回执、卦象档案、起卦指纹与“复制排盘，去问别的 AI”导出）、免责；解读位是全页唯一随网络变的一格（hachimi-ios specs/capabilities/cast/spec.md §结果页）
+- 解读由后端唯一端点 POST /v1/divine 经可插拔 LLM 生成，此刻是 DeepSeek V4.1 Flash；后端重算一遍卦对校验和才解读；六字段结构化契约（guaPresentation、tiYongAnalysis、fortune、reading、advice、blessing）；断网时解读位写“联网后再试”，路回来或回前台自动重发一次，同一 castId 不重复计额（hachimi-ios docs/architecture.md §二 ②③、§五；specs/capabilities/cast/spec.md §解读那一趟）
+- 道长卡合成一张、署名一次（“哈基米道长”），依次是解读正文、建议、祝福；没有解读时页面不出现道长头像与称呼（hachimi-ios specs/capabilities/cast/spec.md §结果页第 5 条（022、086））
+- 安全分流先于一切：问题经端上引擎 safetyScan 规则表，命中危机档不出结果页、直接进静态分流页、不发任何请求；健康或财务档正常出结果页，解读位换成对应说明；热线与边界提示只来自客户端静态清单（hachimi-ios docs/constitution.md §一 安全分流；specs/capabilities/cast/spec.md §起卦仪式第 2 条）
+- 结果页有“这卦接住你了吗”本地反馈、“分享这一卦”品牌图卡（卡底一行 cast_ 加 26 位角标，同一卦恒定，不带生辰）与“举报内容”五选一理由；分享图卡始终深色（hachimi-ios specs/capabilities/cast/spec.md §结果页第 8 到 9 条；specs/capabilities/me/spec.md §外观页脚句）
+- 道长记忆：每卦解读随响应带回蒸馏产物（主题、情绪、要点、证据），只存端上、按命例隔离；起卦时确定性预排序前三条同命例卦忆瞬态上送，只进解读的 prompt 围栏、绝不进起卦核，有无记忆卦象字节一致；云端零记忆（hachimi-ios docs/architecture.md §五 记忆陪伴；docs/constitution.md §二 记忆只存端上）
+- 道长手记：结果页“更多”打开这一卦蒸馏的卦忆，可编辑要点、改主题、补记结局、删除；卦历有角标与画像条、回访卡，可整本 Markdown 导出；“我的 → 我的记忆”总开关默认开，关掉后不记新的、不翻旧的，已记的保留（hachimi-ios docs/architecture.md §五 呈现层；specs/capabilities/cast/spec.md §结果页第 10 条；specs/capabilities/me/spec.md §我的记忆）
+- 卦历：全局列表，可按命例筛选，纯卦、未关联命例与已删除命例的记录都可搜索到；卦历不设条数或时间的自动裁剪，删除只由用户逐条侧滑或“删除本机问事数据”触发（hachimi-ios specs/capabilities/cast/spec.md §命例与卦历第 2 条；specs/capabilities/persistence/spec.md §数据留存）
+- 解读按本卦 kingWen 序取对应经典语料拼进提示词，不做向量检索；输入消歧只许单步澄清即停，模型无权二次追问（hachimi-ios docs/architecture.md §五 解读是工作流（006、007、ADR-0018））
+- 第三方 AI 解读需显式许可：全新安装默认拒绝，首次实际在线问事才弹版本化披露（具名 DeepSeek、逐类字段、留存期），同版本不重复；撤回只在隐私政策承载页底部（hachimi-ios specs/capabilities/me/spec.md §第三方 AI 在线解读许可；docs/constitution.md §七）
 
 ### 命例（命例库、多命例管理、默认命主、备份与导入导出）
 
-- 命例是全 App 的枢纽身份：紫微盘、八字盘、亲密与问事四面共用同一位命例；打开一条命例，盘页底部模块导航条四格依次为八字、紫微、亲密、问事，缺省第一眼是八字（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/AGENTS.md 这是什么；CHANGELOG.md 1.11.0 “打开一条命例，第一眼是八字”（spec 094））
-- 录入三选一：公历、农历（可选公元或干支纪年，闰月可勾）、四柱（八格干支）；生辰可敲十二位数字一次填完；出生地三种填法：按省市选、手工输经度、取当前位置（只取经度）；非东八区可选时区，含印度 5.5、尼泊尔 5.75 一类半区刻区（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/case-library/spec.md §录入与编辑；CHANGELOG.md “命例录入与备份（2026-09-13，spec 033）”）
-- 命例字段：姓名、性别、生辰、出生地、分组（可空）、备注；八个固定分组槽位可改名，每组上限 100 条，条数在管理分组页（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/case-library/spec.md §录入与编辑、§列表与命例库页末条）
-- 列表按首字母分节带索引条（中文名走拼音首字母），或按八个分组分节；排序四键（创建时间、最后修改、姓名笔画、出生年月）两方向；搜索匹配姓名与出生地；筛选菜单六节可组合：性别、分组、日主五行、日主天干、生肖、出生年代（十年一档），节间且、节内或（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/case-library/spec.md §列表与命例库页）
-- 命例行右侧直接显示四柱、每字按五行上色，姓名过长中间截断四柱不让位；命例列表与“为谁问”挑人表共用同一种行、同一套分节与筛选（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/CHANGELOG.md 1.11.0 “命例列表与‘为谁问’共用同一种行”（spec 093）；specs/capabilities/case-library/spec.md 塑成表 071）
-- “我的命盘”：长按一条命例设为我的命盘，恒排列表第一、姓名后带“我”字标记；“我的 → 紫微斗数”里可开“自动打开我的命盘”，启动后第一次进命盘格直接排出它（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/case-library/spec.md §列表第 7 条；specs/capabilities/ziwei/spec.md §设置第 1 条）
-- 删除是行内二次确认，确认句写清姓名与“连同名下 N 卦”，级联删除该命例名下的卦；命例可单条分享成文件，对方打开即合并进他自己的库、不带你的其他命例（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/case-library/spec.md §列表第 2 条、§归档第 5 条；CHANGELOG.md 1.9.2 “命例现在可以单条分享成文件”）
-- 默认命主：问事页“为谁问”一行，挑人表里“每次起卦都带上这位”开关立默认命主（UserDefaults 键 cast.profile.defaultCaseId），起完一卦回到默认；“我的 → 功能 → 问事”同一格可改；带命主的一卦解读贴着他的日主讲，上行只有七格派生摘要（日主、阴阳、旺衰、格局、调候用神、性别、年龄段），无姓名与生辰（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/cast/spec.md §问事页“为谁问”条、§解读那一趟末条；docs/architecture.md §八 设置真源表 默认命主行）
-- 生辰试算：同一命例内紫微、八字、亲密共用一份试算生辰草稿，农历与四柱可直接编辑，盘顶有状态条随时结束；只有明确“采用”才改正式生辰，原值进修改记录可恢复；草稿随命例导出导入（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/case-library/spec.md §生辰试算）
-- 备份页五段：备份状态、iCloud、存到文件、分享、本机定期备份（缺省开，一天最多一份、留最近 7 份）；外来文件、从文件导入、本机备份挑一份三条来路走同一张两档卡：“合并进现有命例”或“覆盖全部”；空库屏有“从备份恢复”（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/persistence/spec.md §归档文件与备份页；specs/capabilities/case-library/spec.md §归档第 7 条）
-- 归档文件第五版顶层七键（format、version、writtenAt、categories、myChartID、cases、casts），卦随命例一起走；对外标识用 TypeID（case_ 或 cast_ 加 26 位）；更早版本文件整份拒收，不做兼容（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/persistence/spec.md §归档文件第 4 条、§库与标识符）
-- 多设备同步：登录 iCloud 的设备自动把五张表同步到 CloudKit 私有库（CKSyncEngine），逐字段最后写入者赢，没有 App 内开关，系统设置里“iCloud → 哈基米道长”就是开关；没登录、断网、配额满都只是不上云，本机照常读写；退出登录不删本机数据（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/persistence/spec.md §同步；docs/architecture.md §七 多设备同步）
-- 命例数据只进本机与用户自己的 iCloud 私有库，不进日志、遥测或解读提示词；生辰、出生地与姓名不出设备（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/case-library/spec.md §边界末条；specs/capabilities/cast/spec.md §边界第 2 条）
+- 命例是全 App 的枢纽身份：紫微盘、八字盘、亲密与问事四面共用同一位命例；打开一条命例，盘页底部模块导航条四格依次为八字、紫微、亲密、问事，缺省第一眼是八字（hachimi-ios AGENTS.md 这是什么；CHANGELOG.md 1.11.0 “打开一条命例，第一眼是八字”（spec 094））
+- 录入三选一：公历、农历（可选公元或干支纪年，闰月可勾）、四柱（八格干支）；生辰可敲十二位数字一次填完；出生地三种填法：按省市选、手工输经度、取当前位置（只取经度）；非东八区可选时区，含印度 5.5、尼泊尔 5.75 一类半区刻区（hachimi-ios specs/capabilities/case-library/spec.md §录入与编辑；CHANGELOG.md “命例录入与备份（2026-09-13，spec 033）”）
+- 命例字段：姓名、性别、生辰、出生地、分组（可空）、备注；八个固定分组槽位可改名，每组上限 100 条，条数在管理分组页（hachimi-ios specs/capabilities/case-library/spec.md §录入与编辑、§列表与命例库页末条）
+- 列表按首字母分节带索引条（中文名走拼音首字母），或按八个分组分节；排序四键（创建时间、最后修改、姓名笔画、出生年月）两方向；搜索匹配姓名与出生地；筛选菜单六节可组合：性别、分组、日主五行、日主天干、生肖、出生年代（十年一档），节间且、节内或（hachimi-ios specs/capabilities/case-library/spec.md §列表与命例库页）
+- 命例行右侧直接显示四柱、每字按五行上色，姓名过长中间截断四柱不让位；命例列表与“为谁问”挑人表共用同一种行、同一套分节与筛选（hachimi-ios CHANGELOG.md 1.11.0 “命例列表与‘为谁问’共用同一种行”（spec 093）；specs/capabilities/case-library/spec.md 塑成表 071）
+- “我的命盘”：长按一条命例设为我的命盘，恒排列表第一、姓名后带“我”字标记；“我的 → 紫微斗数”里可开“自动打开我的命盘”，启动后第一次进命盘格直接排出它（hachimi-ios specs/capabilities/case-library/spec.md §列表第 7 条；specs/capabilities/ziwei/spec.md §设置第 1 条）
+- 删除是行内二次确认，确认句写清姓名与“连同名下 N 卦”，级联删除该命例名下的卦；命例可单条分享成文件，对方打开即合并进他自己的库、不带你的其他命例（hachimi-ios specs/capabilities/case-library/spec.md §列表第 2 条、§归档第 5 条；CHANGELOG.md 1.9.2 “命例现在可以单条分享成文件”）
+- 默认命主：问事页“为谁问”一行，挑人表里“每次起卦都带上这位”开关立默认命主（UserDefaults 键 cast.profile.defaultCaseId），起完一卦回到默认；“我的 → 功能 → 问事”同一格可改；带命主的一卦解读贴着他的日主讲，上行只有七格派生摘要（日主、阴阳、旺衰、格局、调候用神、性别、年龄段），无姓名与生辰（hachimi-ios specs/capabilities/cast/spec.md §问事页“为谁问”条、§解读那一趟末条；docs/architecture.md §八 设置真源表 默认命主行）
+- 生辰试算：同一命例内紫微、八字、亲密共用一份试算生辰草稿，农历与四柱可直接编辑，盘顶有状态条随时结束；只有明确“采用”才改正式生辰，原值进修改记录可恢复；草稿随命例导出导入（hachimi-ios specs/capabilities/case-library/spec.md §生辰试算）
+- 备份页五段：备份状态、iCloud、存到文件、分享、本机定期备份（缺省开，一天最多一份、留最近 7 份）；外来文件、从文件导入、本机备份挑一份三条来路走同一张两档卡：“合并进现有命例”或“覆盖全部”；空库屏有“从备份恢复”（hachimi-ios specs/capabilities/persistence/spec.md §归档文件与备份页；specs/capabilities/case-library/spec.md §归档第 7 条）
+- 归档文件第五版顶层七键（format、version、writtenAt、categories、myChartID、cases、casts），卦随命例一起走；对外标识用 TypeID（case_ 或 cast_ 加 26 位）；更早版本文件整份拒收，不做兼容（hachimi-ios specs/capabilities/persistence/spec.md §归档文件第 4 条、§库与标识符）
+- 多设备同步：登录 iCloud 的设备自动把五张表同步到 CloudKit 私有库（CKSyncEngine），逐字段最后写入者赢，没有 App 内开关，系统设置里“iCloud → 哈基米道长”就是开关；没登录、断网、配额满都只是不上云，本机照常读写；退出登录不删本机数据（hachimi-ios specs/capabilities/persistence/spec.md §同步；docs/architecture.md §七 多设备同步）
+- 命例数据只进本机与用户自己的 iCloud 私有库，不进日志、遥测或解读提示词；生辰、出生地与姓名不出设备（hachimi-ios specs/capabilities/case-library/spec.md §边界末条；specs/capabilities/cast/spec.md §边界第 2 条）
 
 ### 紫微斗数
 
-- 紫微盘在本机由随包 JavaScriptCore 引擎（hachimi-engine 同一份内核）排出，飞行模式下新建命例同样立刻出盘；换设置、换层、挪生辰都是即时重排，不存在离线缓存与“显示上次结果”提示（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/ziwei/spec.md §引擎与离线；docs/adr/0038）
-- 盘面三式：三合（星曜亮度、生年四化、限流叠宫）、飞星（虚岁串、公元年串、大限宫名、来因宫红框）、四化（灰星配大号红色 ABCD 与飞化连线）；一条系统分段控件钉在导航栏下沿切换，切换不重新请求（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/ziwei/spec.md §盘面与三式第 2 条）
-- 十二宫加中宫方格盘，按格宽等比排版；点任一宫立太极点，其余宫名前出现“X之Y”，该宫宫干四化四颗星带底色，三方四正虚线或色块；星名三档配色主星红、辅星紫、杂曜蓝，身宫竖排两字红框（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/ziwei/spec.md §盘面与三式第 1、4 条）
-- 中宫本命态五枚快捷键（日↑、日↓、天盘▽、时↑、时↓），天盘▽ 点开切中州派地盘、人盘或命盘调整；限流态换成六枚层开关（本、限、年、月、日、时）（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/ziwei/spec.md §盘面与三式第 3 条）
-- 缩放是重新排版不是拉伸：双指 1.0 到 3.2 倍连续缩放，双击在整屏与 2.0 倍之间切换并把点到的宫居中；平移交给系统滚动视图带惯性与橡皮筋；VoiceOver 逐宫朗读（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/ziwei/spec.md §缩放与平移）
-- 限流：大限、流年、流月、流日、流时逐层叠盘；面板两形态（平铺、紧凑）四种规格（二、四、五、七层）；闰月流月带标记可选排法；限流层飞化箭头按“层命宫宫干四化落本宫或对宫”画；切层只重算变化的格，几乎感觉不到等待（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/ziwei/spec.md §限流）
-- 格局分析：“更多 → 格局分析”列出本命盘成立的格局，每条带吉凶徽标、手风琴展开正文，限流态按层判并写明出自哪一层；只对三合盘有效；格局判定是内核规则表，端上一个字不抄（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/ziwei/spec.md §格局、四柱反查、紫占、命盘调整第 1 条；CHANGELOG.md “格局分析页（2026-09-13，spec 034）”）
-- 四柱反查：选四柱与六十年窗口反查公历日期（公历与农历各写一行），可直接排盘或存成命例；老命书只有四柱没有公历日期时从这里进（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/ziwei/spec.md §格局、四柱反查、紫占、命盘调整第 2 条；CHANGELOG.md “四柱反查页（2026-09-13，spec 035）”）
-- 紫占排盘：不按生辰、按此刻时间或一个报数起一张盘问事，六项起法（当前时刻男盘、女盘，系统随机自动、报数，当前时刻起七层限流盘男盘、女盘），可选当前位置经度参与，起出的盘不入命例库除非勾选保存（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/036-zizhan-page/spec.md 验收 1；specs/capabilities/ziwei/spec.md §格局等第 2 条）
-- 命盘调整与中州派：调月系星位置、调命宫位置（给双胞胎定盘或别派起法用），调整过的盘中宫短码显示星号；中州派地盘、人盘一键切（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/ziwei/spec.md §格局等第 3 条；CHANGELOG.md “命盘调整与中州派天地人盘（2026-09-13，spec 037）”）
-- 安星设置：二十三槽由一个安星码整体表达，可复制、贴入、恢复出厂，输一个别人给的码盘就与对方一模一样；设置三层（枢纽页三节十行、八页分页、系统 Picker），拨一下当场生效重排，无保存按钮；排盘规则含安星方法、四化表、历法、安星码四页（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/030-anxing-settings-page/spec.md 头注与用户故事 2；specs/capabilities/ziwei/spec.md §设置）
-- 星曜显隐按星逐个关：四空（截空、副截、旬空、副旬）、六枚杂曜（华盖、劫煞、咸池、天德、月德、龙德）、流曜逐星、大限流年精简、精简星曜；层色五枚（大限到流时）可单独关；三方四正可选指示线或色块；中宫可分项隐藏姓名、出生时间、四柱与大运（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/ziwei/spec.md §设置第 3、4 条）
-- 输出与分享：右上角分享推出预览面板，渲成专用排版图（抬头命例名与盘式、中段盘体、下段品牌行动区 Logo、名称、口号、二维码），可存相册或系统分享；隐藏生辰开着时图上同步隐藏；“更多 → AI 分析”出结构化文本命盘，可编辑提示词后复制去问别的大模型（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/ziwei/spec.md §输出与分享）
-- 盘上按住有释义的星名或宫名升起词条卡片，深链到学堂读全文，返回时盘停在离开时的位置（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/academy/spec.md §术语点即看）
+- 紫微盘在本机由随包 JavaScriptCore 引擎（hachimi-engine 同一份内核）排出，飞行模式下新建命例同样立刻出盘；换设置、换层、挪生辰都是即时重排，不存在离线缓存与“显示上次结果”提示（hachimi-ios specs/capabilities/ziwei/spec.md §引擎与离线；docs/adr/0038）
+- 盘面三式：三合（星曜亮度、生年四化、限流叠宫）、飞星（虚岁串、公元年串、大限宫名、来因宫红框）、四化（灰星配大号红色 ABCD 与飞化连线）；一条系统分段控件钉在导航栏下沿切换，切换不重新请求（hachimi-ios specs/capabilities/ziwei/spec.md §盘面与三式第 2 条）
+- 十二宫加中宫方格盘，按格宽等比排版；点任一宫立太极点，其余宫名前出现“X之Y”，该宫宫干四化四颗星带底色，三方四正虚线或色块；星名三档配色主星红、辅星紫、杂曜蓝，身宫竖排两字红框（hachimi-ios specs/capabilities/ziwei/spec.md §盘面与三式第 1、4 条）
+- 中宫本命态五枚快捷键（日↑、日↓、天盘▽、时↑、时↓），天盘▽ 点开切中州派地盘、人盘或命盘调整；限流态换成六枚层开关（本、限、年、月、日、时）（hachimi-ios specs/capabilities/ziwei/spec.md §盘面与三式第 3 条）
+- 缩放是重新排版不是拉伸：双指 1.0 到 3.2 倍连续缩放，双击在整屏与 2.0 倍之间切换并把点到的宫居中；平移交给系统滚动视图带惯性与橡皮筋；VoiceOver 逐宫朗读（hachimi-ios specs/capabilities/ziwei/spec.md §缩放与平移）
+- 限流：大限、流年、流月、流日、流时逐层叠盘；面板两形态（平铺、紧凑）四种规格（二、四、五、七层）；闰月流月带标记可选排法；限流层飞化箭头按“层命宫宫干四化落本宫或对宫”画；切层只重算变化的格，几乎感觉不到等待（hachimi-ios specs/capabilities/ziwei/spec.md §限流）
+- 格局分析：“更多 → 格局分析”列出本命盘成立的格局，每条带吉凶徽标、手风琴展开正文，限流态按层判并写明出自哪一层；只对三合盘有效；格局判定是内核规则表，端上一个字不抄（hachimi-ios specs/capabilities/ziwei/spec.md §格局、四柱反查、紫占、命盘调整第 1 条；CHANGELOG.md “格局分析页（2026-09-13，spec 034）”）
+- 四柱反查：选四柱与六十年窗口反查公历日期（公历与农历各写一行），可直接排盘或存成命例；老命书只有四柱没有公历日期时从这里进（hachimi-ios specs/capabilities/ziwei/spec.md §格局、四柱反查、紫占、命盘调整第 2 条；CHANGELOG.md “四柱反查页（2026-09-13，spec 035）”）
+- 紫占排盘：不按生辰、按此刻时间或一个报数起一张盘问事，六项起法（当前时刻男盘、女盘，系统随机自动、报数，当前时刻起七层限流盘男盘、女盘），可选当前位置经度参与，起出的盘不入命例库除非勾选保存（hachimi-ios specs/036-zizhan-page/spec.md 验收 1；specs/capabilities/ziwei/spec.md §格局等第 2 条）
+- 命盘调整与中州派：调月系星位置、调命宫位置（给双胞胎定盘或别派起法用），调整过的盘中宫短码显示星号；中州派地盘、人盘一键切（hachimi-ios specs/capabilities/ziwei/spec.md §格局等第 3 条；CHANGELOG.md “命盘调整与中州派天地人盘（2026-09-13，spec 037）”）
+- 安星设置：二十三槽由一个安星码整体表达，可复制、贴入、恢复出厂，输一个别人给的码盘就与对方一模一样；设置三层（枢纽页三节十行、八页分页、系统 Picker），拨一下当场生效重排，无保存按钮；排盘规则含安星方法、四化表、历法、安星码四页（hachimi-ios specs/030-anxing-settings-page/spec.md 头注与用户故事 2；specs/capabilities/ziwei/spec.md §设置）
+- 星曜显隐按星逐个关：四空（截空、副截、旬空、副旬）、六枚杂曜（华盖、劫煞、咸池、天德、月德、龙德）、流曜逐星、大限流年精简、精简星曜；层色五枚（大限到流时）可单独关；三方四正可选指示线或色块；中宫可分项隐藏姓名、出生时间、四柱与大运（hachimi-ios specs/capabilities/ziwei/spec.md §设置第 3、4 条）
+- 输出与分享：右上角分享推出预览面板，渲成专用排版图（抬头命例名与盘式、中段盘体、下段品牌行动区 Logo、名称、口号、二维码），可存相册或系统分享；隐藏生辰开着时图上同步隐藏；“更多 → AI 分析”出结构化文本命盘，可编辑提示词后复制去问别的大模型（hachimi-ios specs/capabilities/ziwei/spec.md §输出与分享）
+- 盘上按住有释义的星名或宫名升起词条卡片，深链到学堂读全文，返回时盘停在离开时的位置（hachimi-ios specs/capabilities/academy/spec.md §术语点即看）
 
 ### 八字
 
-- 八字盘在本机由与紫微共用的随包引擎排出，飞行模式同样立刻出盘；四个页签（基本信息、基本排盘、专业细盘、断事笔记）全免费，专业细盘整页可看（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/bazi/spec.md 引文与 §引擎与离线）
-- 基本排盘页四柱表十行：主星、天干、地支、藏干、副星、星运、自坐、空亡、纳音、神煞，天干地支按五行上色；表下原局天干、原局地支、原局整柱三行与调候用神、调候落位、月令论断（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/bazi/spec.md §基本信息与基本排盘第 2 条）
-- 基本信息页档案行：生肖、虚岁、姓名逐字五行、农历、阳历、真太阳时、出生地区、人元司令、出生节气、交节时刻、星座、星宿、胎元、空亡、命宫、胎息、身宫、命卦、日主属性、阴阳、旺衰、格局参考、同党异党、五行能量、五行旺相休囚死、袁天罡称骨、出生天体图（月相小盘）（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/bazi/spec.md §基本信息第 1 条；CHANGELOG.md “八字页上那些‘等内核’的格子换成了真数（spec 039 阶段 5）”）
-- 专业细盘：七列六柱表（流年与大运排在年柱之前），页首“当前运限”一行写清哪一步大运（带起止年份）、哪一年、哪个月；下有起运交运司令行、大运带十二格、流年带（附小运行）、流月带、岁运三行、四柱神煞、大运神煞、流年神煞；首进停在今日所在的那一步大运与那一年，“今”按钮回到今天（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/bazi/spec.md §专业细盘）
-- 内核此刻只出大运、流年、小运、流月四层；流日与流时两层暂未接入，非会员选中流月后流月带下出现“开通会员 · 流日流时”升级位（推广期内不出现）（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/bazi/spec.md §专业细盘末条；specs/capabilities/paywall/spec.md §推广期内的表现）
-- 断事笔记：一条命例一段纯文本，停手约半秒自动保存，只存本机、随命例删除、不进文本命盘导出（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/bazi/spec.md §断事笔记）
-- 每个字段都点得开：四个页签上有名字的字段（十神、纳音、长生、神煞、藏干、刑冲合害等）都带虚线锚点，长按升起半屏词条卡片，卡片底部进学堂读全文；显示设置可开“轻点出词条”（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/bazi/spec.md §词条与轻点）
-- 排盘规则设置：人元司令分日诀六套任选，年柱按立春或正月初一分界；晚子时与紫微历法页共用同一槽，改一处两页同步（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/bazi/spec.md §排盘规则设置）
-- 显示设置六节：基本排盘逐行显隐、专业细盘各行与各带显隐、五行颜色三枚、顺序（四柱与流运先后、年月日时正倒、大运流年流月正倒）、其它（显示大运年数 120/80、进入页、轻点出词条）、圆点（岁运并临、流年天合地合、天克地冲）；按页重置（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/bazi/spec.md §显示设置）
-- 导出与分享：右上角分享渲成专用排版长图（抬头写页与所选层、命主卡加四柱表或六柱表连同运带、品牌行动区 Logo 名称口号 hachimi.ai 水印与二维码），四柱页与六柱页各出一张；隐藏生辰开着时图上同步隐藏（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/bazi/spec.md §导出与分享）
-- “更多 → AI 分析”出一整份八字文本命盘（四柱主星藏干星运自坐旬空纳音、胎元胎息命宫身宫、空亡人元司令、大运十二步与小运、两档神煞、刑冲合害），配可改的提示词一键复制去问大模型（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/CHANGELOG.md “八字盘有了断事笔记，也能整份交给 AI 了（spec 039 阶段 3）”）
+- 八字盘在本机由与紫微共用的随包引擎排出，飞行模式同样立刻出盘；四个页签（基本信息、基本排盘、专业细盘、断事笔记）全免费，专业细盘整页可看（hachimi-ios specs/capabilities/bazi/spec.md 引文与 §引擎与离线）
+- 基本排盘页四柱表十行：主星、天干、地支、藏干、副星、星运、自坐、空亡、纳音、神煞，天干地支按五行上色；表下原局天干、原局地支、原局整柱三行与调候用神、调候落位、月令论断（hachimi-ios specs/capabilities/bazi/spec.md §基本信息与基本排盘第 2 条）
+- 基本信息页档案行：生肖、虚岁、姓名逐字五行、农历、阳历、真太阳时、出生地区、人元司令、出生节气、交节时刻、星座、星宿、胎元、空亡、命宫、胎息、身宫、命卦、日主属性、阴阳、旺衰、格局参考、同党异党、五行能量、五行旺相休囚死、袁天罡称骨、出生天体图（月相小盘）（hachimi-ios specs/capabilities/bazi/spec.md §基本信息第 1 条；CHANGELOG.md “八字页上那些‘等内核’的格子换成了真数（spec 039 阶段 5）”）
+- 专业细盘：七列六柱表（流年与大运排在年柱之前），页首“当前运限”一行写清哪一步大运（带起止年份）、哪一年、哪个月；下有起运交运司令行、大运带十二格、流年带（附小运行）、流月带、岁运三行、四柱神煞、大运神煞、流年神煞；首进停在今日所在的那一步大运与那一年，“今”按钮回到今天（hachimi-ios specs/capabilities/bazi/spec.md §专业细盘）
+- 内核此刻只出大运、流年、小运、流月四层；流日与流时两层暂未接入，非会员选中流月后流月带下出现“开通会员 · 流日流时”升级位（推广期内不出现）（hachimi-ios specs/capabilities/bazi/spec.md §专业细盘末条；specs/capabilities/paywall/spec.md §推广期内的表现）
+- 断事笔记：一条命例一段纯文本，停手约半秒自动保存，只存本机、随命例删除、不进文本命盘导出（hachimi-ios specs/capabilities/bazi/spec.md §断事笔记）
+- 每个字段都点得开：四个页签上有名字的字段（十神、纳音、长生、神煞、藏干、刑冲合害等）都带虚线锚点，长按升起半屏词条卡片，卡片底部进学堂读全文；显示设置可开“轻点出词条”（hachimi-ios specs/capabilities/bazi/spec.md §词条与轻点）
+- 排盘规则设置：人元司令分日诀六套任选，年柱按立春或正月初一分界；晚子时与紫微历法页共用同一槽，改一处两页同步（hachimi-ios specs/capabilities/bazi/spec.md §排盘规则设置）
+- 显示设置六节：基本排盘逐行显隐、专业细盘各行与各带显隐、五行颜色三枚、顺序（四柱与流运先后、年月日时正倒、大运流年流月正倒）、其它（显示大运年数 120/80、进入页、轻点出词条）、圆点（岁运并临、流年天合地合、天克地冲）；按页重置（hachimi-ios specs/capabilities/bazi/spec.md §显示设置）
+- 导出与分享：右上角分享渲成专用排版长图（抬头写页与所选层、命主卡加四柱表或六柱表连同运带、品牌行动区 Logo 名称口号 hachimi.ai 水印与二维码），四柱页与六柱页各出一张；隐藏生辰开着时图上同步隐藏（hachimi-ios specs/capabilities/bazi/spec.md §导出与分享）
+- “更多 → AI 分析”出一整份八字文本命盘（四柱主星藏干星运自坐旬空纳音、胎元胎息命宫身宫、空亡人元司令、大运十二步与小运、两档神煞、刑冲合害），配可改的提示词一键复制去问大模型（hachimi-ios CHANGELOG.md “八字盘有了断事笔记，也能整份交给 AI 了（spec 039 阶段 3）”）
 
 ### 亲密（命盘第三面）
 
-- 亲密是命盘页模块导航条的一格：按端上引擎确定性算出的证据，把这条命例在相处上的倾向按匹配度降序排出，只显示够准的、最多八条，另有成格一节；不调用大模型、生辰不出端（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/kink/spec.md 引文、§列表页、§边界）
-- 首次切进先问一句“这一页聊聊亲密相处的倾向，仅供娱乐。看看吗？”；文案是中性覆盖表（简繁英），不出现露骨用词；可分享成最多五行的长图，不含证据颗粒、生辰与命例名（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/kink/spec.md §开关屏、§分享、§文案）
+- 亲密是命盘页模块导航条的一格：按端上引擎确定性算出的证据，把这条命例在相处上的倾向按匹配度降序排出，只显示够准的、最多八条，另有成格一节；不调用大模型、生辰不出端（hachimi-ios specs/capabilities/kink/spec.md 引文、§列表页、§边界）
+- 首次切进先问一句“这一页聊聊亲密相处的倾向，仅供娱乐。看看吗？”；文案是中性覆盖表（简繁英），不出现露骨用词；可分享成最多五行的长图，不含证据颗粒、生辰与命例名（hachimi-ios specs/capabilities/kink/spec.md §开关屏、§分享、§文案）
 
 ### 学堂
 
-- 学堂是一级导航第三格：山医命相卜五科胶囊、类目胶囊、命科“怎么用”两本手册（紫微斗数、八字排盘各六节）、词条一排、三列封面书架（iPad 与横屏四到六列）；封面程序绘制、一科一套印色、线装书脊与竖排题签（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/academy/spec.md §根屏与书架；CHANGELOG.md 1.6.0 “学堂改成书架（spec 057）”）
-- 全部内容随包离线：书目、词条与逐本正文全来自随包 JSON，飞行模式下书架、阅读页、搜索、锚点与卡片照常可用，不经网络、不判定登录态；带图的书图也在本地（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/academy/spec.md §离线与产物；docs/architecture.md §九）
-- 阅读器：连续版心、段首空两格，京華老宋体章题、系统宋体正文；Aa 面板三项（字号五档、行距三档、宋体或系统字体）全书共用存本机；文末上一章下一章；阅读进度按书记在本机，再进从上次那一段接着读；章内插图可全屏缩放；阅读页收起标签栏（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/academy/spec.md §阅读器）
-- 搜索只按名字查词条名、别名、书名三张表，命中分完全相同、名字打头、名字中间三档；打“紫微星”落到“紫微”词条（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/academy/spec.md §搜索）
-- 术语点即看：盘面与格局页上有释义的字底下一道虚线，长按 0.6 秒升起卡片（词条名、一句概括、按点中语境的那一维正文默认展开、其余折叠、格局多一段“古籍口径”），底部“在学堂里读全文”；没有释义的字不画虚线、不弹空卡；VoiceOver 有“读释义”动作（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/academy/spec.md §术语点即看）
-- 词条分十五族（概念、阴阳、五行、天干、地支、干支关系、星曜、宫位、十神、十二长生、纳音、神煞、旺衰、格局、二十八宿、节气），紫微与八字两域各一套，七杀、红鸾、天喜、华盖、孤辰、寡宿六个名字两域各有一条（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/docs/architecture.md §九 目录内分工与术语锚点；App/Resources/content/glossary/zh-Hans.json 实数 kind 15 种）
-- 界面切繁体时科名、类目、书名、作者与词条内容跟着变繁体；封面题签一律中文竖排；英文界面下正文与题签回落简体（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/academy/spec.md §根屏与书架末条）
-- 学堂不做：收藏、笔记、书签、按需下载与全文检索（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/academy/spec.md §边界末条）
+- 学堂是一级导航第三格：山医命相卜五科胶囊、类目胶囊、命科“怎么用”两本手册（紫微斗数、八字排盘各六节）、词条一排、三列封面书架（iPad 与横屏四到六列）；封面程序绘制、一科一套印色、线装书脊与竖排题签（hachimi-ios specs/capabilities/academy/spec.md §根屏与书架；CHANGELOG.md 1.6.0 “学堂改成书架（spec 057）”）
+- 全部内容随包离线：书目、词条与逐本正文全来自随包 JSON，飞行模式下书架、阅读页、搜索、锚点与卡片照常可用，不经网络、不判定登录态；带图的书图也在本地（hachimi-ios specs/capabilities/academy/spec.md §离线与产物；docs/architecture.md §九）
+- 阅读器：连续版心、段首空两格，京華老宋体章题、系统宋体正文；Aa 面板三项（字号五档、行距三档、宋体或系统字体）全书共用存本机；文末上一章下一章；阅读进度按书记在本机，再进从上次那一段接着读；章内插图可全屏缩放；阅读页收起标签栏（hachimi-ios specs/capabilities/academy/spec.md §阅读器）
+- 搜索只按名字查词条名、别名、书名三张表，命中分完全相同、名字打头、名字中间三档；打“紫微星”落到“紫微”词条（hachimi-ios specs/capabilities/academy/spec.md §搜索）
+- 术语点即看：盘面与格局页上有释义的字底下一道虚线，长按 0.6 秒升起卡片（词条名、一句概括、按点中语境的那一维正文默认展开、其余折叠、格局多一段“古籍口径”），底部“在学堂里读全文”；没有释义的字不画虚线、不弹空卡；VoiceOver 有“读释义”动作（hachimi-ios specs/capabilities/academy/spec.md §术语点即看）
+- 词条分十五族（概念、阴阳、五行、天干、地支、干支关系、星曜、宫位、十神、十二长生、纳音、神煞、旺衰、格局、二十八宿、节气），紫微与八字两域各一套，七杀、红鸾、天喜、华盖、孤辰、寡宿六个名字两域各有一条（hachimi-ios docs/architecture.md §九 目录内分工与术语锚点；App/Resources/content/glossary/zh-Hans.json 实数 kind 15 种）
+- 界面切繁体时科名、类目、书名、作者与词条内容跟着变繁体；封面题签一律中文竖排；英文界面下正文与题签回落简体（hachimi-ios specs/capabilities/academy/spec.md §根屏与书架末条）
+- 学堂不做：收藏、笔记、书签、按需下载与全文检索（hachimi-ios specs/capabilities/academy/spec.md §边界末条）
 
 ### 通用（离线优先、无账号、外观、语言、iCloud、推广期、形象、隐私）
 
-- 离线优先：起卦、紫微盘、八字盘、两份文本命盘、亲密映射与学堂全在本机；走网络的只有解读、格局分析、四柱反查、紫占、省市表、时区表，加反馈、举报与两条遥测；飞行模式起得了卦、排得了盘，只是没有解读（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/docs/architecture.md §一 总体形态；docs/constitution.md §二）
-- 不做账户与登录，没有头像昵称；首启指引写明命例与生辰只留在这台设备上、问事那一步要联网、不用注册也没有广告；“暂不同意”照样进得去，命盘全能用（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/me/spec.md §边界第 1 条；CHANGELOG.md 1.7.0 “第一次打开先说清三件事（spec 065）”）
-- 三语首发：简体中文、繁体中文、英文；App 内切换语言即时生效不需重启；核心解读不跨书写系统回落（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/docs/constitution.md §一 语言；specs/capabilities/me/spec.md §语言）
-- 外观五档：浅色、弱光、深色、深色黑白、跟随系统，默认跟随系统，全 App 即时生效；弱光下道长底色走暖色（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/me/spec.md §外观；CHANGELOG.md 1.13.0 Changed 第 1 条）
-- “我的”页按系统设置样式：功能（问事、紫微斗数、八字排盘）、通用（语言、外观、触感与动效）、数据（我的记忆、命例备份、隐私与数据）、关于四节，一级页零开关；触感总开关、起卦触感、简化起卦动效三枚（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/me/spec.md §一级页、§触感与动效）
-- 推广期：东八区 2027-01-01 零时前人人按会员对待，付费墙、限流锁、升级位、“会员与订阅”整节一处都不出现；商店文案写“会员功能免费开放至 2026 年底”；AI 解读仍有每日额度，用尽时只说“今天的解读次数用完了，明天再来”（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/paywall/spec.md §推广期闸、§推广期内的表现；fastlane/metadata/zh-Hans/description.txt 推广期段）
-- 推广期后的会员形态（此刻不出现）：一份会员覆盖紫微流月流日流时、八字流日流时、AI 解读每天 30 次；季、年两档自动续期加永久买断，走 StoreKit，无账号靠 Apple ID 恢复（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/paywall/spec.md §付费页与触发入口、§用户故事 3）
-- 道长形象以 hachimi-orb 仓的签名 Rive 文件为真源（v0.16.0，契约第十三版），iOS 与官网播同一份文件；首页可戳可拖，打字或听写时转过来正视你，戳一下六种回应，庆祝时带彩带转一圈；减弱动态或电量吃紧时停在静帧（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/orb/spec.md §样子、事件与在场地图；specs/100-orb-v016-character-rollout/spec.md；CHANGELOG.md 1.13.0）
-- 隐私：后端不接收命例姓名、生辰、位置、邮箱、通讯录、照片、GPS 或广告标识符；不使用 ATT；不读取 HealthKit 等健康财务资料；问题原文在后端最多保留 90 天，准入记录最多 8 天，举报 30 天（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/docs/legal/privacy-policy.zh-Hans.md §2、§3.1）
-- 商店定位：主分类生活方式（LIFESTYLE）、副分类工具（UTILITIES）；App 名“哈基米道长”、英文名 Hachimi.ai、副标题“传统文化排盘与自我探索”；口号“慌的时候，先起一卦。”落款网址 https://hachimi.ai；主体元竹投資有限公司（Yuenchuk Investment Limited，香港）（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/fastlane/metadata/primary_category.txt、secondary_category.txt、zh-Hans/subtitle.txt；specs/078-brand-name-and-share-slogan/spec.md 判决 1 到 3；docs/constitution.md §三 命名）
-- 官网定位口径（owner 2026-09-22）：学习与研究中国民俗术数的工具类 / 生活方式类 App；首屏口号不动，收尾句改“卦、盘、命例都在一处”；页脚不摆统计数字、同一组入口只出现一次、法律链接只在最底一行；桌面与移动端猫都用 96 px（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/docs/claude-memory/feedback-site-positioning-2026-09-22.md）
-- 平台：SwiftUI，最低部署目标 iOS 26，支持 iPad（商店截图含 13 英寸 iPad）；Android 客户端待 iOS 稳定后原生重建，网页版暂停推进（/Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/docs/constitution.md §八；README.md 仓库拓扑；store-screenshots/README.md；CHANGELOG.md 1.6.0 仓库拓扑整理）
+- 离线优先：起卦、紫微盘、八字盘、两份文本命盘、亲密映射与学堂全在本机；走网络的只有解读、格局分析、四柱反查、紫占、省市表、时区表，加反馈、举报与两条遥测；飞行模式起得了卦、排得了盘，只是没有解读（hachimi-ios docs/architecture.md §一 总体形态；docs/constitution.md §二）
+- 不做账户与登录，没有头像昵称；首启指引写明命例与生辰只留在这台设备上、问事那一步要联网、不用注册也没有广告；“暂不同意”照样进得去，命盘全能用（hachimi-ios specs/capabilities/me/spec.md §边界第 1 条；CHANGELOG.md 1.7.0 “第一次打开先说清三件事（spec 065）”）
+- 三语首发：简体中文、繁体中文、英文；App 内切换语言即时生效不需重启；核心解读不跨书写系统回落（hachimi-ios docs/constitution.md §一 语言；specs/capabilities/me/spec.md §语言）
+- 外观五档：浅色、弱光、深色、深色黑白、跟随系统，默认跟随系统，全 App 即时生效；弱光下道长底色走暖色（hachimi-ios specs/capabilities/me/spec.md §外观；CHANGELOG.md 1.13.0 Changed 第 1 条）
+- “我的”页按系统设置样式：功能（问事、紫微斗数、八字排盘）、通用（语言、外观、触感与动效）、数据（我的记忆、命例备份、隐私与数据）、关于四节，一级页零开关；触感总开关、起卦触感、简化起卦动效三枚（hachimi-ios specs/capabilities/me/spec.md §一级页、§触感与动效）
+- 推广期：东八区 2027-01-01 零时前人人按会员对待，付费墙、限流锁、升级位、“会员与订阅”整节一处都不出现；商店文案写“会员功能免费开放至 2026 年底”；AI 解读仍有每日额度，用尽时只说“今天的解读次数用完了，明天再来”（hachimi-ios specs/capabilities/paywall/spec.md §推广期闸、§推广期内的表现；fastlane/metadata/zh-Hans/description.txt 推广期段）
+- 推广期后的会员形态（此刻不出现）：一份会员覆盖紫微流月流日流时、八字流日流时、AI 解读每天 30 次；季、年两档自动续期加永久买断，走 StoreKit，无账号靠 Apple ID 恢复（hachimi-ios specs/capabilities/paywall/spec.md §付费页与触发入口、§用户故事 3）
+- 道长形象以 hachimi-orb 仓的签名 Rive 文件为真源（v0.16.0，契约第十三版），iOS 与官网播同一份文件；首页可戳可拖，打字或听写时转过来正视你，戳一下六种回应，庆祝时带彩带转一圈；减弱动态或电量吃紧时停在静帧（hachimi-ios specs/capabilities/orb/spec.md §样子、事件与在场地图；specs/100-orb-v016-character-rollout/spec.md；CHANGELOG.md 1.13.0）
+- 隐私：后端不接收命例姓名、生辰、位置、邮箱、通讯录、照片、GPS 或广告标识符；不使用 ATT；不读取 HealthKit 等健康财务资料；问题原文在后端最多保留 90 天，准入记录最多 8 天，举报 30 天（hachimi-ios docs/legal/privacy-policy.zh-Hans.md §2、§3.1）
+- 商店定位：主分类生活方式（LIFESTYLE）、副分类工具（UTILITIES）；App 名“哈基米道长”、英文名 Hachimi.ai、副标题“传统文化排盘与自我探索”；口号“慌的时候，先起一卦。”落款网址 https://hachimi.ai；主体元竹投資有限公司（Yuenchuk Investment Limited，香港）（hachimi-ios fastlane/metadata/primary_category.txt、secondary_category.txt、zh-Hans/subtitle.txt；specs/078-brand-name-and-share-slogan/spec.md 判决 1 到 3；docs/constitution.md §三 命名）
+- 官网定位口径（owner 2026-09-22）：学习与研究中国民俗术数的工具类 / 生活方式类 App；首屏口号不动，收尾句改“卦、盘、命例都在一处”；页脚不摆统计数字、同一组入口只出现一次、法律链接只在最底一行；桌面与移动端猫都用 96 px（hachimi-ios docs/claude-memory/feedback-site-positioning-2026-09-22.md）
+- 平台：SwiftUI，最低部署目标 iOS 26，支持 iPad（商店截图含 13 英寸 iPad）；Android 客户端待 iOS 稳定后原生重建，网页版暂停推进（hachimi-ios docs/constitution.md §八；README.md 仓库拓扑；store-screenshots/README.md；CHANGELOG.md 1.6.0 仓库拓扑整理）
 
 ### 命例与卦的关联
 
@@ -453,45 +453,45 @@
 
 ### 数字
 
-| 项                                    | 值                                                                                                                                                                                                                        | 出处                                                                                                                                                                                          |
-| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 学堂书目总数 / 随包正文本数 / 下架书  | 157 本书目、154 本随包正文、3 本只留书名                                                                                                                                                                                  | /Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/App/Resources/content/academy/manifest.json stats.books / shipped / hidden                                                                  |
-| 学堂随包章数 / 插图                   | 2408 章（书目总章 2423）、27 张图                                                                                                                                                                                         | /Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/App/Resources/content/academy/manifest.json stats.shippedChapters / chapters / images                                                       |
-| 学堂五科十三类，各科本数与随包章数    | 山 1 类 12 本 103 章；医 1 类 33 本 895 章；命 3 类（七政四余、八字、紫微斗数）48 本 47 随包 729 章；相 3 类（人相、地相、天文与谶纬）31 本 29 随包 261 章；卜 5 类（六爻、大六壬、奇门遁甲、易经、梅花易数）33 本 420 章 | /Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/App/Resources/content/academy/catalog.zh-Hans.json 现场统计（2026-09-22）                                                                   |
-| 学堂正文包体                          | 随包书正文约 22.9 MB（gzip 8.8 MB），图 2.56 MB                                                                                                                                                                           | /Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/App/Resources/content/academy/manifest.json stats.bookBytes / bookGzip / imageBytes                                                         |
-| 词条总数与两域分布                    | 420 条（八字域 244、紫微域 176），简繁各一份                                                                                                                                                                              | /Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/App/Resources/content/glossary/manifest.json locales.entries；zh-Hans.json 现场统计 domain                                                  |
-| 词条正文池与覆盖度                    | 正文池 1745 段；覆盖 full 392、brief 18、stub 10                                                                                                                                                                          | /Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/App/Resources/content/glossary/manifest.json locales.bodies、coverage                                                                       |
-| 词条族数                              | 15 族（格局 122、星曜 65、神煞 59、纳音 30、二十八宿 28、概念 22、干支关系 17、长生 12、地支 12、节气 12、十神 10、天干 10、旺衰 10、阴阳 6、五行 5）                                                                     | /Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/App/Resources/content/glossary/zh-Hans.json 现场统计 kind                                                                                   |
-| 紫微格局规则数                        | 84 条（内核规则表；真源在 hachimi-engine 仓，本仓只在 CHANGELOG 记过这个数，当前值未在本仓核实）                                                                                                                          | /Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/CHANGELOG.md “格局分析页（2026-09-13，spec 034）”条                                                                                         |
-| 六十四卦锚句                          | 64 卦 × 三语 = 192 句，门禁保证三语齐备                                                                                                                                                                                   | /Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/App/Platform/HexagramAnchors.swift 档头注释                                                                                                 |
-| 道长招呼句池                          | 60 句简体真源（繁英各一份），每次进页与每次戳球各抽一句、与最近八句不重                                                                                                                                                   | /Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/App/Features/Cast/Home/Greeting/OrbGreetingPool.swift（Line( 计 60 处）；specs/070-cast-home-order-and-greeting/spec.md 池子的规矩          |
-| 戳球回应种类                          | 6 种；庆祝带彩带四拍                                                                                                                                                                                                      | /Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/CHANGELOG.md 1.13.0 Added 第 1 条；specs/100 §为什么                                                                                        |
-| 紫微安星设置                          | 23 槽由一个安星码表达；原单页十组一百零七行，现改三层结构                                                                                                                                                                 | /Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/030-anxing-settings-page/spec.md 头注                                                                                                 |
-| 紫微盘式 / 限流层 / 缩放              | 三式（三合、飞星、四化）；限流五层（大限、流年、流月、流日、流时）面板四规格（二、四、五、七层）；缩放 1.0 到 3.2 倍                                                                                                      | /Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/ziwei/spec.md §盘面与三式、§限流、§缩放与平移                                                                            |
-| 紫占起法 / 四柱反查年份域             | 六项起法；反查窗口公元前 1616 年到公元 2404 年，缺省窗口 1924 到 1983                                                                                                                                                     | /Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/036-zizhan-page/spec.md 验收 1；CHANGELOG.md “四柱反查页（spec 035）”条                                                               |
-| 八字字段清单 / 页签 / 表格            | 对照成品 82 个字段；四个页签；四柱表十行；六柱表七列；基本信息页 27 格（阶段 1 口径）；大运带十二格                                                                                                                       | /Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/039-bazi-page/spec.md 对照物注与六柱表节；specs/capabilities/bazi/spec.md §专业细盘；CHANGELOG.md “八字盘先出两页（spec 039 阶段 1）” |
-| 八字人元司令分日诀                    | 六套任选                                                                                                                                                                                                                  | /Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/bazi/spec.md §排盘规则设置                                                                                               |
-| 亲密映射表规模                        | 78 行、8 个成格；列表最多显示 8 条；分享长图最多 5 行                                                                                                                                                                     | /Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/HachimiKit/Sources/HachimiContract/Fixtures/kink-copy-manifest.json rows / patterns；specs/capabilities/kink/spec.md §列表页、§分享         |
-| 命例分组                              | 8 个分组槽位，每组上限 100 条                                                                                                                                                                                             | /Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/case-library/spec.md §列表末条                                                                                           |
-| 命例录入方式 / 快捷输入               | 三种录入方式（公历、农历、四柱）；十二位数字一次填完生辰                                                                                                                                                                  | /Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/case-library/spec.md §录入与编辑第 1 条                                                                                  |
-| 本机定期备份                          | 一天最多一份，只留最近 7 份，缺省开                                                                                                                                                                                       | /Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/persistence/spec.md §归档第 7 条                                                                                         |
-| 归档文件版本                          | 第五版，七个顶层键，带卦                                                                                                                                                                                                  | /Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/persistence/spec.md §归档第 4 条                                                                                         |
-| 数据库表数                            | 一张 SQLite 五张表（cases、casts、categories、library、settings），五张表全同步 CloudKit                                                                                                                                  | /Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/persistence/spec.md §库与标识符、§同步                                                                                   |
-| 语言 / 外观 / 一级导航 / 命例详情面数 | 三语；外观五档；一级导航四格（问事、命盘、学堂、我的）；命例详情四面（八字、紫微、亲密、问事）                                                                                                                            | /Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/docs/constitution.md §一；specs/capabilities/me/spec.md §外观；CHANGELOG.md 1.11.0 spec 094 条                                              |
-| AI 解读每日额度 / 推广期截止          | 会员每天 30 次（推广期内人人按会员）；截止东八区 2027-01-01 00:00；商店文案写“免费至 2026 年底”                                                                                                                           | /Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/specs/capabilities/paywall/spec.md §推广期闸、§付费页；fastlane/metadata/zh-Hans/description.txt                                            |
-| 后端留存期                            | 问题原文最多 90 天；准入记录最多 8 天；举报 30 天；卦历、命例、卦忆只在设备                                                                                                                                               | /Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/docs/legal/privacy-policy.zh-Hans.md §2 表                                                                                                  |
-| 最低系统 / 形象文件版本               | iOS 26；Rive 形象 v0.16.0、契约第十三版（七套配色、两档朝向）                                                                                                                                                             | /Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/docs/constitution.md §八；specs/100-orb-v016-character-rollout/spec.md §为什么                                                              |
+| 项                                    | 值                                                                                                                                                                                                                        | 出处                                                                                                                                                    |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 学堂书目总数 / 随包正文本数 / 下架书  | 157 本书目、154 本随包正文、3 本只留书名                                                                                                                                                                                  | hachimi-ios App/Resources/content/academy/manifest.json stats.books / shipped / hidden                                                                  |
+| 学堂随包章数 / 插图                   | 2408 章（书目总章 2423）、27 张图                                                                                                                                                                                         | hachimi-ios App/Resources/content/academy/manifest.json stats.shippedChapters / chapters / images                                                       |
+| 学堂五科十三类，各科本数与随包章数    | 山 1 类 12 本 103 章；医 1 类 33 本 895 章；命 3 类（七政四余、八字、紫微斗数）48 本 47 随包 729 章；相 3 类（人相、地相、天文与谶纬）31 本 29 随包 261 章；卜 5 类（六爻、大六壬、奇门遁甲、易经、梅花易数）33 本 420 章 | hachimi-ios App/Resources/content/academy/catalog.zh-Hans.json 现场统计（2026-09-22）                                                                   |
+| 学堂正文包体                          | 随包书正文约 22.9 MB（gzip 8.8 MB），图 2.56 MB                                                                                                                                                                           | hachimi-ios App/Resources/content/academy/manifest.json stats.bookBytes / bookGzip / imageBytes                                                         |
+| 词条总数与两域分布                    | 420 条（八字域 244、紫微域 176），简繁各一份                                                                                                                                                                              | hachimi-ios App/Resources/content/glossary/manifest.json locales.entries；zh-Hans.json 现场统计 domain                                                  |
+| 词条正文池与覆盖度                    | 正文池 1745 段；覆盖 full 392、brief 18、stub 10                                                                                                                                                                          | hachimi-ios App/Resources/content/glossary/manifest.json locales.bodies、coverage                                                                       |
+| 词条族数                              | 15 族（格局 122、星曜 65、神煞 59、纳音 30、二十八宿 28、概念 22、干支关系 17、长生 12、地支 12、节气 12、十神 10、天干 10、旺衰 10、阴阳 6、五行 5）                                                                     | hachimi-ios App/Resources/content/glossary/zh-Hans.json 现场统计 kind                                                                                   |
+| 紫微格局规则数                        | 84 条（内核规则表；真源在 hachimi-engine 仓，本仓只在 CHANGELOG 记过这个数，当前值未在本仓核实）                                                                                                                          | hachimi-ios CHANGELOG.md “格局分析页（2026-09-13，spec 034）”条                                                                                         |
+| 六十四卦锚句                          | 64 卦 × 三语 = 192 句，门禁保证三语齐备                                                                                                                                                                                   | hachimi-ios App/Platform/HexagramAnchors.swift 档头注释                                                                                                 |
+| 道长招呼句池                          | 60 句简体真源（繁英各一份），每次进页与每次戳球各抽一句、与最近八句不重                                                                                                                                                   | hachimi-ios App/Features/Cast/Home/Greeting/OrbGreetingPool.swift（Line( 计 60 处）；specs/070-cast-home-order-and-greeting/spec.md 池子的规矩          |
+| 戳球回应种类                          | 6 种；庆祝带彩带四拍                                                                                                                                                                                                      | hachimi-ios CHANGELOG.md 1.13.0 Added 第 1 条；specs/100 §为什么                                                                                        |
+| 紫微安星设置                          | 23 槽由一个安星码表达；原单页十组一百零七行，现改三层结构                                                                                                                                                                 | hachimi-ios specs/030-anxing-settings-page/spec.md 头注                                                                                                 |
+| 紫微盘式 / 限流层 / 缩放              | 三式（三合、飞星、四化）；限流五层（大限、流年、流月、流日、流时）面板四规格（二、四、五、七层）；缩放 1.0 到 3.2 倍                                                                                                      | hachimi-ios specs/capabilities/ziwei/spec.md §盘面与三式、§限流、§缩放与平移                                                                            |
+| 紫占起法 / 四柱反查年份域             | 六项起法；反查窗口公元前 1616 年到公元 2404 年，缺省窗口 1924 到 1983                                                                                                                                                     | hachimi-ios specs/036-zizhan-page/spec.md 验收 1；CHANGELOG.md “四柱反查页（spec 035）”条                                                               |
+| 八字字段清单 / 页签 / 表格            | 对照成品 82 个字段；四个页签；四柱表十行；六柱表七列；基本信息页 27 格（阶段 1 口径）；大运带十二格                                                                                                                       | hachimi-ios specs/039-bazi-page/spec.md 对照物注与六柱表节；specs/capabilities/bazi/spec.md §专业细盘；CHANGELOG.md “八字盘先出两页（spec 039 阶段 1）” |
+| 八字人元司令分日诀                    | 六套任选                                                                                                                                                                                                                  | hachimi-ios specs/capabilities/bazi/spec.md §排盘规则设置                                                                                               |
+| 亲密映射表规模                        | 78 行、8 个成格；列表最多显示 8 条；分享长图最多 5 行                                                                                                                                                                     | hachimi-ios HachimiKit/Sources/HachimiContract/Fixtures/kink-copy-manifest.json rows / patterns；specs/capabilities/kink/spec.md §列表页、§分享         |
+| 命例分组                              | 8 个分组槽位，每组上限 100 条                                                                                                                                                                                             | hachimi-ios specs/capabilities/case-library/spec.md §列表末条                                                                                           |
+| 命例录入方式 / 快捷输入               | 三种录入方式（公历、农历、四柱）；十二位数字一次填完生辰                                                                                                                                                                  | hachimi-ios specs/capabilities/case-library/spec.md §录入与编辑第 1 条                                                                                  |
+| 本机定期备份                          | 一天最多一份，只留最近 7 份，缺省开                                                                                                                                                                                       | hachimi-ios specs/capabilities/persistence/spec.md §归档第 7 条                                                                                         |
+| 归档文件版本                          | 第五版，七个顶层键，带卦                                                                                                                                                                                                  | hachimi-ios specs/capabilities/persistence/spec.md §归档第 4 条                                                                                         |
+| 数据库表数                            | 一张 SQLite 五张表（cases、casts、categories、library、settings），五张表全同步 CloudKit                                                                                                                                  | hachimi-ios specs/capabilities/persistence/spec.md §库与标识符、§同步                                                                                   |
+| 语言 / 外观 / 一级导航 / 命例详情面数 | 三语；外观五档；一级导航四格（问事、命盘、学堂、我的）；命例详情四面（八字、紫微、亲密、问事）                                                                                                                            | hachimi-ios docs/constitution.md §一；specs/capabilities/me/spec.md §外观；CHANGELOG.md 1.11.0 spec 094 条                                              |
+| AI 解读每日额度 / 推广期截止          | 会员每天 30 次（推广期内人人按会员）；截止东八区 2027-01-01 00:00；商店文案写“免费至 2026 年底”                                                                                                                           | hachimi-ios specs/capabilities/paywall/spec.md §推广期闸、§付费页；fastlane/metadata/zh-Hans/description.txt                                            |
+| 后端留存期                            | 问题原文最多 90 天；准入记录最多 8 天；举报 30 天；卦历、命例、卦忆只在设备                                                                                                                                               | hachimi-ios docs/legal/privacy-policy.zh-Hans.md §2 表                                                                                                  |
+| 最低系统 / 形象文件版本               | iOS 26；Rive 形象 v0.16.0、契约第十三版（七套配色、两档朝向）                                                                                                                                                             | hachimi-ios docs/constitution.md §八；specs/100-orb-v016-character-rollout/spec.md §为什么                                                              |
 
 ### 现有截图
 
-- /Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/store-screenshots/*.png：24 张已入库的商店截图，iphone69 与 ipad13 两机型 × 简繁英 × 四屏（1_home、2_result、3_me、4_welcome）。是旧流程产物；README 说当前流程用 capture-release.sh 拍六屏（首页、紫微、八字、亲密、学堂、问事结果）× 三语 × 三尺寸输出到 build/store-release/screenshots/<语言>/，该目录此刻不存在
-- /Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/build/device-walk：不存在（find 计 0 文件），不要引用
-- /Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/build/orb-web-evidence/{hero-desktop,hero-mobile,footer-desktop}.jpeg：官网首屏与页脚 Rive 形象验收截图（spec 100 落地证据），是官网截图不是 App 截图
-- /Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/AppUITests/DeviceScreenshotPass+Site.swift：官网三张成图的拍法（S1 起卦结果页真连生产后端、紫微三合盘、八字四柱页用署名合成种子），浅深各一趟，跑法在档头注释，输出 build/SiteShots-<appearance>.xcresult 后用 xcrun xcresulttool export attachments 导出；该 xcresult 此刻不存在，要新拍
-- /Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/AppUITests/DeviceScreenshotPass.swift 与 +Academy/+Bazi/+Kink/+Me/+Ziwei* 等分文件：全 App 巡检截图，只有 HACHIMI_SCREENSHOT_PASS=1 才拍，附件留在 xcresult 里；build/ 下现有 TestResults.xcresult、UITests.xcresult、UIRerun.xcresult、UISubset-1789997319.xcresult 四份，是否含截图附件未核实
-- /Users/hubby/Workspace/Zixuan/hachimi/hachimi-website/public/screenshots/zh/{cast-result,ziwei-sanhe,bazi-pillars}{,-dark}-{603,1206}.webp 与 en/result.webp：官网现用 App 截图；handoff.md 悬项记“官网盘页截图要按新界面重截”，它们早于 1.11.0 的界面（页签控件、模块条、宋体、命例行都变了）
-- /Users/hubby/Workspace/Zixuan/hachimi/hachimi-website/public/brand/hachimi-orb.riv 与 orb-still-light.png、orb-still-dark.png：官网 Rive 形象与静帧，与 iOS 包内同一份文件（spec 100 验收 13）
-- /Users/hubby/Workspace/Zixuan/hachimi/hachimi-ios/design/brand/：app-icon-master-1254.png、orb-icon-master-1024.png、orb-native-transparent-1600.png、platform-assets.json 等品牌母版与平台资产清单（spec 062 同源出图，owner 定图标暂不变）
+- hachimi-ios store-screenshots/*.png：24 张已入库的商店截图，iphone69 与 ipad13 两机型 × 简繁英 × 四屏（1_home、2_result、3_me、4_welcome）。是旧流程产物；README 说当前流程用 capture-release.sh 拍六屏（首页、紫微、八字、亲密、学堂、问事结果）× 三语 × 三尺寸输出到 build/store-release/screenshots/<语言>/，该目录此刻不存在
+- hachimi-ios build/device-walk：不存在（find 计 0 文件），不要引用
+- hachimi-ios build/orb-web-evidence/{hero-desktop,hero-mobile,footer-desktop}.jpeg：官网首屏与页脚 Rive 形象验收截图（spec 100 落地证据），是官网截图不是 App 截图
+- hachimi-ios AppUITests/DeviceScreenshotPass+Site.swift：官网三张成图的拍法（S1 起卦结果页真连生产后端、紫微三合盘、八字四柱页用署名合成种子），浅深各一趟，跑法在档头注释，输出 build/SiteShots-<appearance>.xcresult 后用 xcrun xcresulttool export attachments 导出；该 xcresult 此刻不存在，要新拍
+- hachimi-ios AppUITests/DeviceScreenshotPass.swift 与 +Academy/+Bazi/+Kink/+Me/+Ziwei* 等分文件：全 App 巡检截图，只有 HACHIMI_SCREENSHOT_PASS=1 才拍，附件留在 xcresult 里；build/ 下现有 TestResults.xcresult、UITests.xcresult、UIRerun.xcresult、UISubset-1789997319.xcresult 四份，是否含截图附件未核实
+- public/screenshots/zh/{cast-result,ziwei-sanhe,bazi-pillars}{,-dark}-{603,1206}.webp 与 en/result.webp：官网现用 App 截图；handoff.md 悬项记“官网盘页截图要按新界面重截”，它们早于 1.11.0 的界面（页签控件、模块条、宋体、命例行都变了）
+- public/brand/hachimi-orb.riv 与 orb-still-light.png、orb-still-dark.png：官网 Rive 形象与静帧，与 iOS 包内同一份文件（spec 100 验收 13）
+- hachimi-ios design/brand/：app-icon-master-1254.png、orb-icon-master-1024.png、orb-native-transparent-1600.png、platform-assets.json 等品牌母版与平台资产清单（spec 062 同源出图，owner 定图标暂不变）
 - 真机与成品对照截图（docs/功能和界面参考/）不进 git，只在本机；四例对标截图含真人生辰，不得用于官网
 
 ### 不能说的
@@ -533,7 +533,7 @@
 - 图标：lucide-react ^1.24.0；工具：clsx + tailwind-merge（lib/utils.ts 的 cn）；shadcn 风格 components.json 已配三个 registry：@react-bits（公开）、@reactbits-starter、@reactbits-pro（Bearer ${REACTBITS_LICENSE_KEY} 占位，许可证只在 .env.local 或 shell）（components.json；design/brand/README.md）
 - Node 24（.node-version，同时锁 Cloudflare Pages 构建镜像）；npm（package-lock.json）；本地素材脚本 scripts/build-shots.mjs 依赖随 Next 装进来的 sharp，不进 package.json（scripts/build-shots.mjs 头注释）
 - 文案管线：scripts/polish-copy.mjs 调 DeepSeek `deepseek-flash` 把 docs/copy/<date>/facts.zh.json 润成 polished.zh.json 与 polished.en.json，再人工进 lib/i18n（scripts/polish-copy.mjs 头注释；specs/001 plan 第 1 节）
-- 血统：仓库由 React Bits Pro Finance Template 改来（b1fc2e7 “React Bits Pro - Finance Template”，a472bf6 2026-02-22 首次改成 Hachimi 并加 i18n）；参考仓 /Users/hubby/reactbitspro-templates 现有 agency、agentframe、ai-app、ai-saas、cloudlight、finance、minimal、saas、shader、wireframe 十套模板加 zip 原档，均为 Next 16.1.1 到 16.3.4，其中 shader 用 ogl（比 three 轻）加五套调色板变体与 JSON-LD，ai-app / minimal 用 @react-three/fiber，agentframe 无 WebGL 依赖（ls 与各 package.json）
+- 血统：仓库由 React Bits Pro Finance Template 改来（b1fc2e7 “React Bits Pro - Finance Template”，a472bf6 2026-02-22 首次改成 Hachimi 并加 i18n）；参考仓 reactbits-pro-templates 现有 agency、agentframe、ai-app、ai-saas、cloudlight、finance、minimal、saas、shader、wireframe 十套模板加 zip 原档，均为 Next 16.1.1 到 16.3.4，其中 shader 用 ogl（比 three 轻）加五套调色板变体与 JSON-LD，ai-app / minimal 用 @react-three/fiber，agentframe 无 WebGL 依赖（ls 与各 package.json）
 
 ### 页面
 
