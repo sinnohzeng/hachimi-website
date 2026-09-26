@@ -1,6 +1,6 @@
 # Hachimi.ai · 哈基米道长 marketing site
 
-The bilingual (zh / en) marketing site for **Hachimi.ai (哈基米道长)**, a cat-themed Mei Hua Yi Shu divination companion app. Built with Next.js App Router, statically exported (`output: "export"`) and deployed to **Cloudflare Pages** (project `hachimi-app-website`, custom domain `hachimi.ai`; deploy runbook: [`deploy/cloudflare-pages.md`](deploy/cloudflare-pages.md)). Comprehensive SEO, accessibility, and performance optimizations.
+The bilingual (zh / en) marketing site for **Hachimi.ai (哈基米道长)**, a tool app for studying Chinese folk divination: Zi Wei, Ba Zi and Mei Hua Yi Shu charts for many people, with each person's casts tracked under their name. Built with Next.js App Router, statically exported (`output: "export"`) and deployed to **Cloudflare Pages** (project `hachimi-app-website`, custom domain `hachimi.ai`; deploy runbook: [`deploy/cloudflare-pages.md`](deploy/cloudflare-pages.md)). Comprehensive SEO, accessibility, and performance optimizations.
 
 ## Features
 
