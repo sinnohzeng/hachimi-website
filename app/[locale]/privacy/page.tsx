@@ -1,5 +1,5 @@
 import { Footer } from "@/components/footer";
-import { PrivacyPolicy } from "@/components/privacy-policy";
+import { LegalDocument } from "@/components/legal-document";
 import { BreadcrumbStructuredData } from "@/components/structured-data";
 import { getTranslations } from "@/lib/i18n";
 import { localizedPageMetadata } from "@/lib/metadata";
@@ -16,11 +16,8 @@ export async function generateMetadata({
   return localizedPageMetadata({
     locale,
     path: "/privacy",
-    title: t.privacy.title,
-    description:
-      locale === "zh"
-        ? "Hachimi 隐私政策。了解我们如何收集、使用和保护你的数据。"
-        : "Hachimi.ai Privacy Policy. Learn what data we use and how we keep it safe.",
+    title: t.legalMeta.privacy.title,
+    description: t.legalMeta.privacy.description,
   });
 }
 
@@ -37,10 +34,10 @@ export default async function PrivacyPage({
       <BreadcrumbStructuredData
         locale={locale}
         path="/privacy"
-        pageTitle={t.privacy.title}
+        pageTitle={t.legalMeta.privacy.title}
       />
       <main id="main-content" className="flex-1">
-        <PrivacyPolicy t={t} />
+        <LegalDocument kind="privacy" locale={locale} />
       </main>
       <Footer t={t} locale={locale} />
     </>

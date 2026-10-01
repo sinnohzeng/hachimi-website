@@ -1,5 +1,5 @@
 import { Footer } from "@/components/footer";
-import { LegalSections } from "@/components/legal-sections";
+import { LegalDocument } from "@/components/legal-document";
 import { BreadcrumbStructuredData } from "@/components/structured-data";
 import { getTranslations } from "@/lib/i18n";
 import { localizedPageMetadata } from "@/lib/metadata";
@@ -16,11 +16,8 @@ export async function generateMetadata({
   return localizedPageMetadata({
     locale,
     path: "/terms",
-    title: t.terms.title,
-    description:
-      locale === "zh"
-        ? "哈基米道长使用条款与免责声明。仅供娱乐与情绪陪伴，绝不预测、不改命。"
-        : "Hachimi.ai Terms of Use & Disclaimer. For entertainment and comfort only, never prediction.",
+    title: t.legalMeta.terms.title,
+    description: t.legalMeta.terms.description,
   });
 }
 
@@ -37,10 +34,10 @@ export default async function TermsPage({
       <BreadcrumbStructuredData
         locale={locale}
         path="/terms"
-        pageTitle={t.terms.title}
+        pageTitle={t.legalMeta.terms.title}
       />
       <main id="main-content" className="flex-1">
-        <LegalSections data={t.terms} />
+        <LegalDocument kind="terms" locale={locale} />
       </main>
       <Footer t={t} locale={locale} />
     </>

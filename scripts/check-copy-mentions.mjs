@@ -6,7 +6,8 @@
  * 侧 `make check` 的静态门。同一条红线两个仓各有一道门，判据必须是同一张表：
  * 官网与 App 说的是同一个产品，只在一边拦住等于没拦。
  *
- * 作用域是站上的文案真源：`lib/i18n/*.ts` 与 `lib/config.ts`、`lib/metadata.ts`。
+ * 作用域是站上的文案真源：`lib/i18n/*.ts`、`lib/config.ts`、`lib/metadata.ts`，
+ * 以及 `content/legal/` 下隐私政策与使用条款的镜像。
  * 组件与文档不扫，那里出现这些词是注释与出处，不是用户看得见的字。
  *
  * 用法：`node scripts/check-copy-mentions.mjs`（退出码非 0 = 有命中）
@@ -24,6 +25,10 @@ const TARGETS = [
   "lib/i18n/types.ts",
   "lib/config.ts",
   "lib/metadata.ts",
+  "content/legal/privacy-policy.zh-Hans.md",
+  "content/legal/privacy-policy.en.md",
+  "content/legal/terms-and-disclaimer.zh-Hans.md",
+  "content/legal/terms-and-disclaimer.en.md",
 ];
 
 // **加词只改这里**，并与 hachimi-ios 的同名词表一起改。简体与正體各列一份。

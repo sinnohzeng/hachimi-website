@@ -114,24 +114,11 @@ export type Translations = {
     wechatHint: string;
   };
 
-  // Privacy Policy (sections renderer)
-  privacy: {
-    title: string;
-    effectiveDate: string;
-    sections: {
-      heading: string;
-      content: string;
-    }[];
-  };
-
-  // Terms of Use & Disclaimer (sections renderer)
-  terms: {
-    title: string;
-    effectiveDate: string;
-    sections: {
-      heading: string;
-      content: string;
-    }[];
+  // 隐私政策与使用条款的正文是 content/legal/ 的 Markdown（hachimi-ios
+  // docs/legal/ 的镜像），这里只放两页的页面元数据。
+  legalMeta: {
+    privacy: { title: string; description: string };
+    terms: { title: string; description: string };
   };
 
   // Methodology / transparency page (/{locale}/methodology)
