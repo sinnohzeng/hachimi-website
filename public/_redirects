@@ -4,7 +4,9 @@
 # 法务页去掉 locale 前缀也能到：商店后台登记的是 /en/... ，但有人会手敲裸路径。
 /privacy /en/privacy 302
 /data-deletion /en/data-deletion 302
-/account-deletion /en/account-deletion 302
 /terms /en/terms 302
 /support /en/support 302
 /methodology /en/methodology 302
+# 账号页并进了删除数据页，旧网址永久转过去。带占位符的规则放在静态规则之后。
+/account-deletion /en/data-deletion 301
+/:locale/account-deletion /:locale/data-deletion 301

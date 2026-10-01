@@ -38,43 +38,33 @@ export function LegalPageContent({ data }: { data: LegalPage }): ReactNode {
                   <h2 className="text-foreground mb-3 text-lg font-semibold">
                     {data.dataTable.heading}
                   </h2>
-                  <div className="overflow-x-auto">
-                    <table className="w-full text-sm">
-                      <thead>
-                        <tr className="border-foreground/10 border-b">
-                          {data.dataTable.columns.map((col) => (
-                            <th
-                              key={col}
-                              className="text-foreground/80 py-3 pr-4 text-left font-medium"
+                  {/* 窄屏按行堆叠成卡片，每格前写表头（globals.css 的 .stack-table）。 */}
+                  <table className="stack-table" role="table">
+                    <thead role="rowgroup">
+                      <tr role="row">
+                        {data.dataTable.columns.map((col) => (
+                          <th key={col} role="columnheader">
+                            {col}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody role="rowgroup">
+                      {data.dataTable.rows.map((row) => (
+                        <tr key={row.cells[0]} role="row">
+                          {row.cells.map((cell, i) => (
+                            <td
+                              key={`${row.cells[0]}-${i}`}
+                              role="cell"
+                              data-label={data.dataTable.columns[i]}
                             >
-                              {col}
-                            </th>
+                              {cell}
+                            </td>
                           ))}
                         </tr>
-                      </thead>
-                      <tbody>
-                        {data.dataTable.rows.map((row) => (
-                          <tr
-                            key={row.cells[0]}
-                            className="border-foreground/5 border-b"
-                          >
-                            {row.cells.map((cell, i) => (
-                              <td
-                                key={`${row.cells[0]}-${i}`}
-                                className={`py-3 pr-4 ${
-                                  i === 0
-                                    ? "text-foreground/80 font-medium"
-                                    : "text-foreground/60"
-                                }`}
-                              >
-                                {cell}
-                              </td>
-                            ))}
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
 
                 {/* Additional sections */}

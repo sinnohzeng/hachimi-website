@@ -181,8 +181,7 @@ export type Translations = {
     };
   };
 
-  // Legal pages (Account & data / Data deletion) + Support
-  accountDeletion: LegalPage;
+  // 删除数据页与支持页（同一个 LegalPageContent 渲染器）
   dataDeletion: LegalPage;
   support: LegalPage;
 };

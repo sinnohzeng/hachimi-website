@@ -55,8 +55,6 @@ Official website: hachimi.ai. Last updated: 2026-09-14.
 - [Privacy Policy (Chinese)](https://hachimi.ai/zh/privacy): 中文隐私政策
 - [Terms & Disclaimer](https://hachimi.ai/en/terms): Entertainment-only terms
 - [Terms & Disclaimer (Chinese)](https://hachimi.ai/zh/terms): 中文条款与免责声明
-- [Account & Your Data](https://hachimi.ai/en/account-deletion): No account to delete; what's stored on your device and how to clear it
-- [Account & Your Data (Chinese)](https://hachimi.ai/zh/account-deletion): 中文账号与数据页
 - [Delete Data](https://hachimi.ai/en/data-deletion): How to delete your data
 - [Delete Data (Chinese)](https://hachimi.ai/zh/data-deletion): 中文数据删除页
 

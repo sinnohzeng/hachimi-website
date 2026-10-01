@@ -198,7 +198,6 @@ export const en: Translations = {
     legal: [
       { label: "Privacy", href: "/en/privacy" },
       { label: "Terms", href: "/en/terms" },
-      { label: "Account & data", href: "/en/account-deletion" },
       { label: "Delete data", href: "/en/data-deletion" },
     ],
   },
@@ -375,126 +374,119 @@ export const en: Translations = {
     },
   },
 
-  accountDeletion: {
-    title: "Account & your data",
-    effectiveDate: "Last updated: August 25, 2026",
-    intro:
-      "Hachimi.ai has no accounts, so you use it without signing in and there is no account to delete. Your reading history is stored only on your device. This page explains exactly what is stored, where, and how to clear it.",
-    steps: {
-      heading: "How to clear your data",
-      items: [
-        "Open the app and switch to the Me tab.",
-        "Tap Privacy and data, then Delete data on this device.",
-        "Tap Delete all to confirm; your history, drafts, and what the Master remembers are cleared in one go.",
-        "Or simply uninstall the App to remove everything at once.",
-      ],
-    },
-    dataTable: {
-      heading: "What's stored, and where",
-      columns: ["Data", "Where it lives", "Removed when"],
-      rows: [
-        {
-          cells: [
-            "Reading history (hexagram, reading, question, time)",
-            "On your device only",
-            "You delete history, or uninstall",
-          ],
-        },
-        {
-          cells: [
-            "Language / settings",
-            "On your device (local preferences)",
-            "You uninstall the App",
-          ],
-        },
-        {
-          cells: [
-            "Your question (during a reading)",
-            "Sent to our server, forwarded to the third-party AI service",
-            "Stored under an anonymous ID (collected with use, under the consent you give before your first actual online reading), free text auto-deleted after 90 days; the third-party AI service processes it under its own terms (see the Privacy Policy)",
-          ],
-        },
-      ],
-    },
-    sections: [
-      {
-        heading: "No server-side account",
-        content:
-          "Our server casts the hexagram and hands your question to the third-party AI service to write the reading. There is no account. Records are stored under an anonymous install identifier with free text auto-deleted after 90 days; you can reset the anonymous ID under Me → Privacy and data at any time.",
-      },
-      {
-        heading: "Data sent to the third-party AI service",
-        content:
-          "DeepSeek Open Platform generates online readings; section 3 of the Privacy Policy lists the data and purposes. Received content is processed under applicable service terms. Withdrawing App consent does not delete content already sent. Contact voice@hachimi.ai for help requesting deletion.",
-      },
-      {
-        heading: "Contact",
-        content:
-          "Questions? Email voice@hachimi.ai to reach the Hachimi.ai team.",
-      },
-    ],
-  },
-
   dataDeletion: {
     title: "Delete your data",
-    effectiveDate: "Last updated: August 25, 2026",
+    effectiveDate: "Last updated: October 1, 2026",
     intro:
-      "Hachimi.ai stores your reading history and memories only on your device; anonymous records have their free text auto-deleted after 90 days. Deleting your data is entirely in your hands.",
+      "Hachimi.ai has no accounts. Your cases, reading history and Hachimi's memory are stored on your device: the iOS version also syncs them to your own iCloud, and the Android version saves them to your Google Account with the system backup. Question records sent to our backend for online readings have their text deleted after 90 days. This page explains where each kind of data is kept and how to delete it.",
     steps: {
-      heading: "How to delete your data",
+      heading: "Delete in the App",
       items: [
-        "Open the app and switch to the Me tab.",
-        "Tap Privacy and data, then Delete data on this device.",
-        "Tap Delete all to confirm; your history, drafts, and what the Master remembers are cleared in one go.",
-        "Or uninstall the App to remove everything at once.",
+        "Open Hachimi.ai, go to Me and open Privacy and data.",
+        "Tap Delete All Reading Data, then Delete everything, to clear your reading history, drafts and Hachimi's memory at once. On iOS with iCloud sync on, the same data in iCloud and on your other devices is deleted too.",
+        "Cases are deleted one by one in the case library. When you delete a case, your reading history keeps the name it had at the time by default; to clear those too, filter your history by that deleted case and clear those readings together.",
+        "On the Privacy and data page, tap Reset Anonymous ID, after which the question records already on our backend no longer match the App on your device.",
+        "Uninstalling the App removes only the data on this device, not the copy in iCloud or existing system backups; see below for how to delete those.",
       ],
     },
     dataTable: {
-      heading: "Types of data and how they're removed",
-      columns: ["Data type", "What it includes", "Removed when"],
+      heading: "Where each kind of data is kept, and when it is deleted",
+      columns: ["Data", "Where it is kept", "When it is deleted"],
       rows: [
         {
           cells: [
-            "Reading history",
-            "Hexagram, reading text, your question, time, and memories, stored locally",
-            "You delete history, or uninstall",
+            "Cases, reading history and Hachimi's memory",
+            "Your device; on iOS also your private iCloud storage",
+            "When you delete them in the App; for the iCloud copy, see below",
           ],
         },
         {
           cells: [
-            "App preferences",
-            "Language and settings, stored locally",
-            "You uninstall the App",
+            "The question, clarification, reading, time zone and anonymous install identifier in question records",
+            "Our backend",
+            "Deleted after 90 days; the remaining fields, which contain no text, are kept long term, see §4 of the Privacy Policy",
           ],
         },
         {
           cells: [
-            "Question sent for a reading",
-            "Forwarded to the third-party AI service to generate the reading",
-            "Stored under an anonymous ID (collected with use, under the consent you give before your first actual online reading), with free text auto-deleted after 90 days; processed by the third-party AI service under its own terms",
+            "Thumbs up or down",
+            "Our backend, with no text",
+            "Kept long term",
+          ],
+        },
+        {
+          cells: [
+            "Reports",
+            "Our backend, without the anonymous install identifier",
+            "Whole row deleted after 30 days",
+          ],
+        },
+        {
+          cells: [
+            "Usage statistics",
+            "Our backend, with the anonymous install identifier",
+            "Records with the identifier deleted after 8 days; daily totals without it kept long term",
+          ],
+        },
+        {
+          cells: [
+            "Admission records",
+            "Our backend, with the anonymous install identifier",
+            "Deleted after 8 days",
+          ],
+        },
+        {
+          cells: [
+            "Crash diagnostics (iOS only)",
+            "Our backend, without the anonymous install identifier",
+            "Raw diagnostics deleted after 90 days",
+          ],
+        },
+        {
+          cells: [
+            "Server logs",
+            "The Cloudflare platform",
+            "Kept for at most 7 days",
+          ],
+        },
+        {
+          cells: [
+            "Content sent to the third-party AI",
+            "DeepSeek",
+            "Handled under DeepSeek's open platform terms; requests do not carry the anonymous install identifier, so we cannot locate and delete them for you",
+          ],
+        },
+        {
+          cells: [
+            "Membership credentials",
+            "Our backend",
+            "iOS verification results cached for at most 15 minutes; on Android, a digest of the purchase token kept until the current subscription period ends",
+          ],
+        },
+        {
+          cells: [
+            "Copies in system backups",
+            "Held by Apple or Google",
+            "When you delete them in the system's backup settings",
           ],
         },
       ],
     },
     sections: [
       {
-        heading: "Local data only",
+        heading: "Copies in system backups and iCloud",
         content:
-          "Reading history, memories, and settings live on your device. Delete history under Me → Privacy and data, or uninstall the App to remove it all. There is no cloud account; anonymous records keep their free text for at most 90 days (see the Privacy Policy).",
+          "On iOS, reading history, cases and settings are included in iCloud device backups and computer backups, and with sync on there is also a copy in iCloud; on Android, they are included in the system backup under your Google Account. Deleting in the App or uninstalling it does not clear existing backups. On iPhone, go to Settings > your name > iCloud > Manage Account Storage, where you can delete device backups and the Hachimi.ai data stored in iCloud; on Android, manage backups in the system's backup settings or in Google One.",
       },
       {
-        heading: "Third-party AI service retention",
+        heading: "Records on our backend",
         content:
-          "DeepSeek Open Platform generates online readings; section 3 of the Privacy Policy lists the data and purposes. Received content is processed under applicable service terms. Withdrawing App consent does not delete content already sent. Contact voice@hachimi.ai for help requesting deletion.",
-      },
-      {
-        heading: "Older copies inside system backups",
-        content:
-          "Your reading history and memory episodes travel in the encrypted, system-managed backup, so they survive a new phone. Because of that, deleting in the App or uninstalling it only clears this device's copy; it cannot clear a backup Apple or your Android vendor already holds. You remove those yourself: on iPhone, Settings → your name → iCloud → Manage Account Storage → Backups; on Android, the backup section of system settings or Google One. A cast you are in the middle of never enters a backup in the first place.",
+          "Our backend stores question records only under an anonymous install identifier, and we hold nothing that ties the identifier to a specific person, so we cannot look up or delete records by person; requests sent to DeepSeek carry no identifier, so we cannot locate a particular one for you either. To remove records from our backend, reset the anonymous ID; question text is deleted automatically after 90 days. For any other question, write to voice@hachimi.ai. The Privacy Policy has the full details.",
       },
       {
         heading: "Contact",
-        content: "Email voice@hachimi.ai to reach the Hachimi.ai team.",
+        content:
+          "Yuenchuk Investment Limited, Hong Kong. Email voice@hachimi.ai.",
       },
     ],
   },

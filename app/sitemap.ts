@@ -44,12 +44,6 @@ const pages: {
     priority: () => 0.3,
   },
   {
-    path: "/account-deletion",
-    date: pageDates.accountDeletion,
-    changeFrequency: "monthly",
-    priority: () => 0.3,
-  },
-  {
     path: "/data-deletion",
     date: pageDates.dataDeletion,
     changeFrequency: "monthly",
