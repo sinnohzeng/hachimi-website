@@ -20,8 +20,10 @@
     "test:platform": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test scripts/platform.test.mjs",
     "legal:sync": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/legal-sync.mjs",
     "legal:check": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/legal-sync.mjs --check",
+    "llms:build": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-llms.mjs",
+    "llms:check": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-llms.mjs --check",
     "test:dates": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test scripts/page-dates.test.mjs",
-    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test:orb && npm run test:platform && npm run legal:check && npm run test:dates && npm run check:mentions && npm run check:copy && npm run build"
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test:orb && npm run test:platform && npm run legal:check && npm run llms:check && npm run test:dates && npm run check:mentions && npm run check:copy && npm run build"
   },
   "dependencies": {
     "@rive-app/webgl2": "2.42.2",

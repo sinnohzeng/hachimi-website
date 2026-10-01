@@ -47,23 +47,25 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Scripts
 
-| Command                  | Description                                                                                                                                      |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `npm run dev`            | Start development server                                                                                                                         |
-| `npm run build`          | Static export to `out/`                                                                                                                          |
-| `npm run lint`           | Run ESLint                                                                                                                                       |
-| `npm run lint:fix`       | Fix ESLint errors                                                                                                                                |
-| `npm run format`         | Format code with Prettier                                                                                                                        |
-| `npm run format:check`   | Check code formatting                                                                                                                            |
-| `npm run typecheck`      | Run TypeScript type checking                                                                                                                     |
-| `npm run test:orb`       | Orb asset gate: signed `.riv` and still hashes, runtime version, self-hosted wasm                                                                |
-| `npm run test:platform`  | `/get` routing: four user agents against `functions/get.ts`, and the inline platform script                                                      |
-| `npm run legal:sync`     | Copy the privacy policy and terms from `../hachimi-ios/docs/legal/` into `content/legal/`                                                        |
-| `npm run legal:check`    | Fail if `content/legal/` differs from `../hachimi-ios/docs/legal/` by a single byte                                                              |
-| `npm run test:dates`     | Fail if a `pageDates` entry in `lib/config.ts` differs from the page's visible “last updated” date                                               |
-| `npm run check:mentions` | Copy gate: no reference or competitor names in site copy (same list as hachimi-ios)                                                              |
-| `npm run check:copy`     | Word-count caps per section (spec 005)                                                                                                           |
-| `npm run check`          | The single quality gate: format:check, lint, typecheck, test:orb, test:platform, legal:check, test:dates, check:mentions, check:copy, then build |
+| Command                  | Description                                                                                                                                                  |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `npm run dev`            | Start development server                                                                                                                                     |
+| `npm run build`          | Static export to `out/`                                                                                                                                      |
+| `npm run lint`           | Run ESLint                                                                                                                                                   |
+| `npm run lint:fix`       | Fix ESLint errors                                                                                                                                            |
+| `npm run format`         | Format code with Prettier                                                                                                                                    |
+| `npm run format:check`   | Check code formatting                                                                                                                                        |
+| `npm run typecheck`      | Run TypeScript type checking                                                                                                                                 |
+| `npm run test:orb`       | Orb asset gate: signed `.riv` and still hashes, runtime version, self-hosted wasm                                                                            |
+| `npm run test:platform`  | `/get` routing: four user agents against `functions/get.ts`, and the inline platform script                                                                  |
+| `npm run legal:sync`     | Copy the privacy policy and terms from `../hachimi-ios/docs/legal/` into `content/legal/`                                                                    |
+| `npm run legal:check`    | Fail if `content/legal/` differs from `../hachimi-ios/docs/legal/` by a single byte                                                                          |
+| `npm run llms:build`     | Generate `public/llms.txt` and `public/llms-full.txt` from `lib/i18n/`, `lib/config.ts` and `content/legal/`                                                 |
+| `npm run llms:check`     | Regenerate both llms files and fail if either differs from the committed copy by a single byte                                                               |
+| `npm run test:dates`     | Fail if a `pageDates` entry in `lib/config.ts` differs from the page's visible “last updated” date                                                           |
+| `npm run check:mentions` | Copy gate: no reference or competitor names in site copy (same list as hachimi-ios)                                                                          |
+| `npm run check:copy`     | Word-count caps per section (spec 005)                                                                                                                       |
+| `npm run check`          | The single quality gate: format:check, lint, typecheck, test:orb, test:platform, legal:check, llms:check, test:dates, check:mentions, check:copy, then build |
 
 ## Quality gate
 
@@ -75,7 +77,7 @@ git config core.hooksPath .githooks
 
 ## Legal pages
 
-The privacy policy and terms are owned by the iOS repo (`hachimi-ios/docs/legal/`), which must sit next to this repo. `content/legal/` mirrors those four Markdown files byte for byte, and `lib/legal.ts` renders them at build time with `marked`; data tables stack into cards on narrow screens. To publish a new version: change it in hachimi-ios, run `npm run legal:sync`, set the matching dates in `pageDates`, then `npm run check`.
+The privacy policy and terms are owned by the iOS repo (`hachimi-ios/docs/legal/`), which must sit next to this repo. `content/legal/` mirrors those four Markdown files byte for byte, and `lib/legal.ts` renders them at build time with `marked`; data tables stack into cards on narrow screens. To publish a new version: change it in hachimi-ios, run `npm run legal:sync`, set the matching dates in `pageDates`, run `npm run llms:build`, then `npm run check`.
 
 ## Project Structure
 
@@ -111,7 +113,7 @@ The privacy policy and terms are owned by the iOS repo (`hachimi-ios/docs/legal/
     ├── rive/              # Runtime wasm, copied from node_modules at build time (ignored)
     ├── screenshots/zh/    # The five app shots (scripts/build-shots.mjs)
     ├── robots.txt         # Static robots.txt (Content-Signal, sitemap)
-    ├── llms.txt           # AI-crawler site summary (+ llms-full.txt)
+    ├── llms.txt           # Generated by scripts/build-llms.mjs (+ llms-full.txt); do not edit
     └── site.webmanifest   # PWA manifest
 ```
 

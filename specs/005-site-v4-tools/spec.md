@@ -46,7 +46,7 @@ owner 2026-09-22 定：App 的功能与定位比第三版（2026-09-14）时变�
 3. GIVEN `#tools` 四张卡，THEN 卡面只有名字与一句；点开才见机制事实；每条事实在 `docs/research/2026-09-22-site-v4-research.md` 的 App 清单里有出处；不写内核未接的流日流时、不写准确率。
 4. GIVEN 全站，THEN 不引 three、GSAP、R3F；新增依赖只有 ogl；两处 shader 由同一个组件加两套调色板承担；减弱动态时 shader 只画一帧；离开视口与页面转后台停帧。
 5. GIVEN 字数门，THEN 上限改成五档：首屏 9 字；给命理师那一节（一句加三件事）不超过 185 字；四张卡的卡面、道长记得、学堂、本机与收尾合计不超过 320 字；命例走查（标题、引言与五步）合计不超过 240 字；每张卡展开不超过 110 字；FAQ 每条不超过 70 字；英文 0.6 倍，给命理师一节英文单独定为 121 词。键表随节表重写，机制保留。
-6. GIVEN `public/llms.txt`、`llms-full.txt`、`site.webmanifest`、`README.md` 的描述，THEN 与 004 的定位同口径。
+6. GIVEN `public/llms.txt` 与 `llms-full.txt`，THEN 由 `scripts/build-llms.mjs` 从 `lib/i18n`、`lib/config.ts` 与 `content/legal/` 生成，`npm run llms:check` 逐字节比对仓里的两份；`site.webmanifest` 与 `README.md` 的描述与 004 的定位同口径。
 7. GIVEN 浏览器实拍桌面 1440 与手机 390、浅深、中英八张，THEN 无横向溢出、无空白节、首屏无累积布局偏移；Rive 猫与 shader 同屏时不掉帧到肉眼可见。
 8. `npm run check` 全绿，推 main 上线，`curl` 六个法律 URL 与 `/zh` `/en` 全 200。
 

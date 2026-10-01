@@ -2,7 +2,7 @@
 
 中英双语官网，Next.js App Router 静态导出，生产在 Cloudflare Pages（`hachimi.ai`）。产品定义、法律件真源与协作约定在兄弟仓 hachimi-ios，本仓与它放在同一个父目录下。
 
-- **法律件**：隐私政策与使用条款的真源是 hachimi-ios `docs/legal/`，`content/legal/` 逐字镜像，不在本仓改字。那边改了跑 `npm run legal:sync`，`lib/config.ts` 的 `pageDates` 改成同一天。删除数据页与支持页的文字在 `lib/i18n/`。
+- **法律件**：隐私政策与使用条款的真源是 hachimi-ios `docs/legal/`，`content/legal/` 逐字镜像，不在本仓改字。那边改了跑 `npm run legal:sync`，`lib/config.ts` 的 `pageDates` 改成同一天，再跑 `npm run llms:build`。删除数据页与支持页的文字在 `lib/i18n/`。
 - **门**：`npm run check` 是唯一的门，推送前跑全，不拿分项代替。分项见 README 的脚本表。
 - **部署**：推 `main` 即构建上线。`functions/get.ts` 是 `/get` 按平台分流的 Pages Function，`public/_redirects` 管裸路径与旧网址。runbook 见 `deploy/cloudflare-pages.md`。
 - **单一出处**：商店链接、站点信息与页面日期只写在 `lib/config.ts`，UA 判断只写在 `lib/platform.ts`。
