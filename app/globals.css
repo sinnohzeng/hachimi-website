@@ -122,6 +122,15 @@ html[data-platform="android"] [data-badge="apple"] {
   display: none;
 }
 
+/* 下载落地页的微信提示：同一段内联脚本在微信里写 html[data-wechat]，
+   别处一律不显示。 */
+[data-wechat-hint] {
+  display: none;
+}
+html[data-wechat] [data-wechat-hint] {
+  display: block;
+}
+
 /* 无 JS 救援：motion 的入场元素在 SSR 里带内联 opacity:0（含 transform），
    JS 失效时 hero 以下内容将永久不可见。author !important 压过非 important
    内联样式；no-js 类由同一内联脚本在首帧前移除，正常路径下本规则恒为死

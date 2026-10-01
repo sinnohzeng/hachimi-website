@@ -33,10 +33,13 @@ export function StoreBadges({
   locale,
   t,
   className = "",
+  followPlatform = true,
 }: {
   locale: string;
   t: Translations;
   className?: string;
+  /** 下载落地页给 false：两枚恒并排，不随平台收成一枚。 */
+  followPlatform?: boolean;
 }): ReactNode {
   const apple = locale === "zh" ? appleBadges.zh : appleBadges.en;
   const play = locale === "zh" ? playBadges.zh : playBadges.en;
@@ -45,7 +48,7 @@ export function StoreBadges({
     <div className={`flex flex-wrap items-center gap-3 ${className}`}>
       <a
         href={siteConfig.appStore}
-        data-badge="apple"
+        data-badge={followPlatform ? "apple" : undefined}
         className="transition-opacity duration-150 hover:opacity-80"
       >
         <img
@@ -58,7 +61,7 @@ export function StoreBadges({
       </a>
       <a
         href={siteConfig.googlePlay}
-        data-badge="play"
+        data-badge={followPlatform ? "play" : undefined}
         className="transition-opacity duration-150 hover:opacity-80"
       >
         <img

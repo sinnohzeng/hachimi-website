@@ -25,6 +25,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // wrangler pages dev 的本地状态与打包产物
+    ".wrangler/**",
   ]),
 ]);
 

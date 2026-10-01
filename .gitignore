@@ -26,6 +26,7 @@
 
 # debug / tooling caches
 .firecrawl
+.wrangler
 .playwright-mcp
 npm-debug.log*
 yarn-debug.log*

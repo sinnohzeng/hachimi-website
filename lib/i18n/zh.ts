@@ -197,6 +197,13 @@ export const zh: Translations = {
     ],
   },
 
+  get: {
+    title: "下载哈基米道长",
+    body: "iPhone 与 iPad 在 App Store 下载，Android 手机在 Google Play 下载。",
+    qrCaption: "用手机扫码下载",
+    wechatHint: "微信里打不开应用商店，点右上角“…”，选“在浏览器打开”。",
+  },
+
   privacy: {
     title: "隐私政策",
     effectiveDate: "最后更新：2026 年 9 月 17 日",

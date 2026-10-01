@@ -203,6 +203,14 @@ export const en: Translations = {
     ],
   },
 
+  get: {
+    title: "Get Hachimi.ai",
+    body: "Download it from the App Store for iPhone and iPad, or from Google Play for Android phones.",
+    qrCaption: "Scan with your phone to download",
+    wechatHint:
+      "App stores don’t open inside WeChat. Tap “…” at the top right and choose “Open in Browser”.",
+  },
+
   privacy: {
     title: "Privacy Policy",
     effectiveDate: "Last updated: September 17, 2026",

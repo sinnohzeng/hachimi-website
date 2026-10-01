@@ -104,6 +104,16 @@ export type Translations = {
     legal: { label: string; href: string }[];
   };
 
+  // 下载落地页（/{locale}/get）：/get 在微信里与桌面上落到这里。
+  get: {
+    title: string;
+    body: string;
+    /** 二维码下面那一行，只在桌面宽度出现。 */
+    qrCaption: string;
+    /** 只在微信里显示。 */
+    wechatHint: string;
+  };
+
   // Privacy Policy (sections renderer)
   privacy: {
     title: string;
