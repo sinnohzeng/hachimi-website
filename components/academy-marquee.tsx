@@ -17,7 +17,7 @@ import { useReducedMotion } from "@/lib/motion";
 import { reveal } from "@/lib/motion-tokens";
 
 /**
- * 第六节：学堂（#academy）。一句话加一条书名跑马灯，不放截图。
+ * 第五节：学堂（#academy）。一句话加一条书名跑马灯，不放截图。
  *
  * 跑的是随包古籍的真书名，表在 lib/academy-titles.ts；英文页跑五科科名与书名拼音。
  * 滚动越快跑得越快，反向滚动会倒着跑。

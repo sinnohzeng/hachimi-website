@@ -5,7 +5,7 @@
  * 口径出处是 specs/005-site-v4-tools/spec.md 的验收 5，四档：
  *   - 首屏简体不超过 9 字；
  *   - 给命理师那一节（一句加三件事）不超过 185 字；
- *   - 四张卡的卡面、道长记得、学堂、本机与收尾合计不超过 320 字；
+ *   - 四张卡的卡面、学堂与收尾合计不超过 320 字；
  *   - 命例走查（标题、引言与五步）合计不超过 240 字；
  *   - 每张卡展开不超过 110 字，FAQ 每条答案不超过 70 字；
  *   - 英文上限取简体上限的 0.6 倍，向上取整；给命理师一节单独定为 121 词。
@@ -42,7 +42,7 @@ const PRO_KEYS = [
   "what.items.2.title",
   "what.items.2.body",
 ];
-/** 卡面：四张卡的卡面、道长记得、学堂、本机与收尾。 */
+/** 卡面：四张卡的卡面、学堂与收尾。 */
 const SURFACE_KEYS = [
   "tools.title",
   "tools.hint",
@@ -54,13 +54,7 @@ const SURFACE_KEYS = [
   "tools.cards.2.line",
   "tools.cards.3.name",
   "tools.cards.3.line",
-  "remembers.text",
   "academy.text",
-  "offline.text",
-  "offline.tags.0",
-  "offline.tags.1",
-  "offline.tags.2",
-  "offline.tags.3",
   "finalCta.headline",
 ];
 

@@ -2,8 +2,8 @@
  * ============================================================================
  * SITE CONFIGURATION
  * ============================================================================
- * Hachimi.ai (哈基米道长): a cat-themed companion that casts Mei Hua Yi Shu
- * hexagrams and builds Zi Wei Dou Shu / Ba Zi charts on the device.
+ * Hachimi.ai (哈基米道长): a Zi Wei Dou Shu and Ba Zi charting tool for fate
+ * readers, with Mei Hua Yi Shu casts filed under each client's case.
  * Brand Hachimi.ai · the operating company is named in the legal pages only.
  */
 
@@ -19,7 +19,7 @@ export const siteConfig = {
   // 第三版的北极星原句，与首屏 hero.headline 同一句，owner 定稿，不送润色。
   tagline: "When it's a lot, cast a hexagram.",
   description:
-    "Hachimi.ai is an app for studying Chinese folk fate arts, with a cat Daoist inside. Give two numbers and write your question, and he casts by Mei Hua Yi Shu, Plum Blossom divination, and reads it to you. Enter birth details, and Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars) charts are built on your phone, even with no internet. Keep each person as a case, with their charts and every hexagram cast for them in one place. The Academy carries the old texts of the five arts. For fun and company only, no predictions.",
+    "Hachimi.ai is a charting tool for fate readers and serious enthusiasts. Enter a birth once and get Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars) charts together.",
   url: "https://hachimi.ai",
   email: "voice@hachimi.ai",
   creator: "@sinnohzeng",
@@ -31,7 +31,7 @@ export const siteConfig = {
       url: "https://hachimi.ai",
     },
   ],
-  // 给检索引擎的词，不是正文，不随正文降级（见 docs/copy-principles.md 五之补）。
+  // 给检索引擎的词，不是正文，不随正文降级（见 hachimi-ios docs/copy-principles.md 第七节）。
   keywords: [
     "Chinese folk fate arts",
     "Mei Hua Yi Shu",
@@ -72,8 +72,8 @@ export const siteConfig = {
  * fails `npm run check` when they drift.
  */
 export const pageDates = {
-  home: "2026-09-14",
-  methodology: "2026-09-14",
+  home: "2026-10-01",
+  methodology: "2026-10-01",
   privacy: "2026-10-01",
   terms: "2026-10-01",
   support: "2026-10-01",

@@ -15,7 +15,7 @@ import { useReducedMotion } from "@/lib/motion";
 import { DUR, EASE, STAGGER, reveal } from "@/lib/motion-tokens";
 
 /**
- * 第三节：一份命例，四面都在（#case）。
+ * 第三节：一位客户，一份命例（#case）。
  *
  * 桌面端一只钉住的手机随滚动换五屏，左侧同步换文字；窄屏与减弱动态退化成一张手机
  * 加一份有序步骤列表，字一个不少。

@@ -5,8 +5,6 @@ import { FinalCTA } from "@/components/final-cta";
 import { Footer } from "@/components/footer";
 import { Hero } from "@/components/hero";
 import { Manifesto } from "@/components/manifesto";
-import { Principles } from "@/components/principles";
-import { RemembersReveal } from "@/components/reveal-headline";
 import { ToolCards } from "@/components/tool-cards";
 import { FaqStructuredData } from "@/components/structured-data";
 import { getTranslations } from "@/lib/i18n";
@@ -41,16 +39,13 @@ export default async function HomePage({
     <>
       <FaqStructuredData t={t} />
       <main id="main-content" className="flex-1">
-        {/* 九节，顺序即 spec 005 的节表：一句首屏 → 定位 → 一份命例四面都在 →
-            四件工具 → 道长记得 → 学堂 → 本机 → 常见问题 → 收尾。加节先改 spec，
-            不在这里悄悄插。 */}
+        {/* 七节：一句首屏 → 给命理师 → 一位客户一份命例 → 四件工具 → 学堂 →
+            常见问题 → 收尾。加节先改 spec，不在这里悄悄插。 */}
         <Hero t={t} locale={locale} />
         <Manifesto t={t} />
         <CaseJourney t={t} />
         <ToolCards t={t} />
-        <RemembersReveal t={t} />
         <AcademyMarquee t={t} locale={locale} />
-        <Principles t={t} />
         <FAQ t={t} />
         <FinalCTA t={t} locale={locale} />
       </main>

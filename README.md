@@ -16,18 +16,16 @@ The bilingual (zh / en) marketing site for **Hachimi.ai (哈基米道长)**, a t
 
 ## Sections Included
 
-Nine home-page sections, in this order (spec: [`specs/005-site-v4-tools/spec.md`](specs/005-site-v4-tools/spec.md)):
+Seven home-page sections, in this order (spec: [`specs/005-site-v4-tools/spec.md`](specs/005-site-v4-tools/spec.md); copy rules: hachimi-ios `docs/copy-principles.md`):
 
 - **Hero** - one line, the Rive Orb, store badges, an ogl light-beam shader
 - **For practitioners** (`#what`) - three things a professional reader gets
-- **One case, four views** (`#case`) - a pinned phone walking through a case
-- **Four tools** (`#tools`) - casting, Zi Wei, Ba Zi and the case library, each card expands
-- **Remembers** - word-mask headline
+- **One client, one case** (`#case`) - a pinned phone walking through a case
+- **Four tools** (`#tools`) - Zi Wei, Ba Zi, the case library and Mei Hua casting, each card expands
 - **Academy** (`#academy`) - marquee of the bundled classics
-- **On device** (`#offline`) - one line plus four tags
 - **FAQ / Final CTA / Footer** - accordion, ink shader with the screenshot fan, links and the legal row
 
-Other pages under `app/[locale]/`: `methodology`, `privacy` and `terms` (rendered from `content/legal/`), `data-deletion`, `support`, and `get` (the download landing page).
+Other pages under `app/[locale]/`: `methodology` (Charting rules), `privacy` and `terms` (rendered from `content/legal/`), `data-deletion`, `support`, and `get` (the download landing page).
 
 ## Getting Started
 
@@ -85,7 +83,7 @@ The privacy policy and terms are owned by the iOS repo (`hachimi-ios/docs/legal/
 ├── app/
 │   ├── [locale]/          # zh / en localized routes (html lang + shell here)
 │   │   ├── layout.tsx     # Locale layout: <html lang>, fonts, providers, inline platform script
-│   │   ├── page.tsx       # Home page (nine sections)
+│   │   ├── page.tsx       # Home page (seven sections)
 │   │   ├── get/           # Download landing page: badges, desktop-only QR, WeChat hint
 │   │   └── ...            # methodology, privacy, terms, data-deletion, support
 │   ├── globals.css        # Design tokens, base styles, legal prose and stacked tables

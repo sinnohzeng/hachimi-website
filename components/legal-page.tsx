@@ -1,6 +1,47 @@
 import type { LegalPage } from "@/lib/i18n/types";
 import type { ReactNode } from "react";
 
+function ContactTable({
+  table,
+}: {
+  table: NonNullable<LegalPage["table"]>;
+}): ReactNode {
+  return (
+    <div>
+      <h2 className="text-foreground mb-3 text-lg font-semibold">
+        {table.heading}
+      </h2>
+      {/* 窄屏按行堆叠成卡片，每格前写表头（globals.css 的 .stack-table）。 */}
+      <table className="stack-table" role="table">
+        <thead role="rowgroup">
+          <tr role="row">
+            {table.columns.map((col) => (
+              <th key={col} role="columnheader">
+                {col}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody role="rowgroup">
+          {table.rows.map((row) => (
+            <tr key={row.cells[0]} role="row">
+              {row.cells.map((cell, i) => (
+                <td
+                  key={`${row.cells[0]}-${i}`}
+                  role="cell"
+                  data-label={table.columns[i]}
+                >
+                  {cell}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
 export function LegalPageContent({ data }: { data: LegalPage }): ReactNode {
   return (
     <section className="bg-background text-foreground relative w-full">
@@ -33,42 +74,9 @@ export function LegalPageContent({ data }: { data: LegalPage }): ReactNode {
                   </ol>
                 </div>
 
-                {/* Data table */}
-                <div>
-                  <h2 className="text-foreground mb-3 text-lg font-semibold">
-                    {data.dataTable.heading}
-                  </h2>
-                  {/* 窄屏按行堆叠成卡片，每格前写表头（globals.css 的 .stack-table）。 */}
-                  <table className="stack-table" role="table">
-                    <thead role="rowgroup">
-                      <tr role="row">
-                        {data.dataTable.columns.map((col) => (
-                          <th key={col} role="columnheader">
-                            {col}
-                          </th>
-                        ))}
-                      </tr>
-                    </thead>
-                    <tbody role="rowgroup">
-                      {data.dataTable.rows.map((row) => (
-                        <tr key={row.cells[0]} role="row">
-                          {row.cells.map((cell, i) => (
-                            <td
-                              key={`${row.cells[0]}-${i}`}
-                              role="cell"
-                              data-label={data.dataTable.columns[i]}
-                            >
-                              {cell}
-                            </td>
-                          ))}
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                {data.table ? <ContactTable table={data.table} /> : null}
 
-                {/* Additional sections */}
-                {data.sections.map((section) => (
+                {data.sections?.map((section) => (
                   <div key={section.heading}>
                     <h2 className="text-foreground mb-3 text-lg font-semibold">
                       {section.heading}

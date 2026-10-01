@@ -2,7 +2,6 @@
 
 import { type ReactNode } from "react";
 import { motion, type Variants } from "motion/react";
-import type { Translations } from "@/lib/i18n";
 import { useReducedMotion } from "@/lib/motion";
 import { DUR, EASE, MARGIN } from "@/lib/motion-tokens";
 
@@ -99,7 +98,7 @@ const TOKEN: Variants = {
 };
 
 /**
- * 逐字（英文逐词）从遮罩下抬起的大标题。道长记得那一句与收尾那一句共用它。
+ * 逐字（英文逐词）从遮罩下抬起的大标题，收尾那一句用它。
  *
  * 动的是字本身而不是盖在字上的挡板：挡板方案在 JS 失效时会一直盖着，字永远出不
  * 来；抬字方案带 data-animate，globals.css 的无 JS 救援把 transform 清零即还原。
@@ -160,24 +159,5 @@ export function RevealHeadline({
         ))}
       </motion.span>
     </Tag>
-  );
-}
-
-/**
- * 第五节：道长记得。整节只有这一句差异句，全站唯一一处讲“凭什么不是通用 AI”。
- *
- * 节高按 spec 压在一屏三分之一以内：一行正文加上下内边距。要加东西先算这笔账，
- * 别让它长回一节图文。
- */
-export function RemembersReveal({ t }: { t: Translations }): ReactNode {
-  return (
-    <section className="bg-muted text-foreground w-full py-20 sm:py-24">
-      <div className="mx-auto max-w-4xl px-6 sm:px-8">
-        <RevealHeadline
-          text={t.remembers.text}
-          className="text-center font-serif text-xl leading-relaxed font-medium text-balance sm:text-2xl md:text-3xl"
-        />
-      </div>
-    </section>
   );
 }

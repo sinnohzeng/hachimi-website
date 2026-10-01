@@ -5,7 +5,7 @@ export const en: Translations = {
     case: "Cases",
     tools: "Tools",
     academy: "Academy",
-    methodology: "How it's built",
+    methodology: "Charting rules",
     faq: "FAQ",
     download: "Get the app",
   },
@@ -31,42 +31,42 @@ export const en: Translations = {
     items: [
       {
         title: "Enter a birth once, get both charts",
-        body: "Zi Wei and Ba Zi chart from one case, no switching tools; true solar time is worked out once from the birthplace, and both charts use it.",
+        body: "One case gives you both Zi Wei Dou Shu and Ba Zi. True solar time is worked out once, so the two charts agree.",
       },
       {
-        title: "Your clients' cases stay in your hands",
-        body: "No account needed. iPhone and iPad sync through your iCloud, and on Android your phone's system backup carries them to your Google Account. You can also export a backup file, and the device keeps a daily one.",
+        title: "Client records move with you",
+        body: "iPhone and iPad sync through iCloud. On Android, cases are saved with your system backup. Both can export a backup file.",
       },
       {
-        title: "Switch Zi Wei styles, read Ba Zi to six pillars",
-        body: "Zi Wei switches between San He, Flying Star and Four Transformations, cycles down to the hour; Ba Zi adds a six-pillar pro chart with its cycles.",
+        title: "Three Zi Wei chart styles, Ba Zi to six pillars",
+        body: "Switch between San He, Flying Star and Four Transformations, with fortune layers down to the hour. Beyond the four pillars, Ba Zi has a six-pillar chart with major and annual cycles.",
       },
     ],
   },
 
   case: {
-    title: "One case per person",
-    lead: "One case per client. Zi Wei, Ba Zi and every hexagram cast for them sit under that one case.",
+    title: "One client, one case",
+    lead: "Zi Wei, Ba Zi and every hexagram you cast for this client sit under one case.",
     steps: [
       {
         title: "Create a case",
-        body: "Enter by solar date, lunar date or four pillars, with a birthplace or longitude and any time zone.",
+        body: "Enter a solar date, lunar date or four pillars, and pick the birthplace by province and city.",
       },
       {
         title: "Chart Zi Wei",
-        body: "One control switches the chart style, cycles stack layer by layer, tap a palace to set the Tai Ji point.",
+        body: "Once the birth is in, the Zi Wei chart is ready.",
       },
       {
-        title: "Chart Ba Zi",
-        body: "The four-pillar table fits one screen; for cycles, switch to the six-pillar pro chart.",
+        title: "Switch to Ba Zi",
+        body: "Same birth details. No need to enter them again.",
       },
       {
-        title: "Cast for them",
-        body: "Pick who it is for on the asking page, cast, and the reading is filed under that person with the hexagram.",
+        title: "Cast for this client",
+        body: "Choose who the question is for. The hexagram and reading are filed under that case.",
       },
       {
-        title: "Look back at casts",
-        body: "The asking side lists every hexagram cast for them, newest first; tap a row for that result page.",
+        title: "Look back at every cast",
+        body: "Past questions are listed by date; tap one to open that hexagram. Ask for this client again, and the Master picks up where the last reading left off.",
       },
     ],
     shotAlts: [
@@ -83,87 +83,63 @@ export const en: Translations = {
     hint: "Open a card for the detail.",
     cards: [
       {
-        name: "Mei Hua Yi Shu casting",
-        line: "Say two numbers and the hexagram is cast on your phone. AI writes the reading; the hexagram does not move.",
-        detail:
-          "Upper and lower trigrams come from the early-heaven numbers, the moving line from the two numbers plus the hour index. Original, nuclear and changed hexagrams and the body-use relation are computed on your phone, each with a checksum so the cast can be verified later. The tone follows the body-use cycle, not the model. History filters by case; memory stays on device.",
-      },
-      {
         name: "Zi Wei Dou Shu",
-        line: "San He, Flying Star and Four Transformations; five cycle layers; patterns judged by rule.",
+        line: "Set star placement to match your school. Paste a star code and your chart matches a colleague's.",
         detail:
-          "Pattern analysis runs 84 rules and names the cycle layer each one comes from. 23 star-placement settings pack into one code: paste someone else's code and the chart matches. Zi Zhan charting and pillar lookup sit in the More menu; press a star name for its entry.",
+          "Chart Patterns are judged by rule, and each one names the layer it comes from. This part needs internet. Press and hold any word on the chart for its entry.",
       },
       {
         name: "Ba Zi charting",
-        line: "The four-pillar table reads from main star to symbolic stars; the six-pillar table carries major, annual and monthly cycles.",
+        line: "Clashes, combinations and harms are written out for the natal chart and for the cycles. Take notes on the same page.",
         detail:
-          "The four-pillar table runs from main star to symbolic stars, colored by the five elements. The six-pillar table names the current major and annual cycle at the top, each with a horizontal scroll. Six hidden-stem rulebooks to choose from; write your notes on the same page; press any field for its entry.",
+          "The four pillars run from main star to Symbolic Stars, and you can choose the hidden-stem rulebook. Press and hold any word on the chart for its entry.",
       },
       {
         name: "Case library",
-        line: "Casts travel with the case; among dozens of clients, filter by group or day master and the person is right there.",
+        line: "Dozens of clients. Filter by group or day master and the one you need is there.",
         detail:
-          "Eight groups, all renamable. The list sections by initial or group, sort order can change, with six filter dimensions. Sync through iCloud on iOS, back up to a file on both; the phone keeps a daily backup and the last seven. A single case can be shared and merges straight into the other library. Delete a case and its casts go with it.",
+          "You can also filter by gender, zodiac animal and birth decade. Send a single case to a colleague, and it merges into their library when they open it.",
+      },
+      {
+        name: "Mei Hua Yi Shu casting",
+        line: "Say two numbers to cast a hexagram, and the Master writes a reading.",
+        detail:
+          "Original, Nuclear and Resulting hexagrams and Host & Guest sit on one screen. A cast for a client is filed under that case, and you can add what happened later. You can cast without writing a question.",
       },
     ],
   },
 
-  remembers: {
-    text: "The Master remembers what was asked for this person last time; the next reading is written with those notes.",
-  },
-
   academy: {
-    text: "154 public-domain classics ship with the app, filed under the five arts, readable offline.",
-  },
-
-  offline: {
-    text: "Zi Wei and Ba Zi are computed on this phone; charts come out offline.",
-    tags: [
-      "On-device charting",
-      "No account needed",
-      "Your data stays yours",
-      "File export and import",
-    ],
+    text: "Need a source for a reading? The classics are in the app, sorted by the five arts, and open offline.",
   },
 
   faq: {
     title: "Frequently asked questions",
     items: [
       {
-        question: "Is this real fortune telling?",
+        question: "How is true solar time worked out?",
         answer:
-          "No. Hachimi.ai is a charting and casting tool for fate readers and enthusiasts, for entertainment and cultural study only. It does not predict, change fate or bring luck, and never claims to be right.",
-      },
-      {
-        question: "Do the same numbers give the same hexagram?",
-        answer:
-          "The same numbers and hour always give the same hexagram by a fixed method, no dice. Only once the hexagram is set does DeepSeek write the reading, and it cannot change the hexagram.",
+          "From the birthplace longitude and the equation of time. Pick a province and city or type a longitude; born abroad, pick a time zone. Zi Wei and Ba Zi use the same hour.",
       },
       {
         question: "Do I need internet to chart?",
         answer:
-          "No. Zi Wei and Ba Zi charts are both computed on your device, so they work in airplane mode. Pattern analysis and pillar lookup go over the network.",
+          "No. Charts work in airplane mode. Chart Patterns, zizhan and the Four Pillars lookup need internet.",
       },
       {
-        question: "How do San He, Flying Star and Four Transformations differ?",
+        question: "How do I switch chart styles?",
         answer:
-          "San He reads star brightness, birth-year transformations and stacked cycle palaces. Flying Star reads palace stems and the origin palace. Four Transformations enlarges the four transforming stars and draws the links. One birth time, three charts.",
+          "One tap at the bottom of the chart. Same birth, same Star Settings; the Taiji point and fortune layers follow.",
       },
       {
-        question: "Can I lose my cases?",
+        question: "What does the Master remember?",
         answer:
-          "Cases live on your device; on iOS they also sync to your own private iCloud database. You can save them to a file, share them, and import them back. Only you delete them.",
+          "What you asked for this client before. Ask for them again, and the reading picks up from last time. You can turn it off anytime.",
       },
       {
-        question: "How does the Master remember what I asked?",
+        question: "Do readings need internet?",
         answer:
-          "After each reading the Master saves a short note on your phone, kept per case. The next related question for the same person carries at most three notes, used only to write that reading. You can turn it off anytime.",
-      },
-      {
-        question: "Who writes the reading?",
-        answer:
-          "The hexagram is cast on your phone, the backend recomputes it and matches the checksum, and only then does DeepSeek write the reading. Your consent is asked before the first online question. Readings have a daily cap that resets the next day.",
+          "Yes, with a daily limit. A third-party AI service writes the reading in the Master's voice.",
       },
     ],
     stillHaveQuestions: "Still have questions?",
@@ -183,7 +159,7 @@ export const en: Translations = {
         items: [
           { label: "Cases", href: "/en#case" },
           { label: "Academy", href: "/en#academy" },
-          { label: "How it's built", href: "/en/methodology" },
+          { label: "Charting rules", href: "/en/methodology" },
           { label: "FAQ", href: "/en#faq" },
         ],
       },
@@ -214,163 +190,58 @@ export const en: Translations = {
     privacy: {
       title: "Privacy Policy",
       description:
-        "Hachimi.ai Privacy Policy: what data we process, who receives it, how long it is kept, and how to delete it.",
+        "Hachimi.ai Privacy Policy: where your cases and history are kept, which features go online, and how to manage and delete them.",
     },
     terms: {
-      title: "Terms of Use & Disclaimer",
+      title: "Terms of Use",
       description:
-        "Hachimi.ai Terms of Use & Disclaimer: for entertainment and traditional cultural learning, with no predictions or promises to change your luck.",
+        "Hachimi.ai Terms of Use: features, readings, membership and license.",
     },
   },
 
   methodology: {
-    metaTitle: "How hexagram casting and chart building work",
+    metaTitle: "Charting rules",
     metaDescription:
-      "Here is how a hexagram is cast, where a third party AI service is held back and by what, and what rules shape a chart. The Master walks you through it, step by step.",
-    badge: "The Master's old rules",
-    title1: "How a reading is made,",
-    title2: "out in the open",
-    lastUpdated: "Last updated 14 September 2026",
+      "How Hachimi.ai charts Zi Wei Dou Shu and Ba Zi: true solar time, calendars, chart styles, Chart Patterns and star schools.",
+    badge: "Zi Wei and Ba Zi",
+    title1: "Charting rules,",
+    title2: "your way",
+    lastUpdated: "Last updated 1 October 2026",
     intro:
-      "Hachimi.ai lays it all out: the casting method is fixed, the reading is tightly bounded, every pass goes through evaluation, and the chart rules are written down line by line, all in plain view. For entertainment and reference only.",
-    cast: {
-      kicker: "The cast",
-      step: "01",
-      title: "Same numbers and hour, always the same hexagram",
-      body: "You give two numbers, paired with the current hour, and Hachimi casts a Mei Hua Yi Shu (Plum Blossom divination) hexagram by a fixed method. No dice, no luck of the draw: the same two numbers and the same hour always make the same hexagram. This step is plain math, and luck has nothing to do with it.",
-      points: [
-        {
-          term: "The method is fixed",
-          desc: "The two numbers set the top and bottom trigrams, the three-line halves of the hexagram, and the two numbers together with the hour set the changing line. Every step is written into the code, never nudged by hand.",
-        },
-        {
-          term: "The same on both",
-          desc: "iOS and Android: give the same numbers and hour, and you get the exact same hexagram. The cast doesn't change just because you switched phones.",
-        },
-        {
-          term: "A fingerprint you can check",
-          desc: "Every cast carries a fingerprint, a short unique code called SHA-256. Run the same cast a hundred times and the code is the same every time. Change the hexagram, and the code no longer matches.",
-        },
-      ],
-      fingerprintLabel: "Example fingerprint for this cast",
-      fingerprintNote:
-        "SHA-256, made by the cast engine. Run it again and it matches; change the cast and it won't.",
-    },
-    ai: {
-      kicker: "The reading",
-      step: "02",
-      title: "The AI only makes the words warm, nothing more",
-      body: "Once the hexagram is cast, the AI's turn begins. Hachimi.ai hands the hexagram, the hour, and your question to a third-party AI service and asks it to write a reading in the Master's voice. Which model exactly? We pick whichever holds up better in testing. What we require of any such service is written down in the Privacy Policy, and it holds no matter who writes the words. It can shape the words and speak to your situation, but it can't touch the hexagram, and it can't decide the fortune.",
-      writesTitle: "What the AI does",
-      writes: [
-        "Walk you through the hexagram, line by line",
-        "Write a kind reading that speaks to your question",
-        "Land on one small thing you can do right now",
-        "Close with a small blessing",
-      ],
-      lockedTitle: "What the system locks for you",
-      locked: [
-        "The hexagram itself: read it, never change it",
-        "The fortune's tone: set by the Host and Guest trigrams and their five elements, not the AI's to invent",
-        "The find-item direction: worked out by the cast engine, out of the AI's reach",
-        "The character and red lines: no predicting, no changing your fate, no changing your luck, written into the system prompt",
-      ],
-    },
-    eval: {
-      kicker: "The test gate",
-      step: "03",
-      title:
-        "How we make sure it still follows the rules: every update takes a test",
-      body: "Whether the words hold up, and whether they cross a red line, isn't left to a hunch. Every build first has to clear a hard gate, and the code doesn't get in if it fails. On top of that, a stronger model judges the readings against 45 set test cases on a regular pass, so quality gets real scrutiny, not just guesswork.",
-      stats: [
-        {
-          value: "45",
-          label: "set test cases across four scenarios and two languages",
-        },
-        {
-          value: "8",
-          label: "hard cases built to test the red lines on purpose",
-        },
-        { value: "4", label: "checks by the judge, each one to pass" },
-        { value: "Every build", label: "the hard gate runs with the code" },
-      ],
-      layers: [
-        {
-          name: "The hard gate · on every build",
-          desc: "First it checks that the fortune's tone wasn't changed. The tone is set by the cast engine. If the AI changed it on its own, this gate stops it cold.",
-        },
-        {
-          name: "The judge gate · a stronger model scores it",
-          desc: "Then a stronger model sits as judge and checks, one by one: did it stay on topic, did it hold the “no prediction” red line, does the voice sound like the Master, does it offer a first step you can really take. All four pass, or the reading doesn't.",
-        },
-      ],
-    },
-    paipan: {
-      kicker: "Charting",
-      title: "How the chart is built",
-      body: "Both charts, Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars), come from the chart engine built into the app, running on your own phone. Same birth details, same Star Settings, same chart every time. A few spots cause the most differences, and the rules are here.",
-      points: [
-        {
-          term: "True solar time",
-          desc: "Chart casting first converts birth time by birthplace longitude. Pick a province and city, or type a longitude. Born outside UTC+8? Choose a time zone too, down to half and quarter hour zones. Zi Zhan can take your current location once, using longitude only, never latitude.",
-        },
-        {
-          term: "Calendar",
-          desc: "Birth details can be Gregorian, lunar, or Four Pillars. For lunar, pick a Gregorian or stem-branch year and tick leap month. Five cases get a chart note: daylight saving, leap month, late zi hour, two Four Pillars across a solar term change, and true solar time crossing an hour slot.",
-        },
-        {
-          term: "Chart casting",
-          desc: "From one set of birth details, the Chart tab builds three views: San He chart, Four Transformations chart, and Flying Star chart. San He shows the twelve palaces with the three-way and four-point groups. Four Transformations draws the transformation letters and flying lines. Flying Star draws the links between palaces. A pill at the bottom switches views anytime, and the Taiji point and fortune layers follow.",
-        },
-        {
-          term: "View Chart Patterns",
-          desc: "Go through all 84 rules one by one. Tap a fortune layer name, a Chart Patterns name, or a good or bad mark, and the text opens right there. If it is not a San He chart, the Master stops and tells you why before judging further.",
-        },
-        {
-          term: "Adjustable star schools",
-          desc: "Star placement rules differ by school, so nothing here is fixed for you. Ten groups and more than sixty items can be set one by one to match the school you follow, or you can enter a star code to set them all at once. The Zhongzhou heaven, earth and human boards have their own entry.",
-        },
-        {
-          term: "Ba Zi side",
-          desc: "Ba Zi and Zi Wei share one set of birth details. Each of the Four Pillars gets ten rows, from the main star and the heavenly stem and earthly branch down to Nayin and Symbolic Stars. Details is a seven-column, six-pillar table, and one switch adds three columns: Conception Pillar, Life Palace and Body Palace. There are twelve major cycle steps, and twelve slots each for Annual and Monthly. Slide sideways, tap any slot, and the whole table follows.",
-        },
-        {
-          term: "More chart methods",
-          desc: "The More menu also has a zizhan chart that does not use birth details, a Four Pillars lookup that works backward to find a birth time, plus screenshot saving and a text chart.",
-        },
-        {
-          term: "On-device charting",
-          desc: "Charts are built on your device, not on a server. Step to the next major cycle, change a Star Settings option, or switch the Language, and it all recalculates on the spot. You can build a chart with no network.",
-        },
-      ],
-    },
-    limits: {
-      kicker: "Up front",
-      title: "Some things the Master won't do, from the start",
-      body: "Casting and reading are the Master's old rules, meant to help you untangle what's on your mind, not to tell your fortune. These few things he never touches.",
-      cards: [
-        {
-          title: "No predicting the future",
-          desc: "A reading is a few kind words to help you see things from another angle, not a prediction. How things go is still up to you.",
-        },
-        {
-          title: "No promising to change your luck",
-          desc: "No changing your fate, no changing your luck, no keeping bad luck away. Anyone who talks to you that way isn't Hachimi.",
-        },
-        {
-          title: "For entertainment only",
-          desc: "For serious things like health, legal, or money, please see a professional. What the Master offers is company for how you feel.",
-        },
-        {
-          title: "Your history is yours",
-          desc: "Your reading history is kept on your device. On iOS it syncs to your own iCloud when iCloud sync is on; on Android it goes into your system backup. To clear it, go to Me → Privacy and data. For online readings, our backend keeps the question and reading for 90 days, then deletes the text. The Privacy Policy has the details.",
-        },
-      ],
-    },
+      "Below are the spots where charting apps most often disagree. Where there's a setting, set it to match your school.",
+    points: [
+      {
+        term: "True solar time",
+        desc: "Birth time is adjusted by birthplace longitude and the equation of time. Pick a province and city, or type a longitude. Born abroad? Choose a time zone.",
+      },
+      {
+        term: "Calendar",
+        desc: "Enter a solar date, lunar date or four pillars. The chart marks daylight saving, leap months, late zi hour and solar term changes.",
+      },
+      {
+        term: "Three chart styles",
+        desc: "One birth, three views: San He, Flying Star and Four Transformations. Switch at the bottom of the chart; the Taiji point and fortune layers follow.",
+      },
+      {
+        term: "Chart Patterns",
+        desc: "The app judges each pattern by rule and names the layer it comes from. This needs internet.",
+      },
+      {
+        term: "Star schools",
+        desc: "Schools place stars differently. Set each Star Settings item to match yours, or enter a star code.",
+      },
+      {
+        term: "Ba Zi",
+        desc: "Ba Zi uses the same birth as Zi Wei. The four-pillar table runs from main star to Nayin and Symbolic Stars. The six-pillar chart carries major and annual cycles; tap any slot and the whole table follows.",
+      },
+      {
+        term: "More chart methods",
+        desc: "Zizhan and the Four Pillars lookup are in the More menu and need internet. Screenshots and text charts are there too.",
+      },
+    ],
     closing: {
-      text: "We lay the method open because peace of mind is the kind of thing you only trust once you can see how it works.",
-      ctaPrivacy: "Read the privacy policy",
-      ctaHome: "Back to the home page",
+      text: "Enter your first client's birth and get both charts.",
+      cta: "Get Hachimi.ai",
     },
   },
 
@@ -378,110 +249,26 @@ export const en: Translations = {
     title: "Delete your data",
     effectiveDate: "Last updated: October 1, 2026",
     intro:
-      "Hachimi.ai has no accounts. Your cases, reading history and Hachimi's memory are stored on your device: the iOS version also syncs them to your own iCloud, and the Android version saves them to your Google Account with the system backup. Question records sent to our backend for online readings have their text deleted after 90 days. This page explains where each kind of data is kept and how to delete it.",
+      "Your cases, reading history and the notes the Master keeps stay on your device, and you can delete them in the app.",
     steps: {
-      heading: "Delete in the App",
+      heading: "Delete in the app",
       items: [
-        "Open Hachimi.ai, go to Me and open Privacy and data.",
-        "Tap Delete All Reading Data, then Delete everything, to clear your reading history, drafts and Hachimi's memory at once. On iOS with iCloud sync on, the same data in iCloud and on your other devices is deleted too.",
-        "Cases are deleted one by one in the case library. When you delete a case, your reading history keeps the name it had at the time by default; to clear those too, filter your history by that deleted case and clear those readings together.",
-        "On the Privacy and data page, tap Reset Anonymous ID, after which the question records already on our backend no longer match the App on your device.",
-        "Uninstalling the App removes only the data on this device, not the copy in iCloud or existing system backups; see below for how to delete those.",
-      ],
-    },
-    dataTable: {
-      heading: "Where each kind of data is kept, and when it is deleted",
-      columns: ["Data", "Where it is kept", "When it is deleted"],
-      rows: [
-        {
-          cells: [
-            "Cases, reading history and Hachimi's memory",
-            "Your device; on iOS also your private iCloud storage",
-            "When you delete them in the App; for the iCloud copy, see below",
-          ],
-        },
-        {
-          cells: [
-            "The question, clarification, reading, time zone and anonymous install identifier in question records",
-            "Our backend",
-            "Deleted after 90 days; the remaining fields, which contain no text, are kept long term, see §4 of the Privacy Policy",
-          ],
-        },
-        {
-          cells: [
-            "Thumbs up or down",
-            "Our backend, with no text",
-            "Kept long term",
-          ],
-        },
-        {
-          cells: [
-            "Reports",
-            "Our backend, without the anonymous install identifier",
-            "Whole row deleted after 30 days",
-          ],
-        },
-        {
-          cells: [
-            "Usage statistics",
-            "Our backend, with the anonymous install identifier",
-            "Records with the identifier deleted after 8 days; daily totals without it kept long term",
-          ],
-        },
-        {
-          cells: [
-            "Admission records",
-            "Our backend, with the anonymous install identifier",
-            "Deleted after 8 days",
-          ],
-        },
-        {
-          cells: [
-            "Crash diagnostics (iOS only)",
-            "Our backend, without the anonymous install identifier",
-            "Raw diagnostics deleted after 90 days",
-          ],
-        },
-        {
-          cells: [
-            "Server logs",
-            "The Cloudflare platform",
-            "Kept for at most 7 days",
-          ],
-        },
-        {
-          cells: [
-            "Content sent to the third-party AI",
-            "DeepSeek",
-            "Handled under DeepSeek's open platform terms; requests do not carry the anonymous install identifier, so we cannot locate and delete them for you",
-          ],
-        },
-        {
-          cells: [
-            "Membership credentials",
-            "Our backend",
-            "iOS verification results cached for at most 15 minutes; on Android, a digest of the purchase token kept until the current subscription period ends",
-          ],
-        },
-        {
-          cells: [
-            "Copies in system backups",
-            "Held by Apple or Google",
-            "When you delete them in the system's backup settings",
-          ],
-        },
+        "Open Hachimi.ai and go to Me > Privacy and data.",
+        "Tap Delete All Reading Data and confirm. This clears reading history, drafts and the Master's notes. On iOS with iCloud sync on, they're deleted on your other devices too.",
+        "Delete cases one by one in your case library.",
+        "Tap Reset Anonymous ID to get a new one.",
       ],
     },
     sections: [
       {
-        heading: "Copies in system backups and iCloud",
+        heading: "Copies in backups",
         content:
-          "On iOS, reading history, cases and settings are included in iCloud device backups and computer backups, and with sync on there is also a copy in iCloud; on Android, they are included in the system backup under your Google Account. Deleting in the App or uninstalling it does not clear existing backups. On iPhone, go to Settings > your name > iCloud > Manage Account Storage, where you can delete device backups and the Hachimi.ai data stored in iCloud; on Android, manage backups in the system's backup settings or in Google One.",
+          "You manage copies in iCloud and system backups in your phone's settings. Uninstalling the app doesn't delete them.",
       },
       {
-        heading: "Records on our backend",
+        heading: "Records on our server",
         content:
-          "Our backend stores question records only under an anonymous install identifier, and we hold nothing that ties the identifier to a specific person, so we cannot look up or delete records by person; requests sent to DeepSeek carry no identifier, so we cannot locate a particular one for you either. To remove records from our backend, reset the anonymous ID; question text is deleted automatically after 90 days. For any other question, write to voice@hachimi.ai. The Privacy Policy has the full details.",
+          "We keep question records for online readings on our server for a while, then delete them. For questions about deletion, write to voice@hachimi.ai.",
       },
       {
         heading: "Contact",
@@ -494,45 +281,23 @@ export const en: Translations = {
   support: {
     title: "Support",
     effectiveDate: "Last updated: October 1, 2026",
-    intro:
-      "Hachimi.ai (哈基米道长) is an app for Zi Wei Dou Shu and Ba Zi charts and Mei Hua Yi Shu question casting, where you can ask Hachimi for an AI-written reading. If something goes wrong, or you just want to say something, send us an email.",
+    intro: "Hit a problem, or want to tell us something? Just send an email.",
     steps: {
-      heading: "Before you reach out: quick fixes",
+      heading: "Check these first",
       items: [
-        "Reading not coming through? Check your connection first. The first time you ask for an online reading, the App shows how DeepSeek receives and uses your data; tap Agree and Enable Online Readings to continue. If you chose Not Now or withdrew consent, you can choose again next time you ask.",
-        "Want to cast again? Enter two new numbers on the question page and cast again.",
-        "Changing the language? Go to Me > Language and choose Simplified Chinese, Traditional Chinese or English.",
-        "Deleting data? Go to Me > Privacy and data and tap Delete All Reading Data. The Delete your data page shows where each kind of data is kept.",
+        "Which devices are supported? iPhone and iPad need iOS 26 or later; Android phones need Android 16 or later. The app comes in Simplified Chinese, Traditional Chinese and English.",
+        "Reading not coming through? Check your connection and today's limit. The first time, tap Agree and Enable Online Readings. If you chose Not Now before, you can choose again next time you ask.",
+        "Changing the language? Go to Me > Language.",
+        "Deleting data? For reading data, go to Me > Privacy and data and tap Delete All Reading Data. Delete cases one by one in your case library.",
+        "Got a new phone? iPhone and iPad sync on their own when signed in to the same iCloud. On Android, restore from your system backup, or import a backup file you exported.",
       ],
     },
-    dataTable: {
+    table: {
       heading: "How to reach us",
       columns: ["Channel", "Address", "Typical response"],
       rows: [
         { cells: ["Email", "voice@hachimi.ai", "Within 3 business days"] },
       ],
     },
-    sections: [
-      {
-        heading: "Is this real fortune-telling?",
-        content:
-          "No. Hachimi.ai is just for fun and comfort. Readings are not predictions, and they're not a basis for real decisions. See our Terms & Disclaimer.",
-      },
-      {
-        heading: "Where does my data go?",
-        content:
-          "Charts and casting run on your device. For an online reading, your question, the hexagram and any context you chose to include go through our backend to DeepSeek Open Platform, which writes the reading; the question and reading are kept on our backend with the anonymous install identifier, and the text is deleted after 90 days. Pattern analysis, Zi Zhan and the Four Pillars lookup are calculated on our backend in real time and are not stored. On iOS, cases and reading history sync to your own iCloud; on Android, they are saved to your Google Account with the system backup. The Privacy Policy has the full details. At the bottom of Me > Privacy and data > Privacy Policy you can Stop Online Readings and Withdraw Consent; offline charts and your existing history are unaffected.",
-      },
-      {
-        heading: "How do I delete my data?",
-        content:
-          "Go to Me > Privacy and data and tap Delete All Reading Data. There are no accounts; uploaded question text is deleted after 90 days. Uninstalling the App does not delete the copy in iCloud or existing system backups. See the Delete your data page.",
-      },
-      {
-        heading: "Which devices and languages are supported?",
-        content:
-          "Hachimi.ai runs on iPhone, iPad and Android phones with Android 16 or later, in Simplified Chinese, Traditional Chinese and English.",
-      },
-    ],
   },
 };

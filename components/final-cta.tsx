@@ -19,7 +19,7 @@ const FinalCtaShader = dynamic(
 );
 
 /**
- * 第九节：收尾（#download）。五张截图扇形、一句 word-mask 标题、商店徽章。
+ * 第七节：收尾（#download）。五张截图扇形、一句 word-mask 标题、商店徽章。
  *
  * 扇形里的五张就是命例走查那五张，纯装饰：alt 留空、整块 aria-hidden，同一批字不
  * 在读屏里念第二遍。减弱动态时扇形直接摆好不飞入，标题整句显示。

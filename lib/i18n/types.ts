@@ -1,5 +1,5 @@
 export type Translations = {
-  // Header：五项加一个下载。前三项与常见问题是首页锚，起卦的门道是真页。
+  // Header：五项加一个下载。前三项与常见问题是首页锚，排盘的规矩是真页。
   nav: {
     case: string;
     tools: string;
@@ -60,23 +60,12 @@ export type Translations = {
     }[];
   };
 
-  // 第五节 道长记得：差异句一句，整节只有这一句，逐字揭示。
-  remembers: {
-    text: string;
-  };
-
-  // 第六节 学堂（#academy）：一句加书名跑马灯，书名在 lib/academy-titles.ts。
+  // 第五节 学堂（#academy）：一句加书名跑马灯，书名在 lib/academy-titles.ts。
   academy: {
     text: string;
   };
 
-  // 第七节 本机（#offline）：一句加四个标签，细线框容器。
-  offline: {
-    text: string;
-    tags: string[];
-  };
-
-  // 第八节 常见问题（#faq）：七条，第一条直答“这是真的算命吗”。
+  // 第六节 常见问题（#faq）：五条。
   faq: {
     title: string;
     items: {
@@ -87,7 +76,7 @@ export type Translations = {
     contact: string;
   };
 
-  // 第九节 收尾（#download）：一句加商店徽章，底下是五张截图的扇形。
+  // 第七节 收尾（#download）：一句加商店徽章，底下是五张截图的扇形。
   finalCta: {
     headline: string;
   };
@@ -121,7 +110,8 @@ export type Translations = {
     terms: { title: string; description: string };
   };
 
-  // Methodology / transparency page (/{locale}/methodology)
+  // 排盘的规矩（/{locale}/methodology）：页首一段，下面逐条讲各家最容易排得不一样
+  // 的几处，收尾一句加一枚下载按钮。
   methodology: {
     metaTitle: string;
     metaDescription: string;
@@ -132,52 +122,11 @@ export type Translations = {
     // lib/config.ts (scripts/page-dates.test.mjs checks).
     lastUpdated: string;
     intro: string;
-    cast: {
-      kicker: string;
-      step: string;
-      title: string;
-      body: string;
-      points: { term: string; desc: string }[];
-      fingerprintLabel: string;
-      fingerprintNote: string;
-    };
-    ai: {
-      kicker: string;
-      step: string;
-      title: string;
-      body: string;
-      writesTitle: string;
-      writes: string[];
-      lockedTitle: string;
-      locked: string[];
-    };
-    eval: {
-      kicker: string;
-      step: string;
-      title: string;
-      body: string;
-      stats: { value: string; label: string }[];
-      layers: { name: string; desc: string }[];
-    };
-    // 排盘的门道: the rules behind the charts, sitting between the eval gate
-    // and the limits. No step number — casting is 01-03, charting is its own
-    // track, not a fourth step of the cast.
-    paipan: {
-      kicker: string;
-      title: string;
-      body: string;
-      points: { term: string; desc: string }[];
-    };
-    limits: {
-      kicker: string;
-      title: string;
-      body: string;
-      cards: { title: string; desc: string }[];
-    };
+    points: { term: string; desc: string }[];
     closing: {
       text: string;
-      ctaPrivacy: string;
-      ctaHome: string;
+      /** 按钮文字，指向 /{locale}/get。 */
+      cta: string;
     };
   };
 
@@ -194,12 +143,14 @@ export type LegalPage = {
     heading: string;
     items: string[];
   };
-  dataTable: {
+  /** 支持页的联系方式表。 */
+  table?: {
     heading: string;
     columns: string[];
     rows: { cells: string[] }[];
   };
-  sections: {
+  /** 删除数据页的几节说明。 */
+  sections?: {
     heading: string;
     content: string;
   }[];
