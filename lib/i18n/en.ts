@@ -34,8 +34,8 @@ export const en: Translations = {
         body: "Zi Wei and Ba Zi chart from one case, no switching tools; true solar time is worked out once from the birthplace, and both charts use it.",
       },
       {
-        title: "Your clients' cases, in your own iCloud",
-        body: "No account needed; devices on the same iCloud sync on their own. Backups go to a file, and the device keeps a daily one.",
+        title: "Your clients' cases stay in your hands",
+        body: "No account needed. iPhone and iPad sync through your iCloud, and on Android your phone's system backup carries them to your Google Account. You can also export a backup file, and the device keeps a daily one.",
       },
       {
         title: "Switch Zi Wei styles, read Ba Zi to six pillars",
@@ -104,7 +104,7 @@ export const en: Translations = {
         name: "Case library",
         line: "Casts travel with the case; among dozens of clients, filter by group or day master and the person is right there.",
         detail:
-          "Eight groups, all renamable. The list sections by initial or group, sort order can change, with six filter dimensions. Back up to iCloud or a file; the phone keeps a daily backup and the last seven. A single case can be shared and merges straight into the other library. Delete a case and its casts go with it.",
+          "Eight groups, all renamable. The list sections by initial or group, sort order can change, with six filter dimensions. Sync through iCloud on iOS, back up to a file on both; the phone keeps a daily backup and the last seven. A single case can be shared and merges straight into the other library. Delete a case and its casts go with it.",
       },
     ],
   },
@@ -122,7 +122,7 @@ export const en: Translations = {
     tags: [
       "On-device charting",
       "No account needed",
-      "iCloud private database",
+      "Your data stays yours",
       "File export and import",
     ],
   },
@@ -153,7 +153,7 @@ export const en: Translations = {
       {
         question: "Can I lose my cases?",
         answer:
-          "Cases live on your device and in your own private iCloud database. You can save them to a file, share them, and import them back. Only you delete them.",
+          "Cases live on your device; on iOS they also sync to your own private iCloud database. You can save them to a file, share them, and import them back. Only you delete them.",
       },
       {
         question: "How does the Master remember what I asked?",
@@ -312,7 +312,7 @@ export const en: Translations = {
       points: [
         {
           term: "True solar time",
-          desc: "Chart casting first converts birth time by birthplace longitude. Pick a province and city, type a longitude, or take your current location once. Born outside UTC+8? Choose a time zone too, down to half and quarter hour zones. Location uses longitude only and stores nothing.",
+          desc: "Chart casting first converts birth time by birthplace longitude. Pick a province and city, or type a longitude. Born outside UTC+8? Choose a time zone too, down to half and quarter hour zones. Zi Zhan can take your current location once, using longitude only, never latitude.",
         },
         {
           term: "Calendar",
