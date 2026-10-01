@@ -214,12 +214,12 @@ export const en: Translations = {
     privacy: {
       title: "Privacy Policy",
       description:
-        "Hachimi.ai Privacy Policy. Learn what data we use and how we keep it safe.",
+        "Hachimi.ai Privacy Policy: what data we process, who receives it, how long it is kept, and how to delete it.",
     },
     terms: {
       title: "Terms of Use & Disclaimer",
       description:
-        "Hachimi.ai Terms of Use & Disclaimer. For entertainment and comfort only, never prediction.",
+        "Hachimi.ai Terms of Use & Disclaimer: for entertainment and traditional cultural learning, with no predictions or promises to change your luck.",
     },
   },
 
@@ -362,8 +362,8 @@ export const en: Translations = {
           desc: "For serious things like health, legal, or money, please see a professional. What the Master offers is company for how you feel.",
         },
         {
-          title: "Your history stays on your device",
-          desc: "Your reading history lives only on your phone. Want it gone? Clear it under Me → Privacy and data in one tap. The Privacy Policy spells out how anonymous records are saved and deleted.",
+          title: "Your history is yours",
+          desc: "Your reading history is kept on your device. On iOS it syncs to your own iCloud when iCloud sync is on; on Android it goes into your system backup. To clear it, go to Me → Privacy and data. For online readings, our backend keeps the question and reading for 90 days, then deletes the text. The Privacy Policy has the details.",
         },
       ],
     },
