@@ -4,11 +4,11 @@
  *
  * 口径出处是 specs/005-site-v4-tools/spec.md 的验收 5，四档：
  *   - 首屏简体不超过 9 字；
- *   - 给命理师那一节（一句加三件事）不超过 180 字；
+ *   - 给命理师那一节（一句加三件事）不超过 185 字；
  *   - 四张卡的卡面、道长记得、学堂、本机与收尾合计不超过 320 字；
  *   - 命例走查（标题、引言与五步）合计不超过 240 字；
  *   - 每张卡展开不超过 110 字，FAQ 每条答案不超过 70 字；
- *   - 英文上限取简体上限的 0.6 倍，向上取整。
+ *   - 英文上限取简体上限的 0.6 倍，向上取整；给命理师一节单独定为 121 词。
  *
  * 第三版是「全页除 FAQ 一个总数」，第四版拆成四档：命例走查与卡面展开是两块深度
  * 不同的文字，压在同一个预算里，一块长了另一块就得无谓地砍。
@@ -82,12 +82,18 @@ const JOURNEY_KEYS = [
 
 const LIMIT = {
   hero: 9,
-  pro: 180,
+  pro: 185,
   surface: 320,
   journey: 240,
   cardDetail: 110,
   faqAnswer: 70,
 };
+
+/**
+ * 英文上限不按 0.6 倍算的节。给命理师第二张卡写 iOS 与 Android 各自怎么同步、
+ * 备份（2.0.0 两端同发的定稿），英文比简体按比例多出一截，这一节单独定。
+ */
+const EN_LIMIT = { pro: 121 };
 
 /** 英文首屏不设门的那一句，见文件头。 */
 const EN_UNGATED = new Set(["hero.headline"]);
@@ -151,7 +157,7 @@ lines.push(
     ? row("首屏", enHero, "北极星原文，不设门")
     : gate("首屏", enHero, enCapFor(LIMIT.hero))
 );
-lines.push(gate("给命理师", sum(en, PRO_KEYS, countEn), enCapFor(LIMIT.pro)));
+lines.push(gate("给命理师", sum(en, PRO_KEYS, countEn), EN_LIMIT.pro));
 lines.push(
   gate("卡面", sum(en, SURFACE_KEYS, countEn), enCapFor(LIMIT.surface))
 );
