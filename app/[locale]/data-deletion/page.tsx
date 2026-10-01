@@ -19,8 +19,8 @@ export async function generateMetadata({
     title: t.dataDeletion.title,
     description:
       locale === "zh"
-        ? "了解如何删除你在 Hachimi 中的个人数据。"
-        : "Learn how to delete your data from Hachimi.ai.",
+        ? "在 App 里删除命例、卦历和道长记下的要点。"
+        : "Delete your cases, reading history and the Master's notes in the app.",
   });
 }
 

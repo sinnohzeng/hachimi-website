@@ -88,7 +88,7 @@ export const zh: Translations = {
       },
       {
         name: "八字排盘",
-        line: "刑冲合害分原局和岁运写清，排完盘在同一页记断事笔记。",
+        line: "刑冲合害分原局、岁运写清，排完盘在同一页记断事笔记。",
         detail: "四柱从主星排到神煞，人元司令可选。长按盘上的字出词条。",
       },
       {
@@ -285,7 +285,7 @@ export const zh: Translations = {
     table: {
       heading: "联系我们",
       columns: ["渠道", "地址", "通常回复时长"],
-      rows: [{ cells: ["邮箱", "voice@hachimi.ai", "通常 3 个工作日内回复"] }],
+      rows: [{ cells: ["邮箱", "voice@hachimi.ai", "3 个工作日内"] }],
     },
   },
 };
