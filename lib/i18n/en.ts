@@ -124,7 +124,7 @@ export const en: Translations = {
       {
         question: "Do I need internet to chart?",
         answer:
-          "No. Charts work in airplane mode. Chart Patterns, zizhan and the Four Pillars lookup need internet.",
+          "No. Saved cases chart in airplane mode. Picking a birthplace by province and city for a new case needs internet, and so do Chart Patterns, zizhan and the Four Pillars lookup.",
       },
       {
         question: "How do I switch chart styles?",
@@ -236,7 +236,7 @@ export const en: Translations = {
       },
       {
         term: "More chart methods",
-        desc: "Zizhan and the Four Pillars lookup are in the More menu and need internet. Screenshots and text charts are there too.",
+        desc: "Zizhan and the Four Pillars lookup are under Me > Tools and need internet. The text chart is under AI analysis in the chart's More menu; share a screenshot from the top right of the chart.",
       },
     ],
     closing: {

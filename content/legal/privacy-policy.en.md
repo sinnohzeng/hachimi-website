@@ -10,9 +10,9 @@ Cases, reading history and the notes Hachimi keeps from past questions stay on y
 
 ## 2. Features that go online
 
-- **Online readings**: your question, the hexagram, and any chart owner's Ba Zi or past notes you choose to include go through our server to a third-party AI service, which writes Hachimi's reading. The App asks for your permission before the first one. We keep questions and readings on our server for a while, then delete them.
+- **Online readings**: your question, the hexagram, and any chart owner's Ba Zi or past notes you choose to include go through our server to a third-party AI service, which writes Hachimi's reading. The App asks for your permission before the first one. We keep questions and readings on our server for a while to improve readings, then delete them.
 - **Chart Patterns, zizhan and the Four Pillars lookup**: the birth details or numbers they need go to our server, are calculated, and come straight back. We don't keep them.
-- **Usage statistics**: the App sends anonymous usage counts and crash diagnostics so we can improve it. Statistics carry a random identifier, which you can reset under Me > Privacy and data.
+- **Usage statistics**: the App sends anonymous usage counts, and the iOS version also sends crash diagnostics, so we can improve it. Statistics carry a random identifier, which you can reset under Me > Privacy and data.
 - **Membership**: Apple or Google handles payment, and the App checks membership status with the store.
 
 ## 3. Permissions
