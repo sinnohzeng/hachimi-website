@@ -16,15 +16,18 @@ The bilingual (zh / en) marketing site for **Hachimi.ai (哈基米道长)**, a t
 
 ## Sections Included
 
-Seven sections, in this order (spec: [`specs/001-site-v3-concise/spec.md`](specs/001-site-v3-concise/spec.md)):
+Nine home-page sections, in this order (spec: [`specs/005-site-v4-tools/spec.md`](specs/005-site-v4-tools/spec.md)):
 
-- **Hero** - the Rive Orb beside the headline, store badges, one app shot
-- **What it is** - category anchor plus the three steps of a cast
-- **Remembers** - the one line that separates the Master from a chatbot
-- **Chart showcase** - Zi Wei and Ba Zi, one line and one shot each
-- **Academy** - one line, no image
-- **Principles** - one line plus three tags
-- **FAQ / Final CTA / Footer** - accordion, 3D-background CTA, links and the legal row
+- **Hero** - one line, the Rive Orb, store badges, an ogl light-beam shader
+- **For practitioners** (`#what`) - three things a professional reader gets
+- **One case, four views** (`#case`) - a pinned phone walking through a case
+- **Four tools** (`#tools`) - casting, Zi Wei, Ba Zi and the case library, each card expands
+- **Remembers** - word-mask headline
+- **Academy** (`#academy`) - marquee of the bundled classics
+- **On device** (`#offline`) - one line plus four tags
+- **FAQ / Final CTA / Footer** - accordion, ink shader with the screenshot fan, links and the legal row
+
+Other pages under `app/[locale]/`: `methodology`, `privacy` and `terms` (rendered from `content/legal/`), `data-deletion`, `support`, and `get` (the download landing page).
 
 ## Getting Started
 
@@ -44,72 +47,69 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Scripts
 
-| Command                | Description                                                                                   |
-| ---------------------- | --------------------------------------------------------------------------------------------- |
-| `npm run dev`          | Start development server                                                                      |
-| `npm run build`        | Build for production                                                                          |
-| `npm run start`        | Start production server                                                                       |
-| `npm run lint`         | Run ESLint                                                                                    |
-| `npm run lint:fix`     | Fix ESLint errors                                                                             |
-| `npm run format`       | Format code with Prettier                                                                     |
-| `npm run format:check` | Check code formatting                                                                         |
-| `npm run typecheck`    | Run TypeScript type checking                                                                  |
-| `npm run test:orb`     | Orb asset gate: signed `.riv` and still hashes, runtime version, self-hosted wasm             |
-| `npm run check`        | The single quality gate: format:check + lint + typecheck + test:orb + mentions + copy + build |
+| Command                  | Description                                                                                                                                      |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `npm run dev`            | Start development server                                                                                                                         |
+| `npm run build`          | Static export to `out/`                                                                                                                          |
+| `npm run lint`           | Run ESLint                                                                                                                                       |
+| `npm run lint:fix`       | Fix ESLint errors                                                                                                                                |
+| `npm run format`         | Format code with Prettier                                                                                                                        |
+| `npm run format:check`   | Check code formatting                                                                                                                            |
+| `npm run typecheck`      | Run TypeScript type checking                                                                                                                     |
+| `npm run test:orb`       | Orb asset gate: signed `.riv` and still hashes, runtime version, self-hosted wasm                                                                |
+| `npm run test:platform`  | `/get` routing: four user agents against `functions/get.ts`, and the inline platform script                                                      |
+| `npm run legal:sync`     | Copy the privacy policy and terms from `../hachimi-ios/docs/legal/` into `content/legal/`                                                        |
+| `npm run legal:check`    | Fail if `content/legal/` differs from `../hachimi-ios/docs/legal/` by a single byte                                                              |
+| `npm run test:dates`     | Fail if a `pageDates` entry in `lib/config.ts` differs from the page's visible “last updated” date                                               |
+| `npm run check:mentions` | Copy gate: no reference or competitor names in site copy (same list as hachimi-ios)                                                              |
+| `npm run check:copy`     | Word-count caps per section (spec 005)                                                                                                           |
+| `npm run check`          | The single quality gate: format:check, lint, typecheck, test:orb, test:platform, legal:check, test:dates, check:mentions, check:copy, then build |
 
 ## Quality gate
 
-`npm run check` is the one gate for this repo — run it before pushing instead of picking individual sub-checks. There is no GitHub Actions CI (removed workspace-wide on 2026-07-05; this repo's leftover `ci.yml` was removed on 2026-07-21). The gate runs locally via a pre-push hook on `main`; enable it once per machine:
+`npm run check` is the one gate for this repo. Run it before pushing instead of picking individual sub-checks. There is no CI; the gate runs locally via a pre-push hook on `main`. Enable it once per machine:
 
 ```bash
 git config core.hooksPath .githooks
 ```
+
+## Legal pages
+
+The privacy policy and terms are owned by the iOS repo (`hachimi-ios/docs/legal/`), which must sit next to this repo. `content/legal/` mirrors those four Markdown files byte for byte, and `lib/legal.ts` renders them at build time with `marked`; data tables stack into cards on narrow screens. To publish a new version: change it in hachimi-ios, run `npm run legal:sync`, set the matching dates in `pageDates`, then `npm run check`.
 
 ## Project Structure
 
 ```
 ├── app/
 │   ├── [locale]/          # zh / en localized routes (html lang + shell here)
-│   │   ├── layout.tsx     # Locale layout: <html lang>, fonts, providers
-│   │   ├── page.tsx       # Home page
-│   │   └── ...            # privacy, terms, support, *-deletion pages
-│   ├── globals.css        # Design tokens & base styles
+│   │   ├── layout.tsx     # Locale layout: <html lang>, fonts, providers, inline platform script
+│   │   ├── page.tsx       # Home page (nine sections)
+│   │   ├── get/           # Download landing page: badges, desktop-only QR, WeChat hint
+│   │   └── ...            # methodology, privacy, terms, data-deletion, support
+│   ├── globals.css        # Design tokens, base styles, legal prose and stacked tables
 │   ├── layout.tsx         # Pass-through root layout (returns children)
 │   ├── page.tsx           # Root "/" client redirect to /en
 │   ├── opengraph-image.tsx # Build-time generated OG card (next/og)
 │   ├── twitter-image.tsx  # Twitter card (reuses OG design)
-│   └── sitemap.ts         # Sitemap, statically generated at build time
-├── components/
-│   ├── academy-showcase.tsx # Academy section (one line)
-│   ├── app-shot.tsx       # App screenshot with light / dark variants
-│   ├── chart-showcase.tsx # Zi Wei + Ba Zi section
-│   ├── faq.tsx            # FAQ accordion
-│   ├── final-cta.tsx      # Final CTA section
-│   ├── cat-orb.tsx        # The Orb: Rive canvas, theme-aware still fallback
-│   ├── footer.tsx         # Footer
-│   ├── header.tsx         # Navigation header
-│   ├── hero.tsx           # Hero section
-│   ├── lang-switch.tsx    # zh / en language switcher
-│   ├── principles.tsx     # Principles section
-│   ├── providers.tsx      # Theme & scroll providers
-│   ├── remembers.tsx      # The one-line difference section
-│   ├── methodology.tsx    # /methodology page body (how the casting works)
-│   ├── smooth-scroll.tsx  # Lenis smooth scroll
-│   ├── store-badges.tsx   # App Store / Google Play badge pair
-│   ├── what-it-is.tsx     # Category anchor + the three steps
-│   ├── structured-data.tsx # JSON-LD (Organization / WebSite / app / FAQ)
-│   └── theme-switch.tsx   # Theme toggle button
+│   └── sitemap.ts         # Sitemap, dates from pageDates
+├── components/            # Sections, legal page bodies, store badges, Orb, shaders
+├── content/legal/         # Byte-for-byte mirror of hachimi-ios docs/legal/ (do not edit here)
+├── functions/
+│   └── get.ts             # Cloudflare Pages Function: /get routes by platform
 ├── lib/
-│   ├── config.ts          # Site config (single source of truth) & feature flags
+│   ├── config.ts          # Site config, store links, pageDates (single source of truth)
+│   ├── platform.ts        # User-agent rules shared by the Function and the inline script
+│   ├── legal.ts           # Build-time Markdown rendering for privacy and terms
 │   ├── i18n/              # zh / en translations
 │   ├── metadata.ts        # SEO metadata (built from config.ts)
-│   ├── motion.tsx         # Reduced-motion provider & hook
 │   └── orb/               # Orb contract names, placement table and the Rive host
+├── scripts/               # Quality gates, legal sync, screenshot builder
 └── public/
+    ├── _redirects         # Edge redirects: apex, bare legal paths, old account page
     ├── badges/            # Official store badges (self-hosted, per locale)
     ├── brand/             # Signed hachimi-orb.riv, its still, source manifest, icons
     ├── rive/              # Runtime wasm, copied from node_modules at build time (ignored)
-    ├── screenshots/zh/    # The three app shots (scripts/build-shots.mjs)
+    ├── screenshots/zh/    # The five app shots (scripts/build-shots.mjs)
     ├── robots.txt         # Static robots.txt (Content-Signal, sitemap)
     ├── llms.txt           # AI-crawler site summary (+ llms-full.txt)
     └── site.webmanifest   # PWA manifest
@@ -140,9 +140,6 @@ Toggle features in `lib/config.ts`:
 ```typescript
 export const features = {
   smoothScroll: true, // Lenis smooth scrolling
-  darkMode: true, // Theme toggle
-  blogSection: false, // Blog showcase (not used)
-  testimonialsSection: false, // Testimonials slider (not used)
 };
 ```
 
@@ -209,4 +206,4 @@ Built with ❤️ using Next.js, Tailwind CSS, and Motion
 
 The hero and footer play the same signed Rive file as the iOS app (`public/brand/hachimi-orb.riv`, from the `hachimi-orb` repo) through `@rive-app/webgl2`, with the wasm self-hosted under `/rive/`. The host only writes the contract inputs, reads the outputs and plays; every motion lives in the file. See [brand assets](design/brand/README.md) and [spec 003](specs/003-orb-on-rive/spec.md). `npm run check` includes the asset gate (`scripts/orb-asset.test.mjs`): file and still hashes, contract and runtime versions, wasm bytes, no CDN.
 
-All three iPhone screenshots use the licensed React Bits Pro Device component through AppShot. Registry setup, responsive adaptations and update steps are documented in [brand generation](design/brand/README.md#react-bits-pro-device).
+All five iPhone screenshots use the licensed React Bits Pro Device component through AppShot. Registry setup, responsive adaptations and update steps are documented in [brand generation](design/brand/README.md#react-bits-pro-device).

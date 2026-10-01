@@ -60,7 +60,7 @@
 文案主题：
 
 - 北极星“慌的时候，先起一卦。”自 7c5c77c 起定下（docs/copy-principles.md 第二节）
-- 2026-07-21 372d2ef 加品类锚 eyebrow“一款占卜 App，里面住着一只会起卦的 AI 猫”与差异句“通用 AI 不记得你上回问过什么，道长记得，一卦接一卦陪你。”（zh.ts@f1d3d50 hero.eyebrow、hero.memory），起因是朋友“第一眼看不懂”（docs/2026-07-21-first-glance-handoff.md 第二节）
+- 2026-07-21 372d2ef 加品类锚 eyebrow“一款占卜 App，里面住着一只会起卦的 AI 猫”与差异句“通用 AI 不记得你上回问过什么，道长记得，一卦接一卦陪你。”（zh.ts@f1d3d50 hero.eyebrow、hero.memory），起因是朋友“第一眼看不懂”（docs/archive/2026-07-21-first-glance-handoff.md 第二节）
 - 场景卡三张：寻物（附方位注）/ 感情 / 事业，加“自由问事”虚线条；7c5c77c 时是寻物 / 关系 / 决策，e5e18b1 2026-07-20 对齐 App 1.3.0 改名（zh.ts@f1d3d50 scenarioCards）
 - FeatureHighlight“一只肯陪你慢慢把事想开的猫道长”，每段解读收尾落在“一件此刻就能做的小事”（zh.ts@f1d3d50 featureHighlight）
 - 去 AI 味红线与能说不能说清单在 docs/copy-principles.md 第六节落定，“接住 / 被听见 / 智商税”从此禁用
@@ -134,19 +134,19 @@
 - **第二版 Showcase 共享版式与 ShotRow 横滑**（components/showcase.tsx@edb3799（706f96a 新建，ab820b0 删除））：抬头加“一段文字配一排截图”左右交替的行、窄屏负边距出血横滑、sm 起平分、AppShot 浅深两份按 html.dark 显隐、srcSet 两档，这些工程细节都实测过 390 与 1440 两档无横滚（v2 任务书验收）。要做多截图的功能区，拿它当底比重写省事；截图源在 iOS 仓截图枪，11 张被 2e367f6 删掉但可按 v2 任务书写的 manifest 流程重出。
 - **第二版“底下四格”一览：问事 / 命盘 / 学堂 / 我的**（lib/i18n/zh.ts@edb3799 featureCards；page.tsx@edb3799 注释“顺序即产品结构”）：对工具类 App，官网结构照着 App 的信息架构走是最省解释的“这是什么”。四格文案里“命盘”那句已写到三盘切换与大限流年逐层点开，“我的”那句已写到命例存文件与 iCloud。拿回来要改一处：把“我的”换成“命例”做第四格，写多命例管理与每份命例名下的卦追得回去，这是 spec 004 定的核心长处。
 - **方法论页的整套设计与排盘一节**（components/methodology.tsx@ff027bc 起，zh.ts@edb3799 methodology.paipan 四条，HEAD 扩到八条）：01 / 02 / 03 步骤头、SHA-256 指纹芯片、“AI 负责的 / 系统锁死的”双列、评测数字四格、四张“不做”卡，这一页是全站最像“学习与研究工具”的一页，可信度靠它。真太阳时、历法五类说明、安星派别可调、同一份生辰同一套设置排出来每个字都一样，这些句子在新定位下可以从二级页提到首页功能区。搬之前删“两端一个样：iOS 和安卓”那条（HEAD zh.ts methodology.cast.points[1]），安卓口径见下面“不要”的第六条。
-- **第一版 b 的场景卡：寻物（附方位注）/ 感情 / 事业 加“自由问事”虚线条**（components/scenario-cards.tsx@f1d3d50，lib/i18n/zh.ts@f1d3d50 scenarioCards；7c5c77c 新建，ab820b0 删除）：起卦仍是三件事之一，这是改版前唯一把“起卦能问什么”写具体的一节，场景名与 App ScenarioStyle 对齐（docs/copy-principles.md 第五节术语表）。第三版删它是为了节数与字数，不是内容错。拿回来放在起卦区做次级内容即可，不进首屏；英文版去掉尋 / 緣 / 業 装饰汉字（docs/2026-07-21-first-glance-handoff.md 第二节雷点）。
+- **第一版 b 的场景卡：寻物（附方位注）/ 感情 / 事业 加“自由问事”虚线条**（components/scenario-cards.tsx@f1d3d50，lib/i18n/zh.ts@f1d3d50 scenarioCards；7c5c77c 新建，ab820b0 删除）：起卦仍是三件事之一，这是改版前唯一把“起卦能问什么”写具体的一节，场景名与 App ScenarioStyle 对齐（docs/copy-principles.md 第五节术语表）。第三版删它是为了节数与字数，不是内容错。拿回来放在起卦区做次级内容即可，不进首屏；英文版去掉尋 / 緣 / 業 装饰汉字（docs/archive/2026-07-21-first-glance-handoff.md 第二节雷点）。
 - **第一版 b 的三张自绘 SVG 线稿与大字水印卡**（components/feature-cards.tsx@f1d3d50 cardArt 与 cardGlyphs：输入框光标 / 泰卦六爻一爻描金 / 竖排文字栏，整卡链接进方法论页）：不用截图就有一套“墨与金”的图形语言，和猫道长圆球是一个调子，扩到命例 / 排盘 / 学堂三个新图标成本很低；hover 缩放与整卡可点的可发现性都做过（a11y 注释在文件里）。第三版全砍成纯文字三步是为了字数门，不是视觉不好。
 - **品类锚与差异句两行原文，以及 count-copy 字数门**（docs/copy-principles.md 第二节 2026-07-21 与 2026-09-14 三行；scripts/count-copy.mjs（74b9327））：“通用 AI 不记得你上回问过什么，道长记得”是 2026-07-21 用梁宁框架与测测对比话术推出来的“凭什么是你”，第三版仍独占一节；新定位可以把它扩成“每份命例名下的卦追得回去”的记忆叙事。字数门的阈值是第三版口径，重构时要改数，但“可见正文进 npm run check”这个机制值得留着，免得再长回十节。
 
 ### 不要的
 
-- **第一版 a 的机制头牌与客服腔：“确定性起卦”“指纹校验”做卖点头牌，“不卖焦虑、不收智商税”“被认真接住”“被听见”“没那么孤单”“用温度回应你”**：2026-07-03 顶层重做把它诊断为“写出了工具味”（docs/2026-07-21-first-glance-handoff.md 第一节），docs/copy-principles.md 第六节把接住 / 被听见 / 智商税 / 不卖焦虑列为禁词，教训第 1 条写明确定性是信任底座不是营销头牌。新定位是工具类，但“可复算”仍只该在方法论页与功能区讲事实，不回到首屏当口号。
+- **第一版 a 的机制头牌与客服腔：“确定性起卦”“指纹校验”做卖点头牌，“不卖焦虑、不收智商税”“被认真接住”“被听见”“没那么孤单”“用温度回应你”**：2026-07-03 顶层重做把它诊断为“写出了工具味”（docs/archive/2026-07-21-first-glance-handoff.md 第一节），docs/copy-principles.md 第六节把接住 / 被听见 / 智商税 / 不卖焦虑列为禁词，教训第 1 条写明确定性是信任底座不是营销头牌。新定位是工具类，但“可复算”仍只该在方法论页与功能区讲事实，不回到首屏当口号。
 - **第一版 b 的首屏叠层：eyebrow 品类锚加两行 H1 加副标加差异句加双徽章加文字链加截图**：调研按现状数出首屏约 140 字，对照克制派 10 到 20 个单词（docs/research/2026-09-14-landing-page-practice.md 结论 1）。owner 2026-09-14 原话首屏只留一句，spec 004 不做第一条写明首屏口号是北极星不动。首屏可以换视觉手法，不能把这一叠文字加回去。
 - **第二版 ChartShowcase 九条 bullet 原样摆回首页**：owner 2026-09-14 三条口径的第三条：官网不等于每一个功能的截图加介绍（docs/plan/2026-09-14-site-v3-思路.md 第一节）。机制事实值得拿回来，但落点是功能页或收紧后的功能区，不是首页三块各四条的 bullet 墙。
 - **Stats 数字条与页脚统计行：154 本古籍 / 2408 章 / 0 个账号那一组**：owner 2026-09-22 原话“页脚那行统计没有意义”（specs/004-positioning-and-footer/spec.md 为什么第 2 条），“无账号无广告”卖点位也在 591a966 退出。古籍本数若要写，写进学堂那一句当事实，不再做独立计数节，也不写“0 个账号”。
 - **社会证明条、用户证言、准确率承诺，以及模板遗留的 TrustedBy / Testimonials / Pricing / BlogShowcase**：思路文第三节放弃两条：没有真实评分与下载量前不摆社会证明，“准确率高达 90%”与不预测红线相反；调研结论 6 同样说宁缺不编。真实用户现状是无外部用户，模板里这些节（b1fc2e7）02419f7 删掉后不要因为想“炫酷”再挂回来。
-- **安卓与 Google Play 的现在时陈述：“都上架了，安卓去 Google Play”、store.googlePlayAlt、方法论页“两端一个样：iOS 和安卓”**：这句在 7ea17e4 撤下又被 edd30da 回退，2026-07-21 交接把它列为必须先找 owner 拍板的事实雷点（docs/2026-07-21-first-glance-handoff.md 第二节）。HEAD 的 lib/i18n/zh.ts 里 googlePlayAlt 与“iOS 和安卓”仍在。重构时先按 iOS 现状写，安卓要写先核实。
-- **英文页上的装饰汉字：场景卡 尋 / 緣 / 業、功能卡 問 / 卦 / 讀 直接复用到 en**：2026-07-21 交接列为“看不懂”的加重项：对英文用户是纯装饰性汉字（docs/2026-07-21-first-glance-handoff.md 第二节雷点二）。scenario-cards.tsx@f1d3d50 已为西文词另做了一套样式，说明当时也只是半修。
+- **安卓与 Google Play 的现在时陈述：“都上架了，安卓去 Google Play”、store.googlePlayAlt、方法论页“两端一个样：iOS 和安卓”**：这句在 7ea17e4 撤下又被 edd30da 回退，2026-07-21 交接把它列为必须先找 owner 拍板的事实雷点（docs/archive/2026-07-21-first-glance-handoff.md 第二节）。HEAD 的 lib/i18n/zh.ts 里 googlePlayAlt 与“iOS 和安卓”仍在。重构时先按 iOS 现状写，安卓要写先核实。
+- **英文页上的装饰汉字：场景卡 尋 / 緣 / 業、功能卡 問 / 卦 / 讀 直接复用到 en**：2026-07-21 交接列为“看不懂”的加重项：对英文用户是纯装饰性汉字（docs/archive/2026-07-21-first-glance-handoff.md 第二节雷点二）。scenario-cards.tsx@f1d3d50 已为西文词另做了一套样式，说明当时也只是半修。
 - **文案里点名 AI 供应商（Google Gemini）与“服务器一概不留”这类绝对措辞**：第一版 a 的 hero.securityBadge 与 FAQ 逐句点名 Google Gemini（zh.ts@02419f7），后来 d3e419f、0d8b391 去供应商名，隐私政策成唯一真源（3ad5c45）。docs/copy-principles.md 教训第 5 条禁“服务器一概不留”。owner 口径是后端只有 DeepSeek 且对外不提 Gemini。
 - **第二版“我的”那一格的写法：外观、界面语言、备份三件并列**：三件里只有备份与新定位相关，外观与语言是任何 App 都有的设置，占一格是在凑四格。这一格该换成命例。
 
@@ -586,7 +586,7 @@
 - **官方商店徽章组件 components/store-badges.tsx 加 layout 内联平台脚本与 globals.css 的 html[data-platform] 收敛规则**：Apple / Google 徽章规范（并排黑色版、App Store 在前、等高、留白）与首帧单徽章防 CLS 是踩过坑的结果（store-badges.tsx 注释；d17bccb slogan 漂移根治）
 - **globals.css 里的三段基础设施：`--font-sans` 直接点名 GeistSans 加系统 CJK 栈（修过 iOS 豆腐块，379e4c2）、系统深色首帧 CSS 回退、`html.no-js [data-animate]` 无 JS 救援、跨文档 View Transitions、`:lang(zh) .italic` 回正**：都是与视觉无关的正确性修补，新设计换 token 值即可，规则保留
 - **门与脚本：format / lint / typecheck / test:orb / check:mentions 五道，以及 scripts/lib/count-units.mjs 的计数器、scripts/polish-copy.mjs 润色管线**：mentions 词表与 iOS 同源不能单边撤；count-units 的口径可复用，count-copy 的键表与限额另议（见 disposable）；polish-copy 是 owner 硬要求“对客每一句由 DeepSeek 写定”的落地（脚本头注释；specs/001 plan 第 1 节）
-- **docs/copy-principles.md（文案唯一真源）、docs/research/2026-09-14-landing-page-practice.md（十六站调研）、docs/2026-07-21-first-glance-handoff.md 的“陌生人首屏六问”表**：定位内核、称谓规范、术语三语表、能说不能说清单、去 AI 味红线都在 copy-principles；调研给出首屏 10 到 20 词、5 到 7 节、1 到 4 张图、单 CTA、硬术语退二级页、FAQ 第一条直答“是不是算命”这些判据；六问表是可直接拿来验收新首屏的标尺
+- **docs/copy-principles.md（文案唯一真源）、docs/research/2026-09-14-landing-page-practice.md（十六站调研）、docs/archive/2026-07-21-first-glance-handoff.md 的“陌生人首屏六问”表**：定位内核、称谓规范、术语三语表、能说不能说清单、去 AI 味红线都在 copy-principles；调研给出首屏 10 到 20 词、5 到 7 节、1 到 4 张图、单 CTA、硬术语退二级页、FAQ 第一条直答“是不是算命”这些判据；六问表是可直接拿来验收新首屏的标尺
 - **部署 runbook deploy/cloudflare-pages.md 与 README 的项目结构段**：Git 自动部署、wrangler 直传兜底、部署后验证顺序（预览域先行、apex 约 1 分钟传播）、回滚走 Dash 都是实测记录
 - **历史里值得回看的三样：8264a30 hero 的品类锚胶囊、琥珀左边线的差异句、桌面端截图贴框线底边裁切与移动端 mask-image 渐隐，以及首屏装饰细线框；8264a30 components/scenario-cards.tsx 用大字“問 卦 讀”与线稿 SVG 做卡片装饰的“墨与金”视觉语言；edb3799 lib/i18n/zh.ts chart.blocks 与 docs/copy/2026-09-14-v2/facts.zh.json 里的具体机制事实（三种盘式、84 条格局规则、安星十组六十余项、中州派三盘、紫占、四柱反查、六柱表、大运流年流月、神煞、断事笔记、文本命盘）加 docs/plan/2026-09-14-site-v2-ziwei-brief.md 里“命例管理、分组、导入导出与备份”一句**：新定位把多命例管理与每份命例名下的卦追得回去当核心长处（spec 004），v2 事实稿正是面向命理爱好者与职业命理师的功能事实，可以直接当新版事实稿的底料；视觉上 7 月版的“墨与金、细线框、大字装饰”比现在的纯文字节更有辨识度
 

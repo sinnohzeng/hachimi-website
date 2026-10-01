@@ -1,6 +1,6 @@
 # spec 001：官网第三版，一句话首屏与七节结构
 
-> 状态：待实现｜创建：2026-09-14｜思路：[docs/plan/2026-09-14-site-v3-思路.md](../../docs/plan/2026-09-14-site-v3-思路.md)｜依据：[调研](../../docs/research/2026-09-14-landing-page-practice.md)
+> 状态：被 005 取代｜创建：2026-09-14｜思路：[docs/plan/2026-09-14-site-v3-思路.md](../../docs/plan/2026-09-14-site-v3-思路.md)｜依据：[调研](../../docs/research/2026-09-14-landing-page-practice.md)
 
 ## 造什么
 

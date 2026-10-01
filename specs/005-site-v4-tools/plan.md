@@ -1,6 +1,6 @@
 # Plan 005：官网第四版怎么造
 
-> 对应 [spec.md](spec.md)。状态：进行中｜创建：2026-09-22
+> 对应 [spec.md](spec.md)。状态：已落地｜创建：2026-09-22
 
 ## 切片与文件归属
 
@@ -59,8 +59,10 @@
 
 ## 落地记录
 
-- **B 光束**：已落地并上线（`2f45e08`）。three 摘干净，ogl 1.0.11，amber / ink 各带明暗；同一提交里首屏球改成跟站点明暗走、H1 改 `text-foreground`、回退渐变补浅色版。起因是 owner 2026-09-22 19:33 在浅色下看到灰球压纸色。
-- **C 各节**：已落地在本地（`b8e7223`），**未推**。九节按节表重排，旧四个组件删除，i18n 键表照 C 节所列。两处与本 plan 不同：钉住用 `position: sticky`，为此 body 的 `overflow-x` 从 hidden 改成 clip（hidden 会把 body 变成滚动容器，页内 sticky 失效）；换屏不用 `useTransform` 接 opacity（本站上 MotionValue 驱动的 opacity 停在首帧），改成滚动进度落成步序 state 再用 `animate`。中文短句走 `keepPanguSpaces`，标点归前一个词组，逐字揭示按词组不折行。
-- **文案**：C 用的是 `docs/copy/2026-09-22-v4` 的润色稿，owner 2026-09-22 19:33 判为 AI 味重，只作占位。客户定义定了再由人手写，走 `fencun-writing` 加干净上下文审稿；定之前本地不推。
-- **A 截图**：未做。命例列表与命例问事面两张缺图，走查第一屏、第五屏与收尾扇形暂空；起卦结果页那张要真连后端拍一卦吉的。
-- **owner 2026-09-23 已定**：站点英文名全站统一为 Hachimi.ai，角色名英文仍是 Hachimi（同 iOS spec 078）；八字截图用的是李小龙的盘（spec 059 既有素材）要不要换代号命例。
+四片都已上线。
+
+- **B 光束**（`2f45e08`）：three 摘掉，ogl 一份 `ShaderCanvas` 带 amber、ink 两套明暗调色板。首屏球与 H1 跟站点明暗走，回退渐变有浅色版。
+- **C 各节**（`b8e7223`）：九节按 spec 节表。与本 plan 不同的两处：钉住用 `position: sticky`，body 的 `overflow-x` 因此用 clip，hidden 会把 body 变成滚动容器，页内 sticky 随之失效；换屏不拿 `useTransform` 接 opacity，本站上 MotionValue 驱动的 opacity 停在首帧，改成滚动进度落成步序 state 再 `animate`。中文短句走 `keepPanguSpaces`，标点归前一个词组，逐字揭示按词组不折行。
+- **文案**：首屏之下第一节对职业命理师讲三件事，整页按 owner 口气手写，经两轮审稿到第四稿（`0312a51` 到 `7f3902b`）。字数门多一档“给命理师”，简体 185 字、英文 121 词。讲数据去向的句子写两端现状：iOS 经 iCloud 同步，Android 随系统备份进 Google 账号。
+- **A 截图**（`30d9e7c`、`661dc1f`）：五张，iPhone 17 Pro Max 整屏 1320 × 2868，浅深各一，依次是起卦结果、紫微三合、八字四柱、命例列表、命例问事面，`scripts/build-shots.mjs` 构图出 WebP。两张盘用的是 spec 059 的署名种子，iOS 侧按例一到例四重拍后换进来。
+- **英文名**（`9ecc598`）：站点英文名全站是 Hachimi.ai，角色名英文是 Hachimi，与 iOS spec 078 同口径。

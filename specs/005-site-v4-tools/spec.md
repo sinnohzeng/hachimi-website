@@ -1,7 +1,7 @@
 # Spec 005：官网第四版，按“学习与研究中国民俗术数的工具”重排
 
 > 造什么与为什么，不碰技术实现。
-> 状态：Draft｜创建：2026-09-22｜上游：[004](../004-positioning-and-footer/spec.md) 的定位口径、[003](../003-orb-on-rive/spec.md) 的圆球宿主｜取代：[001](../001-site-v3-concise/spec.md) 的七节结构与字数上限
+> 状态：已落地｜创建：2026-09-22｜上游：[004](../004-positioning-and-footer/spec.md) 的定位口径、[003](../003-orb-on-rive/spec.md) 的圆球宿主｜取代：[001](../001-site-v3-concise/spec.md) 的七节结构与字数上限
 
 ## 为什么
 

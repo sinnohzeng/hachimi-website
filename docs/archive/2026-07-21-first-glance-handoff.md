@@ -11,7 +11,7 @@
 ## 一、先认清这不是第一次改文案
 
 本站文案有过一次顶层重做（2026-07-03，见 [copy-redesign-handoff.md](copy-redesign-handoff.md)
-与 [copy-principles.md](copy-principles.md)）。那一轮的诊断是：**第一版把“确定性算法、
+与 [copy-principles.md](../copy-principles.md)）。那一轮的诊断是：**第一版把“确定性算法、
 指纹校验”当卖点头牌，写出了工具味**——于是把首屏摆到情绪侧，产出了现在的
 “慌的时候，先起一卦”。
 
@@ -188,7 +188,7 @@ owner 向朋友介绍时惯用三条论点。逐条裁决 = 工程事实核验�
 - 单 CTA 主导（按平台显示的商店徽章为主动作，其余弱化）。
 - “凭什么是你”一句话进首屏或紧邻第二屏（记忆的情感版为首选：它是差异化真源）。
 - 红线全数继承：不预测不改命不转运；“起”不用“算”；确定性必带时辰；禁 AI 味词表
-  与标点红线（见 [copy-principles.md](copy-principles.md) 第六节，全文有效）。
+  与标点红线（见 [copy-principles.md](../copy-principles.md) 第六节，全文有效）。
 
 **第 2 步 · 全页复位与事实修正**：按矩阵搬运各 section；处理两个事实雷点（安卓
 口径找 owner 拍板；en 场景卡去装饰汉字）；en 侧同步全部改动（Flesch-Kincaid ≤ 8，
@@ -245,7 +245,7 @@ CF Pages 自动部署。
 
 ## 八、入口文件与真源
 
-- 文案铁律真源：[copy-principles.md](copy-principles.md)（全文有效，本文档不复制）
+- 文案铁律真源：[copy-principles.md](../copy-principles.md)（全文有效，本文档不复制）
 - 上一轮交接（历史镜鉴）：[copy-redesign-handoff.md](copy-redesign-handoff.md)
 - 词条真源：`lib/i18n/zh.ts` + `en.ts`（结构 `types.ts`）；首屏组件 `components/hero.tsx`
 - 定位一手思考：agent-industry 仓 `猪猪老公/01-项目梳理/Hachimi.ai/`
