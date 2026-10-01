@@ -13,10 +13,10 @@
  * （suggestedHumanReadableName → exportedFileName）。走查产物会被下一轮覆盖，
  * 所以对应关系写在这里，而不是靠事后翻目录。
  *
- * 第四版五张图都在 iPhone 17 Pro Max 上截：两张盘用署名种子“李小龙”（spec 059），
- * 命例列表与问事面用合成命例库，走 iOS 仓 `DeviceScreenshotPass/testWalkSiteShots`，
- * 浅深各一趟落在 `sim-14-light-v2` 与 `sim-14-dark-v2`；命例问事面那一屏在种子问句去掉“合成问题：”前缀后重拍，落在 `sim-14-light-v3` 与 `sim-14-dark-v3`。起卦结果页的解读由大模型写，
- * 浅深两张必须出自同一卦，所以另走 `testWalkSiteCastShots`：起一卦拍浅色，切外观再拍深色，落在 `sim-14-cast`。
+ * 五张图都在 iPhone 17 Pro Max 上截。两张盘、命例列表与问事面走 iOS 仓
+ * `DeviceScreenshotPass/testWalkSiteChartShots`，盘用合成命例例一，后端走桩，浅深各一趟落在
+ * `site-2.0-light` 与 `site-2.0-dark`。起卦结果页的解读由大模型写，浅深两张必须出自同一卦，
+ * 所以另走 `testWalkSiteCastShots`：起一卦拍浅色，切外观再拍深色，落在 `sim-14-cast`。
  *
  * 依赖 sharp。它随 Next 装在 node_modules 里，没有单独进 package.json；
  * 这是本机生成素材的工具，不参与 `npm run check`，也不进构建。
@@ -54,20 +54,20 @@ const SHOTS = {
   "case-list": {
     widths: [660, 1320],
     dark: true,
-    light: walkShot("sim-14-light-v2", "AFB24453-B966-4353-B72B-B2EFC967A807"), // L-S4-命例列表
-    darkSrc: walkShot("sim-14-dark-v2", "B029E3FF-5A7B-4310-BB13-4830E5DA576F"), // S4-命例列表
+    light: walkShot("site-2.0-light", "AD05EA58-78D0-4634-BBF5-F1950122C10F"), // L-S4-命例列表
+    darkSrc: walkShot("site-2.0-dark", "5FA851F9-C546-4066-854E-6D533555AE8E"), // S4-命例列表
   },
   "ziwei-sanhe": {
     widths: [660, 1320],
     dark: true,
-    light: walkShot("sim-14-light-v2", "F0283531-1B6F-4233-9ACA-6137EEAD8726"), // L-S2-紫微三合盘
-    darkSrc: walkShot("sim-14-dark-v2", "E23CBE03-E3C8-44C7-A292-4D039B6FB4F7"), // S2-紫微三合盘
+    light: walkShot("site-2.0-light", "E9DAC4C2-7F43-4CFE-915E-DC30C597BEC3"), // L-S2-紫微三合盘
+    darkSrc: walkShot("site-2.0-dark", "5BB9BFD7-176B-480F-AFA6-B42BBCC7D23F"), // S2-紫微三合盘
   },
   "bazi-pillars": {
     widths: [660, 1320],
     dark: true,
-    light: walkShot("sim-14-light-v2", "66FB2762-A846-42B8-96CC-7FDF3F3D0BB4"), // L-S3-八字四柱页
-    darkSrc: walkShot("sim-14-dark-v2", "4F4B9117-957F-4D9B-A1DE-DFB74831B644"), // S3-八字四柱页
+    light: walkShot("site-2.0-light", "D6195E87-CC59-465D-B485-7A3A7409681A"), // L-S3-八字四柱页
+    darkSrc: walkShot("site-2.0-dark", "F4878ED8-3D6A-4F90-8230-7BFCBBC265CE"), // S3-八字四柱页
   },
   "cast-result": {
     widths: [660, 1320],
@@ -78,8 +78,8 @@ const SHOTS = {
   "case-casts": {
     widths: [660, 1320],
     dark: true,
-    light: walkShot("sim-14-light-v3", "0D41C2FC-52B6-4CE0-B58D-3C546D90984F"), // L-S5-命例问事面
-    darkSrc: walkShot("sim-14-dark-v3", "95D3127B-E3D1-446B-AB98-CAA88D8D7989"), // S5-命例问事面
+    light: walkShot("site-2.0-light", "88E2B566-06A8-4DE9-9D62-FC3C28F2EBEF"), // L-S5-命例问事面
+    darkSrc: walkShot("site-2.0-dark", "2DBD754C-0A76-4983-8707-425A9D6A49AB"), // S5-命例问事面
   },
 };
 
