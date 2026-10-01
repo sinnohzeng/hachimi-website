@@ -66,8 +66,10 @@ export const siteConfig = {
  * lastModified and structured-data.tsx for dateModified — never use build
  * time, which would stamp every deploy as a content change.
  *
- * Bump a date only when that page's visible content changes. Legal pages must
- * stay in lockstep with the visible `effectiveDate` strings in lib/i18n.
+ * Bump a date only when that page's visible content changes. Each date must
+ * equal the page's visible "last updated" line: privacy and terms read it from
+ * content/legal/*.md, the other pages from lib/i18n. scripts/page-dates.test.mjs
+ * fails `npm run check` when they drift.
  */
 export const pageDates = {
   home: "2026-09-14",

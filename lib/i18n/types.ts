@@ -128,8 +128,8 @@ export type Translations = {
     badge: string;
     title1: string;
     title2: string;
-    // Visible "last updated" line; keep in lockstep with pageDates.methodology
-    // in lib/config.ts.
+    // Visible "last updated" line; must equal pageDates.methodology in
+    // lib/config.ts (scripts/page-dates.test.mjs checks).
     lastUpdated: string;
     intro: string;
     cast: {
