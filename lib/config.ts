@@ -74,7 +74,7 @@ export const pageDates = {
   methodology: "2026-09-14",
   privacy: "2026-10-01",
   terms: "2026-10-01",
-  support: "2026-07-04",
+  support: "2026-10-01",
   dataDeletion: "2026-10-01",
 } as const;
 

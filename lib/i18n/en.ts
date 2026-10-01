@@ -493,16 +493,16 @@ export const en: Translations = {
 
   support: {
     title: "Support",
-    effectiveDate: "Last updated: August 25, 2026",
+    effectiveDate: "Last updated: October 1, 2026",
     intro:
-      "Hachimi.ai (哈基米道长) is a Mei Hua Yi Shu (Plum Blossom divination) app. Give two numbers, cast a hexagram, and Hachimi reads it to you, just for fun. Hit a problem, or just want to say hi? Drop us an email.",
+      "Hachimi.ai (哈基米道长) is an app for Zi Wei Dou Shu and Ba Zi charts and Mei Hua Yi Shu question casting, where you can ask Hachimi for an AI-written reading. If something goes wrong, or you just want to say something, send us an email.",
     steps: {
       heading: "Before you reach out: quick fixes",
       items: [
-        "Reading will not load? Check your connection. Your first actual online reading shows a disclosure naming DeepSeek and explaining the data and purposes; choose Agree and Enable Online Readings to continue. After declining or withdrawing, request a reading to choose again. Get Started on first launch does not grant permission.",
-        "Want to start over? On the question screen, enter two new numbers and cast again.",
-        "Switch language? Go to Me → Casting preferences → Language (Simplified Chinese, Traditional Chinese, or English). Reopen the app to apply.",
-        "Delete your data? Go to Me → Privacy and data, then Delete data on this device. Your history lives only on your phone.",
+        "Reading not coming through? Check your connection first. The first time you ask for an online reading, the App shows how DeepSeek receives and uses your data; tap Agree and Enable Online Readings to continue. If you chose Not Now or withdrew consent, you can choose again next time you ask.",
+        "Want to cast again? Enter two new numbers on the question page and cast again.",
+        "Changing the language? Go to Me > Language and choose Simplified Chinese, Traditional Chinese or English.",
+        "Deleting data? Go to Me > Privacy and data and tap Delete All Reading Data. The Delete your data page shows where each kind of data is kept.",
       ],
     },
     dataTable: {
@@ -521,17 +521,17 @@ export const en: Translations = {
       {
         heading: "Where does my data go?",
         content:
-          "Online readings send your question, derived hexagram and selected context through our backend to DeepSeek Open Platform. The Privacy Policy lists the fields and purposes. Permission is requested at your first actual online reading, without repeated prompts for the same disclosure version. Changes to the recipient, fields or purposes require updated disclosure and renewed permission. Use Stop Online Readings and Withdraw Consent at the bottom of Me > Privacy & Data > Privacy Policy; that page has no enable button. Offline charts and existing history remain available.",
+          "Charts and casting run on your device. For an online reading, your question, the hexagram and any context you chose to include go through our backend to DeepSeek Open Platform, which writes the reading; the question and reading are kept on our backend with the anonymous install identifier, and the text is deleted after 90 days. Pattern analysis, Zi Zhan and the Four Pillars lookup are calculated on our backend in real time and are not stored. On iOS, cases and reading history sync to your own iCloud; on Android, they are saved to your Google Account with the system backup. The Privacy Policy has the full details. At the bottom of Me > Privacy and data > Privacy Policy you can Stop Online Readings and Withdraw Consent; offline charts and your existing history are unaffected.",
       },
       {
         heading: "How do I delete my data?",
         content:
-          "Go to Me → Privacy and data, then Delete data on this device, or delete the app. There's no account. Any anonymous records you sent are kept for at most 90 days, then deleted. See Account & data.",
+          "Go to Me > Privacy and data and tap Delete All Reading Data. There are no accounts; uploaded question text is deleted after 90 days. Uninstalling the App does not delete the copy in iCloud or existing system backups. See the Delete your data page.",
       },
       {
-        heading: "Which devices and languages?",
+        heading: "Which devices and languages are supported?",
         content:
-          "Hachimi.ai runs on iPhone and iPad, in Simplified Chinese, Traditional Chinese, and English.",
+          "Hachimi.ai runs on iPhone, iPad and Android phones with Android 16 or later, in Simplified Chinese, Traditional Chinese and English.",
       },
     ],
   },
