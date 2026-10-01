@@ -7,6 +7,6 @@
 - **部署**：推 `main` 即构建上线。`functions/get.ts` 是 `/get` 按平台分流的 Pages Function，`public/_redirects` 管裸路径与旧网址。runbook 见 `deploy/cloudflare-pages.md`。
 - **单一出处**：商店链接、站点信息与页面日期只写在 `lib/config.ts`，UA 判断只写在 `lib/platform.ts`。
 - **组件**：写新组件前按 `frontend-component-priority` 技能的取件顺序找件；本仓 `components.json` 只接了 React Bits 的三个 registry。
-- **规约**：多文件改动先写 `specs/<编号>-<名>/spec.md` 再写 `plan.md`，索引在 `specs/README.md`。文案口径见 `docs/copy-principles.md`。
+- **规约**：多文件改动先写 `specs/<编号>-<名>/spec.md` 再写 `plan.md`，索引在 `specs/README.md`。文案口径见 hachimi-ios `docs/copy-principles.md`。
 - **协作约定**：见 hachimi-ios `docs/working-agreement.md`。
 - **教训**：踩过的坑在 `docs/lessons/`，新坑写进对应那一份。

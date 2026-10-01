@@ -22,7 +22,7 @@
  *   "key": { text, limit, verbatim, en } 第三版形态，limit 是简体字数（标点不计），
  *                                        英文上限由 limit × 0.6 换算成词数
  * verbatim 为真的条目原样透传，不送模型：北极星与已定案的品类锚、差异句改起来要先
- * 改 docs/copy-principles.md，不能让模型每跑一次就换个说法。
+ * 改 hachimi-ios docs/copy-principles.md，不能让模型每跑一次就换个说法。
  *
  * 超限只重试一次，再超就报错退出，绝不静默截断。
  *
@@ -64,7 +64,7 @@ const BANNED_WORDS = [
 /** 同一份脚本里的表情符号区段：图标一律走 SF Symbols / lucide，不拿表情当图标。 */
 const EMOJI = /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/u;
 
-/** 去 AI 味红线（docs/copy-principles.md 第六节）。 */
+/** 去 AI 味红线（hachimi-ios docs/copy-principles.md 第六节）。 */
 const AI_TASTE_ZH = [
   ["让我们", "翻译腔"],
   ["值得注意的是", "翻译腔"],
@@ -210,7 +210,7 @@ function hintFor(key) {
 }
 
 // ---------------------------------------------------------------------------
-// 系统提示词：把 docs/copy-principles.md 的规矩、GB/T 标点与两张禁词表写进去
+// 系统提示词：把 hachimi-ios docs/copy-principles.md 的规矩、GB/T 标点与两张禁词表写进去
 // ---------------------------------------------------------------------------
 
 const SHARED_RULES = `产品事实（只许照抄，不许增补）：
