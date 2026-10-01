@@ -31,3 +31,11 @@
 根因：`tsconfig.json` 把 `.next/types/**` 纳入编译，`next build` 生成的路由验证文件还留着上一次构建的路由表。
 
 做法：跑一次 `npm run build` 重新生成即可，不要去改 `tsconfig.json`。`npm run check` 里 typecheck 排在 build 之前，删路由后的第一次检查先单独构建一次。
+
+## ESLint 10 装得上、跑不起来，卡在 eslint-config-next 带的插件（2026-10-01）
+
+现象：`npm install -D eslint@10` 只给三条 `ERESOLVE overriding peer dependency` 警告就装上了，`npx eslint .` 一跑即崩：`Error while loading rule 'react/display-name': contextOrFilename.getFilename is not a function`。
+
+根因：ESLint 10 删掉了 `context.getFilename()`，eslint-config-next 16.3.8 依赖的 eslint-plugin-react 7.37.5 还在调它；同批的 eslint-plugin-import 2.32.0 与 eslint-plugin-jsx-a11y 6.10.2 的 peer 也只到 eslint 9。eslint-config-next 自己声明 `eslint >=9`，所以 npm 只警告不拦。
+
+做法：eslint 留在 9 线最新，等 eslint-config-next 换上支持 10 的插件再升。判断能不能升，看 `npx eslint .` 能不能跑完，不看安装有没有报错；试装用 `npm install --no-save`，试完 `npm ci` 还原。
