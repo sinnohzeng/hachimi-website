@@ -38,6 +38,6 @@
 
 ## Privacy
 
-Section 1. Where your cases and history are kept of the [Privacy Policy](https://hachimi.ai/en/privacy), last updated 2026-10-01:
+Section 1. Where your cases and history are kept of the [Privacy Policy](https://hachimi.ai/en/privacy), last updated 2026-10-03:
 
 Cases, reading history and the notes Hachimi keeps from past questions stay on your device. On iOS they sync to your iCloud; on Android they are saved to your Google Account with your system backup. There is no account to sign up for.

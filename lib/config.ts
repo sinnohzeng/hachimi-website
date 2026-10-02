@@ -74,7 +74,7 @@ export const siteConfig = {
  */
 export const pageDates = {
   home: "2026-10-02",
-  privacy: "2026-10-01",
+  privacy: "2026-10-03",
   terms: "2026-10-01",
   support: "2026-10-02",
   dataDeletion: "2026-10-02",
