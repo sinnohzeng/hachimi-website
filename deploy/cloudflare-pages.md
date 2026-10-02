@@ -18,7 +18,7 @@
 | 网址                                                     | 谁在用                                                                                                          |
 | -------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
 | `/{zh,en}/privacy`、`/{zh,en}/terms`、`/{zh,en}/support` | iOS `AppConfig.privacyPolicyURL` / `termsURL` / `supportURL`；Android `SiteLinks.privacy` / `terms` / `support` |
-| `/en/data-deletion`                                      | Google Play 后台登记的数据删除网址                                                                              |
+| `/data-deletion`（302 到 `/en/data-deletion`）           | Google Play 后台登记的数据删除网址                                                                              |
 | `/get`                                                   | 两端分享卡与成图上的二维码（iOS `AppConfig.appLinkURL`，Android `SiteLinks.APP`）                               |
 
 ## `/get` 按平台分流（Pages Function）
@@ -46,6 +46,11 @@ wrangler 只在启动时读 `out/_redirects`，改了重定向要重启它。
 - `/ → /en 302`：CF redirects 先于静态资产生效，`out/index.html` 只给本地 dev 与非 CF 环境兜底。
 - 裸法律页 `/privacy`、`/terms`、`/support`、`/data-deletion`、`/methodology` 302 到 `/en/...`。
 - 旧账号页并进了删除数据页：`/account-deletion` 与 `/:locale/account-deletion` 301 到对应的 `/data-deletion`。带占位符的规则放在静态规则之后。
+
+## 边缘安全规则（zone `hachimi.ai`）
+
+- 自定义 WAF 规则一条，在 zone 的 `http_request_firewall_custom` 入口集里：host 是 `hachimi.ai` 或 `www.hachimi.ai` 时跳过浏览器完整性检查（`skip`，products `bic`），让商店后台的网址检查器取得到法律页与删除数据页。`api.hachimi.ai` 不在其内，照旧受检。
+- Bot Fight Mode 开着，作用于整个 zone。`Python-urllib` 这一个 UA 在三个主机上都回 403 `error code: 1010`，跳过 BIC 之后照旧；curl、python-requests、Go、Java、okhttp 与 Googlebot 的 UA 都回 200。验证与冒烟一律用 curl。
 
 ## 部署 / 更新（两条路径）
 
