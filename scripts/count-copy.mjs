@@ -4,11 +4,11 @@
  *
  * 口径出处是 specs/005-site-v4-tools/spec.md 的验收 5，四档：
  *   - 首屏简体不超过 9 字；
- *   - 给命理师那一节（一句加三件事）不超过 185 字；
+ *   - 定位那一节（一句加三件事）不超过 185 字；
  *   - 四张卡的卡面、学堂与收尾合计不超过 320 字；
  *   - 命例走查（标题、引言与五步）合计不超过 240 字；
  *   - 每张卡展开不超过 110 字，FAQ 每条答案不超过 70 字；
- *   - 英文上限取简体上限的 0.6 倍，向上取整；给命理师一节单独定为 121 词。
+ *   - 英文上限取简体上限的 0.6 倍，向上取整；定位一节单独定为 121 词。
  *
  * 第三版是「全页除 FAQ 一个总数」，第四版拆成四档：命例走查与卡面展开是两块深度
  * 不同的文字，压在同一个预算里，一块长了另一块就得无谓地砍。
@@ -32,8 +32,8 @@ const { en } = await import("../lib/i18n/en.ts");
 /** 首屏。整节只有这一句。 */
 const HERO_KEYS = ["hero.headline"];
 
-/** 给命理师：一句加三件事的标题与正文。 */
-const PRO_KEYS = [
+/** 定位：一句加三件事的标题与正文。 */
+const WHAT_KEYS = [
   "what.title",
   "what.items.0.title",
   "what.items.0.body",
@@ -76,7 +76,7 @@ const JOURNEY_KEYS = [
 
 const LIMIT = {
   hero: 9,
-  pro: 185,
+  what: 185,
   surface: 320,
   journey: 240,
   cardDetail: 110,
@@ -84,10 +84,10 @@ const LIMIT = {
 };
 
 /**
- * 英文上限不按 0.6 倍算的节。给命理师第二张卡写 iOS 与 Android 各自怎么同步、
+ * 英文上限不按 0.6 倍算的节。定位第二张卡写 iOS 与 Android 各自怎么同步、
  * 备份（2.0.0 两端同发的定稿），英文比简体按比例多出一截，这一节单独定。
  */
-const EN_LIMIT = { pro: 121 };
+const EN_LIMIT = { what: 121 };
 
 /** 英文首屏不设门的那一句，见文件头。 */
 const EN_UNGATED = new Set(["hero.headline"]);
@@ -107,6 +107,26 @@ function sum(dict, keys, count) {
 }
 
 const failures = [];
+
+// 断行写死的两句：拆开的几行连起来读必须就是整句，改了一边忘了另一边就报红。
+// 中文行与行直接相接，英文行与行之间隔一个空格。
+for (const [label, dict, join] of [
+  ["简体", zh, ""],
+  ["英文", en, " "],
+]) {
+  for (const [whole, lines] of [
+    ["hero.headline", "hero.headlineLines"],
+    ["what.title", "what.titleLines"],
+  ]) {
+    const joined = lines
+      .split(".")
+      .reduce((node, part) => node[part], dict)
+      .join(join);
+    if (joined !== at(dict, whole)) {
+      failures.push(`${label} ${lines} 连起来不是 ${whole}：${joined}`);
+    }
+  }
+}
 
 /** 终端按显示宽度对齐：汉字占两列，String.padEnd 只会数字符，得自己补。 */
 function pad(label, columns) {
@@ -132,7 +152,7 @@ const lines = [];
 // ---- 简体 ----
 lines.push("简体（字，标点不计）");
 lines.push(gate("首屏", sum(zh, HERO_KEYS, countZh), LIMIT.hero));
-lines.push(gate("给命理师", sum(zh, PRO_KEYS, countZh), LIMIT.pro));
+lines.push(gate("定位", sum(zh, WHAT_KEYS, countZh), LIMIT.what));
 lines.push(gate("卡面", sum(zh, SURFACE_KEYS, countZh), LIMIT.surface));
 lines.push(gate("命例走查", sum(zh, JOURNEY_KEYS, countZh), LIMIT.journey));
 zh.tools.cards.forEach((card, i) => {
@@ -151,7 +171,7 @@ lines.push(
     ? row("首屏", enHero, "北极星原文，不设门")
     : gate("首屏", enHero, enCapFor(LIMIT.hero))
 );
-lines.push(gate("给命理师", sum(en, PRO_KEYS, countEn), EN_LIMIT.pro));
+lines.push(gate("定位", sum(en, WHAT_KEYS, countEn), EN_LIMIT.what));
 lines.push(
   gate("卡面", sum(en, SURFACE_KEYS, countEn), enCapFor(LIMIT.surface))
 );

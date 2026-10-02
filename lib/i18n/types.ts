@@ -1,10 +1,9 @@
 export type Translations = {
-  // Header：五项加一个下载。前三项与常见问题是首页锚，排盘的规矩是真页。
+  // Header：四个首页锚加一个下载。
   nav: {
     case: string;
     tools: string;
     academy: string;
-    methodology: string;
     faq: string;
     download: string;
   };
@@ -28,9 +27,11 @@ export type Translations = {
     shotAlt: string;
   };
 
-  // 第二节 给命理师（#what）：一句随滚动逐字点亮，下面三件事各一张小卡。
+  // 第二节 定位（#what）：一句随滚动逐字点亮，下面三件事各一张小卡。
   what: {
     title: string;
+    /** 断行写死在文案里，每行是一个不折开的块，宽屏上并排成一行。连起来读与 title 是同一句。 */
+    titleLines: string[];
     items: { title: string; body: string }[];
   };
 
@@ -65,7 +66,7 @@ export type Translations = {
     text: string;
   };
 
-  // 第六节 常见问题（#faq）：五条。
+  // 第六节 常见问题（#faq）：六条。
   faq: {
     title: string;
     items: {
@@ -108,26 +109,6 @@ export type Translations = {
   legalMeta: {
     privacy: { title: string; description: string };
     terms: { title: string; description: string };
-  };
-
-  // 排盘的规矩（/{locale}/methodology）：页首一段，下面逐条讲各家最容易排得不一样
-  // 的几处，收尾一句加一枚下载按钮。
-  methodology: {
-    metaTitle: string;
-    metaDescription: string;
-    badge: string;
-    title1: string;
-    title2: string;
-    // Visible "last updated" line; must equal pageDates.methodology in
-    // lib/config.ts (scripts/page-dates.test.mjs checks).
-    lastUpdated: string;
-    intro: string;
-    points: { term: string; desc: string }[];
-    closing: {
-      text: string;
-      /** 按钮文字，指向 /{locale}/get。 */
-      cta: string;
-    };
   };
 
   // 删除数据页与支持页（同一个 LegalPageContent 渲染器）

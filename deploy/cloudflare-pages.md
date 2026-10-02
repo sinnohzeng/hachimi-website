@@ -44,8 +44,9 @@ wrangler 只在启动时读 `out/_redirects`，改了重定向要重启它。
 ## 边缘重定向（`public/_redirects`，随构建拷入 `out/`）
 
 - `/ → /en 302`：CF redirects 先于静态资产生效，`out/index.html` 只给本地 dev 与非 CF 环境兜底。
-- 裸法律页 `/privacy`、`/terms`、`/support`、`/data-deletion`、`/methodology` 302 到 `/en/...`。
+- 裸法律页 `/privacy`、`/terms`、`/support`、`/data-deletion` 302 到 `/en/...`。
 - 旧账号页并进了删除数据页：`/account-deletion` 与 `/:locale/account-deletion` 301 到对应的 `/data-deletion`。带占位符的规则放在静态规则之后。
+- 排盘的规矩一页并进了首页：`/methodology` 302 到 `/en#faq`，`/:locale/methodology` 与带斜杠的写法 301 到 `/:locale#faq`。
 
 ## 边缘安全规则（zone `hachimi.ai`）
 
@@ -87,7 +88,7 @@ npx wrangler pages deploy out --project-name hachimi-app-website --branch main
 ```bash
 BASE=https://hachimi.ai
 for p in /zh /en /zh/privacy /en/privacy /zh/terms /en/terms /zh/support /en/support \
-         /zh/data-deletion /en/data-deletion /zh/get /en/get /zh/methodology /en/methodology; do
+         /zh/data-deletion /en/data-deletion /zh/get /en/get; do
   echo "[$(curl -s -o /dev/null -w '%{http_code}' --max-time 15 "$BASE$p")] $p"
 done
 # 期望：全 200。
@@ -96,6 +97,11 @@ for p in /account-deletion /zh/account-deletion /en/account-deletion; do
   curl -s -o /dev/null -w "%{http_code} $p -> %{redirect_url}\n" "$BASE$p"
 done
 # 期望：301 到对应的 /data-deletion。
+
+for p in /methodology /zh/methodology /en/methodology /en/methodology/; do
+  curl -s -o /dev/null -w "%{http_code} $p -> %{redirect_url}\n" "$BASE$p"
+done
+# 期望：裸路径 302 到 /en#faq，其余 301 到对应语言的 /zh#faq 或 /en#faq。
 
 ua() {
   case $1 in

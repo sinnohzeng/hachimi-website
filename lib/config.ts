@@ -3,7 +3,8 @@
  * SITE CONFIGURATION
  * ============================================================================
  * Hachimi.ai (哈基米道长): a Zi Wei Dou Shu and Ba Zi charting tool for fate
- * readers, with Mei Hua Yi Shu casts filed under each client's case.
+ * readers and enthusiasts, with Mei Hua Yi Shu casts filed under each person's
+ * case.
  * Brand Hachimi.ai · the operating company is named in the legal pages only.
  */
 
@@ -19,7 +20,7 @@ export const siteConfig = {
   // 第三版的北极星原句，与首屏 hero.headline 同一句，owner 定稿，不送润色。
   tagline: "When it's a lot, cast a hexagram.",
   description:
-    "Hachimi.ai is a charting tool for fate readers and serious enthusiasts. Enter a birth once and get Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars) charts together.",
+    "Hachimi.ai is a charting tool for fate readers and enthusiasts. Enter a birth once and get Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars) charts together.",
   url: "https://hachimi.ai",
   email: "voice@hachimi.ai",
   creator: "@sinnohzeng",
@@ -72,8 +73,7 @@ export const siteConfig = {
  * fails `npm run check` when they drift.
  */
 export const pageDates = {
-  home: "2026-10-01",
-  methodology: "2026-10-01",
+  home: "2026-10-02",
   privacy: "2026-10-01",
   terms: "2026-10-01",
   support: "2026-10-01",

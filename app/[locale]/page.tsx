@@ -39,7 +39,7 @@ export default async function HomePage({
     <>
       <FaqStructuredData t={t} />
       <main id="main-content" className="flex-1">
-        {/* 七节：一句首屏 → 给命理师 → 一位客户一份命例 → 四件工具 → 学堂 →
+        {/* 七节：一句首屏 → 定位 → 一个人一份命例 → 四件工具 → 学堂 →
             常见问题 → 收尾。加节先改 spec，不在这里悄悄插。 */}
         <Hero t={t} locale={locale} />
         <Manifesto t={t} />

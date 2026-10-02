@@ -5,7 +5,6 @@ export const en: Translations = {
     case: "Cases",
     tools: "Tools",
     academy: "Academy",
-    methodology: "Charting rules",
     faq: "FAQ",
     download: "Get the app",
   },
@@ -27,14 +26,15 @@ export const en: Translations = {
   },
 
   what: {
-    title: "A tool built for professional fate readers.",
+    title: "A charting tool for fate readers and enthusiasts.",
+    titleLines: ["A charting tool for fate readers and enthusiasts."],
     items: [
       {
         title: "Enter a birth once, get both charts",
         body: "One case gives you both Zi Wei Dou Shu and Ba Zi. True solar time is worked out once, so the two charts agree.",
       },
       {
-        title: "Client records move with you",
+        title: "Your cases stay when you switch phones",
         body: "iPhone and iPad sync through iCloud. On Android, cases are saved with your system backup. Both can export a backup file.",
       },
       {
@@ -45,8 +45,8 @@ export const en: Translations = {
   },
 
   case: {
-    title: "One client, one case",
-    lead: "Zi Wei, Ba Zi and every hexagram you cast for this client sit under one case.",
+    title: "One person, one case",
+    lead: "Clients, family, friends and you each get a case. It holds that person's Zi Wei and Ba Zi charts and every hexagram cast for them.",
     steps: [
       {
         title: "Create a case",
@@ -61,12 +61,12 @@ export const en: Translations = {
         body: "Same birth details. No need to enter them again.",
       },
       {
-        title: "Cast for this client",
+        title: "Cast for this person",
         body: "Choose who the question is for. The hexagram and reading are filed under that case.",
       },
       {
         title: "Look back at every cast",
-        body: "Past questions are listed by date; tap one to open that hexagram. Ask for this client again, and the Master picks up where the last reading left off.",
+        body: "Past questions are listed by date; tap one to open that hexagram. Ask for them again, and the Master picks up where the last reading left off.",
       },
     ],
     shotAlts: [
@@ -84,27 +84,27 @@ export const en: Translations = {
     cards: [
       {
         name: "Zi Wei Dou Shu",
-        line: "Set star placement to match your school. Paste a star code and your chart matches a colleague's.",
+        line: "Set star placement to match your school. Paste someone's star code and your chart matches theirs.",
         detail:
-          "Chart Patterns are judged by rule, and each one names the layer it comes from. This part needs internet. Press and hold any word on the chart for its entry.",
+          "Chart Patterns are judged by rule, and each one names the layer it comes from. This part needs internet. Zizhan, a Zi Wei chart cast for this moment, is under Me > Tools. Press and hold any word on the chart for its entry.",
       },
       {
         name: "Ba Zi charting",
-        line: "Clashes, combinations and harms are written out for the natal chart and for the cycles. Take notes on the same page.",
+        line: "Punishments, clashes, combinations and harms are written out for the natal chart and for the cycles. Take notes on the same page.",
         detail:
-          "The four pillars run from main star to Symbolic Stars, and you can choose the hidden-stem rulebook. Press and hold any word on the chart for its entry.",
+          "The four pillars run from Ten Gods to Symbolic Stars, and you can pick the rule for the Stem in Charge. The four-pillar lookup is under Me > Tools. Press and hold any word on the chart for its entry.",
       },
       {
         name: "Case library",
-        line: "Dozens of clients. Filter by group or day master and the one you need is there.",
+        line: "Lots of cases? Filter by group or day master and the one you need is there.",
         detail:
-          "You can also filter by gender, zodiac animal and birth decade. Send a single case to a colleague, and it merges into their library when they open it.",
+          "You can also filter by gender, zodiac animal and birth decade. Send a single case to someone else, and it merges into their library when they open it.",
       },
       {
         name: "Mei Hua Yi Shu casting",
         line: "Say two numbers to cast a hexagram, and the Master writes a reading.",
         detail:
-          "Original, Nuclear and Resulting hexagrams and Host & Guest sit on one screen. A cast for a client is filed under that case, and you can add what happened later. You can cast without writing a question.",
+          "Original, Nuclear and Resulting hexagrams and Host & Guest sit on one screen. A cast for someone is filed under their case, and you can add what happened later. You can cast without writing a question.",
       },
     ],
   },
@@ -119,12 +119,12 @@ export const en: Translations = {
       {
         question: "How is true solar time worked out?",
         answer:
-          "From the birthplace longitude and the equation of time. Pick a province and city or type a longitude; born abroad, pick a time zone. Zi Wei and Ba Zi use the same hour.",
+          "From the birthplace longitude and the equation of time. Pick a province and city or type a longitude; born abroad, pick a time zone. The chart marks daylight saving, leap months, late zi hour and solar term changes.",
       },
       {
         question: "Do I need internet to chart?",
         answer:
-          "No. Saved cases chart in airplane mode. Picking a birthplace by province and city for a new case needs internet, and so do Chart Patterns, zizhan and the Four Pillars lookup.",
+          "No. Saved cases chart in airplane mode. Picking a birthplace by province and city for a new case needs internet, and so do Chart Patterns, zizhan and the four-pillar lookup.",
       },
       {
         question: "How do I switch chart styles?",
@@ -132,9 +132,14 @@ export const en: Translations = {
           "One tap at the bottom of the chart. Same birth, same Star Settings; the Taiji point and fortune layers follow.",
       },
       {
+        question: "I'm just starting to learn. Will it help?",
+        answer:
+          "Yes. Press and hold any word on a chart for its entry, and read the classics in the Academy. After you cast, the Master writes a reading.",
+      },
+      {
         question: "What does the Master remember?",
         answer:
-          "What you asked for this client before. Ask for them again, and the reading picks up from last time. You can turn it off anytime.",
+          "What you asked for this person before. Ask for them again, and the reading picks up from last time. You can turn it off anytime.",
       },
       {
         question: "Do readings need internet?",
@@ -147,7 +152,7 @@ export const en: Translations = {
   },
 
   finalCta: {
-    headline: "Install Hachimi.ai and enter your first client.",
+    headline: "Install Hachimi.ai and enter your first case.",
   },
 
   footer: {
@@ -158,8 +163,8 @@ export const en: Translations = {
         title: "Product",
         items: [
           { label: "Cases", href: "/en#case" },
+          { label: "Tools", href: "/en#tools" },
           { label: "Academy", href: "/en#academy" },
-          { label: "Charting rules", href: "/en/methodology" },
           { label: "FAQ", href: "/en#faq" },
         ],
       },
@@ -196,52 +201,6 @@ export const en: Translations = {
       title: "Terms of Use",
       description:
         "Hachimi.ai Terms of Use: features, readings, membership and license.",
-    },
-  },
-
-  methodology: {
-    metaTitle: "Charting rules",
-    metaDescription:
-      "How Hachimi.ai charts Zi Wei Dou Shu and Ba Zi: true solar time, calendars, chart styles, Chart Patterns and star schools.",
-    badge: "Zi Wei and Ba Zi",
-    title1: "Charting rules,",
-    title2: "your way",
-    lastUpdated: "Last updated 1 October 2026",
-    intro:
-      "Below are the spots where charting apps most often disagree. Where there's a setting, set it to match your school.",
-    points: [
-      {
-        term: "True solar time",
-        desc: "Birth time is adjusted by birthplace longitude and the equation of time. Pick a province and city, or type a longitude. Born abroad? Choose a time zone.",
-      },
-      {
-        term: "Calendar",
-        desc: "Enter a solar date, lunar date or four pillars. The chart marks daylight saving, leap months, late zi hour and solar term changes.",
-      },
-      {
-        term: "Three chart styles",
-        desc: "One birth, three views: San He, Flying Star and Four Transformations. Switch at the bottom of the chart; the Taiji point and fortune layers follow.",
-      },
-      {
-        term: "Chart Patterns",
-        desc: "The app judges each pattern by rule and names the layer it comes from. This needs internet.",
-      },
-      {
-        term: "Star schools",
-        desc: "Schools place stars differently. Set each Star Settings item to match yours, or enter a star code.",
-      },
-      {
-        term: "Ba Zi",
-        desc: "Ba Zi uses the same birth as Zi Wei. The four-pillar table runs from main star to Nayin and Symbolic Stars. The six-pillar chart carries major and annual cycles; tap any slot and the whole table follows.",
-      },
-      {
-        term: "More chart methods",
-        desc: "Zizhan and the Four Pillars lookup are under Me > Tools and need internet. The text chart is under AI analysis in the chart's More menu; share a screenshot from the top right of the chart.",
-      },
-    ],
-    closing: {
-      text: "Enter your first client's birth and get both charts.",
-      cta: "Get Hachimi.ai",
     },
   },
 

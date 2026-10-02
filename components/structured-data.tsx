@@ -114,8 +114,8 @@ export function FaqStructuredData({ t }: { t: Translations }): ReactNode {
 }
 
 /**
- * Two-level breadcrumb (home → current page) for the legal / methodology
- * subpages. `path` is the locale-relative path (e.g. "/privacy") and
+ * Two-level breadcrumb (home → current page) for the subpages: privacy,
+ * terms, data deletion, support and the download page. `path` is the locale-relative path (e.g. "/privacy") and
  * `pageTitle` comes from the page's i18n data.
  */
 export function BreadcrumbStructuredData({

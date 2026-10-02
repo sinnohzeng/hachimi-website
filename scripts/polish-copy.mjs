@@ -198,10 +198,6 @@ const HINTS = [
   ],
   [/\.question$/, "这是常见问题里的问句，用用户自己的口吻问，句末是问号。"],
   [/\.readMore$|\.cta$/, "这是一枚按钮或链接上的字，短、动词打头、不带句号。"],
-  [
-    /^methodology\.metaTitle$/,
-    "这是浏览器标签页上的页名，品牌名由模板另加，这里不许出现品牌名。",
-  ],
 ];
 
 function hintFor(key) {

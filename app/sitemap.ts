@@ -20,12 +20,6 @@ const pages: {
     priority: (locale) => (locale === "en" ? 1 : 0.9),
   },
   {
-    path: "/methodology",
-    date: pageDates.methodology,
-    changeFrequency: "monthly",
-    priority: () => 0.6,
-  },
-  {
     path: "/support",
     date: pageDates.support,
     changeFrequency: "monthly",

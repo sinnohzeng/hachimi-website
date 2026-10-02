@@ -1,7 +1,7 @@
 {
   "name": "Hachimi.ai - 哈基米道长",
   "short_name": "Hachimi.ai",
-  "description": "Hachimi.ai (哈基米道长) is a charting tool for fate readers and serious enthusiasts. Enter a birth once and get Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars) charts together.",
+  "description": "Hachimi.ai (哈基米道长) is a charting tool for fate readers and enthusiasts. Enter a birth once and get Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars) charts together.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#111113",

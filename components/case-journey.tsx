@@ -1,12 +1,7 @@
 "use client";
 
 import { useRef, useState, type ReactNode } from "react";
-import {
-  cubicBezier,
-  motion,
-  useMotionValueEvent,
-  useScroll,
-} from "motion/react";
+import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import Device from "@/components/react-bits/device";
 import { ShotScreens, type ShotName } from "@/components/app-shot";
 import { keepPanguSpaces } from "@/components/reveal-headline";
@@ -15,10 +10,12 @@ import { useReducedMotion } from "@/lib/motion";
 import { DUR, EASE, STAGGER, reveal } from "@/lib/motion-tokens";
 
 /**
- * 第三节：一位客户，一份命例（#case）。
+ * 第三节：一个人，一份命例（#case）。
  *
  * 桌面端一只钉住的手机随滚动换五屏，左侧同步换文字；窄屏与减弱动态退化成一张手机
  * 加一份有序步骤列表，字一个不少。
+ *
+ * 换屏是原地交叉渐变，照 App 里在这几屏之间切换的样子演。
  *
  * 断点靠 CSS 类分流而不是 JS 量宽度：静态导出的首帧必须与水合后一致，用
  * matchMedia 会在窄屏上先渲染桌面版再跳一下。减弱动态是 JS 才知道的事，只好条件
@@ -31,11 +28,10 @@ import { DUR, EASE, STAGGER, reveal } from "@/lib/motion-tokens";
  * 滚动容器，sticky 只认它、随页面一起滚走。现在 body 是 `overflow-x: clip`：只裁不滚，
  * sticky 照常认视口。别把它改回 hidden。
  *
- * 二、换屏不用 `useTransform` 把滚动进度接到 opacity 上。本站上 MotionValue 驱动
- * 的 transform 每帧都更新，同一个元素上 MotionValue 驱动的 opacity 却一直停在首帧
- * 的值（实测：手机层的 y 与 scale 跟着滚，压暗层的 opacity 连客户端格式都没写进
- * 去）。所以这里把滚动进度先落成一个步序 state，再用 `animate` 驱动，opacity 走
- * 的是与全站入场动画同一条路，那条是好的。
+ * 二、换屏不用 `useTransform` 把滚动进度接到 opacity 上。本站实测 MotionValue 驱动
+ * 的 transform 每帧都更新，MotionValue 驱动的 opacity 却一直停在首帧的值，连客户端
+ * 样式都没写进去。所以这里把滚动进度先落成一个步序 state，再用 `animate` 驱动，
+ * opacity 走的是与全站入场动画同一条路，那条是好的。
  *
  * 五张截图的顺序写死在 SHOTS 里，与 i18n 的 case.steps、case.shotAlts 一一对应：
  * 改一处要三处一起改。
@@ -49,12 +45,18 @@ const SHOTS = [
 ] as const satisfies readonly ShotName[];
 
 const STEP_COUNT = SHOTS.length;
-const SHEET_EASE = cubicBezier(0.32, 0.72, 0, 1);
 
-/** 文字进出的位移档：上一步往上退，下一步从下面来。 */
-const STEP_DRIFT = 32;
+/** 文字进出的位移档：上一步往上退，下一步从下面来。只是一点余韵，主角是淡入淡出。 */
+const STEP_DRIFT = 12;
 
-/** 屏幕层：当前这屏与它之前的都在位，后面的压在底下等着推上来。 */
+/** 新一屏淡入时从这一档缩回原大，淡出时反过来。 */
+const SCREEN_SETTLE = 1.02;
+
+/**
+ * 屏幕层：五层按序叠放，后一层压在前一层上面。当前这屏与它之前的都不透明，后面的
+ * 透明。往前滚是新一层在上面淡入，往回滚是最上面那层淡出，下面那层始终不透明，所以
+ * 过渡当中不会露出机身底色。缩放放在里面那层，屏幕的圆角裁切不跟着动。
+ */
 function ScreenLayer({
   index,
   active,
@@ -66,31 +68,27 @@ function ScreenLayer({
   name: ShotName;
   alt: string;
 }): ReactNode {
-  const covered = index < active;
-  const arrived = index <= active;
+  const shown = index <= active;
 
   return (
     <motion.div
       initial={false}
-      animate={{
-        y: arrived ? "0%" : "103%",
-        scale: covered ? 0.94 : 1,
-      }}
-      transition={{ duration: DUR.slower, ease: SHEET_EASE }}
+      animate={{ opacity: shown ? 1 : 0 }}
+      transition={{ duration: DUR.slow, ease: EASE }}
       className="bg-muted absolute inset-0 overflow-hidden"
     >
-      <ShotScreens
-        name={name}
-        alt={alt}
-        sizes="(min-width: 1024px) 300px, 60vw"
-      />
       <motion.div
         initial={false}
-        animate={{ opacity: covered ? 0.4 : 0 }}
-        transition={{ duration: DUR.slower, ease: SHEET_EASE }}
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-black"
-      />
+        animate={{ scale: shown ? 1 : SCREEN_SETTLE }}
+        transition={{ duration: DUR.slower, ease: EASE }}
+        className="h-full w-full"
+      >
+        <ShotScreens
+          name={name}
+          alt={alt}
+          sizes="(min-width: 1024px) 300px, 60vw"
+        />
+      </motion.div>
     </motion.div>
   );
 }

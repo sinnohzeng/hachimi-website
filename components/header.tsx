@@ -38,13 +38,12 @@ function HamburgerIcon({
   );
 }
 
-// 五项制：命例 · 工具 · 学堂（三个首页锚）· 排盘的规矩（真页）· 常见问题，右侧
-// 另有下载。给命理师一节紧跟首屏，滚一下就到，不另设导航项。
+// 四项全是首页锚：命例 · 工具 · 学堂 · 常见问题，右侧另有下载。定位一节紧跟首屏，
+// 滚一下就到，不另设导航项。
 const navItems = [
   { key: "case", hash: "#case" },
   { key: "tools", hash: "#tools" },
   { key: "academy", hash: "#academy" },
-  { key: "methodology", hash: null },
   { key: "faq", hash: "#faq" },
 ] as const;
 
@@ -58,13 +57,10 @@ export function Header({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
   const isHomePage = pathname === `/${locale}` || pathname === `/${locale}/`;
-  const isMethodologyPage = pathname.startsWith(`/${locale}/methodology`);
 
   // 首页用裸 hash（走 Lenis 平滑滚动），子页回跳首页对应锚点。
   const anchorHref = (hash: string) =>
     isHomePage ? hash : `/${locale}${hash}`;
-  const navHref = (item: (typeof navItems)[number]) =>
-    item.hash === null ? `/${locale}/methodology` : anchorHref(item.hash);
 
   const getLabel = (key: string) => {
     return t.nav[key as keyof typeof t.nav] ?? key;
@@ -106,17 +102,8 @@ export function Header({
             {navItems.map((item) => (
               <a
                 key={item.key}
-                href={navHref(item)}
-                aria-current={
-                  item.key === "methodology" && isMethodologyPage
-                    ? "page"
-                    : undefined
-                }
-                className={`px-4 py-2 text-sm font-semibold tracking-tight transition-colors hover:text-white ${
-                  item.key === "methodology" && isMethodologyPage
-                    ? "text-white"
-                    : "text-white/80"
-                }`}
+                href={anchorHref(item.hash)}
+                className="px-4 py-2 text-sm font-semibold tracking-tight text-white/80 transition-colors hover:text-white"
               >
                 {getLabel(item.key)}
               </a>
@@ -198,7 +185,7 @@ export function Header({
               {navItems.map((item) => (
                 <a
                   key={item.key}
-                  href={navHref(item)}
+                  href={anchorHref(item.hash)}
                   className="text-foreground border-border block border-b py-4 text-base font-medium"
                   onClick={() => setMobileMenuOpen(false)}
                 >

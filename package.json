@@ -12,7 +12,7 @@
     "lint:fix": "eslint . --ext .ts,.tsx,.js,.jsx,.mjs --fix",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,mjs,json,css,md}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mjs,json,css,md}\"",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "next typegen && tsc --noEmit",
     "check:mentions": "node scripts/check-copy-mentions.mjs",
     "check:copy": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/count-copy.mjs",
     "pretest:orb": "node scripts/sync-rive-wasm.mjs",

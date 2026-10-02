@@ -30,7 +30,7 @@
 
 根因：`tsconfig.json` 把 `.next/types/**` 纳入编译，`next build` 生成的路由验证文件还留着上一次构建的路由表。
 
-做法：跑一次 `npm run build` 重新生成即可，不要去改 `tsconfig.json`。`npm run check` 里 typecheck 排在 build 之前，删路由后的第一次检查先单独构建一次。
+做法：`npm run typecheck` 先跑 `next typegen` 按当前路由重新生成 `.next/types`，删路由后直接跑即可，不要去改 `tsconfig.json`。`tsconfig.json` 也纳入了 `.next/dev/types`，那里若还留着旧路由，同样报这一条，删掉那个目录。
 
 ## ESLint 10 装得上、跑不起来，卡在 eslint-config-next 带的插件（2026-10-01）
 

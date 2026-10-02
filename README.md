@@ -1,6 +1,6 @@
 # Hachimi.ai · 哈基米道长 marketing site
 
-The bilingual (zh / en) marketing site for **Hachimi.ai (哈基米道长)**, a tool app for studying Chinese folk divination: Zi Wei, Ba Zi and Mei Hua Yi Shu charts for many people, with each person's casts tracked under their name. Built with Next.js App Router, statically exported (`output: "export"`) and deployed to **Cloudflare Pages** (project `hachimi-app-website`, custom domain `hachimi.ai`; deploy runbook: [`deploy/cloudflare-pages.md`](deploy/cloudflare-pages.md)). Comprehensive SEO, accessibility, and performance optimizations.
+The bilingual (zh / en) one-page marketing site for **Hachimi.ai (哈基米道长)**, a charting app for fate readers and enthusiasts: Zi Wei, Ba Zi and Mei Hua Yi Shu for many people, with each person's casts tracked under their name. Built with Next.js App Router, statically exported (`output: "export"`) and deployed to **Cloudflare Pages** (project `hachimi-app-website`, custom domain `hachimi.ai`; deploy runbook: [`deploy/cloudflare-pages.md`](deploy/cloudflare-pages.md)). Comprehensive SEO, accessibility, and performance optimizations.
 
 ## Features
 
@@ -16,16 +16,16 @@ The bilingual (zh / en) marketing site for **Hachimi.ai (哈基米道长)**, a t
 
 ## Sections Included
 
-Seven home-page sections, in this order (spec: [`specs/005-site-v4-tools/spec.md`](specs/005-site-v4-tools/spec.md); copy rules: hachimi-ios `docs/copy-principles.md`):
+Seven home-page sections, in this order (specs: [`005`](specs/005-site-v4-tools/spec.md) for the sections, [`006`](specs/006-one-page/spec.md) for the one-page layout and audience; copy rules: hachimi-ios `docs/copy-principles.md`):
 
 - **Hero** - one line, the Rive Orb, store badges, an ogl light-beam shader
-- **For practitioners** (`#what`) - three things a professional reader gets
-- **One client, one case** (`#case`) - a pinned phone walking through a case
+- **Who it's for** (`#what`) - fate readers and enthusiasts, and three things they get
+- **One person, one case** (`#case`) - a pinned phone cross-fading through a case
 - **Four tools** (`#tools`) - Zi Wei, Ba Zi, the case library and Mei Hua casting, each card expands
 - **Academy** (`#academy`) - marquee of the bundled classics
 - **FAQ / Final CTA / Footer** - accordion, ink shader with the screenshot fan, links and the legal row
 
-Other pages under `app/[locale]/`: `methodology` (Charting rules), `privacy` and `terms` (rendered from `content/legal/`), `data-deletion`, `support`, and `get` (the download landing page).
+The navigation is all home-page anchors. The other pages under `app/[locale]/` are the ones store listings link to: `privacy` and `terms` (rendered from `content/legal/`), `data-deletion`, `support`, and `get` (the download landing page). The old `/methodology` URLs redirect to the FAQ.
 
 ## Getting Started
 
@@ -53,7 +53,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 | `npm run lint:fix`       | Fix ESLint errors                                                                                                                                            |
 | `npm run format`         | Format code with Prettier                                                                                                                                    |
 | `npm run format:check`   | Check code formatting                                                                                                                                        |
-| `npm run typecheck`      | Run TypeScript type checking                                                                                                                                 |
+| `npm run typecheck`      | Regenerate `.next/types` with `next typegen`, then run TypeScript type checking                                                                              |
 | `npm run test:orb`       | Orb asset gate: signed `.riv` and still hashes, runtime version, self-hosted wasm                                                                            |
 | `npm run test:platform`  | `/get` routing: four user agents against `functions/get.ts`, and the inline platform script                                                                  |
 | `npm run legal:sync`     | Copy the privacy policy and terms from `../hachimi-ios/docs/legal/` into `content/legal/`                                                                    |
@@ -85,7 +85,7 @@ The privacy policy and terms are owned by the iOS repo (`hachimi-ios/docs/legal/
 │   │   ├── layout.tsx     # Locale layout: <html lang>, fonts, providers, inline platform script
 │   │   ├── page.tsx       # Home page (seven sections)
 │   │   ├── get/           # Download landing page: badges, desktop-only QR, WeChat hint
-│   │   └── ...            # methodology, privacy, terms, data-deletion, support
+│   │   └── ...            # privacy, terms, data-deletion, support
 │   ├── globals.css        # Design tokens, base styles, legal prose and stacked tables
 │   ├── layout.tsx         # Pass-through root layout (returns children)
 │   ├── page.tsx           # Root "/" client redirect to /en

@@ -1,7 +1,7 @@
 /**
  * 日期一致性门：lib/config.ts 的 pageDates 是 sitemap 与结构化数据的日期，
  * 必须等于页面上看得到的“最后更新”。隐私页与条款页取 content/legal/ 里
- * Markdown 的那一行，删除数据页、支持页与方法论页取 lib/i18n 的中英两句。
+ * Markdown 的那一行，删除数据页与支持页取 lib/i18n 的中英两句。
  * 任何一处对不上，npm run check 报红。
  */
 import assert from "node:assert/strict";
@@ -76,7 +76,6 @@ for (const [kind, files] of Object.entries(legalFiles)) {
 const visible = {
   dataDeletion: (t) => t.dataDeletion.effectiveDate,
   support: (t) => t.support.effectiveDate,
-  methodology: (t) => t.methodology.lastUpdated,
 };
 
 for (const [kind, pick] of Object.entries(visible)) {

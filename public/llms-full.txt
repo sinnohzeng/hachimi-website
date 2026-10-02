@@ -1,9 +1,8 @@
 # Hachimi.ai · 哈基米道长
 
-> Hachimi.ai is a charting tool for fate readers and serious enthusiasts. Enter a birth once and get Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars) charts together.
+> Hachimi.ai is a charting tool for fate readers and enthusiasts. Enter a birth once and get Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars) charts together.
 
 - [When it's a lot, cast a hexagram.](https://hachimi.ai/en) · [慌的时候，先起一卦。](https://hachimi.ai/zh)
-- [Charting rules](https://hachimi.ai/en/methodology) · [排盘的规矩](https://hachimi.ai/zh/methodology)
 - [Privacy Policy](https://hachimi.ai/en/privacy) · [隐私政策](https://hachimi.ai/zh/privacy)
 - [Terms of Use](https://hachimi.ai/en/terms) · [使用条款](https://hachimi.ai/zh/terms)
 
@@ -11,13 +10,13 @@
 
 [Download on the App Store](https://apps.apple.com/app/id6787621766) · [Get it on Google Play](https://play.google.com/store/apps/details?id=com.hachimi.hachimi_app)
 
-## A tool built for professional fate readers.
+## A charting tool for fate readers and enthusiasts.
 
 ### Enter a birth once, get both charts
 
 One case gives you both Zi Wei Dou Shu and Ba Zi. True solar time is worked out once, so the two charts agree.
 
-### Client records move with you
+### Your cases stay when you switch phones
 
 iPhone and iPad sync through iCloud. On Android, cases are saved with your system backup. Both can export a backup file.
 
@@ -25,41 +24,41 @@ iPhone and iPad sync through iCloud. On Android, cases are saved with your syste
 
 Switch between San He, Flying Star and Four Transformations, with fortune layers down to the hour. Beyond the four pillars, Ba Zi has a six-pillar chart with major and annual cycles.
 
-## One client, one case
+## One person, one case
 
-Zi Wei, Ba Zi and every hexagram you cast for this client sit under one case.
+Clients, family, friends and you each get a case. It holds that person's Zi Wei and Ba Zi charts and every hexagram cast for them.
 
 1. **Create a case**: Enter a solar date, lunar date or four pillars, and pick the birthplace by province and city.
 2. **Chart Zi Wei**: Once the birth is in, the Zi Wei chart is ready.
 3. **Switch to Ba Zi**: Same birth details. No need to enter them again.
-4. **Cast for this client**: Choose who the question is for. The hexagram and reading are filed under that case.
-5. **Look back at every cast**: Past questions are listed by date; tap one to open that hexagram. Ask for this client again, and the Master picks up where the last reading left off.
+4. **Cast for this person**: Choose who the question is for. The hexagram and reading are filed under that case.
+5. **Look back at every cast**: Past questions are listed by date; tap one to open that hexagram. Ask for them again, and the Master picks up where the last reading left off.
 
 ## Four tools
 
 ### Zi Wei Dou Shu
 
-Set star placement to match your school. Paste a star code and your chart matches a colleague's.
+Set star placement to match your school. Paste someone's star code and your chart matches theirs.
 
-Chart Patterns are judged by rule, and each one names the layer it comes from. This part needs internet. Press and hold any word on the chart for its entry.
+Chart Patterns are judged by rule, and each one names the layer it comes from. This part needs internet. Zizhan, a Zi Wei chart cast for this moment, is under Me > Tools. Press and hold any word on the chart for its entry.
 
 ### Ba Zi charting
 
-Clashes, combinations and harms are written out for the natal chart and for the cycles. Take notes on the same page.
+Punishments, clashes, combinations and harms are written out for the natal chart and for the cycles. Take notes on the same page.
 
-The four pillars run from main star to Symbolic Stars, and you can choose the hidden-stem rulebook. Press and hold any word on the chart for its entry.
+The four pillars run from Ten Gods to Symbolic Stars, and you can pick the rule for the Stem in Charge. The four-pillar lookup is under Me > Tools. Press and hold any word on the chart for its entry.
 
 ### Case library
 
-Dozens of clients. Filter by group or day master and the one you need is there.
+Lots of cases? Filter by group or day master and the one you need is there.
 
-You can also filter by gender, zodiac animal and birth decade. Send a single case to a colleague, and it merges into their library when they open it.
+You can also filter by gender, zodiac animal and birth decade. Send a single case to someone else, and it merges into their library when they open it.
 
 ### Mei Hua Yi Shu casting
 
 Say two numbers to cast a hexagram, and the Master writes a reading.
 
-Original, Nuclear and Resulting hexagrams and Host & Guest sit on one screen. A cast for a client is filed under that case, and you can add what happened later. You can cast without writing a question.
+Original, Nuclear and Resulting hexagrams and Host & Guest sit on one screen. A cast for someone is filed under their case, and you can add what happened later. You can cast without writing a question.
 
 ## Need a source for a reading? The classics are in the app, sorted by the five arts, and open offline.
 
@@ -67,19 +66,23 @@ Original, Nuclear and Resulting hexagrams and Host & Guest sit on one screen. A 
 
 ### How is true solar time worked out?
 
-From the birthplace longitude and the equation of time. Pick a province and city or type a longitude; born abroad, pick a time zone. Zi Wei and Ba Zi use the same hour.
+From the birthplace longitude and the equation of time. Pick a province and city or type a longitude; born abroad, pick a time zone. The chart marks daylight saving, leap months, late zi hour and solar term changes.
 
 ### Do I need internet to chart?
 
-No. Saved cases chart in airplane mode. Picking a birthplace by province and city for a new case needs internet, and so do Chart Patterns, zizhan and the Four Pillars lookup.
+No. Saved cases chart in airplane mode. Picking a birthplace by province and city for a new case needs internet, and so do Chart Patterns, zizhan and the four-pillar lookup.
 
 ### How do I switch chart styles?
 
 One tap at the bottom of the chart. Same birth, same Star Settings; the Taiji point and fortune layers follow.
 
+### I'm just starting to learn. Will it help?
+
+Yes. Press and hold any word on a chart for its entry, and read the classics in the Academy. After you cast, the Master writes a reading.
+
 ### What does the Master remember?
 
-What you asked for this client before. Ask for them again, and the reading picks up from last time. You can turn it off anytime.
+What you asked for this person before. Ask for them again, and the reading picks up from last time. You can turn it off anytime.
 
 ### Do readings need internet?
 
@@ -87,27 +90,9 @@ Yes, with a daily limit. A third-party AI service writes the reading in the Mast
 
 Still have questions? [Contact Hachimi.ai](mailto:voice@hachimi.ai)
 
-## Install Hachimi.ai and enter your first client.
+## Install Hachimi.ai and enter your first case.
 
 [Download on the App Store](https://apps.apple.com/app/id6787621766) · [Get it on Google Play](https://play.google.com/store/apps/details?id=com.hachimi.hachimi_app)
-
-# Charting rules, your way
-
-Below are the spots where charting apps most often disagree. Where there's a setting, set it to match your school.
-
-Last updated 1 October 2026
-
-- **True solar time**: Birth time is adjusted by birthplace longitude and the equation of time. Pick a province and city, or type a longitude. Born abroad? Choose a time zone.
-- **Calendar**: Enter a solar date, lunar date or four pillars. The chart marks daylight saving, leap months, late zi hour and solar term changes.
-- **Three chart styles**: One birth, three views: San He, Flying Star and Four Transformations. Switch at the bottom of the chart; the Taiji point and fortune layers follow.
-- **Chart Patterns**: The app judges each pattern by rule and names the layer it comes from. This needs internet.
-- **Star schools**: Schools place stars differently. Set each Star Settings item to match yours, or enter a star code.
-- **Ba Zi**: Ba Zi uses the same birth as Zi Wei. The four-pillar table runs from main star to Nayin and Symbolic Stars. The six-pillar chart carries major and annual cycles; tap any slot and the whole table follows.
-- **More chart methods**: Zizhan and the Four Pillars lookup are under Me > Tools and need internet. The text chart is under AI analysis in the chart's More menu; share a screenshot from the top right of the chart.
-
-## Enter your first client's birth and get both charts.
-
-[Get Hachimi.ai](https://hachimi.ai/en/get)
 
 # Privacy Policy: Hachimi.ai (哈基米道长)
 

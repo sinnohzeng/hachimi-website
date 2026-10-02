@@ -6,7 +6,11 @@
 /data-deletion /en/data-deletion 302
 /terms /en/terms 302
 /support /en/support 302
-/methodology /en/methodology 302
+# 排盘的规矩一页并进了首页，旧网址落到首页的常见问题。
+/methodology /en#faq 302
+/methodology/ /en#faq 302
 # 账号页并进了删除数据页，旧网址永久转过去。带占位符的规则放在静态规则之后。
 /account-deletion /en/data-deletion 301
 /:locale/account-deletion /:locale/data-deletion 301
+/:locale/methodology /:locale#faq 301
+/:locale/methodology/ /:locale#faq 301

@@ -11,8 +11,8 @@
  * 要在 components/ 里有同名 id，对不上就报错。页面上 i18n 没有的事实，这里也不出现。
  *
  * llms.txt：品牌名、一段概述、各页链接（每条的说明取自 i18n），再照录英文隐私政策
- * 第 1 节的摘要。llms-full.txt：首页与排盘的规矩页的英文正文按页面节序拼出，再接
- * 英文隐私政策与条款全文；中文版只给链接。法律件里指向另一份法律件的相对链接改写成
+ * 第 1 节的摘要。llms-full.txt：首页的英文正文按页面节序拼出，再接英文隐私政策与
+ * 条款全文；中文版只给链接。法律件里指向另一份法律件的相对链接改写成
  * 站内绝对网址，其余逐字照录。llmstxt.org 规定第一行是 H1 标题，两份都从
  * `# 品牌名` 起头，生成时核对。
  *
@@ -179,12 +179,6 @@ async function buildIndex() {
         en.finalCta.headline
       ),
     ]),
-    `## ${en.nav.methodology}`,
-    link(
-      en.methodology.metaTitle,
-      pageUrl("en", "methodology"),
-      en.methodology.metaDescription
-    ),
     `## ${en.support.title}`,
     list([
       link(en.support.title, pageUrl("en", "support"), en.support.intro),
@@ -251,22 +245,9 @@ function homeText() {
   ];
 }
 
-function methodologyText() {
-  const m = en.methodology;
-  return [
-    `# ${m.title1} ${m.title2}`,
-    m.intro,
-    m.lastUpdated,
-    list(m.points.map((p) => `- **${p.term}**: ${p.desc}`)),
-    `## ${m.closing.text}`,
-    `[${m.closing.cta}](${pageUrl("en", "get")})`,
-  ];
-}
-
 async function buildFull() {
   const pages = [
     [en.hero.headline, zh.hero.headline, ""],
-    [en.methodology.metaTitle, zh.methodology.metaTitle, "methodology"],
     ...Object.keys(legalFiles).map((kind) => [
       en.legalMeta[kind].title,
       zh.legalMeta[kind].title,
@@ -289,7 +270,6 @@ async function buildFull() {
       )
     ),
     ...homeText(),
-    ...methodologyText(),
     ...legal,
   ]);
 }

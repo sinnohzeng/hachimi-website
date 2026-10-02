@@ -1,25 +1,21 @@
 # Hachimi.ai · 哈基米道长
 
-> Hachimi.ai is a charting tool for fate readers and serious enthusiasts. Enter a birth once and get Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars) charts together.
+> Hachimi.ai is a charting tool for fate readers and enthusiasts. Enter a birth once and get Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars) charts together.
 
 ## Home page
 
 - [Hachimi.ai](https://hachimi.ai/en): When it's a lot, cast a hexagram.
 - [Enter a birth once, get both charts](https://hachimi.ai/en#what): One case gives you both Zi Wei Dou Shu and Ba Zi. True solar time is worked out once, so the two charts agree.
-- [Client records move with you](https://hachimi.ai/en#what): iPhone and iPad sync through iCloud. On Android, cases are saved with your system backup. Both can export a backup file.
+- [Your cases stay when you switch phones](https://hachimi.ai/en#what): iPhone and iPad sync through iCloud. On Android, cases are saved with your system backup. Both can export a backup file.
 - [Three Zi Wei chart styles, Ba Zi to six pillars](https://hachimi.ai/en#what): Switch between San He, Flying Star and Four Transformations, with fortune layers down to the hour. Beyond the four pillars, Ba Zi has a six-pillar chart with major and annual cycles.
-- [One client, one case](https://hachimi.ai/en#case): Zi Wei, Ba Zi and every hexagram you cast for this client sit under one case.
-- [Zi Wei Dou Shu](https://hachimi.ai/en#tools): Set star placement to match your school. Paste a star code and your chart matches a colleague's.
-- [Ba Zi charting](https://hachimi.ai/en#tools): Clashes, combinations and harms are written out for the natal chart and for the cycles. Take notes on the same page.
-- [Case library](https://hachimi.ai/en#tools): Dozens of clients. Filter by group or day master and the one you need is there.
+- [One person, one case](https://hachimi.ai/en#case): Clients, family, friends and you each get a case. It holds that person's Zi Wei and Ba Zi charts and every hexagram cast for them.
+- [Zi Wei Dou Shu](https://hachimi.ai/en#tools): Set star placement to match your school. Paste someone's star code and your chart matches theirs.
+- [Ba Zi charting](https://hachimi.ai/en#tools): Punishments, clashes, combinations and harms are written out for the natal chart and for the cycles. Take notes on the same page.
+- [Case library](https://hachimi.ai/en#tools): Lots of cases? Filter by group or day master and the one you need is there.
 - [Mei Hua Yi Shu casting](https://hachimi.ai/en#tools): Say two numbers to cast a hexagram, and the Master writes a reading.
 - [Academy](https://hachimi.ai/en#academy): Need a source for a reading? The classics are in the app, sorted by the five arts, and open offline.
-- [Frequently asked questions](https://hachimi.ai/en#faq): How is true solar time worked out? Do I need internet to chart? How do I switch chart styles? What does the Master remember? Do readings need internet?
-- [Get the app](https://hachimi.ai/en#download): Install Hachimi.ai and enter your first client.
-
-## Charting rules
-
-- [Charting rules](https://hachimi.ai/en/methodology): How Hachimi.ai charts Zi Wei Dou Shu and Ba Zi: true solar time, calendars, chart styles, Chart Patterns and star schools.
+- [Frequently asked questions](https://hachimi.ai/en#faq): How is true solar time worked out? Do I need internet to chart? How do I switch chart styles? I'm just starting to learn. Will it help? What does the Master remember? Do readings need internet?
+- [Get the app](https://hachimi.ai/en#download): Install Hachimi.ai and enter your first case.
 
 ## Support
 
