@@ -143,11 +143,6 @@ export const en: Translations = {
         answer:
           "Yes. Press and hold any word on a chart for its entry, and read the classics in the Academy. After you cast, the Master writes a reading.",
       },
-      {
-        question: "What does membership add?",
-        answer:
-          "Zi Wei monthly, daily and hourly layers, Ba Zi daily and hourly pillars, and more readings each day. Without membership, your cases, both charts and past casts stay with you.",
-      },
     ],
     stillHaveQuestions: "Still have questions?",
     contact: "Contact Hachimi.ai",

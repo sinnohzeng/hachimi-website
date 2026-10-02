@@ -140,11 +140,6 @@ export const zh: Translations = {
         answer:
           "用得上。盘上长按一个字就出词条，学堂里有古籍原文，起卦后道长会写一段解读。",
       },
-      {
-        question: "会员管什么？",
-        answer:
-          "紫微的流月、流日、流时，八字的流日与流时，还有每天更多次解读。不开会员，命例、两张盘和问过的卦也一直都在。",
-      },
     ],
     stillHaveQuestions: "还有别的想问？",
     contact: "联系哈基米道长",

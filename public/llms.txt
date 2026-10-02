@@ -14,7 +14,7 @@
 - [Case library](https://hachimi.ai/en#tools): Lots of cases? Filter by group or day master and the one you need is there.
 - [Mei Hua Yi Shu casting](https://hachimi.ai/en#tools): Say two numbers to cast a hexagram, and the Master writes a reading.
 - [Academy](https://hachimi.ai/en#academy): Need a source for a reading? The classics are in the app, sorted by the five arts, and open offline.
-- [Frequently asked questions](https://hachimi.ai/en#faq): How is true solar time worked out? Can it match the charts I use now? Do I need internet? Will my cases move to a new phone? I'm just starting to learn. Will it help? What does membership add?
+- [Frequently asked questions](https://hachimi.ai/en#faq): How is true solar time worked out? Can it match the charts I use now? Do I need internet? Will my cases move to a new phone? I'm just starting to learn. Will it help?
 - [Get the app](https://hachimi.ai/en#download): Install Hachimi.ai and enter your first case.
 
 ## Support
