@@ -20,7 +20,7 @@ export const siteConfig = {
   // 第三版的北极星原句，与首屏 hero.headline 同一句，owner 定稿，不送润色。
   tagline: "When it's a lot, cast a hexagram.",
   description:
-    "Hachimi.ai is a charting tool for fate readers and enthusiasts. Enter a birth once and get Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars) charts together.",
+    "Hachimi.ai is a charting tool for fate readers and enthusiasts. One person, one case: enter a birth once and get Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars) charts together.",
   url: "https://hachimi.ai",
   email: "voice@hachimi.ai",
   creator: "@sinnohzeng",
@@ -76,8 +76,8 @@ export const pageDates = {
   home: "2026-10-02",
   privacy: "2026-10-01",
   terms: "2026-10-01",
-  support: "2026-10-01",
-  dataDeletion: "2026-10-01",
+  support: "2026-10-02",
+  dataDeletion: "2026-10-02",
 } as const;
 
 /**

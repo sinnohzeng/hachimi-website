@@ -16,11 +16,11 @@ The bilingual (zh / en) one-page marketing site for **Hachimi.ai (哈基米道�
 
 ## Sections Included
 
-Seven home-page sections, in this order (specs: [`005`](specs/005-site-v4-tools/spec.md) for the sections, [`006`](specs/006-one-page/spec.md) for the one-page layout and audience; copy rules: hachimi-ios `docs/copy-principles.md`):
+Seven home-page sections, in this order (specs: [`005`](specs/005-site-v4-tools/spec.md) for the sections, [`006`](specs/006-one-page/spec.md) for the one-page layout and audience, [`007`](specs/007-copy-system/spec.md) for the copy; copy sources: hachimi-ios `docs/product-thesis.md`, `docs/copy-principles.md` and `docs/copy-canon.md`):
 
-- **Hero** - one line, the Rive Orb, store badges, an ogl light-beam shader
-- **Who it's for** (`#what`) - fate readers and enthusiasts, and three things they get
-- **One person, one case** (`#case`) - a pinned phone cross-fading through a case
+- **Hero** - the slogan and the bridge line, the Rive Orb, store badges, an ogl light-beam shader
+- **One person, one case** (`#what`) - who it's for, the one line to remember, and three things they get
+- **Case walkthrough** (`#case`) - a pinned phone cross-fading through a case
 - **Four tools** (`#tools`) - Zi Wei, Ba Zi, the case library and Mei Hua casting, each card expands
 - **Academy** (`#academy`) - marquee of the bundled classics
 - **FAQ / Final CTA / Footer** - accordion, ink shader with the screenshot fan, links and the legal row
@@ -45,25 +45,26 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Scripts
 
-| Command                  | Description                                                                                                                                                  |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `npm run dev`            | Start development server                                                                                                                                     |
-| `npm run build`          | Static export to `out/`                                                                                                                                      |
-| `npm run lint`           | Run ESLint                                                                                                                                                   |
-| `npm run lint:fix`       | Fix ESLint errors                                                                                                                                            |
-| `npm run format`         | Format code with Prettier                                                                                                                                    |
-| `npm run format:check`   | Check code formatting                                                                                                                                        |
-| `npm run typecheck`      | Regenerate `.next/types` with `next typegen`, then run TypeScript type checking                                                                              |
-| `npm run test:orb`       | Orb asset gate: signed `.riv` and still hashes, runtime version, self-hosted wasm                                                                            |
-| `npm run test:platform`  | `/get` routing: four user agents against `functions/get.ts`, and the inline platform script                                                                  |
-| `npm run legal:sync`     | Copy the privacy policy and terms from `../hachimi-ios/docs/legal/` into `content/legal/`                                                                    |
-| `npm run legal:check`    | Fail if `content/legal/` differs from `../hachimi-ios/docs/legal/` by a single byte                                                                          |
-| `npm run llms:build`     | Generate `public/llms.txt` and `public/llms-full.txt` from `lib/i18n/`, `lib/config.ts` and `content/legal/`                                                 |
-| `npm run llms:check`     | Regenerate both llms files and fail if either differs from the committed copy by a single byte                                                               |
-| `npm run test:dates`     | Fail if a `pageDates` entry in `lib/config.ts` differs from the page's visible “last updated” date                                                           |
-| `npm run check:mentions` | Copy gate: no reference or competitor names in site copy (same list as hachimi-ios)                                                                          |
-| `npm run check:copy`     | Word-count caps per section (spec 005)                                                                                                                       |
-| `npm run check`          | The single quality gate: format:check, lint, typecheck, test:orb, test:platform, legal:check, llms:check, test:dates, check:mentions, check:copy, then build |
+| Command                  | Description                                                                                                                                                               |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `npm run dev`            | Start development server                                                                                                                                                  |
+| `npm run build`          | Static export to `out/`                                                                                                                                                   |
+| `npm run lint`           | Run ESLint                                                                                                                                                                |
+| `npm run lint:fix`       | Fix ESLint errors                                                                                                                                                         |
+| `npm run format`         | Format code with Prettier                                                                                                                                                 |
+| `npm run format:check`   | Check code formatting                                                                                                                                                     |
+| `npm run typecheck`      | Regenerate `.next/types` with `next typegen`, then run TypeScript type checking                                                                                           |
+| `npm run test:orb`       | Orb asset gate: signed `.riv` and still hashes, runtime version, self-hosted wasm                                                                                         |
+| `npm run test:platform`  | `/get` routing: four user agents against `functions/get.ts`, and the inline platform script                                                                               |
+| `npm run legal:sync`     | Copy the privacy policy and terms from `../hachimi-ios/docs/legal/` into `content/legal/`                                                                                 |
+| `npm run legal:check`    | Fail if `content/legal/` differs from `../hachimi-ios/docs/legal/` by a single byte                                                                                       |
+| `npm run llms:build`     | Generate `public/llms.txt` and `public/llms-full.txt` from `lib/i18n/`, `lib/config.ts` and `content/legal/`                                                              |
+| `npm run llms:check`     | Regenerate both llms files and fail if either differs from the committed copy by a single byte                                                                            |
+| `npm run test:dates`     | Fail if a `pageDates` entry in `lib/config.ts` differs from the page's visible “last updated” date                                                                        |
+| `npm run check:mentions` | Copy gate: no reference or competitor names in site copy (same list as hachimi-ios)                                                                                       |
+| `npm run check:copy`     | Word-count caps per section (spec 005)                                                                                                                                    |
+| `npm run check:canon`    | Shared lines from hachimi-ios `docs/copy-canon.md` appear word for word in `lib/i18n/` (runs the hachimi-ios gate, web part only)                                         |
+| `npm run check`          | The single quality gate: format:check, lint, typecheck, test:orb, test:platform, legal:check, llms:check, test:dates, check:mentions, check:copy, check:canon, then build |
 
 ## Quality gate
 

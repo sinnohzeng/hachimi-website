@@ -14,6 +14,7 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,mjs,json,css,md}\"",
     "typecheck": "next typegen && tsc --noEmit",
     "check:mentions": "node scripts/check-copy-mentions.mjs",
+    "check:canon": "python3 ../hachimi-ios/scripts/copy-canon-gate.py --only web --require-sibling",
     "check:copy": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/count-copy.mjs",
     "pretest:orb": "node scripts/sync-rive-wasm.mjs",
     "test:orb": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test scripts/orb-asset.test.mjs",
@@ -23,7 +24,7 @@
     "llms:build": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-llms.mjs",
     "llms:check": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-llms.mjs --check",
     "test:dates": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test scripts/page-dates.test.mjs",
-    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test:orb && npm run test:platform && npm run legal:check && npm run llms:check && npm run test:dates && npm run check:mentions && npm run check:copy && npm run build"
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test:orb && npm run test:platform && npm run legal:check && npm run llms:check && npm run test:dates && npm run check:mentions && npm run check:copy && npm run check:canon && npm run build"
   },
   "dependencies": {
     "@rive-app/webgl2": "2.42.2",

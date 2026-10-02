@@ -18,17 +18,21 @@ export type Translations = {
     googlePlayAlt: string;
   };
 
-  // 第一节 首屏：一句主标题 + 商店徽章 + 一张起卦结果图。第三版把 eyebrow、
-  // description、差异句与第二 CTA 全部撤走，各自有了新落点或被砍。
+  // 第一节 首屏：口号、过桥句、商店徽章、一张起卦结果图。
   hero: {
     headline: string;
     /** 首屏主标题按这几行断开排。连起来读与 headline 是同一句。 */
     headlineLines: string[];
+    /** 口号下一行，把起卦接到命例上。定稿句 C2，真源是 hachimi-ios docs/copy-canon.md。 */
+    bridge: string;
     shotAlt: string;
   };
 
-  // 第二节 定位（#what）：一句随滚动逐字点亮，下面三件事各一张小卡。
+  // 第二节 定位（#what）：先点称呼，再一句记忆锤随滚动逐字点亮，下面三件事各一张小卡。
   what: {
+    /** 称呼与品类，节标题。定稿句 C3。 */
+    eyebrow: string;
+    /** 记忆锤。定稿句 C4。 */
     title: string;
     /** 断行写死在文案里，每行是一个不折开的块，宽屏上并排成一行。连起来读与 title 是同一句。 */
     titleLines: string[];

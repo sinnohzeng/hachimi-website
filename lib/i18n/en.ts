@@ -21,32 +21,34 @@ export const en: Translations = {
   hero: {
     headline: "When it's a lot, cast a hexagram.",
     headlineLines: ["When it's a lot,", "cast a hexagram."],
+    bridge: "Cast for someone, and it lands in their case.",
     shotAlt:
       "Hachimi.ai cast result page screenshot: this hexagram reads auspicious, the hexagram on top and the reading below.",
   },
 
   what: {
-    title: "A charting tool for fate readers and enthusiasts.",
-    titleLines: ["A charting tool for fate readers and enthusiasts."],
+    eyebrow: "A charting tool for fate readers and enthusiasts",
+    title: "One person, one case.",
+    titleLines: ["One person, one case."],
     items: [
       {
         title: "Enter a birth once, get both charts",
-        body: "One case gives you both Zi Wei Dou Shu and Ba Zi. True solar time is worked out once, so the two charts agree.",
+        body: "One case gives you both Zi Wei Dou Shu and Ba Zi, from the same true solar time.",
       },
       {
-        title: "Your cases stay when you switch phones",
-        body: "iPhone and iPad sync through iCloud. On Android, cases are saved with your system backup. Both can export a backup file.",
+        title: "Open a case, and the charts and casts are there",
+        body: "Both charts are in the case, and every cast for this person and the outcomes you add are listed by date. The longer you use it, the more it holds.",
       },
       {
         title: "Three Zi Wei chart styles, Ba Zi to six pillars",
-        body: "Switch between San He, Flying Star and Four Transformations, with fortune layers down to the hour. Beyond the four pillars, Ba Zi has a six-pillar chart with major and annual cycles.",
+        body: "Switch between San He, Flying Star and Four Transformations. Beyond the four pillars, Ba Zi has a six-pillar chart with major and annual cycles.",
       },
     ],
   },
 
   case: {
-    title: "One person, one case",
-    lead: "Clients, family, friends and you each get a case. It holds that person's Zi Wei and Ba Zi charts and every hexagram cast for them.",
+    title: "Someone sends you a birth time",
+    lead: "A client, a family member, a friend or you. Enter it once, and it becomes a case.",
     steps: [
       {
         title: "Create a case",
@@ -66,7 +68,7 @@ export const en: Translations = {
       },
       {
         title: "Look back at every cast",
-        body: "Past questions are listed by date; tap one to open that hexagram. Ask for them again, and the Master picks up where the last reading left off.",
+        body: "Past questions are listed by date; tap one to open that hexagram.",
       },
     ],
     shotAlts: [
@@ -74,7 +76,7 @@ export const en: Translations = {
       "Zi Wei Dou Shu San He chart screenshot with the twelve palaces and the three-way four-point links.",
       "Ba Zi four-pillar table screenshot, year month day hour rows down to Nayin and the symbolic stars.",
       "Cast result page screenshot: this hexagram reads auspicious.",
-      "Case detail asking side screenshot: every hexagram under the case, newest first.",
+      "Case detail screenshot: every hexagram under the case, newest first.",
     ],
   },
 
@@ -90,9 +92,9 @@ export const en: Translations = {
       },
       {
         name: "Ba Zi charting",
-        line: "Punishments, clashes, combinations and harms are written out for the natal chart and for the cycles. Take notes on the same page.",
+        line: "Punishments, clashes, combinations and harms are listed separately for the natal chart and the cycles. Take notes on the same page.",
         detail:
-          "The four pillars run from Ten Gods to Symbolic Stars, and you can pick the rule for the Stem in Charge. The four-pillar lookup is under Me > Tools. Press and hold any word on the chart for its entry.",
+          "The four pillars run from Ten Gods to Symbolic Stars, and you can pick the rule for the Stem in Charge. The four-pillar lookup is under Me > Tools.",
       },
       {
         name: "Case library",
@@ -104,7 +106,7 @@ export const en: Translations = {
         name: "Mei Hua Yi Shu casting",
         line: "Say two numbers to cast a hexagram, and the Master writes a reading.",
         detail:
-          "Original, Nuclear and Resulting hexagrams and Host & Guest sit on one screen. A cast for someone is filed under their case, and you can add what happened later. You can cast without writing a question.",
+          "The Original, Nuclear and Resulting hexagrams and Host & Guest sit on one screen. The same numbers and hour give the same hexagram. You can cast without writing a question.",
       },
     ],
   },
@@ -122,14 +124,19 @@ export const en: Translations = {
           "From the birthplace longitude and the equation of time. Pick a province and city or type a longitude; born abroad, pick a time zone. The chart marks daylight saving, leap months, late zi hour and solar term changes.",
       },
       {
-        question: "Do I need internet to chart?",
+        question: "Can it match the charts I use now?",
         answer:
-          "No. Saved cases chart in airplane mode. Picking a birthplace by province and city for a new case needs internet, and so do Chart Patterns, zizhan and the four-pillar lookup.",
+          "You can set it up the same way. Set each star placement rule to match your school, and pick late zi hour and year boundary rules.",
       },
       {
-        question: "How do I switch chart styles?",
+        question: "Do I need internet?",
         answer:
-          "One tap at the bottom of the chart. Same birth, same Star Settings; the Taiji point and fortune layers follow.",
+          "Not to chart: saved cases chart in airplane mode. Picking a birthplace by province and city needs it, and so do readings, Chart Patterns, zizhan and the four-pillar lookup. Readings have a daily limit and are written by a third-party AI service.",
+      },
+      {
+        question: "Will my cases move to a new phone?",
+        answer:
+          "Yes. iPhone and iPad sync through iCloud. Android uses your system backup. Both can export cases to a file.",
       },
       {
         question: "I'm just starting to learn. Will it help?",
@@ -137,14 +144,9 @@ export const en: Translations = {
           "Yes. Press and hold any word on a chart for its entry, and read the classics in the Academy. After you cast, the Master writes a reading.",
       },
       {
-        question: "What does the Master remember?",
+        question: "What does membership add?",
         answer:
-          "What you asked for this person before. Ask for them again, and the reading picks up from last time. You can turn it off anytime.",
-      },
-      {
-        question: "Do readings need internet?",
-        answer:
-          "Yes, with a daily limit. A third-party AI service writes the reading in the Master's voice.",
+          "Zi Wei monthly, daily and hourly layers, Ba Zi daily and hourly pillars, and more readings each day. Without membership, your cases, both charts and past casts stay with you.",
       },
     ],
     stillHaveQuestions: "Still have questions?",
@@ -206,7 +208,7 @@ export const en: Translations = {
 
   dataDeletion: {
     title: "Delete your data",
-    effectiveDate: "Last updated: October 1, 2026",
+    effectiveDate: "Last updated: October 2, 2026",
     intro:
       "Your cases, reading history and the notes the Master keeps stay on your device, and you can delete them in the app.",
     steps: {
@@ -215,7 +217,8 @@ export const en: Translations = {
         "Open Hachimi.ai and go to Me > Privacy and data.",
         "Tap Delete All Reading Data and confirm. This clears reading history, drafts and the Master's notes. On iOS with iCloud sync on, they're deleted on your other devices too.",
         "Delete cases one by one in your case library.",
-        "Tap Reset Anonymous ID to get a new one.",
+        "Usage statistics carry a random identifier. Tap Reset Anonymous ID to get a new one.",
+        "To stop using online readings, open Privacy Policy on the same page and tap Turn Off Online Readings at the bottom.",
       ],
     },
     sections: [
@@ -227,7 +230,7 @@ export const en: Translations = {
       {
         heading: "Records on our server",
         content:
-          "We keep question records for online readings on our server for a while, then delete them. For questions about deletion, write to voice@hachimi.ai.",
+          "We keep question records for online readings on our server for a while, then delete them. If something goes wrong with deletion, write to voice@hachimi.ai.",
       },
       {
         heading: "Contact",
@@ -239,12 +242,12 @@ export const en: Translations = {
 
   support: {
     title: "Support",
-    effectiveDate: "Last updated: October 1, 2026",
+    effectiveDate: "Last updated: October 2, 2026",
     intro: "Hit a problem, or want to tell us something? Just send an email.",
     steps: {
       heading: "Check these first",
       items: [
-        "Which devices are supported? iPhone and iPad need iOS 26 or later; Android phones need Android 16 or later. The app comes in Simplified Chinese, Traditional Chinese and English.",
+        "Which devices are supported? iPhone needs iOS 26 or later, iPad needs iPadOS 26 or later, and Android phones need Android 16 or later. The app comes in Simplified Chinese, Traditional Chinese and English.",
         "Reading not coming through? Check your connection and today's limit. The first time, tap Agree and Enable Online Readings. If you chose Not Now before, you can choose again next time you ask.",
         "Changing the language? Go to Me > Language.",
         "Deleting data? For reading data, go to Me > Privacy and data and tap Delete All Reading Data. Delete cases one by one in your case library.",

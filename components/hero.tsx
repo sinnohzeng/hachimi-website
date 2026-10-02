@@ -47,11 +47,11 @@ function endsWithFullWidthPunctuation(line: string): boolean {
 }
 
 /**
- * 首屏。第三版只剩三样东西：一句主标题、商店徽章、一张起卦结果图。
+ * 首屏四样东西：口号、过桥句、商店徽章、一张起卦结果图。
  *
- * 撤掉的品类锚、产品说明、差异句与「往下看看」文字链各有新落点：品类锚做了第二节
- * 的标题，差异句独占第三节，产品说明散进第二节三步，往下走由导航接住。加第二句话
- * 之前先看 specs/001-site-v3-concise/spec.md 的七节表，首屏一句是 owner 定的。
+ * 口号是 owner 定的，把人领进“慌的时候”这个场景；过桥句紧跟着，把高频的起卦接到
+ * 沉淀下来的命例上（hachimi-ios docs/product-thesis.md 第三节）。两句都在定稿句表里，
+ * 改字先改 hachimi-ios docs/copy-canon.md，npm run check:canon 核对。
  */
 export function Hero({
   locale,
@@ -94,6 +94,13 @@ export function Hero({
                 </span>
               ))}
             </h1>
+
+            <motion.p
+              {...mountRise(0.15)}
+              className="text-foreground/75 zh-display mt-6 max-w-md text-lg leading-relaxed text-balance sm:text-xl"
+            >
+              {t.hero.bridge}
+            </motion.p>
 
             <motion.div {...mountRise(0.3)} className="mt-10">
               <StoreBadges

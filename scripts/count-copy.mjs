@@ -3,8 +3,8 @@
  * 首页文案字数门。挂在 npm run check 里，超限非零退出。
  *
  * 口径出处是 specs/005-site-v4-tools/spec.md 的验收 5，四档：
- *   - 首屏简体不超过 9 字；
- *   - 定位那一节（一句加三件事）不超过 185 字；
+ *   - 首屏简体不超过 9 字，口号下那一句过桥另算，不超过 16 字（spec 007）；
+ *   - 定位那一节（称呼、记忆锤加三件事）不超过 185 字；
  *   - 四张卡的卡面、学堂与收尾合计不超过 320 字；
  *   - 命例走查（标题、引言与五步）合计不超过 240 字；
  *   - 每张卡展开不超过 110 字，FAQ 每条答案不超过 70 字；
@@ -29,11 +29,15 @@ import { countZh, countEn, enCapFor } from "./lib/count-units.mjs";
 const { zh } = await import("../lib/i18n/zh.ts");
 const { en } = await import("../lib/i18n/en.ts");
 
-/** 首屏。整节只有这一句。 */
+/** 首屏。口号只有这一句。 */
 const HERO_KEYS = ["hero.headline"];
 
-/** 定位：一句加三件事的标题与正文。 */
+/** 口号下的过桥句，把起卦接到命例上（定稿句 C2）。 */
+const BRIDGE_KEYS = ["hero.bridge"];
+
+/** 定位：称呼、记忆锤与三件事的标题与正文。 */
 const WHAT_KEYS = [
+  "what.eyebrow",
   "what.title",
   "what.items.0.title",
   "what.items.0.body",
@@ -76,6 +80,7 @@ const JOURNEY_KEYS = [
 
 const LIMIT = {
   hero: 9,
+  bridge: 16,
   what: 185,
   surface: 320,
   journey: 240,
@@ -84,8 +89,8 @@ const LIMIT = {
 };
 
 /**
- * 英文上限不按 0.6 倍算的节。定位第二张卡写 iOS 与 Android 各自怎么同步、
- * 备份（2.0.0 两端同发的定稿），英文比简体按比例多出一截，这一节单独定。
+ * 英文上限不按 0.6 倍算的节。定位第二张卡列的是名下有什么：两张盘、每一卦、补记的
+ * 结局，英文列举比简体按比例多出一截，这一节单独定。
  */
 const EN_LIMIT = { what: 121 };
 
@@ -152,6 +157,7 @@ const lines = [];
 // ---- 简体 ----
 lines.push("简体（字，标点不计）");
 lines.push(gate("首屏", sum(zh, HERO_KEYS, countZh), LIMIT.hero));
+lines.push(gate("过桥", sum(zh, BRIDGE_KEYS, countZh), LIMIT.bridge));
 lines.push(gate("定位", sum(zh, WHAT_KEYS, countZh), LIMIT.what));
 lines.push(gate("卡面", sum(zh, SURFACE_KEYS, countZh), LIMIT.surface));
 lines.push(gate("命例走查", sum(zh, JOURNEY_KEYS, countZh), LIMIT.journey));
@@ -171,6 +177,7 @@ lines.push(
     ? row("首屏", enHero, "北极星原文，不设门")
     : gate("首屏", enHero, enCapFor(LIMIT.hero))
 );
+lines.push(gate("过桥", sum(en, BRIDGE_KEYS, countEn), enCapFor(LIMIT.bridge)));
 lines.push(gate("定位", sum(en, WHAT_KEYS, countEn), EN_LIMIT.what));
 lines.push(
   gate("卡面", sum(en, SURFACE_KEYS, countEn), enCapFor(LIMIT.surface))

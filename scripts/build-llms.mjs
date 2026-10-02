@@ -159,7 +159,11 @@ async function buildIndex() {
     summary(),
     "## Home page",
     list([
-      link(siteConfig.name, pageUrl("en"), en.hero.headline),
+      link(
+        siteConfig.name,
+        pageUrl("en"),
+        `${en.hero.headline} ${en.hero.bridge}`
+      ),
       ...en.what.items.map((item) =>
         link(item.title, pageUrl("en", "", "what"), item.body)
       ),
@@ -222,8 +226,10 @@ async function buildIndex() {
 function homeText() {
   return [
     `# ${en.hero.headline}`,
+    en.hero.bridge,
     storeLinks(),
     `## ${en.what.title}`,
+    `${en.what.eyebrow}.`,
     ...en.what.items.flatMap((item) => [`### ${item.title}`, item.body]),
     `## ${en.case.title}`,
     en.case.lead,

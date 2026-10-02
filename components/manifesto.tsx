@@ -16,8 +16,9 @@ import { useReducedMotion } from "@/lib/motion";
 import { DUR, STAGGER, reveal } from "@/lib/motion-tokens";
 
 /**
- * 第二节：定位（#what）。首屏一过先说给谁用，再讲三件事：录一次生辰两张盘一起出、
- * 命例的同步与备份、盘式与六柱。第一句随滚动逐字点亮，三件事各一张小卡在下面进场。
+ * 第二节：定位（#what）。首屏一过先点给谁用，再砸记忆锤“一个人，一份命例”，下面三件
+ * 是它的证据：录一次两张盘、点开这一位盘和卦都在、盘式与六柱。记忆锤随滚动逐字点亮，
+ * 三件事各一张小卡在下面进场。称呼与记忆锤都是定稿句，真源在 hachimi-ios docs/copy-canon.md。
  *
  * 切分与盘古之白的处理都用 components/reveal-headline.tsx 那两个帮手，逐字动效全
  * 站一套判据。
@@ -73,9 +74,12 @@ export function Manifesto({ t }: { t: Translations }): ReactNode {
       className="bg-background relative w-full scroll-mt-28 py-24 sm:py-32"
     >
       <div className="mx-auto max-w-5xl px-6 sm:px-8">
+        <h2 className="text-foreground/65 zh-display mx-auto mb-6 max-w-3xl text-center text-base tracking-wide text-balance sm:text-lg">
+          {keepPanguSpaces(t.what.eyebrow)}
+        </h2>
         <p
           ref={ref}
-          className="text-foreground mx-auto max-w-3xl text-center font-serif text-2xl leading-snug font-medium text-balance sm:text-3xl md:text-4xl"
+          className="text-foreground mx-auto max-w-3xl text-center font-serif text-3xl leading-snug font-medium text-balance sm:text-4xl md:text-5xl"
         >
           {reducedMotion ? (
             lines.map((line) => (
@@ -112,7 +116,7 @@ export function Manifesto({ t }: { t: Translations }): ReactNode {
               {...reveal(index * STAGGER.tight, { duration: DUR.base })}
               className="border-foreground/15 border-t pt-6"
             >
-              <h3 className="zh-display font-serif text-xl leading-snug font-medium sm:text-2xl">
+              <h3 className="zh-display font-serif text-xl leading-snug font-medium text-balance sm:text-2xl">
                 {keepPanguSpaces(item.title)}
               </h3>
               <p className="text-foreground/70 mt-3 text-base leading-relaxed">

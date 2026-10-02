@@ -22,8 +22,11 @@ export async function generateMetadata({
   return localizedPageMetadata({
     locale,
     title: t.hero.headline,
-    // 首屏只剩主标题，描述从定位那一节取：搜索结果那一行要说清这是个什么东西。
-    description: t.what.title,
+    // 描述取定位那一节的称呼与记忆锤：搜索结果那一行先说清给谁用，再落到一个人一份命例。
+    description:
+      locale === "zh"
+        ? `${t.what.eyebrow}。${t.what.title}`
+        : `${t.what.eyebrow}. ${t.what.title}`,
   });
 }
 
