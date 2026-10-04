@@ -1,8 +1,8 @@
 /**
- * 字数口径的唯一真源。润色脚本与字数门都从这里取，两处各写一份必然会漂。
+ * 字数口径的唯一真源，scripts/count-copy.mjs 从这里取。
  *
- * 简体按「字」算，标点不计：一个汉字算一个字，连着的拉丁字母（App、AI）算一个，
- * 连着的数字（154、2408）算一个。这样「154 本古籍」是三个字，与人读时数出来的
+ * 简体按“字”算，标点不计：一个汉字算一个字，连着的拉丁字母（App、AI）算一个，
+ * 连着的数字（154、2408）算一个。这样“154 本古籍”是三个字，与人读时数出来的
  * 长度一致，也不会因为换个写法把预算算歪。
  *
  * 英文按词算，空白切分。上限取简体字数的 0.6 倍，出处是
@@ -34,9 +34,4 @@ export const EN_WORD_RATIO = 0.6;
 
 export function enCapFor(zhLimit) {
   return Math.max(1, Math.ceil(zhLimit * EN_WORD_RATIO));
-}
-
-/** 按语种选计数器，省得调用方到处写三元表达式。 */
-export function countFor(mode, text) {
-  return mode === "zh" ? countZh(text) : countEn(text);
 }

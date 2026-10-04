@@ -2,81 +2,53 @@
 /**
  * 首页文案字数门。挂在 npm run check 里，超限非零退出。
  *
- * 口径出处是 specs/005-site-v4-tools/spec.md 的验收 5，四档：
- *   - 首屏简体不超过 9 字，口号下那一句过桥另算，不超过 16 字（spec 007）；
- *   - 定位那一节（称呼、记忆锤加三件事）不超过 185 字；
- *   - 四张卡的卡面、学堂与收尾合计不超过 320 字；
- *   - 命例走查（标题、引言与五步）合计不超过 240 字；
- *   - 每张卡展开不超过 110 字，FAQ 每条答案不超过 70 字；
- *   - 英文上限取简体上限的 0.6 倍，向上取整；定位一节单独定为 121 词。
+ * 上限只写在下面的 LIMIT 与 EN_LIMIT 里，口径出处是 specs/005-site-v4-tools/spec.md 的
+ * 验收 5 与 spec 007：首屏口号与过桥句各一档，定位、卡面、命例走查三节各一个总数，卡片
+ * 展开与 FAQ 答案逐条计。英文上限取简体上限的 0.6 倍向上取整（scripts/lib/count-units.mjs），
+ * EN_LIMIT 里的节单独定。
  *
- * 第三版是「全页除 FAQ 一个总数」，第四版拆成四档：命例走查与卡面展开是两块深度
- * 不同的文字，压在同一个预算里，一块长了另一块就得无谓地砍。
- *
- * 数的是「可见正文」：读者眼睛能看到的那些句子。alt 文本、导航与页脚链接、版权
+ * 数的是“可见正文”：读者眼睛能看到的那些句子。alt 文本、导航与页脚链接、版权
  * 行、商店徽章的 alt 都不算，它们不是版面上的字，压它们只会伤无障碍。页脚字标
  * 下面那句定位语与版权行同类，也不算（spec 004）。
  *
- * 一处例外，且只有一处：英文首屏那句是 owner 定的北极星原文，7 词，比 0.6 倍算
- * 出来的 6 词上限多一个词。spec 同时写着「不送润色」与「0.6 倍」，这一句上两条撞
- * 车，按更具体的那条办：北极星不动，英文首屏只报数不设门，其余全部照门走。
+ * 一处例外：英文首屏那句是 owner 定的原文，比 0.6 倍算出的上限长。spec 同时写着
+ * “不送润色”与“0.6 倍”，按更具体的那条办：英文首屏只报数不设门，其余全部照门走。
  *
- * 直接 import lib/i18n/{zh,en}.ts 读真对象，不正则扒源码：Node 26 能剥类型直接跑
- * TypeScript，少一层「扒出来的和页面渲染的不是一个东西」的风险。
+ * 各节的文字由下面的 SECTIONS 从 i18n 对象里取，卡、步、件加一项就多数一项。直接 import
+ * lib/i18n/{zh,en}.ts 读真对象，不正则扒源码，数的就是页面渲染的那一份。
  */
 import { countZh, countEn, enCapFor } from "./lib/count-units.mjs";
 
 const { zh } = await import("../lib/i18n/zh.ts");
 const { en } = await import("../lib/i18n/en.ts");
 
-/** 首屏。口号只有这一句。 */
-const HERO_KEYS = ["hero.headline"];
-
-/** 口号下的过桥句，把起卦接到命例上（定稿句 C2）。 */
-const BRIDGE_KEYS = ["hero.bridge"];
-
-/** 定位：称呼、记忆锤与三件事的标题与正文。 */
-const WHAT_KEYS = [
-  "what.eyebrow",
-  "what.title",
-  "what.items.0.title",
-  "what.items.0.body",
-  "what.items.1.title",
-  "what.items.1.body",
-  "what.items.2.title",
-  "what.items.2.body",
-];
-/** 卡面：四张卡的卡面、学堂与收尾。 */
-const SURFACE_KEYS = [
-  "tools.title",
-  "tools.hint",
-  "tools.cards.0.name",
-  "tools.cards.0.line",
-  "tools.cards.1.name",
-  "tools.cards.1.line",
-  "tools.cards.2.name",
-  "tools.cards.2.line",
-  "tools.cards.3.name",
-  "tools.cards.3.line",
-  "academy.text",
-  "finalCta.headline",
-];
-
-/** 命例走查：标题、引言与五步的标题加正文。 */
-const JOURNEY_KEYS = [
-  "case.title",
-  "case.lead",
-  "case.steps.0.title",
-  "case.steps.0.body",
-  "case.steps.1.title",
-  "case.steps.1.body",
-  "case.steps.2.title",
-  "case.steps.2.body",
-  "case.steps.3.title",
-  "case.steps.3.body",
-  "case.steps.4.title",
-  "case.steps.4.body",
-];
+/** 每节计入字数的文字。 */
+const SECTIONS = {
+  /** 首屏口号。 */
+  hero: (t) => [t.hero.headline],
+  /** 口号下的过桥句，把起卦接到命例上（定稿句 C2）。 */
+  bridge: (t) => [t.hero.bridge],
+  /** 定位：称呼、记忆锤与每件事的标题与正文。 */
+  what: (t) => [
+    t.what.eyebrow,
+    t.what.title,
+    ...t.what.items.flatMap((item) => [item.title, item.body]),
+  ],
+  /** 卡面：每张卡的名字与一句、学堂与收尾。 */
+  surface: (t) => [
+    t.tools.title,
+    t.tools.hint,
+    ...t.tools.cards.flatMap((card) => [card.name, card.line]),
+    t.academy.text,
+    t.finalCta.headline,
+  ],
+  /** 命例走查：标题、引言与每一步的标题加正文。 */
+  journey: (t) => [
+    t.case.title,
+    t.case.lead,
+    ...t.case.steps.flatMap((step) => [step.title, step.body]),
+  ],
+};
 
 const LIMIT = {
   hero: 9,
@@ -94,21 +66,11 @@ const LIMIT = {
  */
 const EN_LIMIT = { what: 121 };
 
-/** 英文首屏不设门的那一句，见文件头。 */
-const EN_UNGATED = new Set(["hero.headline"]);
-
-function at(obj, path) {
-  const value = path
-    .split(".")
-    .reduce((node, part) => (node == null ? node : node[part]), obj);
-  if (typeof value !== "string") {
-    throw new Error(`lib/i18n 里取不到字符串：${path}`);
-  }
-  return value;
-}
-
-function sum(dict, keys, count) {
-  return keys.reduce((total, key) => total + count(at(dict, key)), 0);
+function sum(dict, section, count) {
+  return SECTIONS[section](dict).reduce(
+    (total, text) => total + count(text),
+    0
+  );
 }
 
 const failures = [];
@@ -119,16 +81,13 @@ for (const [label, dict, join] of [
   ["简体", zh, ""],
   ["英文", en, " "],
 ]) {
-  for (const [whole, lines] of [
-    ["hero.headline", "hero.headlineLines"],
-    ["what.title", "what.titleLines"],
+  for (const [name, whole, lines] of [
+    ["hero.headlineLines", dict.hero.headline, dict.hero.headlineLines],
+    ["what.titleLines", dict.what.title, dict.what.titleLines],
   ]) {
-    const joined = lines
-      .split(".")
-      .reduce((node, part) => node[part], dict)
-      .join(join);
-    if (joined !== at(dict, whole)) {
-      failures.push(`${label} ${lines} 连起来不是 ${whole}：${joined}`);
+    const joined = lines.join(join);
+    if (joined !== whole) {
+      failures.push(`${label} ${name} 连起来不是整句：${joined}`);
     }
   }
 }
@@ -156,11 +115,11 @@ const lines = [];
 
 // ---- 简体 ----
 lines.push("简体（字，标点不计）");
-lines.push(gate("首屏", sum(zh, HERO_KEYS, countZh), LIMIT.hero));
-lines.push(gate("过桥", sum(zh, BRIDGE_KEYS, countZh), LIMIT.bridge));
-lines.push(gate("定位", sum(zh, WHAT_KEYS, countZh), LIMIT.what));
-lines.push(gate("卡面", sum(zh, SURFACE_KEYS, countZh), LIMIT.surface));
-lines.push(gate("命例走查", sum(zh, JOURNEY_KEYS, countZh), LIMIT.journey));
+lines.push(gate("首屏", sum(zh, "hero", countZh), LIMIT.hero));
+lines.push(gate("过桥", sum(zh, "bridge", countZh), LIMIT.bridge));
+lines.push(gate("定位", sum(zh, "what", countZh), LIMIT.what));
+lines.push(gate("卡面", sum(zh, "surface", countZh), LIMIT.surface));
+lines.push(gate("命例走查", sum(zh, "journey", countZh), LIMIT.journey));
 zh.tools.cards.forEach((card, i) => {
   lines.push(gate(`卡 ${i + 1} 展开`, countZh(card.detail), LIMIT.cardDetail));
 });
@@ -171,19 +130,13 @@ zh.faq.items.forEach((item, i) => {
 // ---- 英文 ----
 lines.push("");
 lines.push(`英文（词，上限为简体的 ${enCapFor(10) / 10} 倍）`);
-const enHero = sum(en, HERO_KEYS, countEn);
+const enHero = sum(en, "hero", countEn);
+lines.push(row("首屏", enHero, "owner 原文，只报数"));
+lines.push(gate("过桥", sum(en, "bridge", countEn), enCapFor(LIMIT.bridge)));
+lines.push(gate("定位", sum(en, "what", countEn), EN_LIMIT.what));
+lines.push(gate("卡面", sum(en, "surface", countEn), enCapFor(LIMIT.surface)));
 lines.push(
-  HERO_KEYS.every((key) => EN_UNGATED.has(key))
-    ? row("首屏", enHero, "北极星原文，不设门")
-    : gate("首屏", enHero, enCapFor(LIMIT.hero))
-);
-lines.push(gate("过桥", sum(en, BRIDGE_KEYS, countEn), enCapFor(LIMIT.bridge)));
-lines.push(gate("定位", sum(en, WHAT_KEYS, countEn), EN_LIMIT.what));
-lines.push(
-  gate("卡面", sum(en, SURFACE_KEYS, countEn), enCapFor(LIMIT.surface))
-);
-lines.push(
-  gate("命例走查", sum(en, JOURNEY_KEYS, countEn), enCapFor(LIMIT.journey))
+  gate("命例走查", sum(en, "journey", countEn), enCapFor(LIMIT.journey))
 );
 en.tools.cards.forEach((card, i) => {
   lines.push(
