@@ -5,13 +5,7 @@
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "strictBindCallApply": true,
-    "strictPropertyInitialization": true,
-    "noImplicitAny": true,
     "noImplicitReturns": true,
-    "noImplicitThis": true,
     "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -30,14 +24,10 @@
         "name": "next"
       }
     ],
-    // TS 6/7：baseUrl 已弃用/移除（paths 本就相对 tsconfig 目录解析）；
-    // types 默认从 ["*"] 变 []，node 环境类型（process/fs/Buffer）须显式列出。
+    // types 缺省为空，node 环境类型（process、fs、Buffer）要显式列出。
     "types": ["node"],
     "paths": {
-      "@/*": ["./*"],
-      "@/components/*": ["./components/*"],
-      "@/lib/*": ["./lib/*"],
-      "@/styles/*": ["./styles/*"]
+      "@/*": ["./*"]
     }
   },
   "include": [

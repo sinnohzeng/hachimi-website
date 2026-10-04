@@ -6,8 +6,9 @@
  *   node scripts/legal-sync.mjs           从兄弟仓 ../hachimi-ios/docs/legal/ 复制过来
  *   node scripts/legal-sync.mjs --check   逐字节比对
  *
- * --check 挂在 npm run check 里：找不到兄弟仓或任何一份不一致，都打印是哪一份
- * 并以非 0 退出。日期与 pageDates 对不对得上由 scripts/page-dates.test.mjs 管。
+ * 同步走 `npm run legal:sync`，它复制完接着重出 llms 两份文件；页面与 sitemap 的日期
+ * 从 Markdown 里读，不用另改。--check 挂在 npm run check 里：找不到兄弟仓或任何一份
+ * 不一致，都打印是哪一份并以非 0 退出。中英两份日期一致由 scripts/page-dates.test.mjs 管。
  */
 import { copyFile, readFile } from "node:fs/promises";
 import path from "node:path";

@@ -1,27 +1,8 @@
-# Dependencies
 node_modules
-
-# Build outputs
 .next
 out
-build
-dist
-
-# Cache
-.cache
-
-# Package manager
-pnpm-lock.yaml
+.wrangler
 package-lock.json
-yarn.lock
-
-# Generated files
-*.min.js
-*.min.css
-
-# Swift exports: byte hashes are verified alongside native golden tests.
-public/brand/orb-model.json
-public/brand/orb-golden.json
 
 # 法律件镜像：与 hachimi-ios docs/legal/ 逐字节一致，由 scripts/legal-sync.mjs 比对，格式化会改坏镜像。
 content/legal/
