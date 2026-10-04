@@ -33,7 +33,7 @@ export default function GlobalNotFound(): ReactNode {
                 <a
                   href={`/${locale}`}
                   hrefLang={LOCALES[locale].htmlLang}
-                  className="text-accent mt-2 inline-block font-medium underline-offset-4 hover:underline"
+                  className="text-accent-ink mt-2 inline-block font-medium underline-offset-4 hover:underline"
                 >
                   {t.notFound.home}
                 </a>

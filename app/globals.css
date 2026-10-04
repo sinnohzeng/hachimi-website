@@ -13,6 +13,8 @@
   --border: light-dark(#e5e5e5, #262626);
   --ring: light-dark(#d97706, #f59e0b);
   --accent: light-dark(#d97706, #f59e0b);
+  /* 小字号的强调色文字用这一格：浅色底上 #d97706 只有 3:1，压一档到 #b45309 才过 4.5:1。 */
+  --accent-ink: light-dark(#b45309, #f59e0b);
   /* Name the Geist @font-face families DIRECTLY — do NOT go through
      var(--font-geist-sans). next/font scopes --font-geist-sans to the class it
      puts on <body>, but --font-sans lives here on :root (body's ancestor), so
@@ -57,6 +59,7 @@
   --color-border: var(--border);
   --color-ring: var(--ring);
   --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
   --font-serif: var(--font-serif);

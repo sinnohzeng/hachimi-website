@@ -72,7 +72,7 @@ export default async function GetPage({
               className="w-40 rounded-xl bg-white p-1 [&>svg]:block [&>svg]:h-auto [&>svg]:w-full"
               dangerouslySetInnerHTML={{ __html: downloadQr }}
             />
-            <figcaption className="text-foreground/50 mt-3 text-sm">
+            <figcaption className="text-foreground/60 mt-3 text-sm">
               {t.get.qrCaption}
             </figcaption>
           </figure>

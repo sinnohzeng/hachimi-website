@@ -67,14 +67,14 @@ export function Footer({
                 <a href={`/${locale}`} className="flex items-center gap-2">
                   <Wordmark className="text-foreground" />
                 </a>
-                <p className="text-foreground/50 mt-4 max-w-xs text-sm">
+                <p className="text-foreground/60 mt-4 max-w-xs text-sm">
                   {t.footer.tagline}
                 </p>
               </div>
               <div className="grid grid-cols-2 gap-8 lg:gap-16">
                 {columns.map((section) => (
                   <div key={section.title}>
-                    <h3 className="text-foreground/40 mb-5 text-xs font-medium tracking-wider uppercase">
+                    <h3 className="text-foreground/60 mb-5 text-xs font-medium tracking-wider uppercase">
                       {section.title}
                     </h3>
                     {/* 触控目标 44px：py-3 撑高命中区（20px 行高 + 24px padding），ul 负外边距抵消首末内边距 */}
@@ -102,7 +102,7 @@ export function Footer({
         <div className="relative w-full max-w-270">
           <div className="px-8 pt-8 sm:px-12">
             <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-              <span className="text-foreground/40 text-sm">
+              <span className="text-foreground/60 text-sm">
                 {t.footer.copyright}
               </span>
               <div className="flex flex-wrap gap-6">
@@ -111,7 +111,7 @@ export function Footer({
                   <a
                     key={link.label}
                     href={link.href}
-                    className="text-foreground/50 hover:text-foreground -my-3 py-3 text-sm transition-colors"
+                    className="text-foreground/60 hover:text-foreground -my-3 py-3 text-sm transition-colors"
                   >
                     {link.label}
                   </a>

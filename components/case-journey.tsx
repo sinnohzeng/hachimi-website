@@ -107,7 +107,7 @@ function StepText({
       className="absolute inset-0 flex flex-col justify-center"
     >
       <div className="flex items-center gap-4">
-        <span className="text-accent font-mono text-xs font-medium">
+        <span className="text-accent-ink font-mono text-xs font-medium">
           0{index + 1}
         </span>
         <motion.span
@@ -172,7 +172,7 @@ function StaticJourney({ t }: { t: Translations }): ReactNode {
             {...reveal(i * STAGGER.tight, { duration: DUR.base })}
           >
             <div className="flex items-center gap-4">
-              <span className="text-accent font-mono text-xs font-medium">
+              <span className="text-accent-ink font-mono text-xs font-medium">
                 0{i + 1}
               </span>
               <span className="bg-foreground/30 block h-px w-12" />

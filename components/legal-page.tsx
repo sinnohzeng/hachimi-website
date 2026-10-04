@@ -61,7 +61,7 @@ export function LegalPageContent({
               <h1 className="text-foreground mb-3 text-3xl font-bold tracking-tight sm:text-4xl">
                 {title}
               </h1>
-              <p className="text-foreground/50 mb-12 text-sm">{updated}</p>
+              <p className="text-foreground/60 mb-12 text-sm">{updated}</p>
 
               <div className="space-y-10">
                 {/* Introduction */}
