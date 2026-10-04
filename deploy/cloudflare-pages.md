@@ -1,7 +1,7 @@
 # hachimi-website 部署 runbook：Cloudflare Pages（生产）
 
 > 官网（营销站加中英法律页）跑在 **Cloudflare Pages**，自有域 **`https://hachimi.ai`** 与 `www.hachimi.ai`。
-> Next.js App Router 静态导出（`output: "export"` → `out/`），外加 `functions/` 下一个 Pages Function。
+> Next.js App Router 静态导出（`output: "export"` → `out/`），外加 `functions/` 下两个 Pages Function（`/` 与 `/get`）。
 > **凭据零入库**：CF token 经环境注入，不入库、不回显。
 
 ## 当前生产实例
@@ -21,6 +21,10 @@
 | `/data-deletion`（302 到 `/en/data-deletion`）           | Google Play 后台登记的数据删除网址                                                                              |
 | `/get`                                                   | 两端分享卡与成图上的二维码（iOS `AppConfig.appLinkURL`，Android `SiteLinks.APP`）                               |
 
+## 根路径按语言分流（Pages Function）
+
+`functions/index.ts` 只接 `/`：语言取 `Accept-Language` 权重最高的一项，zh 开头 302 到 `/zh`，其余 302 到 `/en`，与 `/get` 落地页同一个 `lib/platform.ts` 的 `localeOf`。回应头恒为 `Cache-Control: private, no-store` 与 `Vary: Accept-Language`。
+
 ## `/get` 按平台分流（Pages Function）
 
 `functions/get.ts` 接 `/get` 与 `/get/`（Pages 的文件路由对末尾斜杠一视同仁），判断写在 `lib/platform.ts`：
@@ -30,7 +34,7 @@
 - 回应头恒为 `Cache-Control: no-store` 与 `Vary: User-Agent, Accept-Language`。`_headers` 与 `_redirects` 不作用于 Function 的回应，头只能在 Function 里写。
 - iPadOS 的 Safari 自报 Mac，边缘认不出，会落到落地页；落地页的内联脚本按触点数认出它，不在微信里时 `location.replace` 到 App Store。
 
-`functions/` 存在时，Pages CI 与 wrangler 发布都会自动生成 `_routes.json`，只有 `/get` 走 Function，其余仍是不计 Function 调用的静态请求。
+`functions/` 存在时，Pages CI 与 wrangler 发布都会自动生成 `_routes.json`，只有 `/` 与 `/get` 走 Function，其余仍是不计 Function 调用的静态请求。
 
 本机验证 Function：
 
@@ -39,14 +43,20 @@ npm run build
 npx wrangler pages dev out --port 8788 --ip 127.0.0.1   # 仓根的 functions/ 自动带上
 ```
 
-wrangler 只在启动时读 `out/_redirects`，改了重定向要重启它。
+wrangler 只在启动时读 `out/_redirects` 与 `out/_headers`，改了要重启它。本机开发不经 Function，直接开 `/zh` 或 `/en`。
 
 ## 边缘重定向（`public/_redirects`，随构建拷入 `out/`）
 
-- `/ → /en 302`：CF redirects 先于静态资产生效，`out/index.html` 只给本地 dev 与非 CF 环境兜底。
-- 裸法律页 `/privacy`、`/terms`、`/support`、`/data-deletion` 302 到 `/en/...`。
-- 旧账号页并进了删除数据页：`/account-deletion` 与 `/:locale/account-deletion` 301 到对应的 `/data-deletion`。带占位符的规则放在静态规则之后。
-- 排盘的规矩一页并进了首页：`/methodology` 302 到 `/en#faq`，`/:locale/methodology` 与带斜杠的写法 301 到 `/:locale#faq`。
+裸法律页 `/privacy`、`/terms`、`/support`、`/data-deletion` 302 到 `/en/...`，商店后台登记的是这几条。
+
+## 静态资产响应头（`public/_headers`，随构建拷入 `out/`）
+
+- `/_next/static/*`、`/rive/*` 与 `/brand/hachimi-orb.riv`：`Cache-Control: public, max-age=31536000, immutable`。前者文件名带内容哈希，后两者由页面带 `?v=<版本>` 取，换代即换网址。
+- `/:locale/opengraph-image`：`Content-Type: image/png`。分享卡静态导出成无扩展名文件，不写就按 octet-stream 回。
+- 全站：`Strict-Transport-Security: max-age=31536000` 与 `X-Frame-Options: DENY`。
+- `https://:project.pages.dev/*`：`X-Robots-Tag: noindex`，预览域不进索引。
+
+`_headers` 只作用于静态资产，Function 的回应头在 `functions/` 里写。
 
 ## 边缘安全规则（zone `hachimi.ai`）
 
@@ -93,15 +103,20 @@ for p in /zh /en /zh/privacy /en/privacy /zh/terms /en/terms /zh/support /en/sup
 done
 # 期望：全 200。
 
-for p in /account-deletion /zh/account-deletion /en/account-deletion; do
-  curl -s -o /dev/null -w "%{http_code} $p -> %{redirect_url}\n" "$BASE$p"
+for p in /zh/nope /en/nope; do
+  echo "[$(curl -s -o /dev/null -w '%{http_code}' --max-time 15 "$BASE$p")] $p"
 done
-# 期望：301 到对应的 /data-deletion。
+# 期望：全 404，回的是完整的 404 文档。
 
-for p in /methodology /zh/methodology /en/methodology /en/methodology/; do
-  curl -s -o /dev/null -w "%{http_code} $p -> %{redirect_url}\n" "$BASE$p"
+for lang in 'zh-CN,zh;q=0.9' 'en-US,en;q=0.9'; do
+  curl -s -o /dev/null -D - -H "Accept-Language: $lang" "$BASE/" | grep -iE '^(HTTP|location|vary|cache-control)'
 done
-# 期望：裸路径 302 到 /en#faq，其余 301 到对应语言的 /zh#faq 或 /en#faq。
+# 期望：302，zh 去 /zh、en 去 /en，带 Vary: Accept-Language 与 private, no-store。
+
+curl -sI "$BASE/zh/opengraph-image" | grep -i '^content-type'                         # image/png
+curl -sI "$BASE/en" | grep -iE '^(strict-transport-security|x-frame-options)'         # 两条都在
+curl -sI "$BASE$(curl -s "$BASE/en" | grep -o '/_next/static/[^"]*\.js' | head -1)" | grep -i '^cache-control'   # immutable
+curl -sI https://hachimi-app-website.pages.dev/en | grep -i '^x-robots-tag'           # noindex
 
 ua() {
   case $1 in
@@ -134,7 +149,7 @@ Function 与静态文件同属一个部署，回滚部署时 `/get` 一起回到
 
 ## 关键红线
 
-- **法律页与真源一致**：隐私政策与使用条款的真源是 hachimi-ios `docs/legal/`，本仓 `content/legal/` 逐字镜像，构建时渲染成 `/privacy` 与 `/terms`。那边改了先跑 `npm run legal:sync`，`lib/config.ts` 的 `pageDates` 改成同一天，`npm run check` 里的 `legal:check` 与 `test:dates` 都过了才推。删除数据页与支持页的文字在 `lib/i18n/`，与政策同一个口径。
+- **法律页与真源一致**：隐私政策与使用条款的真源是 hachimi-ios `docs/legal/`，本仓 `content/legal/` 逐字镜像，构建时渲染成 `/privacy` 与 `/terms`。那边改了跑 `npm run legal:sync`，再跑 `npm run check`。删除数据页与支持页的文字在 `lib/i18n/`，与政策同一个口径。
 - **凭据**：CF token 与后端 Workers 同一把，放 `hachimi-ios/.env`，不入库、不回显。
 
-Orb 发布证据见 [spec 002 delivery](../specs/002-orb-ip-motion/delivery.md)。
+Orb 的换代步骤与发布核对见 [design/brand/README.md](../design/brand/README.md)。

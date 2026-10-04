@@ -39,3 +39,25 @@
 根因：ESLint 10 删掉了 `context.getFilename()`，eslint-config-next 16.3.8 依赖的 eslint-plugin-react 7.37.5 还在调它；同批的 eslint-plugin-import 2.32.0 与 eslint-plugin-jsx-a11y 6.10.2 的 peer 也只到 eslint 9。eslint-config-next 自己声明 `eslint >=9`，所以 npm 只警告不拦。
 
 做法：eslint 留在 9 线最新，等 eslint-config-next 换上支持 10 的插件再升。判断能不能升，看 `npx eslint .` 能不能跑完，不看安装有没有报错；试装用 `npm install --no-save`，试完 `npm ci` 还原。
+
+## 子页一写 openGraph，按文件约定挂的分享卡就丢了（2026-10-04）
+
+现象：`app/[locale]/opengraph-image.tsx` 生成了卡图，首页有 `og:image`，隐私页、支持页等子页没有。
+
+根因：Next 的元数据按段浅合并，子页 `generateMetadata` 返回的 `openGraph` 整块替换上层的 `openGraph`，文件约定挂在上层的 `images` 随之丢掉；`twitter` 同理。
+
+做法：`lib/metadata.ts` 的 `localizedPageMetadata` 在 `openGraph.images` 与 `twitter.images` 里都写明本语言卡图的地址、尺寸与类型，每页只出一枚 `og:image`。`scripts/site.test.mjs` 核对卡图是 PNG。
+
+## 静态导出的分享卡没有扩展名，Pages 按 octet-stream 回（2026-10-04）
+
+现象：`out/zh/opengraph-image` 是 PNG 字节，线上 `content-type` 却是 `application/octet-stream`，部分抓取器不认。
+
+根因：Pages 按文件扩展名定类型，Next 的 `opengraph-image` 路由静态导出成无扩展名文件。
+
+做法：`public/_headers` 给 `/:locale/opengraph-image` 写 `Content-Type: image/png`，`scripts/site.test.mjs` 断言这一条在。
+
+## 404 要有完整文档外壳，靠 global-not-found（2026-10-04）
+
+现象：根布局只透传 `children`、`<html>` 写在 `[locale]` 布局里时，静态导出的 `out/404.html` 没有 `<html>` 与 `<head>`，还继承了根上的 canonical。
+
+做法：`next.config.ts` 开 `experimental.globalNotFound`，`app/global-not-found.tsx` 自带 `<html>`、样式与字体；canonical 与 robots 只在 `localizedPageMetadata` 里给，404 只剩 Next 自动写的 `noindex`。`scripts/site.test.mjs` 核对一个标题、只有 noindex、没有 canonical。

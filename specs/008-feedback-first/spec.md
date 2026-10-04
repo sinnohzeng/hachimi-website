@@ -16,7 +16,7 @@ owner 2026-10-03：收费往后延，付费墙一律不建，先拿第一批用�
 
 ### 验收标准
 
-1. GIVEN `npm run check`，THEN 全绿，其中 `check:canon` 核五句。
+1. GIVEN `npm run check`，THEN 全绿，其中 `check:canon` 核四句（C1 至 C4）。
 2. GIVEN `/zh` 与 `/en` 首页常见问题，THEN 五条，没有会员。
 3. GIVEN 支持页中英，THEN 开头讲两条渠道，联系表两行。
 4. GIVEN 隐私政策中英，THEN 第二节有反馈一条，与 hachimi-ios 真源逐字相同。

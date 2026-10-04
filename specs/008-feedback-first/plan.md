@@ -12,5 +12,5 @@
 
 ## 落地记录
 
-- 常见问题删会员一条，`check:canon` 核五句。
+- 常见问题删会员一条，`check:canon` 核四句（C1 至 C4）。
 - 隐私政策随 hachimi-ios 同步，第二节多一条反馈和举报，`pageDates.privacy` 为 2026-10-03。

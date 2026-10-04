@@ -1,7 +1,7 @@
 # Spec 003：官网的道长换成 Rive 同源文件
 
 > 造什么与为什么，不碰技术实现。
-> 状态：Landed｜创建：2026-09-22｜上游：hachimi-ios spec 100、hachimi-orb 契约第十三版｜取代：[002](../002-orb-ip-motion/spec.md)
+> 状态：已落地｜创建：2026-09-22｜上游：hachimi-ios spec 100、hachimi-orb 契约第十三版｜取代：[002](../002-orb-ip-motion/spec.md)
 
 ## 为什么
 
