@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useTheme } from "next-themes";
 import { useEffect, useRef, type ReactNode } from "react";
 import { useReducedMotion } from "@/lib/motion";
@@ -12,16 +11,7 @@ import {
 } from "@/lib/orb/contract";
 import { OrbHost } from "@/lib/orb/host";
 import { PLACEMENTS, type OrbSurface } from "@/lib/orb/placement";
-import manifest from "@/public/brand/orb-source.json";
-
-/** 版本号做缓存键：签名文件换代后浏览器不会照放旧文件。 */
-const RIVE_SRC = `/brand/hachimi-orb.riv?v=${manifest.version}`;
-/** 同源静帧：标准像，侧望，浅深各一张，由 hachimi-orb 的 tools/still.sh 截出。 */
-const STILL_SRC: Record<OrbTheme, string> = {
-  light: "/brand/orb-still-light.png",
-  dark: "/brand/orb-still-dark.png",
-  dim: "/brand/orb-still-dark.png",
-};
+import { observeVisibility } from "@/lib/visibility";
 
 /** 球径由调用处的 CSS 变量给，例如 `[--orb-d:96px] sm:[--orb-d:112px]`，这里一切尺寸都是它的倍数。 */
 const diameters = (k: number): string => `calc(var(--orb-d) * ${k})`;
@@ -32,15 +22,15 @@ const STILL_CLASS =
 /**
  * 官网上的哈基米道长。可替换件：换掉它，在场地图与契约名字表不变。
  *
- * 尺寸与 iOS 宿主同一套：版面框 1.7 乘 1.4 个球径，canvas 按 artboard 820 乘 440 等比放到
- * 球径的 820/222 乘 440/222 倍、居中溢出框外，耳与手在框外画；静帧是 canvas 正中那个正方形。
- * 框只管排版与命中，canvas 不吃指针，所以溢出的部分挡不住底下的标题与按钮。
+ * 尺寸：版面框是 FRAME 个球径，canvas 按 artboard 820 乘 440 等比放到球径的 820/222 乘
+ * 440/222 倍、居中溢出框外，耳与手在框外画；静帧是 canvas 正中那个正方形。框只管排版与命中，
+ * canvas 不吃指针，所以溢出的部分挡不住底下的标题与按钮。
  *
- * 运行时进视口才取，离开视口与页面转后台停帧；减弱动态或运行时装不上时留静帧，
- * 静帧与动画是同一份文件出的同一张脸，换不换得上看不出两个人。
+ * 运行时进视口才取，离开视口与页面转后台停帧；减弱动态或运行时装不上时留静帧，静帧与动画
+ * 是同一份文件出的同一张脸。静帧不响应戳，所以只有运行时装好后才给可点的指针。
  *
- * 明暗：在场地图钉死的照写；写 `site` 的跟 next-themes 解析出的明暗走，静帧靠 `dark:` 变体
- * 二选一，运行时装好后换明暗只改一格输入，文件自己交叉淡入。
+ * 明暗跟 next-themes 解析出的站点明暗走：静帧靠 `dark:` 变体二选一，运行时装好后换明暗
+ * 只改一格输入，文件自己交叉淡入。
  */
 export function CatOrb({
   surface,
@@ -55,12 +45,7 @@ export function CatOrb({
   const reduced = useReducedMotion();
   const placement = PLACEMENTS[surface];
   const { resolvedTheme } = useTheme();
-  const theme: OrbTheme =
-    placement.theme === "site"
-      ? resolvedTheme === "light"
-        ? "light"
-        : "dark"
-      : placement.theme;
+  const theme: OrbTheme = resolvedTheme === "light" ? "light" : "dark";
   // 装运行时那一刻读它，之后换明暗走下面那只 effect，不重建实例。
   const themeAtMount = useRef(theme);
   themeAtMount.current = theme;
@@ -70,14 +55,14 @@ export function CatOrb({
     const surfaceCanvas = canvas.current;
     if (!element || !surfaceCanvas || reduced) return;
     let disposed = false;
-    let visible = false;
+    let active = false;
     let mounting: Promise<void> | undefined;
 
     // 在视口里且页面在前台才走帧；停下来时把指针也放掉，回来不会盯着上次离开的位置。
     const sync = (): void => {
       const current = orb.current;
       if (!current) return;
-      if (visible && !document.hidden) {
+      if (active) {
         current.play();
       } else {
         current.release();
@@ -87,7 +72,6 @@ export function CatOrb({
     const mount = (): void => {
       mounting ??= OrbHost.mount({
         canvas: surfaceCanvas,
-        src: RIVE_SRC,
         inputs: { ...placement, theme: themeAtMount.current },
       })
         .then((mounted) => {
@@ -104,26 +88,24 @@ export function CatOrb({
           delete element.dataset.orbReady;
         });
     };
-    const observer = new IntersectionObserver(
-      (entries) => {
-        visible = entries[0]?.isIntersecting ?? false;
-        if (visible) mount();
+    const stopObserving = observeVisibility(
+      element,
+      (next) => {
+        active = next;
+        if (active) mount();
         sync();
       },
-      { rootMargin: "20% 0px" }
+      "20% 0px"
     );
-    observer.observe(element);
     const resize = (): void => orb.current?.resize();
     const resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(surfaceCanvas);
     window.addEventListener("resize", resize);
-    document.addEventListener("visibilitychange", sync);
     return () => {
       disposed = true;
-      observer.disconnect();
+      stopObserving();
       resizeObserver.disconnect();
       window.removeEventListener("resize", resize);
-      document.removeEventListener("visibilitychange", sync);
       orb.current?.dispose();
       orb.current = null;
       delete element.dataset.orbReady;
@@ -145,7 +127,7 @@ export function CatOrb({
   return (
     <div
       ref={host}
-      className={`group/orb relative cursor-pointer select-none ${className}`}
+      className={`group/orb relative select-none data-[orb-ready=true]:cursor-pointer ${className}`}
       style={{ width: diameters(FRAME.width), height: diameters(FRAME.height) }}
       aria-hidden="true"
       data-orb-surface={surface}
@@ -160,38 +142,22 @@ export function CatOrb({
         if (current?.hits(event.clientX, event.clientY)) current.poke();
       }}
     >
-      {placement.theme === "site" ? (
-        <>
-          <Image
-            src={STILL_SRC.light}
-            alt=""
-            width={512}
-            height={512}
-            unoptimized
-            className={`${STILL_CLASS} dark:hidden`}
-            style={still}
-          />
-          <Image
-            src={STILL_SRC.dark}
-            alt=""
-            width={512}
-            height={512}
-            unoptimized
-            className={`${STILL_CLASS} hidden dark:block`}
-            style={still}
-          />
-        </>
-      ) : (
-        <Image
-          src={STILL_SRC[placement.theme]}
-          alt=""
-          width={512}
-          height={512}
-          unoptimized
-          className={STILL_CLASS}
-          style={still}
-        />
-      )}
+      <img
+        src="/brand/orb-still-light.png"
+        alt=""
+        width={512}
+        height={512}
+        className={`${STILL_CLASS} dark:hidden`}
+        style={still}
+      />
+      <img
+        src="/brand/orb-still-dark.png"
+        alt=""
+        width={512}
+        height={512}
+        className={`${STILL_CLASS} hidden dark:block`}
+        style={still}
+      />
       <canvas
         ref={canvas}
         className="pointer-events-none invisible absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 group-data-[orb-ready=true]/orb:visible"

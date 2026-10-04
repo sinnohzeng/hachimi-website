@@ -1,14 +1,14 @@
 {
   "schema": 2,
   "source": "hachimi-orb",
-  "version": "0.16.0",
+  "version": "0.17.1",
   "contractVersion": 13,
   "artboard": "Orb",
   "runtime": "@rive-app/webgl2 2.42.2",
   "artifacts": {
-    "hachimi-orb.riv": "0fcefe713ef11d34a476107f619a76e0f7e1b2408c08b425c5a3d516351f2ca0",
-    "orb-still-dark.png": "8d88f3236e4c52123f794e89b557a8dbf62e7fff8e2e78714553665c7380e5a6",
-    "orb-still-light.png": "f6edc24e21cb97fd67110fe5b3b11a90053ed3c84370803cc10f7f94cbbeb692"
+    "hachimi-orb.riv": "e8c3fa26310453d881b4cd18f7135c1d85458e13363d255aaaa5107649cfc84e",
+    "orb-still-dark.png": "ac773b41baafa5417cb662f202c063bf8d4a5326f1a835dafd0a60c71eb9978d",
+    "orb-still-light.png": "cce473d8e056b0625c6309517488ccca561f2d1d43a3cf1d4d5b0749fe950ce7"
   },
   "still": {
     "tool": "tools/still.sh",
@@ -19,5 +19,5 @@
     "seed": 0,
     "themes": ["light", "dark"]
   },
-  "note": "hachimi-orb.riv 与 iOS 包里的同一份，SHA 与 hachimi-orb 仓 docs/project/current-release.json 一致；两张静帧是标准像，减弱动态与运行时装不上时的回退，页脚按站点明暗二选一。"
+  "note": "hachimi-orb.riv 与 hachimi-orb 仓 docs/project/current-release.json 记的是同一份，SHA 一致；两张静帧是标准像，减弱动态与运行时装不上时的回退，按站点明暗二选一。"
 }

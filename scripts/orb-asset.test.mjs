@@ -5,11 +5,14 @@ import test from "node:test";
 import {
   ARTBOARD,
   CONTRACT_VERSION,
+  FRAME,
+  POKE_RADIUS_RATIO,
   ballGeometry,
 } from "../lib/orb/contract.ts";
 
 // 形象资产门（spec 003 验收 4 与 5）：官网播的必须是签过名的那一份，wasm 必须从自己的域名取。
-// 与 hachimi-ios 的 scripts/orb-asset-gate.py 是同一道门的两端：两边的清单都记同一个 SHA。
+// 三端共用的数（契约版本、版本号、SHA、artboard 几何、版面框、命中半径）以兄弟仓 hachimi-orb 的
+// docs/project/current-release.json 为准，形象仓在旁时逐项比对，不在时跳过并说明。
 
 const root = new URL("../", import.meta.url);
 const read = (path) => readFileSync(new URL(path, root));
@@ -27,6 +30,36 @@ test("清单记的契约版本与宿主名字表一致", () => {
   assert.equal(manifest.contractVersion, CONTRACT_VERSION);
   assert.equal(manifest.artboard, ARTBOARD.name);
 });
+
+const releaseUrl = new URL(
+  "../hachimi-orb/docs/project/current-release.json",
+  root
+);
+const release = existsSync(releaseUrl)
+  ? JSON.parse(readFileSync(releaseUrl, "utf8"))
+  : null;
+
+test(
+  "与 hachimi-orb 的 current-release.json 逐项相等",
+  {
+    skip: release ? false : "旁边没有 ../hachimi-orb，跳过与发布清单的比对",
+  },
+  () => {
+    assert.equal(manifest.version, release.version, "签名文件版本");
+    assert.equal(
+      manifest.artifacts["hachimi-orb.riv"],
+      release.sha256,
+      "签名文件 SHA"
+    );
+    assert.equal(CONTRACT_VERSION, release.contractVersion, "契约版本");
+    assert.equal(manifest.runtime, release.runtime, "Web 运行时");
+    assert.deepEqual(FRAME, release.frame, "版面框，按球径");
+    assert.equal(POKE_RADIUS_RATIO, release.pokeRadius, "命中半径，按球径");
+    assert.equal(ARTBOARD.width, release.artboard.width, "artboard 宽");
+    assert.equal(ARTBOARD.height, release.artboard.height, "artboard 高");
+    assert.equal(ARTBOARD.radius, release.artboard.ballRadius, "球半径");
+  }
+);
 
 test("运行时版本三处一致：清单、package.json 的精确钉死、装进来的包", () => {
   const pinned = JSON.parse(read("package.json")).dependencies[
@@ -54,8 +87,8 @@ test("wasm 自托管：public/rive 里的两份与 node_modules 同字节，宿�
     );
   }
   const host = read("lib/orb/host.ts").toString("utf8");
-  assert.match(host, /WASM_URL = "\/rive\/rive\.wasm"/);
-  assert.match(host, /WASM_FALLBACK_URL = "\/rive\/rive_fallback\.wasm"/);
+  assert.match(host, /WASM_URL = `\/rive\/rive\.wasm\?v=/);
+  assert.match(host, /WASM_FALLBACK_URL = `\/rive\/rive_fallback\.wasm\?v=/);
   for (const file of ["lib/orb/host.ts", "components/cat-orb.tsx"]) {
     const text = read(file).toString("utf8");
     assert.doesNotMatch(text, /jsdelivr|unpkg|cdn\./i, `${file} 不许指向 CDN`);

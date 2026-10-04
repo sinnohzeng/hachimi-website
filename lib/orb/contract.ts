@@ -1,6 +1,7 @@
 /**
- * 宿主契约第十三版在官网这一侧的名字表。真源是 hachimi-orb 仓的 contract.md，
- * 这里只有属性名、取值与 artboard 的几何常数，与 iOS 的 OrbRiveContract 一一对应。
+ * 宿主契约在官网这一侧的名字表。名字与取值的真源是 hachimi-orb 仓的 contract.md，
+ * 契约版本、artboard 几何、版面框与命中半径这几个三端共用的数以 hachimi-orb 的
+ * docs/project/current-release.json 为准，scripts/orb-asset.test.mjs 在形象仓在旁时逐项比对。
  *
  * 动作逻辑、节拍与随机全在 .riv 文件里，官网一个节拍常数都不写。三端同源说的就是这一点：
  * 官网、iOS 与 Android 播的是同一份签名文件，宿主只喂输入、读输出、播放。
@@ -22,18 +23,19 @@ export const ARTBOARD = {
 export const BALL_DIAMETER = ARTBOARD.radius * 2;
 
 /**
- * 版面上给一颗球留的框，按球径的倍数，与 iOS 宿主同一比例。
- * 耳、手与飘带在框外画，框只管排版与命中：canvas 比框大，溢出的部分不吃指针。
+ * 版面上给一颗球留的框，按球径的倍数。官网不裁切：耳、手与飘带在框外画，框只管排版，
+ * canvas 比框大，溢出的部分不吃指针。
  */
-export const FRAME = { width: 1.7, height: 1.4 } as const;
+export const FRAME = { width: 1.7, height: 1.6 } as const;
 
-/** 命中圆的半径，球径的六成，与 iOS 的 OrbPoke 同一判据：手指落点与人眼看到的球心差得不少。 */
+/** 命中圆的半径，按球径的倍数：手指落点与人眼看到的球心差得不少。 */
 export const POKE_RADIUS_RATIO = 0.6;
 
 export type OrbMood = "calm" | "lively" | "loading";
 /** 产品只用这两个形态（角色系统第八节），其余固定形态不进官网。 */
 export type OrbState = "idle" | "wide";
 export type OrbFacing = "rest" | "front";
+/** 契约里的明暗取值。官网两处都跟站点明暗走，只用 light 与 dark。 */
 export type OrbTheme = "light" | "dark" | "dim";
 export type OrbPalette =
   "amber" | "ziwei" | "vermilion" | "pine" | "ochre" | "ink" | "rouge";

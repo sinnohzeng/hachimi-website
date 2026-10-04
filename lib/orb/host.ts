@@ -1,4 +1,6 @@
 import type { Rive, ViewModelInstance } from "@rive-app/webgl2";
+import runtimePackage from "@rive-app/webgl2/package.json";
+import manifest from "../../public/brand/orb-source.json";
 import {
   ARTBOARD,
   POKE_RADIUS_RATIO,
@@ -10,14 +12,16 @@ import {
 /**
  * wasm 从自己的域名取，不碰 CDN（spec 003 验收 4）。两份文件由 scripts/sync-rive-wasm.mjs
  * 从 node_modules 复制到 public/rive/，随 predev、prebuild 与 pretest:orb 重出，不入库。
+ *
+ * 三份文件都带版本号做缓存键，public/_headers 给它们一年的 immutable：wasm 跟运行时的版本，
+ * .riv 跟签名文件的版本，换代即换网址。
  */
-export const WASM_URL = "/rive/rive.wasm";
-export const WASM_FALLBACK_URL = "/rive/rive_fallback.wasm";
+export const WASM_URL = `/rive/rive.wasm?v=${runtimePackage.version}`;
+export const WASM_FALLBACK_URL = `/rive/rive_fallback.wasm?v=${runtimePackage.version}`;
+export const RIVE_SRC = `/brand/hachimi-orb.riv?v=${manifest.version}`;
 
 export interface OrbHostOptions {
   canvas: HTMLCanvasElement;
-  /** .riv 的地址，带版本号做缓存键：固定地址会让浏览器在签名文件换代后照放旧文件。 */
-  src: string;
   inputs: OrbInputs;
 }
 
@@ -46,7 +50,7 @@ export class OrbHost {
     runtime.RuntimeLoader.setWasmFallbackUrl(WASM_FALLBACK_URL);
     return new Promise<OrbHost>((resolve, reject) => {
       const rive = new runtime.Rive({
-        src: options.src,
+        src: RIVE_SRC,
         canvas: options.canvas,
         artboard: ARTBOARD.name,
         stateMachine: ARTBOARD.stateMachine,
@@ -113,7 +117,7 @@ export class OrbHost {
     return Math.hypot(x - ball.x, y - ball.y) <= reach;
   }
 
-  /** 戳一下。忙碌与 0.4 秒冷却都由文件裁决，这里只 fire。 */
+  /** 戳一下。受不受理由文件裁决（忙时拒收），宿主不计时、不冷却，这里只 fire。 */
   poke(): boolean {
     const trigger = this.vm.trigger("poke");
     if (!trigger) return false;
