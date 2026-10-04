@@ -52,7 +52,8 @@ const BANNED = JSON.parse(
     [
       "-c",
       [
-        "import importlib.util, json, sys",
+        "import importlib.util, json, os, sys",
+        "sys.path.insert(0, os.path.dirname(sys.argv[1]))",
         "spec = importlib.util.spec_from_file_location('mentions', sys.argv[1])",
         "module = importlib.util.module_from_spec(spec)",
         "spec.loader.exec_module(module)",
