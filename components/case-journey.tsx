@@ -153,12 +153,7 @@ function StaticJourney({ t }: { t: Translations }): ReactNode {
   return (
     <div className="mx-auto mt-14 flex max-w-5xl flex-col gap-14 px-6 sm:px-8">
       <div className="flex justify-center">
-        <Device
-          className="w-56 sm:w-64"
-          parallaxStrength={6}
-          rotateStrength={2}
-          autoAnimate={false}
-        >
+        <Device className="w-56 sm:w-64">
           {/* 垫一层 bg-muted：截图还没到位时屏幕是纸色而不是机身的黑，与钉住那档
               的 ScreenLayer 一致。 */}
           <div className="bg-muted h-full w-full">
@@ -253,12 +248,7 @@ export function CaseJourney({ t }: { t: Translations }): ReactNode {
                 </div>
 
                 <div className="flex flex-col items-center gap-6">
-                  <Device
-                    className="w-[min(300px,36svh)]"
-                    parallaxStrength={6}
-                    rotateStrength={2}
-                    autoAnimate={false}
-                  >
+                  <Device className="w-[min(300px,36svh)]">
                     {journeyWithShots(t.case.steps).map(({ shot, step }, i) => (
                       <ScreenLayer
                         key={shot}

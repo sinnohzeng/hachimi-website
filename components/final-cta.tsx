@@ -1,23 +1,15 @@
 "use client";
 
 import { type ReactNode } from "react";
-import dynamic from "next/dynamic";
 import { motion, type Variants } from "motion/react";
 import { ShotScreens, type ShotName } from "@/components/app-shot";
 import { RevealHeadline } from "@/components/reveal-headline";
+import { ShaderBackdrop } from "@/components/shader-backdrop";
 import { StoreBadges } from "@/components/store-badges";
 import type { Translations } from "@/lib/i18n";
 import type { Locale } from "@/lib/locale";
 import { useReducedMotion } from "@/lib/motion";
 import { DUR, MARGIN, reveal } from "@/lib/motion-tokens";
-
-// shader 随组件按需加载，不进首屏共享 vendor chunk（LCP 修复，与 hero 同型）。
-// 本区块在页面末端，shader 分包加载期间由 section 默认背景顶住，无需渐变兜底。
-const FinalCtaShader = dynamic(
-  () =>
-    import("@/components/final-cta-shader").then((mod) => mod.FinalCtaShader),
-  { ssr: false }
-);
 
 /**
  * 第七节：收尾（#download）。五张截图扇形、一句 word-mask 标题、商店徽章。
@@ -110,7 +102,7 @@ export function FinalCTA({
       id="download"
       className="relative flex w-full scroll-mt-28 items-center justify-center overflow-hidden"
     >
-      <FinalCtaShader />
+      <ShaderBackdrop palette="ink" className="z-0" />
       <div className="relative z-10 mx-auto max-w-4xl px-6 py-24 text-center sm:px-8 sm:py-32">
         <ShotFan reducedMotion={reducedMotion} />
 

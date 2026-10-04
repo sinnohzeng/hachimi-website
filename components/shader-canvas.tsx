@@ -3,7 +3,6 @@
 import { Mesh, Program, Renderer, Triangle } from "ogl";
 import { useTheme } from "next-themes";
 import { useEffect, useRef, type ReactNode } from "react";
-import { useReducedMotion } from "@/lib/motion";
 import { observeVisibility } from "@/lib/visibility";
 import {
   SHADER_PALETTES,
@@ -98,8 +97,6 @@ void main(){
 const DPR_CAP = 1.5;
 /** 60 fps 节流。高刷屏上白画的帧对这种慢噪声没有增益。 */
 const FRAME_MS = 1000 / 60;
-/** 减弱动态时定格在这一秒的画面，比 t=0 的种子图好看。 */
-const STILL_TIME = 6;
 /** 明暗切换的插值时长，逐帧走完，不重建 context，所以不会白闪。 */
 const THEME_FADE_MS = 320;
 
@@ -109,8 +106,6 @@ interface Props {
   /** 取哪一套调色板，见 lib/shader-palettes.ts */
   palette: ShaderPaletteName;
   className?: string;
-  /** 渲染分辨率相对 CSS 像素的比例，掉帧时压到 0.5 */
-  resScale?: number;
 }
 
 function lerp3(out: number[], a: RGB, b: RGB, k: number): void {
@@ -124,22 +119,17 @@ function easeInOut(k: number): number {
 }
 
 /**
- * 全屏光束 shader。首屏与收尾共用这一个组件，差别只在 palette。
+ * 全屏光束 shader。首屏与收尾经 components/shader-backdrop.tsx 共用这一个组件，差别只在
+ * palette；减弱动态时那边不挂它。
  *
- * 帧预算上的四道闸：DPR 封顶 1.5、60 fps 节流、离开视口或页面转后台即停 rAF、
- * 开了减弱动态只画一帧。明暗跟 next-themes 的 resolvedTheme 走，切换时在同一个
+ * 帧预算上的三道闸：DPR 封顶 1.5、60 fps 节流、离开视口或页面转后台即停 rAF。明暗跟 next-themes 的 resolvedTheme 走，切换时在同一个
  * WebGL context 里把 uniform 逐帧插过去，不销毁重建，所以中间没有白闪。
  *
  * 光标只在指针设备（pointer: fine）上接：触屏没有悬停态，pointermove 只会在点击
  * 时炸一下，接了反而是噪声。
  */
-export function ShaderCanvas({
-  palette,
-  className,
-  resScale = 1,
-}: Props): ReactNode {
+export function ShaderCanvas({ palette, className }: Props): ReactNode {
   const hostRef = useRef<HTMLDivElement>(null);
-  const reducedMotion = useReducedMotion();
   const { resolvedTheme } = useTheme();
   const applyToneRef = useRef<((tone: ShaderTone) => void) | null>(null);
 
@@ -203,9 +193,7 @@ export function ShaderCanvas({
     });
     const mesh = new Mesh(gl, { geometry: new Triangle(gl), program });
 
-    renderer.dpr =
-      Math.min(window.devicePixelRatio || 1, DPR_CAP) *
-      Math.min(Math.max(resScale, 0.25), 1);
+    renderer.dpr = Math.min(window.devicePixelRatio || 1, DPR_CAP);
 
     // ---- 调色板：当前值、目标值与两者之间的插值 ----
     let fromTone: ShaderTone = tones[initialMode];
@@ -241,7 +229,7 @@ export function ShaderCanvas({
     let raf = 0;
     let running = false;
     let last = 0;
-    let elapsed = reducedMotion ? STILL_TIME : 0;
+    let elapsed = 0;
 
     const target: [number, number] = [0, 0];
     const current: [number, number] = [0, 0];
@@ -285,7 +273,7 @@ export function ShaderCanvas({
     };
 
     const start = (): void => {
-      if (running || reducedMotion) return;
+      if (running) return;
       running = true;
       last = performance.now();
       raf = requestAnimationFrame(loop);
@@ -352,7 +340,7 @@ export function ShaderCanvas({
     const onLeave = (): void => {
       targetCi = 0;
     };
-    const pointerBound = finePointer && !reducedMotion;
+    const pointerBound = finePointer;
     if (pointerBound) {
       window.addEventListener("pointermove", onMove, { passive: true });
       window.addEventListener("pointerleave", onLeave, { passive: true });
@@ -381,7 +369,7 @@ export function ShaderCanvas({
         fading = true;
         return;
       }
-      // 循环没跑（减弱动态、离屏或后台）：直接切到位再补一帧。
+      // 循环没跑（离屏或后台）：直接切到位再补一帧。
       fading = false;
       writeTone(toTone, toTone, 1);
       fromTone = toTone;
@@ -403,7 +391,7 @@ export function ShaderCanvas({
       canvas.remove();
       gl.getExtension("WEBGL_lose_context")?.loseContext();
     };
-  }, [palette, resScale, reducedMotion]);
+  }, [palette]);
 
   useEffect(() => {
     if (resolvedTheme !== "light" && resolvedTheme !== "dark") return;

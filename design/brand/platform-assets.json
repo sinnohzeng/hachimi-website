@@ -3,35 +3,18 @@
   "source": "hachimi-ios/specs/062-orb-ip-motion",
   "appearance": "native cat Orb / black-silver / look upper right",
   "inputs": {
-    "orb-icon-master-1024.png": "fc7f9ca002d16e5c8c9be5abe85d6be2f1d0a20965bb09045029b0f93c40ee32",
-    "orb-icon-foreground-1024.png": "58ad1d6ac960ad1c7ba1bfcd8b99bd423b19f4768423977bce366b40c8fbb905",
-    "orb-native-transparent-1600.png": "3a91da730c815d17cd2c2c256384f784fa762a02b3f650b2901542388884dc6c"
+    "hachimi-ios/design/brand/orb-icon-master-1024.png": "fc7f9ca002d16e5c8c9be5abe85d6be2f1d0a20965bb09045029b0f93c40ee32",
+    "design/brand/orb-maskable-master-1024.png": "6c9e81fd366ea09be4cec0217327134acb0cc309502203945f46b51db55445de"
   },
   "outputs": {
     "app/apple-icon.png": "841158fe734e6846d411795f7d27bca76260723a3406b0bc412ef6d82dafa23a",
     "app/favicon.ico": "2c5c983a7366e372432346d3ef500c985055c2f8ce3d61cbfff0d4483900f42f",
     "app/icon.png": "aed279d8cdfa73922bd5f513587bb6139a6496fe1c37f9b78fb85751fedb0634",
-    "design/brand/orb-icon-foreground-1024.png": "58ad1d6ac960ad1c7ba1bfcd8b99bd423b19f4768423977bce366b40c8fbb905",
-    "design/brand/orb-icon-master-1024.png": "fc7f9ca002d16e5c8c9be5abe85d6be2f1d0a20965bb09045029b0f93c40ee32",
-    "design/brand/orb-maskable-master-1024.png": "6c9e81fd366ea09be4cec0217327134acb0cc309502203945f46b51db55445de",
-    "design/brand/orb-native-transparent-1600.png": "3a91da730c815d17cd2c2c256384f784fa762a02b3f650b2901542388884dc6c",
-    "public/brand/icons/icon-1024.png": "fc7f9ca002d16e5c8c9be5abe85d6be2f1d0a20965bb09045029b0f93c40ee32",
-    "public/brand/icons/icon-128.png": "c3326bfc4c31ba67e7421d36cf29fd28e1ed8274540625cb502f9f96b142dd90",
-    "public/brand/icons/icon-16.png": "30667cf771ae6ca10a4e98e5860dad635bceb1896e50180a08435917c3ed0fbe",
-    "public/brand/icons/icon-180.png": "841158fe734e6846d411795f7d27bca76260723a3406b0bc412ef6d82dafa23a",
-    "public/brand/icons/icon-192.png": "40f1d8814ec11b4a321e037f6a0c60bbd4a540ce937fed046c6614a559c387e3",
-    "public/brand/icons/icon-256.png": "18c1cda2928bc914fecec920d19d2f6a91a3faba6bc196fcdc28d6bb7720bb02",
-    "public/brand/icons/icon-32.png": "0e6a940be2466c352c4f6a002994ff20be0ae0f970abcaf77795c75e5644f53f",
-    "public/brand/icons/icon-384.png": "a707182432797b049147058b664aa4a563119012b6a47231f79b34751daede71",
-    "public/brand/icons/icon-48.png": "b726162b1d03ab9341d09f88d7b6d3ed3631b9a3304f68bb06d892a247bdb485",
-    "public/brand/icons/icon-512.png": "aed279d8cdfa73922bd5f513587bb6139a6496fe1c37f9b78fb85751fedb0634",
-    "public/brand/icons/icon-96.png": "3c668c3c227fe86cc2f571488a4faef238467bb82368cf6ae88842de5c4fa07f",
     "public/brand/mask-icon.svg": "808b02bf880163a638e314d6f53f4acda494e8518aea9f384fbab6659167f5b2",
     "public/brand/og-logo.png": "17862ff396c69244d5fd7a996eba59c3f383cc55ae25aa8d233471eaac3037ce",
     "public/icon-192.png": "40f1d8814ec11b4a321e037f6a0c60bbd4a540ce937fed046c6614a559c387e3",
     "public/icon-512.png": "aed279d8cdfa73922bd5f513587bb6139a6496fe1c37f9b78fb85751fedb0634",
     "public/icon-maskable-192.png": "6fab8488e20dde6a078a9d37642a8ce5dfd2a53fd205515d7029bcf738d083e3",
-    "public/icon-maskable-512.png": "59c689137c1a7e832f7b090986971474717de325d8ef71a7c0863ac4f4fee96b",
-    "public/icon-maskable.png": "59c689137c1a7e832f7b090986971474717de325d8ef71a7c0863ac4f4fee96b"
+    "public/icon-maskable-512.png": "59c689137c1a7e832f7b090986971474717de325d8ef71a7c0863ac4f4fee96b"
   }
 }

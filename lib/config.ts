@@ -1,6 +1,6 @@
 /**
  * 站点信息的唯一出处：品牌名、描述、邮箱、商店链接、主题色与页面日期。lib/metadata.ts、
- * app/manifest.ts、结构化数据、页面组件与 scripts/ 都从这里取，别处不再写一遍。
+ * app/manifest.ts、结构化数据、页面组件与 scripts/ 都从这里取。
  * 运营公司只在法律件与删除数据页的联系方式里出现。
  */
 export const siteConfig = {

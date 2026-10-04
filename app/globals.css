@@ -94,7 +94,7 @@ body {
 
 /* 下载徽章的首帧平台收敛：html[data-platform] 由 [locale]/layout.tsx 里
    <body> 首位的内联脚本在绘制前写入。脚本失效（无 JS）时属性缺失，双徽章
-   照常显示——与静态 HTML 一致，零位移。 */
+   照常显示，与静态 HTML 一致，零位移。 */
 html[data-platform="ios"] [data-badge="play"] {
   display: none;
 }
@@ -124,8 +124,8 @@ html.no-js [data-animate] {
    18.2+，Firefox 在途，不支持即瞬时跳转）。UA 默认 0.25s 交叉淡入即目标
    值，不覆写。必须包在 reduced-motion 查询里：上方全局 kill-switch 只命中
    *,::before,::after，够不到 ::view-transition-* 伪元素。固定 header 刻意
-   不设 view-transition-name——mix-blend-exclusion 在独立快照中会丢背景混合
-   （白字压浅底不可读），留在根快照里新旧两帧均已正确混合。 */
+   不设 view-transition-name：mix-blend-exclusion 在独立快照中会丢背景混合，
+   白字压浅底不可读；留在根快照里，新旧两帧都混合正确。 */
 @media (prefers-reduced-motion: no-preference) {
   @view-transition {
     navigation: auto;

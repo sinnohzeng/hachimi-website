@@ -92,12 +92,7 @@ export function AppShot({
   eager?: boolean;
 }): ReactNode {
   return (
-    <Device
-      className={className}
-      parallaxStrength={6}
-      rotateStrength={2}
-      autoAnimate={false}
-    >
+    <Device className={className}>
       <ShotScreens name={name} alt={alt} sizes={sizes} eager={eager} />
     </Device>
   );

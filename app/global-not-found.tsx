@@ -6,7 +6,7 @@ import { getTranslations } from "@/lib/i18n";
 import { LOCALES, locales } from "@/lib/locale";
 import "./globals.css";
 
-/** robots 由 Next 给 404 自动写 noindex，这里不再写一条。 */
+/** robots 由 Next 给 404 自动写 noindex。 */
 export const metadata: Metadata = {
   title: `404 | ${siteConfig.seoTitle}`,
 };

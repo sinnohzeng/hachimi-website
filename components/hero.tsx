@@ -1,41 +1,14 @@
 "use client";
 
-import type { CSSProperties, ReactNode } from "react";
-import dynamic from "next/dynamic";
+import type { ReactNode } from "react";
 import { motion } from "motion/react";
 import { CatOrb } from "@/components/cat-orb";
+import { ShaderBackdrop } from "@/components/shader-backdrop";
 import { AppShot } from "@/components/app-shot";
 import { StoreBadges } from "@/components/store-badges";
 import type { Translations } from "@/lib/i18n";
 import type { Locale } from "@/lib/locale";
-import { useReducedMotion } from "@/lib/motion";
 import { mountRise } from "@/lib/motion-tokens";
-
-// 与光束 shader 首帧观感接近的静态渐变，明暗各一版：shader 分包加载期间与 reduced motion
-// 场景共用。深色是夜蓝往琥珀暖的墨底，浅色是纸色 #F4EFE6 上的一点暖光，与
-// lib/shader-palettes.ts 的 amber 两档同源，这样加载完成那一帧不会明暗跳变。
-function ShaderFallback(): ReactNode {
-  return (
-    <div
-      className="absolute inset-0 bg-[image:var(--hero-fallback-light)] dark:bg-[image:var(--hero-fallback-dark)]"
-      aria-hidden="true"
-      style={
-        {
-          "--hero-fallback-light":
-            "radial-gradient(85% 60% at 50% 100%, rgba(245, 158, 11, 0.16) 0%, rgba(232, 214, 184, 0.35) 45%, rgba(244, 239, 230, 0) 75%), linear-gradient(to bottom, #F4EFE6 0%, #F1EADC 70%, #EBE2D0 100%)",
-          "--hero-fallback-dark":
-            "radial-gradient(85% 60% at 50% 100%, rgba(180, 95, 45, 0.28) 0%, rgba(60, 30, 60, 0.18) 45%, rgba(5, 5, 15, 0) 75%), linear-gradient(to bottom, #050510 0%, #08081a 70%, #120d20 100%)",
-        } as CSSProperties
-      }
-    />
-  );
-}
-
-// 光束 shader 只随本组件在客户端按需加载，不进首屏 bundle（LCP 修复主因之一）。
-const HeroShader = dynamic(
-  () => import("@/components/hero-shader").then((mod) => mod.HeroShader),
-  { ssr: false, loading: () => <ShaderFallback /> }
-);
 
 /**
  * 这一行是不是以全角标点收尾。居中的中文标题里，逗号与句号各占一个字宽，墨迹却只在左半格，
@@ -61,12 +34,10 @@ export function Hero({
   locale: Locale;
   t: Translations;
 }): ReactNode {
-  const reducedMotion = useReducedMotion();
-
   return (
     <section className="relative min-h-dvh w-full overflow-hidden">
       <div className="absolute inset-0" aria-hidden="true">
-        {reducedMotion ? <ShaderFallback /> : <HeroShader />}
+        <ShaderBackdrop palette="amber" />
       </div>
 
       <div className="relative flex min-h-dvh items-center justify-center px-6 pt-24 sm:px-8 lg:py-0">
@@ -74,7 +45,7 @@ export function Hero({
           <div className="flex flex-col items-center lg:w-[54%] lg:items-start">
             {/* 球径 96/112 px 是标准档（96 到 160 pt）的下沿：首屏的主角是那一句话，道长只是陪着。
                 版面框比球宽 0.7 个球径、球居中，所以框左沿在球左沿左边 0.35 个球径；左对齐那一档
-                把框往左挪这么多，球身轮廓的左沿才与标题的左沿对齐（owner 2026-09-22）。 */}
+                把框往左挪这么多，球身轮廓的左沿才与标题的左沿对齐。 */}
             <CatOrb
               surface="hero"
               className="mb-3 [--orb-d:96px] lg:ml-[calc(var(--orb-d)*-0.35)]"

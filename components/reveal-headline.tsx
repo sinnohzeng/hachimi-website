@@ -32,7 +32,7 @@ export function keepPanguSpaces(text: string): string {
  * 才是人读的单位；英文按同一条规则自然落成按词。
  *
  * 两处并单位：收尾标点并进前一个，不然它会折到行首；不换行空格连同它两边的字一起
- * 并成一个，不然“154”与“本古籍”之间照样断得开——每个单位各是一只行内盒子，浏
+ * 并成一个，不然“154”与“本古籍”之间照样断得开：每个单位各是一只行内盒子，浏
  * 览器可以在任意两只之间折行，CSS 的 keep-all 与 nbsp 都管不到盒子之间。
  */
 export function tokenizeForReveal(text: string): string[] {
@@ -105,28 +105,20 @@ const TOKEN: Variants = {
  */
 export function RevealHeadline({
   text,
-  as: Tag = "h2",
   className = "",
-  id,
 }: {
   text: string;
-  as?: "h1" | "h2" | "h3";
   className?: string;
-  id?: string;
 }): ReactNode {
   const reducedMotion = useReducedMotion();
   const spaced = keepPanguSpaces(text);
 
   if (reducedMotion) {
-    return (
-      <Tag id={id} className={className}>
-        {spaced}
-      </Tag>
-    );
+    return <h2 className={className}>{spaced}</h2>;
   }
 
   return (
-    <Tag id={id} className={className}>
+    <h2 className={className}>
       <span className="sr-only">{spaced}</span>
       <motion.span
         aria-hidden="true"
@@ -158,6 +150,6 @@ export function RevealHeadline({
           </span>
         ))}
       </motion.span>
-    </Tag>
+    </h2>
   );
 }
