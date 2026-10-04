@@ -13,6 +13,7 @@ import {
 import { academyMarqueeItems } from "@/lib/academy-titles";
 import { keepPanguSpaces } from "@/components/reveal-headline";
 import type { Translations } from "@/lib/i18n";
+import type { Locale } from "@/lib/locale";
 import { useReducedMotion } from "@/lib/motion";
 import { reveal } from "@/lib/motion-tokens";
 
@@ -114,7 +115,7 @@ export function AcademyMarquee({
   locale,
   t,
 }: {
-  locale: string;
+  locale: Locale;
   t: Translations;
 }): ReactNode {
   const reducedMotion = useReducedMotion();

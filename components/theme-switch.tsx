@@ -12,43 +12,42 @@ function useIsMounted(): boolean {
   );
 }
 
-export function ThemeSwitch(): ReactNode {
+const BUTTON_CLASS =
+  "bg-muted text-foreground/70 hover:text-foreground flex h-10 w-10 items-center justify-center rounded-full shadow-lg transition-colors hover:shadow-xl";
+
+/**
+ * 明暗切换。名称固定为“深色模式”，开没开由 aria-pressed 报，读屏念成“深色模式，已按下”。
+ * 服务端不知道站点明暗，挂载前先占一个禁用的同尺寸按钮，水合后不跳。
+ */
+export function ThemeSwitch({ label }: { label: string }): ReactNode {
   const mounted = useIsMounted();
   const { setTheme, resolvedTheme } = useTheme();
-
-  const toggleTheme = (): void => {
-    setTheme(resolvedTheme === "dark" ? "light" : "dark");
-  };
-
-  if (!mounted) {
-    return (
-      <div className="fixed right-6 bottom-6 z-50">
-        <button
-          className="bg-foreground/10 h-12 w-12 cursor-not-allowed rounded-full opacity-30"
-          aria-label="Toggle theme"
-          disabled
-        />
-      </div>
-    );
-  }
-
   const isDark = resolvedTheme === "dark";
 
   return (
     <div className="fixed right-6 bottom-6 z-50">
-      <button
-        onClick={toggleTheme}
-        className="bg-muted text-foreground flex h-10 w-10 cursor-pointer items-center justify-center rounded-full opacity-30 shadow-lg transition-opacity duration-300 hover:opacity-100 hover:shadow-xl"
-        aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
-        aria-pressed={isDark}
-        type="button"
-      >
-        {isDark ? (
-          <Sun className="h-5 w-5" aria-hidden="true" />
-        ) : (
-          <Moon className="h-5 w-5" aria-hidden="true" />
-        )}
-      </button>
+      {mounted ? (
+        <button
+          type="button"
+          onClick={() => setTheme(isDark ? "light" : "dark")}
+          className={`${BUTTON_CLASS} cursor-pointer`}
+          aria-label={label}
+          aria-pressed={isDark}
+        >
+          {isDark ? (
+            <Sun className="h-5 w-5" aria-hidden="true" />
+          ) : (
+            <Moon className="h-5 w-5" aria-hidden="true" />
+          )}
+        </button>
+      ) : (
+        <button
+          type="button"
+          className={BUTTON_CLASS}
+          aria-label={label}
+          disabled
+        />
+      )}
     </div>
   );
 }

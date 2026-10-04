@@ -1,16 +1,12 @@
 import type { ReactNode } from "react";
 import { pageDates, siteConfig } from "@/lib/config";
 import type { Translations } from "@/lib/i18n";
+import { LOCALES, type Locale } from "@/lib/locale";
 
 // JSON-LD structured data (schema.org). Server components only: they render
 // <script type="application/ld+json"> tags at build time (output: "export").
 // All copy is pulled from lib/config.ts / lib/i18n so nothing can drift from
 // the visible content.
-
-const inLanguages: Record<string, string> = {
-  en: "en",
-  zh: "zh-Hans",
-};
 
 const organizationId = `${siteConfig.url}/#organization`;
 const websiteId = `${siteConfig.url}/#website`;
@@ -32,8 +28,8 @@ function JsonLd({ data }: { data: object }): ReactNode {
  * Site-wide graph (Organization + WebSite + SoftwareApplication), mounted once
  * per locale in app/[locale]/layout.tsx.
  */
-export function SiteStructuredData({ locale }: { locale: string }): ReactNode {
-  const inLanguage = inLanguages[locale] ?? inLanguages.en;
+export function SiteStructuredData({ locale }: { locale: Locale }): ReactNode {
+  const inLanguage = LOCALES[locale].htmlLang;
 
   return (
     <JsonLd
@@ -123,7 +119,7 @@ export function BreadcrumbStructuredData({
   path,
   pageTitle,
 }: {
-  locale: string;
+  locale: Locale;
   path: string;
   pageTitle: string;
 }): ReactNode {

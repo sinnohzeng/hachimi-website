@@ -8,34 +8,27 @@ import { Manifesto } from "@/components/manifesto";
 import { ToolCards } from "@/components/tool-cards";
 import { FaqStructuredData } from "@/components/structured-data";
 import { getTranslations } from "@/lib/i18n";
+import { toLocale } from "@/lib/locale";
 import { localizedPageMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
 export async function generateMetadata({
   params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
+}: PageProps<"/[locale]">): Promise<Metadata> {
+  const locale = toLocale((await params).locale);
   const t = getTranslations(locale);
   return localizedPageMetadata({
     locale,
     title: t.hero.headline,
-    // 描述取定位那一节的称呼与记忆锤：搜索结果那一行先说清给谁用，再落到一个人一份命例。
-    description:
-      locale === "zh"
-        ? `${t.what.eyebrow}。${t.what.title}`
-        : `${t.what.eyebrow}. ${t.what.title}`,
+    description: t.meta.home.description,
   });
 }
 
 export default async function HomePage({
   params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<ReactNode> {
-  const { locale } = await params;
+}: PageProps<"/[locale]">): Promise<ReactNode> {
+  const locale = toLocale((await params).locale);
   const t = getTranslations(locale);
 
   return (

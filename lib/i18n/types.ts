@@ -1,3 +1,16 @@
+import type { JOURNEY_SHOTS } from "../shots.ts";
+
+/** 一页的 `<title>` 与 meta 描述。品牌由根上的 title.template 补，这里不写。 */
+export type PageMeta = { title: string; description: string };
+
+/** 命例走查的一步。顺序就是走查顺序，与 lib/shots.ts 的 JOURNEY_SHOTS 一一对应。 */
+export type CaseStep = { title: string; body: string; shotAlt: string };
+
+/** 与一张表等长的元组：表里有几屏，走查就有几步。 */
+type StepsFor<T extends readonly unknown[]> = {
+  readonly [K in keyof T]: CaseStep;
+};
+
 export type Translations = {
   // Header：四个首页锚加一个下载。
   nav: {
@@ -7,15 +20,32 @@ export type Translations = {
     faq: string;
     download: string;
   };
-  langSwitch: {
-    en: string;
-    zh: string;
+
+  /** 读屏念的控件名。版面上不出现，但读屏用户听到的就是这些字，随页面语言走。 */
+  a11y: {
+    skip: string;
+    mainNav: string;
+    mobileNav: string;
+    openMenu: string;
+    closeMenu: string;
+    close: string;
+    darkTheme: string;
   };
 
   // Store badges (official badge wording, used as alt text)
   store: {
     appStoreAlt: string;
     googlePlayAlt: string;
+  };
+
+  /** 各页的 `<title>` 与描述。首页标题就是首屏口号，只有描述写在这里。 */
+  meta: {
+    home: { description: string };
+    get: PageMeta;
+    support: PageMeta;
+    dataDeletion: PageMeta;
+    privacy: PageMeta;
+    terms: PageMeta;
   };
 
   // 第一节 首屏：口号、过桥句、商店徽章、一张起卦结果图。
@@ -40,16 +70,10 @@ export type Translations = {
   };
 
   // 第三节 命例走查（#case）：一句引言加五步，桌面端钉住手机随滚动换屏。
-  // steps 与 shotAlts 一一对应，顺序就是走查顺序，改一边要改另一边。
   case: {
     title: string;
     lead: string;
-    steps: {
-      title: string;
-      body: string;
-    }[];
-    /** 五张截图的 alt，顺序同 steps。 */
-    shotAlts: string[];
+    steps: StepsFor<typeof JOURNEY_SHOTS>;
   };
 
   // 第四节 四件工具（#tools）：四张卡，卡面只有名字与一句，点开才见机制事实。
@@ -70,7 +94,7 @@ export type Translations = {
     text: string;
   };
 
-  // 第六节 常见问题（#faq）：六条。
+  // 第六节 常见问题（#faq）。
   faq: {
     title: string;
     items: {
@@ -86,16 +110,15 @@ export type Translations = {
     headline: string;
   };
 
-  // Footer
+  /** 页脚。产品一栏由导航生成，链接地址由组件按语言拼，这里只放字。 */
   footer: {
     /** 字标下面那一句定位语。 */
     tagline: string;
     copyright: string;
-    links: {
-      title: string;
-      items: { label: string; href: string }[];
-    }[];
-    legal: { label: string; href: string }[];
+    productTitle: string;
+    contactTitle: string;
+    support: string;
+    legal: { privacy: string; terms: string; dataDeletion: string };
   };
 
   // 下载落地页（/{locale}/get）：/get 在微信里与桌面上落到这里。
@@ -108,21 +131,18 @@ export type Translations = {
     wechatHint: string;
   };
 
-  // 隐私政策与使用条款的正文是 content/legal/ 的 Markdown（hachimi-ios
-  // docs/legal/ 的镜像），这里只放两页的页面元数据。
-  legalMeta: {
-    privacy: { title: string; description: string };
-    terms: { title: string; description: string };
-  };
+  /** 认不出的网址（app/global-not-found.tsx）上的一行与回首页的链接。 */
+  notFound: { body: string; home: string };
 
-  // 删除数据页与支持页（同一个 LegalPageContent 渲染器）
+  /** 页面日期前的标签，日期本身由 lib/config.ts 的 pageDates 按语言排。 */
+  lastUpdated: string;
+
+  // 删除数据页与支持页（同一个 LegalPageContent 渲染器），标题取 meta。
   dataDeletion: LegalPage;
   support: LegalPage;
 };
 
 export type LegalPage = {
-  title: string;
-  effectiveDate: string;
   intro: string;
   steps: {
     heading: string;

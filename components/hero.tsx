@@ -7,6 +7,7 @@ import { CatOrb } from "@/components/cat-orb";
 import { AppShot } from "@/components/app-shot";
 import { StoreBadges } from "@/components/store-badges";
 import type { Translations } from "@/lib/i18n";
+import type { Locale } from "@/lib/locale";
 import { useReducedMotion } from "@/lib/motion";
 import { mountRise } from "@/lib/motion-tokens";
 
@@ -57,7 +58,7 @@ export function Hero({
   locale,
   t,
 }: {
-  locale: string;
+  locale: Locale;
   t: Translations;
 }): ReactNode {
   const reducedMotion = useReducedMotion();

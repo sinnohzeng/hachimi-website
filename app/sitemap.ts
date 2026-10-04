@@ -1,57 +1,24 @@
 import type { MetadataRoute } from "next";
 import { pageDates, siteConfig } from "@/lib/config";
+import { legalLastUpdated } from "@/lib/legal";
+import { locales } from "@/lib/locale";
 
 export const dynamic = "force-static";
 
-// lastModified reads the hand-maintained pageDates (lib/config.ts), never the
-// build time: Cloudflare Pages rebuilds the whole site on every push, so
-// new Date() would stamp every deploy as a sitewide content change and drown
-// the freshness signal crawlers rely on.
-const pages: {
-  path: string;
-  date: string;
-  changeFrequency: "weekly" | "monthly";
-  priority: (locale: string) => number;
-}[] = [
-  {
-    path: "",
-    date: pageDates.home,
-    changeFrequency: "weekly",
-    priority: (locale) => (locale === "en" ? 1 : 0.9),
-  },
-  {
-    path: "/support",
-    date: pageDates.support,
-    changeFrequency: "monthly",
-    priority: () => 0.4,
-  },
-  {
-    path: "/privacy",
-    date: pageDates.privacy,
-    changeFrequency: "monthly",
-    priority: () => 0.3,
-  },
-  {
-    path: "/terms",
-    date: pageDates.terms,
-    changeFrequency: "monthly",
-    priority: () => 0.3,
-  },
-  {
-    path: "/data-deletion",
-    date: pageDates.dataDeletion,
-    changeFrequency: "monthly",
-    priority: () => 0.3,
-  },
+/** 每页给网址与内容最后改动的日期，日期出处见 lib/config.ts 的 pageDates。 */
+const pages: { path: string; date: string }[] = [
+  { path: "", date: pageDates.home },
+  { path: "/support", date: pageDates.support },
+  { path: "/privacy", date: legalLastUpdated("privacy") },
+  { path: "/terms", date: legalLastUpdated("terms") },
+  { path: "/data-deletion", date: pageDates.dataDeletion },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return pages.flatMap((page) =>
-    ["en", "zh"].map((locale) => ({
+    locales.map((locale) => ({
       url: `${siteConfig.url}/${locale}${page.path}`,
       lastModified: page.date,
-      changeFrequency: page.changeFrequency,
-      priority: page.priority(locale),
     }))
   );
 }

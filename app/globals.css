@@ -3,13 +3,16 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #fafaf8;
-  --foreground: #0a0a0a;
-  --muted: #f3f3ee;
-  --muted-foreground: #737373;
-  --border: #e5e5e5;
-  --ring: #d97706;
-  --accent: #d97706;
+  /* 每个颜色 token 只写一次，light-dark() 按 color-scheme 取浅或深。color-scheme 缺省跟系统，
+     next-themes 水合后给 html 写上 .light 或 .dark，下面两条把它钉住。--background 两值与
+     lib/config.ts 的 siteConfig.themeColor 相同，scripts/site.test.mjs 核对。 */
+  color-scheme: light dark;
+  --background: light-dark(#fafaf8, #070712);
+  --foreground: light-dark(#0a0a0a, #fafafa);
+  --muted: light-dark(#f3f3ee, #0f0f18);
+  --border: light-dark(#e5e5e5, #262626);
+  --ring: light-dark(#d97706, #f59e0b);
+  --accent: light-dark(#d97706, #f59e0b);
   /* Name the Geist @font-face families DIRECTLY — do NOT go through
      var(--font-geist-sans). next/font scopes --font-geist-sans to the class it
      puts on <body>, but --font-sans lives here on :root (body's ancestor), so
@@ -39,40 +42,18 @@
     "Noto Serif CJK SC", serif;
 }
 
-/* 系统深色用户的首帧回退：next-themes 的脚本在 <body> 内运行、html 首发
-   无主题类，慢载/流式场景可能先绘一帧浅色。这里在"还没有显式主题类"时用
-   纯 CSS 镜像系统偏好。:where() 把特异性压回 (0,1,0) 且置于 .dark 块之前，
-   JS 后 next-themes 必置显式 light/dark 解析类——.light 让本块失配、.dark
-   靠源序压过本块，两块 token 无需逐字节锁同步。（系统浅色但手选深色的
-   用户仍依赖脚本，CSS 读不到 localStorage，属可接受残余。） */
-@media (prefers-color-scheme: dark) {
-  :root:where(:not(.light)) {
-    --background: #070712;
-    --foreground: #fafafa;
-    --muted: #0f0f18;
-    --muted-foreground: #a3a3a3;
-    --border: #262626;
-    --ring: #f59e0b;
-    --accent: #f59e0b;
-    color-scheme: dark;
-  }
+:root.light {
+  color-scheme: light;
 }
 
-.dark {
-  --background: #070712;
-  --foreground: #fafafa;
-  --muted: #0f0f18;
-  --muted-foreground: #a3a3a3;
-  --border: #262626;
-  --ring: #f59e0b;
-  --accent: #f59e0b;
+:root.dark {
+  color-scheme: dark;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
   --color-ring: var(--ring);
   --color-accent: var(--accent);
@@ -82,13 +63,12 @@
 }
 
 html {
-  color-scheme: light;
-  scroll-behavior: smooth;
   overflow-x: hidden;
 }
 
-html.dark {
-  color-scheme: dark;
+/* 模态 <dialog> 开着时锁住背后的页面：背景已 inert，这里再不让滚轮带着它走。 */
+html:has(dialog:modal) {
+  overflow: hidden;
 }
 
 html,
@@ -208,16 +188,6 @@ textarea:focus-visible {
   display: none;
 }
 
-/* Line clamp utility */
-.line-clamp-2 {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-/* 中文排版没有斜体传统（GB/T 习惯用字体/字号/引号做强调），zh 语境下
-   衬线标题等处的 italic 一律回正；en 页不受影响。 */
 /* 中文展示文字只在标点处换行。keep-all 压掉汉字之间的软换行机会，行只在逗号、
    句号、顿号后面折；一段没有标点又塞不下时 overflow-wrap: anywhere 兜底，不溢出。
    正文段落不用它：长段按字折行才齐整，这条只给标题与导语这类一眼看完的短句。 */
@@ -226,8 +196,89 @@ textarea:focus-visible {
   overflow-wrap: anywhere;
 }
 
-:lang(zh) .italic {
+/* 中文排版没有斜体传统（GB/T 习惯用字体、字号与引号做强调），zh 页里法律件 Markdown 出的
+   em 与 i 以及 italic 类一律回正；en 页不受影响。 */
+:lang(zh) :is(em, i, .italic) {
   font-style: normal;
+}
+
+/* 站上的两种模态 <dialog>：.site-sheet 是窄屏菜单，从顶上铺满一屏；.site-modal 是工具卡的
+   细节，居中一张卡。打开与关闭各有一段淡入淡出，减弱动态时直接开合。 */
+dialog.site-sheet,
+dialog.site-modal {
+  opacity: 0;
+  transition:
+    opacity 0.25s,
+    translate 0.25s,
+    overlay 0.25s allow-discrete,
+    display 0.25s allow-discrete;
+}
+
+dialog.site-sheet[open],
+dialog.site-modal[open] {
+  opacity: 1;
+}
+
+@starting-style {
+  dialog.site-sheet[open],
+  dialog.site-modal[open] {
+    opacity: 0;
+  }
+}
+
+dialog.site-sheet {
+  margin: 0;
+  width: 100%;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  padding: 0;
+  overflow-y: auto;
+}
+
+dialog.site-modal {
+  margin: auto;
+  translate: 0 8px;
+}
+
+dialog.site-modal[open] {
+  translate: 0 0;
+}
+
+@starting-style {
+  dialog.site-modal[open] {
+    translate: 0 8px;
+  }
+}
+
+dialog.site-modal::backdrop {
+  background: color-mix(in oklab, var(--background) 70%, transparent);
+  backdrop-filter: blur(24px);
+}
+
+/* 常见问题的 <details>：答案高度随开合过渡，浏览器不认 ::details-content 时直接开合。 */
+.faq-item {
+  interpolate-size: allow-keywords;
+}
+
+.faq-item::details-content {
+  block-size: 0;
+  overflow: clip;
+  transition:
+    block-size 0.25s,
+    content-visibility 0.25s allow-discrete;
+}
+
+.faq-item[open]::details-content {
+  block-size: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  dialog.site-sheet,
+  dialog.site-modal,
+  .faq-item::details-content {
+    transition: none;
+  }
 }
 
 /* 法律件正文：/privacy 与 /terms 由 lib/legal.ts 把 content/legal/ 的 Markdown

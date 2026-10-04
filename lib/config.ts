@@ -1,24 +1,14 @@
 /**
- * ============================================================================
- * SITE CONFIGURATION
- * ============================================================================
- * Hachimi.ai (哈基米道长): a Zi Wei Dou Shu and Ba Zi charting tool for fate
- * readers and enthusiasts, with Mei Hua Yi Shu casts filed under each person's
- * case.
- * Brand Hachimi.ai · the operating company is named in the legal pages only.
- */
-
-/**
- * Single source of truth for site identity. lib/metadata.ts builds the Next.js
- * Metadata object from this. Do NOT redeclare name/description elsewhere or
- * they will drift.
+ * 站点信息的唯一出处：品牌名、描述、邮箱、商店链接、主题色与页面日期。lib/metadata.ts、
+ * app/manifest.ts、结构化数据、页面组件与 scripts/ 都从这里取，别处不再写一遍。
+ * 运营公司只在法律件与删除数据页的联系方式里出现。
  */
 export const siteConfig = {
   name: "Hachimi.ai",
+  /** 中文品牌名，与 name 并列出现在标题与分享卡上。 */
+  nameZh: "哈基米道长",
   // Longer descriptive form used as the SEO <title> / OpenGraph title.
   seoTitle: "Hachimi.ai · 哈基米道长",
-  // 第三版的北极星原句，与首屏 hero.headline 同一句，owner 定稿，不送润色。
-  tagline: "When it's a lot, cast a hexagram.",
   description:
     "Hachimi.ai is a charting tool for fate readers and enthusiasts. One person, one case: enter a birth once and get Zi Wei Dou Shu (Purple Star astrology) and Ba Zi (Four Pillars) charts together.",
   url: "https://hachimi.ai",
@@ -60,31 +50,20 @@ export const siteConfig = {
   appStoreId: "6787621766",
   googlePlay:
     "https://play.google.com/store/apps/details?id=com.hachimi.hachimi_app",
+
+  /** 页面底色，与 app/globals.css 的 --background 同值，浏览器地址栏与 manifest 取它。 */
+  themeColor: { light: "#fafaf8", dark: "#070712" },
 } as const;
 
 /**
- * Per-page "content last changed" dates (SSOT). app/sitemap.ts reads these for
- * lastModified and structured-data.tsx for dateModified — never use build
- * time, which would stamp every deploy as a content change.
+ * 页面内容最后一次改动的日期。sitemap 的 lastModified、结构化数据的 dateModified 与支持页、
+ * 删除数据页上看得到的“最后更新”都读它，不用构建时间：每次推送都会整站重建。
+ * 隐私政策与使用条款的日期在 content/legal/ 的 Markdown 里，由 lib/legal.ts 读出。
  *
- * Bump a date only when that page's visible content changes. Each date must
- * equal the page's visible "last updated" line: privacy and terms read it from
- * content/legal/*.md, the other pages from lib/i18n. scripts/page-dates.test.mjs
- * fails `npm run check` when they drift.
+ * 只在这一页可见内容变了时改日期。
  */
 export const pageDates = {
   home: "2026-10-02",
-  privacy: "2026-10-03",
-  terms: "2026-10-01",
   support: "2026-10-02",
   dataDeletion: "2026-10-02",
-} as const;
-
-/**
- * ============================================================================
- * FEATURE FLAGS
- * ============================================================================
- */
-export const features = {
-  smoothScroll: true,
 } as const;

@@ -1,5 +1,6 @@
 import { renderLegal } from "@/lib/legal";
 import type { LegalKind } from "@/lib/legal-files";
+import type { Locale } from "@/lib/locale";
 import type { ReactNode } from "react";
 
 /**
@@ -11,7 +12,7 @@ export function LegalDocument({
   locale,
 }: {
   kind: LegalKind;
-  locale: string;
+  locale: Locale;
 }): ReactNode {
   const { title, html } = renderLegal(kind, locale);
   return (

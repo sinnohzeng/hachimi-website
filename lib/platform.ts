@@ -1,4 +1,5 @@
 import { siteConfig } from "./config.ts";
+import { defaultLocale, type Locale } from "./locale.ts";
 
 /**
  * 平台判断的唯一出处。Pages Function（functions/get.ts）在边缘按请求头分流，
@@ -20,7 +21,6 @@ const iPadOSCheck =
   'navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1';
 
 export type Platform = "ios" | "android" | "other";
-export type Locale = "zh" | "en";
 
 export function platformOf(userAgent: string): Platform {
   if (userAgentPattern.ios.test(userAgent)) return "ios";
@@ -32,7 +32,7 @@ export function isWeChat(userAgent: string): boolean {
   return userAgentPattern.wechat.test(userAgent);
 }
 
-/** Accept-Language 里权重最高的那一项以 zh 开头就是中文，其余一律英文。 */
+/** Accept-Language 里权重最高的那一项以 zh 开头就是中文，其余一律走缺省语言。 */
 export function localeOf(acceptLanguage: string | null): Locale {
   let best = { tag: "", q: -1 };
   for (const part of (acceptLanguage ?? "").split(",")) {
@@ -41,7 +41,7 @@ export function localeOf(acceptLanguage: string | null): Locale {
     const q = qParam ? Number(qParam.trim().slice(2)) : 1;
     if (tag && !Number.isNaN(q) && q > best.q) best = { tag, q };
   }
-  return best.tag.startsWith("zh") ? "zh" : "en";
+  return best.tag.startsWith("zh") ? "zh" : defaultLocale;
 }
 
 /**

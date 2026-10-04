@@ -4,6 +4,7 @@ import { useRef, useState, type ReactNode } from "react";
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import Device from "@/components/react-bits/device";
 import { ShotScreens, type ShotName } from "@/components/app-shot";
+import { JOURNEY_SHOTS, journeyWithShots } from "@/lib/shots";
 import { keepPanguSpaces } from "@/components/reveal-headline";
 import type { Translations } from "@/lib/i18n";
 import { useReducedMotion } from "@/lib/motion";
@@ -23,28 +24,19 @@ import { DUR, EASE, STAGGER, reveal } from "@/lib/motion-tokens";
  *
  * 两处要知道的做法，都是本机实测逼出来的：
  *
- * 一、钉住用 `position: sticky`，前提是 body 不能是滚动容器。app/globals.css 曾给 body
- * 写 `overflow-x: hidden`，按 CSS 规范这会把 body 的 `overflow-y` 算成 auto，body 就成了
- * 滚动容器，sticky 只认它、随页面一起滚走。现在 body 是 `overflow-x: clip`：只裁不滚，
- * sticky 照常认视口。别把它改回 hidden。
+ * 一、钉住用 `position: sticky`，前提是 body 不能是滚动容器。body 写的是 `overflow-x: clip`：
+ * 只裁不滚，sticky 照常认视口。写成 hidden 的话，按 CSS 规范 body 的 `overflow-y` 会算成
+ * auto，body 成了滚动容器，sticky 只认它、随页面一起滚走。
  *
  * 二、换屏不用 `useTransform` 把滚动进度接到 opacity 上。本站实测 MotionValue 驱动
  * 的 transform 每帧都更新，MotionValue 驱动的 opacity 却一直停在首帧的值，连客户端
  * 样式都没写进去。所以这里把滚动进度先落成一个步序 state，再用 `animate` 驱动，
  * opacity 走的是与全站入场动画同一条路，那条是好的。
  *
- * 五张截图的顺序写死在 SHOTS 里，与 i18n 的 case.steps、case.shotAlts 一一对应：
- * 改一处要三处一起改。
+ * 每一步配哪一屏在 lib/shots.ts 的 JOURNEY_SHOTS，i18n 的 case.steps 按它的长度定型，
+ * 每步自带那一屏的 alt。
  */
-const SHOTS = [
-  "case-list",
-  "ziwei-sanhe",
-  "bazi-pillars",
-  "cast-result",
-  "case-casts",
-] as const satisfies readonly ShotName[];
-
-const STEP_COUNT = SHOTS.length;
+const STEP_COUNT = JOURNEY_SHOTS.length;
 
 /** 文字进出的位移档：上一步往上退，下一步从下面来。只是一点余韵，主角是淡入淡出。 */
 const STEP_DRIFT = 12;
@@ -171,8 +163,8 @@ function StaticJourney({ t }: { t: Translations }): ReactNode {
               的 ScreenLayer 一致。 */}
           <div className="bg-muted h-full w-full">
             <ShotScreens
-              name={SHOTS[0]}
-              alt={t.case.shotAlts[0] ?? ""}
+              name={JOURNEY_SHOTS[0]}
+              alt={t.case.steps[0].shotAlt}
               sizes="(min-width: 640px) 256px, 224px"
             />
           </div>
@@ -267,18 +259,18 @@ export function CaseJourney({ t }: { t: Translations }): ReactNode {
                     rotateStrength={2}
                     autoAnimate={false}
                   >
-                    {SHOTS.map((name, i) => (
+                    {journeyWithShots(t.case.steps).map(({ shot, step }, i) => (
                       <ScreenLayer
-                        key={name}
+                        key={shot}
                         index={i}
                         active={active}
-                        name={name}
-                        alt={t.case.shotAlts[i] ?? ""}
+                        name={shot}
+                        alt={step.shotAlt}
                       />
                     ))}
                   </Device>
                   <div className="flex items-center gap-2" aria-hidden="true">
-                    {SHOTS.map((name, i) => (
+                    {JOURNEY_SHOTS.map((name, i) => (
                       <SegmentTick key={name} index={i} active={active} />
                     ))}
                   </div>

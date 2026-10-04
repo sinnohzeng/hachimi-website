@@ -42,7 +42,16 @@ function ContactTable({
   );
 }
 
-export function LegalPageContent({ data }: { data: LegalPage }): ReactNode {
+export function LegalPageContent({
+  title,
+  updated,
+  data,
+}: {
+  title: string;
+  /** “最后更新”那一行，标签与按语言排好的日期。 */
+  updated: string;
+  data: LegalPage;
+}): ReactNode {
   return (
     <section className="bg-background text-foreground relative w-full">
       <div className="flex items-center justify-center px-6 sm:px-8">
@@ -50,11 +59,9 @@ export function LegalPageContent({ data }: { data: LegalPage }): ReactNode {
           <div className="px-8 py-24 sm:px-12 lg:py-32">
             <div className="mx-auto max-w-3xl">
               <h1 className="text-foreground mb-3 text-3xl font-bold tracking-tight sm:text-4xl">
-                {data.title}
+                {title}
               </h1>
-              <p className="text-foreground/50 mb-12 text-sm">
-                {data.effectiveDate}
-              </p>
+              <p className="text-foreground/50 mb-12 text-sm">{updated}</p>
 
               <div className="space-y-10">
                 {/* Introduction */}

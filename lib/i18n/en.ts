@@ -1,4 +1,4 @@
-import type { Translations } from "./types";
+import type { Translations } from "./types.ts";
 
 export const en: Translations = {
   nav: {
@@ -8,14 +8,51 @@ export const en: Translations = {
     faq: "FAQ",
     download: "Get the app",
   },
-  langSwitch: {
-    en: "EN",
-    zh: "中文",
+  a11y: {
+    skip: "Skip to main content",
+    mainNav: "Main navigation",
+    mobileNav: "Navigation",
+    openMenu: "Open menu",
+    closeMenu: "Close menu",
+    close: "Close",
+    darkTheme: "Dark theme",
   },
 
   store: {
     appStoreAlt: "Download on the App Store",
     googlePlayAlt: "Get it on Google Play",
+  },
+
+  meta: {
+    home: {
+      description:
+        "A charting tool for fate readers and enthusiasts. One person, one case.",
+    },
+    get: {
+      title: "Download the app",
+      description:
+        "Download it from the App Store for iPhone and iPad, or from Google Play for Android phones.",
+    },
+    support: {
+      title: "Support",
+      description:
+        "Need help with Hachimi.ai? Contact support or browse common questions.",
+    },
+    dataDeletion: {
+      title: "Delete your data",
+      description:
+        "Delete your cases, reading history and the Master's notes in the app.",
+    },
+    privacy: {
+      title: "Privacy Policy",
+      description:
+        "Hachimi.ai Privacy Policy: where your cases and history are kept, which features go online, and how to manage and delete them.",
+    },
+    terms: {
+      title: "Terms of Use",
+      description:
+        "Hachimi.ai Terms of Use: features, readings, membership and license.",
+    },
   },
 
   hero: {
@@ -53,30 +90,32 @@ export const en: Translations = {
       {
         title: "Create a case",
         body: "Enter a solar date, lunar date or four pillars, and pick the birthplace by province and city.",
+        shotAlt:
+          "Case list screenshot: every row shows the four pillars on the right, colored by the five elements.",
       },
       {
         title: "Chart Zi Wei",
         body: "Once the birth is in, the Zi Wei chart is ready.",
+        shotAlt:
+          "Zi Wei Dou Shu San He chart screenshot with the twelve palaces and the three-way four-point links.",
       },
       {
         title: "Switch to Ba Zi",
         body: "Same birth details. No need to enter them again.",
+        shotAlt:
+          "Ba Zi four-pillar table screenshot, year month day hour rows down to Nayin and the symbolic stars.",
       },
       {
         title: "Cast for this person",
         body: "Choose who the question is for. The hexagram and reading are filed under that case.",
+        shotAlt: "Cast result page screenshot: this hexagram reads auspicious.",
       },
       {
         title: "Look back at every cast",
         body: "Past questions are listed by date; tap one to open that hexagram.",
+        shotAlt:
+          "Case detail screenshot: every hexagram under the case, newest first.",
       },
-    ],
-    shotAlts: [
-      "Case list screenshot: every row shows the four pillars on the right, colored by the five elements.",
-      "Zi Wei Dou Shu San He chart screenshot with the twelve palaces and the three-way four-point links.",
-      "Ba Zi four-pillar table screenshot, year month day hour rows down to Nayin and the symbolic stars.",
-      "Cast result page screenshot: this hexagram reads auspicious.",
-      "Case detail screenshot: every hexagram under the case, newest first.",
     ],
   },
 
@@ -88,13 +127,13 @@ export const en: Translations = {
         name: "Zi Wei Dou Shu",
         line: "Set star placement to match your school. Paste someone's star code and your chart matches theirs.",
         detail:
-          "Chart Patterns are judged by rule, and each one names the layer it comes from. This part needs internet. Zizhan, a Zi Wei chart cast for this moment, is under Me > Tools. Press and hold any word on the chart for its entry.",
+          "Chart Patterns are judged by rule, and each one names the layer it comes from. This part needs internet. Zizhan, a Zi Wei chart cast for this moment, is under Me → Tools. Press and hold any word on the chart for its entry.",
       },
       {
         name: "Ba Zi charting",
         line: "Punishments, clashes, combinations and harms are listed separately for the natal chart and the cycles. Take notes on the same page.",
         detail:
-          "The four pillars run from Ten Gods to Symbolic Stars, and you can pick the rule for the Stem in Charge. The four-pillar lookup is under Me > Tools.",
+          "The four pillars run from Ten Gods to Symbolic Stars, and you can pick the rule for the Stem in Charge. The four-pillar lookup is under Me → Tools.",
       },
       {
         name: "Case library",
@@ -155,29 +194,10 @@ export const en: Translations = {
   footer: {
     tagline: "For studying Chinese folk fate arts.",
     copyright: "© 2026 Hachimi.ai. All rights reserved.",
-    links: [
-      {
-        title: "Product",
-        items: [
-          { label: "Cases", href: "/en#case" },
-          { label: "Tools", href: "/en#tools" },
-          { label: "Academy", href: "/en#academy" },
-          { label: "FAQ", href: "/en#faq" },
-        ],
-      },
-      {
-        title: "Contact",
-        items: [
-          { label: "Support", href: "/en/support" },
-          { label: "voice@hachimi.ai", href: "mailto:voice@hachimi.ai" },
-        ],
-      },
-    ],
-    legal: [
-      { label: "Privacy", href: "/en/privacy" },
-      { label: "Terms", href: "/en/terms" },
-      { label: "Delete data", href: "/en/data-deletion" },
-    ],
+    productTitle: "Product",
+    contactTitle: "Contact",
+    support: "Support",
+    legal: { privacy: "Privacy", terms: "Terms", dataDeletion: "Delete data" },
   },
 
   get: {
@@ -188,28 +208,20 @@ export const en: Translations = {
       "App stores don’t open inside WeChat. Tap “…” at the top right and choose “Open in Browser”.",
   },
 
-  legalMeta: {
-    privacy: {
-      title: "Privacy Policy",
-      description:
-        "Hachimi.ai Privacy Policy: where your cases and history are kept, which features go online, and how to manage and delete them.",
-    },
-    terms: {
-      title: "Terms of Use",
-      description:
-        "Hachimi.ai Terms of Use: features, readings, membership and license.",
-    },
+  notFound: {
+    body: "There's no page at this address.",
+    home: "Go to the Hachimi.ai home page",
   },
 
+  lastUpdated: "Last updated: ",
+
   dataDeletion: {
-    title: "Delete your data",
-    effectiveDate: "Last updated: October 2, 2026",
     intro:
       "Your cases, reading history and the notes the Master keeps stay on your device, and you can delete them in the app.",
     steps: {
       heading: "Delete in the app",
       items: [
-        "Open Hachimi.ai and go to Me > Privacy and data.",
+        "Open Hachimi.ai and go to Me → Privacy and data.",
         "Tap Delete All Reading Data and confirm. This clears reading history, drafts and the Master's notes. On iOS with iCloud sync on, they're deleted on your other devices too.",
         "Delete cases one by one in your case library.",
         "Usage statistics carry a random identifier. Tap Reset Anonymous ID to get a new one.",
@@ -236,16 +248,14 @@ export const en: Translations = {
   },
 
   support: {
-    title: "Support",
-    effectiveDate: "Last updated: October 2, 2026",
     intro: "Hit a problem, or want to tell us something? Just send an email.",
     steps: {
       heading: "Check these first",
       items: [
         "Which devices are supported? iPhone needs iOS 26 or later, iPad needs iPadOS 26 or later, and Android phones need Android 16 or later. The app comes in Simplified Chinese, Traditional Chinese and English.",
         "Reading not coming through? Check your connection and today's limit. The first time, tap Agree and Enable Online Readings. If you chose Not Now before, you can choose again next time you ask.",
-        "Changing the language? Go to Me > Language.",
-        "Deleting data? For reading data, go to Me > Privacy and data and tap Delete All Reading Data. Delete cases one by one in your case library.",
+        "Changing the language? Go to Me → Language.",
+        "Deleting data? For reading data, go to Me → Privacy and data and tap Delete All Reading Data. Delete cases one by one in your case library.",
         "Got a new phone? iPhone and iPad sync on their own when signed in to the same iCloud. On Android, restore from your system backup, or import a backup file you exported.",
       ],
     },

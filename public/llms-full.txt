@@ -44,13 +44,13 @@ A client, a family member, a friend or you. Enter it once, and it becomes a case
 
 Set star placement to match your school. Paste someone's star code and your chart matches theirs.
 
-Chart Patterns are judged by rule, and each one names the layer it comes from. This part needs internet. Zizhan, a Zi Wei chart cast for this moment, is under Me > Tools. Press and hold any word on the chart for its entry.
+Chart Patterns are judged by rule, and each one names the layer it comes from. This part needs internet. Zizhan, a Zi Wei chart cast for this moment, is under Me → Tools. Press and hold any word on the chart for its entry.
 
 ### Ba Zi charting
 
 Punishments, clashes, combinations and harms are listed separately for the natal chart and the cycles. Take notes on the same page.
 
-The four pillars run from Ten Gods to Symbolic Stars, and you can pick the rule for the Stem in Charge. The four-pillar lookup is under Me > Tools.
+The four pillars run from Ten Gods to Symbolic Stars, and you can pick the rule for the Stem in Charge. The four-pillar lookup is under Me → Tools.
 
 ### Case library
 

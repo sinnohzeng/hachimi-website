@@ -3,6 +3,7 @@ import { StoreBadges } from "@/components/store-badges";
 import { BreadcrumbStructuredData } from "@/components/structured-data";
 import { siteConfig } from "@/lib/config";
 import { getTranslations } from "@/lib/i18n";
+import { toLocale } from "@/lib/locale";
 import { localizedPageMetadata } from "@/lib/metadata";
 import { iPadOSStoreScript } from "@/lib/platform";
 import type { Metadata } from "next";
@@ -14,16 +15,12 @@ const downloadQr = renderSVG(`${siteConfig.url}/get`, { ecc: "M", border: 2 });
 
 export async function generateMetadata({
   params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
-  const t = getTranslations(locale);
+}: PageProps<"/[locale]/get">): Promise<Metadata> {
+  const locale = toLocale((await params).locale);
   return localizedPageMetadata({
     locale,
     path: "/get",
-    title: t.get.title,
-    description: t.get.body,
+    ...getTranslations(locale).meta.get,
   });
 }
 
@@ -34,10 +31,8 @@ export async function generateMetadata({
  */
 export default async function GetPage({
   params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<ReactNode> {
-  const { locale } = await params;
+}: PageProps<"/[locale]/get">): Promise<ReactNode> {
+  const locale = toLocale((await params).locale);
   const t = getTranslations(locale);
 
   return (

@@ -1,7 +1,8 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { Marked, type Tokens } from "marked";
-import { legalFiles, type LegalKind } from "./legal-files.ts";
+import { lastUpdatedOf, legalFiles, type LegalKind } from "./legal-files.ts";
+import { defaultLocale, type Locale } from "./locale.ts";
 
 /**
  * 构建时把 content/legal/ 的 Markdown 渲染成 HTML，只在服务端组件里调用，
@@ -73,15 +74,29 @@ const marked = new Marked({
   },
 });
 
-export function renderLegal(
-  kind: LegalKind,
-  locale: string
-): { title: string; html: string } {
-  const file = legalFiles[kind][locale === "zh" ? "zh" : "en"];
-  const markdown = readFileSync(
-    path.join(process.cwd(), "content", "legal", file),
+function readLegal(kind: LegalKind, locale: Locale): string {
+  return readFileSync(
+    path.join(process.cwd(), "content", "legal", legalFiles[kind][locale]),
     "utf8"
   );
+}
+
+/**
+ * 法律件“最后更新”那一行的日期，sitemap 用它。中英两份同一天由
+ * scripts/page-dates.test.mjs 守着，取缺省语言那一份。
+ */
+export function legalLastUpdated(kind: LegalKind): string {
+  const date = lastUpdatedOf(readLegal(kind, defaultLocale));
+  if (!date) throw new Error(`content/legal 的 ${kind} 缺“最后更新”一行`);
+  return date;
+}
+
+export function renderLegal(
+  kind: LegalKind,
+  locale: Locale
+): { title: string; html: string } {
+  const file = legalFiles[kind][locale];
+  const markdown = readLegal(kind, locale);
   const tokens = marked.lexer(markdown);
   const index = tokens.findIndex(
     (token) => token.type === "heading" && token.depth === 1

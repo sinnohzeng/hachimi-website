@@ -138,7 +138,7 @@ function title() {
   return `# ${siteConfig.seoTitle}`;
 }
 
-/** 概述：站点描述，与首页的 meta description 同一句。 */
+/** 概述：站点描述 siteConfig.description。 */
 function summary() {
   return `> ${siteConfig.description}`;
 }
@@ -183,11 +183,11 @@ async function buildIndex() {
         en.finalCta.headline
       ),
     ]),
-    `## ${en.support.title}`,
+    `## ${en.meta.support.title}`,
     list([
-      link(en.support.title, pageUrl("en", "support"), en.support.intro),
+      link(en.meta.support.title, pageUrl("en", "support"), en.support.intro),
       link(
-        en.dataDeletion.title,
+        en.meta.dataDeletion.title,
         pageUrl("en", "data-deletion"),
         en.dataDeletion.intro
       ),
@@ -208,15 +208,15 @@ async function buildIndex() {
       Object.keys(legalFiles).flatMap((kind) =>
         Object.entries({ en, zh }).map(([locale, t]) =>
           link(
-            t.legalMeta[kind].title,
+            t.meta[kind].title,
             pageUrl(locale, kind),
-            t.legalMeta[kind].description
+            t.meta[kind].description
           )
         )
       )
     ),
     "## Privacy",
-    `Section ${heading} of the [${en.legalMeta.privacy.title}](${pageUrl("en", "privacy")}), last updated ${lastUpdatedOf(privacyEn)}:`,
+    `Section ${heading} of the [${en.meta.privacy.title}](${pageUrl("en", "privacy")}), last updated ${lastUpdatedOf(privacyEn)}:`,
     body,
   ]);
 }
@@ -255,8 +255,8 @@ async function buildFull() {
   const pages = [
     [en.hero.headline, zh.hero.headline, ""],
     ...Object.keys(legalFiles).map((kind) => [
-      en.legalMeta[kind].title,
-      zh.legalMeta[kind].title,
+      en.meta[kind].title,
+      zh.meta[kind].title,
       kind,
     ]),
   ];

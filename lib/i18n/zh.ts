@@ -1,4 +1,4 @@
-import type { Translations } from "./types";
+import type { Translations } from "./types.ts";
 
 export const zh: Translations = {
   nav: {
@@ -8,14 +8,47 @@ export const zh: Translations = {
     faq: "常见问题",
     download: "下载 App",
   },
-  langSwitch: {
-    en: "EN",
-    zh: "中文",
+  a11y: {
+    skip: "跳到正文",
+    mainNav: "主导航",
+    mobileNav: "导航",
+    openMenu: "打开菜单",
+    closeMenu: "关闭菜单",
+    close: "关闭",
+    darkTheme: "深色模式",
   },
 
   store: {
     appStoreAlt: "在 App Store 下载",
     googlePlayAlt: "下载应用，请到 Google Play",
+  },
+
+  meta: {
+    home: {
+      description: "给命理师和命理爱好者用的排盘工具。一个人，一份命例。",
+    },
+    get: {
+      title: "下载 App",
+      description:
+        "iPhone 与 iPad 在 App Store 下载，Android 手机在 Google Play 下载。",
+    },
+    support: {
+      title: "支持与帮助",
+      description: "需要帮助？联系哈基米道长支持团队，或查看常见问题。",
+    },
+    dataDeletion: {
+      title: "删除你的数据",
+      description: "在 App 里删除命例、卦历和道长记下的要点。",
+    },
+    privacy: {
+      title: "隐私政策",
+      description:
+        "哈基米道长隐私政策：命例和卦历存在哪里，哪些功能要联网，怎么管理和删除。",
+    },
+    terms: {
+      title: "使用条款",
+      description: "哈基米道长使用条款：功能、解读、会员订阅和许可。",
+    },
   },
 
   hero: {
@@ -52,30 +85,28 @@ export const zh: Translations = {
       {
         title: "建一份命例",
         body: "公历、农历、四柱都能录，出生地选到省市。",
+        shotAlt: "命例列表截图，每行右侧直接显示四柱，按五行上色。",
       },
       {
         title: "排出紫微",
         body: "录完就是一张紫微盘。",
+        shotAlt: "紫微斗数三合盘截图，十二宫与三方四正。",
       },
       {
         title: "切到八字",
         body: "同一份生辰，不用再录一遍。",
+        shotAlt: "八字四柱表截图，年月日时四柱逐行排到纳音与神煞。",
       },
       {
         title: "为这个人起一卦",
         body: "问事时选好为谁问，卦和解读都记在这份命例名下。",
+        shotAlt: "起卦结果页截图，这一卦是吉。",
       },
       {
         title: "回看名下每一卦",
         body: "问过的事按时间排好，点开就是当时那一卦。",
+        shotAlt: "命例详情截图，名下每一卦按时间倒序列着。",
       },
-    ],
-    shotAlts: [
-      "命例列表截图，每行右侧直接显示四柱，按五行上色。",
-      "紫微斗数三合盘截图，十二宫与三方四正。",
-      "八字四柱表截图，年月日时四柱逐行排到纳音与神煞。",
-      "起卦结果页截图，这一卦是吉。",
-      "命例详情截图，名下每一卦按时间倒序列着。",
     ],
   },
 
@@ -152,29 +183,10 @@ export const zh: Translations = {
   footer: {
     tagline: "中国民俗术数的学习与研究工具",
     copyright: "© 2026 Hachimi.ai　保留所有权利",
-    links: [
-      {
-        title: "产品",
-        items: [
-          { label: "命例", href: "/zh#case" },
-          { label: "工具", href: "/zh#tools" },
-          { label: "学堂", href: "/zh#academy" },
-          { label: "常见问题", href: "/zh#faq" },
-        ],
-      },
-      {
-        title: "联系",
-        items: [
-          { label: "支持与帮助", href: "/zh/support" },
-          { label: "voice@hachimi.ai", href: "mailto:voice@hachimi.ai" },
-        ],
-      },
-    ],
-    legal: [
-      { label: "隐私政策", href: "/zh/privacy" },
-      { label: "使用条款", href: "/zh/terms" },
-      { label: "删除数据", href: "/zh/data-deletion" },
-    ],
+    productTitle: "产品",
+    contactTitle: "联系",
+    support: "支持与帮助",
+    legal: { privacy: "隐私政策", terms: "使用条款", dataDeletion: "删除数据" },
   },
 
   get: {
@@ -184,21 +196,14 @@ export const zh: Translations = {
     wechatHint: "微信里打不开应用商店，点右上角“…”，选“在浏览器打开”。",
   },
 
-  legalMeta: {
-    privacy: {
-      title: "隐私政策",
-      description:
-        "哈基米道长隐私政策：命例和卦历存在哪里，哪些功能要联网，怎么管理和删除。",
-    },
-    terms: {
-      title: "使用条款",
-      description: "哈基米道长使用条款：功能、解读、会员订阅和许可。",
-    },
+  notFound: {
+    body: "这个网址没有页面。",
+    home: "回哈基米道长首页",
   },
 
+  lastUpdated: "最后更新：",
+
   dataDeletion: {
-    title: "删除你的数据",
-    effectiveDate: "最后更新：2026 年 10 月 2 日",
     intro: "命例、卦历和道长记下的要点存在你的设备上，在 App 里就能删。",
     steps: {
       heading: "在 App 里删除",
@@ -229,8 +234,6 @@ export const zh: Translations = {
   },
 
   support: {
-    title: "支持与帮助",
-    effectiveDate: "最后更新：2026 年 10 月 2 日",
     intro: "用着遇到问题，或者想说点什么，写封邮件来就好。",
     steps: {
       heading: "先看看这几条",

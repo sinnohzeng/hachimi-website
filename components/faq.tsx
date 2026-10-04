@@ -1,81 +1,21 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import type { ReactNode } from "react";
 import { Plus, ArrowRight } from "lucide-react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import { keepPanguSpaces } from "@/components/reveal-headline";
+import { siteConfig } from "@/lib/config";
 import type { Translations } from "@/lib/i18n";
-import { DUR, EASE, STAGGER, reveal } from "@/lib/motion-tokens";
+import { DUR, STAGGER, reveal } from "@/lib/motion-tokens";
 
-function FAQAccordionItem({
-  question,
-  answer,
-  isOpen,
-  onToggle,
-  index,
-}: {
-  question: string;
-  answer: string;
-  isOpen: boolean;
-  onToggle: () => void;
-  index: number;
-}): ReactNode {
-  const answerId = `faq-answer-${index}`;
-  const questionId = `faq-question-${index}`;
-
-  return (
-    <motion.div
-      {...reveal(index * STAGGER.grid, { duration: DUR.base })}
-      className="border-foreground/10 border-b"
-    >
-      <button
-        type="button"
-        id={questionId}
-        onClick={onToggle}
-        aria-expanded={isOpen}
-        aria-controls={answerId}
-        className="group flex w-full cursor-pointer items-center justify-between py-6 text-left"
-      >
-        <span className="text-foreground pr-8 text-base font-medium sm:text-lg">
-          {question}
-        </span>
-        <div className="flex h-6 w-6 shrink-0 items-center justify-center">
-          <motion.div
-            animate={{ rotate: isOpen ? 45 : 0 }}
-            transition={{ duration: DUR.fast, ease: EASE }}
-          >
-            <Plus
-              className="text-foreground/60 group-hover:text-foreground h-5 w-5 transition-colors"
-              aria-hidden="true"
-            />
-          </motion.div>
-        </div>
-      </button>
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            id={answerId}
-            role="region"
-            aria-labelledby={questionId}
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: DUR.fast, ease: EASE }}
-            className="overflow-hidden"
-          >
-            <p className="text-foreground/60 max-w-2xl pb-6 leading-relaxed">
-              {keepPanguSpaces(answer)}
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.div>
-  );
-}
-
+/**
+ * 第六节：常见问题（#faq）。
+ *
+ * 原生 `<details name="faq">` 手风琴：同名的几条互斥，答案常驻静态 HTML，不开 JS、页内查找
+ * 与抓取器都读得到，与 FaqStructuredData 标注的是同一份字。展开动画由 globals.css 的
+ * `.faq-item::details-content` 做，浏览器不支持时直接开合。条目全部来自 i18n。
+ */
 export function FAQ({ t }: { t: Translations }): ReactNode {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
   return (
     <section
       id="faq"
@@ -83,8 +23,6 @@ export function FAQ({ t }: { t: Translations }): ReactNode {
     >
       <div className="relative mx-auto max-w-7xl px-0 xl:px-12">
         <div className="px-8 sm:px-12">
-          {/* 第四版撤掉了标题下那句副标题：它只是在数 FAQ 有几条，条数一改就得
-              跟着改，读者自己也看得出有几条。条目仍全部来自 i18n。 */}
           <div className="mb-12 max-w-2xl">
             <motion.h2
               {...reveal()}
@@ -95,17 +33,29 @@ export function FAQ({ t }: { t: Translations }): ReactNode {
           </div>
 
           <div className="border-foreground/10 border-t">
-            {t.faq.items.map((faq, index) => (
-              <FAQAccordionItem
-                key={faq.question}
-                question={faq.question}
-                answer={faq.answer}
-                isOpen={openIndex === index}
-                onToggle={() =>
-                  setOpenIndex(openIndex === index ? null : index)
-                }
-                index={index}
-              />
+            {t.faq.items.map((item, index) => (
+              <motion.div
+                key={item.question}
+                {...reveal(index * STAGGER.grid, { duration: DUR.base })}
+                className="border-foreground/10 border-b"
+              >
+                <details name="faq" className="faq-item group">
+                  <summary className="flex cursor-pointer list-none items-center justify-between py-6 text-left [&::-webkit-details-marker]:hidden">
+                    <span className="text-foreground pr-8 text-base font-medium sm:text-lg">
+                      {item.question}
+                    </span>
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center">
+                      <Plus
+                        className="text-foreground/60 group-hover:text-foreground h-5 w-5 transition-[color,rotate] duration-200 group-open:rotate-45"
+                        aria-hidden="true"
+                      />
+                    </span>
+                  </summary>
+                  <p className="text-foreground/60 max-w-2xl pb-6 leading-relaxed">
+                    {keepPanguSpaces(item.answer)}
+                  </p>
+                </details>
+              </motion.div>
             ))}
           </div>
 
@@ -115,7 +65,7 @@ export function FAQ({ t }: { t: Translations }): ReactNode {
           >
             <p className="text-foreground/60">{t.faq.stillHaveQuestions}</p>
             <a
-              href="mailto:voice@hachimi.ai"
+              href={`mailto:${siteConfig.email}`}
               className="group text-foreground inline-flex items-center gap-2 font-medium transition-opacity hover:opacity-70"
             >
               {t.faq.contact}

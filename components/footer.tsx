@@ -1,22 +1,46 @@
 "use client";
 
 import { type ReactNode } from "react";
-import type { Translations } from "@/lib/i18n";
 import { CatOrb } from "@/components/cat-orb";
+import { Wordmark } from "@/components/wordmark";
+import { siteConfig } from "@/lib/config";
+import type { Translations } from "@/lib/i18n";
+import type { Locale } from "@/lib/locale";
+import { NAV_ITEMS } from "@/lib/nav";
 
 /**
  * 页脚（spec 004）：左边是道长、字标与一句定位语，右边两栏链接，最底下一行版权与法律链接。
- *
- * 法律链接只在最底下那一行出现：早先“法律”一栏与底行是同一组入口隔着几十像素出现两次，
- * owner 定按单一来源只留一处。统计小字整行撤掉，数字不再进页脚。
+ * 法律链接只在最底下那一行。“产品”一栏就是顶栏的四个锚，联系一栏的邮箱取 siteConfig。
  */
 export function Footer({
   locale,
   t,
 }: {
-  locale: string;
+  locale: Locale;
   t: Translations;
 }): ReactNode {
+  const columns = [
+    {
+      title: t.footer.productTitle,
+      items: NAV_ITEMS.map((item) => ({
+        label: t.nav[item.key],
+        href: `/${locale}${item.hash}`,
+      })),
+    },
+    {
+      title: t.footer.contactTitle,
+      items: [
+        { label: t.footer.support, href: `/${locale}/support` },
+        { label: siteConfig.email, href: `mailto:${siteConfig.email}` },
+      ],
+    },
+  ];
+  const legal = [
+    { label: t.footer.legal.privacy, href: `/${locale}/privacy` },
+    { label: t.footer.legal.terms, href: `/${locale}/terms` },
+    { label: t.footer.legal.dataDeletion, href: `/${locale}/data-deletion` },
+  ];
+
   return (
     <footer className="bg-background text-foreground relative w-full overflow-hidden">
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center px-6 sm:px-8">
@@ -41,17 +65,14 @@ export function Footer({
                 {/* 球径与首屏同一档；球底下不铺卡片，明暗跟站点走（spec 003、004）。 */}
                 <CatOrb surface="footer" className="mb-5 [--orb-d:96px]" />
                 <a href={`/${locale}`} className="flex items-center gap-2">
-                  <span className="text-foreground text-lg font-semibold tracking-tight">
-                    HACHIMI AI
-                  </span>
+                  <Wordmark className="text-foreground" />
                 </a>
-                {/* 下载徽章不再重复出现：紧邻的 #download（FinalCTA）已是主下载位。 */}
                 <p className="text-foreground/50 mt-4 max-w-xs text-sm">
                   {t.footer.tagline}
                 </p>
               </div>
               <div className="grid grid-cols-2 gap-8 lg:gap-16">
-                {t.footer.links.map((section) => (
+                {columns.map((section) => (
                   <div key={section.title}>
                     <h3 className="text-foreground/40 mb-5 text-xs font-medium tracking-wider uppercase">
                       {section.title}
@@ -86,7 +107,7 @@ export function Footer({
               </span>
               <div className="flex flex-wrap gap-6">
                 {/* 触控目标 44px：py-3 撑高命中区，负外边距保持行视觉高度不变（gap-6 恰好容纳上下各 12px 外溢） */}
-                {t.footer.legal.map((link) => (
+                {legal.map((link) => (
                   <a
                     key={link.label}
                     href={link.href}

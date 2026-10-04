@@ -7,6 +7,7 @@ import { ShotScreens, type ShotName } from "@/components/app-shot";
 import { RevealHeadline } from "@/components/reveal-headline";
 import { StoreBadges } from "@/components/store-badges";
 import type { Translations } from "@/lib/i18n";
+import type { Locale } from "@/lib/locale";
 import { useReducedMotion } from "@/lib/motion";
 import { DUR, MARGIN, reveal } from "@/lib/motion-tokens";
 
@@ -24,21 +25,13 @@ const FinalCtaShader = dynamic(
  * 扇形里的五张就是命例走查那五张，纯装饰：alt 留空、整块 aria-hidden，同一批字不
  * 在读屏里念第二遍。减弱动态时扇形直接摆好不飞入，标题整句显示。
  */
-const FAN: readonly ShotName[] = [
-  "case-list",
-  "ziwei-sanhe",
-  "cast-result",
-  "bazi-pillars",
-  "case-casts",
-];
-
-/** 每张相对中心的位移与旋转，中间那张正着放。 */
-const FAN_LAYOUT = [
-  { x: -224, y: 30, r: -13 },
-  { x: -112, y: 8, r: -6 },
-  { x: 0, y: 0, r: 0 },
-  { x: 112, y: 8, r: 6 },
-  { x: 224, y: 30, r: 13 },
+/** 扇形的五张：哪一张、相对中心的位移与旋转，中间那张正着放。 */
+const FAN: readonly { name: ShotName; x: number; y: number; r: number }[] = [
+  { name: "case-list", x: -224, y: 30, r: -13 },
+  { name: "ziwei-sanhe", x: -112, y: 8, r: -6 },
+  { name: "cast-result", x: 0, y: 0, r: 0 },
+  { name: "bazi-pillars", x: 112, y: 8, r: 6 },
+  { name: "case-casts", x: 224, y: 30, r: 13 },
 ];
 
 const FAN_CONTAINER: Variants = {
@@ -60,8 +53,7 @@ function ShotFan({ reducedMotion }: { reducedMotion: boolean }): ReactNode {
       aria-hidden="true"
       className="relative h-32 w-full origin-top scale-50 sm:h-56 sm:scale-100"
     >
-      {FAN.map((name, i) => {
-        const layout = FAN_LAYOUT[i] ?? { x: 0, y: 0, r: 0 };
+      {FAN.map(({ name, ...layout }) => {
         return (
           <motion.div
             key={name}
@@ -107,7 +99,7 @@ export function FinalCTA({
   locale,
   t,
 }: {
-  locale: string;
+  locale: Locale;
   t: Translations;
 }): ReactNode {
   const reducedMotion = useReducedMotion();
@@ -127,7 +119,6 @@ export function FinalCTA({
           className="text-foreground mx-auto mt-12 max-w-md font-serif text-4xl leading-tight font-medium md:text-5xl"
         />
 
-        {/* 第三版撤掉了徽章下面那行补充小字：同样的话 FAQ 已说过一遍。 */}
         <motion.div
           {...reveal(0.2, { duration: DUR.base, margin: MARGIN.early })}
           className="mt-10 flex justify-center"

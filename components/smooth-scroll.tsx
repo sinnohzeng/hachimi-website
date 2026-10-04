@@ -2,70 +2,51 @@
 
 import { useEffect, type ReactNode } from "react";
 import Lenis from "lenis";
-import { features } from "@/lib/config";
+import "lenis/dist/lenis.css";
+import { useReducedMotion } from "@/lib/motion";
 
 /**
- * Lenis configuration options.
- * See: https://github.com/darkroomengineering/lenis#options
+ * Lenis 平滑滚动。减弱动态时不建实例，偏好中途改了就随之销毁或重建。
+ *
+ * 同页锚点（`#case` 或 `/zh#case` 这种落在当前页的）由这里接管，落点让出目标元素的
+ * `scroll-margin-top`，与浏览器原生跳锚（跨页进来、减弱动态）停在同一处。
+ * 开着的模态 `<dialog>` 里的滚轮不归 Lenis，背后页面由 globals.css 锁住。
  */
-const LENIS_OPTIONS = {
-  duration: 1.6,
-  easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-  orientation: "vertical" as const,
-  gestureOrientation: "vertical" as const,
-  smoothWheel: true,
-  wheelMultiplier: 1,
-  touchMultiplier: 2,
-};
-
 export function SmoothScroll({ children }: { children: ReactNode }): ReactNode {
+  const reducedMotion = useReducedMotion();
+
   useEffect(() => {
-    if (!features.smoothScroll) return;
+    if (reducedMotion) return;
 
-    // Check for reduced motion preference
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
+    const lenis = new Lenis({
+      autoRaf: true,
+      duration: 1.6,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      touchMultiplier: 2,
+      prevent: (node) => node.nodeName === "DIALOG",
+    });
 
-    if (prefersReducedMotion) return;
-
-    const lenis = new Lenis(LENIS_OPTIONS);
-
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-
-    // Handle anchor link clicks. Nav/footer links may carry a full path
-    // ("/en#features") so they work from subpages; only same-page hashes are
-    // intercepted for Lenis, cross-page and external links fall through to
-    // normal navigation.
-    function handleAnchorClick(e: MouseEvent) {
-      const target = e.target as HTMLElement;
-      const anchor = target.closest<HTMLAnchorElement>('a[href*="#"]');
-      if (!anchor) return;
-
-      const hash = anchor.hash;
-      if (!hash || hash === "#") return;
+    function handleAnchorClick(event: MouseEvent): void {
+      const anchor = (
+        event.target as Element | null
+      )?.closest<HTMLAnchorElement>('a[href*="#"]');
+      if (!anchor || !anchor.hash || anchor.hash === "#") return;
       if (anchor.origin !== window.location.origin) return;
       if (anchor.pathname !== window.location.pathname) return;
-
-      const element = document.querySelector(hash);
-      if (!element) return;
-
-      e.preventDefault();
-      lenis.scrollTo(element as HTMLElement, { offset: -100 });
+      const target = document.querySelector<HTMLElement>(anchor.hash);
+      if (!target) return;
+      event.preventDefault();
+      lenis.scrollTo(target, {
+        offset: -parseFloat(getComputedStyle(target).scrollMarginTop),
+      });
     }
 
     document.addEventListener("click", handleAnchorClick);
-
     return () => {
       document.removeEventListener("click", handleAnchorClick);
       lenis.destroy();
     };
-  }, []);
+  }, [reducedMotion]);
 
   return <>{children}</>;
 }
