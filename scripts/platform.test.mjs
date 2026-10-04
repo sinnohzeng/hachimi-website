@@ -1,5 +1,6 @@
 /**
- * /get 分流与页面平台脚本的门：四种 UA 打到 functions/get.ts，看去向与响应头；
+ * 分流与页面平台脚本的门：四种 UA 打到 functions/get.ts，看去向与响应头；根路径的
+ * functions/index.ts 按 Accept-Language 分流；
  * 同一组 UA 在沙箱里跑 lib/platform.ts 生成的内联脚本，看 html 上标的平台。
  *
  * 直接 import 源码 .ts，Node 剥类型运行，与线上是同一份判断。
@@ -9,6 +10,7 @@ import { test } from "node:test";
 import vm from "node:vm";
 
 const { onRequest } = await import("../functions/get.ts");
+const { onRequest: onRoot } = await import("../functions/index.ts");
 const { siteConfig } = await import("../lib/config.ts");
 const { localeOf, platformScript, iPadOSStoreScript } =
   await import("../lib/platform.ts");
@@ -75,6 +77,30 @@ test("Accept-Language 按权重取最高的一项", () => {
   assert.equal(localeOf("ja,en;q=0.8"), "en");
   assert.equal(localeOf(""), "en");
   assert.equal(localeOf(null), "en");
+});
+
+function root(acceptLanguage) {
+  const headers = acceptLanguage ? { "Accept-Language": acceptLanguage } : {};
+  return onRoot({ request: new Request("https://hachimi.ai/", { headers }) });
+}
+
+test("根路径按 Accept-Language 分流，与 /get 同一个 localeOf", () => {
+  for (const [acceptLanguage, locale] of [
+    ["zh-CN,zh;q=0.9,en;q=0.8", "zh"],
+    ["en-GB,en;q=0.9", "en"],
+    ["en;q=0.5,zh-TW;q=0.9", "zh"],
+    [undefined, "en"],
+  ]) {
+    const response = root(acceptLanguage);
+    assert.equal(response.status, 302);
+    assert.equal(response.headers.get("Location"), `/${locale}`);
+    assert.equal(
+      response.headers.get("Location"),
+      `/${localeOf(acceptLanguage ?? null)}`
+    );
+    assert.equal(response.headers.get("Cache-Control"), "private, no-store");
+    assert.equal(response.headers.get("Vary"), "Accept-Language");
+  }
 });
 
 /** 在沙箱里跑内联脚本，返回 html 上的 dataset 与 location.replace 的去向。 */

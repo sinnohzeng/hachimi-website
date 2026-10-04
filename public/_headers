@@ -1,0 +1,23 @@
+# Cloudflare Pages 的静态资产响应头。Function（/ 与 /get）的响应头在 functions/ 里写，这里管不到。
+
+/*
+  Strict-Transport-Security: max-age=31536000
+  X-Frame-Options: DENY
+
+# 文件名带内容哈希。
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# 两份都带 ?v= 版本号做缓存键（lib/orb/host.ts），换代即换网址。
+/rive/*
+  Cache-Control: public, max-age=31536000, immutable
+/brand/hachimi-orb.riv
+  Cache-Control: public, max-age=31536000, immutable
+
+# 分享卡静态导出成无扩展名文件，按扩展名定类型会落成 octet-stream。
+/:locale/opengraph-image
+  Content-Type: image/png
+
+# 预览域不进索引。
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
