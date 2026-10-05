@@ -6,8 +6,7 @@ import { ThemeSwitch } from "@/components/theme-switch";
 import { generateStaticParams as genParams, getTranslations } from "@/lib/i18n";
 import { LOCALES, toLocale } from "@/lib/locale";
 import { platformScript } from "@/lib/platform";
-import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
+import { GeistMono, GeistSans } from "@/lib/fonts";
 import type { ReactNode } from "react";
 import "../globals.css";
 

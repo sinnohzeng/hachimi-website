@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { GeistSans } from "geist/font/sans";
+import { GeistSans } from "@/lib/fonts";
 import type { ReactNode } from "react";
 import { siteConfig } from "@/lib/config";
 import { getTranslations } from "@/lib/i18n";
