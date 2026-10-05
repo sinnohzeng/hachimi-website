@@ -91,7 +91,7 @@ export function Hero({
               name="cast-result"
               alt={t.hero.shotAlt}
               eager
-              sizes="(min-width: 1024px) 432px, (min-width: 640px) 320px, 256px"
+              sizes="(min-width: 1024px) 386px, (min-width: 640px) 286px, 229px"
             />
           </div>
         </div>
