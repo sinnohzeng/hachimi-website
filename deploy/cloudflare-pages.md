@@ -114,6 +114,7 @@ done
 # 期望：302，zh 去 /zh、en 去 /en，带 Vary: Accept-Language 与 private, no-store。
 
 curl -sI "$BASE/zh/opengraph-image" | grep -i '^content-type'                         # image/png
+curl -sI "$BASE/screenshots/zh/cast-result-440.avif" | grep -i '^content-type'       # image/avif
 curl -sI "$BASE/en" | grep -iE '^(strict-transport-security|x-frame-options)'         # 两条都在
 curl -sI "$BASE$(curl -s "$BASE/en" | grep -o '/_next/static/[^"]*\.js' | head -1)" | grep -i '^cache-control'   # immutable
 curl -sI https://hachimi-app-website.pages.dev/en | grep -i '^x-robots-tag'           # noindex
