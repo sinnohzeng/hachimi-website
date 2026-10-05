@@ -9,7 +9,7 @@ import {
   FRAME,
   type OrbTheme,
 } from "@/lib/orb/contract";
-import { OrbHost } from "@/lib/orb/host";
+import { OrbHost, afterLoadAndEngage } from "@/lib/orb/host";
 import { PLACEMENTS, type OrbSurface } from "@/lib/orb/placement";
 import { observeVisibility } from "@/lib/visibility";
 
@@ -26,8 +26,9 @@ const STILL_CLASS =
  * 440/222 倍、居中溢出框外，耳与手在框外画；静帧是 canvas 正中那个正方形。框只管排版与命中，
  * canvas 不吃指针，所以溢出的部分挡不住底下的标题与按钮。
  *
- * 运行时进视口才取，离开视口与页面转后台停帧；减弱动态或运行时装不上时留静帧，静帧与动画
- * 是同一份文件出的同一张脸。静帧不响应戳，所以只有运行时装好后才给可点的指针。
+ * 运行时等页面 load 之后、访客动过一次（指针、触摸、滚轮、滚动或按键）且进了视口才取，
+ * 离开视口与页面转后台停帧；减弱动态或运行时装不上时留静帧，静帧与动画是同一份文件出的
+ * 同一张脸。静帧不响应戳，所以只有运行时装好后才给可点的指针。
  *
  * 明暗跟 next-themes 解析出的站点明暗走：静帧靠 `dark:` 变体二选一，运行时装好后换明暗
  * 只改一格输入，文件自己交叉淡入。
@@ -88,21 +89,26 @@ export function CatOrb({
           delete element.dataset.orbReady;
         });
     };
-    const stopObserving = observeVisibility(
-      element,
-      (next) => {
-        active = next;
-        if (active) mount();
-        sync();
-      },
-      "20% 0px"
-    );
+    let stopObserving = (): void => {};
+    const cancelWait = afterLoadAndEngage(() => {
+      if (disposed) return;
+      stopObserving = observeVisibility(
+        element,
+        (next) => {
+          active = next;
+          if (active) mount();
+          sync();
+        },
+        "20% 0px"
+      );
+    });
     const resize = (): void => orb.current?.resize();
     const resizeObserver = new ResizeObserver(resize);
     resizeObserver.observe(surfaceCanvas);
     window.addEventListener("resize", resize);
     return () => {
       disposed = true;
+      cancelWait();
       stopObserving();
       resizeObserver.disconnect();
       window.removeEventListener("resize", resize);
@@ -147,6 +153,8 @@ export function CatOrb({
         alt=""
         width={512}
         height={512}
+        loading="lazy"
+        decoding="async"
         className={`${STILL_CLASS} dark:hidden`}
         style={still}
       />
@@ -155,6 +163,8 @@ export function CatOrb({
         alt=""
         width={512}
         height={512}
+        loading="lazy"
+        decoding="async"
         className={`${STILL_CLASS} hidden dark:block`}
         style={still}
       />
