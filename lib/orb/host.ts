@@ -20,6 +20,55 @@ export const WASM_URL = `/rive/rive.wasm?v=${runtimePackage.version}`;
 export const WASM_FALLBACK_URL = `/rive/rive_fallback.wasm?v=${runtimePackage.version}`;
 export const RIVE_SRC = `/brand/hachimi-orb.riv?v=${manifest.version}`;
 
+/** 算作“人来了”的输入：指针、触摸、滚轮、滚动与按键。 */
+const ENGAGE_EVENTS = [
+  "pointerdown",
+  "pointermove",
+  "touchstart",
+  "wheel",
+  "scroll",
+  "keydown",
+] as const;
+
+/**
+ * 页面 load 之后、且访客动过一次（指针、触摸、滚轮、滚动或按键）才跑。load 之前就动过的，
+ * load 一到就跑。球的运行时、wasm 与 .riv 合计一兆多，装好后每帧还要在主线程上走十几毫秒，
+ * 访客没动之前由静帧顶着，首屏的截图、字体与水合脚本不跟它抢带宽与主线程。返回取消函数。
+ */
+export function afterLoadAndEngage(callback: () => void): () => void {
+  let loaded = document.readyState === "complete";
+  let engaged = false;
+  let done = false;
+  const detach = (): void => {
+    window.removeEventListener("load", onLoad);
+    for (const type of ENGAGE_EVENTS) {
+      window.removeEventListener(type, onEngage, true);
+    }
+  };
+  const maybeRun = (): void => {
+    if (done || !loaded || !engaged) return;
+    done = true;
+    detach();
+    callback();
+  };
+  function onLoad(): void {
+    loaded = true;
+    maybeRun();
+  }
+  function onEngage(): void {
+    engaged = true;
+    maybeRun();
+  }
+  if (!loaded) window.addEventListener("load", onLoad, { once: true });
+  for (const type of ENGAGE_EVENTS) {
+    window.addEventListener(type, onEngage, { capture: true, passive: true });
+  }
+  return () => {
+    done = true;
+    detach();
+  };
+}
+
 export interface OrbHostOptions {
   canvas: HTMLCanvasElement;
   inputs: OrbInputs;
@@ -41,7 +90,7 @@ export class OrbHost {
   ) {}
 
   /**
-   * 按需加载运行时：452 KB 的 JS 与 2.2 MB 的 wasm 都不进首屏 bundle，进视口才取。
+   * 按需加载运行时：452 KB 的 JS 与 2.2 MB 的 wasm 都不进首屏 bundle，页面 load 之后、访客动过一次且进了视口才取。
    * 装好文件、绑好 view model、写完开场输入后才返回；文件里没有可绑定的实例也算失败。
    */
   static async mount(options: OrbHostOptions): Promise<OrbHost> {

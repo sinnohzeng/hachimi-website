@@ -69,7 +69,9 @@ The hero and the close play the same signed Rive file as the apps (`public/brand
 │   ├── manifest.ts            # Web app manifest from lib/config.ts
 │   ├── sitemap.ts
 │   └── globals.css            # Colour tokens, base styles, legal prose, dialogs
-├── assets/og/                 # Share-card font subset (Noto Serif SC, OFL)
+├── assets/
+│   ├── fonts/                 # Geist subsets served by lib/fonts.ts (scripts/build-web-fonts.mjs, OFL)
+│   └── og/                    # Share-card font subset (Noto Serif SC, OFL)
 ├── components/                # Sections, legal page bodies, store badges, Orb, shaders
 ├── content/legal/             # Byte-for-byte mirror of hachimi-ios docs/legal/
 ├── functions/
@@ -81,6 +83,7 @@ The hero and the close play the same signed Rive file as the apps (`public/brand
 │   ├── platform.ts            # User-agent and language rules shared by the Functions and the inline script
 │   ├── i18n/                  # zh / en copy
 │   ├── metadata.ts            # Page metadata built from config.ts and i18n
+│   ├── fonts.ts               # Geist faces and their unicode-range
 │   └── orb/                   # Orb contract, placement table and the Rive host
 ├── scripts/                   # Gates, legal sync, llms and screenshot builders
 └── public/
@@ -89,7 +92,7 @@ The hero and the close play the same signed Rive file as the apps (`public/brand
     ├── badges/                # Official store badges, per locale
     ├── brand/                 # Signed hachimi-orb.riv, its stills, source manifest, logo
     ├── rive/                  # Runtime wasm, copied from node_modules at build time (ignored)
-    ├── screenshots/zh/        # The five app shots (scripts/build-shots.mjs)
+    ├── screenshots/zh/        # The five app shots, AVIF with WebP fallback (scripts/build-shots.mjs)
     ├── robots.txt
     └── llms.txt               # Generated with llms-full.txt by scripts/build-llms.mjs
 ```

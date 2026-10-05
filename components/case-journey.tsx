@@ -78,7 +78,7 @@ function ScreenLayer({
         <ShotScreens
           name={name}
           alt={alt}
-          sizes="(min-width: 1024px) 300px, 60vw"
+          sizes="(min-width: 1024px) 268px, 54vw"
         />
       </motion.div>
     </motion.div>
@@ -160,7 +160,7 @@ function StaticJourney({ t }: { t: Translations }): ReactNode {
             <ShotScreens
               name={JOURNEY_SHOTS[0]}
               alt={t.case.steps[0].shotAlt}
-              sizes="(min-width: 640px) 256px, 224px"
+              sizes="(min-width: 640px) 229px, 200px"
             />
           </div>
         </Device>
