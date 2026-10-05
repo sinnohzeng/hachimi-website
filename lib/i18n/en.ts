@@ -248,12 +248,13 @@ export const en: Translations = {
   },
 
   support: {
-    intro: "Hit a problem, or want to tell us something? Just send an email.",
+    intro:
+      "Hit a problem, or want to tell us something? Write to us in the app under Me → Write to Hachimi, or send an email. If you need a reply, please email.",
     steps: {
       heading: "Check these first",
       items: [
         "Which devices are supported? iPhone needs iOS 26 or later, iPad needs iPadOS 26 or later, and Android phones need Android 16 or later. The app comes in Simplified Chinese, Traditional Chinese and English.",
-        "Reading not coming through? Check your connection and today's limit. The first time, tap Agree and Enable Online Readings. If you chose Not Now before, you can choose again next time you ask.",
+        "Reading not coming through? Check your connection and today's limit. The first time you ask for a reading, the app checks with you; tap Agree and Enable Online Readings. If you chose Not Now before, open that cast's result and tap Ask the master to read this cast to choose again.",
         "Changing the language? Go to Me → Language.",
         "Deleting data? For reading data, go to Me → Privacy and data and tap Delete All Reading Data. Delete cases one by one in your case library.",
         "Got a new phone? iPhone and iPad sync on their own when signed in to the same iCloud. On Android, restore from your system backup, or import a backup file you exported.",
@@ -263,6 +264,13 @@ export const en: Translations = {
       heading: "How to reach us",
       columns: ["Channel", "Address", "Typical response"],
       rows: [
+        {
+          cells: [
+            "In the app",
+            "Me → Write to Hachimi",
+            "No reply, but we read every one",
+          ],
+        },
         { cells: ["Email", "voice@hachimi.ai", "Within 3 business days"] },
       ],
     },

@@ -19,7 +19,7 @@
 
 ## Support
 
-- [Support](https://hachimi.ai/en/support): Hit a problem, or want to tell us something? Just send an email.
+- [Support](https://hachimi.ai/en/support): Hit a problem, or want to tell us something? Write to us in the app under Me → Write to Hachimi, or send an email. If you need a reply, please email.
 - [Delete your data](https://hachimi.ai/en/data-deletion): Your cases, reading history and the notes the Master keeps stay on your device, and you can delete them in the app.
 - [voice@hachimi.ai](mailto:voice@hachimi.ai): Typical response: Within 3 business days
 
