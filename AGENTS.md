@@ -9,7 +9,7 @@
 ## 开工前按序读
 
 1. hachimi-ios 的[工作约定](../hachimi-ios/docs/working-agreement.md)：owner 定的流程、授权与节奏，六仓共用，与本文件冲突时以它为准。
-2. 正在做的那份规约 `specs/<编号>-<名>/`；多文件改动先写 `spec.md` 再写 `plan.md`。
+2. 正在做的那份规约 `specs/<编号>-<名>/`。
 
 一件事该写在哪份文档，见 hachimi-ios 的 [docs/README.md](../hachimi-ios/docs/README.md)。
 
@@ -22,16 +22,18 @@ HTTP API 写在 hachimi-backend `README.md` 的“HTTP API”一节；本站运�
 - 改隐私政策或使用条款：真源在 hachimi-ios `docs/legal/`，本仓不改字，流程见 README 的“Legal pages”一节；删除数据页与支持页的文字在 `lib/i18n/`
 - 部署、缓存与安全头、改路径：[部署 runbook](deploy/cloudflare-pages.md)，两端 App 依赖的网址表在里面
 - 动道长圆球：[品牌资产](design/brand/README.md)、[规约 003](specs/003-orb-on-rive/spec.md)、hachimi-orb 的 `hosts/README.md`
-- 动首屏性能、字体或截图：[规约 009](specs/009-mobile-perf/spec.md)、[性能教训](docs/lessons/web-performance.md)
-- 动 Next 或 Pages 配置：[Cloudflare Pages 与 Next 的坑](docs/lessons/cloudflare-pages-and-next.md)
-- 动读兄弟仓的门：[跨仓门的坑](docs/lessons/cross-repo-gates.md)
+- 动首屏、字体、截图或动效：[规约 009](specs/009-mobile-perf/spec.md)、[性能规矩](docs/performance.md)
+- 核首屏、改界面：核首屏用设备模拟跑手机与桌面两档宽度，截图对照 hachimi-ios [视觉语言](../hachimi-ios/docs/visual-language.md#怎么核)的三层 rubric。
+- 动 Next 或 Pages 配置：[部署 runbook](deploy/cloudflare-pages.md)
 - 写新组件：`frontend-component-priority` 技能的取件顺序；`components.json` 只接了 React Bits 的三个 registry
 
 ## 命令
 
 脚本表与 pre-push 钩子的开法在 [README.md](README.md) 的“Scripts”与“Quality gate”两节。`npm run check` 是唯一的门，推送前跑全，不拿分项代替。
 
+工作树里的 `node_modules` 用 `cp -cR` 或 `npm ci` 建独立目录，不软链到主检出：Turbopack 会报链接越出文件系统根。
+
 ## 边界
 
 - 商店链接、站点信息与支持页、删除数据页的日期只写在 `lib/config.ts`，隐私与条款的日期从法律件 Markdown 读；语言表只写在 `lib/locale.ts`，UA 判断只写在 `lib/platform.ts`。
-- 新坑写进 `docs/lessons/` 对应那一份。
+- 经验落地：能机器判的写成门或测试，档头一句为什么；判不了的写成一句做法加一句判据，写进触发表点名的那份文档；症状与排查经过只写在修复提交的说明里。
