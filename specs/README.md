@@ -5,7 +5,7 @@
 官网推 `main` 即上线，规约在落地上线的那一批提交里整个目录退场：
 
 1. 仍然成立的现状写进 README、`docs/` 或 `design/`，没做完的事挪进 hachimi-ios 的[路线图](../../hachimi-ios/docs/roadmap.md)。
-2. 入链改成永久链接 `https://github.com/sinnohzeng/hachimi-website/blob/<标签或提交>/<路径>`：标签 `archive-docs-20261006` 里有那份文件就用标签，没有就用删除之前的那个提交号。
+2. 入链改成删除之前那个提交的永久链接 `https://github.com/sinnohzeng/hachimi-website/blob/<提交号>/<路径>`。
 3. `git rm` 整个目录；规约引的调研没有别处再引，同批删。
 
 规矩与理由在 hachimi-ios 的 ADR-0070。

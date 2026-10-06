@@ -36,5 +36,5 @@ HTTP API 写在 hachimi-backend `README.md` 的“HTTP API”一节；本站运�
 ## 边界
 
 - 商店链接、站点信息与支持页、删除数据页的日期只写在 `lib/config.ts`，隐私与条款的日期从法律件 Markdown 读；语言表只写在 `lib/locale.ts`，UA 判断只写在 `lib/platform.ts`。
-- 评审台账、验收记录与截图不入仓，结论写进提交说明；入库的 Markdown 按仓根 `doc-budget.json` 归类限额，由 `npm run check:docs` 守。
-- 经验落地：能机器判的写成门或测试，档头一句为什么；判不了的写成一句做法加一句判据，写进触发表点名的那份文档；症状与排查经过只写在修复提交的说明里。
+- 文档预算门是 `npm run check:docs`，表是仓根 `doc-budget.json`，判据在 `scripts/doc-budget-gate.py` 档头。
+- 经验落地：照工作约定第 8 条，判不了的写进触发表点名的那份文档。
