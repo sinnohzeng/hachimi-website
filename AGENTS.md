@@ -9,7 +9,7 @@
 ## 开工前按序读
 
 1. hachimi-ios 的[工作约定](../hachimi-ios/docs/working-agreement.md)：owner 定的流程、授权与节奏，六仓共用，与本文件冲突时以它为准。
-2. 正在做的那份规约 `specs/<编号>-<名>/`；多文件改动先写 `spec.md` 再写 `plan.md`。
+2. 正在做的那份规约 `specs/<编号>-<名>/`。
 
 一件事该写在哪份文档，见 hachimi-ios 的 [docs/README.md](../hachimi-ios/docs/README.md)。
 

@@ -74,6 +74,7 @@ The hero and the close play the same signed Rive file as the apps (`public/brand
 │   └── og/                    # Share-card font subset (Noto Serif SC, OFL)
 ├── components/                # Sections, legal page bodies, store badges, Orb, shaders
 ├── content/legal/             # Byte-for-byte mirror of hachimi-ios docs/legal/
+├── docs/                      # Performance rules (performance.md) and the research the specs cite
 ├── functions/
 │   ├── index.ts               # Pages Function: / by Accept-Language
 │   └── get.ts                 # Pages Function: /get by platform
