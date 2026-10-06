@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "source": "hachimi-ios/specs/062-orb-ip-motion",
+  "source": "https://github.com/sinnohzeng/hachimi-ios/tree/v2.1.0/specs/062-orb-ip-motion",
   "appearance": "native cat Orb / black-silver / look upper right",
   "inputs": {
     "hachimi-ios/design/brand/orb-icon-master-1024.png": "fc7f9ca002d16e5c8c9be5abe85d6be2f1d0a20965bb09045029b0f93c40ee32",
