@@ -3,10 +3,12 @@
  * - 404 是一份完整文档，只带 noindex，不带 canonical；
  * - 常见问题的答案与四件工具的展开文字进了静态 HTML，不开 JS 也读得到；
  * - 分享卡是 PNG，_headers 给它的路径写了 image/png；
+ * - 每个页面恰好一枚 og:image 与一枚 twitter:image，指向本语言的卡图：子页一声明 openGraph
+ *   就会盖掉按文件约定挂的图，漏写的页面分享出去没有卡；
  * - 浏览器地址栏的 themeColor 与 globals.css 的 --background 是同一对颜色。
  */
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { readdir, readFile } from "node:fs/promises";
 import test from "node:test";
 
 const { siteConfig } = await import("../lib/config.ts");
@@ -59,6 +61,27 @@ for (const [locale, t] of [
     }
     for (const card of t.tools.cards) {
       assert.ok(text.includes(squash(card.detail)), card.name);
+    }
+  });
+
+  test(`${locale} 每个页面恰好一枚 og:image 与一枚 twitter:image，指向本语言卡图`, async () => {
+    const card = `${siteConfig.url}/${locale}/opengraph-image`;
+    const pages = [
+      `out/${locale}.html`,
+      ...(await readdir(new URL(`../out/${locale}/`, import.meta.url)))
+        .filter((name) => name.endsWith(".html"))
+        .map((name) => `out/${locale}/${name}`),
+    ];
+    assert.ok(pages.length > 1, `out/${locale}/ 下没有子页`);
+    for (const page of pages) {
+      const html = await read(page);
+      for (const tag of [
+        /<meta property="og:image" content="([^"]*)"/g,
+        /<meta name="twitter:image" content="([^"]*)"/g,
+      ]) {
+        const found = [...html.matchAll(tag)].map((match) => match[1]);
+        assert.deepEqual(found, [card], `${page} ${tag.source}`);
+      }
     }
   });
 
