@@ -1,6 +1,6 @@
 # spec 001：官网第三版，一句话首屏与七节结构
 
-> 状态：被 005 取代｜创建：2026-09-14｜思路：[docs/plan/2026-09-14-site-v3-思路.md](../../docs/plan/2026-09-14-site-v3-思路.md)｜依据：[调研](../../docs/research/2026-09-14-landing-page-practice.md)
+> 状态：被 005 取代｜创建：2026-09-14｜思路：[docs/plan/2026-09-14-site-v3-思路.md](https://github.com/sinnohzeng/hachimi-website/blob/archive-docs-20261006/docs/plan/2026-09-14-site-v3-%E6%80%9D%E8%B7%AF.md)｜依据：[调研](../../docs/research/2026-09-14-landing-page-practice.md)
 
 ## 造什么
 
@@ -12,7 +12,7 @@ owner 三条口径：首屏只留一句；整站字太多要大刀阔斧重写�
 
 ## 七节
 
-按 [思路](../../docs/plan/2026-09-14-site-v3-思路.md) 第四节的表逐节落。组件层面：
+按 [思路](https://github.com/sinnohzeng/hachimi-website/blob/archive-docs-20261006/docs/plan/2026-09-14-site-v3-%E6%80%9D%E8%B7%AF.md) 第四节的表逐节落。组件层面：
 
 | 节           | 组件                        | 处置                                                                                         |
 | ------------ | --------------------------- | -------------------------------------------------------------------------------------------- |
