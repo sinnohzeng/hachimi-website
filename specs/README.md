@@ -1,15 +1,15 @@
 # specs：官网功能规约
 
-每份规约一个目录：`spec.md` 写造什么，落地后冻结；`plan.md` 写怎么造，只在进行中时有。规约引的调研在 `docs/research/`。先 spec 后 plan 的流程见 hachimi-ios [宪法](../../hachimi-ios/docs/constitution.md)第五节。
+规约目录只放在途的。一份规约一个目录，`spec.md` 写造什么，`plan.md` 写怎么造；先 spec 后 plan 的流程见 hachimi-ios [宪法](../../hachimi-ios/docs/constitution.md)第五节。
 
-| 编号                               | 功能                                 | 状态        |
-| ---------------------------------- | ------------------------------------ | ----------- |
-| [001](001-site-v3-concise/)        | 官网第三版：一句话首屏与七节结构     | 被 005 取代 |
-| [002](002-orb-ip-motion/)          | 猫 Orb 品牌与动作（TypeScript 移植） | 被 003 取代 |
-| [003](003-orb-on-rive/)            | 官网的道长换成 Rive 同源文件         | 已落地      |
-| [004](004-positioning-and-footer/) | 定位口径、页脚精简与首屏球径         | 已落地      |
-| [005](005-site-v4-tools/)          | 官网第四版：按术数学习与研究工具重排 | 已落地      |
-| [006](006-one-page/)               | 官网改单页，文案对命理师与爱好者并列 | 已落地      |
-| [007](007-copy-system/)            | 官网文案接上三层真源                 | 已落地      |
-| [008](008-feedback-first/)         | 收费延后与“写给道长”在官网上的落点   | 进行中      |
-| [009](009-mobile-perf/)            | 手机端首屏性能                       | 已落地      |
+官网推 `main` 即上线，规约在落地上线的那一批提交里整个目录退场：
+
+1. 仍然成立的现状写进 README、`docs/` 或 `design/`，没做完的事挪进 hachimi-ios 的[路线图](../../hachimi-ios/docs/roadmap.md)。
+2. 入链改成永久链接 `https://github.com/sinnohzeng/hachimi-website/blob/<标签或提交>/<路径>`：标签 `archive-docs-20261006` 里有那份文件就用标签，没有就用删除之前的那个提交号。
+3. `git rm` 整个目录；规约引的调研没有别处再引，同批删。
+
+规矩与理由在 hachimi-ios 的 ADR-0070。
+
+| 编号                       | 功能                               | 状态   |
+| -------------------------- | ---------------------------------- | ------ |
+| [008](008-feedback-first/) | 收费延后与“写给道长”在官网上的落点 | 进行中 |
