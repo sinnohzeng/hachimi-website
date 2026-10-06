@@ -16,6 +16,8 @@
     "check:mentions": "node scripts/check-copy-mentions.mjs",
     "check:canon": "python3 ../hachimi-ios/scripts/copy-canon-gate.py --only web --require-sibling --web .",
     "check:copy": "node scripts/count-copy.mjs",
+    "check:docs": "python3 scripts/doc-budget-gate.py",
+    "test:docs": "python3 -m unittest discover -s scripts/tests -p 'test_*.py'",
     "pretest:orb": "node scripts/sync-rive-wasm.mjs",
     "test:orb": "node --test scripts/orb-asset.test.mjs",
     "test:platform": "node --test scripts/platform.test.mjs",
@@ -27,7 +29,7 @@
     "og:font": "node scripts/build-og-font.mjs",
     "og:check": "node scripts/build-og-font.mjs --check",
     "test:site": "node --test scripts/site.test.mjs",
-    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test:orb && npm run test:platform && npm run legal:check && npm run llms:check && npm run test:dates && npm run check:mentions && npm run check:copy && npm run og:check && npm run check:canon && npm run build && npm run test:site"
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm run test:orb && npm run test:platform && npm run legal:check && npm run llms:check && npm run test:dates && npm run check:mentions && npm run check:copy && npm run check:docs && npm run test:docs && npm run og:check && npm run check:canon && npm run build && npm run test:site"
   },
   "dependencies": {
     "@rive-app/webgl2": "2.42.2",

@@ -6,3 +6,6 @@ package-lock.json
 
 # 法律件镜像：与 hachimi-ios docs/legal/ 逐字节一致，由 scripts/legal-sync.mjs 比对，格式化会改坏镜像。
 content/legal/
+
+# 文档预算表：scripts/doc-budget-gate.py --tighten 按 json.dumps 的缩进写回，格式化会把它改成另一种排法。
+doc-budget.json

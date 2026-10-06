@@ -31,6 +31,8 @@ npm run dev      # then open http://localhost:3000/zh or /en
 | `npm run test:dates`     | Fail if the zh and en copies of a legal document carry different “last updated” dates                                                   |
 | `npm run check:mentions` | No reference or competitor names in site copy; the word list is read from hachimi-ios `scripts/no-reference-mentions.py`                |
 | `npm run check:copy`     | Word-count caps per section                                                                                                             |
+| `npm run check:docs`     | Doc budget: each tracked Markdown file sits in a `doc-budget.json` category, under its caps                                             |
+| `npm run test:docs`      | Unit tests of the doc budget gate and this repo's table, bad samples included                                                           |
 | `npm run og:font`        | Fetch the share-card font subset for the current headlines into `assets/og/` (`og:check` verifies it offline)                           |
 | `npm run check:canon`    | Shared lines from hachimi-ios `docs/copy-canon.md` appear word for word in `lib/i18n/`                                                  |
 | `npm run test:site`      | After a build: the 404 document, FAQ answers and tool details in static HTML, PNG share cards, theme colour                             |

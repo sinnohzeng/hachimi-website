@@ -1,0 +1,67 @@
+{
+  "categories": [
+    {
+      "name": "入口与仓根说明",
+      "globs": [
+        "AGENTS.md",
+        "CLAUDE.md",
+        "README.md"
+      ],
+      "total": 13000
+    },
+    {
+      "name": "法律件镜像",
+      "globs": [
+        "content/legal/*.md"
+      ],
+      "total": 8000
+    },
+    {
+      "name": "常驻文档",
+      "globs": [
+        "docs/*.md"
+      ],
+      "total": 1000
+    },
+    {
+      "name": "部署",
+      "globs": [
+        "deploy/*.md"
+      ],
+      "total": 9000
+    },
+    {
+      "name": "品牌设计",
+      "globs": [
+        "design/brand/*.md"
+      ],
+      "total": 3000
+    },
+    {
+      "name": "规约索引",
+      "globs": [
+        "specs/README.md"
+      ],
+      "total": 1000
+    },
+    {
+      "name": "编号规约",
+      "globs": [
+        "specs/[0-9][0-9][0-9]-*/spec.md",
+        "specs/[0-9][0-9][0-9]-*/plan.md"
+      ],
+      "total": 25000,
+      "headroom": 23000,
+      "files": [
+        {
+          "glob": "specs/*/spec.md",
+          "max": 8000
+        },
+        {
+          "glob": "specs/*/plan.md",
+          "max": 15000
+        }
+      ]
+    }
+  ]
+}
