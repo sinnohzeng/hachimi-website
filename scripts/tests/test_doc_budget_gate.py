@@ -3,6 +3,7 @@ import importlib.util
 import json
 from pathlib import Path
 import sys
+import tempfile
 import unittest
 
 SOURCE = Path(__file__).resolve().parents[1] / "doc-budget-gate.py"
@@ -156,6 +157,20 @@ class TightenTests(unittest.TestCase):
         self.assertEqual(gate.indent_of(text), 4)
         self.assertEqual(gate.dump(json.loads(text), gate.indent_of(text)), text)
         self.assertEqual(list(json.loads(text)["categories"][1]), ["name", "globs", "total", "files"])
+
+
+class CopyTests(unittest.TestCase):
+    def test_a_sibling_copy_that_drifted_is_red_and_absent_ones_are_skipped(self):
+        with tempfile.TemporaryDirectory() as folder:
+            parent = Path(folder)
+            own = parent / "hachimi-ios" / "scripts" / "doc-budget-gate.py"
+            same = parent / "hachimi-android" / "scripts" / "doc-budget-gate.py"
+            drifted = parent / "hachimi-orb" / "tools" / "doc-budget-gate.py"
+            for path, body in ((own, "a"), (same, "a"), (drifted, "b")):
+                path.parent.mkdir(parents=True)
+                path.write_text(body, encoding="utf-8")
+            self.assertEqual(gate.copy_problems(own, parent),
+                             ["hachimi-orb/tools/doc-budget-gate.py：与本份字节不同，七份要同批改"])
 
 
 if __name__ == "__main__":

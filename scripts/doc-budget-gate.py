@@ -5,8 +5,10 @@
 没有门的计划、调研、编号规约与 ADR 接着长。每类给一个总量，哪一类涨了当场红；归不进任何一类的
 文件也红，于是这张表同时是目录白名单，新起一个按日期堆的目录进不了库。
 
-**六个仓原样共用这一份**：只用标准库，不 import 仓内别的模块，仓根取 `git rev-parse --show-toplevel`，
-表是仓根的 `doc-budget.json`，各仓一张。改判据就改这一份，再原样拷到其余五个仓。
+**七份逐字节相同**：`COPIES` 列的七处各放一份，只用标准库，不 import 仓内别的模块，仓根取
+`git rev-parse --show-toplevel`，表是仓根的 `doc-budget.json`，各仓一张。同级各仓在父目录里时，
+跑这道门就逐字节比对它们的副本，有一份不同即红：改判据要七份同批改，只改一份会让其余各仓悄悄跑旧判据。
+单测 `tests/test_doc_budget_gate.py` 同样七份相同。
 
 **与各仓单份篇幅门的分工**：入口与常驻文档里点名的那几份，单份上限写在各仓自己的篇幅门里
 （hachimi-ios 是 `scripts/doc_rules.py`），这里不重复。这张表只管两件事：每一类的合计，与同类很多份的单份上限
@@ -20,6 +22,7 @@
 - 一份超过它那条 `files` 规则的 `max`。
 - 一类一份都没归进来：glob 写错了或目录删了，这一类在空转。
 - 一份里的一节超过 `sections` 那一条的 `cap`。
+- 父目录下同级仓里的副本与本份字节不同。缺席的仓不比。
 
 表的写法：
 
@@ -51,6 +54,9 @@ from collections.abc import Callable
 from pathlib import Path
 
 TABLE = "doc-budget.json"
+# 七份副本的位置，相对于各仓共同的父目录。
+COPIES = ("hachimi-ios/scripts", "hachimi-android/scripts", "hachimi-backend/scripts", "hachimi-engine/scripts",
+          "hachimi-website/scripts", "hachimi-ziwei-web/scripts", "hachimi-orb/tools")
 
 
 def repo_root() -> Path:
@@ -204,6 +210,17 @@ def dump(table: dict, indent: int) -> str:
     return json.dumps(table, ensure_ascii=False, indent=indent) + "\n"
 
 
+def copy_problems(own: Path, parent: Path) -> list[str]:
+    """父目录下同级各仓的副本逐字节比对本份，缺席的仓不比。"""
+    mine = own.read_bytes()
+    found = []
+    for folder in COPIES:
+        other = parent / folder / own.name
+        if other.is_file() and other.resolve() != own.resolve() and other.read_bytes() != mine:
+            found.append(f"{folder}/{own.name}：与本份字节不同，七份要同批改")
+    return found
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="文档预算门（hachimi-ios ADR-0070 决策 6）")
     parser.add_argument("--tighten", action="store_true", help="各类 total 按实测下调，只降不升")
@@ -228,7 +245,7 @@ def main() -> int:
         path = root / relative
         return path.read_text(encoding="utf-8") if path.is_file() else None
 
-    found = problems(table, sizes) + section_problems(table, read)
+    found = problems(table, sizes) + section_problems(table, read) + copy_problems(Path(__file__), root.parent)
     if not found:
         print(f"✅ 文档预算门通过：{len(sizes)} 份 Markdown 归入 {len(table['categories'])} 类，合计、单份与节都在上限内")
         return 0
