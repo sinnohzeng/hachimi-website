@@ -1,7 +1,7 @@
 # Spec 008：收费延后与“写给道长”在官网上的落点
 
 > 造什么与为什么，不碰技术实现。
-> 状态：进行中｜创建：2026-10-03｜上游：hachimi-ios ADR-0061、spec 114、spec 115｜上一版：[007](../007-copy-system/spec.md)
+> 状态：进行中｜创建：2026-10-03｜上游：hachimi-ios ADR-0061、spec 114、spec 115｜上一版：[007](https://github.com/sinnohzeng/hachimi-website/blob/archive-docs-20261006/specs/007-copy-system/spec.md)
 
 ## 为什么
 

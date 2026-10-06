@@ -2,7 +2,8 @@
 /**
  * 首页文案字数门。挂在 npm run check 里，超限非零退出。
  *
- * 上限只写在下面的 LIMIT 与 EN_LIMIT 里，口径出处是 specs/005-site-v4-tools/spec.md 的
+ * 上限只写在下面的 LIMIT 与 EN_LIMIT 里，口径出处是
+ * https://github.com/sinnohzeng/hachimi-website/blob/archive-docs-20261006/specs/005-site-v4-tools/spec.md 的
  * 验收 5 与 spec 007：首屏口号与过桥句各一档，定位、卡面、命例走查三节各一个总数，卡片
  * 展开与 FAQ 答案逐条计。英文上限取简体上限的 0.6 倍向上取整（scripts/lib/count-units.mjs），
  * EN_LIMIT 里的节单独定。

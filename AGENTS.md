@@ -18,11 +18,11 @@
 HTTP API 写在 hachimi-backend `README.md` 的“HTTP API”一节；本站运行时只有 `functions/` 下按语言与平台分流的两个 Pages Function。
 
 - 写规约、查规约状态：[specs/README.md](specs/README.md)
-- 改文案：[规约 007](specs/007-copy-system/spec.md)；hachimi-ios 的 `docs/product-thesis.md`、`docs/copy-principles.md`、`docs/copy-canon.md`，共用句先改定稿句表再跑 `npm run check:canon`
+- 改文案：[规约 007](https://github.com/sinnohzeng/hachimi-website/blob/archive-docs-20261006/specs/007-copy-system/spec.md)；hachimi-ios 的 `docs/product-thesis.md`、`docs/copy-principles.md`、`docs/copy-canon.md`，共用句先改定稿句表再跑 `npm run check:canon`
 - 改隐私政策或使用条款：真源在 hachimi-ios `docs/legal/`，本仓不改字，流程见 README 的“Legal pages”一节；删除数据页与支持页的文字在 `lib/i18n/`
 - 部署、缓存与安全头、改路径：[部署 runbook](deploy/cloudflare-pages.md)，两端 App 依赖的网址表在里面
-- 动道长圆球：[品牌资产](design/brand/README.md)、[规约 003](specs/003-orb-on-rive/spec.md)、hachimi-orb 的 `hosts/README.md`
-- 动首屏、字体、截图或动效：[规约 009](specs/009-mobile-perf/spec.md)、[性能规矩](docs/performance.md)
+- 动道长圆球：[品牌资产](design/brand/README.md)、[规约 003](https://github.com/sinnohzeng/hachimi-website/blob/archive-docs-20261006/specs/003-orb-on-rive/spec.md)、hachimi-orb 的 `hosts/README.md`
+- 动首屏、字体、截图或动效：[规约 009](https://github.com/sinnohzeng/hachimi-website/blob/archive-docs-20261006/specs/009-mobile-perf/spec.md)、[性能规矩](docs/performance.md)
 - 核首屏、改界面：核首屏用设备模拟跑手机与桌面两档宽度，截图对照 hachimi-ios [视觉语言](../hachimi-ios/docs/visual-language.md#怎么核)的三层 rubric。
 - 动 Next 或 Pages 配置：[部署 runbook](deploy/cloudflare-pages.md)
 - 写新组件：`frontend-component-priority` 技能的取件顺序；`components.json` 只接了 React Bits 的三个 registry

@@ -84,7 +84,7 @@ export type Translations = {
     cards: {
       name: string;
       line: string;
-      /** 展开后的机制事实，出处见 docs/research 的 App 清单。 */
+      /** 展开后的机制事实，出处见 https://github.com/sinnohzeng/hachimi-website/blob/archive-docs-20261006/docs/research/2026-09-22-site-v4-research.md 第三节 App 能力清单。 */
       detail: string;
     }[];
   };

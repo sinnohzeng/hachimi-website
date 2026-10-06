@@ -6,7 +6,8 @@
  * 长度一致，也不会因为换个写法把预算算歪。
  *
  * 英文按词算，空白切分。上限取简体字数的 0.6 倍，出处是
- * specs/001-site-v3-concise/spec.md 的字数一节。
+ * https://github.com/sinnohzeng/hachimi-website/blob/archive-docs-20261006/specs/001-site-v3-concise/spec.md
+ * 的字数一节。
  */
 
 /**

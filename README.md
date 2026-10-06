@@ -2,7 +2,7 @@
 
 The bilingual (zh / en) one-page site for **Hachimi.ai (哈基米道长)**, a charting app for fate readers and enthusiasts: Zi Wei, Ba Zi and Mei Hua Yi Shu for many people, with each person's casts tracked under their name. Next.js App Router, statically exported (`output: "export"`) and served by **Cloudflare Pages** (project `hachimi-app-website`, domain `hachimi.ai`); the deploy runbook is [`deploy/cloudflare-pages.md`](deploy/cloudflare-pages.md).
 
-The home page has seven sections: hero, who it's for (`#what`), a case walkthrough (`#case`), four tools (`#tools`), the academy marquee (`#academy`), FAQ (`#faq`) and the download close (`#download`). Specs: [`005`](specs/005-site-v4-tools/spec.md) for the sections, [`006`](specs/006-one-page/spec.md) for the one-page layout and audience, [`007`](specs/007-copy-system/spec.md) for the copy. The copy sources are hachimi-ios `docs/product-thesis.md`, `docs/copy-principles.md` and `docs/copy-canon.md`. The other pages under `app/[locale]/` are the ones the apps and store listings link to: `privacy`, `terms`, `data-deletion`, `support` and `get`.
+The home page has seven sections: hero, who it's for (`#what`), a case walkthrough (`#case`), four tools (`#tools`), the academy marquee (`#academy`), FAQ (`#faq`) and the download close (`#download`). Specs: [`005`](https://github.com/sinnohzeng/hachimi-website/blob/archive-docs-20261006/specs/005-site-v4-tools/spec.md) for the sections, [`006`](https://github.com/sinnohzeng/hachimi-website/blob/archive-docs-20261006/specs/006-one-page/spec.md) for the one-page layout and audience, [`007`](https://github.com/sinnohzeng/hachimi-website/blob/archive-docs-20261006/specs/007-copy-system/spec.md) for the copy. The copy sources are hachimi-ios `docs/product-thesis.md`, `docs/copy-principles.md` and `docs/copy-canon.md`. The other pages under `app/[locale]/` are the ones the apps and store listings link to: `privacy`, `terms`, `data-deletion`, `support` and `get`.
 
 ## Getting started
 
@@ -50,7 +50,7 @@ The privacy policy and terms are owned by hachimi-ios (`docs/legal/`). `content/
 
 ## Orb
 
-The hero and the close play the same signed Rive file as the apps (`public/brand/hachimi-orb.riv`, from the hachimi-orb repo) through `@rive-app/webgl2`, with the wasm self-hosted under `/rive/`. The host only writes the contract inputs, reads the outputs and plays; every motion lives in the file. See [brand assets](design/brand/README.md) and [spec 003](specs/003-orb-on-rive/spec.md).
+The hero and the close play the same signed Rive file as the apps (`public/brand/hachimi-orb.riv`, from the hachimi-orb repo) through `@rive-app/webgl2`, with the wasm self-hosted under `/rive/`. The host only writes the contract inputs, reads the outputs and plays; every motion lives in the file. See [brand assets](design/brand/README.md) and [spec 003](https://github.com/sinnohzeng/hachimi-website/blob/archive-docs-20261006/specs/003-orb-on-rive/spec.md).
 
 ## Icons
 
@@ -74,7 +74,7 @@ The hero and the close play the same signed Rive file as the apps (`public/brand
 │   └── og/                    # Share-card font subset (Noto Serif SC, OFL)
 ├── components/                # Sections, legal page bodies, store badges, Orb, shaders
 ├── content/legal/             # Byte-for-byte mirror of hachimi-ios docs/legal/
-├── docs/                      # Performance rules (performance.md) and the research the specs cite
+├── docs/                      # Performance rules (performance.md)
 ├── functions/
 │   ├── index.ts               # Pages Function: / by Accept-Language
 │   └── get.ts                 # Pages Function: /get by platform

@@ -1,6 +1,6 @@
 # 首屏性能
 
-> 动首屏、字体、截图或动效时读。指标与验收见[规约 009](../specs/009-mobile-perf/spec.md)。
+> 动首屏、字体、截图或动效时读。指标：本地静态构建、Lighthouse 手机档三次取中位数，`/zh` 性能不低于 90，CLS 不超过 0.1；来由见[规约 009](https://github.com/sinnohzeng/hachimi-website/blob/archive-docs-20261006/specs/009-mobile-perf/spec.md)。
 
 - LCP 按首帧前的总字节算：减首帧前的字节，调优先级没用；量时把 `networkEndTime` 早于 LCP 的请求加总，看哪几项占大头。
 - 首屏加任何常驻 rAF 的东西，先在 Lighthouse trace 里看单帧时长；道长运行时等 load 与访客首次输入之后再装，写法在 `lib/orb/host.ts` 的 `afterLoadAndEngage`。
