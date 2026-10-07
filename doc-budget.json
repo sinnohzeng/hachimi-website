@@ -38,15 +38,9 @@
       "total": 3000
     },
     {
-      "name": "规约索引",
+      "name": "规约索引与编号规约",
       "globs": [
-        "specs/README.md"
-      ],
-      "total": 1000
-    },
-    {
-      "name": "编号规约",
-      "globs": [
+        "specs/README.md",
         "specs/[0-9][0-9][0-9]-*/spec.md",
         "specs/[0-9][0-9][0-9]-*/plan.md"
       ],

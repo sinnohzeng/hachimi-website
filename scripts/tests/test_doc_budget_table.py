@@ -32,12 +32,12 @@ class TableTests(unittest.TestCase):
         members, orphans = gate.classify(["specs/010-new-page/spec.md", "specs/010-new-page/plan.md"],
                                          TABLE["categories"])
         self.assertEqual(orphans, [])
-        self.assertEqual(members["编号规约"], ["specs/010-new-page/spec.md", "specs/010-new-page/plan.md"])
+        self.assertEqual(members["规约索引与编号规约"], ["specs/010-new-page/spec.md", "specs/010-new-page/plan.md"])
 
     def test_an_overlong_spec_is_red(self):
         sizes = {path: 1 for path in gate.markdown_files(ROOT)}
         sizes["specs/010-new-page/spec.md"] = 8_001
-        self.assertIn("specs/010-new-page/spec.md：8,001 字，“编号规约”单份上限 8,000", gate.problems(TABLE, sizes))
+        self.assertIn("specs/010-new-page/spec.md：8,001 字，“规约索引与编号规约”单份上限 8,000", gate.problems(TABLE, sizes))
 
 
 if __name__ == "__main__":
