@@ -44,7 +44,7 @@ export const baseMetadata: Metadata = {
  * og:locale、本页的标题与描述，以及本语言的分享卡。卡图由 app/[locale]/opengraph-image.tsx
  * 生成；子页一声明 openGraph 就会盖掉上层按文件约定挂的图，所以这里每页都写明。
  *
- * `path` 是去掉语言段的路径，首页为空串，其余如 "/privacy"。
+ * `path` 是去掉语言段的路径，首页为空串，其余如 `"/privacy"`。
  */
 export function localizedPageMetadata({
   locale,

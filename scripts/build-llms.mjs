@@ -40,7 +40,7 @@ const OUTPUTS = {
 const componentFiles = await readdir(path.join(ROOT, "components"), {
   recursive: true,
 });
-// 去掉注释再找 id：有几处注释里写着 id="download" 这样的字样，不能算数。
+// 去掉注释再找 id：有几处注释里写着 `id="download"` 这样的字样，不能算数。
 const componentSource = (
   await Promise.all(
     componentFiles

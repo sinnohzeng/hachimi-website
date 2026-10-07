@@ -1,5 +1,5 @@
 // 全站动画 tokens：ease、时长档、位移档、交错与视口边距的唯一来源，
-// 以及入场动画的共享 props 帮手。纯常量与纯函数（无 "use client"），由各
+// 以及入场动画的共享 props 帮手。纯常量与纯函数（无 `"use client"`），由各
 // client 组件导入后直接展开到 motion.* 元素上。
 //
 // 所有入场帮手都携带 data-animate 属性：SSR 会把 initial 状态输出为内联

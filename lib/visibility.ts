@@ -1,5 +1,5 @@
 /**
- * 把「元素在视口里」与「页面在前台」合成一个可见性信号。
+ * 把“元素在视口里”与“页面在前台”合成一个可见性信号。
  *
  * WebGL 宿主只该在这两条同时成立时跑 rAF：只看 IntersectionObserver，切到别的
  * 标签页后 shader 仍在烧 GPU；只看 visibilitychange，滚到页尾时首屏那张还在画。

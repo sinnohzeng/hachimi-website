@@ -13,7 +13,7 @@ import { DUR, EASE, MARGIN } from "@/lib/motion-tokens";
  */
 
 /** 收尾标点：不能出现在行首（GB/T 15834 的避头尾）。 */
-const NO_BREAK_BEFORE = /[，。、！？；：）〕】｝」』〉》”’·…%,.!?;:)\]}]/u;
+const NO_BREAK_BEFORE = /[，。、！？；：）〕】｝」』〉》”’·…%,.!?;:)\]}]/u; // prose-style-ignore：字符类里是不许落在行首的标点
 
 /**
  * 盘古之白换成不换行空格。

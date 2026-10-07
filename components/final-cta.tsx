@@ -97,7 +97,7 @@ export function FinalCTA({
   const reducedMotion = useReducedMotion();
 
   return (
-    // id="download"：header 与移动菜单“下载 App”CTA 的落点。
+    // `id="download"`：header 与移动菜单“下载 App”CTA 的落点。
     <section
       id="download"
       className="relative flex w-full scroll-mt-28 items-center justify-center overflow-hidden"

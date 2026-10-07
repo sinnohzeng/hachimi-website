@@ -17,7 +17,7 @@ import { mountRise } from "@/lib/motion-tokens";
  * 负外边距会把 flex 里 shrink-to-fit 的标题量窄半格，行就折了。左对齐时不需要补偿，lg 起还原。
  */
 function endsWithFullWidthPunctuation(line: string): boolean {
-  return /[，。、！？；：）」』】]$/u.test(line);
+  return /[，。、！？；：）」』】]$/u.test(line); // prose-style-ignore：字符类里是行尾标点
 }
 
 /**
