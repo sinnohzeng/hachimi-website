@@ -2,7 +2,7 @@
 
 The bilingual (zh / en) one-page site for **Hachimi.ai (哈基米道长)**, a charting app for fate readers and enthusiasts: Zi Wei, Ba Zi and Mei Hua Yi Shu for many people, with each person's casts tracked under their name. Next.js App Router, statically exported (`output: "export"`) and served by **Cloudflare Pages** (project `hachimi-app-website`, domain `hachimi.ai`); the deploy runbook is [`deploy/cloudflare-pages.md`](deploy/cloudflare-pages.md).
 
-The home page has seven sections: hero, who it's for (`#what`), a case walkthrough (`#case`), four tools (`#tools`), the academy marquee (`#academy`), FAQ (`#faq`) and the download close (`#download`). Specs: [`005`](https://github.com/sinnohzeng/hachimi-website/blob/archive-docs-20261006/specs/005-site-v4-tools/spec.md) for the sections, [`006`](https://github.com/sinnohzeng/hachimi-website/blob/archive-docs-20261006/specs/006-one-page/spec.md) for the one-page layout and audience, [`007`](https://github.com/sinnohzeng/hachimi-website/blob/archive-docs-20261006/specs/007-copy-system/spec.md) for the copy. The copy sources are hachimi-ios `docs/product-thesis.md`, `docs/copy-principles.md` and `docs/copy-canon.md`. The other pages under `app/[locale]/` are the ones the apps and store listings link to: `privacy`, `terms`, `data-deletion`, `support` and `get`.
+The home page has seven sections: hero, who it's for (`#what`), a case walkthrough (`#case`), four tools (`#tools`), the academy marquee (`#academy`), FAQ (`#faq`) and the download close (`#download`). Specs: [`005`](https://github.com/sinnohzeng/hachimi-website/blob/archive-docs-20261006/specs/005-site-v4-tools/spec.md) for the sections, [`006`](https://github.com/sinnohzeng/hachimi-website/blob/archive-docs-20261006/specs/006-one-page/spec.md) for the one-page layout and audience, [`007`](https://github.com/sinnohzeng/hachimi-website/blob/archive-docs-20261006/specs/007-copy-system/spec.md) for the copy. The copy sources are the hachimi-ios [product thesis](../hachimi-ios/docs/product-thesis.md), [copy principles](../hachimi-ios/docs/copy-principles.md) and [copy canon](../hachimi-ios/docs/copy-canon.md). The other pages under `app/[locale]/` are the ones the apps and store listings link to: `privacy`, `terms`, `data-deletion`, `support` and `get`.
 
 ## Getting started
 
@@ -15,33 +15,34 @@ npm run dev      # then open http://localhost:3000/zh or /en
 
 ## Scripts
 
-| Command                  | Description                                                                                                                             |
-| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
-| `npm run dev`            | Development server                                                                                                                      |
-| `npm run build`          | Static export to `out/`                                                                                                                 |
-| `npm run lint`           | ESLint, zero warnings allowed                                                                                                           |
-| `npm run knip`           | Unused files, exports and dependencies (Knip); entry points beyond the Next app are listed in `knip.json`                               |
-| `npm run format`         | Format with Prettier (`format:check` only checks)                                                                                       |
-| `npm run typecheck`      | Regenerate route types with `next typegen`, then run TypeScript                                                                         |
-| `npm run test:orb`       | Orb asset gate: `.riv` and still hashes, contract numbers against hachimi-orb `current-release.json`, runtime version, self-hosted wasm |
-| `npm run test:platform`  | `/` and `/get` routing against `functions/`, and the inline platform script                                                             |
-| `npm run legal:sync`     | Copy the privacy policy and terms from `../hachimi-ios/docs/legal/` into `content/legal/`, then regenerate the llms files               |
-| `npm run legal:check`    | Fail if `content/legal/` differs from `../hachimi-ios/docs/legal/` by a single byte                                                     |
-| `npm run llms:build`     | Generate `public/llms.txt` and `public/llms-full.txt` from `lib/i18n/`, `lib/config.ts` and `content/legal/`                            |
-| `npm run llms:check`     | Regenerate both llms files and fail if either differs from the committed copy                                                           |
-| `npm run test:dates`     | Fail if the zh and en copies of a legal document carry different “last updated” dates                                                   |
-| `npm run check:mentions` | No reference or competitor names in site copy; the word list is read from hachimi-ios `scripts/no-reference-mentions.py`                |
-| `npm run check:copy`     | Word-count caps per section                                                                                                             |
-| `npm run check:docs`     | Doc budget: each tracked Markdown file sits in a `doc-budget.json` category, under its caps                                             |
-| `npm run test:docs`      | Unit tests of the doc budget gate and this repo's table, bad samples included                                                           |
-| `npm run og:font`        | Fetch the share-card font subset for the current headlines into `assets/og/` (`og:check` verifies it offline)                           |
-| `npm run check:canon`    | Shared lines from hachimi-ios `docs/copy-canon.md` appear word for word in `lib/i18n/`                                                  |
-| `npm run test:site`      | After a build: the 404 document, FAQ answers and tool details in static HTML, PNG share cards, theme colour                             |
-| `npm run check`          | The single quality gate: every check above, then build, then `test:site`                                                                |
+| Command                  | Description                                                                                                                                                |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `npm run dev`            | Development server                                                                                                                                         |
+| `npm run build`          | Static export to `out/`                                                                                                                                    |
+| `npm run lint`           | ESLint, zero warnings allowed                                                                                                                              |
+| `npm run knip`           | Unused files, exports and dependencies (Knip); entry points beyond the Next app are listed in `knip.json`                                                  |
+| `npm run format`         | Format with Prettier (`format:check` only checks)                                                                                                          |
+| `npm run typecheck`      | Regenerate route types with `next typegen`, then run TypeScript                                                                                            |
+| `npm run test:orb`       | Orb asset gate: `.riv` and still hashes, contract numbers against hachimi-orb `current-release.json`, runtime version, self-hosted wasm                    |
+| `npm run test:platform`  | `/` and `/get` routing against `functions/`, and the inline platform script                                                                                |
+| `npm run legal:sync`     | Copy the privacy policy and terms from `../hachimi-ios/docs/legal/` into `content/legal/`, then regenerate the llms files                                  |
+| `npm run legal:check`    | Fail if `content/legal/` differs from `../hachimi-ios/docs/legal/` by a single byte                                                                        |
+| `npm run llms:build`     | Generate `public/llms.txt` and `public/llms-full.txt` from `lib/i18n/`, `lib/config.ts` and `content/legal/`                                               |
+| `npm run llms:check`     | Regenerate both llms files and fail if either differs from the committed copy                                                                              |
+| `npm run test:dates`     | Fail if the zh and en copies of a legal document carry different “last updated” dates                                                                      |
+| `npm run check:mentions` | No reference or competitor names in site copy; the word list is read from the hachimi-ios [mentions gate](../hachimi-ios/scripts/no-reference-mentions.py) |
+| `npm run check:copy`     | Word-count caps per section                                                                                                                                |
+| `npm run prose`          | Prose gate: punctuation, narrative, terms, sentence length, doc caps and links; rules in `scripts/prose_rules.py`, this repo's scope in `prose.json`       |
+| `npm run check:docs`     | Doc budget: each tracked Markdown file sits in a `doc-budget.json` category, under its caps                                                                |
+| `npm run test:docs`      | Unit tests of the prose and doc budget gates, bad samples included                                                                                         |
+| `npm run og:font`        | Fetch the share-card font subset for the current headlines into `assets/og/` (`og:check` verifies it offline)                                              |
+| `npm run check:canon`    | Shared lines from the hachimi-ios [copy canon](../hachimi-ios/docs/copy-canon.md) appear word for word in `lib/i18n/`                                      |
+| `npm run test:site`      | After a build: the 404 document, FAQ answers and tool details in static HTML, PNG share cards, theme colour                                                |
+| `npm run check`          | The single quality gate: every check above, then build, then `test:site`                                                                                   |
 
 ## Quality gate
 
-`npm run check` is the one gate for this repo. Run it before pushing instead of picking individual checks. It runs locally through a pre-push hook on `main`; enable the hook once per machine:
+`npm run check` is the one gate for this repo. Run it before pushing instead of picking individual checks. It runs locally through a pre-push hook on `main`, and a commit-msg hook runs the prose rules on each message; enable the hooks once per machine:
 
 ```bash
 git config core.hooksPath .githooks
@@ -49,7 +50,7 @@ git config core.hooksPath .githooks
 
 ## Legal pages
 
-The privacy policy and terms are owned by hachimi-ios (`docs/legal/`). `content/legal/` mirrors those four Markdown files byte for byte, and `lib/legal.ts` renders them at build time with `marked`; the page dates, the sitemap and the structured data read the “last updated” line from the Markdown. To publish a new version, change it in hachimi-ios, run `npm run legal:sync`, then `npm run check`.
+The privacy policy and terms are owned by hachimi-ios ([legal docs](../hachimi-ios/docs/legal/)). `content/legal/` mirrors those four Markdown files byte for byte, and `lib/legal.ts` renders them at build time with `marked`; the page dates, the sitemap and the structured data read the “last updated” line from the Markdown. To publish a new version, change it in hachimi-ios, run `npm run legal:sync`, then `npm run check`.
 
 ## Orb
 

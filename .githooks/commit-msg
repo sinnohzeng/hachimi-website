@@ -1,0 +1,5 @@
+#!/bin/sh
+# commit message 行文门：与 npm run prose 读同一份判据，判据在 scripts/prose_rules.py 档头。
+# 逃生（明知故犯）：git commit --no-verify
+
+exec python3 "$(git rev-parse --show-toplevel)/scripts/commit-msg-style-gate.py" "$1"

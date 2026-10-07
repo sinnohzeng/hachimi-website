@@ -18,10 +18,10 @@
 HTTP API 写在 hachimi-backend `README.md` 的“HTTP API”一节；本站运行时只有 `functions/` 下按语言与平台分流的两个 Pages Function。
 
 - 写规约、查规约状态：[specs/README.md](specs/README.md)
-- 改文案：hachimi-ios 的 `docs/product-thesis.md`、`docs/copy-principles.md`、`docs/copy-canon.md`，共用句先改定稿句表再跑 `npm run check:canon`
-- 改隐私政策或使用条款：真源在 hachimi-ios `docs/legal/`，本仓不改字，流程见 README 的“Legal pages”一节；删除数据页与支持页的文字在 `lib/i18n/`
+- 改文案：hachimi-ios 的[产品论纲](../hachimi-ios/docs/product-thesis.md)、[文案原则](../hachimi-ios/docs/copy-principles.md)、[定稿句表](../hachimi-ios/docs/copy-canon.md)，共用句先改定稿句表再跑 `npm run check:canon`
+- 改隐私政策或使用条款：真源在 hachimi-ios 的[法律件目录](../hachimi-ios/docs/legal/)，本仓不改字，流程见 README 的“Legal pages”一节；删除数据页与支持页的文字在 `lib/i18n/`
 - 部署、缓存与安全头、改路径：[部署 runbook](deploy/cloudflare-pages.md)，两端 App 依赖的网址表在里面
-- 动道长圆球：[品牌资产](design/brand/README.md)、hachimi-orb 的 `hosts/README.md`
+- 动形象：[品牌资产](design/brand/README.md)、hachimi-orb 的 `hosts/README.md`
 - 动首屏、字体、截图或动效：[性能规矩](docs/performance.md)
 - 核首屏、改界面：核首屏用设备模拟跑手机与桌面两档宽度，截图对照 hachimi-ios [视觉语言](../hachimi-ios/docs/visual-language.md#怎么核)的三层 rubric。
 - 动 Next 或 Pages 配置：[部署 runbook](deploy/cloudflare-pages.md)
@@ -36,5 +36,6 @@ HTTP API 写在 hachimi-backend `README.md` 的“HTTP API”一节；本站运�
 ## 边界
 
 - 商店链接、站点信息与支持页、删除数据页的日期只写在 `lib/config.ts`，隐私与条款的日期从法律件 Markdown 读；语言表只写在 `lib/locale.ts`，UA 判断只写在 `lib/platform.ts`。
+- 行文门是 `npm run prose`，判据在 `scripts/prose_rules.py` 档头，与 hachimi-ios 那一份逐字节相同；本仓的范围与上限在仓根 `prose.json`，commit message 由 `.githooks/commit-msg` 判同一份判据。
 - 文档预算门是 `npm run check:docs`，表是仓根 `doc-budget.json`，判据在 `scripts/doc-budget-gate.py` 档头。
 - 经验落地：照工作约定第 8 条，判不了的写进触发表点名的那份文档。

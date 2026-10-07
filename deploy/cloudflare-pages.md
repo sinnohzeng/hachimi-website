@@ -60,7 +60,7 @@ wrangler 只在启动时读 `out/_redirects` 与 `out/_headers`，改了要重�
 
 ## 边缘安全规则（zone `hachimi.ai`）
 
-- 自定义 WAF 规则一条，在 zone 的 `http_request_firewall_custom` 入口集里：host 是 `hachimi.ai` 或 `www.hachimi.ai` 时跳过浏览器完整性检查（`skip`，products `bic`），让商店后台的网址检查器取得到法律页与删除数据页。`api.hachimi.ai` 不在其内，照旧受检。
+- 自定义 WAF 规则一条，在 zone 的 `http_request_firewall_custom` 入口集里。host 是 `hachimi.ai` 或 `www.hachimi.ai` 时跳过浏览器完整性检查（`skip`，products `bic`），让商店后台的网址检查器取得到法律页与删除数据页。`api.hachimi.ai` 不在其内，照旧受检。
 - Bot Fight Mode 开着，作用于整个 zone。`Python-urllib` 这一个 UA 在三个主机上都回 403 `error code: 1010`，跳过 BIC 之后照旧；curl、python-requests、Go、Java、okhttp 与 Googlebot 的 UA 都回 200。验证与冒烟一律用 curl。
 
 ## 部署 / 更新（两条路径）
@@ -150,7 +150,7 @@ Function 与静态文件同属一个部署，回滚部署时 `/get` 一起回到
 
 ## 关键红线
 
-- **法律页与真源一致**：隐私政策与使用条款的真源是 hachimi-ios `docs/legal/`，本仓 `content/legal/` 逐字镜像，构建时渲染成 `/privacy` 与 `/terms`。那边改了跑 `npm run legal:sync`，再跑 `npm run check`。删除数据页与支持页的文字在 `lib/i18n/`，与政策同一个口径。
+- **法律页与真源一致**：隐私政策与使用条款的真源是 hachimi-ios 的[法律件目录](../../hachimi-ios/docs/legal/)，本仓 `content/legal/` 逐字镜像，构建时渲染成 `/privacy` 与 `/terms`。那边改了跑 `npm run legal:sync`，再跑 `npm run check`。删除数据页与支持页的文字在 `lib/i18n/`，与政策同一个口径。
 - **凭据**：CF token 与后端 Workers 同一把，放 `hachimi-ios/.env`，不入库、不回显。
 
 Orb 的换代步骤与发布核对见 [design/brand/README.md](../design/brand/README.md)。
