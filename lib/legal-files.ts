@@ -24,6 +24,29 @@ export const legalFiles = Object.fromEntries(
   ])
 ) as Record<LegalKind, Record<Locale, string>>;
 
+const routeOfFile = new Map<string, string>(
+  Object.entries(legalFiles).flatMap(([kind, files]) =>
+    Object.entries(files).map(
+      ([locale, file]) => [file, `/${locale}/${kind}`] as const
+    )
+  )
+);
+
+/**
+ * 法律件里一条链接的落点。外链、站内绝对路径与页内锚点原样返回；指向另一份法律件的
+ * 相对链接改成它的站内路由，给了 `origin` 就拼成绝对网址。页面渲染（lib/legal.ts）与
+ * llms 文件（scripts/build-llms.mjs）共用这一份，对不上任何一份法律件就抛错。
+ */
+export function legalHref(href: string, origin = ""): string {
+  if (/^([a-z][a-z\d+.-]*:|\/|#)/i.test(href)) return href;
+  const [file = "", hash] = href.split("#");
+  const route = routeOfFile.get(file);
+  if (!route) {
+    throw new Error(`content/legal 里的相对链接对不上站内路由：${href}`);
+  }
+  return `${origin}${route}${hash ? `#${hash}` : ""}`;
+}
+
 /** 文件里“最后更新”那一行的日期（YYYY-MM-DD），找不到返回 null。 */
 export function lastUpdatedOf(markdown: string): string | null {
   const match = markdown.match(
