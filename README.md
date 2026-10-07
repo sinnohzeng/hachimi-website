@@ -85,6 +85,7 @@ The hero and the close play the same signed Rive file as the apps (`public/brand
 ├── lib/
 │   ├── config.ts              # Site facts, store links, page dates
 │   ├── locale.ts              # The locale table: html lang, og locale, switch label
+│   ├── pages.ts               # Subpage paths for the sitemap, footer, metadata and breadcrumbs
 │   ├── platform.ts            # User-agent and language rules shared by the Functions and the inline script
 │   ├── i18n/                  # zh / en copy
 │   ├── metadata.ts            # Page metadata built from config.ts and i18n
