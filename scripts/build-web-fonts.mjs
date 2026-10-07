@@ -26,6 +26,9 @@ const targets = [
   ),
 ].map((match) => ({ target: match[1], range: match[2] }));
 
+/** geist 包的 dist 目录：包只导出字体入口，woff2 源文件按入口所在目录定位。 */
+const GEIST_DIST = new URL(".", import.meta.resolve("geist/font/sans"));
+
 /** 子集文件名 → geist 包里的源文件。 */
 const SOURCES = {
   "Geist-Variable-latin.woff2": "geist-sans/Geist-Variable.woff2",
@@ -42,9 +45,7 @@ for (const { target, range } of targets) {
   const source = SOURCES[target];
   if (!source)
     throw new Error(`不认得 ${target}，先在 SOURCES 里登记它的源文件`);
-  const input = fileURLToPath(
-    new URL(`../node_modules/geist/dist/fonts/${source}`, import.meta.url)
-  );
+  const input = fileURLToPath(new URL(`fonts/${source}`, GEIST_DIST));
   const output = fileURLToPath(
     new URL(`../assets/fonts/${target}`, import.meta.url)
   );

@@ -1,10 +1,10 @@
 import type { JOURNEY_SHOTS } from "../shots.ts";
 
 /** 一页的 `<title>` 与 meta 描述。品牌由根上的 title.template 补，这里不写。 */
-export type PageMeta = { title: string; description: string };
+type PageMeta = { title: string; description: string };
 
 /** 命例走查的一步。顺序就是走查顺序，与 lib/shots.ts 的 JOURNEY_SHOTS 一一对应。 */
-export type CaseStep = { title: string; body: string; shotAlt: string };
+type CaseStep = { title: string; body: string; shotAlt: string };
 
 /** 与一张表等长的元组：表里有几屏，走查就有几步。 */
 type StepsFor<T extends readonly unknown[]> = {

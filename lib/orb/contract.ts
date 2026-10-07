@@ -31,17 +31,17 @@ export const FRAME = { width: 1.7, height: 1.6 } as const;
 /** 命中圆的半径，按球径的倍数：手指落点与人眼看到的球心差得不少。 */
 export const POKE_RADIUS_RATIO = 0.6;
 
-export type OrbMood = "calm" | "lively" | "loading";
+type OrbMood = "calm" | "lively" | "loading";
 /** 产品只用这两个形态（角色系统第八节），其余固定形态不进官网。 */
-export type OrbState = "idle" | "wide";
-export type OrbFacing = "rest" | "front";
+type OrbState = "idle" | "wide";
+type OrbFacing = "rest" | "front";
 /** 契约里的明暗取值。官网两处都跟站点明暗走，只用 light 与 dark。 */
 export type OrbTheme = "light" | "dark" | "dim";
-export type OrbPalette =
+type OrbPalette =
   "amber" | "ziwei" | "vermilion" | "pine" | "ochre" | "ink" | "rouge";
 
 /** 一颗球此刻的样子，与契约同构的三格。戳球是事件，不在这里。 */
-export interface OrbLook {
+interface OrbLook {
   mood: OrbMood;
   state: OrbState;
   facing: OrbFacing;

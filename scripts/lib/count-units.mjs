@@ -31,7 +31,7 @@ export function countEn(text) {
 }
 
 /** 英文上限 = 简体字数上限 × 0.6，向上取整，至少 1。 */
-export const EN_WORD_RATIO = 0.6;
+const EN_WORD_RATIO = 0.6;
 
 export function enCapFor(zhLimit) {
   return Math.max(1, Math.ceil(zhLimit * EN_WORD_RATIO));

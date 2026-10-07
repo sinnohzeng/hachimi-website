@@ -16,7 +16,7 @@ export const locales = Object.keys(LOCALES) as Locale[];
 /** hreflang 的 x-default，也是 Accept-Language 认不出时的去向。 */
 export const defaultLocale: Locale = "en";
 
-export function isLocale(value: string): value is Locale {
+function isLocale(value: string): value is Locale {
   return Object.hasOwn(LOCALES, value);
 }
 

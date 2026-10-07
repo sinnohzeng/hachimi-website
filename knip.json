@@ -1,0 +1,9 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "entry": [
+    "functions/*.ts",
+    "scripts/build-shots.mjs",
+    "scripts/build-web-fonts.mjs"
+  ],
+  "ignoreBinaries": ["uvx"]
+}

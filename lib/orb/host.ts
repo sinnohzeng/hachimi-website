@@ -16,9 +16,9 @@ import {
  * 三份文件都带版本号做缓存键，public/_headers 给它们一年的 immutable：wasm 跟运行时的版本，
  * .riv 跟签名文件的版本，换代即换网址。
  */
-export const WASM_URL = `/rive/rive.wasm?v=${runtimePackage.version}`;
-export const WASM_FALLBACK_URL = `/rive/rive_fallback.wasm?v=${runtimePackage.version}`;
-export const RIVE_SRC = `/brand/hachimi-orb.riv?v=${manifest.version}`;
+const WASM_URL = `/rive/rive.wasm?v=${runtimePackage.version}`;
+const WASM_FALLBACK_URL = `/rive/rive_fallback.wasm?v=${runtimePackage.version}`;
+const RIVE_SRC = `/brand/hachimi-orb.riv?v=${manifest.version}`;
 
 /** 算作“人来了”的输入：指针、触摸、滚轮、滚动与按键。 */
 const ENGAGE_EVENTS = [

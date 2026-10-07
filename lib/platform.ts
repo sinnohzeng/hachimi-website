@@ -8,7 +8,7 @@ import { defaultLocale, type Locale } from "./locale.ts";
  * 只用 Web 标准 API，不引任何 Next 模块：Function 由 wrangler 单独打包，
  * scripts/platform.test.mjs 由 Node 直接剥类型运行。
  */
-export const userAgentPattern = {
+const userAgentPattern = {
   // 企业微信的 UA 也含 MicroMessenger，一并算在微信里。
   wechat: /MicroMessenger/,
   ios: /iPhone|iPad|iPod/,
@@ -20,15 +20,15 @@ export const userAgentPattern = {
 const iPadOSCheck =
   'navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1';
 
-export type Platform = "ios" | "android" | "other";
+type Platform = "ios" | "android" | "other";
 
-export function platformOf(userAgent: string): Platform {
+function platformOf(userAgent: string): Platform {
   if (userAgentPattern.ios.test(userAgent)) return "ios";
   if (userAgentPattern.android.test(userAgent)) return "android";
   return "other";
 }
 
-export function isWeChat(userAgent: string): boolean {
+function isWeChat(userAgent: string): boolean {
   return userAgentPattern.wechat.test(userAgent);
 }
 

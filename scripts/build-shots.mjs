@@ -21,7 +21,6 @@
  * 每张出 AVIF 与 WebP 两种编码，宽度档取 lib/shots.ts 的 SHOT_AVIF_WIDTHS 与
  * SHOT_WEBP_WIDTHS，页面按同一张表写 srcSet。
  *
- * 依赖 sharp。它随 Next 装在 node_modules 里，没有单独进 package.json；
  * 这是本机生成素材的工具，不参与 `npm run check`，也不进构建。
  *
  * 用法：`node scripts/build-shots.mjs`（覆盖写 public/screenshots/zh/）
@@ -50,7 +49,7 @@ const AVIF_QUALITY = 55;
 const walkShot = (dir, id) => path.join(WALK, dir, `${id}.png`);
 
 /**
- * 站上的名字 → 取哪张、有没有深色版。名字与 lib/shots.ts 的 SHOT_NAMES 一致，
+ * 站上的名字 → 取哪张、有没有深色版。名字与 lib/shots.ts 的 ShotName 一致，
  * 那边决定页面写出什么 srcSet，这边决定磁盘上真有哪些文件，对不上就是 404。
  *
  * `cut` 是从顶部保留到第几行，缺省不裁。

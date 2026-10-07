@@ -20,6 +20,7 @@ npm run dev      # then open http://localhost:3000/zh or /en
 | `npm run dev`            | Development server                                                                                                                      |
 | `npm run build`          | Static export to `out/`                                                                                                                 |
 | `npm run lint`           | ESLint, zero warnings allowed                                                                                                           |
+| `npm run knip`           | Unused files, exports and dependencies (Knip); entry points beyond the Next app are listed in `knip.json`                               |
 | `npm run format`         | Format with Prettier (`format:check` only checks)                                                                                       |
 | `npm run typecheck`      | Regenerate route types with `next typegen`, then run TypeScript                                                                         |
 | `npm run test:orb`       | Orb asset gate: `.riv` and still hashes, contract numbers against hachimi-orb `current-release.json`, runtime version, self-hosted wasm |

@@ -18,7 +18,7 @@ export const DUR = {
 } as const;
 
 /** 入场位移档（px）。sm 供 header 下落（取负）使用。 */
-export const DIST = { sm: 10, md: 20 } as const;
+const DIST = { sm: 10, md: 20 } as const;
 
 export const STAGGER = { grid: 0.1, tight: 0.06 } as const;
 

@@ -14,13 +14,13 @@ import type { Locale } from "./locale.ts";
  */
 
 /** 五科。id 与 catalog 里的 subject id 同名。 */
-export type AcademySubjectId = "shan" | "yi" | "ming" | "xiang" | "bu";
+type AcademySubjectId = "shan" | "yi" | "ming" | "xiang" | "bu";
 
-export type AcademySubject = {
+type AcademySubject = {
   id: AcademySubjectId;
 } & Record<Locale, string>;
 
-export const ACADEMY_SUBJECTS: readonly AcademySubject[] = [
+const ACADEMY_SUBJECTS: readonly AcademySubject[] = [
   { id: "shan", zh: "山", en: "Mountain" },
   { id: "yi", zh: "医", en: "Medicine" },
   { id: "ming", zh: "命", en: "Fate" },
@@ -29,11 +29,11 @@ export const ACADEMY_SUBJECTS: readonly AcademySubject[] = [
 ];
 
 /** 一本书：zh 是简体书名，en 是书名拼音。 */
-export type AcademyTitle = {
+type AcademyTitle = {
   subject: AcademySubjectId;
 } & Record<Locale, string>;
 
-export const ACADEMY_TITLES: readonly AcademyTitle[] = [
+const ACADEMY_TITLES: readonly AcademyTitle[] = [
   { subject: "shan", zh: "易筋经", en: "Yi Jin Jing" },
   { subject: "shan", zh: "五禽戏", en: "Wu Qin Xi" },
   {

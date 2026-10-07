@@ -5,15 +5,8 @@
  *
  * 截图拍的是中文界面，en 页共用同一批文件。
  */
-export const SHOT_NAMES = [
-  "case-list",
-  "ziwei-sanhe",
-  "bazi-pillars",
-  "cast-result",
-  "case-casts",
-] as const;
-
-export type ShotName = (typeof SHOT_NAMES)[number];
+export type ShotName =
+  "case-list" | "ziwei-sanhe" | "bazi-pillars" | "cast-result" | "case-casts";
 
 /**
  * AVIF 的宽度档，最后一档是原尺寸。手机首屏的屏幕层约 229 CSS 像素宽，1.75 倍屏取 440，
