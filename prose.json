@@ -1,0 +1,93 @@
+{
+  "suffixes": [
+    ".md",
+    ".ts",
+    ".tsx",
+    ".js",
+    ".mjs",
+    ".css",
+    ".py",
+    ".sh",
+    ".json",
+    ".txt",
+    ".yml",
+    ".yaml",
+    ".toml"
+  ],
+  "names": ["pre-push", "commit-msg"],
+  "skip_dirs": [],
+  "skip_prefixes": [],
+  "skip_files": {},
+  "frozen_prefixes": [],
+  "comment_styles": {
+    ".ts": "c",
+    ".tsx": "c",
+    ".js": "c",
+    ".mjs": "c",
+    ".cjs": "c",
+    ".mts": "c",
+    ".css": "css",
+    ".py": "python",
+    ".sh": "hash",
+    ".yml": "hash",
+    ".yaml": "hash",
+    ".toml": "hash",
+    "pre-push": "hash",
+    "commit-msg": "hash"
+  },
+  "data_suffixes": [".json"],
+  "whole_line_suffixes": [".txt"],
+  "living": [
+    "AGENTS.md",
+    "CLAUDE.md",
+    "README.md",
+    "docs/*.md",
+    "deploy/*.md",
+    "specs/README.md",
+    "design/brand/README.md"
+  ],
+  "procedural": ["AGENTS.md", "deploy/*.md"],
+  "narrative_comments": [
+    "app/**",
+    "components/**",
+    "lib/**",
+    "functions/**",
+    "scripts/**",
+    ".githooks/**",
+    "deploy/**"
+  ],
+  "narrative_extra": "",
+  "narrative_mirrors": [],
+  "must_read": {
+    "CLAUDE.md": 200,
+    "AGENTS.md": 2000
+  },
+  "must_read_total": 4000,
+  "on_demand": {
+    "README.md": 10400,
+    "deploy/cloudflare-pages.md": 8500,
+    "design/brand/README.md": 2900,
+    "docs/performance.md": 700
+  },
+  "uncapped": {},
+  "generated": [],
+  "canon": "",
+  "glossary": "../hachimi-ios/docs/glossary.md",
+  "path_mention_files": ["README.md", "AGENTS.md", "CLAUDE.md", "deploy/*.md"],
+  "path_mention_roots": [
+    "app/",
+    "components/",
+    "lib/",
+    "functions/",
+    "scripts/",
+    "docs/",
+    "deploy/",
+    "content/",
+    "public/",
+    "design/",
+    "specs/"
+  ],
+  "binary_roots": ["docs/", "specs/"],
+  "binary_allowed": [],
+  "rules": []
+}

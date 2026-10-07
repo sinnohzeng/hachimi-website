@@ -16,6 +16,7 @@
     "check:mentions": "node scripts/check-copy-mentions.mjs",
     "check:canon": "python3 ../hachimi-ios/scripts/copy-canon-gate.py --only web --require-sibling --web .",
     "check:copy": "node scripts/count-copy.mjs",
+    "prose": "python3 scripts/check-prose-style.py",
     "check:docs": "python3 scripts/doc-budget-gate.py",
     "test:docs": "python3 -m unittest discover -s scripts/tests -p 'test_*.py'",
     "pretest:orb": "node scripts/sync-rive-wasm.mjs",
@@ -29,7 +30,7 @@
     "og:font": "node scripts/build-og-font.mjs",
     "og:check": "node scripts/build-og-font.mjs --check",
     "test:site": "node --test scripts/site.test.mjs",
-    "check": "npm run format:check && npm run lint && npm run knip && npm run typecheck && npm run test:orb && npm run test:platform && npm run legal:check && npm run llms:check && npm run test:dates && npm run check:mentions && npm run check:copy && npm run check:docs && npm run test:docs && npm run og:check && npm run check:canon && npm run build && npm run test:site",
+    "check": "npm run format:check && npm run lint && npm run knip && npm run typecheck && npm run test:orb && npm run test:platform && npm run legal:check && npm run llms:check && npm run test:dates && npm run check:mentions && npm run check:copy && npm run test:docs && npm run prose && npm run check:docs && npm run og:check && npm run check:canon && npm run build && npm run test:site",
     "knip": "knip"
   },
   "dependencies": {
