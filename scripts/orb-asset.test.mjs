@@ -7,6 +7,7 @@ import {
   CONTRACT_VERSION,
   FRAME,
   POKE_RADIUS_RATIO,
+  VIEW_MODEL_PROPERTIES,
   ballGeometry,
 } from "../lib/orb/contract.ts";
 
@@ -30,6 +31,41 @@ test("清单记的契约版本与宿主名字表一致", () => {
   assert.equal(manifest.contractVersion, CONTRACT_VERSION);
   assert.equal(manifest.artboard, ARTBOARD.name);
 });
+
+test("宿主用到的属性都在签名文件里", () => {
+  const riv = read("public/brand/hachimi-orb.riv");
+  for (const name of Object.values(VIEW_MODEL_PROPERTIES).flat()) {
+    // Rive 把名字存成单字节长度前缀加 UTF-8。只找裸子串，更长的名字与脚本里的字面量会蒙过去。
+    const bytes = Buffer.from(name, "utf8");
+    const stored = Buffer.concat([Buffer.from([bytes.length]), bytes]);
+    assert.ok(riv.includes(stored), `${name} 不在 hachimi-orb.riv 里`);
+  }
+});
+
+const contractUrl = new URL("../hachimi-orb/contract.md", root);
+
+test(
+  "宿主用到的属性与 hachimi-orb 的 contract.md 同名同类型",
+  {
+    skip: existsSync(contractUrl)
+      ? false
+      : "旁边没有 ../hachimi-orb，跳过与契约的比对",
+  },
+  () => {
+    const kinds = new Map();
+    for (const line of readFileSync(contractUrl, "utf8").split("\n")) {
+      const cells = line.split("|").map((cell) => cell.trim());
+      const kind = cells[2]?.split(" ")[0];
+      if (!["boolean", "number", "enum", "trigger"].includes(kind)) continue;
+      for (const [, name] of cells[1].matchAll(/`(\w+)`/g)) {
+        kinds.set(name, kind);
+      }
+    }
+    for (const [kind, names] of Object.entries(VIEW_MODEL_PROPERTIES)) {
+      for (const name of names) assert.equal(kinds.get(name), kind, name);
+    }
+  }
+);
 
 const releaseUrl = new URL(
   "../hachimi-orb/docs/project/current-release.json",

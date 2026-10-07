@@ -23,7 +23,7 @@ npm run dev      # then open http://localhost:3000/zh or /en
 | `npm run knip`           | Unused files, exports and dependencies (Knip); entry points beyond the Next app are listed in `knip.json`                                                  |
 | `npm run format`         | Format with Prettier (`format:check` only checks)                                                                                                          |
 | `npm run typecheck`      | Regenerate route types with `next typegen`, then run TypeScript                                                                                            |
-| `npm run test:orb`       | Orb asset gate: `.riv` and still hashes, contract numbers against hachimi-orb `current-release.json`, runtime version, self-hosted wasm                    |
+| `npm run test:orb`       | Orb asset gate: `.riv` and still hashes, host properties in the `.riv` and hachimi-orb `contract.md`, numbers in `current-release.json`, runtime, wasm     |
 | `npm run test:platform`  | `/` and `/get` routing against `functions/`, and the inline platform script                                                                                |
 | `npm run legal:sync`     | Copy the privacy policy and terms from `../hachimi-ios/docs/legal/` into `content/legal/`, then regenerate the llms files                                  |
 | `npm run legal:check`    | Fail if `content/legal/` differs from `../hachimi-ios/docs/legal/` by a single byte                                                                        |

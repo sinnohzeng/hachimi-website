@@ -31,6 +31,17 @@ export const FRAME = { width: 1.7, height: 1.6 } as const;
 /** 命中圆的半径，按球径的倍数：手指落点与人眼看到的球心差得不少。 */
 export const POKE_RADIUS_RATIO = 0.6;
 
+/**
+ * 宿主写入与读取的全部 view model 属性，按契约里的类型分组。宿主装文件时逐个核在，
+ * scripts/orb-asset.test.mjs 核它们都在 .riv 里、类型与 hachimi-orb 的 contract.md 一致。
+ */
+export const VIEW_MODEL_PROPERTIES = {
+  boolean: ["background", "corner", "pointerActive", "isReacting"],
+  number: ["pointerX", "pointerY", "seed"],
+  enum: ["mood", "state", "facing", "theme", "palette", "reaction"],
+  trigger: ["poke"],
+} as const;
+
 type OrbMood = "calm" | "lively" | "loading";
 /** 产品只用这两个形态（角色系统第八节），其余固定形态不进官网。 */
 type OrbState = "idle" | "wide";

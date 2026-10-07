@@ -4,6 +4,7 @@ import manifest from "../../public/brand/orb-source.json";
 import {
   ARTBOARD,
   POKE_RADIUS_RATIO,
+  VIEW_MODEL_PROPERTIES,
   ballGeometry,
   type OrbInputs,
   type OrbTheme,
@@ -91,7 +92,8 @@ export class OrbHost {
 
   /**
    * 按需加载运行时：452 KB 的 JS 与 2.2 MB 的 wasm 都不进首屏 bundle，页面 load 之后、访客动过一次且进了视口才取。
-   * 装好文件、绑好 view model、写完开场输入后才返回；文件里没有可绑定的实例也算失败。
+   * 装好文件、绑好 view model、写完开场输入后才返回。文件里没有可绑定的实例，或缺了
+   * VIEW_MODEL_PROPERTIES 里的任何一个属性，都算失败，错误里带缺的属性名。
    */
   static async mount(options: OrbHostOptions): Promise<OrbHost> {
     const runtime = await import("@rive-app/webgl2");
@@ -111,9 +113,12 @@ export class OrbHost {
         }),
         onLoad: () => {
           const vm = rive.viewModelInstance;
-          if (!vm) {
+          const missing = vm ? missingProperties(vm) : ["instance"];
+          if (!vm || missing.length > 0) {
             rive.cleanup();
-            reject(new Error("Orb view model is missing"));
+            reject(
+              new Error(`Orb view model is missing ${missing.join(", ")}`)
+            );
             return;
           }
           rive.resizeDrawingSurfaceToCanvas();
@@ -136,7 +141,7 @@ export class OrbHost {
 
   /** 正在表演或等飘带散尽。文件说了算，宿主不猜。 */
   get busy(): boolean {
-    return this.vm.boolean("isReacting")?.value === true;
+    return required(this.vm.boolean("isReacting"), "isReacting").value;
   }
 
   /** 指针落在页面坐标 (x, y)。按当前球半径换算成球心为 0 的 -1 到 1，超出球外钳位。 */
@@ -167,11 +172,8 @@ export class OrbHost {
   }
 
   /** 戳一下。受不受理由文件裁决（忙时拒收），宿主不计时、不冷却，这里只 fire。 */
-  poke(): boolean {
-    const trigger = this.vm.trigger("poke");
-    if (!trigger) return false;
-    trigger.trigger();
-    return true;
+  poke(): void {
+    required(this.vm.trigger("poke"), "poke").trigger();
   }
 
   play(): void {
@@ -194,17 +196,44 @@ export class OrbHost {
   private write(values: Writable): void {
     for (const [key, value] of Object.entries(values)) {
       if (typeof value === "boolean") {
-        const property = this.vm.boolean(key);
-        if (property) property.value = value;
+        required(this.vm.boolean(key), key).value = value;
       } else if (typeof value === "number") {
-        const property = this.vm.number(key);
-        if (property) property.value = value;
+        required(this.vm.number(key), key).value = value;
       } else {
-        const property = this.vm.enum(key);
-        if (property) property.value = value;
+        required(this.vm.enum(key), key).value = value;
       }
     }
   }
+}
+
+type PropertyKind = keyof typeof VIEW_MODEL_PROPERTIES;
+
+function lookup(vm: ViewModelInstance, kind: PropertyKind, name: string) {
+  switch (kind) {
+    case "boolean":
+      return vm.boolean(name);
+    case "number":
+      return vm.number(name);
+    case "enum":
+      return vm.enum(name);
+    case "trigger":
+      return vm.trigger(name);
+  }
+}
+
+function missingProperties(vm: ViewModelInstance): string[] {
+  return (Object.keys(VIEW_MODEL_PROPERTIES) as PropertyKind[]).flatMap(
+    (kind) =>
+      VIEW_MODEL_PROPERTIES[kind].filter((name) => !lookup(vm, kind, name))
+  );
+}
+
+/** 装文件时已核过全表，这里取不到说明调用方用了表外的名字。 */
+function required<T>(property: T | null, name: string): T {
+  if (property === null) {
+    throw new Error(`Orb view model is missing ${name}`);
+  }
+  return property;
 }
 
 function clamp(value: number): number {
