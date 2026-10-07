@@ -64,6 +64,6 @@ export const siteConfig = {
  */
 export const pageDates = {
   home: "2026-10-02",
-  support: "2026-10-02",
+  support: "2026-10-07",
   dataDeletion: "2026-10-02",
 } as const;
