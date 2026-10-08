@@ -7,7 +7,7 @@
 - **配置不空转**：`skip_files` 的键要是入库文件，`names` 要有入库文件叫这个名字；`skip_prefixes`、`frozen_prefixes`、`skip_dirs` 与各 glob
   （`living`、`procedural`、`narrative_comments`、`path_mention_files`、每条规则的 `files`）要至少对得上一份入库文件。
   目录一改名，豁免与作用域就静默落空，这里当场报出来。
-- **副本一致**：`KIT` 列的七份文件在 `COPIES` 各处逐字节相同。同级各仓在父目录里、且仓根有 `prose.json` 时才比，
+- **副本一致**：`KIT` 列的每份文件在 `COPIES` 七处逐字节相同。同级各仓在父目录里、且仓根有 `prose.json` 时才比，
   缺席或还没接上这组脚本的仓不比。
 - **术语表在不在**：`glossary` 指的文件不在时打印一行，术语一条不判。
 
@@ -27,7 +27,8 @@ import doc_rules  # noqa: E402
 import prose_rules  # noqa: E402
 
 KIT = ("prose_rules.py", "doc_rules.py", "check-prose-style.py", "commit-msg-style-gate.py",
-       "tests/test_prose_rules.py", "tests/test_prose_gate.py", "tests/test_doc_rules.py")
+       "tests/test_prose_rules.py", "tests/test_prose_gate.py", "tests/test_doc_rules.py",
+       "tests/test_commit_msg_style_gate.py")
 # 七份副本的位置，相对于各仓共同的父目录。
 COPIES = ("hachimi-ios/scripts", "hachimi-android/scripts", "hachimi-backend/scripts", "hachimi-engine/scripts",
           "hachimi-website/scripts", "hachimi-ziwei-web/scripts", "hachimi-orb/tools")
