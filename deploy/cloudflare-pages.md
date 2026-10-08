@@ -23,7 +23,7 @@
 
 ## 根路径按语言分流（Pages Function）
 
-`functions/index.ts` 只接 `/`：语言取 `Accept-Language` 权重最高的一项，zh 开头 302 到 `/zh`，其余 302 到 `/en`，与 `/get` 落地页同一个 `lib/platform.ts` 的 `localeOf`。回应头恒为 `Cache-Control: private, no-store` 与 `Vary: Accept-Language`。
+`functions/index.ts` 只接 `/`：语言取 `Accept-Language` 权重最高的一项，zh 开头 302 到 `/zh`，其余 302 到 `/en`，与 `/get` 落地页同一个 `lib/platform.ts` 的 `localeOf`。回应头恒为 `Cache-Control: no-store` 与 `Vary: Accept-Language`。
 
 ## `/get` 按平台分流（Pages Function）
 
@@ -31,7 +31,7 @@
 
 - UA 含 `MicroMessenger`（微信与企业微信）：302 到落地页 `/{zh,en}/get`，语言按 `Accept-Language` 权重最高的一项，zh 开头去 `/zh/get`，其余 `/en/get`。
 - 不在微信里：iPhone、iPad、iPod 302 到 App Store，Android 302 到 Google Play，其余 302 到落地页。商店链接取 `lib/config.ts`。
-- 回应头恒为 `Cache-Control: no-store` 与 `Vary: User-Agent, Accept-Language`。`_headers` 与 `_redirects` 不作用于 Function 的回应，头只能在 Function 里写。
+- 回应头恒为 `Cache-Control: no-store` 与 `Vary: User-Agent, Accept-Language`。`_headers` 与 `_redirects` 不作用于 Function 的回应，两个 Function 的 302 与回应头都由 `lib/edge-redirect.ts` 一处写。
 - iPadOS 的 Safari 自报 Mac，边缘认不出，会落到落地页；落地页的内联脚本按触点数认出它，不在微信里时 `location.replace` 到 App Store。
 
 `functions/` 存在时，Pages CI 与 wrangler 发布都会自动生成 `_routes.json`，只有 `/` 与 `/get` 走 Function，其余仍是不计 Function 调用的静态请求。
@@ -111,7 +111,7 @@ done
 for lang in 'zh-CN,zh;q=0.9' 'en-US,en;q=0.9'; do
   curl -s -o /dev/null -D - -H "Accept-Language: $lang" "$BASE/" | grep -iE '^(HTTP|location|vary|cache-control)'
 done
-# 期望：302，zh 去 /zh、en 去 /en，带 Vary: Accept-Language 与 private, no-store。
+# 期望：302，zh 去 /zh、en 去 /en，带 Vary: Accept-Language 与 no-store。
 
 curl -sI "$BASE/zh/opengraph-image" | grep -i '^content-type'                         # image/png
 curl -sI "$BASE/screenshots/zh/cast-result-440.avif" | grep -i '^content-type'       # image/avif

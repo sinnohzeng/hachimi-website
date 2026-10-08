@@ -1,3 +1,6 @@
+/** App Store 的应用 ID。商店链接与 Smart App Banner 的 appId 都从它出。 */
+const appStoreId = "6787621766";
+
 /**
  * 站点信息的唯一出处：品牌名、描述、邮箱、商店链接、主题色与页面日期。lib/metadata.ts、
  * app/manifest.ts、结构化数据、页面组件与 scripts/ 都从这里取。
@@ -46,8 +49,8 @@ export const siteConfig = {
 
   // Live store listings. The bare apps.apple.com form (no storefront segment)
   // lets Apple route visitors to their local storefront.
-  appStore: "https://apps.apple.com/app/id6787621766",
-  appStoreId: "6787621766",
+  appStore: `https://apps.apple.com/app/id${appStoreId}`,
+  appStoreId,
   googlePlay:
     "https://play.google.com/store/apps/details?id=com.hachimi.hachimi_app",
 
