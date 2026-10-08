@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """行文门的判据：逐行的几条、按文件类型取行文、叙事词、术语、句长与本仓规则。
 
-**一组脚本，七份逐字节相同**（hachimi-ios ADR-0074 决策 5）：本份、`doc_rules.py`、`check-prose-style.py`、
-`commit-msg-style-gate.py` 与 `tests/` 下四份单测是一组，全名列在 `check-prose-style.py` 的 `KIT`。只用标准库，
-各仓的差别全写在仓根 `prose.json`，字段与含义见 `Config`。改判据要七份同批改。
+**一组脚本，各仓一份，逐字节相同**（hachimi-ios ADR-0074 决策 5）：本份、`doc_rules.py`、`check-prose-style.py`、
+`commit-msg-style-gate.py` 与它们在 `tests/` 下的单测是一组，全名列在 `check-prose-style.py` 的 `KIT`。只用标准库，
+各仓的差别全写在仓根 `prose.json`，字段与含义见 `Config`。改判据要各仓同批改。
 
 判据，一处命中即红。写了 `prose-style-ignore` 的那一行整行不判，豁免连同理由写在该行：
 
@@ -71,9 +71,8 @@ STRAIGHT_QUOTE = '"'
 COINED_UNIT = re.compile(
     "刀[一二三四五六七八九十甲乙丙丁戊]|刀 ?\\d|刀 [A-Z]\\b|[本每各同别整此]刀|[这那每下上前后同哪]一刀"
     "|第[ 一二三四五六七八九十零\\d]+刀|[两三四五六七八九几]刀|落刀|派刀|回标(?![准签题])")
-# 叙事词，七仓一张表。现状里常用的“不再”“原来”“已删”“只因”“那一次”“下一轮”“换过”“以前”“那一版”不进表；
+# 叙事词，各仓一张表。现状里常用的“不再”“原来”“已删”“只因”“那一次”“下一轮”“换过”“以前”“那一版”不进表；
 # “从前往后”“从前面”是方位。
-# hachimi-ios `.swiftlint.yml` 的 `narrative_comment` 逐字含这一条，由 `narrative_mirrors` 对账。
 NARRATIVE = re.compile("此前|原先|曾经|曾写着|已下线|换底[之以]?[前后]|这一版新加|沉淀自|早先|从前(?![往面])|实测过|教训|后续可|那版|踩过")
 BRACKET_NOTE = re.compile("\u3014")
 HEADING_DATE = re.compile("^#{1,6} .*\uff08\\d{4}-\\d{2}")
@@ -107,7 +106,7 @@ class Rule:
 
 @dataclass(frozen=True)
 class Config:
-    """仓根 `prose.json`。七个仓字段相同，缺一个或多一个都报错。路径一律仓根相对，glob 写法见 `compile_glob`。
+    """仓根 `prose.json`。各仓字段相同，缺一个或多一个都报错。路径一律仓根相对，glob 写法见 `compile_glob`。
 
     - `suffixes`、`names`：扫哪些后缀，以及哪些没有后缀的文件名。
     - `skip_dirs`、`skip_prefixes`：不扫的目录名（任一层）与路径前缀。
@@ -117,7 +116,6 @@ class Config:
     - `data_suffixes`、`whole_line_suffixes`：整份是数据不取行文；整行都算行文。
     - `living`、`procedural`：活文档与程序文的 glob。程序文也是活文档。
     - `narrative_comments`：判叙事词的注释在哪些文件里。`narrative_extra`：本仓另判的叙事词正则，可为空串。
-    - `narrative_mirrors`：逐字含 `NARRATIVE` 正则原文的文件，别的工具拿同一张表判别处。
     - `must_read`、`must_read_total`、`on_demand`、`uncapped`：必读集与按需文档的篇幅上限，不设上限的写理由。
     - `generated`：生成块的起止标记，块里不判行文、不计篇幅。
     - `canon`：定稿句表，逐字重复先抹掉表里的句子；空串表示没有。`glossary`：术语表。
@@ -139,7 +137,6 @@ class Config:
     procedural: tuple[str, ...]
     narrative_comments: tuple[str, ...]
     narrative_extra: str
-    narrative_mirrors: tuple[str, ...]
     must_read: dict[str, int]
     must_read_total: int
     on_demand: dict[str, int]
@@ -155,8 +152,8 @@ class Config:
 
 
 LIST_FIELDS = ("suffixes", "names", "skip_dirs", "skip_prefixes", "frozen_prefixes", "data_suffixes",
-               "whole_line_suffixes", "living", "procedural", "narrative_comments", "narrative_mirrors",
-               "path_mention_files", "path_mention_roots", "binary_roots", "binary_allowed")
+               "whole_line_suffixes", "living", "procedural", "narrative_comments", "path_mention_files",
+               "path_mention_roots", "binary_roots", "binary_allowed")
 TEXT_MAP_FIELDS = ("skip_files", "comment_styles", "uncapped")
 CAP_FIELDS = ("must_read", "on_demand")
 TEXT_FIELDS = ("narrative_extra", "canon", "glossary")
@@ -189,7 +186,7 @@ def parse_config(data: object) -> Config:
     missing = [name for name in FIELDS if name not in data]
     extra = sorted(set(data) - set(FIELDS))
     if missing or extra:
-        raise ConfigError(f"{CONFIG} 缺字段 {missing}，多字段 {extra}；七个仓同一套字段")
+        raise ConfigError(f"{CONFIG} 缺字段 {missing}，多字段 {extra}；各仓同一套字段")
     for name in LIST_FIELDS:
         if not _strings(data[name]):
             raise ConfigError(f"{name} 要是字符串数组")
@@ -220,8 +217,8 @@ def parse_config(data: object) -> Config:
         data_suffixes=frozenset(data["data_suffixes"]), whole_line_suffixes=frozenset(data["whole_line_suffixes"]),
         living=tuple(data["living"]), procedural=tuple(data["procedural"]),
         narrative_comments=tuple(data["narrative_comments"]), narrative_extra=data["narrative_extra"],
-        narrative_mirrors=tuple(data["narrative_mirrors"]), must_read=dict(data["must_read"]),
-        must_read_total=data["must_read_total"], on_demand=dict(data["on_demand"]), uncapped=dict(data["uncapped"]),
+        must_read=dict(data["must_read"]), must_read_total=data["must_read_total"], on_demand=dict(data["on_demand"]),
+        uncapped=dict(data["uncapped"]),
         generated=tuple((pair[0], pair[1]) for pair in data["generated"]), canon=data["canon"],
         glossary=data["glossary"], path_mention_files=tuple(data["path_mention_files"]),
         path_mention_roots=tuple(data["path_mention_roots"]), binary_roots=tuple(data["binary_roots"]),

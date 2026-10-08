@@ -1,4 +1,4 @@
-"""文档治理的判据：篇幅与读序对账、活文档逐字重复、链接、路径提及、二进制、叙事词表的镜像。合成仓，不读真文档。"""
+"""文档治理的判据：篇幅与读序对账、活文档逐字重复、链接、路径提及与二进制。合成仓，不读真文档。"""
 import sys
 import unittest
 from pathlib import Path
@@ -144,19 +144,13 @@ class LinkTests(unittest.TestCase):
         self.assertEqual(found, ["AGENTS.md:1 提到的路径不在库里：docs/gone.md"])
 
 
-class BinaryAndMirrorTests(Repo):
+class BinaryTests(Repo):
     def test_binaries_under_roots_are_red_except_allowed(self):
         blobs = {"docs/shot.png": b"\x89PNG\r\n\x1a\n\0", "docs/legal/signed.pdf": b"%PDF\0\xff",
                  "docs/a.md": "正文".encode(), "App/icon.png": b"\0"}
         cfg = self.config(binary_roots=["docs/", "specs/"], binary_allowed=["docs/legal/"])
         found = doc_rules.binary_problems(cfg, sorted(blobs), blobs.__getitem__)
         self.assertEqual(found, ["docs/shot.png 是二进制：截图与录屏看过即删，结论写进文字"])
-
-    def test_mirror_must_contain_the_narrative_pattern(self):
-        self.files["lint.yml"] = f'regex: "{prose_rules.NARRATIVE.pattern}"\n'
-        self.assertEqual(doc_rules.mirror_problems(self.config(narrative_mirrors=["lint.yml"]), self.read), [])
-        self.files["lint.yml"] = 'regex: "x"\n'
-        self.assertEqual(len(doc_rules.mirror_problems(self.config(narrative_mirrors=["lint.yml"]), self.read)), 1)
 
 
 if __name__ == "__main__":

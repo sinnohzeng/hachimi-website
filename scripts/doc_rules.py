@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""文档治理的判据：篇幅、活文档之间的逐字重复、链接、路径提及、文档目录里的二进制、叙事词表的镜像。
+"""文档治理的判据：篇幅、活文档之间的逐字重复、链接、路径提及、文档目录里的二进制。
 
-与 `prose_rules.py` 同属一组七份逐字节相同的脚本，作用域与上限都读仓根 `prose.json`。入口 `check-prose-style.py`
+与 `prose_rules.py` 同属一组各仓逐字节相同的脚本，作用域与上限都读仓根 `prose.json`。入口 `check-prose-style.py`
 不给路径跑全仓时，逐文件的判据之后接着跑这几条。一处命中即红：
 
 1. **篇幅**：必读集是 `CLAUDE.md`、`AGENTS.md`，加 AGENTS“开工前按序读”一节编号各条链到的仓内 `.md`，
@@ -17,7 +17,6 @@
 4. **路径提及**：`path_mention_files` 里反引号包着、以 `path_mention_roots` 开头的仓内路径要入库，
    带通配符与占位符的不查。
 5. **二进制**：`binary_roots` 下入库的二进制即红，`binary_allowed` 的前缀除外。截图与录屏看过即删，结论写进文字。
-6. **镜像**：`narrative_mirrors` 里的每份文件要逐字含 `prose_rules.NARRATIVE` 的正则原文。
 """
 
 from __future__ import annotations
@@ -259,15 +258,6 @@ def binary_problems(config: prose_rules.Config, listed: Iterable[str], read_byte
             and is_binary(read_bytes(name))]
 
 
-def mirror_problems(config: prose_rules.Config, read: Reader) -> list[str]:
-    problems = []
-    for name in config.narrative_mirrors:
-        text = read(name)
-        if text is None or prose_rules.NARRATIVE.pattern not in text:
-            problems.append(f"{name}：要逐字含 prose_rules.NARRATIVE 的正则原文，两处一张表")
-    return problems
-
-
 def check(config: prose_rules.Config, listed: list[str], scanned: list[str], read: Reader,
           read_bytes: Callable[[str], bytes]) -> list[str]:
     """全部判据跑一遍。`listed` 是入库清单，`scanned` 是行文门扫的那一份。"""
@@ -282,4 +272,4 @@ def check(config: prose_rules.Config, listed: list[str], scanned: list[str], rea
         found += link_problems(name, text, known)
         if prose_rules.matches(name, config.path_mention_files):
             found += mention_problems(name, text, config.path_mention_roots, known)
-    return found + binary_problems(config, listed, read_bytes) + mirror_problems(config, read)
+    return found + binary_problems(config, listed, read_bytes)
