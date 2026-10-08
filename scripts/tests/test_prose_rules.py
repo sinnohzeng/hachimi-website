@@ -24,7 +24,6 @@ BASE = {
     "procedural": ["docs/playbooks/*.md"],
     "narrative_comments": ["scripts/**", "Makefile"],
     "narrative_extra": "",
-    "narrative_mirrors": [],
     "must_read": {},
     "must_read_total": 1,
     "on_demand": {},

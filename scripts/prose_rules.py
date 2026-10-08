@@ -73,7 +73,6 @@ COINED_UNIT = re.compile(
     "|第[ 一二三四五六七八九十零\\d]+刀|[两三四五六七八九几]刀|落刀|派刀|回标(?![准签题])")
 # 叙事词，七仓一张表。现状里常用的“不再”“原来”“已删”“只因”“那一次”“下一轮”“换过”“以前”“那一版”不进表；
 # “从前往后”“从前面”是方位。
-# hachimi-ios `.swiftlint.yml` 的 `narrative_comment` 逐字含这一条，由 `narrative_mirrors` 对账。
 NARRATIVE = re.compile("此前|原先|曾经|曾写着|已下线|换底[之以]?[前后]|这一版新加|沉淀自|早先|从前(?![往面])|实测过|教训|后续可|那版|踩过")
 BRACKET_NOTE = re.compile("\u3014")
 HEADING_DATE = re.compile("^#{1,6} .*\uff08\\d{4}-\\d{2}")
@@ -117,7 +116,6 @@ class Config:
     - `data_suffixes`、`whole_line_suffixes`：整份是数据不取行文；整行都算行文。
     - `living`、`procedural`：活文档与程序文的 glob。程序文也是活文档。
     - `narrative_comments`：判叙事词的注释在哪些文件里。`narrative_extra`：本仓另判的叙事词正则，可为空串。
-    - `narrative_mirrors`：逐字含 `NARRATIVE` 正则原文的文件，别的工具拿同一张表判别处。
     - `must_read`、`must_read_total`、`on_demand`、`uncapped`：必读集与按需文档的篇幅上限，不设上限的写理由。
     - `generated`：生成块的起止标记，块里不判行文、不计篇幅。
     - `canon`：定稿句表，逐字重复先抹掉表里的句子；空串表示没有。`glossary`：术语表。
@@ -139,7 +137,6 @@ class Config:
     procedural: tuple[str, ...]
     narrative_comments: tuple[str, ...]
     narrative_extra: str
-    narrative_mirrors: tuple[str, ...]
     must_read: dict[str, int]
     must_read_total: int
     on_demand: dict[str, int]
@@ -155,8 +152,8 @@ class Config:
 
 
 LIST_FIELDS = ("suffixes", "names", "skip_dirs", "skip_prefixes", "frozen_prefixes", "data_suffixes",
-               "whole_line_suffixes", "living", "procedural", "narrative_comments", "narrative_mirrors",
-               "path_mention_files", "path_mention_roots", "binary_roots", "binary_allowed")
+               "whole_line_suffixes", "living", "procedural", "narrative_comments", "path_mention_files",
+               "path_mention_roots", "binary_roots", "binary_allowed")
 TEXT_MAP_FIELDS = ("skip_files", "comment_styles", "uncapped")
 CAP_FIELDS = ("must_read", "on_demand")
 TEXT_FIELDS = ("narrative_extra", "canon", "glossary")
@@ -220,8 +217,8 @@ def parse_config(data: object) -> Config:
         data_suffixes=frozenset(data["data_suffixes"]), whole_line_suffixes=frozenset(data["whole_line_suffixes"]),
         living=tuple(data["living"]), procedural=tuple(data["procedural"]),
         narrative_comments=tuple(data["narrative_comments"]), narrative_extra=data["narrative_extra"],
-        narrative_mirrors=tuple(data["narrative_mirrors"]), must_read=dict(data["must_read"]),
-        must_read_total=data["must_read_total"], on_demand=dict(data["on_demand"]), uncapped=dict(data["uncapped"]),
+        must_read=dict(data["must_read"]), must_read_total=data["must_read_total"], on_demand=dict(data["on_demand"]),
+        uncapped=dict(data["uncapped"]),
         generated=tuple((pair[0], pair[1]) for pair in data["generated"]), canon=data["canon"],
         glossary=data["glossary"], path_mention_files=tuple(data["path_mention_files"]),
         path_mention_roots=tuple(data["path_mention_roots"]), binary_roots=tuple(data["binary_roots"]),
