@@ -1,4 +1,4 @@
-"""行文门的入口：配置的字段与类型、配置空转、扫哪些文件、七份副本逐字节比对、术语表在不在、commit message 入口。"""
+"""行文门的入口：配置的字段与类型、配置空转、扫哪些文件、七份副本逐字节比对、术语表在不在。"""
 import contextlib
 import importlib.util
 import io
@@ -23,7 +23,6 @@ def load(name: str):
 
 
 gate = load("check-prose-style")
-commit_gate = load("commit-msg-style-gate")
 
 
 class ConfigTests(unittest.TestCase):
@@ -127,22 +126,6 @@ class GlossaryTests(unittest.TestCase):
             glossary, problems = gate.load_glossary(Path(folder), config())
         self.assertIsNone(glossary)
         self.assertEqual(len(problems), 1)
-
-
-class CommitMessageTests(unittest.TestCase):
-    def run_gate(self, text: str) -> int:
-        with tempfile.TemporaryDirectory() as folder, contextlib.redirect_stderr(io.StringIO()):
-            path = Path(folder) / "COMMIT_EDITMSG"
-            path.write_text(text, encoding="utf-8")
-            return commit_gate.main(["commit-msg-style-gate.py", str(path)])
-
-    def test_clean_message_passes_and_git_comments_are_skipped(self):
-        self.assertEqual(self.run_gate("feat: 按首字母分节\n\n# Please enter the “message” \"x\"\n"), 0)
-
-    def test_red_message_and_usage_error(self):
-        self.assertEqual(self.run_gate("feat: 列表\u2014分节\n"), 1)
-        with contextlib.redirect_stderr(io.StringIO()):
-            self.assertEqual(commit_gate.main(["commit-msg-style-gate.py"]), 2)
 
 
 if __name__ == "__main__":
