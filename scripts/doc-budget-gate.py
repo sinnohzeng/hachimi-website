@@ -5,10 +5,10 @@
 没有门的计划、调研、编号规约与 ADR 接着长。每类给一个总量，哪一类涨了当场红；归不进任何一类的
 文件也红，于是这张表同时是目录白名单，新起一个按日期堆的目录进不了库。
 
-**七份逐字节相同**：`COPIES` 列的七处各放一份，只用标准库，不 import 仓内别的模块，仓根取
+**各仓一份，逐字节相同**：放在 `COPIES` 列的各处，只用标准库，不 import 仓内别的模块，仓根取
 `git rev-parse --show-toplevel`，表是仓根的 `doc-budget.json`，各仓一张。同级各仓在父目录里时，
-跑这道门就逐字节比对它们的副本，有一份不同即红：改判据要七份同批改，只改一份会让其余各仓悄悄跑旧判据。
-单测 `tests/test_doc_budget_gate.py` 同样七份相同。
+跑这道门就逐字节比对它们的副本，有一份不同即红：改判据要各仓同批改，只改一份会让其余各仓悄悄跑旧判据。
+单测 `tests/test_doc_budget_gate.py` 同样各仓相同。
 
 **与各仓单份篇幅门的分工**：入口与常驻文档里点名的那几份，单份上限写在各仓 `prose.json`
 的 `must_read` 与 `on_demand`，由行文门判，这里不重复。这张表只管两件事：每一类的合计，与同类很多份的单份上限
@@ -54,7 +54,7 @@ from collections.abc import Callable
 from pathlib import Path
 
 TABLE = "doc-budget.json"
-# 七份副本的位置，相对于各仓共同的父目录。
+# 各仓副本的位置，相对于各仓共同的父目录。
 COPIES = ("hachimi-ios/scripts", "hachimi-android/scripts", "hachimi-backend/scripts", "hachimi-engine/scripts",
           "hachimi-website/scripts", "hachimi-ziwei-web/scripts", "hachimi-orb/tools")
 
@@ -217,7 +217,7 @@ def copy_problems(own: Path, parent: Path) -> list[str]:
     for folder in COPIES:
         other = parent / folder / own.name
         if other.is_file() and other.resolve() != own.resolve() and other.read_bytes() != mine:
-            found.append(f"{folder}/{own.name}：与本份字节不同，七份要同批改")
+            found.append(f"{folder}/{own.name}：与本份字节不同，各仓要同批改")
     return found
 
 

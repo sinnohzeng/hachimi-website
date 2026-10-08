@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """文档治理的判据：篇幅、活文档之间的逐字重复、链接、路径提及、文档目录里的二进制。
 
-与 `prose_rules.py` 同属一组七份逐字节相同的脚本，作用域与上限都读仓根 `prose.json`。入口 `check-prose-style.py`
+与 `prose_rules.py` 同属一组各仓逐字节相同的脚本，作用域与上限都读仓根 `prose.json`。入口 `check-prose-style.py`
 不给路径跑全仓时，逐文件的判据之后接着跑这几条。一处命中即红：
 
 1. **篇幅**：必读集是 `CLAUDE.md`、`AGENTS.md`，加 AGENTS“开工前按序读”一节编号各条链到的仓内 `.md`，

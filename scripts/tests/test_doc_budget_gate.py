@@ -170,7 +170,7 @@ class CopyTests(unittest.TestCase):
                 path.parent.mkdir(parents=True)
                 path.write_text(body, encoding="utf-8")
             self.assertEqual(gate.copy_problems(own, parent),
-                             ["hachimi-orb/tools/doc-budget-gate.py：与本份字节不同，七份要同批改"])
+                             ["hachimi-orb/tools/doc-budget-gate.py：与本份字节不同，各仓要同批改"])
 
 
 if __name__ == "__main__":

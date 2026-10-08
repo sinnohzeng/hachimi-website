@@ -2,7 +2,7 @@
 """commit message 行文门：整条 message 按 `prose_rules.py` 的前五条判，与入库文件那道门同一份判据。
 
 整条 message 都是给人读的字，故整条算行文，只剥行内反引号片段。叙事词、术语与句长不判：
-message 讲的就是变更。git 自己加的井号注释行不判。不读 `prose.json`，没接配置的仓也能用。
+message 讲的就是变更。git 自己加的井号注释行不判。不读 `prose.json`：前五条各仓一样。
 
 用法：commit-msg 钩子调用，也可以直接 `python3 <本文件> <commit message 文件>` 手动跑。
 """
