@@ -88,5 +88,13 @@
   ],
   "binary_roots": ["docs/", "specs/"],
   "binary_allowed": [],
-  "rules": []
+  "rules": [
+    {
+      "pattern": "^(?!\\s*#).*(?<!\\\\)\\$[A-Za-z_][A-Za-z0-9_]*[^\\x00-\\x7f]",
+      "in": "lines",
+      "files": ["**/.githooks/*"],
+      "except": [],
+      "message": "shell 里的 $变量 紧贴中文：bash 把后面的字节当成变量名的一部分，set -u 下报未定义，写成 ${变量}"
+    }
+  ]
 }
