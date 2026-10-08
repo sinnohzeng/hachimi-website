@@ -98,7 +98,7 @@ test("根路径按 Accept-Language 分流，与 /get 同一个 localeOf", () => 
       response.headers.get("Location"),
       `/${localeOf(acceptLanguage ?? null)}`
     );
-    assert.equal(response.headers.get("Cache-Control"), "private, no-store");
+    assert.equal(response.headers.get("Cache-Control"), "no-store");
     assert.equal(response.headers.get("Vary"), "Accept-Language");
   }
 });
