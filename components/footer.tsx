@@ -7,6 +7,7 @@ import { siteConfig } from "@/lib/config";
 import type { Translations } from "@/lib/i18n";
 import type { Locale } from "@/lib/locale";
 import { NAV_ITEMS } from "@/lib/nav";
+import { PAGES } from "@/lib/pages";
 
 /**
  * 页脚（spec 004）：左边是道长、字标与一句定位语，右边两栏链接，最底下一行版权与法律链接。
@@ -30,15 +31,18 @@ export function Footer({
     {
       title: t.footer.contactTitle,
       items: [
-        { label: t.footer.support, href: `/${locale}/support` },
+        { label: t.footer.support, href: `/${locale}${PAGES.support.path}` },
         { label: siteConfig.email, href: `mailto:${siteConfig.email}` },
       ],
     },
   ];
   const legal = [
-    { label: t.footer.legal.privacy, href: `/${locale}/privacy` },
-    { label: t.footer.legal.terms, href: `/${locale}/terms` },
-    { label: t.footer.legal.dataDeletion, href: `/${locale}/data-deletion` },
+    { label: t.footer.legal.privacy, href: `/${locale}${PAGES.privacy.path}` },
+    { label: t.footer.legal.terms, href: `/${locale}${PAGES.terms.path}` },
+    {
+      label: t.footer.legal.dataDeletion,
+      href: `/${locale}${PAGES.dataDeletion.path}`,
+    },
   ];
 
   return (

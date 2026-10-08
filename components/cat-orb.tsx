@@ -85,7 +85,9 @@ export function CatOrb({
           element.dataset.orbReady = "true";
           sync();
         })
-        .catch(() => {
+        .catch((error: unknown) => {
+          // 装不上就留静帧；.riv 改了属性名时，控制台里这一条是唯一的线索。
+          console.error(error);
           delete element.dataset.orbReady;
         });
     };

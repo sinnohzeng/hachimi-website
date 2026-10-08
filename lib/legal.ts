@@ -1,7 +1,12 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { Marked, type Tokens } from "marked";
-import { lastUpdatedOf, legalFiles, type LegalKind } from "./legal-files.ts";
+import {
+  lastUpdatedOf,
+  legalFiles,
+  legalHref,
+  type LegalKind,
+} from "./legal-files.ts";
 import { defaultLocale, type Locale } from "./locale.ts";
 
 /**
@@ -12,24 +17,6 @@ import { defaultLocale, type Locale } from "./locale.ts";
  * td 带上对应表头作 data-label，窄屏按行堆叠成卡片（globals.css 的
  * .stack-table）；一级标题取出来作页面的 h1。
  */
-
-const routeOfFile = new Map<string, string>(
-  Object.entries(legalFiles).flatMap(([kind, files]) =>
-    Object.entries(files).map(
-      ([locale, file]) => [file, `/${locale}/${kind}`] as const
-    )
-  )
-);
-
-function siteHref(href: string): string {
-  if (/^([a-z][a-z\d+.-]*:|\/|#)/i.test(href)) return href;
-  const [file = "", hash] = href.split("#");
-  const route = routeOfFile.get(file);
-  if (!route) {
-    throw new Error(`content/legal 里的相对链接对不上站内路由：${href}`);
-  }
-  return hash ? `${route}#${hash}` : route;
-}
 
 function escapeAttribute(value: string): string {
   return value
@@ -46,7 +33,7 @@ const marked = new Marked({
   renderer: {
     link(token) {
       const text = this.parser.parseInline(token.tokens);
-      return `<a href="${escapeAttribute(siteHref(token.href))}">${text}</a>`;
+      return `<a href="${escapeAttribute(legalHref(token.href))}">${text}</a>`;
     },
     table(token) {
       const labels = token.header.map((cell) =>

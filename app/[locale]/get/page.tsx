@@ -1,27 +1,26 @@
 import { Footer } from "@/components/footer";
 import { StoreBadges } from "@/components/store-badges";
 import { BreadcrumbStructuredData } from "@/components/structured-data";
+import { subPageMetadata } from "@/components/sub-page";
 import { siteConfig } from "@/lib/config";
 import { getTranslations } from "@/lib/i18n";
 import { toLocale } from "@/lib/locale";
-import { localizedPageMetadata } from "@/lib/metadata";
+import { PAGES } from "@/lib/pages";
 import { iPadOSStoreScript } from "@/lib/platform";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { renderSVG } from "uqr";
 
 // 构建期生成，静态导出时内联进 HTML，客户端不带二维码库。
-const downloadQr = renderSVG(`${siteConfig.url}/get`, { ecc: "M", border: 2 });
+const downloadQr = renderSVG(`${siteConfig.url}${PAGES.get.path}`, {
+  ecc: "M",
+  border: 2,
+});
 
-export async function generateMetadata({
+export function generateMetadata({
   params,
 }: PageProps<"/[locale]/get">): Promise<Metadata> {
-  const locale = toLocale((await params).locale);
-  return localizedPageMetadata({
-    locale,
-    path: "/get",
-    ...getTranslations(locale).meta.get,
-  });
+  return subPageMetadata("get", params);
 }
 
 /**
@@ -40,7 +39,7 @@ export default async function GetPage({
       <script dangerouslySetInnerHTML={{ __html: iPadOSStoreScript() }} />
       <BreadcrumbStructuredData
         locale={locale}
-        path="/get"
+        path={PAGES.get.path}
         pageTitle={t.get.title}
       />
       <main

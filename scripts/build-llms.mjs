@@ -28,7 +28,8 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const { en } = await import("../lib/i18n/en.ts");
 const { zh } = await import("../lib/i18n/zh.ts");
 const { siteConfig } = await import("../lib/config.ts");
-const { legalFiles, lastUpdatedOf } = await import("../lib/legal-files.ts");
+const { legalFiles, lastUpdatedOf, legalHref } =
+  await import("../lib/legal-files.ts");
 
 const OUTPUTS = {
   "public/llms.txt": buildIndex,
@@ -102,21 +103,12 @@ async function legalMarkdown(kind, locale) {
   return readFile(path.join(ROOT, "content/legal", file), "utf8");
 }
 
-const legalUrlOfFile = new Map(
-  Object.entries(legalFiles).flatMap(([kind, files]) =>
-    Object.entries(files).map(([locale, file]) => [file, pageUrl(locale, kind)])
-  )
-);
-
-/** 法律件之间的相对链接改成站内绝对网址，与 lib/legal.ts 渲染页面时同一张表。 */
+/** 法律件之间的相对链接改成站内绝对网址，改写规则与页面渲染共用 legalHref。 */
 function absoluteLegalLinks(markdown) {
-  return markdown.replace(/\]\(([^)\s]+)\)/g, (match, href) => {
-    if (/^([a-z][a-z\d+.-]*:|\/|#)/i.test(href)) return match;
-    const [file = "", hash] = href.split("#");
-    const url = legalUrlOfFile.get(file);
-    if (!url) throw new Error(`content/legal 里的相对链接对不上：${href}`);
-    return `](${hash ? `${url}#${hash}` : url})`;
-  });
+  return markdown.replace(
+    /\]\(([^)\s]+)\)/g,
+    (_, href) => `](${legalHref(href, siteConfig.url)})`
+  );
 }
 
 /** 英文隐私政策第 1 节：标题与正文原文。 */

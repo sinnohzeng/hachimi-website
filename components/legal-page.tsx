@@ -1,4 +1,7 @@
+import { pageDates } from "@/lib/config";
+import { getTranslations } from "@/lib/i18n";
 import type { LegalPage } from "@/lib/i18n/types";
+import { formatDate, type Locale } from "@/lib/locale";
 import type { ReactNode } from "react";
 
 function ContactTable({
@@ -42,16 +45,18 @@ function ContactTable({
   );
 }
 
+/** 支持页与删除数据页的正文。标题取 i18n `meta`，“最后更新”的日期取 lib/config.ts 的 pageDates。 */
 export function LegalPageContent({
-  title,
-  updated,
-  data,
+  page,
+  locale,
 }: {
-  title: string;
-  /** “最后更新”那一行，标签与按语言排好的日期。 */
-  updated: string;
-  data: LegalPage;
+  page: "support" | "dataDeletion";
+  locale: Locale;
 }): ReactNode {
+  const t = getTranslations(locale);
+  const title = t.meta[page].title;
+  const updated = `${t.lastUpdated}${formatDate(locale, pageDates[page])}`;
+  const data: LegalPage = t[page];
   return (
     <section className="bg-background text-foreground relative w-full">
       <div className="flex items-center justify-center px-6 sm:px-8">
