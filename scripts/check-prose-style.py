@@ -34,9 +34,9 @@ COPIES = ("hachimi-ios/scripts", "hachimi-android/scripts", "hachimi-backend/scr
 
 
 def repo_root() -> Path:
-    found = subprocess.run(["git", "rev-parse", "--show-toplevel"], cwd=Path(__file__).resolve().parent,
-                           capture_output=True, text=True, check=True).stdout.strip()
-    return Path(found)
+    """仓根按本文件的位置定：套件放在仓根下一层（`scripts/`，orb 是 `tools/`）。钩子在关联工作树里运行时
+    导出 `GIT_DIR`，按位置定不受它影响。"""
+    return Path(__file__).resolve().parents[1]
 
 
 def listing(root: Path) -> list[str]:
