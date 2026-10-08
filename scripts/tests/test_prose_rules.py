@@ -205,12 +205,13 @@ class Narrative(unittest.TestCase):
 
     def test_present_tense_and_direction_words_pass(self):
         self.assertEqual(details("docs/a.md", "不再涨就算画稳了，原来的值留着，从前往后扫，下一轮查询再建。\n"), [])
+        self.assertEqual(details("docs/a.md", "语言换过就重跑，2.1 及以前那一格照读，已存的那一版留着。\n"), [])
 
     def test_quoted_ui_text_is_not_judged(self):
         self.assertEqual(details("docs/a.md", f"页末一节叫{OPEN}这一位{self.WORD}问过的同类事{CLOSE}。\n"), [])
 
     def test_incident_words_are_red(self):
-        for word in ("实测过", "教训", "后续可"):
+        for word in ("实测过", "教训", "后续可", "0.4 那版", "踩过"):
             with self.subTest(word=word):
                 self.assertEqual(len(details("scripts/a.py", f"# {word}这样\n")), 1)
 
