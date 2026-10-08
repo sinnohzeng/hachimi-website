@@ -2,17 +2,19 @@
 """行文门的入口：取入库清单，按仓根 `prose.json` 筛出要扫的文件，跑判据，打印。
 
 判据在 `prose_rules.py`（逐文件）与 `doc_rules.py`（文档治理）的档头，字段表在 `prose_rules.Config`。
-这个文件另判三件事：
+这个文件另判下面几件事：
 
+- **hachimi-ios 在场**：父目录里没有 `hachimi-ios` 即打印原因、以 2 退出，给不给路径都判。它是套件与术语表的真源，
+  缺了它副本与术语都判不了。hachimi-ios 跑自己时，认法与副本比对认本份是同一条：父目录里的 `hachimi-ios`
+  解析到本仓就是自己，算在场，也不拿来比。关联工作树的父目录里同样要有它，放一个指向主检出的软链即可。
 - **配置不空转**：`skip_files` 的键要是入库文件，`names` 要有入库文件叫这个名字；`skip_prefixes`、`frozen_prefixes`、`skip_dirs` 与各 glob
   （`living`、`procedural`、`narrative_comments`、`path_mention_files`、每条规则的 `files`）要至少对得上一份入库文件。
   目录一改名，豁免与作用域就静默落空，这里当场报出来。
-- **副本一致**：`KIT` 列的每份文件在 `COPIES` 七处逐字节相同。同级各仓在父目录里、且仓根有 `prose.json` 时才比，
-  缺席或还没接上这组脚本的仓不比。
-- **术语表在不在**：`glossary` 指的文件不在时打印一行，术语一条不判。
+- **副本一致**：`KIT` 列的每份文件在 `COPIES` 列的各处逐字节相同。父目录里缺席的仓不比，解析到本份的那一处不比。
+- **术语表在不在**：`glossary` 指的文件不在即红。
 
 用法：`python3 scripts/check-prose-style.py [路径…]`。给路径时只对这几份跑逐文件的判据；不给路径则扫全部入库文本，
-再跑文档治理与上面三件事。
+再跑文档治理、配置不空转与副本一致。
 """
 
 from __future__ import annotations
@@ -29,9 +31,10 @@ import prose_rules  # noqa: E402
 KIT = ("prose_rules.py", "doc_rules.py", "check-prose-style.py", "commit-msg-style-gate.py",
        "tests/test_prose_rules.py", "tests/test_prose_gate.py", "tests/test_doc_rules.py",
        "tests/test_commit_msg_style_gate.py")
-# 七份副本的位置，相对于各仓共同的父目录。
+# 各仓副本的位置，相对于各仓共同的父目录。
 COPIES = ("hachimi-ios/scripts", "hachimi-android/scripts", "hachimi-backend/scripts", "hachimi-engine/scripts",
           "hachimi-website/scripts", "hachimi-ziwei-web/scripts", "hachimi-orb/tools")
+IOS = "hachimi-ios"
 
 
 def repo_root() -> Path:
@@ -82,28 +85,32 @@ def stale_problems(config: prose_rules.Config, listed: list[str]) -> list[str]:
     return problems
 
 
+def ios_missing(root: Path) -> bool:
+    """父目录里没有 hachimi-ios。hachimi-ios 的主检出在父目录里就是它自己，不算缺。"""
+    return not (root.parent / IOS).is_dir()
+
+
 def copy_problems(own: Path, parent: Path) -> list[str]:
-    """父目录下同级各仓的副本逐份逐字节比对本份。仓根没有 `prose.json` 的仓还没接上这组脚本，不比。"""
+    """父目录下同级各仓的副本逐份逐字节比对本份。缺席的仓不比，解析到本份的那一处是自己，不比。"""
     found = []
     for folder in COPIES:
         other = parent / folder
-        if not (parent / folder.split("/", 1)[0] / prose_rules.CONFIG).is_file() or other.resolve() == own.resolve():
+        if not other.parent.is_dir() or other.resolve() == own.resolve():
             continue
         for name in KIT:
             theirs = other / name
             if not theirs.is_file():
-                found.append(f"{folder}/{name}：缺这一份，七份要同批改")
+                found.append(f"{folder}/{name}：缺这一份，各仓要同批改")
             elif theirs.read_bytes() != (own / name).read_bytes():
-                found.append(f"{folder}/{name}：与本份字节不同，七份要同批改")
+                found.append(f"{folder}/{name}：与本份字节不同，各仓要同批改")
     return found
 
 
 def load_glossary(root: Path, config: prose_rules.Config) -> tuple[prose_rules.Glossary | None, list[str]]:
-    """→ 术语表，与它的问题。文件不在打印一行、不判；在而找不到那张表即红。"""
+    """→ 术语表，与它的问题。文件不在、或在而找不到那张表，都红。"""
     path = (root / config.glossary).resolve()
     if not path.is_file():
-        print(f"  术语表 {config.glossary} 不在，术语一条不判")
-        return None, []
+        return None, [f"glossary 指的 {config.glossary} 不在：改名就改 {prose_rules.CONFIG}"]
     terms = prose_rules.parse_glossary(path.read_text(encoding="utf-8"))
     if terms is None:
         header = " | ".join(prose_rules.GLOSSARY_HEADER)
@@ -121,6 +128,9 @@ def report(title: str, lines: list[str], advice: str) -> None:
 
 def main(argv: list[str]) -> int:
     root = repo_root()
+    if ios_missing(root):
+        print(f"❌ 兄弟目录 {IOS} 不在场：{root.parent / IOS}。照 AGENTS.md 与本仓并列检出它", file=sys.stderr)
+        return 2
     try:
         config = prose_rules.load_config(root)
     except (OSError, ValueError) as error:

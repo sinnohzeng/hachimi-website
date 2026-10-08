@@ -1,4 +1,4 @@
-"""行文门的入口：配置的字段与类型、配置空转、扫哪些文件、七份副本逐字节比对、术语表在不在。"""
+"""行文门的入口：hachimi-ios 在场、配置的字段与类型、配置空转、扫哪些文件、各仓副本逐字节比对、术语表在不在。"""
 import contextlib
 import importlib.util
 import io
@@ -85,13 +85,11 @@ class CopyTests(unittest.TestCase):
         self.parent = Path(temporary.name)
         self.own = self.make("hachimi-ios/scripts", "同一份")
 
-    def make(self, folder: str, body: str, config_file: bool = True) -> Path:
+    def make(self, folder: str, body: str) -> Path:
         where = self.parent / folder
         for name in gate.KIT:
             (where / name).parent.mkdir(parents=True, exist_ok=True)
             (where / name).write_text(body, encoding="utf-8")
-        if config_file:
-            (self.parent / folder.split("/")[0] / prose_rules.CONFIG).write_text("{}", encoding="utf-8")
         return where
 
     def test_identical_copies_and_absent_repos_pass(self):
@@ -103,21 +101,56 @@ class CopyTests(unittest.TestCase):
         (other / "doc_rules.py").write_text("改过的", encoding="utf-8")
         (other / "tests/test_doc_rules.py").unlink()
         self.assertEqual(gate.copy_problems(self.own, self.parent),
-                         ["hachimi-android/scripts/doc_rules.py：与本份字节不同，七份要同批改",
-                          "hachimi-android/scripts/tests/test_doc_rules.py：缺这一份，七份要同批改"])
+                         ["hachimi-android/scripts/doc_rules.py：与本份字节不同，各仓要同批改",
+                          "hachimi-android/scripts/tests/test_doc_rules.py：缺这一份，各仓要同批改"])
 
-    def test_sibling_without_config_is_not_compared(self):
-        self.make("hachimi-backend/scripts", "旧的一套", config_file=False)
-        self.assertEqual(gate.copy_problems(self.own, self.parent), [])
+    def test_a_present_sibling_without_the_kit_is_red(self):
+        (self.parent / "hachimi-backend").mkdir()
+        self.assertEqual(len(gate.copy_problems(self.own, self.parent)), len(gate.KIT))
+
+    def test_a_linked_worktree_compares_the_ios_checkout_too(self):
+        worktree = self.make("wave/ios-wt/scripts", "改了一半")
+        (worktree.parents[1] / "hachimi-ios").symlink_to(self.parent / "hachimi-ios")
+        self.assertEqual(len(gate.copy_problems(worktree, worktree.parents[1])), len(gate.KIT))
+
+
+class IosTests(unittest.TestCase):
+    def setUp(self):
+        temporary = tempfile.TemporaryDirectory()
+        self.addCleanup(temporary.cleanup)
+        self.parent = Path(temporary.name)
+
+    def test_ios_running_itself_is_present(self):
+        (self.parent / "hachimi-ios").mkdir()
+        self.assertFalse(gate.ios_missing(self.parent / "hachimi-ios"))
+
+    def test_a_sibling_or_worktree_needs_ios_beside_it(self):
+        (self.parent / "hachimi-backend").mkdir()
+        (self.parent / "ios-wt").mkdir()
+        self.assertTrue(gate.ios_missing(self.parent / "hachimi-backend"))
+        self.assertTrue(gate.ios_missing(self.parent / "ios-wt"))
+        (self.parent / "hachimi-ios").mkdir()
+        self.assertFalse(gate.ios_missing(self.parent / "hachimi-backend"))
+        self.assertFalse(gate.ios_missing(self.parent / "ios-wt"))
+
+    def test_main_exits_2_without_ios_with_or_without_paths(self):
+        root = self.parent / "hachimi-backend"
+        root.mkdir()
+        original = gate.repo_root
+        gate.repo_root = lambda: root
+        self.addCleanup(setattr, gate, "repo_root", original)
+        for argv in ([], ["docs/a.md"]):
+            with self.subTest(argv=argv), contextlib.redirect_stderr(io.StringIO()) as err:
+                self.assertEqual(gate.main(argv), 2)
+            self.assertIn("hachimi-ios 不在场", err.getvalue())
 
 
 class GlossaryTests(unittest.TestCase):
-    def test_absent_glossary_prints_one_line_and_is_not_judged(self):
-        with tempfile.TemporaryDirectory() as folder, contextlib.redirect_stdout(io.StringIO()) as out:
+    def test_absent_glossary_is_red(self):
+        with tempfile.TemporaryDirectory() as folder:
             glossary, problems = gate.load_glossary(Path(folder), config(glossary="../nope/glossary.md"))
         self.assertIsNone(glossary)
-        self.assertEqual(problems, [])
-        self.assertIn("不判", out.getvalue())
+        self.assertEqual(problems, ["glossary 指的 ../nope/glossary.md 不在：改名就改 prose.json"])
 
     def test_glossary_without_the_table_is_red(self):
         with tempfile.TemporaryDirectory() as folder:
