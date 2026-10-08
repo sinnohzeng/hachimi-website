@@ -54,7 +54,7 @@ The privacy policy and terms are owned by hachimi-ios ([legal docs](../hachimi-i
 
 ## Orb
 
-The hero and the close play the same signed Rive file as the apps (`public/brand/hachimi-orb.riv`, from the hachimi-orb repo) through `@rive-app/webgl2`, with the wasm self-hosted under `/rive/`. The host only writes the contract inputs, reads the outputs and plays; every motion lives in the file. See [brand assets](design/brand/README.md) and [spec 003](https://github.com/sinnohzeng/hachimi-website/blob/archive-docs-20261006/specs/003-orb-on-rive/spec.md).
+The hero and the footer play the same signed Rive file as the apps (`public/brand/hachimi-orb.riv`, from the hachimi-orb repo) through `@rive-app/webgl2`, with the wasm self-hosted under `/rive/`. The host only writes the contract inputs, reads the outputs and plays; every motion lives in the file. See [brand assets](design/brand/README.md) and [spec 003](https://github.com/sinnohzeng/hachimi-website/blob/archive-docs-20261006/specs/003-orb-on-rive/spec.md).
 
 ## Icons
 
