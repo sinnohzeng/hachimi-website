@@ -36,7 +36,8 @@
 - `whole_line_suffixes`：整行都是给人读的字，例如商店正文。
 - `data_suffixes`：整份是数据，不取。
 - 源码：`comment_styles` 按后缀或文件名给注释写法，取注释正文。扫描器按整份文件走一遍，跨行的块注释、
-  三引号串、原始串与模板串各自归位；`.py` 用 `tokenize` 取注释，用 `ast` 取 docstring。注释里的围栏代码块不取。
+  三引号串与模板串各自归位；`.py` 用 `tokenize` 取注释，用 `ast` 取 docstring；`.swift` 用词法器 `swift_tokens`，
+  它把源码切成注释、字面量、正文段与插值的记号流，hachimi-ios 的门脚本取同一条记号流。注释里的围栏代码块不取。
   `hash` 写法的井号要求前面是行首或空白；大写标记的 heredoc 正文不当代码扫。
 """
 
@@ -204,9 +205,9 @@ def parse_config(data: object) -> Config:
         raise ConfigError("must_read_total 要是正整数")
     if not isinstance(data["generated"], list) or not all(_strings(pair) and len(pair) == 2 for pair in data["generated"]):
         raise ConfigError("generated 要是 [起, 止] 两个字符串一组的数组")
-    unknown = sorted(set(data["comment_styles"].values()) - set(STYLES) - {PYTHON})
+    unknown = sorted(set(data["comment_styles"].values()) - set(STYLES) - {PYTHON, SWIFT})
     if unknown:
-        raise ConfigError(f"comment_styles 里有不认识的写法 {unknown}，可选 {sorted([*STYLES, PYTHON])}")
+        raise ConfigError(f"comment_styles 里有不认识的写法 {unknown}，可选 {sorted([*STYLES, PYTHON, SWIFT])}")
     if not isinstance(data["rules"], list):
         raise ConfigError("rules 要是数组")
     if data["narrative_extra"]:
@@ -276,14 +277,13 @@ def matches(path: str, globs: Iterable[str]) -> bool:
 
 @dataclass(frozen=True)
 class Style:
-    """一种注释写法。`quotes` 是不跨行的串，`long_quotes` 是可以跨行的串，`raw_hash` 认 Swift 的 `#"…"#`。"""
+    """一种注释写法。`quotes` 是不跨行的串，`long_quotes` 是可以跨行的串。"""
 
     line: tuple[str, ...] = ()
     block: tuple[str, str] | None = None
     nested: bool = False
     quotes: str = ""
     long_quotes: tuple[str, ...] = ()
-    raw_hash: bool = False
     hash_word: bool = False
     heredoc: bool = False
     regex: bool = False
@@ -291,9 +291,9 @@ class Style:
 
 
 PYTHON = "python"
+SWIFT = "swift"
 STYLES = {
     "c": Style(line=("//",), block=("/*", "*/"), quotes="\"'", long_quotes=("`",), regex=True),
-    "swift": Style(line=("//",), block=("/*", "*/"), nested=True, quotes='"', long_quotes=('"""',), raw_hash=True),
     "kotlin": Style(line=("//",), block=("/*", "*/"), nested=True, quotes="\"'", long_quotes=('"""',)),
     "css": Style(block=("/*", "*/"), quotes="\"'"),
     "hash": Style(line=("#",), quotes="\"'", hash_word=True, heredoc=True, shell_escapes=True),
@@ -356,16 +356,6 @@ class _Scanner:
                 return index + 1
             index += 1
         return -1
-
-    def raw_opening(self, index: int) -> tuple[int, str] | None:
-        """Swift 原始串：若干个井号紧跟引号。返回引号之后的下标与收尾记号。"""
-        hashes = 0
-        while self.text.startswith("#", index + hashes):
-            hashes += 1
-        if not self.text.startswith('"', index + hashes):
-            return None
-        quote = '"""' if self.text.startswith('"""', index + hashes) else '"'
-        return index + hashes + len(quote), quote + "#" * hashes
 
     def skip_heredoc(self, index: int, tag: str) -> int:
         """`index` 是 heredoc 正文第一行的开头。跳到收尾那一行的换行符上。"""
@@ -443,12 +433,6 @@ class _Scanner:
             if style.shell_escapes and char == "\\":
                 index += 2 if index + 1 < len(text) and text[index + 1] != "\n" else 1
                 continue
-            if style.raw_hash and char == "#":
-                raw = self.raw_opening(index)
-                if raw:
-                    index, closer = raw
-                    escapes, one_line = False, not closer.startswith('"""')
-                    continue
             long_quote = next((q for q in style.long_quotes if text.startswith(q, index)), None)
             if long_quote:
                 index += len(long_quote)
@@ -482,7 +466,111 @@ def comments(text: str, style: str) -> dict[int, str]:
     """→ 行号到这一行的注释正文。"""
     if style == PYTHON:
         return python_comments(text)
+    if style == SWIFT:
+        return swift_comments(text)
     return _Scanner(text, STYLES[style]).run()
+
+
+_LITERAL_OPEN = re.compile(r'(#*)("""|")|(#+)/')
+
+
+def swift_tokens(text: str) -> list[tuple[str, int, int]]:
+    r"""Swift 源码按字符走一遍，给出 (种类, 起, 止) 的记号，按起点排好，外层在前。
+
+    种类五样：`comment` 是整段注释，含定界符，块注释可以嵌套；`string` 是整个字符串字面量，含引号与井号；
+    `regex` 是 `#/…/#` 整个正则字面量；`text` 是字面量正文的一段，不含定界符与插值；
+    `interpolation` 是 `\(…)` 整段，原始串里写作 `\#(…)`。插值里是代码，它里面的注释与字面量照常各成记号。
+    单行串与正则到行尾还没闭合就在行尾收口，不吞掉后面整份文件。
+    """
+    tokens: list[tuple[str, int, int]] = []
+    index, length = 0, len(text)
+    # 栈元素两种：字面量态 `[种类, 起点, 井号数, 是否三引号, 正文段起点]`，插值态 `["interpolation", 起点, 括号深度]`。
+    stack: list[list] = []
+    while index < length:
+        top = stack[-1] if stack else None
+        if top is None or top[0] == "interpolation":
+            if text.startswith("//", index):
+                stop = text.find("\n", index)
+                stop = length if stop < 0 else stop
+                tokens.append(("comment", index, stop))
+                index = stop
+                continue
+            if text.startswith("/*", index):
+                depth, stop = 1, index + 2
+                while stop < length and depth:
+                    if text.startswith("/*", stop):
+                        depth, stop = depth + 1, stop + 2
+                    elif text.startswith("*/", stop):
+                        depth, stop = depth - 1, stop + 2
+                    else:
+                        stop += 1
+                tokens.append(("comment", index, stop))
+                index = stop
+                continue
+            opened = _LITERAL_OPEN.match(text, index)
+            if opened and opened.group(3):
+                stack.append(["regex", index, len(opened.group(3)), False, opened.end()])
+                index = opened.end()
+                continue
+            if opened and (opened.group(1) or text[index] == '"'):
+                stack.append(["string", index, len(opened.group(1)), opened.group(2) == '"""', opened.end()])
+                index = opened.end()
+                continue
+            if top is not None:
+                if text[index] == "(":
+                    top[2] += 1
+                elif text[index] == ")":
+                    top[2] -= 1
+                    if top[2] == 0:
+                        stack.pop()
+                        tokens.append(("interpolation", top[1], index + 1))
+                        stack[-1][4] = index + 1
+            index += 1
+            continue
+        kind, begin, hashes, multiline, run = top
+        escape = "\\" + "#" * hashes
+        closing = "/" + "#" * hashes if kind == "regex" else ('"""' if multiline else '"') + "#" * hashes
+        if kind == "string" and text.startswith(escape + "(", index):
+            tokens.append(("text", run, index))
+            stack.append(["interpolation", index, 1])
+            index += len(escape) + 1
+        elif kind == "string" and text.startswith(escape, index):
+            index += len(escape) + 1
+        elif text.startswith(closing, index):
+            tokens.append(("text", run, index))
+            index += len(closing)
+            tokens.append((kind, begin, index))
+            stack.pop()
+        elif not multiline and text[index] == "\n":
+            tokens.append(("text", run, index))
+            tokens.append((kind, begin, index))
+            stack.pop()
+        else:
+            index += 1
+    while stack:
+        top = stack.pop()
+        if top[0] == "interpolation":
+            tokens.append(("interpolation", top[1], length))
+            continue
+        tokens.append(("text", top[4], length))
+        tokens.append((top[0], top[1], length))
+    return sorted((token for token in tokens if token[2] > token[1]), key=lambda token: (token[1], -token[2]))
+
+
+def swift_comments(text: str) -> dict[int, str]:
+    """`.swift` 的注释正文，取自 `swift_tokens` 的注释记号。行注释去掉 `//`，块注释去掉最外层的 `/*` 与 `*/`。"""
+    found: dict[int, list[str]] = {}
+    for kind, start, stop in swift_tokens(text):
+        if kind != "comment":
+            continue
+        body = text[start + 2:stop]
+        if text.startswith("/*", start) and body.endswith("*/"):
+            body = body[:-2]
+        number = text.count("\n", 0, start) + 1
+        for offset, part in enumerate(body.split("\n")):
+            if part.strip().strip("*").strip():
+                found.setdefault(number + offset, []).append(part)
+    return {number: " ".join(parts) for number, parts in found.items()}
 
 
 def _char_offset(line: str, byte_offset: int) -> int:

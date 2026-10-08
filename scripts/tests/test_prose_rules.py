@@ -68,6 +68,10 @@ def comment_rows(path: str, text: str) -> dict[int, str]:
     return dict(prose_rules.prose_lines(path, text.splitlines(), config()))
 
 
+def swift_kinds(text: str) -> list[tuple[str, str]]:
+    return [(kind, text[start:stop]) for kind, start, stop in prose_rules.swift_tokens(text)]
+
+
 class LineRules(unittest.TestCase):
     def test_dash_in_a_chinese_line_is_red(self):
         self.assertEqual(len(details("README.md", f"门{EM}判据\n")), 1)
@@ -106,6 +110,33 @@ class ProseExtraction(unittest.TestCase):
     def test_swift_strings_hide_comment_markers(self):
         text = 'let a = #"他说"// 不是注释"#\nlet b = """\n// 串里\n"""\nlet c = "x // y" // 真注释\n'
         self.assertEqual(comment_rows("App/A.swift", text), {5: " 真注释"})
+
+    def test_swift_interpolation_is_code_and_its_comments_count(self):
+        text = 'let a = "外 \\(f("// 串里")) 尾" // 行尾\nlet b = #"x \\#(g(/* 插值里的注释 */ 1)) y"#\n'
+        self.assertEqual(comment_rows("App/A.swift", text), {1: " 行尾", 2: " 插值里的注释 "})
+
+    def test_swift_tokens_frame_literals_text_and_interpolation(self):
+        text = 'f(#"甲"#, "乙\\(x)丙") // 注\n'
+        self.assertEqual(swift_kinds(text), [("string", '#"甲"#'), ("text", "甲"), ("string", '"乙\\(x)丙"'),
+                                             ("text", "乙"), ("interpolation", "\\(x)"), ("text", "丙"),
+                                             ("comment", "// 注")])
+
+    def test_swift_tokens_nested_block_comment_is_one_token(self):
+        text = "/* 外 /* 内 */ 仍是注释 */ let x = 1\n"
+        self.assertEqual(swift_kinds(text), [("comment", "/* 外 /* 内 */ 仍是注释 */")])
+
+    def test_swift_tokens_comment_markers_inside_literals_are_text(self):
+        self.assertEqual(swift_kinds('let u = "https://a.b/*c*/"\n'),
+                         [("string", '"https://a.b/*c*/"'), ("text", "https://a.b/*c*/")])
+
+    def test_swift_tokens_multiline_string_spans_lines(self):
+        text = 'let a = """\n第一行 "引"\n"""\nlet b = 1 // 注释\n'
+        self.assertEqual([kind for kind, _ in swift_kinds(text)], ["string", "text", "comment"])
+
+    def test_swift_extended_regex_is_a_literal(self):
+        text = 'let r = #/"(\\w+)"//#  // 注释\n'
+        self.assertEqual(comment_rows("App/A.swift", text), {1: " 注释"})
+        self.assertEqual(swift_kinds(text)[0], ("regex", '#/"(\\w+)"//#'))
 
     def test_kotlin_kdoc_spans_lines(self):
         text = '/**\n * 第一行\n * 第二行\n */\nval s = """\n// 串\n"""\n'
