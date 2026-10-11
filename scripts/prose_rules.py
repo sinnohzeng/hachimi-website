@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 """行文门的判据：逐行的几条、按文件类型取行文、叙事词、术语、句长与本仓规则。
 
-**一组脚本，各仓一份，逐字节相同**（hachimi-ios ADR-0074 决策 5）：本份、`doc_rules.py`、`check-prose-style.py`、
-`commit-msg-style-gate.py` 与它们在 `tests/` 下的单测是一组，全名列在 `check-prose-style.py` 的 `KIT`。只用标准库，
-各仓的差别全写在仓根 `prose.json`，字段与含义见 `Config`。改判据要各仓同批改。
+**一组脚本，各仓一份，逐字节相同**（hachimi-ios ADR-0074 决策 5）：本份连同它的单测，与 `check-prose-style.py` 的 `KIT`
+列的其余几份是一组。只用标准库，各仓的差别全写在仓根 `prose.json`，字段与含义见 `Config`。改判据要各仓同批改。
 
 判据，一处命中即红。写了 `prose-style-ignore` 的那一行整行不判，豁免连同理由写在该行：
 

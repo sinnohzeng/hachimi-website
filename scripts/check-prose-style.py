@@ -28,9 +28,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import doc_rules  # noqa: E402
 import prose_rules  # noqa: E402
 
-KIT = ("prose_rules.py", "doc_rules.py", "check-prose-style.py", "commit-msg-style-gate.py",
+KIT = ("prose_rules.py", "doc_rules.py", "check-prose-style.py", "commit-msg-style-gate.py", "edit-check.py",
        "tests/test_prose_rules.py", "tests/test_prose_gate.py", "tests/test_doc_rules.py",
-       "tests/test_commit_msg_style_gate.py")
+       "tests/test_commit_msg_style_gate.py", "tests/test_edit_check.py")
 # 各仓副本的位置，相对于各仓共同的父目录。
 COPIES = ("hachimi-ios/scripts", "hachimi-android/scripts", "hachimi-backend/scripts", "hachimi-engine/scripts",
           "hachimi-website/scripts", "hachimi-ziwei-web/scripts", "hachimi-orb/tools")
